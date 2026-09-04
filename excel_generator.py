@@ -1,9 +1,11 @@
 """
 CareerOps Excel Generator
-Produces XML-based Excel (.xls) with 3 sheets:
+Produces XML-based Excel (.xls) with 5 sheets:
   1. All Jobs — full dump of everything scanned
   2. Fresh Matches — accumulated 75-100% matches across all scans
-  3. Daily Log — all scan runs
+  3. Applications — track which jobs you've applied to
+  4. Cover Letters — generated cover letters for each match
+  5. Daily Log — all scan runs
 Same format and styling as the Cloudflare Worker.
 """
 
@@ -13,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 HISTORY_FILE = Path(__file__).parent / "output" / "fresh_matches_history.json"
+APPLICATIONS_FILE = Path(__file__).parent / "output" / "applications.json"
 
 
 def _esc(s) -> str:
@@ -42,6 +45,40 @@ def save_fresh_history(matches: list[dict]):
     """Save accumulated fresh matches across scans."""
     HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
     HISTORY_FILE.write_text(json.dumps(matches, indent=2, default=str), encoding="utf-8")
+
+
+def load_applications() -> dict:
+    """Load application tracking data. Returns dict keyed by URL."""
+    try:
+        if APPLICATIONS_FILE.exists():
+            data = json.loads(APPLICATIONS_FILE.read_text(encoding="utf-8"))
+            return data if isinstance(data, dict) else {}
+    except Exception:
+        pass
+    return {}
+
+
+def save_applications(apps: dict):
+    """Save application tracking data."""
+    APPLICATIONS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    APPLICATIONS_FILE.write_text(json.dumps(apps, indent=2, default=str), encoding="utf-8")
+
+
+def mark_applied(url: str, status: str = "Applied", notes: str = ""):
+    """Mark a job as applied. Status: Applied, Maybe, Rejected, Interview, Offer."""
+    apps = load_applications()
+    apps[url] = {
+        "status": status,
+        "applied_date": datetime.now(timezone.utc).isoformat(),
+        "notes": notes,
+    }
+    save_applications(apps)
+
+
+def get_application_status(url: str) -> str:
+    """Get application status for a job URL."""
+    apps = load_applications()
+    return apps.get(url, {}).get("status", "Not Applied")
 
 
 def merge_fresh_matches(current: list[dict], history: list[dict]) -> list[dict]:
@@ -110,6 +147,9 @@ def generate_excel(
         fresh = get_freshness(j.get("posted"))
         rec = get_recommendation(j.get("score", 0))
         scan_dt = j.get("scan_date", "")[:10]  # Just the date part
+        url = j.get("url", "")
+        applied_status = get_application_status(url)
+        cover_path = j.get("cover_letter_path", "")
         fresh_rows.append(f'''
     <Row ss:StyleID="green">
       <Cell><Data ss:Type="Number">{i + 1}</Data></Cell>
@@ -120,8 +160,10 @@ def generate_excel(
       <Cell><Data ss:Type="String">{j.get("score", 0)}%</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(fresh["label"])}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(rec)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(applied_status)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(cover_path)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(scan_dt)}</Data></Cell>
-      <Cell><Data ss:Type="String">{_esc(j.get("url", ""))}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(url)}</Data></Cell>
     </Row>''')
 
     # ---- All Jobs rows (Sheet 1) ----
@@ -220,6 +262,36 @@ def generate_excel(
     dump_rows_str = "".join(dump_rows) if dump_rows else '<Row><Cell><Data ss:Type="String">No jobs fetched this scan.</Data></Cell></Row>'
     fresh_rows_str = "".join(fresh_rows) if fresh_rows else '<Row><Cell><Data ss:Type="String">No fresh matches yet.</Data></Cell></Row>'
     daily_rows_str = "".join(daily_rows) if daily_rows else '<Row><Cell><Data ss:Type="String">No scans yet.</Data></Cell></Row>'
+    
+    # ---- Applications tracking sheet ----
+    apps = load_applications()
+    app_rows = []
+    for url, data in apps.items():
+        status = data.get("status", "Not Applied")
+        applied_date = data.get("applied_date", "")[:10]
+        notes = data.get("notes", "")
+        app_rows.append(f'''
+    <Row>
+      <Cell><Data ss:Type="String">{_esc(url)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(status)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(applied_date)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(notes)}</Data></Cell>
+    </Row>''')
+    app_rows_str = "".join(app_rows) if app_rows else '<Row><Cell><Data ss:Type="String">No applications tracked yet. Mark jobs as Applied in the Fresh Matches sheet.</Data></Cell></Row>'
+    
+    # ---- Cover Letters sheet ----
+    cover_rows = []
+    for i, j in enumerate(all_fresh):
+        letter = j.get("cover_letter", "")
+        if letter:
+            cover_rows.append(f'''
+    <Row>
+      <Cell><Data ss:Type="Number">{i + 1}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(j.get("company", ""))}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(j.get("title", ""))}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(letter[:500])}</Data></Cell>
+    </Row>''')
+    cover_rows_str = "".join(cover_rows) if cover_rows else '<Row><Cell><Data ss:Type="String">No cover letters generated yet.</Data></Cell></Row>'
 
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <?mso-application progid="Excel.Sheet"?>
@@ -253,21 +325,51 @@ def generate_excel(
   <Worksheet ss:Name="Fresh Matches">
     <Table>
       <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="100"/>
-      <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="100"/><Column ss:Width="300"/><Column ss:Width="420"/>
+      <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="100"/>
+      <Column ss:Width="100"/><Column ss:Width="200"/><Column ss:Width="100"/><Column ss:Width="420"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated across all scans)</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">All jobs matching 75-100% from every scan. Sorted by score, then by scan date.</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">All jobs matching 75-100% from every scan. Sort by score, then by scan date. Column I: mark Applied/Maybe/Rejected.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell>
         <Cell><Data ss:Type="String">Category</Data></Cell><Cell><Data ss:Type="String">Location</Data></Cell><Cell><Data ss:Type="String">Match</Data></Cell>
         <Cell><Data ss:Type="String">Freshness</Data></Cell><Cell><Data ss:Type="String">Recommendation</Data></Cell>
+        <Cell><Data ss:Type="String">Applied?</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
         <Cell><Data ss:Type="String">Found On</Data></Cell><Cell><Data ss:Type="String">Apply URL</Data></Cell>
       </Row>
       {fresh_rows_str}
     </Table>
   </Worksheet>
 
-  <!-- Sheet 3: Daily Log (accumulated across scans) -->
+  <!-- Sheet 3: Applications (track your applications) -->
+  <Worksheet ss:Name="Applications">
+    <Table>
+      <Column ss:Width="420"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="300"/>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Application Tracker</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">Track which jobs you've applied to. Update status: Applied, Maybe, Rejected, Interview, Offer.</Data></Cell></Row>
+      <Row ss:StyleID="header">
+        <Cell><Data ss:Type="String">Job URL</Data></Cell><Cell><Data ss:Type="String">Status</Data></Cell>
+        <Cell><Data ss:Type="String">Applied Date</Data></Cell><Cell><Data ss:Type="String">Notes</Data></Cell>
+      </Row>
+      {app_rows_str}
+    </Table>
+  </Worksheet>
+
+  <!-- Sheet 4: Cover Letters (generated for each match) -->
+  <Worksheet ss:Name="Cover Letters">
+    <Table>
+      <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="600"/>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Generated Cover Letters</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">Personalized cover letters for each Fresh Match. Edit before sending!</Data></Cell></Row>
+      <Row ss:StyleID="header">
+        <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
+        <Cell><Data ss:Type="String">Role</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
+      </Row>
+      {cover_rows_str}
+    </Table>
+  </Worksheet>
+
+  <!-- Sheet 5: Daily Log (accumulated across scans) -->
   <Worksheet ss:Name="Daily Log">
     <Table>
       <Column ss:Width="120"/><Column ss:Width="160"/><Column ss:Width="100"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="100"/>

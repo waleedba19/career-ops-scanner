@@ -175,6 +175,7 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     """Build a clean, professional Telegram message with evolution intelligence."""
     from evolution_tracker import get_evolution_summary
     from source_manager import get_source_report
+    from excel_generator import load_applications, load_fresh_history
     
     label = get_scan_label()
     date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -206,6 +207,22 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     msg += f"Scan #{scan_num} \xB7 {time_str}\n"
     msg += f"Reviewed {all_count:,} jobs across {source_count} sources\n"
     msg += "\n"
+    
+    # ---- Check for unapplied jobs reminder ----
+    try:
+        apps = load_applications()
+        all_fresh = load_fresh_history()
+        unapplied = [j for j in all_fresh if j.get("url") and j["url"] not in apps]
+        if unapplied:
+            msg += f"\u26a0\ufe0f REMINDER: {len(unapplied)} unapplied jobs pending!\n"
+            for j in unapplied[:3]:
+                msg += f"• {j.get('title', 'Unknown')} ({j.get('score', 0)}%)\n"
+            if len(unapplied) > 3:
+                msg += f"... and {len(unapplied) - 3} more in Excel\n"
+            msg += "\u2500" * 28 + "\n"
+            msg += "\n"
+    except Exception:
+        pass
     
     if len(jobs) == 0:
         # No matches — but show what we learned

@@ -25,6 +25,7 @@ from notifier import send_telegram, send_email
 from excel_generator import generate_excel
 from source_manager import record_source_run, cleanup_dead_sources, get_source_report
 from evolution_tracker import record_scan, get_evolution_summary
+from cover_letter_generator import generate_all_cover_letters
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -3062,6 +3063,13 @@ async def run_scan():
         
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
+        
+        # ---- Generate cover letters for fresh matches ----
+        try:
+            final_verified = generate_all_cover_letters(final_verified)
+            print(f"Generated {len(final_verified)} cover letters.")
+        except Exception as e:
+            print(f"Cover letter generation failed: {e}")
 
         # ---- Build notifications ----
         elapsed = f"{time.time() - start_time:.1f}"
@@ -3145,6 +3153,24 @@ async def run_scan():
         except Exception as e:
             print(f"Excel generation failed: {e}")
             excel_path = None
+        
+        # ---- Check for unapplied jobs and send reminders ----
+        try:
+            from excel_generator import load_applications, load_fresh_history
+            apps = load_applications()
+            all_fresh = load_fresh_history()
+            unapplied = [j for j in all_fresh if j.get("url") and j["url"] not in apps]
+            if unapplied:
+                # Send reminder about unapplied jobs
+                reminder_msg = f"REMINDER: You have {len(unapplied)} unapplied jobs from previous scans!\n\n"
+                for j in unapplied[:5]:  # Show top 5
+                    reminder_msg += f"• {j.get('title', 'Unknown')} ({j.get('score', 0)}%)\n"
+                if len(unapplied) > 5:
+                    reminder_msg += f"\n... and {len(unapplied) - 5} more. Check your Excel!"
+                print(f"Unapplied jobs reminder: {len(unapplied)} jobs pending")
+                # This will be sent as part of the Telegram message
+        except Exception as e:
+            print(f"Reminder check failed: {e}")
 
         # ---- Append to accumulating scan history ----
         try:

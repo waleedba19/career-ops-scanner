@@ -4,11 +4,24 @@ Same formats as the original Cloudflare Worker.
 """
 
 import base64
+import html as html_mod
 import os
 import re
 from datetime import datetime, timezone
 
 import aiohttp
+
+
+def strip_html(html_text: str) -> str:
+    """Remove HTML tags, decode entities, return clean text."""
+    if not html_text:
+        return ""
+    text = str(html_text)
+    text = re.sub(r"<!\[CDATA\[([\s\S]*?)\]\]>", r"\1", text)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = html_mod.unescape(text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 # ---------------------------------------------------------------------------
 # Config
@@ -94,7 +107,7 @@ def format_card(job: dict, index: int) -> str:
         lines.append(f"   AI Insight: {ai}")
     desc = job.get("description", "")
     if desc:
-        lines.append(f"   Description: {desc}")
+        lines.append(f"   Description: {strip_html(desc)}")
     return "\n".join(lines)
 
 
@@ -222,7 +235,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         <tr><td style="padding:0 16px 12px">
           <a href="{_esc(j.get('url', ''))}" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#1a5fb4;text-decoration:underline;font-weight:bold">Apply for this position \u2192</a>
         </td></tr>
-        {f'<tr><td style="padding:0 16px 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;line-height:1.6"><b>Description:</b> {_esc(j.get("description", ""))}</td></tr>' if j.get("description") else ''}
+        {f'<tr><td style="padding:0 16px 12px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;line-height:1.6"><b>Description:</b> {_esc(strip_html(j.get("description", "")))}</td></tr>' if j.get("description") else ''}
       </table>'''
 
     def near_card(j, i):
@@ -250,7 +263,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         <tr><td style="padding:0 16px 10px">
           <a href="{_esc(j.get('url', ''))}" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#666;text-decoration:underline">Review this position \u2192</a>
         </td></tr>
-        {f'<tr><td style="padding:0 16px 10px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555;line-height:1.6"><b>Description:</b> {_esc(j.get("description", ""))}</td></tr>' if j.get("description") else ''}
+        {f'<tr><td style="padding:0 16px 10px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#555;line-height:1.6"><b>Description:</b> {_esc(strip_html(j.get("description", "")))}</td></tr>' if j.get("description") else ''}
       </table>'''
 
     # Build jobs HTML

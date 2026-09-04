@@ -1980,6 +1980,517 @@ async def fetch_landingjobs(session: aiohttp.ClientSession) -> list[dict]:
         return []
 
 
+# ===========================================================================
+# ADDITIONAL HIGH-QUALITY SOURCES
+# ===========================================================================
+
+
+# ---------------------------------------------------------------------------
+# 29. Himalayas API (himalayas.app) — Free JSON API, 95k+ jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_himalayas_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Himalayas JSON API — free, no auth required."""
+    try:
+        async with session.get(
+            "https://himalayas.app/jobs/api?limit=200",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json(content_type=None)
+            jobs = []
+            for j in data.get("jobs", []):
+                jobs.append({
+                    "title": j.get("title", ""),
+                    "company": j.get("companyName", ""),
+                    "url": j.get("applicationLink") or j.get("guid", ""),
+                    "location": ", ".join(j.get("locationRestrictions", [])) or "Remote",
+                    "posted": j.get("pubDate", ""),
+                    "description": strip_html(j.get("description", "")),
+                    "salary": f"{j.get('salaryMin', '')} - {j.get('salaryMax', '')} {j.get('currency', '')}".strip(" - ") if j.get("salaryMin") or j.get("salaryMax") else "",
+                    "source": "himalayas",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Himalayas API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 30. Jobicy API (jobicy.com) — Free JSON API, 200 jobs per request
+# ---------------------------------------------------------------------------
+
+async def fetch_jobicy_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Jobicy JSON API — free, no auth required."""
+    try:
+        async with session.get(
+            "https://jobicy.com/api/v2/remote-jobs?count=200&geo=anywhere",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json(content_type=None)
+            jobs = []
+            for j in data.get("jobs", []):
+                salary = ""
+                if j.get("salaryMin") and j.get("salaryMax"):
+                    salary = f"{j['salaryMin']}-{j['salaryMax']} {j.get('salaryCurrency', '')} / {j.get('salaryPeriod', 'yearly')}"
+                jobs.append({
+                    "title": j.get("jobTitle", ""),
+                    "company": j.get("companyName", ""),
+                    "url": j.get("url", ""),
+                    "location": j.get("jobGeo", "Remote"),
+                    "posted": j.get("pubDate", ""),
+                    "description": strip_html(j.get("jobDescription", "")),
+                    "salary": salary,
+                    "source": "jobicy",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Jobicy API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 31. Workbeam (workbeamhq.com) — Free API, remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_workbeam(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Workbeam API — free, no auth required."""
+    try:
+        async with session.get(
+            "https://workbeamhq.com/api/v1/jobs?remote=global&limit=100",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json(content_type=None)
+            jobs = []
+            for j in data.get("jobs", []):
+                jobs.append({
+                    "title": j.get("title", ""),
+                    "company": j.get("company", ""),
+                    "url": j.get("url", ""),
+                    "location": j.get("location", "Remote"),
+                    "posted": j.get("posted_at", ""),
+                    "description": strip_html(j.get("description", "")),
+                    "salary": j.get("salary", ""),
+                    "source": "workbeam",
+                })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  Workbeam: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 32. Remotive API (remotive.com) — Improved with JSON API
+# ---------------------------------------------------------------------------
+
+async def fetch_remotive_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Remotive JSON API — free, no auth required."""
+    try:
+        async with session.get(
+            "https://remotive.com/api/remote-jobs?limit=200",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json(content_type=None)
+            jobs = []
+            for j in data.get("jobs", []):
+                jobs.append({
+                    "title": j.get("title", ""),
+                    "company": j.get("company_name", ""),
+                    "url": j.get("url", ""),
+                    "location": j.get("candidate_required_location", "Remote"),
+                    "posted": j.get("publication_date", ""),
+                    "description": strip_html(j.get("description", "")),
+                    "salary": j.get("salary", ""),
+                    "source": "remotive",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Remotive API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 33. RemoteOK API (remoteok.com) — Improved with JSON API
+# ---------------------------------------------------------------------------
+
+async def fetch_remoteok_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from RemoteOK JSON API — free, no auth required."""
+    try:
+        async with session.get(
+            "https://remoteok.com/api",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json(content_type=None)
+            if not isinstance(data, list):
+                return []
+            jobs = []
+            for j in data:
+                if not j or not j.get("id") or not j.get("position"):
+                    continue
+                posted = ""
+                if j.get("date"):
+                    try:
+                        d = datetime.fromtimestamp(j["date"], tz=timezone.utc)
+                        posted = d.isoformat()
+                    except Exception:
+                        pass
+                title = re.sub(r"^\s*(apply now|hiring|remote)\s*", "", j.get("position", ""), flags=re.I).strip()
+                jobs.append({
+                    "title": title,
+                    "company": j.get("company", ""),
+                    "url": j.get("apply_url") or j.get("url", ""),
+                    "location": j.get("location", "Remote"),
+                    "posted": posted,
+                    "description": strip_html(j.get("description", "")),
+                    "salary": j.get("salary", ""),
+                    "source": "remoteok",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  RemoteOK API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 34. We Work Remotely API (weworkremotely.com) — Improved with RSS
+# ---------------------------------------------------------------------------
+
+async def fetch_wwr_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from WWR RSS feed — free, no auth required."""
+    try:
+        async with session.get(
+            "https://weworkremotely.com/remote-jobs.rss",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            xml = await resp.text()
+            items = re.findall(r"<item>[\s\S]*?</item>", xml)
+            jobs = []
+            for item in items[:200]:
+                def get(tag):
+                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                    return m.group(1) if m else ""
+                title = get("title").replace("&amp;", "&").strip()
+                if not title:
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": (title.split(":")[0] or "").strip(),
+                    "url": get("link").strip(),
+                    "location": "Remote",
+                    "posted": get("pubDate") or "",
+                    "description": strip_html(get("description")),
+                    "salary": "",
+                    "source": "weworkremotely",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  WWR API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 35. JustRemote API (justremote.co) — Improved with JSON
+# ---------------------------------------------------------------------------
+
+async def fetch_justremote_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from JustRemote — free, no auth required."""
+    try:
+        async with session.get(
+            "https://justremote.co/remote-jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "justremote", "https://justremote.co")
+            # Also try extracting from specific patterns
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/remote-jobs?/|/jobs?/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://justremote.co{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "JustRemote",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "justremote",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  JustRemote API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 36. Jobspresso API (jobspresso.co) — Improved
+# ---------------------------------------------------------------------------
+
+async def fetch_jobspresso_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Jobspresso — free, no auth required."""
+    try:
+        async with session.get(
+            "https://jobspresso.co/remote-jobs/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "jobspresso", "https://jobspresso.co")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/remote-jobs?/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://jobspresso.co{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Jobspresso",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "jobspresso",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Jobspresso API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 37. Working Nomads API (workingnomads.com) — Improved
+# ---------------------------------------------------------------------------
+
+async def fetch_workingnomads_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Working Nomads RSS — free, no auth required."""
+    try:
+        async with session.get(
+            "https://www.workingnomads.com/jobsfeed",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            xml = await resp.text()
+            items = re.findall(r"<item>[\s\S]*?</item>", xml)
+            jobs = []
+            for item in items[:200]:
+                def get(tag):
+                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                    return m.group(1) if m else ""
+                title = get("title").replace("&amp;", "&").strip()
+                if not title:
+                    continue
+                link = get("link").strip()
+                desc = strip_html(get("description") or get("content:encoded", ""))
+                company_match = re.search(r"(?:Company:|company:)\s*([^\n<]+)", desc, re.I)
+                company = company_match.group(1).strip() if company_match else "Working Nomads"
+                jobs.append({
+                    "title": title,
+                    "company": company,
+                    "url": link,
+                    "location": "Remote (Worldwide)",
+                    "posted": get("pubDate") or "",
+                    "description": desc,
+                    "salary": "",
+                    "source": "workingnomads",
+                })
+            return jobs
+    except Exception as e:
+        print(f"  WorkingNomads API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 38. Hire LATAM API (hirelatam.com) — Improved
+# ---------------------------------------------------------------------------
+
+async def fetch_hirelatam_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Hire LATAM — free, no auth required."""
+    try:
+        async with session.get(
+            "https://hirelatam.com/en/jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "hirelatam", "https://hirelatam.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job/|/en/jobs/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://hirelatam.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Hire LATAM",
+                        "url": url,
+                        "location": "Remote (LATAM)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "hirelatam",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  HireLATAM API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 39. Arbeitnow API (arbeitnow.com) — Improved with JSON API
+# ---------------------------------------------------------------------------
+
+async def fetch_arbeitnow_api(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Arbeitnow JSON API — free, no auth required."""
+    try:
+        async with session.get(
+            "https://www.arbeitnow.com/api/job-board-api",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json(content_type=None)
+            jobs = []
+            for j in (data.get("jobs") or [])[:200]:
+                jobs.append({
+                    "title": j.get("title", ""),
+                    "company": j.get("company_name") or j.get("company", ""),
+                    "url": j.get("url") or j.get("apply_url", ""),
+                    "location": j.get("location", "Remote"),
+                    "posted": j.get("created_at") or j.get("published_at", ""),
+                    "description": strip_html(j.get("description") or j.get("description_html", "")),
+                    "salary": j.get("salary", ""),
+                    "source": "arbeitnow",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Arbeitnow API: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 40. Jobicy RSS (jobicy.com) — Alternative feed
+# ---------------------------------------------------------------------------
+
+async def fetch_jobicy_rss(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Jobicy RSS feed — free, no auth required."""
+    try:
+        async with session.get(
+            "https://jobicy.com/jobs/feed",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            xml = await resp.text()
+            items = re.findall(r"<item>[\s\S]*?</item>", xml)
+            jobs = []
+            for item in items[:200]:
+                def get(tag):
+                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                    return m.group(1) if m else ""
+                title = get("title").replace("&amp;", "&").strip()
+                if not title:
+                    continue
+                link = get("link").strip()
+                desc = strip_html(get("description") or get("content:encoded", ""))
+                company_match = re.search(r"(?:Company:|company:)\s*([^\n<]+)", desc, re.I)
+                company = company_match.group(1).strip() if company_match else "Jobicy"
+                jobs.append({
+                    "title": title,
+                    "company": company,
+                    "url": link,
+                    "location": "Remote",
+                    "posted": get("pubDate") or "",
+                    "description": desc,
+                    "salary": "",
+                    "source": "jobicy",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Jobicy RSS: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 41. Himalayas RSS (himalayas.app) — Alternative feed
+# ---------------------------------------------------------------------------
+
+async def fetch_himalayas_rss(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Himalayas RSS feed — free, no auth required."""
+    try:
+        async with session.get(
+            "https://himalayas.app/jobs/rss",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            xml = await resp.text()
+            items = re.findall(r"<item>[\s\S]*?</item>", xml)
+            jobs = []
+            for item in items[:200]:
+                def get(tag):
+                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                    return m.group(1) if m else ""
+                title = get("title").replace("&amp;", "&").strip()
+                if not title:
+                    continue
+                link = get("link").strip()
+                desc = strip_html(get("description") or get("content:encoded", ""))
+                company_match = re.search(r"(?:Company:|company:)\s*([^\n<]+)", desc, re.I)
+                company = company_match.group(1).strip() if company_match else "Himalayas"
+                jobs.append({
+                    "title": title,
+                    "company": company,
+                    "url": link,
+                    "location": "Remote (Worldwide)",
+                    "posted": get("pubDate") or "",
+                    "description": desc,
+                    "salary": "",
+                    "source": "himalayas",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Himalayas RSS: {e}")
+        return []
+
+
 # ---------------------------------------------------------------------------
 # History — JSON file replaces Cloudflare KV
 # ---------------------------------------------------------------------------
@@ -2225,6 +2736,54 @@ async def run_scan():
         fetchers.append(fetch_hirelatam(session))
         fetchers.append(fetch_landingjobs(session))
 
+        # ---- NEW sources (28 additional) ----
+        # Arabic/MENA freelancing
+        fetchers.append(fetch_mostaql(session))
+        fetchers.append(fetch_for9a(session))
+        fetchers.append(fetch_khamsat(session))
+        fetchers.append(fetch_ureed(session))
+        fetchers.append(fetch_wuzzuf(session))
+        fetchers.append(fetch_daleel(session))
+        fetchers.append(fetch_aqar(session))
+        fetchers.append(fetch_tajer(session))
+        # Major job platforms
+        fetchers.append(fetch_linkedin(session))
+        fetchers.append(fetch_bayt(session))
+        fetchers.append(fetch_gulftalent(session))
+        fetchers.append(fetch_naukrigulf(session))
+        fetchers.append(fetch_craigslist(session))
+        fetchers.append(fetch_upwork(session))
+        fetchers.append(fetch_fiverr(session))
+        fetchers.append(fetch_toptal(session))
+        fetchers.append(fetch_flexjobs(session))
+        fetchers.append(fetch_remotedotco(session))
+        fetchers.append(fetch_justremote(session))
+        fetchers.append(fetch_himalayas(session))
+        fetchers.append(fetch_glassdoor(session))
+        fetchers.append(fetch_indeed(session))
+        fetchers.append(fetch_ziprecruiter(session))
+        fetchers.append(fetch_wellfound(session))
+        fetchers.append(fetch_workingnomads(session))
+        fetchers.append(fetch_jobspresso(session))
+        fetchers.append(fetch_hirelatam(session))
+        fetchers.append(fetch_landingjobs(session))
+
+        # ---- ADDITIONAL HIGH-QUALITY SOURCES (12 more) ----
+        # JSON APIs (better structured data)
+        fetchers.append(fetch_himalayas_api(session))
+        fetchers.append(fetch_jobicy_api(session))
+        fetchers.append(fetch_workbeam(session))
+        fetchers.append(fetch_remotive_api(session))
+        fetchers.append(fetch_remoteok_api(session))
+        fetchers.append(fetch_wwr_api(session))
+        fetchers.append(fetch_justremote_api(session))
+        fetchers.append(fetch_jobspresso_api(session))
+        fetchers.append(fetch_workingnomads_api(session))
+        fetchers.append(fetch_hirelatam_api(session))
+        fetchers.append(fetch_arbeitnow_api(session))
+        fetchers.append(fetch_jobicy_rss(session))
+        fetchers.append(fetch_himalayas_rss(session))
+
         # ---- Auto-discovered sources from registry ----
         registry_file = OUTPUT_DIR / "source_registry.json"
         try:
@@ -2362,6 +2921,10 @@ async def run_scan():
             "fiverr", "toptal", "flexjobs", "remote.co", "justremote", "himalayas",
             "glassdoor", "indeed", "ziprecruiter", "wellfound", "workingnomads",
             "jobspresso", "hirelatam", "landing.jobs",
+            # New high-quality sources
+            "himalayas_api", "jobicy_api", "workbeam", "remotive_api", "remoteok_api",
+            "wwr_api", "justremote_api", "jobspresso_api", "workingnomads_api",
+            "hirelatam_api", "arbeitnow_api", "jobicy_rss", "himalayas_rss",
         }
         source_count = len(source_names)
 

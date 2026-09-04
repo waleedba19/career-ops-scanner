@@ -503,7 +503,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     return {"html": html, "text": text}
 
 
-async def send_email(subject: str, text_body: str, html_body: str, excel_path: str | None = None) -> bool:
+async def send_email(subject: str, text_body: str, html_body: str, excel_path: str | None = None, pdf_paths: list[str] | None = None) -> bool:
     if not BREVO_KEY or not TO_EMAIL:
         print("Email skipped: no BREVO_API_KEY or TO_EMAIL configured")
         return False
@@ -516,6 +516,9 @@ async def send_email(subject: str, text_body: str, html_body: str, excel_path: s
         "htmlContent": html_body,
     }
 
+    # Build attachments list
+    attachments = []
+    
     # Add Excel attachment if available and under 5MB
     if excel_path:
         try:
@@ -524,9 +527,25 @@ async def send_email(subject: str, text_body: str, html_body: str, excel_path: s
                 content = open(excel_path, "rb").read()
                 b64 = base64.b64encode(content).decode()
                 filename = os.path.basename(excel_path)
-                payload["attachment"] = [{"name": filename, "content": b64}]
+                attachments.append({"name": filename, "content": b64})
         except Exception as e:
-            print(f"Excel attachment failed (email still sent): {e}")
+            print(f"Excel attachment failed: {e}")
+    
+    # Add PDF cover letters (up to 10 PDFs to stay under size limit)
+    if pdf_paths:
+        try:
+            import os
+            for pdf_path in pdf_paths[:10]:  # Max 10 PDFs
+                if os.path.exists(pdf_path) and os.path.getsize(pdf_path) < 1_000_000:  # 1MB each
+                    content = open(pdf_path, "rb").read()
+                    b64 = base64.b64encode(content).decode()
+                    filename = os.path.basename(pdf_path)
+                    attachments.append({"name": filename, "content": b64})
+        except Exception as e:
+            print(f"PDF attachment failed: {e}")
+    
+    if attachments:
+        payload["attachment"] = attachments
 
     try:
         async with aiohttp.ClientSession() as session:

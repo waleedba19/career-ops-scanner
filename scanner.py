@@ -3198,7 +3198,15 @@ async def run_scan():
                 if final_verified
                 else f"CareerOps Scan - {date_str} - \u2705 0 New Matches Found"
             )
-            email_sent = await send_email(email_subject, email_result["text"], email_result["html"], str(excel_path) if excel_path else None)
+            # Collect PDF cover letter paths
+            pdf_paths = [j.get("cover_letter_path", "") for j in final_verified if j.get("cover_letter_path")]
+            email_sent = await send_email(
+                email_subject,
+                email_result["text"],
+                email_result["html"],
+                str(excel_path) if excel_path else None,
+                pdf_paths if pdf_paths else None
+            )
         except Exception as e:
             print(f"Email error: {e}")
 

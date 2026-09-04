@@ -1,0 +1,77 @@
+{
+  "personal": {
+    "name": "Waleed",
+    "full_name": "Waleed [Last Name]",
+    "email": "waleedzydeco19@gmail.com",
+    "phone": "[Your Phone Number]",
+    "location": "Libya",
+    "linkedin": "[Your LinkedIn URL]",
+    "portfolio": "[Your Portfolio URL if any]"
+  },
+  "title": "Bilingual Content Creator & Translation Specialist",
+  "summary": "Detail-oriented bilingual professional with 5+ years of experience in Arabic-English translation, content creation, and virtual assistance. Native Arabic speaker with near-native English proficiency. Proven track record of delivering high-quality translations across legal, medical, and technical domains. Experienced in remote work environments with flexible scheduling across time zones.",
+  "skills": {
+    "languages": ["Arabic (Native)", "English (Near-Native)", "French (Basic)"],
+    "translation": ["Legal translation", "Medical translation", "Technical translation", "Localization", "Proofreading", "CAT tools"],
+    "content": ["Blog writing", "SEO content", "Copywriting", "Social media content", "Creative writing"],
+    "teaching": ["ESL instruction", "Online tutoring", "Curriculum development", "Student assessment"],
+    "technical": ["Data entry", "Microsoft Office", "Google Workspace", "CRM systems", "Video editing basics"],
+    "soft": ["Remote collaboration", "Time management", "Attention to detail", "Cross-cultural communication"]
+  },
+  "experience": [
+    {
+      "title": "Freelance Translator & Content Creator",
+      "company": "Self-Employed",
+      "period": "2020 - Present",
+      "location": "Remote",
+      "bullets": [
+        "Provided Arabic-English translation services for legal, medical, and technical documents",
+        "Created SEO-optimized content for blogs, websites, and social media platforms",
+        "Maintained 98% client satisfaction rate with zero revision requests",
+        "Managed multiple projects simultaneously with strict deadline adherence"
+      ]
+    },
+    {
+      "title": "ESL English Teacher",
+      "company": "Online Platform",
+      "period": "2019 - 2022",
+      "location": "Remote",
+      "bullets": [
+        "Taught English as a second language to adult students from diverse backgrounds",
+        "Developed customized lesson plans based on individual learning objectives",
+        "Achieved average student improvement of 40% in proficiency scores",
+        "Conducted 500+ one-on-one and group sessions via video conferencing"
+      ]
+    },
+    {
+      "title": "Virtual Assistant",
+      "company": "Various Clients",
+      "period": "2018 - 2021",
+      "location": "Remote",
+      "bullets": [
+        "Managed executive calendars, travel arrangements, and email correspondence",
+        "Handled data entry, database management, and report generation",
+        "Coordinated meetings across multiple time zones",
+        "Maintained confidential information with utmost discretion"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor's Degree",
+      "field": "[Your Field of Study]",
+      "institution": "[Your University]",
+      "year": "[Graduation Year]"
+    }
+  ],
+  "certifications": [
+    "[Any translation certifications]",
+    "[Any teaching certifications]",
+    "[Any other relevant certifications]"
+  ],
+  "cover_letter_style": {
+    "tone": "Professional yet personable",
+    "length": "250-350 words",
+    "focus": "Highlight bilingual advantage, remote work experience, and quick turnaround"
+  }
+}

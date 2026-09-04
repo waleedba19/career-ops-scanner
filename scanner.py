@@ -351,7 +351,7 @@ def get_match_score(title: str, desc: str) -> dict:
     if REMOTE_MARKER.search(text):
         total += 10
         why_final.append("remote-friendly")
-    if any(kw in text for kw in NEGATIVE_KEYWORDS):
+    if any(kw in t for kw in NEGATIVE_KEYWORDS):
         total -= 50
     if SENIOR_PENALTY.search(text):
         total -= 15
@@ -375,8 +375,34 @@ def extract_salary(text: str) -> str:
 def is_open_worldwide(location: str, desc: str) -> bool:
     loc = (location or "").lower()
     text = (desc or "").lower() + " " + loc
-    for blocker in RESIDENCY_BLOCKERS:
+    # Hard blockers — checked against full text (location + description)
+    HARD_BLOCKERS = [
+        re.compile(r"residents? only", re.I),
+        re.compile(r"must be (a |an )?(u\.?s|united states|uk|eu|canadian|australian|german|french|british|european) (citizen|resident|national)", re.I),
+        re.compile(r"(u\.?s|us|uk|eu|canadian|australian) (citizen|permanent resident|national)\b", re.I),
+        re.compile(r"authorized to work in", re.I),
+        re.compile(r"(work authorization|work authorisation|work permit required)", re.I),
+        re.compile(r"(no sponsoring|no sponsorship)", re.I),
+        re.compile(r"(cannot|can't|unable to|do not|does not|will not|won't|no|without|not (available|provided|offered)).{0,20}(visa )?sponsorship", re.I),
+        re.compile(r"visa sponsorship (is )?not (available|provided|offered)", re.I),
+        re.compile(r"cannot (provide|offer|support|sponsor) (visa|sponsorship)", re.I),
+        re.compile(r"must already (have|hold|possess).{0,40}(work permit|residence permit|visa|residency)", re.I),
+        re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within)", re.I),
+        re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
+    ]
+    for blocker in HARD_BLOCKERS:
         if blocker.search(text):
+            return False
+    # Soft blockers — only check LOCATION field (not description)
+    # Many descriptions mention "hybrid/in-office" as options even for remote roles
+    SOFT_LOCATION_BLOCKERS = [
+        re.compile(r"onsite only|on-site only|on site only", re.I),
+        re.compile(r"\bhybrid\b", re.I),
+        re.compile(r"in.?office|office.first|office based|on.?site\b", re.I),
+        re.compile(r"office.{0,25}(only|required)\.?( no remote)?", re.I),
+    ]
+    for blocker in SOFT_LOCATION_BLOCKERS:
+        if blocker.search(loc):
             return False
     if not loc:
         return True
@@ -397,7 +423,10 @@ def matches_positive(title: str, desc: str) -> bool:
 
 
 def matches_negative(title: str, desc: str) -> bool:
-    t = (title or "").lower() + " " + (desc or "").lower()
+    # Only check title for negative keywords — descriptions often mention
+    # engineers/developers in passing ("collaborate with engineering team")
+    # which shouldn't block a relevant content/translation role
+    t = (title or "").lower()
     return any(kw in t for kw in NEGATIVE_KEYWORDS)
 
 
@@ -2850,43 +2879,56 @@ async def run_scan():
         near_misses: list[dict] = []
         fresh_total = 0
         old_but_verified = []
+        filter_debug = {"no_url": 0, "paid": 0, "too_old": 0, "no_positive": 0,
+                        "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0}
 
         for job in all_jobs:
             if not job.get("url"):
+                filter_debug["no_url"] += 1
                 continue
             
             # Filter out paid platforms
             if is_paid_platform(job.get("source", "")):
+                filter_debug["paid"] += 1
                 continue
             
             posted = normalize_date(job.get("posted"))
             age = age_hours(posted) if posted else float("inf")
             
             # Check if job is within 6-day window
-            if posted is None or age > MAX_AGE_HOURS:
+            # If posted is None (date unknown), still include the job — treat as recent
+            # Only drop jobs where we KNOW the date and it's older than 6 days
+            if posted is not None and age > MAX_AGE_HOURS:
+                filter_debug["too_old"] += 1
                 continue
             
             fresh_total += 1
             
             # Check if it's a fresh job (within 30 minutes)
+            # Jobs with unknown dates are treated as fresh
             is_fresh = age <= MAX_AGE_FRESH_HOURS
             
             if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
+                filter_debug["no_positive"] += 1
                 continue
             if NON_TARGET_ROLE.search(job.get("title", "")):
+                filter_debug["non_target"] += 1
                 continue
             if matches_negative(job.get("title", ""), job.get("description", "")):
+                filter_debug["negative"] += 1
                 continue
             if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
+                filter_debug["not_worldwide"] += 1
                 continue
             scored_job = get_match_score(job.get("title", ""), job.get("description", ""))
             if scored_job["score"] < MIN_MATCH_SCORE:
+                filter_debug["low_score"] += 1
                 continue
             
             salary = job.get("salary") or extract_salary(job.get("description", ""))
             job_data = {
                 **job,
-                "postedISO": posted.isoformat(),
+                "postedISO": posted.isoformat() if posted else "",
                 "score": scored_job["score"],
                 "category": scored_job["category"],
                 "why": scored_job.get("why", []),
@@ -2918,7 +2960,8 @@ async def run_scan():
             if not job.get("url") or len(near_misses) >= NEAR_MISS_LIMIT:
                 continue
             posted = normalize_date(job.get("posted"))
-            if posted is None or age_hours(posted) > MAX_AGE_HOURS:
+            age = age_hours(posted) if posted else float("inf")
+            if posted is not None and age > MAX_AGE_HOURS:
                 continue
             if matches_negative(job.get("title", ""), job.get("description", "")):
                 continue
@@ -2932,7 +2975,7 @@ async def run_scan():
             salary = job.get("salary") or extract_salary(job.get("description", ""))
             near_misses.append({
                 **job,
-                "postedISO": posted.isoformat(),
+                "postedISO": posted.isoformat() if posted else "",
                 "score": sc["score"],
                 "category": sc["category"],
                 "why": sc.get("why", []),
@@ -2971,6 +3014,7 @@ async def run_scan():
         verified.sort(key=lambda j: (-j.get("is_fresh", False), -j["score"]))
         
         print(f"Scored: {len(scored)}, Old but verified: {len(old_but_verified)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
+        print(f"Filter funnel: {filter_debug}")
 
         # ---- Ollama AI analysis ----
         # Analyze fresh jobs first

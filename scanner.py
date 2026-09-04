@@ -29,7 +29,7 @@ from excel_generator import generate_excel
 # ---------------------------------------------------------------------------
 
 MIN_MATCH_SCORE = 75
-MAX_AGE_HOURS = 24
+MAX_AGE_HOURS = 0.5  # 30 minutes
 NEAR_MISS_MIN = 50
 NEAR_MISS_MAX = 74
 NEAR_MISS_LIMIT = 6
@@ -37,9 +37,11 @@ TOP_LIVENESS_CHECK = 6
 HISTORY_MAX = 5000
 OUTPUT_DIR = Path(__file__).parent / "output"
 HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
+SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
+SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
 
-HEADERS = {"User-Agent": "career-ops-bot/3.0"}
-TIMEOUT = aiohttp.ClientTimeout(total=8)
+HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+TIMEOUT = aiohttp.ClientTimeout(total=10)
 
 # ---------------------------------------------------------------------------
 # Job sources — Greenhouse companies
@@ -367,6 +369,67 @@ def matches_negative(title: str, desc: str) -> bool:
 
 
 # ---------------------------------------------------------------------------
+# Generic HTML job page scraper
+# ---------------------------------------------------------------------------
+
+def _parse_generic_html_jobs(html: str, source: str, base_url: str) -> list[dict]:
+    """Generic scraper that tries common HTML patterns for job listings."""
+    jobs = []
+    # Try common job card patterns
+    # Pattern 1: links with /jobs/ or /job/ in href
+    job_links = re.findall(
+        r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/position/|/opening/|/vacancy/|/listing/)[^"\']*)["\'][^>]*>([^<]+)</a>',
+        html, re.I
+    )
+    for href, title in job_links:
+        title = strip_html(title).strip()
+        if not title or len(title) < 5:
+            continue
+        url = href if href.startswith("http") else base_url.rstrip("/") + href
+        jobs.append({
+            "title": title,
+            "company": source.title(),
+            "url": url,
+            "location": "Remote",
+            "posted": "",
+            "description": "",
+            "source": source,
+        })
+
+    # Pattern 2: data attributes or JSON-LD
+    json_ld = re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>([\s\S]*?)</script>', html, re.I)
+    for block in json_ld:
+        try:
+            data = json.loads(block)
+            if isinstance(data, dict) and data.get("@type") == "JobPosting":
+                jobs.append({
+                    "title": data.get("name", ""),
+                    "company": (data.get("hiringOrganization") or {}).get("name", source.title()),
+                    "url": data.get("url", ""),
+                    "location": (data.get("jobLocation") or {}).get("address", {}).get("addressLocality", "Remote"),
+                    "posted": data.get("datePosted", ""),
+                    "description": strip_html(data.get("description", "")),
+                    "source": source,
+                })
+            elif isinstance(data, list):
+                for item in data:
+                    if isinstance(item, dict) and item.get("@type") == "JobPosting":
+                        jobs.append({
+                            "title": item.get("name", ""),
+                            "company": (item.get("hiringOrganization") or {}).get("name", source.title()),
+                            "url": item.get("url", ""),
+                            "location": (item.get("jobLocation") or {}).get("address", {}).get("addressLocality", "Remote"),
+                            "posted": item.get("datePosted", ""),
+                            "description": strip_html(item.get("description", "")),
+                            "source": source,
+                        })
+        except Exception:
+            pass
+
+    return jobs[:200]
+
+
+# ---------------------------------------------------------------------------
 # Job source fetchers — async with aiohttp
 # ---------------------------------------------------------------------------
 
@@ -390,6 +453,7 @@ async def fetch_greenhouse(session: aiohttp.ClientSession, company_name: str, sl
                     "location": loc_name,
                     "posted": j.get("updated_at") or j.get("created_at", ""),
                     "description": strip_html(j.get("content") or j.get("content_html", "")),
+                    "salary": "",
                     "source": "greenhouse",
                 })
             return jobs
@@ -415,6 +479,7 @@ async def fetch_lever(session: aiohttp.ClientSession, company_name: str, slug: s
                     "location": (j.get("categories") or {}).get("location", ""),
                     "posted": j.get("createdAt") or j.get("postedAt", ""),
                     "description": strip_html(j.get("descriptionPlain") or j.get("description", "")),
+                    "salary": "",
                     "source": "lever",
                 }
                 for j in arr
@@ -509,6 +574,7 @@ async def fetch_wwr(session: aiohttp.ClientSession) -> list[dict]:
                     "location": "Remote",
                     "posted": get("pubDate") or "",
                     "description": strip_html(get("description")),
+                    "salary": "",
                     "source": "weworkremotely",
                 })
             return jobs
@@ -541,6 +607,7 @@ async def fetch_jobicy(session: aiohttp.ClientSession) -> list[dict]:
                     "location": location,
                     "posted": get("pubDate") or "",
                     "description": strip_html(get("description") or get("content:encoded", "")),
+                    "salary": "",
                     "source": "jobicy",
                 })
             return jobs
@@ -580,6 +647,7 @@ async def fetch_nodesk(session: aiohttp.ClientSession) -> list[dict]:
                             "location": "Remote (worldwide)",
                             "posted": "",
                             "description": strip_html(desc),
+                            "salary": "",
                             "source": "nodesk",
                         })
                 except Exception:
@@ -667,6 +735,7 @@ async def fetch_yayremote(session: aiohttp.ClientSession) -> list[dict]:
                         (re.search(r"<description>([\s\S]*?)</description>", item) and re.search(r"<description>([\s\S]*?)</description>", item).group(1) or "")
                         or (re.search(r"<content:encoded>([\s\S]*?)</content:encoded>", item) and re.search(r"<content:encoded>([\s\S]*?)</content:encoded>", item).group(1) or "")
                     ),
+                    "salary": "",
                     "source": "yayremote",
                 }
                 for item in items
@@ -720,12 +789,1194 @@ async def fetch_realworkfromanywhere(session: aiohttp.ClientSession) -> list[dic
                         (re.search(r"<description>([\s\S]*?)</description>", item) and re.search(r"<description>([\s\S]*?)</description>", item).group(1) or "")
                         or (re.search(r"<content:encoded>([\s\S]*?)</content:encoded>", item) and re.search(r"<content:encoded>([\s\S]*?)</content:encoded>", item).group(1) or "")
                     ),
+                    "salary": "",
                     "source": "realworkfromanywhere",
                 }
                 for item in items
             ]
     except Exception as e:
         print(f"  RealWorkFromAnywhere: {e}")
+        return []
+
+
+# ===========================================================================
+# NEW FETCHERS — 25+ additional job sources
+# ===========================================================================
+
+
+# ---------------------------------------------------------------------------
+# 1. Mostaql (mostaql.com) — Arabic freelancing platform
+# ---------------------------------------------------------------------------
+
+async def fetch_mostaql(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://mostaql.com/jobs",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Parse job cards from HTML
+            cards = re.findall(
+                r'<div[^>]*class="[^"]*job[^"]*"[^>]*>[\s\S]*?</div>\s*</div>\s*</div>',
+                html, re.I
+            )
+            if not cards:
+                # Fallback: extract links with /jobs/ in href
+                links = re.findall(
+                    r'<a[^>]+href=["\'](/jobs/\d+[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                    html, re.I
+                )
+                for href, title_html in links[:200]:
+                    title = strip_html(title_html).strip()
+                    if title and len(title) > 3:
+                        jobs.append({
+                            "title": title,
+                            "company": "Mostaql",
+                            "url": f"https://mostaql.com{href}",
+                            "location": "Remote (MENA)",
+                            "posted": "",
+                            "description": "",
+                            "salary": "",
+                            "source": "mostaql",
+                        })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Mostaql: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 2. For9a (for9a.com) — Arabic freelancing platform
+# ---------------------------------------------------------------------------
+
+async def fetch_for9a(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://for9a.com/jobs",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Extract job listings
+            links = re.findall(
+                r'<a[^>]+href=["\']([^"\']*jobs?/[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in links[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://for9a.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "For9a",
+                        "url": url,
+                        "location": "Remote (MENA)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "for9a",
+                    })
+            # Also try JSON-LD
+            jobs.extend(_parse_generic_html_jobs(html, "for9a", "https://for9a.com"))
+            return jobs[:200]
+    except Exception as e:
+        print(f"  For9a: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 3. Khamsat (khamsat.com) — Arabic micro-services marketplace
+# ---------------------------------------------------------------------------
+
+async def fetch_khamsat(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://khamsat.com/market/services",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Extract service listings
+            links = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:service|service|\d+)[^"\']*)["\'][^>]*class="[^"]*service[^"]*"[^>]*>',
+                html, re.I
+            )
+            if not links:
+                links = re.findall(
+                    r'<a[^>]+href=["\']([^"\']+khamsat[^"\']*)["\'][^>]*>',
+                    html, re.I
+                )
+            titles = re.findall(
+                r'<h\d[^>]*class="[^"]*title[^"]*"[^>]*>([\s\S]*?)</h\d>',
+                html, re.I
+            )
+            for i, href in enumerate(links[:200]):
+                title = strip_html(titles[i]).strip() if i < len(titles) else ""
+                url = href if href.startswith("http") else f"https://khamsat.com{href}"
+                jobs.append({
+                    "title": title or "Service Listing",
+                    "company": "Khamsat",
+                    "url": url,
+                    "location": "Remote (MENA)",
+                    "posted": "",
+                    "description": "",
+                    "salary": "",
+                    "source": "khamsat",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Khamsat: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 4. Ureed (ureed.com) — Arabic remote jobs platform
+# ---------------------------------------------------------------------------
+
+async def fetch_ureed(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://ureed.com/jobs",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Extract job links
+            links = re.findall(
+                r'<a[^>]+href=["\']([^"\']*jobs?/[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in links[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://ureed.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Ureed",
+                        "url": url,
+                        "location": "Remote (MENA)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "ureed",
+                    })
+            jobs.extend(_parse_generic_html_jobs(html, "ureed", "https://ureed.com"))
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Ureed: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 5. Wuzzuf (wuzzuf.net) — Egyptian job platform
+# ---------------------------------------------------------------------------
+
+async def fetch_wuzzuf(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        # Wuzzuf has a search API
+        async with session.get(
+            "https://www.wuzzuf.net/api/jobs",
+            params={"q": "", "limit": 100},
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status == 200:
+                data = await resp.json(content_type=None)
+                if isinstance(data, dict) and "jobs" in data:
+                    return [
+                        {
+                            "title": j.get("title", ""),
+                            "company": j.get("company", {}).get("name", ""),
+                            "url": j.get("url", ""),
+                            "location": j.get("location", "Egypt"),
+                            "posted": j.get("posted_at", ""),
+                            "description": strip_html(j.get("description", "")),
+                            "salary": j.get("salary", ""),
+                            "source": "wuzzuf",
+                        }
+                        for j in data["jobs"][:200]
+                    ]
+    except Exception:
+        pass
+    # Fallback to HTML scrape
+    try:
+        async with session.get(
+            "https://www.wuzzuf.net/jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            return _parse_generic_html_jobs(html, "wuzzuf", "https://www.wuzzuf.net")[:200]
+    except Exception as e:
+        print(f"  Wuzzuf: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 6. Daleel (daleel.com) — Arabic job listings
+# ---------------------------------------------------------------------------
+
+async def fetch_daleel(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://daleel.com/jobs",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "daleel", "https://daleel.com")
+            # Also try link extraction
+            links = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:job|listing|opportunity)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in links[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://daleel.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Daleel",
+                        "url": url,
+                        "location": "Remote (MENA)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "daleel",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Daleel: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 7. Aqar (aqar.fm) — Libyan job listings
+# ---------------------------------------------------------------------------
+
+async def fetch_aqar(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://aqar.fm/jobs",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "aqar", "https://aqar.fm")
+            links = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:job|وظيفة|فرص)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in links[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://aqar.fm{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Aqar",
+                        "url": url,
+                        "location": "Libya",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "aqar",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Aqar: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 8. Tajer (tajer.ly) — Libyan marketplace
+# ---------------------------------------------------------------------------
+
+async def fetch_tajer(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://tajer.ly",
+            headers={**HEADERS, "Accept-Language": "ar,en;q=0.9"},
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "tajer", "https://tajer.ly")
+            links = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:service|job|فرص|خدمة)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in links[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://tajer.ly{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Tajer",
+                        "url": url,
+                        "location": "Libya",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "tajer",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Tajer: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 9. LinkedIn (linkedin.com/jobs) — Public RSS feed
+# ---------------------------------------------------------------------------
+
+async def fetch_linkedin(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        # LinkedIn public job RSS for remote jobs
+        rss_urls = [
+            "https://www.linkedin.com/jobs/search?location=&f_WT=2&format=rss",
+            "https://www.linkedin.com/jobs/search?keywords=remote&location=&f_WT=2&format=rss",
+        ]
+        jobs = []
+        for rss_url in rss_urls:
+            try:
+                async with session.get(rss_url, headers=HEADERS, timeout=TIMEOUT) as resp:
+                    if resp.status != 200:
+                        continue
+                    xml = await resp.text()
+                    items = re.findall(r"<item>[\s\S]*?</item>", xml)
+                    for item in items[:200]:
+                        def get(tag):
+                            m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                            return m.group(1) if m else ""
+                        title = get("title").replace("&amp;", "&").strip()
+                        link = get("link").strip()
+                        desc = strip_html(get("description") or get("content:encoded", ""))
+                        # Extract company from description or title
+                        company_match = re.search(r"(?:Company:|at)\s*([^\n<]+)", desc, re.I)
+                        company = company_match.group(1).strip() if company_match else title.split(" - ")[-1].strip() if " - " in title else "LinkedIn"
+                        jobs.append({
+                            "title": title.split(" - ")[0].strip() if " - " in title else title,
+                            "company": company,
+                            "url": link,
+                            "location": "Remote",
+                            "posted": get("pubDate") or "",
+                            "description": desc,
+                            "salary": "",
+                            "source": "linkedin",
+                        })
+            except Exception:
+                pass
+        return jobs[:200]
+    except Exception as e:
+        print(f"  LinkedIn: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 10. Bayt (bayt.com) — Middle East jobs platform
+# ---------------------------------------------------------------------------
+
+async def fetch_bayt(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.bayt.com/en/international/jobs/remote-jobs/",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "bayt", "https://www.bayt.com")
+            # Try extracting from specific patterns
+            cards = re.findall(
+                r'<div[^>]*data-job-id="([^"]*)"[^>]*>[\s\S]*?</div>\s*</div>\s*</div>',
+                html, re.I
+            )
+            titles = re.findall(
+                r'<h2[^>]*class="[^"]*title[^"]*"[^>]*>\s*<a[^>]*href=["\']([^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.bayt.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Bayt",
+                        "url": url,
+                        "location": "Middle East",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "bayt",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Bayt: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 11. GulfTalent (gulftalent.com) — Gulf region jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_gulftalent(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.gulftalent.com/jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "gulftalent", "https://www.gulftalent.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job/)[^"\']*)["\'][^>]*>\s*<[^>]*>([\s\S]*?)</(?:a|h\d)>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.gulftalent.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "GulfTalent",
+                        "url": url,
+                        "location": "Gulf / Middle East",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "gulftalent",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  GulfTalent: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 12. Naukri Gulf (naukrigulf.com) — Middle East jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_naukrigulf(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.naukrigulf.com/remote-jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "naukrigulf", "https://www.naukrigulf.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job-detail/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.naukrigulf.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "NaukriGulf",
+                        "url": url,
+                        "location": "Middle East",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "naukrigulf",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  NaukriGulf: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 13. Craigslist (craigslist.org) — Remote gigs
+# ---------------------------------------------------------------------------
+
+async def fetch_craigslist(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        # Use Craigslist search for remote/writing/translation jobs
+        queries = [
+            "https://losangeles.craigslist.org/search/wri?query=remote&sort=date",
+            "https://newyork.craigslist.org/search/wri?query=remote&sort=date",
+            "https://sfbay.craigslist.org/search/wri?query=remote&sort=date",
+        ]
+        jobs = []
+        for url in queries:
+            try:
+                async with session.get(url, headers=HEADERS, timeout=aiohttp.ClientTimeout(total=6)) as resp:
+                    if resp.status != 200:
+                        continue
+                    html = await resp.text()
+                    # Craigslist uses simple <a> tags in result rows
+                    listings = re.findall(
+                        r'<a[^>]+href=["\']([^"\']*craigslist[^"\']*/\d+\.html)["\'][^>]*class="[^"]*result-title[^"]*"[^>]*>([\s\S]*?)</a>',
+                        html, re.I
+                    )
+                    if not listings:
+                        listings = re.findall(
+                            r'<a[^>]+class="[^"]*result-title[^"]*"[^>]+href=["\']([^"\']+)["\'][^>]*>([\s\S]*?)</a>',
+                            html, re.I
+                        )
+                    for href, title_html in listings[:60]:
+                        title = strip_html(title_html).strip()
+                        if title and len(title) > 3:
+                            full_url = href if href.startswith("http") else f"https://craigslist.org{href}"
+                            jobs.append({
+                                "title": title,
+                                "company": "Craigslist",
+                                "url": full_url,
+                                "location": "Remote",
+                                "posted": "",
+                                "description": "",
+                                "salary": "",
+                                "source": "craigslist",
+                            })
+            except Exception:
+                pass
+        return jobs[:200]
+    except Exception as e:
+        print(f"  Craigslist: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 14. Upwork (upwork.com) — Freelancing platform
+# ---------------------------------------------------------------------------
+
+async def fetch_upwork(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.upwork.com/nx/search/jobs/?q=remote&sort=recency",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Upwork uses data attributes for job info
+            job_data = re.findall(
+                r'data-job-typing="([^"]*)"[^>]*>[\s\S]*?</section>',
+                html, re.I
+            )
+            # Try JSON-LD
+            jobs.extend(_parse_generic_html_jobs(html, "upwork", "https://www.upwork.com"))
+            # Try extracting from search results
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/~[^"\']*|/jobs/[^"\']*)["\'][^>]*class="[^"]*job-tile-title[^"]*"[^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            if not titles:
+                titles = re.findall(
+                    r'<span[^>]*class="[^"]*title[^"]*"[^>]*>\s*<a[^>]+href=["\']([^"\']+)["\'][^>]*>([\s\S]*?)</a>',
+                    html, re.I
+                )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.upwork.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Upwork",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "upwork",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Upwork: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 15. Fiverr (fiverr.com) — Freelancing gigs
+# ---------------------------------------------------------------------------
+
+async def fetch_fiverr(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.fiverr.com/categories/writing-translation",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Fiverr gig listings
+            gigs = re.findall(
+                r'<a[^>]+href=["\'](/[^"\']+/[^"\']+/[^"\']+)["\'][^>]*class="[^"]*gig-card[^"]*"[^>]*>',
+                html, re.I
+            )
+            if not gigs:
+                gigs = re.findall(
+                    r'<a[^>]+href=["\'](/[^"\']+)["\'][^>]*>\s*<[^>]*class="[^"]*gig-title[^"]*"[^>]*>([\s\S]*?)</',
+                    html, re.I
+                )
+            titles = re.findall(
+                r'<a[^>]*class="[^"]*gig-title[^"]*"[^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for i, href in enumerate(gigs[:200]):
+                title = strip_html(titles[i]).strip() if i < len(titles) else ""
+                url = href if href.startswith("http") else f"https://www.fiverr.com{href}"
+                jobs.append({
+                    "title": title or "Fiverr Gig",
+                    "company": "Fiverr",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "",
+                    "salary": "",
+                    "source": "fiverr",
+                })
+            jobs.extend(_parse_generic_html_jobs(html, "fiverr", "https://www.fiverr.com"))
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Fiverr: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 16. Toptal (toptal.com) — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_toptal(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.toptal.com/careers",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "toptal", "https://www.toptal.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/careers/|/jobs?/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.toptal.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Toptal",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "toptal",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Toptal: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 17. FlexJobs (flexjobs.com) — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_flexjobs(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.flexjobs.com/search",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "flexjobs", "https://www.flexjobs.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.flexjobs.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "FlexJobs",
+                        "url": url,
+                        "location": "Remote",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "flexjobs",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  FlexJobs: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 18. Remote.co — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_remotedotco(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://remote.co/remote-jobs/",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "remote.co", "https://remote.co")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/remote-jobs?/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://remote.co{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Remote.co",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "remote.co",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Remote.co: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 19. JustRemote (justremote.co) — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_justremote(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://justremote.co/remote-jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "justremote", "https://justremote.co")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/remote-jobs?/|/jobs?/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://justremote.co{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "JustRemote",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "justremote",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  JustRemote: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 20. Himalayas (himalayas.app) — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_himalayas(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://himalayas.app/jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "himalayas", "https://himalayas.app")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://himalayas.app{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Himalayas",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "himalayas",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Himalayas: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 21. Glassdoor — Job listings
+# ---------------------------------------------------------------------------
+
+async def fetch_glassdoor(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.glassdoor.com/Job/remote-jobs-SRCH_IL.0,6_IS11047_KO7,14.htm",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "glassdoor", "https://www.glassdoor.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/job-listing/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.glassdoor.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Glassdoor",
+                        "url": url,
+                        "location": "Remote",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "glassdoor",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Glassdoor: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 22. Indeed — Job listings
+# ---------------------------------------------------------------------------
+
+async def fetch_indeed(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.indeed.com/jobs?q=remote&l=&sort=date",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "indeed", "https://www.indeed.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/rc/clk|/viewjob\?|/jobs/)[^"\']*)["\'][^>]*>\s*<span[^>]*>([\s\S]*?)</span>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.indeed.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Indeed",
+                        "url": url,
+                        "location": "Remote",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "indeed",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Indeed: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 23. ZipRecruiter — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_ziprecruiter(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.ziprecruiter.com/jobs-search?search=remote&location=",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "ziprecruiter", "https://www.ziprecruiter.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://www.ziprecruiter.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "ZipRecruiter",
+                        "url": url,
+                        "location": "Remote",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "ziprecruiter",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  ZipRecruiter: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 24. Wellfound / AngelList — Startup jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_wellfound(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://wellfound.com/remote-jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "wellfound", "https://wellfound.com")
+            # Try extracting from specific Wellfound patterns
+            job_items = re.findall(
+                r'<div[^>]*class="[^"]*job-listing[^"]*"[^>]*>[\s\S]*?</div>\s*</div>\s*</div>',
+                html, re.I
+            )
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/startup-jobs/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://wellfound.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Wellfound",
+                        "url": url,
+                        "location": "Remote (Startup)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "wellfound",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Wellfound: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 25. Working Nomads (workingnomads.com) — Remote jobs RSS
+# ---------------------------------------------------------------------------
+
+async def fetch_workingnomads(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://www.workingnomads.com/jobsfeed",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            xml = await resp.text()
+            items = re.findall(r"<item>[\s\S]*?</item>", xml)
+            jobs = []
+            for item in items[:200]:
+                def get(tag):
+                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                    return m.group(1) if m else ""
+                title = get("title").replace("&amp;", "&").strip()
+                link = get("link").strip()
+                desc = strip_html(get("description") or get("content:encoded", ""))
+                company_match = re.search(r"(?:Company:|company:)\s*([^\n<]+)", desc, re.I)
+                company = company_match.group(1).strip() if company_match else "Working Nomads"
+                jobs.append({
+                    "title": title,
+                    "company": company,
+                    "url": link,
+                    "location": "Remote (Worldwide)",
+                    "posted": get("pubDate") or "",
+                    "description": desc,
+                    "salary": "",
+                    "source": "workingnomads",
+                })
+            return jobs
+    except Exception as e:
+        print(f"  WorkingNomads: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 26. Jobspresso (jobspresso.co) — Remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_jobspresso(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://jobspresso.co/remote-jobs/",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "jobspresso", "https://jobspresso.co")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/remote-jobs?/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://jobspresso.co{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Jobspresso",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "jobspresso",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Jobspresso: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 27. Hire LATAM (hirelatam.com) — Latin America remote jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_hirelatam(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://hirelatam.com/en/jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "hirelatam", "https://hirelatam.com")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job/|/en/jobs/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://hirelatam.com{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Hire LATAM",
+                        "url": url,
+                        "location": "Remote (LATAM)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "hirelatam",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  HireLATAM: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 28. Landing.Jobs (landing.jobs) — Remote tech jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_landingjobs(session: aiohttp.ClientSession) -> list[dict]:
+    try:
+        async with session.get(
+            "https://landing.jobs/jobs",
+            headers=HEADERS,
+            timeout=TIMEOUT,
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "landing.jobs", "https://landing.jobs")
+            titles = re.findall(
+                r'<a[^>]+href=["\']([^"\']*(?:/jobs?/|/job/)[^"\']*)["\'][^>]*>([\s\S]*?)</a>',
+                html, re.I
+            )
+            for href, title_html in titles[:200]:
+                title = strip_html(title_html).strip()
+                if title and len(title) > 3:
+                    url = href if href.startswith("http") else f"https://landing.jobs{href}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Landing.Jobs",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "",
+                        "salary": "",
+                        "source": "landing.jobs",
+                    })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  LandingJobs: {e}")
         return []
 
 
@@ -748,6 +1999,74 @@ def save_history(history: dict):
     # Keep only last N URLs
     history["seen_urls"] = history["seen_urls"][-HISTORY_MAX:]
     HISTORY_FILE.write_text(json.dumps(history, indent=2))
+
+
+# ---------------------------------------------------------------------------
+# Persistent seen URLs — survives across scan sessions
+# ---------------------------------------------------------------------------
+
+
+def load_seen_urls() -> set:
+    """Load the persistent seen URLs from disk."""
+    if SEEN_URLS_FILE.exists():
+        try:
+            data = json.loads(SEEN_URLS_FILE.read_text())
+            return set(data.get("urls", []))
+        except Exception:
+            pass
+    return set()
+
+
+def save_seen_urls(urls: set):
+    """Save the persistent seen URLs to disk."""
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    # Keep only the most recent HISTORY_MAX urls
+    url_list = list(urls)[-HISTORY_MAX:]
+    SEEN_URLS_FILE.write_text(json.dumps({"urls": url_list, "updated": datetime.now(timezone.utc).isoformat()}, indent=2))
+
+
+# ---------------------------------------------------------------------------
+# Accumulating Excel history — read previous, append new matches
+# ---------------------------------------------------------------------------
+
+
+def load_scan_history() -> list[dict]:
+    """Load accumulated scan history from disk."""
+    if SCAN_HISTORY_FILE.exists():
+        try:
+            return json.loads(SCAN_HISTORY_FILE.read_text())
+        except Exception:
+            pass
+    return []
+
+
+def save_scan_history(history: list[dict]):
+    """Save accumulated scan history, keeping last 100 scans."""
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    trimmed = history[-100:]
+    SCAN_HISTORY_FILE.write_text(json.dumps(trimmed, indent=2))
+
+
+def append_to_scan_history(matched_jobs: list[dict], scan_info: dict):
+    """Append this scan's results to the accumulating history."""
+    history = load_scan_history()
+    history.append({
+        "date": datetime.now(timezone.utc).isoformat(),
+        "matched_count": len(matched_jobs),
+        "all_count": scan_info.get("all_count", 0),
+        "jobs": [
+            {
+                "title": j.get("title", ""),
+                "company": j.get("company", ""),
+                "url": j.get("url", ""),
+                "score": j.get("score", 0),
+                "category": j.get("category", ""),
+                "source": j.get("source", ""),
+            }
+            for j in matched_jobs[:50]
+        ],
+    })
+    save_scan_history(history)
 
 
 # ---------------------------------------------------------------------------
@@ -778,6 +2097,8 @@ async def run_scan():
 
     history = load_history()
     seen_urls = set(history["seen_urls"])
+    persistent_seen = load_seen_urls()
+    all_seen = seen_urls | persistent_seen
 
     async with aiohttp.ClientSession() as session:
         # ---- Fetch all sources in parallel batches ----
@@ -795,6 +2116,38 @@ async def run_scan():
         fetchers.append(fetch_yayremote(session))
         fetchers.append(fetch_remote1stjobs(session))
         fetchers.append(fetch_realworkfromanywhere(session))
+
+        # ---- NEW sources (28 additional) ----
+        # Arabic/MENA freelancing
+        fetchers.append(fetch_mostaql(session))
+        fetchers.append(fetch_for9a(session))
+        fetchers.append(fetch_khamsat(session))
+        fetchers.append(fetch_ureed(session))
+        fetchers.append(fetch_wuzzuf(session))
+        fetchers.append(fetch_daleel(session))
+        fetchers.append(fetch_aqar(session))
+        fetchers.append(fetch_tajer(session))
+        # Major job platforms
+        fetchers.append(fetch_linkedin(session))
+        fetchers.append(fetch_bayt(session))
+        fetchers.append(fetch_gulftalent(session))
+        fetchers.append(fetch_naukrigulf(session))
+        fetchers.append(fetch_craigslist(session))
+        fetchers.append(fetch_upwork(session))
+        fetchers.append(fetch_fiverr(session))
+        fetchers.append(fetch_toptal(session))
+        fetchers.append(fetch_flexjobs(session))
+        fetchers.append(fetch_remotedotco(session))
+        fetchers.append(fetch_justremote(session))
+        fetchers.append(fetch_himalayas(session))
+        fetchers.append(fetch_glassdoor(session))
+        fetchers.append(fetch_indeed(session))
+        fetchers.append(fetch_ziprecruiter(session))
+        fetchers.append(fetch_wellfound(session))
+        fetchers.append(fetch_workingnomads(session))
+        fetchers.append(fetch_jobspresso(session))
+        fetchers.append(fetch_hirelatam(session))
+        fetchers.append(fetch_landingjobs(session))
 
         BATCH = 5
         all_jobs: list[dict] = []
@@ -884,7 +2237,7 @@ async def run_scan():
         # For score primary, age secondary (lower age = fresher = sort ascending)
         scored.sort(key=lambda j: -j["score"])
 
-        new_jobs = [j for j in scored if j["url"] not in seen_urls]
+        new_jobs = [j for j in scored if j["url"] not in all_seen]
 
         # ---- Liveness check on top jobs ----
         to_check = new_jobs[:TOP_LIVENESS_CHECK]
@@ -909,7 +2262,17 @@ async def run_scan():
 
         # ---- Build notifications ----
         elapsed = f"{time.time() - start_time:.1f}"
-        source_count = len(GREENHOUSE_COMPANIES) + len(LEVER_COMPANIES) + 9
+        # Count all unique sources
+        source_names = {
+            "greenhouse", "lever", "remotive", "remoteok", "weworkremotely", "jobicy",
+            "nodesk", "arbeitnow", "yayremote", "remote1stjobs", "realworkfromanywhere",
+            "mostaql", "for9a", "khamsat", "ureed", "wuzzuf", "daleel", "aqar", "tajer",
+            "linkedin", "bayt", "gulftalent", "naukrigulf", "craigslist", "upwork",
+            "fiverr", "toptal", "flexjobs", "remote.co", "justremote", "himalayas",
+            "glassdoor", "indeed", "ziprecruiter", "wellfound", "workingnomads",
+            "jobspresso", "hirelatam", "landing.jobs",
+        }
+        source_count = len(source_names)
 
         stats = history["scan_stats"]
         stats["total_scans"] += 1
@@ -935,6 +2298,13 @@ async def run_scan():
         except Exception as e:
             print(f"Excel generation failed: {e}")
             excel_path = None
+
+        # ---- Append to accumulating scan history ----
+        try:
+            append_to_scan_history(verified, scan_info)
+            print("Scan history accumulated.")
+        except Exception as e:
+            print(f"Scan history accumulation failed: {e}")
 
         # ---- Send Telegram ----
         telegram_sent = False
@@ -969,6 +2339,11 @@ async def run_scan():
         history["seen_urls"] = list(seen_urls)
         history["scan_stats"] = stats
         save_history(history)
+
+        # ---- Also persist to the cross-session seen URLs file ----
+        all_seen |= set(j["url"] for j in scored)
+        all_seen |= set(j["url"] for j in near_misses)
+        save_seen_urls(all_seen)
 
         elapsed_final = f"{time.time() - start_time:.1f}"
         print(f"Scan complete in {elapsed_final}s. Telegram: {telegram_sent}, Email: {email_sent}")

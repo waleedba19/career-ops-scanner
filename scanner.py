@@ -92,13 +92,19 @@ MATCH_BUCKETS = [
     {
         "name": "Arabic Translation",
         "phrases": [
-            (re.compile(r"\barabic\b", re.I), 60),  # Highest priority for Arabic
-            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 70),
+            # "Arabic" as core role requirement (not just a language mention)
+            # These only fire when Arabic is the primary focus of the role
+            (re.compile(r"arabic (translator|translat|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 65),
+            (re.compile(r"(translator|translat|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz]).{0,30}arabic", re.I), 65),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 70),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 50),
+            (re.compile(r"\barabic\b", re.I), 40),
+            # Standalone translation/localization keywords
             (re.compile(r"locali[sz]ation|locali[sz]e|l10n", re.I), 50),
             (re.compile(r"translat|translation", re.I), 45),
             (re.compile(r"linguist", re.I), 45),
             (re.compile(r"interpreter|interpretation", re.I), 40),
-            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 65),
+            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 60),
             (re.compile(r"mENA.*arabic|arabic.*mENA", re.I), 55),
         ],
     },
@@ -139,6 +145,10 @@ NEGATIVE_KEYWORDS = [
     "human resources", "employee relations", "people partner",
     "people business partner", "hrbp", "recruiter", "talent acquisition",
     "workday", "labor relations", "disciplinary",
+    # Enterprise/sales titles
+    "enterprise sales", "quota", "commission", "business development",
+    "accounts executive", "account executive", "sales representative",
+    "sales manager", "sales director", "regional sales",
 ]
 
 NON_TARGET_ROLE = re.compile(
@@ -148,7 +158,16 @@ NON_TARGET_ROLE = re.compile(
     r"data (engineer|scientist|analyst|architect|platform|governance|warehouse|lake|modeling|infrastructure)|"
     r"smartsheet|excel (macro|vba|modeling|dashboard)|"
     r"business (analyst|intelligence)|bi |etl|"
-    r"integrations? specialist|solution (architect|engineer|consultant))",
+    r"integrations? specialist|solution (architect|engineer|consultant)|"
+    # Enterprise/leadership titles — not individual contributor roles
+    r"\bhead of\b|\bdirector\b|\bvp\b|\bvice president\b|\bchief\b|"
+    r"\bcountry (manager|partner|lead)\b|\bregional (manager|director|lead)\b|"
+    r"\bsenior (manager|director|lead|partner|associate)\b|\bgeneral manager\b|"
+    r"\bsales (manager|director|lead|head|executive|representative)\b|"
+    r"\bmarketing (manager|director|lead)\b|\bbusiness development\b|"
+    r"\baccounts (manager|director|lead)\b|\bclient (manager|director|lead)\b|"
+    r"\benterprise (sales|account|manager)\b|\bquota\b|\bcommission\b|"
+    r"\bpayroll (clerk|manager|specialist)\b)",
     re.I,
 )
 
@@ -161,31 +180,15 @@ REMOTE_MARKER = re.compile(
 )
 
 ALLOWED_LOCATIONS = [
+    # Worldwide / Remote-first (always accept)
     "remote", "worldwide", "anywhere", "global", "virtual", "online",
-    "libya", "tripoli", "benghazi", "egypt", "middle east", "north africa",
-    "mena", "uae", "dubai", "abu dhabi", "saudi", "riyadh", "jeddah",
-    "qatar", "doha", "kuwait", "bahrain", "oman", "muscat", "jordan",
-    "amman", "morocco", "tunisia", "algeria", "lebanon", "iraq", "syria",
-    "palestine", "yemen", "sudan", "somalia",
-    "united states", "u.s.", "usa", "united kingdom", "uk", "canada",
-    "australia", "new zealand", "ireland", "europe", "eu", "eu countries",
-    "asia", "apac", "africa", "latin america", "latam", "south america",
-    "americas", "north america",
-    "germany", "france", "netherlands", "belgium", "spain", "portugal",
-    "italy", "poland", "sweden", "norway", "denmark", "finland", "austria",
-    "switzerland", "greece", "cyprus", "czech", "romania", "hungary",
-    "croatia", "bulgaria", "turkey", "ukraine", "georgia", "armenia",
-    "azerbaijan", "kazakhstan", "india", "pakistan", "bangladesh",
-    "sri lanka", "nepal", "philippines", "indonesia", "malaysia",
-    "singapore", "thailand", "vietnam", "japan", "china", "hong kong",
-    "taiwan", "south korea", "brazil", "mexico", "argentina", "chile",
-    "colombia", "peru", "venezuela", "uruguay", "paraguay", "ecuador",
-    "bolivia", "south africa", "nigeria", "kenya", "ghana", "ethiopia",
-    "uganda", "tanzania", "zimbabwe", "zambia", "botswana", "namibia",
-    "rwanda", "ivory coast", "senegal", "cameroon", "morocco", "israel",
-    "iceland", "luxembourg", "malta", "slovenia", "slovakia", "lithuania",
-    "latvia", "estonia", "serbia", "albania", "bosnia", "moldova",
-    "belarus", "mongolia", "myanmar", "cambodia", "laos", "fiji", "mauritius",
+    "work from home", "wfh", "freelance", "contract",
+    # Region-level (OK — user can work from anywhere in these regions)
+    "middle east", "north africa", "mena",
+    "europe", "eu", "apac", "americas", "latin america", "latam",
+    "asia", "africa", "north america", "south america",
+    # Specific countries only if explicitly marked as remote/flexible
+    # (rejected if location is just the city name without "remote")
 ]
 
 RESIDENCY_BLOCKERS = [
@@ -394,7 +397,6 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         if blocker.search(text):
             return False
     # Soft blockers — only check LOCATION field (not description)
-    # Many descriptions mention "hybrid/in-office" as options even for remote roles
     SOFT_LOCATION_BLOCKERS = [
         re.compile(r"onsite only|on-site only|on site only", re.I),
         re.compile(r"\bhybrid\b", re.I),
@@ -406,9 +408,14 @@ def is_open_worldwide(location: str, desc: str) -> bool:
             return False
     if not loc:
         return True
+    # Check if location matches allowed regions/worldwide terms
     if any(a in loc for a in ALLOWED_LOCATIONS):
         return True
     if REMOTE_MARKER.search(loc):
+        return True
+    # Location has content but doesn't match any allowed term
+    # It's a specific city/country — reject unless description says "remote" explicitly
+    if REMOTE_MARKER.search((desc or "")):
         return True
     return False
 

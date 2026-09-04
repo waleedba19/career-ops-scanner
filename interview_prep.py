@@ -127,10 +127,13 @@ def generate_interview_questions(job: dict, profile: dict) -> dict:
     ]
     
     # Company-specific questions
+    # Ensure description is a string
+    desc_str = str(description) if description else ""
+    
     questions["company_specific"] = [
         {
             "question": f"What do you know about {company}?",
-            "suggested_answer": f"I understand that {company} operates in the {job.get('category', 'language services')} space and values {', '.join(description.lower().split('require')[:1][:50].split(',') if 'require' in description.lower() else ['quality and professionalism'])}. I'm particularly drawn to your commitment to remote work and global collaboration.",
+            "suggested_answer": f"I understand that {company} operates in the {job.get('category', 'language services')} space and values quality and professionalism. I'm particularly drawn to your commitment to remote work and global collaboration.",
             "tips": "Research the company beforehand. Mention specific values or projects."
         },
         {

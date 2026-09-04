@@ -11,6 +11,7 @@ import os
 import re
 import time
 import base64
+import html as html_mod
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
@@ -185,15 +186,19 @@ RESIDENCY_BLOCKERS = [
 
 
 def strip_html(html: str) -> str:
+    """Remove HTML tags, decode entities, and return clean readable text."""
     if not html:
         return ""
-    text = re.sub(r"<[^>]+>", " ", str(html))
-    for old, new in [
-        ("&amp;", "&"), ("&lt;", "<"), ("&gt;", ">"),
-        ("&quot;", '"'), ("&#39;", "'"), ("&nbsp;", " "),
-    ]:
-        text = text.replace(old, new)
-    return re.sub(r"\s+", " ", text).strip()
+    text = str(html)
+    # Remove CDATA markers
+    text = re.sub(r"<!\[CDATA\[([\s\S]*?)\]\]>", r"\1", text)
+    # Remove HTML tags
+    text = re.sub(r"<[^>]+>", " ", text)
+    # Use Python's built-in HTML entity decoder
+    text = html_mod.unescape(text)
+    # Clean up whitespace
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 
 def normalize_date(v) -> datetime | None:

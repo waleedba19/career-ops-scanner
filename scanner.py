@@ -23,6 +23,8 @@ import aiohttp
 from ollama_analyzer import analyze_jobs_with_ollama
 from notifier import send_telegram, send_email
 from excel_generator import generate_excel
+from source_manager import record_source_run, cleanup_dead_sources, get_source_report
+from evolution_tracker import record_scan, get_evolution_summary
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -2889,7 +2891,14 @@ async def run_scan():
                     print(f"  Fetcher error: {r}")
 
         print(f"Total fetched: {len(all_jobs)} jobs")
-
+        
+        # ---- Track source performance ----
+        source_job_counts = {}
+        source_match_counts = {}
+        for job in all_jobs:
+            src = job.get("source", "unknown")
+            source_job_counts[src] = source_job_counts.get(src, 0) + 1
+        
         # ---- Score & filter ----
         scored: list[dict] = []
         near_misses: list[dict] = []
@@ -2956,6 +2965,8 @@ async def run_scan():
             # Separate fresh jobs from older jobs
             if is_fresh:
                 scored.append(job_data)
+                src = job.get("source", "unknown")
+                source_match_counts[src] = source_match_counts.get(src, 0) + 1
             else:
                 # Older jobs go to a separate list for Ollama verification
                 old_but_verified.append(job_data)
@@ -3083,6 +3094,45 @@ async def run_scan():
             "old_verified_count": len(old_verified),
             "near_misses": near_misses,
         }
+        
+        # ---- Record source performance ----
+        try:
+            for src, count in source_job_counts.items():
+                matches = source_match_counts.get(src, 0)
+                record_source_run(src, count, matches)
+            print("Source performance recorded.")
+        except Exception as e:
+            print(f"Source tracking failed: {e}")
+        
+        # ---- Record evolution (the brain learns) ----
+        try:
+            categories = [j.get("category", "Other") for j in final_verified]
+            source_matches = {}
+            for j in final_verified:
+                src = j.get("source", "unknown")
+                source_matches[src] = source_matches.get(src, 0) + 1
+            
+            record_scan({
+                "total_fetched": len(all_jobs),
+                "matches": len(final_verified),
+                "old_verified": len(old_verified),
+                "near_misses": len(near_misses),
+                "sources": source_count,
+                "fresh_count": fresh_total,
+                "categories": categories,
+                "source_matches": source_matches,
+            })
+            print("Evolution brain updated.")
+        except Exception as e:
+            print(f"Evolution tracking failed: {e}")
+        
+        # ---- Cleanup dead sources (monthly) ----
+        try:
+            removed = cleanup_dead_sources()
+            if removed:
+                print(f"Cleaned up dead sources: {removed}")
+        except Exception as e:
+            print(f"Source cleanup failed: {e}")
 
         # ---- Generate Excel ----
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

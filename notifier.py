@@ -172,7 +172,10 @@ def format_near_miss_card(job: dict, index: int) -> str:
 
 
 def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
-    """Build a clean, professional Telegram message."""
+    """Build a clean, professional Telegram message with evolution intelligence."""
+    from evolution_tracker import get_evolution_summary
+    from source_manager import get_source_report
+    
     label = get_scan_label()
     date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     time_str = datetime.now(timezone.utc).strftime("%H:%M UTC")
@@ -184,13 +187,20 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     
     msg = ""
     
-    # Professional header
+    # Professional header with evolution
     msg += f"{label['emoji']} {label['label']} \u2014 {date}\n"
     msg += "\n"
     msg += "\U0001f4bc CAREEROPS SERVICES\n"
-    msg += "Personal Job Search Assistant\n"
+    msg += "AI-Powered Job Search Intelligence\n"
     msg += "\u2500" * 28 + "\n"
     msg += "\n"
+    
+    # Evolution summary (the "brain" learns)
+    evolution = get_evolution_summary()
+    if evolution and evolution != "🧠 First scan — building memory...":
+        msg += f"{evolution}\n"
+        msg += "\u2500" * 28 + "\n"
+        msg += "\n"
     
     # Summary line
     msg += f"Scan #{scan_num} \xB7 {time_str}\n"
@@ -198,7 +208,7 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     msg += "\n"
     
     if len(jobs) == 0:
-        # No matches
+        # No matches — but show what we learned
         msg += "\u2705 0 New Matches Found\n"
         msg += "\n"
         msg += "No new positions passed all filters this cycle:\n"
@@ -207,9 +217,9 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         msg += "\u2022 Open to worldwide applicants\n"
         msg += "\u2022 No visa or residency restrictions\n"
         msg += "\n"
-        msg += f"Of {all_count:,} listings reviewed, {fresh_count} were posted within the last 30 minutes \u2014 none met every gate.\n"
+        msg += f"Of {all_count:,} listings reviewed, {fresh_count} were fresh \u2014 none met every gate.\n"
         msg += "\n"
-        msg += "We continue monitoring. Any qualifying role will be sent to you immediately.\n"
+        msg += "Our AI continues monitoring. Qualifying roles arrive within hours.\n"
     else:
         # Matches found
         msg += f"\u2705 {len(jobs)} New Match{'es' if len(jobs) != 1 else ''} Found\n"
@@ -232,15 +242,21 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
                 msg += format_near_miss_card(j, 0) + "\n"
             msg += "\n"
         
-        # Footer
         msg += "Full details in email + Excel attachment.\n"
+    
+    # Source intelligence
+    source_report = get_source_report()
+    if source_report and "No source data" not in source_report:
+        msg += "\n"
+        msg += "\u2500" * 28 + "\n"
+        msg += source_report + "\n"
     
     # Professional sign-off
     msg += "\n"
     msg += "\u2500" * 28 + "\n"
     msg += f"Next scan: {next_scan_time()} today\n"
     msg += "Best regards,\n"
-    msg += "CareerOps Services \u2014 Your Personal Job Search Assistant\n"
+    msg += "CareerOps Services \u2014 AI Job Search Intelligence\n"
     
     return msg
 
@@ -288,7 +304,10 @@ async def send_telegram(text: str) -> bool:
 
 
 def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
-    """Build professional email with HTML and text versions."""
+    """Build professional email with evolution intelligence."""
+    from evolution_tracker import get_evolution_summary
+    from source_manager import get_source_report
+    
     date_str = datetime.now(timezone.utc).strftime("%A, %B %d, %Y")
     time_str = datetime.now(timezone.utc).strftime("%I:%M %p UTC")
     scan_num = stats.get("total_scans", 0)
@@ -296,6 +315,11 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     source_count = scan_info.get("source_count", 0)
     fresh_count = scan_info.get("fresh_count", 0)
     near_all = scan_info.get("near_misses", [])
+    
+    # Get evolution data
+    evolution = get_evolution_summary()
+    source_report = get_source_report()
+    has_evolution = evolution and "First scan" not in evolution
 
     def job_card_html(j, i):
         from scanner import get_freshness
@@ -407,6 +431,12 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
           {jobs_html}
           {near_html}
         </td></tr>
+        {f"""<tr><td style="padding:16px 28px 16px;border-top:1px solid #e0e0e0">
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">🧠 AI Intelligence Report</p>
+          <pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(evolution)}</pre>
+          {f"""<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;margin:16px 0 8px">📊 Source Performance</p>
+          <pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(source_report)}</pre>""" if source_report and "No source data" not in source_report else ""}
+        </td></tr>""" if has_evolution else ""}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
             About the workbook: the attached Excel file contains 3 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), and Daily Log.
@@ -417,7 +447,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
             Best regards,<br>
             <b>CareerOps Services</b><br>
-            <span style="font-size:12px;color:#888">Your personal job search assistant \u2014 matching is algorithmic; always review each posting before applying.</span>
+            <span style="font-size:12px;color:#888">AI-Powered Job Search Intelligence \u2014 matching is algorithmic; always review each posting before applying.</span>
           </p>
         </td></tr>
       </table>

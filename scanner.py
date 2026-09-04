@@ -149,6 +149,12 @@ NEGATIVE_KEYWORDS = [
     "enterprise sales", "quota", "commission", "business development",
     "accounts executive", "account executive", "sales representative",
     "sales manager", "sales director", "regional sales",
+    # Business partner / enablement roles
+    "business partner", "field enablement", "enablement manager",
+    "revenue", "pipeline", "quota", "account manager",
+    # Leadership / management (not individual contributor)
+    "content manager", "social media manager", "brand manager",
+    "product marketing", "demand generation", "growth manager",
 ]
 
 NON_TARGET_ROLE = re.compile(
@@ -167,7 +173,11 @@ NON_TARGET_ROLE = re.compile(
     r"\bmarketing (manager|director|lead)\b|\bbusiness development\b|"
     r"\baccounts (manager|director|lead)\b|\bclient (manager|director|lead)\b|"
     r"\benterprise (sales|account|manager)\b|\bquota\b|\bcommission\b|"
-    r"\bpayroll (clerk|manager|specialist)\b)",
+    r"\bpayroll (clerk|manager|specialist)\b|"
+    # Content/Social management roles (not individual contributor)
+    r"\b(content|social media|brand) (manager|lead|director|head)\b|"
+    r"\bcontent producer\b|\bsocial media lead\b|"
+    r"\bproduct marketing\b|\bdemand generation\b|\bgrowth manager\b)",
     re.I,
 )
 
@@ -414,9 +424,8 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     if REMOTE_MARKER.search(loc):
         return True
     # Location has content but doesn't match any allowed term
-    # It's a specific city/country — reject unless description says "remote" explicitly
-    if REMOTE_MARKER.search((desc or "")):
-        return True
+    # It's a specific city/country — reject (don't trust "remote" in description
+    # because many jobs say "remote-friendly" but require a specific location)
     return False
 
 

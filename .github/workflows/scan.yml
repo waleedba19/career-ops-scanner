@@ -2,13 +2,15 @@ name: CareerOps Job Scan
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # Every 2 hours (12x daily)
+    - cron: '0 5 * * *'   # 05:00 UTC — Morning Intel
+    - cron: '0 12 * * *'  # 12:00 UTC — Afternoon Briefing
+    - cron: '0 20 * * *'  # 20:00 UTC — Night Digest
   workflow_dispatch:        # manual trigger from Actions tab
 
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -48,11 +50,14 @@ jobs:
             echo "Attempt $i/30..."
             sleep 2
           done
-          # Final check
           curl -s http://localhost:11434/api/tags || { echo "Ollama failed to start"; exit 1; }
 
       - name: Pull Ollama model
         run: ollama pull qwen2.5:1.5b
+
+      - name: Auto-discover new job sources
+        run: python source_discovery.py
+        continue-on-error: true
 
       - name: Run job scanner
         run: python scanner.py

@@ -2070,6 +2070,82 @@ def append_to_scan_history(matched_jobs: list[dict], scan_info: dict):
 
 
 # ---------------------------------------------------------------------------
+# Generic fetchers for auto-discovered sources
+# ---------------------------------------------------------------------------
+
+
+async def fetch_generic_rss(session: aiohttp.ClientSession, url: str, source_name: str = "discovered") -> list[dict]:
+    """Fetch jobs from any RSS feed."""
+    try:
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            xml = await resp.text()
+            items = re.findall(r"<item>[\s\S]*?</item>", xml)
+            jobs = []
+            for item in items[:200]:
+                def get(tag):
+                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
+                    return m.group(1) if m else ""
+                title = strip_html(get("title")).strip()
+                if not title:
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": (get("dc:creator") or source_name).strip(),
+                    "url": get("link").strip(),
+                    "location": "Remote",
+                    "posted": get("pubDate") or "",
+                    "description": strip_html(get("description") or get("content:encoded") or ""),
+                    "salary": "",
+                    "source": source_name,
+                })
+            return jobs
+    except Exception as e:
+        print(f"  {source_name}: {e}")
+        return []
+
+
+async def fetch_generic_json(session: aiohttp.ClientSession, url: str, source_name: str = "discovered") -> list[dict]:
+    """Fetch jobs from any JSON API."""
+    try:
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            if isinstance(data, list):
+                items = data
+            elif isinstance(data, dict):
+                for key in ["jobs", "results", "data", "postings", "positions"]:
+                    if key in data and isinstance(data[key], list):
+                        items = data[key]
+                        break
+                else:
+                    return []
+            else:
+                return []
+            jobs = []
+            for j in items[:200]:
+                title = j.get("title") or j.get("name") or j.get("position") or ""
+                if not title:
+                    continue
+                jobs.append({
+                    "title": str(title).strip(),
+                    "company": str(j.get("company") or j.get("company_name") or source_name).strip(),
+                    "url": j.get("url") or j.get("apply_url") or j.get("link") or "",
+                    "location": j.get("location") or "Remote",
+                    "posted": j.get("created_at") or j.get("published_at") or j.get("date") or "",
+                    "description": strip_html(j.get("description") or j.get("description_html") or ""),
+                    "salary": j.get("salary") or "",
+                    "source": source_name,
+                })
+            return jobs
+    except Exception as e:
+        print(f"  {source_name}: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
 # Liveness check — same as JS
 # ---------------------------------------------------------------------------
 
@@ -2148,6 +2224,21 @@ async def run_scan():
         fetchers.append(fetch_jobspresso(session))
         fetchers.append(fetch_hirelatam(session))
         fetchers.append(fetch_landingjobs(session))
+
+        # ---- Auto-discovered sources from registry ----
+        registry_file = OUTPUT_DIR / "source_registry.json"
+        try:
+            if registry_file.exists():
+                registry = json.loads(registry_file.read_text(encoding="utf-8"))
+                for src in registry.get("sources", []):
+                    url = src.get("url", "")
+                    src_type = src.get("type", "")
+                    if url and src_type == "rss":
+                        fetchers.append(fetch_generic_rss(session, url, src.get("source_name", "discovered")))
+                    elif url and src_type == "json":
+                        fetchers.append(fetch_generic_json(session, url, src.get("source_name", "discovered")))
+        except Exception as e:
+            print(f"  Registry load error: {e}")
 
         BATCH = 5
         all_jobs: list[dict] = []

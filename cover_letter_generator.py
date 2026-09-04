@@ -172,7 +172,9 @@ def _generate_translation_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     edu_text = ""
     if education:
         latest_edu = education[0]
-        edu_text = f"I hold a {latest_edu.get('degree', 'Master's degree')} from {latest_edu.get('institution', 'a reputable university')}"
+        degree = latest_edu.get("degree", "Master's degree")
+        institution = latest_edu.get("institution", "a reputable university")
+        edu_text = f"I hold a {degree} from {institution}"
         if latest_edu.get("gpa"):
             edu_text += f" with a GPA of {latest_edu['gpa']}"
         edu_text += ". "
@@ -334,7 +336,9 @@ def _generate_writing_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     edu_text = ""
     if education:
         latest_edu = education[0]
-        edu_text = f"I hold a {latest_edu.get('degree', 'Master's degree')} from {latest_edu.get('institution', 'University of Zawia')}, "
+        degree = latest_edu.get("degree", "Master's degree")
+        institution = latest_edu.get("institution", "University of Zawia")
+        edu_text = f"I hold a {degree} from {institution}, "
         edu_text += f"with expertise in corpus linguistics and discourse analysis. "
 
     closing = (
@@ -406,7 +410,9 @@ def _generate_general_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     edu_text = ""
     if education:
         latest_edu = education[0]
-        edu_text = f"I hold a {latest_edu.get('degree', 'Master's degree')} from {latest_edu.get('institution', 'University of Zawia')}. "
+        degree = latest_edu.get("degree", "Master's degree")
+        institution = latest_edu.get("institution", "University of Zawia")
+        edu_text = f"I hold a {degree} from {institution}. "
     
     award_text = ""
     if awards:

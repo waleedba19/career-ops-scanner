@@ -2905,8 +2905,8 @@ async def run_scan():
             fresh_total += 1
             
             # Check if it's a fresh job (within 30 minutes)
-            # Jobs with unknown dates are treated as fresh
-            is_fresh = age <= MAX_AGE_FRESH_HOURS
+            # Jobs with unknown dates are treated as fresh (no date = likely recent)
+            is_fresh = posted is None or age <= MAX_AGE_FRESH_HOURS
             
             if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
                 filter_debug["no_positive"] += 1
@@ -2928,7 +2928,7 @@ async def run_scan():
             salary = job.get("salary") or extract_salary(job.get("description", ""))
             job_data = {
                 **job,
-                "postedISO": posted.isoformat() if posted else "",
+                "postedISO": posted.isoformat() if posted else datetime.now(timezone.utc).isoformat(),
                 "score": scored_job["score"],
                 "category": scored_job["category"],
                 "why": scored_job.get("why", []),

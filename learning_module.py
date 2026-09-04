@@ -29,7 +29,7 @@ def load_learning_data() -> dict:
         "salary_preferences": {},
         "total_scans": 0,
         "total_matches": 0,
-        " acceptance_rate": 0,
+        "acceptance_rate": 0,
     }
 
 
@@ -119,15 +119,15 @@ def adjust_scoring_based_on_learning(job: dict) -> float:
     category = job.get("category", "Other")
     if category in data["skill_preferences"]:
         times_applied = data["skill_preferences"][category]
-        if times_applied >= 3:
-            adjustment += 5  # Boost for popular categories
+        if times_applied >= 1:
+            adjustment += 3  # Boost for categories you've applied to before
     
     # Boost score if company matches previously applied jobs
     company = job.get("company", "Unknown")
     if company in data["company_preferences"]:
         times_applied = data["company_preferences"][company]
-        if times_applied >= 2:
-            adjustment += 3  # Boost for familiar companies
+        if times_applied >= 1:
+            adjustment += 2  # Boost for familiar companies
     
     # Reduce score if category matches rejected jobs
     for rejected in data["rejected_jobs"]:

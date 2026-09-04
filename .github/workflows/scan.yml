@@ -2,9 +2,9 @@ name: CareerOps Job Scan
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # 05:00 UTC — Morning Intel
-    - cron: '0 12 * * *'  # 12:00 UTC — Afternoon Briefing
-    - cron: '0 20 * * *'  # 20:00 UTC — Night Digest
+    - cron: '0 5 * * *'   # 05:00 UTC = 07:00 Libya — Morning Intel
+    - cron: '0 13 * * *'  # 13:00 UTC = 15:00 Libya — Afternoon Briefing
+    - cron: '0 20 * * *'  # 20:00 UTC = 22:00 Libya — Night Digest
   workflow_dispatch:        # manual trigger from Actions tab
 
 jobs:

@@ -176,6 +176,7 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     from evolution_tracker import get_evolution_summary
     from source_manager import get_source_report
     from excel_generator import load_applications, load_fresh_history
+    from learning_module import get_learning_insights
     
     label = get_scan_label()
     date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -200,6 +201,18 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     evolution = get_evolution_summary()
     if evolution and evolution != "🧠 First scan — building memory...":
         msg += f"{evolution}\n"
+        msg += "\u2500" * 28 + "\n"
+        msg += "\n"
+    
+    # Learning insights (application feedback)
+    learning = get_learning_insights()
+    if learning.get("total_applied", 0) > 0:
+        msg += "\U0001f4a1 LEARNING INSIGHTS\n"
+        msg += f"Applied: {learning['total_applied']} jobs\n"
+        msg += f"Interview rate: {learning.get('acceptance_rate', 0)}%\n"
+        if learning.get("top_skills"):
+            top_skill = learning["top_skills"][0][0]
+            msg += f"Best category: {top_skill}\n"
         msg += "\u2500" * 28 + "\n"
         msg += "\n"
     
@@ -567,3 +580,21 @@ async def send_email(subject: str, text_body: str, html_body: str, excel_path: s
     except Exception as e:
         print(f"Email error: {e}")
         return False
+
+
+# ---------------------------------------------------------------------------
+# Application Feedback Tracking
+# ---------------------------------------------------------------------------
+
+def record_job_feedback(job_url: str, job_data: dict, status: str):
+    """
+    Record feedback on a job application.
+    Status: applied, rejected, interviewed, hired, declined
+    Called from Excel sheet when user updates application status.
+    """
+    from learning_module import record_application
+    try:
+        record_application(job_url, job_data, status)
+        print(f"Recorded {status} for {job_data.get('title', 'Unknown')}")
+    except Exception as e:
+        print(f"Failed to record feedback: {e}")

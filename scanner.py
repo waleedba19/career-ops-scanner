@@ -26,6 +26,9 @@ from excel_generator import generate_excel
 from source_manager import record_source_run, cleanup_dead_sources, get_source_report
 from evolution_tracker import record_scan, get_evolution_summary
 from cover_letter_generator import generate_all_cover_letters
+from learning_module import record_application, adjust_scoring_based_on_learning, get_learning_insights
+from company_research import research_companies_batch, cleanup_old_cache
+from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 
 # ---------------------------------------------------------------------------
 # Configuration
@@ -3418,6 +3421,15 @@ async def run_scan():
                 filter_debug["not_worldwide"] += 1
                 continue
             scored_job = get_match_score(job.get("title", ""), job.get("description", ""))
+            # Apply learning adjustments based on application history
+            adjusted_score = adjust_scoring_based_on_learning({
+                **job,
+                "score": scored_job["score"],
+                "category": scored_job.get("category", "Other"),
+                "ai_overall_score": scored_job.get("score", 0),
+            })
+            if adjusted_score != scored_job["score"]:
+                scored_job["score"] = adjusted_score
             if scored_job["score"] < MIN_MATCH_SCORE:
                 filter_debug["low_score"] += 1
                 continue
@@ -3535,12 +3547,35 @@ async def run_scan():
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
         
-        # ---- Generate cover letters for fresh matches ----
+        # ---- Research companies to improve scoring ----
         try:
-            final_verified = generate_all_cover_letters(final_verified)
-            print(f"Generated {len(final_verified)} cover letters.")
+            final_verified = research_companies_batch(final_verified)
+            # Log research results
+            researched = [j for j in final_verified if j.get("company_research")]
+            boosted = [j for j in final_verified if j.get("score_adjustment", 0) > 0]
+            flagged = [j for j in final_verified if j.get("company_research", {}).get("red_flags")]
+            print(f"Company research: {len(researched)} companies, {len(boosted)} boosted, {len(flagged)} flagged")
+        except Exception as e:
+            print(f"Company research failed: {e}")
+        
+        # ---- Generate cover letters for fresh matches (AI-enhanced) ----
+        try:
+            final_verified = await generate_all_cover_letters(final_verified)
+            ai_count = sum(1 for j in final_verified if j.get("cover_letter_ai"))
+            print(f"Generated {len(final_verified)} cover letters ({ai_count} AI-enhanced).")
         except Exception as e:
             print(f"Cover letter generation failed: {e}")
+        
+        # ---- Generate interview prep for top matches (score >= 85%) ----
+        try:
+            final_verified = generate_interview_prep_for_top_matches(final_verified, min_score=85)
+            prep_count = sum(1 for j in final_verified if j.get("interview_prep_generated"))
+            if prep_count > 0:
+                print(f"Generated interview prep for {prep_count} top matches.")
+                prep_summary = get_interview_prep_summary(final_verified)
+                print(prep_summary)
+        except Exception as e:
+            print(f"Interview prep generation failed: {e}")
 
         # ---- Build notifications ----
         elapsed = f"{time.time() - start_time:.1f}"
@@ -3600,6 +3635,7 @@ async def run_scan():
                 "fresh_count": fresh_total,
                 "categories": categories,
                 "source_matches": source_matches,
+                "learning_insights": get_learning_insights(),
             })
             print("Evolution brain updated.")
         except Exception as e:
@@ -3612,6 +3648,14 @@ async def run_scan():
                 print(f"Cleaned up dead sources: {removed}")
         except Exception as e:
             print(f"Source cleanup failed: {e}")
+        
+        # ---- Cleanup old company cache ----
+        try:
+            removed_cache = cleanup_old_cache()
+            if removed_cache > 0:
+                print(f"Cleaned up {removed_cache} old company cache entries")
+        except Exception as e:
+            print(f"Company cache cleanup failed: {e}")
 
         # ---- Generate Excel ----
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

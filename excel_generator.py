@@ -73,6 +73,22 @@ def mark_applied(url: str, status: str = "Applied", notes: str = ""):
         "notes": notes,
     }
     save_applications(apps)
+    
+    # Record in learning module for AI improvement
+    try:
+        from learning_module import record_application
+        # Load job data from fresh history
+        fresh_history = load_fresh_history()
+        job_data = next((j for j in fresh_history if j.get("url") == url), {})
+        if job_data:
+            # Map status to learning module status
+            learning_status = "applied" if status == "Applied" else \
+                            "interviewed" if status == "Interview" else \
+                            "hired" if status == "Offer" else \
+                            "rejected" if status in ("Rejected", "Maybe") else "applied"
+            record_application(url, job_data, learning_status)
+    except Exception as e:
+        print(f"Learning record failed: {e}")
 
 
 def get_application_status(url: str) -> str:

@@ -2,6 +2,7 @@
 Cover Letter Generator for CareerOps
 Generates personalized PDF cover letters based on job descriptions.
 Each letter is unique, filled with CV details and company info.
+Uses Ollama for AI-powered customization when available.
 """
 
 import json
@@ -21,6 +22,95 @@ def load_cv_profile() -> dict:
     except Exception as e:
         print(f"Error loading CV profile: {e}")
     return {}
+
+
+async def generate_ai_cover_letter_content(job: dict, profile: dict) -> dict:
+    """
+    Use Ollama to generate personalized cover letter content.
+    Returns dict with custom paragraphs for each section.
+    """
+    try:
+        import httpx
+        
+        title = job.get("title", "Position")
+        company = job.get("company", "Your Company")
+        description = job.get("description", "")[:1000]  # Limit description length
+        
+        # Build profile summary for AI
+        personal = profile.get("personal", {})
+        experience = profile.get("experience", [])
+        skills = profile.get("skills", {})
+        education = profile.get("education", [])
+        awards = profile.get("awards", [])
+        
+        exp_summary = "; ".join([
+            f"{e.get('title', '')} at {e.get('company', '')}" 
+            for e in experience[:3]
+        ])
+        
+        skills_summary = ", ".join([
+            s for sublist in skills.values() for s in sublist[:3]
+        ])
+        
+        edu_summary = "; ".join([
+            f"{e.get('degree', '')} from {e.get('institution', '')}" 
+            for e in education[:2]
+        ])
+        
+        prompt = f"""Generate a professional cover letter for this job application.
+
+JOB DETAILS:
+- Position: {title}
+- Company: {company}
+- Requirements: {description[:500]}
+
+CANDIDATE PROFILE:
+- Name: {personal.get('full_name', 'Waleed Ballag')}
+- Education: {edu_summary}
+- Experience: {exp_summary}
+- Skills: {skills_summary}
+- Awards: {awards[0] if awards else 'None'}
+- Languages: Native Arabic, C1 Advanced English
+
+Generate exactly 4 paragraphs:
+1. OPENING: Express enthusiasm for {title} at {company}, mention 1-2 key requirements from the job
+2. EXPERIENCE: Highlight most relevant experience (2-3 sentences)
+3. SKILLS: Match candidate skills to job requirements (2-3 sentences)
+4. CLOSING: Express availability, enthusiasm, and request interview
+
+Keep each paragraph 2-3 sentences. Be specific to this job. No generic statements.
+Output as JSON with keys: opening, experience, skills, closing"""
+
+        async with httpx.AsyncClient(timeout=15.0) as client:
+            resp = await client.post(
+                "http://localhost:11434/api/generate",
+                json={
+                    "model": "qwen2.5:1.5b",
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {"temperature": 0.7}
+                }
+            )
+            
+            if resp.status_code == 200:
+                data = resp.json()
+                response_text = data.get("response", "")
+                
+                # Try to parse JSON from response
+                try:
+                    # Find JSON in response
+                    start = response_text.find("{")
+                    end = response_text.rfind("}") + 1
+                    if start >= 0 and end > start:
+                        ai_content = json.loads(response_text[start:end])
+                        return ai_content
+                except json.JSONDecodeError:
+                    pass
+                    
+    except Exception as e:
+        print(f"AI cover letter generation failed: {e}")
+    
+    return None
 
 
 def _detect_job_type(title: str, description: str) -> str:
@@ -463,9 +553,16 @@ def generate_cover_letter_pdf(job: dict) -> str:
     # Set font (Helvetica is built-in, no need for external fonts)
     pdf.set_font("Helvetica", size=10)
 
-    # Generate letter based on job type
-    generator = GENERATORS.get(job_type, _generate_general_letter)
-    generator(pdf, job, profile)
+    # Check for AI-generated content
+    ai_content = job.get("ai_cover_letter_content")
+    
+    if ai_content:
+        # Use AI-generated content
+        _generate_ai_enhanced_letter(pdf, job, profile, ai_content)
+    else:
+        # Use template-based generation
+        generator = GENERATORS.get(job_type, _generate_general_letter)
+        generator(pdf, job, profile)
 
     # Save PDF
     pdf.output(str(filepath))
@@ -473,19 +570,102 @@ def generate_cover_letter_pdf(job: dict) -> str:
     return str(filepath)
 
 
-def generate_all_cover_letters(jobs: list[dict]) -> list[dict]:
-    """Generate PDF cover letters for a list of jobs."""
+def _generate_ai_enhanced_letter(pdf: FPDF, job: dict, profile: dict, ai_content: dict) -> None:
+    """Generate cover letter using AI-enhanced content."""
+    company = job.get("company", "Your Company")
+    title = job.get("title", "Position")
+    personal = profile.get("personal", {})
+    education = profile.get("education", [])
+    awards = profile.get("awards", [])
+
+    # Header
+    pdf.set_font("Helvetica", "B", 16)
+    pdf.cell(0, 10, personal.get("full_name", personal.get("name", "Your Name")), ln=True)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 6, personal.get("email", ""), ln=True)
+    pdf.cell(0, 6, f"{personal.get('phone', '')} ({personal.get('country_code', '')})", ln=True)
+    pdf.cell(0, 6, personal.get("location", ""), ln=True)
+    pdf.cell(0, 6, personal.get("linkedin", ""), ln=True)
+    pdf.ln(10)
+
+    # Date
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 6, datetime.now().strftime("%B %d, %Y"), ln=True)
+    pdf.ln(5)
+
+    # Recipient
+    pdf.set_font("Helvetica", "B", 10)
+    pdf.cell(0, 6, "Hiring Manager", ln=True)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 6, company, ln=True)
+    pdf.ln(10)
+
+    # Subject
+    pdf.set_font("Helvetica", "B", 11)
+    pdf.cell(0, 8, f"Re: {title} Position", ln=True)
+    pdf.ln(5)
+
+    # Body - AI-generated content
+    pdf.set_font("Helvetica", "", 10)
+    
+    # Opening paragraph
+    opening = ai_content.get("opening", f"Dear Hiring Manager,\n\nI am writing to express my interest in the {title} position at {company}.")
+    pdf.multi_cell(0, 5, opening)
+    pdf.ln(5)
+
+    # Experience paragraph
+    experience = ai_content.get("experience", "I have relevant experience in this field.")
+    pdf.multi_cell(0, 5, experience)
+    pdf.ln(5)
+
+    # Skills paragraph
+    skills = ai_content.get("skills", "I possess the required skills for this role.")
+    pdf.multi_cell(0, 5, skills)
+    pdf.ln(5)
+
+    # Closing
+    closing = ai_content.get("closing", "I am available for an interview at your convenience.")
+    
+    # Add education and awards
+    edu_text = ""
+    if education:
+        latest_edu = education[0]
+        degree = latest_edu.get("degree", "Master's degree")
+        institution = latest_edu.get("institution", "University of Zawia")
+        edu_text = f"\n\nI hold a {degree} from {institution}."
+    
+    award_text = ""
+    if awards:
+        award_text = f" {awards[0]}."
+    
+    full_closing = f"{closing}{edu_text}{award_text}\n\nBest regards,\n{personal.get('full_name', personal.get('name', 'Your Name'))}"
+    pdf.multi_cell(0, 5, full_closing)
+
+
+async def generate_all_cover_letters(jobs: list[dict]) -> list[dict]:
+    """Generate PDF cover letters for a list of jobs with AI enhancement."""
+    import asyncio
+    
     results = []
     for job in jobs:
         try:
+            # Try to generate AI content for the cover letter
+            profile = load_cv_profile()
+            ai_content = await generate_ai_cover_letter_content(job, profile)
+            
+            if ai_content:
+                job["ai_cover_letter_content"] = ai_content
+            
             path = generate_cover_letter_pdf(job)
             job["cover_letter_path"] = path
             job["cover_letter_type"] = _detect_job_type(
                 job.get("title", ""), job.get("description", "")
             )
+            job["cover_letter_ai"] = ai_content is not None
         except Exception as e:
             print(f"Cover letter failed for {job.get('title', 'unknown')}: {e}")
             job["cover_letter_path"] = ""
             job["cover_letter_type"] = "error"
+            job["cover_letter_ai"] = False
         results.append(job)
     return results

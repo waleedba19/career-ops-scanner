@@ -1,77 +1,147 @@
 {
   "personal": {
-    "name": "Waleed",
-    "full_name": "Waleed [Last Name]",
-    "email": "waleedzydeco19@gmail.com",
-    "phone": "[Your Phone Number]",
-    "location": "Libya",
-    "linkedin": "[Your LinkedIn URL]",
-    "portfolio": "[Your Portfolio URL if any]"
+    "name": "Waleed Ballag",
+    "full_name": "Mr. Waleed Ballag",
+    "email": "mr.waleed.ballag@gmail.com",
+    "phone": "0922031538",
+    "location": "Al-Ajéelat City, Libya",
+    "country_code": "+218",
+    "linkedin": "https://linktr.ee/WaleedBA19",
+    "portfolio": "https://linktr.ee/WaleedBA19",
+    "blog": "waleed-ballag.blogspot.com"
   },
-  "title": "Bilingual Content Creator & Translation Specialist",
-  "summary": "Detail-oriented bilingual professional with 5+ years of experience in Arabic-English translation, content creation, and virtual assistance. Native Arabic speaker with near-native English proficiency. Proven track record of delivering high-quality translations across legal, medical, and technical domains. Experienced in remote work environments with flexible scheduling across time zones.",
+  "title": "ESL Instructor, Academic Supervisor & Bilingual Translator",
+  "summary": "Dedicated ESL Instructor and Academic Secondary Supervisor committed to fostering student success through results-oriented teaching methodologies. Proven ability to facilitate consistent academic growth across diverse learner backgrounds. Skilled in adapting instruction for both large and small class settings, creating inclusive and engaging learning environments. Extensive experience supervising 15 graduate-level research studies and providing comprehensive academic services including thesis writing, editing, proposal development, and data analysis for MA-level projects. Native Arabic speaker with C1 Advanced English proficiency.",
   "skills": {
-    "languages": ["Arabic (Native)", "English (Near-Native)", "French (Basic)"],
-    "translation": ["Legal translation", "Medical translation", "Technical translation", "Localization", "Proofreading", "CAT tools"],
-    "content": ["Blog writing", "SEO content", "Copywriting", "Social media content", "Creative writing"],
-    "teaching": ["ESL instruction", "Online tutoring", "Curriculum development", "Student assessment"],
-    "technical": ["Data entry", "Microsoft Office", "Google Workspace", "CRM systems", "Video editing basics"],
-    "soft": ["Remote collaboration", "Time management", "Attention to detail", "Cross-cultural communication"]
+    "academic": ["Academic Supervision & Research Guidance", "Academic Editing & Thesis Review", "Thesis Writing & Development", "Proposal Development", "Data Analysis (SPSS, thematic coding)", "Plagiarism Checking & Originality", "Survey & Instrument Development", "Viva Preparation Support"],
+    "teaching": ["ESL/EFL Instruction", "Online & In-person Teaching", "Curriculum Development", "Student Assessment", "Gamification in Education", "Mobile-Assisted Language Learning"],
+    "translation": ["Arabic-English Bidirectional Translation", "Academic Translation", "Legal Translation", "Document Translation", "Contextual Research for Translation"],
+    "technical": ["Microsoft Office Suite (Expert)", "Adobe Photoshop", "SPSS Statistical Analysis", "AI Tools & Advanced Programs", "Data Entry & Archiving"],
+    "languages": ["Arabic (Native)", "English (C1 Advanced)"],
+    "soft": ["Academic Integrity Compliance", "APA/MLA/Harvard Formatting", "Cross-cultural Communication", "Remote Collaboration", "Time Management"]
   },
   "experience": [
     {
-      "title": "Freelance Translator & Content Creator",
-      "company": "Self-Employed",
-      "period": "2020 - Present",
-      "location": "Remote",
+      "title": "ESL Teacher & Secondary Supervisor",
+      "company": "Higher Institute of Science and Technology",
+      "period": "10/2024 – 02/2025",
+      "location": "Al-Ajéelat City, Libya",
       "bullets": [
-        "Provided Arabic-English translation services for legal, medical, and technical documents",
-        "Created SEO-optimized content for blogs, websites, and social media platforms",
-        "Maintained 98% client satisfaction rate with zero revision requests",
-        "Managed multiple projects simultaneously with strict deadline adherence"
+        "English instructor and researcher developing language skills using innovative pedagogical approaches",
+        "Supervised graduate-level research studies in EFL education",
+        "Provided comprehensive academic services including thesis writing and editing"
       ]
     },
     {
-      "title": "ESL English Teacher",
-      "company": "Online Platform",
-      "period": "2019 - 2022",
-      "location": "Remote",
+      "title": "ESL Teacher & Partner",
+      "company": "Al-Safwa Smart School for Private Education",
+      "period": "10/2024 – 2025",
+      "location": "Al-Ajéelat City, Libya",
       "bullets": [
-        "Taught English as a second language to adult students from diverse backgrounds",
-        "Developed customized lesson plans based on individual learning objectives",
-        "Achieved average student improvement of 40% in proficiency scores",
-        "Conducted 500+ one-on-one and group sessions via video conferencing"
+        "Teaching English with dynamic and engaging learning process for secondary students",
+        "Developed curriculum and assessment materials",
+        "Implemented student-centered learning approaches"
       ]
     },
     {
-      "title": "Virtual Assistant",
-      "company": "Various Clients",
-      "period": "2018 - 2021",
-      "location": "Remote",
+      "title": "ESL Teacher",
+      "company": "Anwar Al-Hayat School for Private Education",
+      "period": "10/2024 – 2025",
+      "location": "Al-Ajéelat City, Libya",
       "bullets": [
-        "Managed executive calendars, travel arrangements, and email correspondence",
-        "Handled data entry, database management, and report generation",
-        "Coordinated meetings across multiple time zones",
-        "Maintained confidential information with utmost discretion"
+        "English language teacher at secondary level",
+        "Designed interesting and informative lessons",
+        "Applied advanced pedagogical methods"
+      ]
+    },
+    {
+      "title": "ESL Trainer",
+      "company": "Muhtarifon Al-Awael Centre for Training",
+      "period": "12/2023 – 05/2024",
+      "location": "Al-Ajéelat City, Libya",
+      "bullets": [
+        "English language trainer for Strategic Programs Office at National Oil Corporation",
+        "Training petroleum graduates in professional English",
+        "Awarded English Language Trainer of the Year"
+      ]
+    },
+    {
+      "title": "ESL Teacher",
+      "company": "Luqman Al-Hakim School",
+      "period": "09/2023 – 12/2023",
+      "location": "Al-Ajéelat City, Libya",
+      "bullets": [
+        "English Language Teacher for middle and high school",
+        "Advanced pedagogical methods and curriculum development"
+      ]
+    },
+    {
+      "title": "Assistant Legal Translator",
+      "company": "Afaq Office for Legal Translation Services",
+      "period": "11/2019 – 10/2022",
+      "location": "Misrata City, Libya",
+      "bullets": [
+        "Accurate formatted translations in Arabic and English",
+        "Rapid document conversion with contextual accuracy",
+        "Managed external correspondence and legal documentation"
+      ]
+    },
+    {
+      "title": "Foreign Operations Department LC Credit",
+      "company": "Al-Noran Bank",
+      "period": "05/2020 – 10/2020",
+      "location": "Misrata City, Libya",
+      "bullets": [
+        "Letters of Credit transactions using Swift system",
+        "Central Bank of Libya system operations",
+        "Data entry, archiving, and corporate file reconciliation"
+      ]
+    },
+    {
+      "title": "Storekeeper Coordinator / Procurement Specialist",
+      "company": "Al-Khamasia Company",
+      "period": "04/2017 – 09/2019",
+      "location": "Misrata City, Libya",
+      "bullets": [
+        "Warehouse operations and quality control",
+        "International procurement and foreign supplier communication",
+        "Logistics coordination and shipping negotiation to Misrata Port"
       ]
     }
   ],
   "education": [
     {
-      "degree": "Bachelor's Degree",
-      "field": "[Your Field of Study]",
-      "institution": "[Your University]",
-      "year": "[Graduation Year]"
+      "degree": "MA in Applied Linguistics",
+      "field": "Applied Linguistics",
+      "institution": "University of Zawia",
+      "year": "2025",
+      "details": "Corpus-based dissertation analyzing hedging devices in academic writing. Expertise in corpus linguistics, discourse analysis, and research methodologies."
+    },
+    {
+      "degree": "BA in English Language",
+      "field": "English Language",
+      "institution": "Faculty of Arts, University of Sabratha",
+      "year": "2014",
+      "gpa": "87%"
     }
   ],
   "certifications": [
-    "[Any translation certifications]",
-    "[Any teaching certifications]",
-    "[Any other relevant certifications]"
+    "ICDL – Al-Shimaa Centre for Training and Rehabilitation (08/2013)",
+    "English Language Trainer – Muhtarifon Al-Awael Center (08/2024)",
+    "English Language Specialist & Translator – Afaq Office for Legal Translation Services (06/2021)",
+    "Certificate of Training in Documentary Credit Basics – Arab Engineering Center (12/2019)"
   ],
+  "awards": [
+    "The Laureate of Linguistic Excellence: English Language Trainer of the Year (05/2024)"
+  ],
+  "supervision": {
+    "total_studies": 15,
+    "completed_theses": 11,
+    "themes": ["Teacher Perspectives & Beliefs", "Student-Centered Learning", "Technology-Assisted Learning", "Assessment & Evaluation", "Skill-Specific Instruction", "Parental Involvement", "Collaborative Learning"]
+  },
   "cover_letter_style": {
-    "tone": "Professional yet personable",
+    "tone": "Professional, academic, and personable",
     "length": "250-350 words",
-    "focus": "Highlight bilingual advantage, remote work experience, and quick turnaround"
+    "focus": "Highlight ESL teaching expertise, academic supervision, bilingual translation, and graduate-level research experience"
   }
 }

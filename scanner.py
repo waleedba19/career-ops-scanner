@@ -29,7 +29,8 @@ from excel_generator import generate_excel
 # ---------------------------------------------------------------------------
 
 MIN_MATCH_SCORE = 75
-MAX_AGE_HOURS = 0.5  # 30 minutes
+MAX_AGE_HOURS = 144  # 6 days (144 hours)
+MAX_AGE_FRESH_HOURS = 0.5  # 30 minutes for fresh jobs
 NEAR_MISS_MIN = 50
 NEAR_MISS_MAX = 74
 NEAR_MISS_LIMIT = 6
@@ -42,6 +43,26 @@ SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
 TIMEOUT = aiohttp.ClientTimeout(total=10)
+
+# ---------------------------------------------------------------------------
+# Paid platforms to filter out (require fees to apply)
+# ---------------------------------------------------------------------------
+
+PAID_PLATFORMS = [
+    "flexjobs",  # Requires subscription
+    "tophire",   # Requires payment
+    "wellfound", # Some listings require payment
+    "ziprecruiter", # Some premium features
+]
+
+# ---------------------------------------------------------------------------
+# Platforms known for Arabic/translation jobs (prioritize these)
+# ---------------------------------------------------------------------------
+
+ARABIC_PLATFORMS = [
+    "mostaql", "for9a", "khamsat", "ureed", "wuzzuf", "daleel", "aqar", "tajer",
+    "bayt", "gulftalent", "naukrigulf",
+]
 
 # ---------------------------------------------------------------------------
 # Job sources — Greenhouse companies
@@ -64,18 +85,21 @@ GREENHOUSE_COMPANIES = [
 LEVER_COMPANIES = [("Appen", "appen")]
 
 # ---------------------------------------------------------------------------
-# Scoring system — identical to JS worker
+# Scoring system — enhanced for Arabic speaker focus
 # ---------------------------------------------------------------------------
 
 MATCH_BUCKETS = [
     {
-        "name": "Translation",
+        "name": "Arabic Translation",
         "phrases": [
-            (re.compile(r"\barabic\b", re.I), 40),
-            (re.compile(r"locali[sz]ation|locali[sz]e|l10n", re.I), 45),
-            (re.compile(r"translat|translation", re.I), 35),
-            (re.compile(r"linguist", re.I), 35),
-            (re.compile(r"interpreter|interpretation", re.I), 30),
+            (re.compile(r"\barabic\b", re.I), 60),  # Highest priority for Arabic
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 70),
+            (re.compile(r"locali[sz]ation|locali[sz]e|l10n", re.I), 50),
+            (re.compile(r"translat|translation", re.I), 45),
+            (re.compile(r"linguist", re.I), 45),
+            (re.compile(r"interpreter|interpretation", re.I), 40),
+            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 65),
+            (re.compile(r"mENA.*arabic|arabic.*mENA", re.I), 55),
         ],
     },
     {
@@ -255,16 +279,25 @@ def get_freshness(posted) -> dict:
     d = normalize_date(posted)
     age = age_hours(d)
     if d is None or age == float("inf"):
-        return {"label": "date unknown", "is_fresh": False}
+        return {"label": "date unknown", "is_fresh": False, "is_old": True}
     if age < 1:
         m = max(1, round(age * 60))
-        return {"label": f"{m} min ago", "is_fresh": True}
+        return {"label": f"{m} min ago", "is_fresh": True, "is_old": False}
     if age < 24:
         h = max(1, round(age))
-        return {"label": f"{h} hour{'s' if h > 1 else ''} ago", "is_fresh": True}
+        return {"label": f"{h} hour{'s' if h > 1 else ''} ago", "is_fresh": True, "is_old": False}
     if age < 48:
-        return {"label": "1 day ago (too old)", "is_fresh": False}
-    return {"label": f"{int(age / 24)} days ago (too old)", "is_fresh": False}
+        return {"label": "1 day ago", "is_fresh": False, "is_old": False}
+    days = int(age / 24)
+    if days <= 6:
+        return {"label": f"{days} day{'s' if days > 1 else ''} ago", "is_fresh": False, "is_old": False}
+    return {"label": f"{days} days ago (old)", "is_fresh": False, "is_old": True}
+
+
+def is_paid_platform(source: str) -> bool:
+    """Check if the source platform requires fees to apply."""
+    source_lower = (source or "").lower()
+    return any(platform in source_lower for platform in PAID_PLATFORMS)
 
 
 def phrase_label(re_obj) -> str:
@@ -2816,14 +2849,28 @@ async def run_scan():
         scored: list[dict] = []
         near_misses: list[dict] = []
         fresh_total = 0
+        old_but_verified = []
 
         for job in all_jobs:
             if not job.get("url"):
                 continue
-            posted = normalize_date(job.get("posted"))
-            if posted is None or age_hours(posted) > MAX_AGE_HOURS:
+            
+            # Filter out paid platforms
+            if is_paid_platform(job.get("source", "")):
                 continue
+            
+            posted = normalize_date(job.get("posted"))
+            age = age_hours(posted) if posted else float("inf")
+            
+            # Check if job is within 6-day window
+            if posted is None or age > MAX_AGE_HOURS:
+                continue
+            
             fresh_total += 1
+            
+            # Check if it's a fresh job (within 30 minutes)
+            is_fresh = age <= MAX_AGE_FRESH_HOURS
+            
             if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
                 continue
             if NON_TARGET_ROLE.search(job.get("title", "")):
@@ -2835,15 +2882,25 @@ async def run_scan():
             scored_job = get_match_score(job.get("title", ""), job.get("description", ""))
             if scored_job["score"] < MIN_MATCH_SCORE:
                 continue
+            
             salary = job.get("salary") or extract_salary(job.get("description", ""))
-            scored.append({
+            job_data = {
                 **job,
                 "postedISO": posted.isoformat(),
                 "score": scored_job["score"],
                 "category": scored_job["category"],
                 "why": scored_job.get("why", []),
                 "salary": salary,
-            })
+                "is_fresh": is_fresh,
+                "age_hours": age,
+            }
+            
+            # Separate fresh jobs from older jobs
+            if is_fresh:
+                scored.append(job_data)
+            else:
+                # Older jobs go to a separate list for Ollama verification
+                old_but_verified.append(job_data)
 
         def is_genuine(title: str) -> bool:
             if NON_TARGET_ROLE.search(title):
@@ -2883,13 +2940,16 @@ async def run_scan():
             })
 
         near_misses.sort(key=lambda j: j["score"], reverse=True)
-        scored.sort(key=lambda j: (j["score"], -age_hours(normalize_date(j.get("postedISO")))))
-        # For score primary, age secondary (lower age = fresher = sort ascending)
-        scored.sort(key=lambda j: -j["score"])
+        
+        # Sort fresh jobs by score (highest first), then by age (newest first)
+        scored.sort(key=lambda j: (-j["score"], j.get("age_hours", 0)))
+        
+        # Sort old jobs by score (highest first)
+        old_but_verified.sort(key=lambda j: -j["score"])
 
         new_jobs = [j for j in scored if j["url"] not in all_seen]
 
-        # ---- Liveness check on top jobs ----
+        # ---- Liveness check on top fresh jobs ----
         to_check = new_jobs[:TOP_LIVENESS_CHECK]
         liveness_results = await asyncio.gather(
             *[check_liveness(session, j["url"]) for j in to_check],
@@ -2903,12 +2963,34 @@ async def run_scan():
                 verified.append(job)
             else:
                 expired.append(job)
-        verified.sort(key=lambda j: j["score"], reverse=True)
-
-        print(f"Scored: {len(scored)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
+        
+        # Add remaining fresh jobs that weren't checked
+        verified.extend(new_jobs[TOP_LIVENESS_CHECK:])
+        
+        # Sort verified jobs: fresh first, then by score
+        verified.sort(key=lambda j: (-j.get("is_fresh", False), -j["score"]))
+        
+        print(f"Scored: {len(scored)}, Old but verified: {len(old_but_verified)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
 
         # ---- Ollama AI analysis ----
+        # Analyze fresh jobs first
         verified = await analyze_jobs_with_ollama(verified)
+        
+        # For old jobs, use Ollama to verify they're still active
+        # Only include old jobs that Ollama confirms are still relevant
+        old_verified = []
+        if old_but_verified:
+            print(f"Checking {len(old_but_verified)} older jobs with Ollama...")
+            old_analyzed = await analyze_jobs_with_ollama(old_but_verified[:20])  # Check top 20
+            for job in old_analyzed:
+                # Include old jobs only if they have high scores (85+) and AI confirms relevance
+                if job.get("score", 0) >= 85 and job.get("ai_overall_score", 0) >= 70:
+                    job["is_old_verified"] = True
+                    old_verified.append(job)
+            print(f"  Old jobs verified by AI: {len(old_verified)}")
+        
+        # Combine: fresh jobs first, then old verified jobs at the end
+        final_verified = verified + old_verified
 
         # ---- Build notifications ----
         elapsed = f"{time.time() - start_time:.1f}"
@@ -2930,7 +3012,7 @@ async def run_scan():
 
         stats = history["scan_stats"]
         stats["total_scans"] += 1
-        stats["total_matches"] += len(verified)
+        stats["total_matches"] += len(final_verified)
         stats["last_scan_date"] = datetime.now(timezone.utc).isoformat()[:10]
 
         scan_info = {
@@ -2938,6 +3020,7 @@ async def run_scan():
             "all_count": len(all_jobs),
             "source_count": source_count,
             "fresh_count": fresh_total,
+            "old_verified_count": len(old_verified),
             "near_misses": near_misses,
         }
 
@@ -2946,7 +3029,7 @@ async def run_scan():
         date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         excel_path = OUTPUT_DIR / f"careerops-scan-{date_str}.xls"
         try:
-            excel_xml = generate_excel(verified, elapsed, near_misses, all_jobs, scan_info, stats)
+            excel_xml = generate_excel(final_verified, elapsed, near_misses, all_jobs, scan_info, stats)
             excel_path.write_text(excel_xml, encoding="utf-8")
             print(f"Excel saved: {excel_path}")
         except Exception as e:
@@ -2955,7 +3038,7 @@ async def run_scan():
 
         # ---- Append to accumulating scan history ----
         try:
-            append_to_scan_history(verified, scan_info)
+            append_to_scan_history(final_verified, scan_info)
             print("Scan history accumulated.")
         except Exception as e:
             print(f"Scan history accumulation failed: {e}")
@@ -2964,7 +3047,7 @@ async def run_scan():
         telegram_sent = False
         try:
             from notifier import build_telegram
-            tg_msg = build_telegram(verified, scan_info, stats)
+            tg_msg = build_telegram(final_verified, scan_info, stats)
             telegram_sent = await send_telegram(tg_msg)
         except Exception as e:
             print(f"Telegram error: {e}")
@@ -2973,10 +3056,10 @@ async def run_scan():
         email_sent = False
         try:
             from notifier import build_email
-            email_result = build_email(verified, scan_info, stats)
+            email_result = build_email(final_verified, scan_info, stats)
             email_subject = (
-                f"CareerOps Scan - {date_str} - \u2705 {len(verified)} New Match{'es' if len(verified) != 1 else ''} Found"
-                if verified
+                f"CareerOps Scan - {date_str} - \u2705 {len(final_verified)} New Match{'es' if len(final_verified) != 1 else ''} Found"
+                if final_verified
                 else f"CareerOps Scan - {date_str} - \u2705 0 New Matches Found"
             )
             email_sent = await send_email(email_subject, email_result["text"], email_result["html"], str(excel_path) if excel_path else None)
@@ -3005,8 +3088,9 @@ async def run_scan():
         # Output JSON result for GitHub Actions
         result = {
             "matched": len(scored),
+            "old_verified": len(old_verified),
             "near_miss_count": len(near_misses),
-            "verified_count": len(verified),
+            "verified_count": len(final_verified),
             "expired_count": len(expired),
             "all_count": len(all_jobs),
             "source_count": source_count,

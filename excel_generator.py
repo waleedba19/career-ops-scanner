@@ -162,13 +162,20 @@ def generate_excel(
 
     # ---- Daily Log rows (Sheet 3) — accumulate across scans ----
     daily_rows = []
-    # Add current scan
+    # Add current scan with enhanced stats
+    old_verified_count = scan_info.get("old_verified_count", 0)
+    near_miss_count = len(near_misses)
+    source_count = scan_info.get("source_count", 0)
+    
     daily_rows.append(f'''
     <Row>
       <Cell><Data ss:Type="String">{_esc(date_str)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(scan_slot)}</Data></Cell>
       <Cell><Data ss:Type="Number">{total_scanned}</Data></Cell>
       <Cell><Data ss:Type="Number">{len(jobs)}</Data></Cell>
+      <Cell><Data ss:Type="Number">{old_verified_count}</Data></Cell>
+      <Cell><Data ss:Type="Number">{near_miss_count}</Data></Cell>
+      <Cell><Data ss:Type="Number">{source_count}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(time_str)}</Data></Cell>
     </Row>''')
     # Add previous daily log entries from history
@@ -183,6 +190,9 @@ def generate_excel(
       <Cell><Data ss:Type="String">{_esc(log.get("slot", ""))}</Data></Cell>
       <Cell><Data ss:Type="Number">{log.get("scanned", 0)}</Data></Cell>
       <Cell><Data ss:Type="Number">{log.get("matches", 0)}</Data></Cell>
+      <Cell><Data ss:Type="Number">{log.get("old_verified", 0)}</Data></Cell>
+      <Cell><Data ss:Type="Number">{log.get("near_misses", 0)}</Data></Cell>
+      <Cell><Data ss:Type="Number">{log.get("sources", 0)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(log.get("time", ""))}</Data></Cell>
     </Row>''')
     except Exception:
@@ -193,7 +203,16 @@ def generate_excel(
         prev_logs = []
         if daily_log_file.exists():
             prev_logs = json.loads(daily_log_file.read_text(encoding="utf-8"))
-        prev_logs.append({"date": date_str, "slot": scan_slot, "scanned": total_scanned, "matches": len(jobs), "time": time_str})
+        prev_logs.append({
+            "date": date_str,
+            "slot": scan_slot,
+            "scanned": total_scanned,
+            "matches": len(jobs),
+            "old_verified": old_verified_count,
+            "near_misses": near_miss_count,
+            "sources": source_count,
+            "time": time_str
+        })
         daily_log_file.write_text(json.dumps(prev_logs[-100:], indent=2), encoding="utf-8")
     except Exception:
         pass
@@ -251,11 +270,13 @@ def generate_excel(
   <!-- Sheet 3: Daily Log (accumulated across scans) -->
   <Worksheet ss:Name="Daily Log">
     <Table>
-      <Column ss:Width="120"/><Column ss:Width="160"/><Column ss:Width="100"/><Column ss:Width="120"/><Column ss:Width="100"/>
+      <Column ss:Width="120"/><Column ss:Width="160"/><Column ss:Width="100"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="100"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Daily Scan Log (accumulated)</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">Date</Data></Cell><Cell><Data ss:Type="String">Scan Slot</Data></Cell>
-        <Cell><Data ss:Type="String">Total Scanned</Data></Cell><Cell><Data ss:Type="String">Fresh Matches</Data></Cell><Cell><Data ss:Type="String">Time (UTC)</Data></Cell>
+        <Cell><Data ss:Type="String">Total Scanned</Data></Cell><Cell><Data ss:Type="String">Fresh Matches</Data></Cell>
+        <Cell><Data ss:Type="String">Old Verified</Data></Cell><Cell><Data ss:Type="String">Near Misses</Data></Cell>
+        <Cell><Data ss:Type="String">Sources</Data></Cell><Cell><Data ss:Type="String">Time (UTC)</Data></Cell>
       </Row>
       {daily_rows_str}
     </Table>

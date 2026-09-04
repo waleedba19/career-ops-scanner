@@ -283,13 +283,16 @@ def generate_excel(
     cover_rows = []
     for i, j in enumerate(all_fresh):
         letter = j.get("cover_letter", "")
-        if letter:
+        pdf_path = j.get("cover_letter_path", "")
+        if letter or pdf_path:
             cover_rows.append(f'''
     <Row>
       <Cell><Data ss:Type="Number">{i + 1}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(j.get("company", ""))}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(j.get("title", ""))}</Data></Cell>
-      <Cell><Data ss:Type="String">{_esc(letter[:500])}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(j.get("score", 0))}%</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(pdf_path)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(letter[:300] if letter else "PDF attached to email")}</Data></Cell>
     </Row>''')
     cover_rows_str = "".join(cover_rows) if cover_rows else '<Row><Cell><Data ss:Type="String">No cover letters generated yet.</Data></Cell></Row>'
 
@@ -358,12 +361,13 @@ def generate_excel(
   <!-- Sheet 4: Cover Letters (generated for each match) -->
   <Worksheet ss:Name="Cover Letters">
     <Table>
-      <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="600"/>
+      <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="60"/><Column ss:Width="400"/><Column ss:Width="600"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Generated Cover Letters</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">Personalized cover letters for each Fresh Match. Edit before sending!</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">PDF cover letters attached to email. Download from email or use the file path in column E.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
-        <Cell><Data ss:Type="String">Role</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
+        <Cell><Data ss:Type="String">Role</Data></Cell><Cell><Data ss:Type="String">Score</Data></Cell>
+        <Cell><Data ss:Type="String">PDF Path</Data></Cell><Cell><Data ss:Type="String">Preview</Data></Cell>
       </Row>
       {cover_rows_str}
     </Table>

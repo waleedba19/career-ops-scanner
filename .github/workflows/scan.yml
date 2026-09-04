@@ -1,0 +1,68 @@
+name: CareerOps Job Scan
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # 05:00 UTC
+    - cron: '0 12 * * *'  # 12:00 UTC
+    - cron: '0 20 * * *'  # 20:00 UTC
+  workflow_dispatch:        # manual trigger from Actions tab
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
+      BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
+      TO_EMAIL:           ${{ secrets.TO_EMAIL }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+
+      - name: Start Ollama server
+        run: |
+          ollama serve &
+          echo "OLLAMA_PID=$!" >> "$GITHUB_ENV"
+
+      - name: Wait for Ollama to be ready
+        run: |
+          echo "Waiting for Ollama on localhost:11434..."
+          for i in $(seq 1 30); do
+            if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+              echo "Ollama is ready"
+              break
+            fi
+            echo "Attempt $i/30..."
+            sleep 2
+          done
+          # Final check
+          curl -s http://localhost:11434/api/tags || { echo "Ollama failed to start"; exit 1; }
+
+      - name: Pull Ollama model
+        run: ollama pull qwen2.5:1.5b
+
+      - name: Run job scanner
+        run: python scanner.py
+
+      - name: Upload Excel report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: careerops-scan-${{ github.run_id }}
+          path: output/*.xls
+          retention-days: 30

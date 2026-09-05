@@ -48,7 +48,6 @@ jobs:
           echo "OLLAMA_PID=$!" >> "$GITHUB_ENV"
 
       - name: Wait for Ollama to be ready
-        continue-on-error: true   # scanner falls back gracefully if Ollama can't start
         run: |
           echo "Waiting for Ollama on localhost:11434..."
           for i in $(seq 1 30); do
@@ -59,11 +58,10 @@ jobs:
             echo "Attempt $i/30..."
             sleep 2
           done
-          curl -s http://localhost:11434/api/tags || echo "Ollama failed to start - scanner will run in fallback mode"
+          curl -s http://localhost:11434/api/tags || { echo "Ollama failed to start - scanner will run in fallback mode"; exit 1; }
 
       - name: Pull Ollama model
-        continue-on-error: true   # only meaningful if the server actually started
-        run: ollama pull qwen2.5:1.5b
+        run: ollama pull llama3.1:8b
 
       - name: Auto-discover new job sources
         run: python source_discovery.py

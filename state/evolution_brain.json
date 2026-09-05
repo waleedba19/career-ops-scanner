@@ -1,9 +1,9 @@
 {
-  "total_scans": 3,
+  "total_scans": 4,
   "total_matches": 13,
   "streak_days": 1,
   "last_scan_date": "2026-09-05",
-  "total_jobs_scanned": 10274,
+  "total_jobs_scanned": 14581,
   "best_day_matches": 11,
   "best_day_date": "2026-09-05",
   "daily_history": [
@@ -24,6 +24,15 @@
       "near_misses": 0,
       "sources": 27,
       "fresh_count": 2917
+    },
+    {
+      "date": "2026-09-05",
+      "total_fetched": 4307,
+      "matches": 0,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 14,
+      "fresh_count": 2188
     }
   ],
   "category_trends": {

@@ -3708,7 +3708,7 @@ async def run_scan():
     persistent_seen = load_seen_urls()
     all_seen = seen_urls | persistent_seen
 
-    async with aiohttp.ClientSession() as session:
+    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
         # ---- Fetch all sources in parallel batches ----
         fetchers = []
         for name, slug in GREENHOUSE_COMPANIES:

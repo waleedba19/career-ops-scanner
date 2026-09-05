@@ -150,12 +150,12 @@ def generate_excel(
     scan_date = now.isoformat()
     total_scanned = len(all_jobs) or scan_info.get("all_count", 0)
 
-    # Hour-based scan slot
+    # Hour-based scan slot (UTC runs at 05:00, 13:00, 20:00)
     hour = now.hour
-    if hour < 11:
+    if hour < 9:
         scan_slot = "Morning (5 AM)"
-    elif hour < 18:
-        scan_slot = "Afternoon (12 PM)"
+    elif hour < 17:
+        scan_slot = "Afternoon (1 PM)"
     else:
         scan_slot = "Night (8 PM)"
 
@@ -177,8 +177,10 @@ def generate_excel(
         url = j.get("url", "")
         applied_status = get_application_status(url)
         cover_path = j.get("cover_letter_path", "")
+        # Red rows = not applied yet; green rows = applied/tracked
+        row_style = "applied" if applied_status != "Not Applied" else "unapplied"
         fresh_rows.append(f'''
-    <Row ss:StyleID="green">
+    <Row ss:StyleID="{row_style}">
       <Cell><Data ss:Type="Number">{i + 1}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(j.get("company", ""))}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(j.get("title", ""))}</Data></Cell>
@@ -331,6 +333,8 @@ def generate_excel(
     <Style ss:ID="header"><Font ss:Bold="1" ss:Color="#FFFFFF" ss:Size="11"/><Interior ss:Color="#0d1b2a" ss:Pattern="Solid"/></Style>
     <Style ss:ID="green"><Interior ss:Color="#dcfce7" ss:Pattern="Solid"/></Style>
     <Style ss:ID="red"><Interior ss:Color="#fef2f2" ss:Pattern="Solid"/></Style>
+    <Style ss:ID="unapplied"><Interior ss:Color="#fee2e2" ss:Pattern="Solid"/><Font ss:Color="#b91c1c" ss:Bold="1"/></Style>
+    <Style ss:ID="applied"><Interior ss:Color="#dcfce7" ss:Pattern="Solid"/><Font ss:Color="#166534" ss:Bold="1"/></Style>
     <Style ss:ID="title"><Font ss:Bold="1" ss:Size="14" ss:Color="#0d1b2a"/></Style>
   </Styles>
 
@@ -358,7 +362,7 @@ def generate_excel(
       <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="100"/>
       <Column ss:Width="100"/><Column ss:Width="200"/><Column ss:Width="100"/><Column ss:Width="420"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated across all scans)</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">All jobs matching 75-100% from every scan. Sort by score, then by scan date. Column I: mark Applied/Maybe/Rejected.</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">All jobs matching 75-100% from every scan. Sort by score, then by scan date. Column I: mark Applied/Maybe/Rejected. RED rows = not applied yet — apply now! GREEN rows = applied/tracked.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell>

@@ -40,16 +40,16 @@ TO_EMAIL = os.getenv("TO_EMAIL", "")
 
 SCAN_LABELS = [
     {"time": "07:00", "label": "Morning Intel", "emoji": "\u2600\ufe0f"},
-    {"time": "14:00", "label": "Afternoon Briefing", "emoji": "\U0001f4cb"},
+    {"time": "15:00", "label": "Afternoon Briefing", "emoji": "\U0001f4cb"},
     {"time": "22:00", "label": "Night Digest", "emoji": "\U0001f319"},
 ]
 
 
 def get_scan_label() -> dict:
     h = datetime.now(timezone.utc).hour
-    if h < 11:
+    if h < 9:
         return SCAN_LABELS[0]
-    if h < 18:
+    if h < 17:
         return SCAN_LABELS[1]
     return SCAN_LABELS[2]
 
@@ -58,8 +58,8 @@ def next_scan_time() -> str:
     h = datetime.now(timezone.utc).hour
     if h < 5:
         return "05:00"
-    if h < 12:
-        return "12:00"
+    if h < 13:
+        return "13:00"
     if h < 20:
         return "20:00"
     return "05:00"
@@ -221,17 +221,21 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     msg += f"Reviewed {all_count:,} jobs across {source_count} sources\n"
     msg += "\n"
     
-    # ---- Check for unapplied jobs reminder ----
+    # ---- Check for unapplied jobs reminder (marked red) ----
     try:
         apps = load_applications()
         all_fresh = load_fresh_history()
         unapplied = [j for j in all_fresh if j.get("url") and j["url"] not in apps]
         if unapplied:
-            msg += f"\u26a0\ufe0f REMINDER: {len(unapplied)} unapplied jobs pending!\n"
-            for j in unapplied[:3]:
-                msg += f"• {j.get('title', 'Unknown')} ({j.get('score', 0)}%)\n"
-            if len(unapplied) > 3:
-                msg += f"... and {len(unapplied) - 3} more in Excel\n"
+            msg += f"\U0001f534 UNAPPLIED JOBS: {len(unapplied)} pending — apply before they expire!\n"
+            for j in unapplied[:5]:
+                title = j.get('title', 'Unknown')
+                company = j.get('company', '')
+                score = j.get('score', 0)
+                msg += f"\U0001f534 [{score}%] {title} — {company}\n"
+                msg += f"   {j.get('url', '')}\n"
+            if len(unapplied) > 5:
+                msg += f"... and {len(unapplied) - 5} more — check your Excel (red rows)\n"
             msg += "\u2500" * 28 + "\n"
             msg += "\n"
     except Exception:
@@ -439,6 +443,42 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         near_html += '<p style="margin:8px 0 0;font-size:12px;color:#555">Below your 75% threshold \u2014 review at your discretion.</p>'
         near_html += "".join(near_card_html(j, i) for i, j in enumerate(near_all[:6]))
 
+    # Unapplied jobs from previous scans — shown in red so they stand out
+    unapplied_html = ""
+    unapplied_text = ""
+    try:
+        from excel_generator import load_applications, load_fresh_history
+        apps = load_applications()
+        all_fresh = load_fresh_history()
+        unapplied = [j for j in all_fresh if j.get("url") and j["url"] not in apps]
+        if unapplied:
+            unapplied_html = (
+                '<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;'
+                'color:#b91c1c;border-bottom:2px solid #dc2626;padding:16px 0 6px;margin-top:18px">'
+                '\U0001f534 UNAPPLIED JOBS \u2014 {len} pending. Apply before they expire!</p>'
+            ).format(len=len(unapplied))
+            for j in unapplied[:5]:
+                unapplied_html += f'''
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#fef2f2;border:1px solid #dc2626;border-radius:6px;margin:10px 0;font-family:Arial,Helvetica,sans-serif">
+        <tr><td style="padding:12px 16px 8px;border-bottom:1px solid #fecaca">
+          <span style="font-size:14px;font-weight:bold;color:#b91c1c">{_esc(j.get("title", ""))}</span>
+          <span style="font-weight:normal;color:#991b1b;font-size:12px;margin-left:8px">{_esc(j.get("company", ""))} \u00b7 {j.get("score", 0)}%</span>
+        </td></tr>
+        <tr><td style="padding:0 16px 12px">
+          <a href="{_esc(j.get('url', ''))}" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#b91c1c;text-decoration:underline;font-weight:bold">Apply now \u2192</a>
+        </td></tr>
+      </table>'''
+            if len(unapplied) > 5:
+                unapplied_html += f'<p style="font-size:12px;color:#b91c1c">... and {len(unapplied) - 5} more \u2014 all shown in red in the Excel sheet.</p>'
+            unapplied_text = f"\U0001f534 UNAPPLIED JOBS: {len(unapplied)} pending — apply before they expire!\n\n"
+            for j in unapplied[:5]:
+                unapplied_text += f"\U0001f534 [{j.get('score', 0)}%] {j.get('title', '')} — {j.get('company', '')}\n"
+                unapplied_text += f"   {j.get('url', '')}\n\n"
+            if len(unapplied) > 5:
+                unapplied_text += f"... and {len(unapplied) - 5} more — check your Excel (red rows).\n\n"
+    except Exception:
+        pass
+
     html = f'''<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -460,6 +500,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         <tr><td style="padding:6px 28px 20px">
           {jobs_html}
           {near_html}
+          {unapplied_html}
         </td></tr>
         {f"""<tr><td style="padding:16px 28px 16px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">🧠 AI Intelligence Report</p>
@@ -469,7 +510,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         </td></tr>""" if has_evolution else ""}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
-            About the workbook: the attached Excel file contains 3 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), and Daily Log.
+            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
           </p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
             The next scan is at <b>{next_scan_time()} today</b>.
@@ -509,7 +550,10 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
             text += f"   Location: {j.get('location', 'Remote') or 'Remote'} \xB7 Pay: {salary} \xB7 Posted: {fresh['label']}\n"
             text += f"   Review: {j.get('url', '')}\n\n"
 
-    text += "About the workbook: the attached Excel file contains 3 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), and Daily Log.\n\n"
+    if unapplied_text:
+        text += unapplied_text
+
+    text += "About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
     text += f"The next scan is at {next_scan_time()} today.\n\n"
     text += "Best regards,\nCareerOps Services \u2014 your personal job search assistant.\n"
 

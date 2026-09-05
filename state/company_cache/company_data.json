@@ -1,0 +1,99 @@
+{
+  "Test": {
+    "legitimacy_score": 60
+  },
+  "Freelancer.com": {
+    "name": "Freelancer.com",
+    "legitimacy_score": 40,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [
+      "Freelance platform (may not be full-time)"
+    ],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.036132+00:00"
+  },
+  "Astrek Careers": {
+    "name": "Astrek Careers",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.036555+00:00"
+  },
+  "Qkids": {
+    "name": "Qkids",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.036766+00:00"
+  },
+  "TextMaster": {
+    "name": "TextMaster",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.036969+00:00"
+  },
+  "Cambly": {
+    "name": "Cambly",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.037134+00:00"
+  },
+  "IAPWE": {
+    "name": "IAPWE",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.037413+00:00"
+  },
+  "Twilio": {
+    "name": "Twilio",
+    "legitimacy_score": 70,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Uses professional ATS"
+    ],
+    "last_updated": "2026-09-05T17:43:24.037574+00:00"
+  },
+  "Coalition Technologies ": {
+    "name": "Coalition Technologies ",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.037856+00:00"
+  },
+  "Coalition Technologies": {
+    "name": "Coalition Technologies",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T17:43:24.038018+00:00"
+  }
+}

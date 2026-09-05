@@ -3952,7 +3952,11 @@ async def run_scan():
                 src = job.get("source", "unknown")
                 source_match_counts[src] = source_match_counts.get(src, 0) + 1
             else:
-                # Older jobs go to a separate list for Ollama verification
+                # Older jobs go to a separate list for Ollama verification,
+                # but never re-report jobs the user has already seen
+                if job_data["url"] in all_seen:
+                    filter_debug["duplicate"] += 1
+                    continue
                 old_but_verified.append(job_data)
 
         def is_genuine(title: str) -> bool:
@@ -3969,6 +3973,8 @@ async def run_scan():
 
         for job in all_jobs:
             if not job.get("url") or len(near_misses) >= NEAR_MISS_LIMIT:
+                continue
+            if job.get("url") in all_seen:
                 continue
             posted = normalize_date(job.get("posted"))
             age = age_hours(posted) if posted else float("inf")
@@ -4079,8 +4085,9 @@ async def run_scan():
 
         # ---- Build notifications ----
         elapsed = f"{time.time() - start_time:.1f}"
-        # Count all unique sources
-        source_names = {
+        # Count sources that actually delivered jobs this scan;
+        # fall back to the configured source list when nothing was fetched.
+        configured_sources = {
             "greenhouse", "lever", "remotive", "remoteok", "weworkremotely", "jobicy",
             "nodesk", "arbeitnow", "yayremote", "remote1stjobs", "realworkfromanywhere",
             "mostaql", "for9a", "khamsat", "ureed", "wuzzuf", "daleel", "aqar", "tajer",
@@ -4093,7 +4100,8 @@ async def run_scan():
             "wwr_api", "justremote_api", "jobspresso_api", "workingnomads_api",
             "hirelatam_api", "arbeitnow_api", "jobicy_rss", "himalayas_rss",
         }
-        source_count = len(source_names)
+        sources_with_jobs = {j.get("source") for j in all_jobs if j.get("source")}
+        source_count = len(sources_with_jobs) if sources_with_jobs else len(configured_sources)
 
         stats = history["scan_stats"]
         stats["total_scans"] += 1
@@ -4162,7 +4170,9 @@ async def run_scan():
         date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         excel_path = OUTPUT_DIR / f"careerops-scan-{date_str}.xls"
         try:
-            excel_xml = generate_excel(final_verified, elapsed, near_misses, all_jobs, scan_info, stats)
+            # Pass the actual scan time, not the elapsed duration
+            scan_time_str = datetime.now(timezone.utc).strftime("%I:%M %p")
+            excel_xml = generate_excel(final_verified, scan_time_str, near_misses, all_jobs, scan_info, stats)
             excel_path.write_text(excel_xml, encoding="utf-8")
             print(f"Excel saved: {excel_path}")
         except Exception as e:
@@ -4230,6 +4240,9 @@ async def run_scan():
             if j["url"] not in seen_urls:
                 seen_urls.add(j["url"])
         for j in near_misses:
+            if j["url"] not in seen_urls:
+                seen_urls.add(j["url"])
+        for j in final_verified:
             if j["url"] not in seen_urls:
                 seen_urls.add(j["url"])
         history["seen_urls"] = list(seen_urls)

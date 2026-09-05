@@ -6,6 +6,7 @@ Uses Ollama for AI-powered customization when available.
 """
 
 import json
+import re
 from pathlib import Path
 from datetime import datetime, timezone
 from fpdf import FPDF
@@ -532,8 +533,12 @@ def generate_cover_letter_pdf(job: dict) -> str:
     """Generate a personalized PDF cover letter. Returns file path."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    title = job.get("title", "unknown").replace("/", "-")[:50]
-    company = job.get("company", job.get("source", "unknown")).replace("/", "-")[:30]
+    # Strip characters that are invalid in filenames (Windows and Unix)
+    def _safe(s: str) -> str:
+        return re.sub(r'[\\/:*?"<>|\x00-\x1f]', "-", s).strip()
+
+    title = _safe(job.get("title", "unknown"))[:50]
+    company = _safe(job.get("company", job.get("source", "unknown")))[:30]
     date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
 
     filename = f"{company}_{title}_{date_str}.pdf"

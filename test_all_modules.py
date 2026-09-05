@@ -301,42 +301,68 @@ def test_scanner_integration():
 
 def main():
     """Run all tests."""
+    import shutil
+    from pathlib import Path as _Path
+
     print("\n" + "=" * 60)
     print("CAREEROPS COMPREHENSIVE TEST SUITE")
     print("=" * 60 + "\n")
-    
-    results = []
-    
-    # Run synchronous tests
-    results.append(("Learning Module", test_learning_module()))
-    results.append(("Company Research", test_company_research()))
-    results.append(("Interview Preparation", test_interview_prep()))
-    results.append(("Excel Integration", test_excel_integration()))
-    results.append(("Scanner Integration", test_scanner_integration()))
-    
-    # Run async test
-    results.append(("AI Cover Letter", asyncio.run(test_cover_letter_ai())))
-    
-    # Summary
-    print("=" * 60)
-    print("TEST SUMMARY")
-    print("=" * 60)
-    
-    passed = sum(1 for _, result in results if result)
-    total = len(results)
-    
-    for name, result in results:
-        status = "[PASS]" if result else "[FAIL]"
-        print(f"{status} - {name}")
-    
-    print(f"\nTotal: {passed}/{total} tests passed")
-    
-    if passed == total:
-        print("\nALL TESTS PASSED! System is ready.\n")
-        return 0
-    else:
-        print(f"\n{total - passed} test(s) failed. Review output above.\n")
-        return 1
+
+    # Isolate test state: these tests write to output/ (learning_data.json,
+    # applications.json, company cache, interview prep, cover letter PDFs).
+    # Back up the real data first and restore it afterwards so tests can be
+    # re-run and never pollute production data.
+    output_dir = _Path(__file__).parent / "output"
+    backup_dir = _Path(__file__).parent / "output_test_backup"
+    had_output = output_dir.exists()
+    if had_output:
+        if backup_dir.exists():
+            shutil.rmtree(backup_dir)
+        shutil.copytree(output_dir, backup_dir)
+        # copytree only copies — remove the original so tests start clean
+        shutil.rmtree(output_dir)
+
+    try:
+        results = []
+
+        # Run synchronous tests
+        results.append(("Learning Module", test_learning_module()))
+        results.append(("Company Research", test_company_research()))
+        results.append(("Interview Preparation", test_interview_prep()))
+        results.append(("Excel Integration", test_excel_integration()))
+        results.append(("Scanner Integration", test_scanner_integration()))
+
+        # Run async test
+        results.append(("AI Cover Letter", asyncio.run(test_cover_letter_ai())))
+
+        # Summary
+        print("=" * 60)
+        print("TEST SUMMARY")
+        print("=" * 60)
+
+        passed = sum(1 for _, result in results if result)
+        total = len(results)
+
+        for name, result in results:
+            status = "[PASS]" if result else "[FAIL]"
+            print(f"{status} - {name}")
+
+        print(f"\nTotal: {passed}/{total} tests passed")
+
+        if passed == total:
+            print("\nALL TESTS PASSED! System is ready.\n")
+            return 0
+        else:
+            print(f"\n{total - passed} test(s) failed. Review output above.\n")
+            return 1
+    finally:
+        # Restore the real data and remove any test artifacts
+        if backup_dir.exists():
+            if output_dir.exists():
+                shutil.rmtree(output_dir)
+            shutil.move(str(backup_dir), str(output_dir))
+        elif output_dir.exists():
+            shutil.rmtree(output_dir)
 
 
 if __name__ == "__main__":

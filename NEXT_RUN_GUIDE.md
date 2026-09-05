@@ -128,3 +128,25 @@ gh workflow run scan.yml            # trigger the real 52-source scan on GitHub
 - a UTC date as the headline date (e.g. `2026-09-05` when it's 06 in Libya)
 - the same greeting/closing on two different runs
 - `Time (UTC)` in the Excel Daily Log
+
+---
+
+## 5. IMMEDIATE PUSH + RUN (new chat — copy-paste)
+
+```bash
+cd career-ops-scanner
+git status; git log --oneline -6            # expect: 5 commits on top of origin/main, clean
+git push origin <session-branch>            # this session: arena/01a073ec-career-ops-scanner
+gh pr create --title "fix: human-live — Libya dates, varied human messages, time-sensitive Excel" \
+             --body "Restores the human-live fixes. See NEXT_RUN_GUIDE.md" --base main
+gh pr merge --squash --auto=false           # or click Merge on GitHub
+gh workflow run scan.yml                    # trigger full 52-source scan on main
+gh run watch                                # watch Tests + scan go green
+```
+
+If the push says the branch already exists and is behind: `git pull --rebase origin main` first —
+the state-updater commits from scheduled scans land on main continuously.
+
+After the merge, the next scheduled scan (07:00 / 15:00 / 22:00 Libya) will
+send the first **human-live** digest: correct Libya date, rotating greeting,
+market-pulse Excel with a "Live as of … Libya" stamp.

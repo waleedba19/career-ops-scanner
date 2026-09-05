@@ -2621,6 +2621,72 @@ def save_seen_urls(urls: set):
 
 
 # ---------------------------------------------------------------------------
+# Smart Deduplication — track company+title+location, not just URL
+# ---------------------------------------------------------------------------
+
+SMART_SEEN_FILE = OUTPUT_DIR / "smart_seen.json"
+
+
+def load_smart_seen() -> dict:
+    """Load smart deduplication fingerprints."""
+    if SMART_SEEN_FILE.exists():
+        try:
+            return json.loads(SMART_SEEN_FILE.read_text())
+        except Exception:
+            pass
+    return {"fingerprints": {}, "updated": ""}
+
+
+def save_smart_seen(data: dict):
+    """Save smart deduplication fingerprints. Keep last 10000."""
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    # Keep only the most recent 10000 entries
+    fps = data.get("fingerprints", {})
+    if len(fps) > 10000:
+        # Sort by timestamp, keep newest
+        sorted_fps = sorted(fps.items(), key=lambda x: x[1].get("seen", ""), reverse=True)
+        fps = dict(sorted_fps[:10000])
+        data["fingerprints"] = fps
+    data["updated"] = datetime.now(timezone.utc).isoformat()
+    SMART_SEEN_FILE.write_text(json.dumps(data, indent=2))
+
+
+def make_fingerprint(job: dict) -> str:
+    """Create a smart fingerprint from company+title+location."""
+    import re
+    company = re.sub(r'[^a-z0-9]', '', (job.get("company") or "").lower().strip())
+    title = re.sub(r'[^a-z0-9]', '', (job.get("title") or "").lower().strip())
+    # Normalize common title variations
+    title = title.replace("remote", "").replace("fulltime", "").replace("parttime", "")
+    title = title.replace("contract", "").replace("freelance", "")
+    # Use first 30 chars of title to catch slight variations
+    title = title[:30]
+    location = re.sub(r'[^a-z0-9]', '', (job.get("location") or "").lower().strip())[:20]
+    return f"{company}|{title}|{location}"
+
+
+def is_duplicate(job: dict, smart_seen: dict) -> bool:
+    """Check if job is a duplicate using smart fingerprinting."""
+    fp = make_fingerprint(job)
+    fps = smart_seen.get("fingerprints", {})
+    if fp in fps:
+        return True
+    return False
+
+
+def mark_seen(job: dict, smart_seen: dict):
+    """Mark job as seen using smart fingerprinting."""
+    fp = make_fingerprint(job)
+    if "fingerprints" not in smart_seen:
+        smart_seen["fingerprints"] = {}
+    smart_seen["fingerprints"][fp] = {
+        "seen": datetime.now(timezone.utc).isoformat(),
+        "title": job.get("title", ""),
+        "company": job.get("company", ""),
+    }
+
+
+# ---------------------------------------------------------------------------
 # Accumulating Excel history — read previous, append new matches
 # ---------------------------------------------------------------------------
 
@@ -3147,6 +3213,372 @@ async def fetch_carmel(session: aiohttp.ClientSession) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# 54. Preply — Online tutoring platform
+# ---------------------------------------------------------------------------
+
+async def fetch_preply(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Preply tutoring jobs."""
+    try:
+        async with session.get(
+            "https://preply.com/en/jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Look for tutor positions
+            patterns = [
+                r'<a[^>]*href="(/en/jobs/[^"]*)"[^>]*>([^<]+)</a>',
+                r'"title":"([^"]*(?:tutor|teacher|instructor|language)[^"]*)"',
+            ]
+            for pattern in patterns:
+                matches = re.findall(pattern, html, re.I)
+                for url, *title_match in matches[:50]:
+                    title = title_match[0].strip() if title_match else url.split("/")[-1].replace("-", " ").title()
+                    if not title or len(title) < 5:
+                        continue
+                    if not url.startswith("http"):
+                        url = f"https://preply.com{url}"
+                    jobs.append({
+                        "title": title,
+                        "company": "Preply",
+                        "url": url,
+                        "location": "Remote (Worldwide)",
+                        "posted": "",
+                        "description": "Online language tutoring platform",
+                        "salary": "",
+                        "source": "preply",
+                    })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Preply: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 55. Cambly — English tutoring platform
+# ---------------------------------------------------------------------------
+
+async def fetch_cambly(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Cambly tutoring jobs."""
+    try:
+        async with session.get(
+            "https://www.cambly.com/en/tutors",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Look for tutor positions
+            pattern = r'<a[^>]*href="([^"]*tutor[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.cambly.com{url}"
+                jobs.append({
+                    "title": title,
+                    "company": "Cambly",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "English tutoring platform for native speakers",
+                    "salary": "",
+                    "source": "cambly",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Cambly: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 56. VIPKid — English teaching platform
+# ---------------------------------------------------------------------------
+
+async def fetch_vipkid(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from VIPKid teaching jobs."""
+    try:
+        async with session.get(
+            "https://www.vipkid.com/en/teacher/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*teach[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.vipkid.com{url}"
+                jobs.append({
+                    "title": title,
+                    "company": "VIPKid",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "English teaching platform for children",
+                    "salary": "",
+                    "source": "vipkid",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  VIPKid: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 57. Qkids — English teaching platform
+# ---------------------------------------------------------------------------
+
+async def fetch_qkids(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Qkids teaching jobs."""
+    try:
+        async with session.get(
+            "https://www.qkids.com/en/teacher",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*teacher[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.qkids.com{url}"
+                jobs.append({
+                    "title": title,
+                    "company": "Qkids",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "English teaching platform",
+                    "salary": "",
+                    "source": "qkids",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Qkids: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 58. Magic Ears — English teaching platform
+# ---------------------------------------------------------------------------
+
+async def fetch_magic_ears(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Magic Ears teaching jobs."""
+    try:
+        async with session.get(
+            "https://www.magicears.com/en/teacher",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*teacher[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.magicears.com{url}"
+                jobs.append({
+                    "title": title,
+                    "company": "Magic Ears",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "English teaching platform",
+                    "salary": "",
+                    "source": "magic_ears",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Magic Ears: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 59. Translated.com — Translation platform
+# ---------------------------------------------------------------------------
+
+async def fetch_translated(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Translated.com translation jobs."""
+    try:
+        async with session.get(
+            "https://www.translated.com/en/translators",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*translat[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.translated.com{url}"
+                jobs.append({
+                    "title": f"Translator - {title}",
+                    "company": "Translated.com",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "Translation platform for professional translators",
+                    "salary": "",
+                    "source": "translated",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Translated: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 60. One Hour Translation — Translation platform
+# ---------------------------------------------------------------------------
+
+async def fetch_one_hour_translation(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from One Hour Translation jobs."""
+    try:
+        async with session.get(
+            "https://www.onehourtranslation.com/translation/jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*job[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.onehourtranslation.com{url}"
+                jobs.append({
+                    "title": f"Translator - {title}",
+                    "company": "One Hour Translation",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "Fast translation platform",
+                    "salary": "",
+                    "source": "one_hour_translation",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  One Hour Translation: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 61. Flitto — Translation platform
+# ---------------------------------------------------------------------------
+
+async def fetch_flitto(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Flitto translation jobs."""
+    try:
+        async with session.get(
+            "https://flitto.com/en/translators",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*translat[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://flitto.com{url}"
+                jobs.append({
+                    "title": f"Translator - {title}",
+                    "company": "Flitto",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "Crowdsourced translation platform",
+                    "salary": "",
+                    "source": "flitto",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Flitto: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 62. TextMaster — Translation platform
+# ---------------------------------------------------------------------------
+
+async def fetch_textmaster(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from TextMaster translation jobs."""
+    try:
+        async with session.get(
+            "https://www.textmaster.com/en/translators/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            pattern = r'<a[^>]*href="([^"]*translat[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://www.textmaster.com{url}"
+                jobs.append({
+                    "title": f"Translator - {title}",
+                    "company": "TextMaster",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "Professional translation platform",
+                    "salary": "",
+                    "source": "textmaster",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  TextMaster: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
 # Generic fetchers for auto-discovered sources
 # ---------------------------------------------------------------------------
 
@@ -3331,6 +3763,17 @@ async def run_scan():
         fetchers.append(fetch_unbabel(session))
         fetchers.append(fetch_rws(session))
         fetchers.append(fetch_carmel(session))
+        
+        # ---- ESL/Teaching specific sources ----
+        fetchers.append(fetch_preply(session))
+        fetchers.append(fetch_cambly(session))
+        fetchers.append(fetch_vipkid(session))
+        fetchers.append(fetch_qkids(session))
+        fetchers.append(fetch_magic_ears(session))
+        fetchers.append(fetch_translated(session))
+        fetchers.append(fetch_one_hour_translation(session))
+        fetchers.append(fetch_flitto(session))
+        fetchers.append(fetch_textmaster(session))
 
         # ---- Auto-discovered sources from registry ----
         registry_file = OUTPUT_DIR / "source_registry.json"
@@ -3380,11 +3823,19 @@ async def run_scan():
         fresh_total = 0
         old_but_verified = []
         filter_debug = {"no_url": 0, "paid": 0, "too_old": 0, "no_positive": 0,
-                        "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0}
+                        "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0, "duplicate": 0}
+        
+        # Load smart deduplication data
+        smart_seen = load_smart_seen()
 
         for job in all_jobs:
             if not job.get("url"):
                 filter_debug["no_url"] += 1
+                continue
+            
+            # Smart deduplication — skip if company+title+location already seen
+            if is_duplicate(job, smart_seen):
+                filter_debug["duplicate"] += 1
                 continue
             
             # Filter out paid platforms
@@ -3445,6 +3896,9 @@ async def run_scan():
                 "is_fresh": is_fresh,
                 "age_hours": age,
             }
+            
+            # Mark as seen for smart deduplication
+            mark_seen(job, smart_seen)
             
             # Separate fresh jobs from older jobs
             if is_fresh:
@@ -3740,6 +4194,12 @@ async def run_scan():
         all_seen |= set(j["url"] for j in scored)
         all_seen |= set(j["url"] for j in near_misses)
         save_seen_urls(all_seen)
+        
+        # ---- Save smart deduplication data ----
+        save_smart_seen(smart_seen)
+        dup_count = filter_debug.get("duplicate", 0)
+        if dup_count > 0:
+            print(f"Smart dedup: skipped {dup_count} duplicate jobs")
 
         elapsed_final = f"{time.time() - start_time:.1f}"
         print(f"Scan complete in {elapsed_final}s. Telegram: {telegram_sent}, Email: {email_sent}")

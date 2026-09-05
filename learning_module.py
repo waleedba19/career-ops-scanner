@@ -115,25 +115,72 @@ def adjust_scoring_based_on_learning(job: dict) -> float:
     base_score = job.get("ai_overall_score", job.get("score", 0))
     adjustment = 0
     
-    # Boost score if category matches previously applied jobs
+    # Get category and company
     category = job.get("category", "Other")
+    company = job.get("company", "Unknown")
+    title = (job.get("title") or "").lower()
+    
+    # ---- CATEGORY LEARNING ----
+    # Boost score significantly if category matches frequently applied jobs
     if category in data["skill_preferences"]:
         times_applied = data["skill_preferences"][category]
-        if times_applied >= 1:
-            adjustment += 3  # Boost for categories you've applied to before
+        if times_applied >= 5:
+            adjustment += 8  # Strong boost for favorite categories
+        elif times_applied >= 3:
+            adjustment += 5  # Moderate boost
+        elif times_applied >= 1:
+            adjustment += 3  # Small boost
     
-    # Boost score if company matches previously applied jobs
-    company = job.get("company", "Unknown")
+    # ---- COMPANY LEARNING ----
+    # Boost score for companies you've applied to before
     if company in data["company_preferences"]:
         times_applied = data["company_preferences"][company]
-        if times_applied >= 1:
-            adjustment += 2  # Boost for familiar companies
+        if times_applied >= 3:
+            adjustment += 6  # Strong boost for favorite companies
+        elif times_applied >= 1:
+            adjustment += 3  # Moderate boost
     
+    # ---- REJECTION LEARNING ----
     # Reduce score if category matches rejected jobs
-    for rejected in data["rejected_jobs"]:
-        if rejected.get("category") == category:
-            adjustment -= 2
-            break
+    rejected_categories = set()
+    for rejected in data.get("rejected_jobs", []):
+        rejected_categories.add(rejected.get("category", ""))
+    
+    if category in rejected_categories:
+        adjustment -= 5  # Penalty for rejected categories
+    
+    # ---- INTERVIEW LEARNING ----
+    # Boost score if category matches jobs that got interviews
+    interview_categories = set()
+    for interviewed in data.get("interviewed_jobs", []):
+        interview_categories.add(interviewed.get("category", ""))
+    
+    if category in interview_categories:
+        adjustment += 10  # Strong boost for interview-winning categories
+    
+    # ---- TITLE KEYWORD LEARNING ----
+    # Learn from title patterns in applied jobs
+    applied_titles = [j.get("title", "").lower() for j in data["applied_jobs"]]
+    for applied_title in applied_titles:
+        # Check for common keywords
+        keywords = ["translator", "esl", "teacher", "tutor", "writer", "editor", "proofreader", "academic"]
+        for kw in keywords:
+            if kw in applied_title and kw in title:
+                adjustment += 2  # Small boost for matching title keywords
+                break
+    
+    # ---- SOURCE LEARNING ----
+    # Learn which sources produce jobs you apply to
+    source_preferences = {}
+    for applied in data["applied_jobs"]:
+        src = applied.get("source", "unknown")
+        source_preferences[src] = source_preferences.get(src, 0) + 1
+    
+    job_source = job.get("source", "unknown")
+    if job_source in source_preferences:
+        times_from_source = source_preferences[job_source]
+        if times_from_source >= 3:
+            adjustment += 3  # Boost for productive sources
     
     # Apply adjustment
     adjusted_score = max(0, min(100, base_score + adjustment))

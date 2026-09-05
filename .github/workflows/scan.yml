@@ -26,6 +26,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Restore persistent state
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python state_sync.py download
 
       - name: Set up Python
@@ -72,6 +74,8 @@ jobs:
 
       - name: Save persistent state
         if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python state_sync.py upload
 
       - name: Notify failure on Telegram

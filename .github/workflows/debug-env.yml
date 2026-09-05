@@ -1,0 +1,20 @@
+name: Debug Env
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TELEGRAM_BOT_TOKEN: "x"
+      TELEGRAM_CHAT_ID: "y"
+    steps:
+      - name: Check env vars
+        run: |
+          echo "GITHUB_ACTIONS=[$GITHUB_ACTIONS]"
+          echo "GITHUB_TOKEN set: $(if [ -n "$GITHUB_TOKEN" ]; then echo yes; else echo no; fi)"
+          echo "GITHUB_REPOSITORY=[$GITHUB_REPOSITORY]"
+          python -c "import os; print('py sees token:', os.getenv('GITHUB_TOKEN') is not None, '| repo:', os.getenv('GITHUB_REPOSITORY'), '| actions:', os.getenv('GITHUB_ACTIONS'))"

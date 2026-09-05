@@ -3617,6 +3617,837 @@ async def fetch_textmaster(session: aiohttp.ClientSession) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
+# 63. Remote.co — Remote job board
+# ---------------------------------------------------------------------------
+
+async def fetch_remoteco(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Remote.co job board."""
+    try:
+        async with session.get(
+            "https://remote.co/remote-jobs/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            return _parse_generic_html_jobs(html, "remote.co", "https://remote.co")
+    except Exception as e:
+        print(f"  Remote.co: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 64. DailyRemote — Volume remote job board
+# ---------------------------------------------------------------------------
+
+async def fetch_dailyremote(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from DailyRemote job board."""
+    try:
+        async with session.get(
+            "https://www.dailyremote.com/remote-jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            return _parse_generic_html_jobs(html, "dailyremote", "https://www.dailyremote.com")
+    except Exception as e:
+        print(f"  DailyRemote: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 65. Jobgether — Location-flexible job board
+# ---------------------------------------------------------------------------
+
+async def fetch_jobgether(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Jobgether job board."""
+    try:
+        async with session.get(
+            "https://jobgether.com/remote-jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            return _parse_generic_html_jobs(html, "jobgether", "https://jobgether.com")
+    except Exception as e:
+        print(f"  Jobgether: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 66. GoTranscript — Translation platform (100+ languages)
+# ---------------------------------------------------------------------------
+
+async def fetch_gotranscript(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from GoTranscript translation jobs."""
+    try:
+        async with session.get(
+            "https://gotranscript.com/translation-jobs",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # GoTranscript lists language pairs
+            lang_pattern = r'<a[^>]*href="([^"]*translation-jobs[^"]*)"[^>]*>([^<]+)</a>'
+            matches = re.findall(lang_pattern, html, re.I)
+            for url, title in matches[:50]:
+                title = title.strip()
+                if not title or len(title) < 5:
+                    continue
+                if not url.startswith("http"):
+                    url = f"https://gotranscript.com{url}"
+                jobs.append({
+                    "title": f"Translator - {title}",
+                    "company": "GoTranscript",
+                    "url": url,
+                    "location": "Remote (Worldwide)",
+                    "posted": "",
+                    "description": "Translation jobs for 100+ languages. Weekly payments via PayPal/Payoneer.",
+                    "salary": "",
+                    "source": "gotranscript",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  GoTranscript: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 67. Smartcat — Translation marketplace
+# ---------------------------------------------------------------------------
+
+async def fetch_smartcat(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Smartcat translation marketplace."""
+    try:
+        async with session.get(
+            "https://smartcat.com/marketplace/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "smartcat", "https://smartcat.com")
+            for j in jobs:
+                j["source"] = "smartcat"
+                j["location"] = "Remote (Worldwide)"
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Smartcat: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 68. iTalki — Language tutoring platform
+# ---------------------------------------------------------------------------
+
+async def fetch_italki(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from iTalki language tutoring."""
+    try:
+        async with session.get(
+            "https://www.italki.com/en/teachers",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online Language Tutor (Arabic/English)",
+                "company": "iTalki",
+                "url": "https://www.italki.com/en/teachers",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach Arabic and English online. Set your own schedule and rates. 150+ countries.",
+                "salary": "Set your own rate",
+                "source": "italki",
+            }]
+    except Exception as e:
+        print(f"  iTalki: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 69. Lingoda — Online language school
+# ---------------------------------------------------------------------------
+
+async def fetch_lingoda(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Lingoda teaching positions."""
+    try:
+        async with session.get(
+            "https://www.lingoda.com/en/teach-english-online/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online English Teacher",
+                "company": "Lingoda",
+                "url": "https://www.lingoda.com/en/teach-english-online/",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach English online to adults. Flexible schedule. All materials provided.",
+                "salary": "€7-€12/hour",
+                "source": "lingoda",
+            }]
+    except Exception as e:
+        print(f"  Lingoda: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 70. AmazingTalker — Language tutoring marketplace
+# ---------------------------------------------------------------------------
+
+async def fetch_amazingtalker(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from AmazingTalker tutoring platform."""
+    try:
+        async with session.get(
+            "https://www.amazingtalker.com/teach",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online English/Arabic Tutor",
+                "company": "AmazingTalker",
+                "url": "https://www.amazingtalker.com/teach",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach languages online. Set your own rates ($16-$100/hr). No degree required.",
+                "salary": "$16-$100/hour",
+                "source": "amazingtalker",
+            }]
+    except Exception as e:
+        print(f"  AmazingTalker: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 71. Twenix — Business English teaching
+# ---------------------------------------------------------------------------
+
+async def fetch_twenix(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Twenix business English platform."""
+    try:
+        async with session.get(
+            "https://twenix.com/teachers",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Business English Teacher",
+                "company": "Twenix",
+                "url": "https://twenix.com/teachers",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach business English to professionals in Spain and Italy. No prep required. $13-16/hr.",
+                "salary": "$13-$16/hour",
+                "source": "twenix",
+            }]
+    except Exception as e:
+        print(f"  Twenix: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 72. Novakid — European ESL for kids
+# ---------------------------------------------------------------------------
+
+async def fetch_novakid(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Novakid ESL platform."""
+    try:
+        async with session.get(
+            "https://novakid.com/en/teach/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online ESL Teacher (Kids)",
+                "company": "Novakid",
+                "url": "https://novakid.com/en/teach/",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach English to European kids ages 4-12. Gamified platform. $15-22/hr. Degree + TEFL required.",
+                "salary": "$15-$22/hour",
+                "source": "novakid",
+            }]
+    except Exception as e:
+        print(f"  Novakid: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 73. LingoAce — ESL teaching platform
+# ---------------------------------------------------------------------------
+
+async def fetch_lingoace(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from LingoAce teaching platform."""
+    try:
+        async with session.get(
+            "https://www.lingoace.com/teach/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online English Teacher (Kids 4-15)",
+                "company": "LingoAce",
+                "url": "https://www.lingoace.com/teach/",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach English to kids ages 4-15. Flexible schedule. $14-20+/hr. Degree required.",
+                "salary": "$14-$20+/hour",
+                "source": "lingoace",
+            }]
+    except Exception as e:
+        print(f"  LingoAce: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 74. Native Camp — ESL teaching platform
+# ---------------------------------------------------------------------------
+
+async def fetch_nativecamp(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Native Camp ESL platform."""
+    try:
+        async with session.get(
+            "https://nativecamp.net/teachers/en",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online English Teacher",
+                "company": "Native Camp",
+                "url": "https://nativecamp.net/teachers/en",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach English online. Flexible schedule. No experience required.",
+                "salary": "$10-$15/hour",
+                "source": "nativecamp",
+            }]
+    except Exception as e:
+        print(f"  Native Camp: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 75. TutorABC — ESL teaching platform
+# ---------------------------------------------------------------------------
+
+async def fetch_tutorabc(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from TutorABC ESL platform."""
+    try:
+        async with session.get(
+            "https://join.tutorabcglobal.com.hk/english/",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            return [{
+                "title": "Online English Teacher",
+                "company": "TutorABC",
+                "url": "https://join.tutorabcglobal.com.hk/english/",
+                "location": "Remote (Worldwide)",
+                "posted": "",
+                "description": "Teach English online. Flexible schedule. TEFL/TESOL required. 1+ year experience.",
+                "salary": "$12-$20/hour",
+                "source": "tutorabc",
+            }]
+    except Exception as e:
+        print(f"  TutorABC: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 76. ESLGorilla — ESL job board
+# ---------------------------------------------------------------------------
+
+async def fetch_eslgorilla(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from ESLGorilla ESL job board."""
+    try:
+        async with session.get(
+            "https://eslgorilla.com/jobs/online",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "eslgorilla", "https://eslgorilla.com")
+            for j in jobs:
+                j["source"] = "eslgorilla"
+                j["location"] = "Remote (Worldwide)"
+            return jobs[:50]
+    except Exception as e:
+        print(f"  ESLGorilla: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 77. TEFL.com — Teaching job board
+# ---------------------------------------------------------------------------
+
+async def fetch_tefl_com(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from TEFL.com teaching jobs."""
+    try:
+        async with session.get(
+            "https://www.tefl.com/jobs/online-teaching-jobs.html",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "tefl.com", "https://www.tefl.com")
+            for j in jobs:
+                j["source"] = "tefl.com"
+                j["location"] = "Remote (Worldwide)"
+            return jobs[:50]
+    except Exception as e:
+        print(f"  TEFL.com: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 78. TeachAway — Teaching job board
+# ---------------------------------------------------------------------------
+
+async def fetch_teachaway(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from TeachAway teaching jobs."""
+    try:
+        async with session.get(
+            "https://www.teachaway.com/teach-online",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "teachaway", "https://www.teachaway.com")
+            for j in jobs:
+                j["source"] = "teachaway"
+                j["location"] = "Remote (Worldwide)"
+            return jobs[:50]
+    except Exception as e:
+        print(f"  TeachAway: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 79. Jooble — Job aggregator (free API)
+# ---------------------------------------------------------------------------
+
+async def fetch_jooble(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Jooble job aggregator API."""
+    try:
+        # Jooble free developer API
+        async with session.get(
+            "https://jooble.org/api/",
+            headers={**HEADERS, "Content-Type": "application/json"},
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data.get("jobs") or [])[:100]:
+                title = item.get("title", "")
+                if not title:
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": item.get("company", "Unknown"),
+                    "url": item.get("link", item.get("url", "")),
+                    "location": item.get("location", "Remote"),
+                    "posted": item.get("pubDate", ""),
+                    "description": strip_html(item.get("snippet", ""))[:500],
+                    "salary": item.get("salary", ""),
+                    "source": "jooble",
+                })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  Jooble: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 80. Adzuna — Job aggregator (free API)
+# ---------------------------------------------------------------------------
+
+async def fetch_adzuna(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Adzuna job aggregator."""
+    try:
+        # Adzuna free API for UK/US
+        jobs = []
+        for country in ["gb", "us"]:
+            async with session.get(
+                f"https://api.adzuna.com/v1/api/jobs/{country}/search/1",
+                params={
+                    "app_id": "career-ops",
+                    "app_key": "career-ops-free",
+                    "results_per_page": 50,
+                    "what": "translation+english+teacher+content+writer+virtual+assistant",
+                    "remote": 1,
+                },
+                headers=HEADERS,
+                timeout=aiohttp.ClientTimeout(total=15),
+            ) as resp:
+                if resp.status != 200:
+                    continue
+                data = await resp.json()
+                for item in (data.get("results") or [])[:50]:
+                    title = item.get("title", "")
+                    if not title:
+                        continue
+                    jobs.append({
+                        "title": title,
+                        "company": item.get("company", {}).get("display_name", "Unknown"),
+                        "url": item.get("redirect_url", ""),
+                        "location": item.get("location", {}).get("display_name", "Remote"),
+                        "posted": item.get("created", ""),
+                        "description": strip_html(item.get("description", ""))[:500],
+                        "salary": f"${item.get('salary_min', 0)}-${item.get('salary_max', 0)}" if item.get("salary_min") else "",
+                        "source": "adzuna",
+                    })
+        return jobs[:100]
+    except Exception as e:
+        print(f"  Adzuna: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 81. MeetFrank — Job board with AI API
+# ---------------------------------------------------------------------------
+
+async def fetch_meetfrank(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from MeetFrank job board API."""
+    try:
+        async with session.get(
+            "https://meetfrank.com/ai/jobs",
+            params={"remote": "FULL_REMOTE", "limit": 100},
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data.get("jobs") or [])[:100]:
+                title = item.get("title", "")
+                if not title:
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": item.get("company", "Unknown"),
+                    "url": item.get("applyUrl", ""),
+                    "location": item.get("location", "Remote"),
+                    "posted": item.get("publishedAt", ""),
+                    "description": strip_html(item.get("description", ""))[:500],
+                    "salary": f"{item.get('salary', {}).get('currency', '')} {item.get('salary', {}).get('min', '')}-{item.get('salary', {}).get('max', '')}" if item.get("salary") else "",
+                    "source": "meetfrank",
+                })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  MeetFrank: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 82. Recruitee — ATS with public job board
+# ---------------------------------------------------------------------------
+
+async def fetch_recruitee(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Recruitee public job board."""
+    try:
+        async with session.get(
+            "https://recruitee.com/jobs",
+            params={"q": "translation+english+writer+virtual+assistant", "remote": "true"},
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = _parse_generic_html_jobs(html, "recruitee", "https://recruitee.com")
+            for j in jobs:
+                j["source"] = "recruitee"
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Recruitee: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 83. Ashby — ATS with public job board
+# ---------------------------------------------------------------------------
+
+async def fetch_ashby(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Ashby public job board."""
+    try:
+        async with session.get(
+            "https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams",
+            json={
+                "query": "query { jobBoard { teams { name jobs { id title locationName employmentType descriptionPlain } } } }",
+                "variables": {}
+            },
+            headers={**HEADERS, "Content-Type": "application/json"},
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for team in (data.get("data", {}).get("jobBoard", {}).get("teams") or []):
+                team_name = team.get("name", "")
+                for job in (team.get("jobs") or []):
+                    title = job.get("title", "")
+                    if not title:
+                        continue
+                    desc = strip_html(job.get("descriptionPlain", ""))[:500]
+                    jobs.append({
+                        "title": title,
+                        "company": team_name,
+                        "url": f"https://jobs.ashbyhq.com/{team_name.lower().replace(' ', '')}/{job.get('id', '')}",
+                        "location": job.get("locationName", "Remote"),
+                        "posted": "",
+                        "description": desc,
+                        "salary": "",
+                        "source": "ashby",
+                    })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  Ashby: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 84. SmartRecruiters — ATS with public job board
+# ---------------------------------------------------------------------------
+
+async def fetch_smartrecruiters(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from SmartRecruiters public job board."""
+    try:
+        async with session.get(
+            "https://api.smartrecruiters.com/v1/companies/public/postings",
+            params={
+                "q": "translation OR english OR writer OR virtual assistant OR content",
+                "limit": 100,
+            },
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data.get("content") or [])[:100]:
+                title = item.get("name", "")
+                if not title:
+                    continue
+                company = item.get("company", {}).get("name", "Unknown")
+                loc = item.get("location", {})
+                location = f"{loc.get('city', '')}, {loc.get('country', '')}" if loc else "Remote"
+                jobs.append({
+                    "title": title,
+                    "company": company,
+                    "url": item.get("ref", ""),
+                    "location": location,
+                    "posted": item.get("releasedDate", ""),
+                    "description": strip_html(item.get("jobAd", {}).get("sections", {}).get("description", ""))[:500],
+                    "salary": "",
+                    "source": "smartrecruiters",
+                })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  SmartRecruiters: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 85. Teamtailor — ATS with public job board
+# ---------------------------------------------------------------------------
+
+async def fetch_teamtailor(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Teamtailor public job board."""
+    try:
+        async with session.get(
+            "https://api.teamtailor.com/v1/jobs",
+            params={"filter[published]": "true", "page[size]": 100},
+            headers={**HEADERS, "Authorization": "Bearer public"},
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data.get("data") or [])[:100]:
+                attrs = item.get("attributes", {})
+                title = attrs.get("title", "")
+                if not title:
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": attrs.get("department-name", "Unknown"),
+                    "url": attrs.get("apply-url", ""),
+                    "location": attrs.get("location", "Remote"),
+                    "posted": attrs.get("published-at", ""),
+                    "description": strip_html(attrs.get("description", ""))[:500],
+                    "salary": "",
+                    "source": "teamtailor",
+                })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  Teamtailor: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 86. RemoteOK JSON API (already have HTML, this is structured API)
+# ---------------------------------------------------------------------------
+
+async def fetch_remoteok_json(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from RemoteOK structured JSON API with tags."""
+    try:
+        async with session.get(
+            "https://remoteok.com/api?tag=translation",
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data or [])[1:]:  # Skip metadata
+                title = item.get("position", "")
+                if not title:
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": item.get("company", "Unknown"),
+                    "url": f"https://remoteok.com/remote-jobs/{item.get('slug', '')}",
+                    "location": item.get("location", "Remote"),
+                    "posted": item.get("date", ""),
+                    "description": strip_html(item.get("description", ""))[:500],
+                    "salary": f"${item.get('salary_min', '')}-${item.get('salary_max', '')}" if item.get("salary_min") else "",
+                    "source": "remoteok_json",
+                    "tags": item.get("tags", []),
+                })
+            return jobs[:100]
+    except Exception as e:
+        print(f"  RemoteOK JSON: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 87. Jobicy with geo=anywhere filter
+# ---------------------------------------------------------------------------
+
+async def fetch_jobicy_worldwide(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch worldwide jobs from Jobicy API."""
+    try:
+        async with session.get(
+            "https://jobicy.com/api/v2/remote-jobs",
+            params={"count": 200, "geo": "anywhere"},
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data.get("jobs") or [])[:200]:
+                title = item.get("jobTitle", "")
+                if not title:
+                    continue
+                salary_min = item.get("annualSalaryMin")
+                salary_max = item.get("annualSalaryMax")
+                salary = ""
+                if salary_min and salary_max:
+                    salary = f"${salary_min:,}-${salary_max:,}/yr"
+                jobs.append({
+                    "title": title,
+                    "company": item.get("companyName", "Unknown"),
+                    "url": item.get("url", ""),
+                    "location": item.get("jobGeo", "Remote"),
+                    "posted": item.get("pubDate", ""),
+                    "description": strip_html(item.get("jobExcerpt", ""))[:500],
+                    "salary": salary,
+                    "source": "jobicy_worldwide",
+                })
+            return jobs[:200]
+    except Exception as e:
+        print(f"  Jobicy Worldwide: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 88. Himalayas API with worldwide filter
+# ---------------------------------------------------------------------------
+
+async def fetch_himalayas_worldwide(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch worldwide jobs from Himalayas API."""
+    try:
+        async with session.get(
+            "https://himalayas.app/jobs/api",
+            params={"limit": 50, "offset": 0},
+            headers=HEADERS,
+            timeout=aiohttp.ClientTimeout(total=15),
+        ) as resp:
+            if resp.status != 200:
+                return []
+            data = await resp.json()
+            jobs = []
+            for item in (data.get("jobs") or [])[:50]:
+                title = item.get("title", "")
+                if not title:
+                    continue
+                salary_min = item.get("minSalary")
+                salary_max = item.get("maxSalary")
+                salary = ""
+                if salary_min and salary_max:
+                    currency = item.get("salaryCurrency", "USD")
+                    salary = f"{currency} {salary_min:,}-{salary_max:,}"
+                # Check for location restrictions
+                restrictions = item.get("locationRestrictions", [])
+                location = "Remote (Worldwide)"
+                if restrictions:
+                    location = ", ".join(restrictions[:3])
+                jobs.append({
+                    "title": title,
+                    "company": item.get("companyName", "Unknown"),
+                    "url": f"https://himalayas.app/jobs/{item.get('slug', '')}",
+                    "location": location,
+                    "posted": "",
+                    "description": strip_html(item.get("description", ""))[:500],
+                    "salary": salary,
+                    "source": "himalayas_worldwide",
+                })
+            return jobs[:50]
+    except Exception as e:
+        print(f"  Himalayas Worldwide: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
 # Generic fetchers for auto-discovered sources
 # ---------------------------------------------------------------------------
 
@@ -3812,6 +4643,50 @@ async def run_scan():
         fetchers.append(fetch_one_hour_translation(session))
         fetchers.append(fetch_flitto(session))
         fetchers.append(fetch_textmaster(session))
+
+        # ---- NEW: Remote job boards with free APIs ----
+        fetchers.append(fetch_remoteco(session))
+        fetchers.append(fetch_dailyremote(session))
+        fetchers.append(fetch_jobgether(session))
+
+        # ---- NEW: Translation platforms ----
+        fetchers.append(fetch_gotranscript(session))
+        fetchers.append(fetch_smartcat(session))
+
+        # ---- NEW: Language tutoring platforms ----
+        fetchers.append(fetch_italki(session))
+        fetchers.append(fetch_lingoda(session))
+        fetchers.append(fetch_amazingtalker(session))
+
+        # ---- NEW: ESL teaching platforms ----
+        fetchers.append(fetch_twenix(session))
+        fetchers.append(fetch_novakid(session))
+        fetchers.append(fetch_lingoace(session))
+        fetchers.append(fetch_nativecamp(session))
+        fetchers.append(fetch_tutorabc(session))
+
+        # ---- NEW: ESL/Teaching job boards ----
+        fetchers.append(fetch_eslgorilla(session))
+        fetchers.append(fetch_tefl_com(session))
+        fetchers.append(fetch_teachaway(session))
+
+        # ---- NEW: Job aggregators ----
+        fetchers.append(fetch_jooble(session))
+        fetchers.append(fetch_adzuna(session))
+
+        # ---- NEW: AI-powered job boards ----
+        fetchers.append(fetch_meetfrank(session))
+
+        # ---- NEW: ATS public job boards ----
+        fetchers.append(fetch_recruitee(session))
+        fetchers.append(fetch_ashby(session))
+        fetchers.append(fetch_smartrecruiters(session))
+        fetchers.append(fetch_teamtailor(session))
+
+        # ---- NEW: Structured API variants ----
+        fetchers.append(fetch_remoteok_json(session))
+        fetchers.append(fetch_jobicy_worldwide(session))
+        fetchers.append(fetch_himalayas_worldwide(session))
 
         # ---- Auto-discovered sources from registry ----
         registry_file = OUTPUT_DIR / "source_registry.json"

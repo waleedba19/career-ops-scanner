@@ -5113,12 +5113,15 @@ async def run_scan():
             print(f"Company cache cleanup failed: {e}")
 
         # ---- Generate Excel ----
+        # User-facing date/time in Libya (Africa/Tripoli, UTC+2), never raw UTC
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        from notifier import now_libya
+        libya_now = now_libya()
+        date_str = libya_now.strftime("%Y-%m-%d")
         excel_path = OUTPUT_DIR / f"careerops-scan-{date_str}.xls"
         try:
-            # Pass the actual scan time, not the elapsed duration
-            scan_time_str = datetime.now(timezone.utc).strftime("%I:%M %p")
+            # Pass the actual scan time (Libya), not the elapsed duration
+            scan_time_str = libya_now.strftime("%I:%M %p")
             excel_xml = generate_excel(final_verified, scan_time_str, near_misses, all_jobs, scan_info, stats)
             excel_path.write_text(excel_xml, encoding="utf-8")
             print(f"Excel saved: {excel_path}")
@@ -5163,13 +5166,16 @@ async def run_scan():
         # ---- Send Email ----
         email_sent = False
         try:
-            from notifier import build_email
+            from notifier import build_email, now_libya
             email_result = build_email(final_verified, scan_info, stats)
-            email_subject = (
-                f"CareerOps Scan - {date_str} - \u2705 {len(final_verified)} New Match{'es' if len(final_verified) != 1 else ''} Found"
-                if final_verified
-                else f"CareerOps Scan - {date_str} - \u2705 0 New Matches Found"
-            )
+            libya_now = now_libya()
+            subj_time = libya_now.strftime("%I:%M %p")
+            subj_date = libya_now.strftime("%Y-%m-%d")
+            if final_verified:
+                n = len(final_verified)
+                email_subject = f"CareerOps — {subj_date} {subj_time} Libya \u00b7 {n} New Match{'es' if n != 1 else ''}"
+            else:
+                email_subject = f"CareerOps — {subj_date} {subj_time} Libya \u00b7 0 New Matches"
             # Collect PDF cover letter paths
             pdf_paths = [j.get("cover_letter_path", "") for j in final_verified if j.get("cover_letter_path")]
             email_sent = await send_email(

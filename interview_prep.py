@@ -7,10 +7,19 @@ Helps candidates prepare for interviews with personalized prep materials.
 import json
 import re
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 OUTPUT_DIR = Path(__file__).parent / "output" / "interview_prep"
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
+
+
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+LIBYA_TZ = timezone(timedelta(hours=2))  # Africa/Tripoli
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
 
 
 def load_cv_profile() -> dict:
@@ -171,7 +180,7 @@ def save_interview_prep(job: dict, questions: dict) -> str:
 
     title = _safe(job.get("title", "unknown"))[:50]
     company = _safe(job.get("company", "unknown"))[:30]
-    date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+    date_str = now_libya().strftime("%Y%m%d")
     
     filename = f"{company}_{title}_{date_str}.json"
     filepath = OUTPUT_DIR / filename
@@ -230,3 +239,12 @@ def get_interview_prep_summary(jobs: list[dict]) -> str:
         lines.append(f"• {j.get('title', 'Unknown')} ({j.get('score', 0)}%) - {j.get('interview_question_count', 0)} questions")
     
     return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Legacy alias — older test suites and callers import `generate_interview_prep`.
+# Uses the saved CV profile and returns the question dict.
+# ---------------------------------------------------------------------------
+def generate_interview_prep(job: dict) -> dict:
+    """Legacy alias: generate interview questions using the saved CV profile."""
+    return generate_interview_questions(job, load_cv_profile())

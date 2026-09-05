@@ -10,7 +10,7 @@ AI-powered job scanner that runs on GitHub Actions, analyzing 50+ remote job sou
 4. **Verifies liveness** of top jobs via HTTP HEAD requests
 5. **Ollama AI analysis** (local, no API costs) generates personalized "why this fits" explanations
 6. **Sends notifications** via Telegram + Email (with Excel attachment via Brevo)
-7. **Generates Excel report** with 3 sheets: All Jobs, Fresh Matches, Daily Log
+7. **Generates Excel report** with 5 sheets: All Jobs, Fresh Matches, Applications, Cover Letters, Daily Log
 
 ## Required GitHub Secrets
 
@@ -27,7 +27,7 @@ Set these in **Settings > Secrets and variables > Actions**:
 
 The scanner runs 3x daily via cron:
 - **05:00 UTC** — Morning scan
-- **12:00 UTC** — Afternoon scan
+- **13:00 UTC** — Afternoon scan
 - **20:00 UTC** — Night scan
 
 ## Manual Trigger

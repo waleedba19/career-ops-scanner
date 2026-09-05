@@ -4033,8 +4033,9 @@ async def run_scan():
 
         # ---- Build notifications ----
         elapsed = f"{time.time() - start_time:.1f}"
-        # Count all unique sources
-        source_names = {
+        # Count sources that actually delivered jobs this scan;
+        # fall back to the configured source list when nothing was fetched.
+        configured_sources = {
             "greenhouse", "lever", "remotive", "remoteok", "weworkremotely", "jobicy",
             "nodesk", "arbeitnow", "yayremote", "remote1stjobs", "realworkfromanywhere",
             "mostaql", "for9a", "khamsat", "ureed", "wuzzuf", "daleel", "aqar", "tajer",
@@ -4047,7 +4048,8 @@ async def run_scan():
             "wwr_api", "justremote_api", "jobspresso_api", "workingnomads_api",
             "hirelatam_api", "arbeitnow_api", "jobicy_rss", "himalayas_rss",
         }
-        source_count = len(source_names)
+        sources_with_jobs = {j.get("source") for j in all_jobs if j.get("source")}
+        source_count = len(sources_with_jobs) if sources_with_jobs else len(configured_sources)
 
         stats = history["scan_stats"]
         stats["total_scans"] += 1

@@ -40,16 +40,16 @@ TO_EMAIL = os.getenv("TO_EMAIL", "")
 
 SCAN_LABELS = [
     {"time": "07:00", "label": "Morning Intel", "emoji": "\u2600\ufe0f"},
-    {"time": "14:00", "label": "Afternoon Briefing", "emoji": "\U0001f4cb"},
+    {"time": "15:00", "label": "Afternoon Briefing", "emoji": "\U0001f4cb"},
     {"time": "22:00", "label": "Night Digest", "emoji": "\U0001f319"},
 ]
 
 
 def get_scan_label() -> dict:
     h = datetime.now(timezone.utc).hour
-    if h < 11:
+    if h < 9:
         return SCAN_LABELS[0]
-    if h < 18:
+    if h < 17:
         return SCAN_LABELS[1]
     return SCAN_LABELS[2]
 
@@ -58,8 +58,8 @@ def next_scan_time() -> str:
     h = datetime.now(timezone.utc).hour
     if h < 5:
         return "05:00"
-    if h < 12:
-        return "12:00"
+    if h < 13:
+        return "13:00"
     if h < 20:
         return "20:00"
     return "05:00"
@@ -469,7 +469,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         </td></tr>""" if has_evolution else ""}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
-            About the workbook: the attached Excel file contains 3 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), and Daily Log.
+            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
           </p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
             The next scan is at <b>{next_scan_time()} today</b>.
@@ -509,7 +509,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
             text += f"   Location: {j.get('location', 'Remote') or 'Remote'} \xB7 Pay: {salary} \xB7 Posted: {fresh['label']}\n"
             text += f"   Review: {j.get('url', '')}\n\n"
 
-    text += "About the workbook: the attached Excel file contains 3 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), and Daily Log.\n\n"
+    text += "About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
     text += f"The next scan is at {next_scan_time()} today.\n\n"
     text += "Best regards,\nCareerOps Services \u2014 your personal job search assistant.\n"
 

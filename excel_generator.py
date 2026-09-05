@@ -150,12 +150,12 @@ def generate_excel(
     scan_date = now.isoformat()
     total_scanned = len(all_jobs) or scan_info.get("all_count", 0)
 
-    # Hour-based scan slot
+    # Hour-based scan slot (UTC runs at 05:00, 13:00, 20:00)
     hour = now.hour
-    if hour < 11:
+    if hour < 9:
         scan_slot = "Morning (5 AM)"
-    elif hour < 18:
-        scan_slot = "Afternoon (12 PM)"
+    elif hour < 17:
+        scan_slot = "Afternoon (1 PM)"
     else:
         scan_slot = "Night (8 PM)"
 

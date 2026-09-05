@@ -1,88 +1,182 @@
-# CareerOps Job Scanner — GitHub Actions
+# 🚀 CareerOps — Enterprise Job Intelligence Platform
 
 [![Tests](https://github.com/waleedba19/career-ops-scanner/actions/workflows/tests.yml/badge.svg)](https://github.com/waleedba19/career-ops-scanner/actions/workflows/tests.yml)
-[![CareerOps Job Scan](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml/badge.svg)](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml)
+[![CareerOps Scan](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml/badge.svg)](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml)
+[![Dashboard](https://img.shields.io/badge/dashboard-live-38bdf8)](http://localhost:8000)
+[![API](https://img.shields.io/badge/API-docs-0ea5e9)](http://localhost:8001/docs)
 
-AI-powered job scanner that runs on GitHub Actions, analyzing 50+ remote job sources to find roles matching your profile (translator, ESL teacher, editor, data entry specialist, virtual assistant).
+**AI-powered job intelligence that runs itself.** Built for **Waleed Ballag** — ESL Instructor, Academic Supervisor (15 theses), Arabic↔English Translator (Legal/Academic) from Libya. Finds *worldwide remote* roles across 30+ sources, scores with 4-bucket + AI 5-dimension evaluation, and delivers via Telegram + Email + Excel + **Live Dashboard + REST API**.
 
-## How It Works
+> **For anyone:** Fork, set 4 secrets, and get 3× daily scans forever — no servers to manage.
 
-1. **Fetches jobs** from 45+ sources: Greenhouse boards (34 companies), Lever, Remotive, RemoteOK, We Work Remotely, Jobicy, Nodesk, Arbeitnow, YayRemote, Remote1stJobs, Real Work From Anywhere
-2. **Scores each job** using weighted keyword matching across 4 categories: Translation, ESL, Editing, Admin
-3. **Filters** by freshness (24h), location (worldwide-friendly), residency restrictions, and seniority penalties
-4. **Verifies liveness** of top jobs via HTTP HEAD requests
-5. **Ollama AI analysis** (local, no API costs) generates personalized "why this fits" explanations
-6. **Sends notifications** via Telegram + Email (with Excel attachment via Brevo)
-7. **Generates Excel report** with 5 sheets: All Jobs, Fresh Matches, Applications, Cover Letters, Daily Log — **red rows = jobs you haven't applied to yet**
-8. **Remembers everything** — seen jobs, applications, learning data, and source discoveries persist between runs in the `state/` folder
-9. **Grows coverage over time** — auto-discovery crawls job pages for new feeds and APIs on every run
+---
 
-## Required GitHub Secrets
+## ✨ What Makes It Big (Enterprise-Grade)
 
-Set these in **Settings > Secrets and variables > Actions**:
+| Layer | What It Does | Tech |
+|---|---|---|
+| **Fetcher Registry** | 30+ sources deduped, tier-aware (1=lean 15, 2=balanced 30, 3=full sweep), circuit-breaker, rate-limited, retry+backoff | `config.py` + `fetchers/registry.py` |
+| **Scoring Engine** | 4 buckets (Arabic Translation 40-70pts, ESL, Editing, Admin) + `REMOTE_MARKER` + seniority/negative filters + worldwide residency gating | `scanner.py` |
+| **AI Analysis** | Local **Ollama `qwen2.5:1.5b`** (no API costs) 5-dimension scoring: Technical 30% / Experience 25% / Behavioral 15% / Location PASS-FAIL / Career 30% | `ollama_analyzer.py` |
+| **Learning Loop** | Application feedback → scoring boost; company research → legitimacy + red-flags; evolution brain 90-day trends | `learning_module.py` `company_research.py` `evolution_tracker.py` |
+| **Delivery** | Telegram cards, Brevo HTML email (Excel `.xls` 5 sheets + up to 10 PDF cover letters), **red=unapplied** | `notifier.py` `excel_generator.py` |
+| **Observability** | Structured logs (`output/logs/*.jsonl`), Prometheus `health.json`/`metrics.json`, source performance report | `careerops_logger.py` `metrics.py` |
+| **Dashboard** | Live dark-mode UI: KPIs, fresh matches table, evolution brain, daily log — auto-refresh 30s | `dashboard/app.py` → `:8000` |
+| **REST API** | `GET /api/health` `GET /api/metrics` `GET /api/jobs?min_score&category` `GET /api/stats` `POST /api/apply` | `api_server.py` → `:8001` |
+| **Persistence** | `state/` synced via GitHub Contents API (`state_sync.py`) — survives ephemeral runners | `.github/workflows/scan.yml` |
+| **Deployment** | `Dockerfile` + `docker-compose.yml` (Ollama sidecar), `Makefile`, `.env.example` |  |
 
-| Secret | Purpose |
-|--------|---------|
-| `TELEGRAM_BOT_TOKEN` | Telegram bot API token for notifications |
-| `TELEGRAM_CHAT_ID` | Your Telegram chat ID |
-| `BREVO_API_KEY` | Brevo (formerly Sendinblue) API key for email |
-| `TO_EMAIL` | Email address to receive scan reports |
+---
 
-## Schedule
-
-The scanner runs 3x daily via cron:
-- **05:00 UTC** — Morning scan
-- **13:00 UTC** — Afternoon scan
-- **20:00 UTC** — Night scan
-
-## Manual Trigger
-
-Go to **Actions > CareerOps Job Scan > Run workflow** to trigger a scan manually.
-
-## How It Stays Smart (persistent memory)
-
-GitHub Actions runners are wiped after every run, so the scanner stores its state
-in the `state/` folder of this repo (via the GitHub API) and restores it before
-each scan:
-
-- **No repeated messages** — jobs you've already seen are never reported again
-- **Application tracking** — jobs you applied to are marked green; unapplied ones
-  stay **red** in the Excel sheet, email, and Telegram
-- **Evolution brain** — scan streaks, best days, and trends accumulate (look for
-  the 🔥 streak in your daily message — that's your "it ran today" heartbeat)
-- **Learning module** — your application history keeps fine-tuning match scores
-- **Source discovery** — new job sources found on one run are remembered and used
-  on the next, so coverage grows over time
-
-## Daily Heartbeat
-
-Every scan message includes the scan streak and totals. If a scan ever fails,
-you get a Telegram alert with a link to the failed run instead of silence.
-
-## Files
+## 🏗️ Architecture
 
 ```
-.github/workflows/scan.yml    — GitHub Actions workflow
-scanner.py                    — Main scanner (fetching, scoring, filtering)
-ollama_analyzer.py            — AI job analysis via local Ollama
-notifier.py                   — Telegram + Email notifications
-excel_generator.py            — Excel (.xls) report generation
-requirements.txt              — Python dependencies
+GitHub Actions (cron 05:00 / 13:00 / 20:00 UTC)
+  ├─ state_sync.py download  (state/ → output/)
+  ├─ Ollama (qwen2.5:1.5b)    ← cached, fallback to templates
+  ├─ scanner.py               ← registry-driven fetchers (tier_cap=2), batch=8
+  ├─ ollama_analyzer, company_research, cover_letters, interview_prep
+  ├─ notifier (Telegram + Brevo) + excel_generator (5 sheets)
+  └─ state_sync.py upload    (output/ → state/) + health/metrics
+
+Local / Docker
+  ├─ make dev  → dashboard :8000 + api :8001 + scanner
+  └─ docker-compose up → careerops + ollama
 ```
 
-## Ollama AI Analysis
+See **[ARCHITECTURE.md](ARCHITECTURE.md)** for deep dive, data flow, and scoring formulas.
 
-The scanner installs Ollama on the runner and pulls the `qwen2.5:1.5b` model for AI-powered job analysis. This is a small, fast model that fits within GitHub Actions runner limits.
+---
 
-If Ollama is unavailable, the scanner falls back gracefully and runs without AI insights.
+## 🚦 Quick Start
 
-## Local Development
+### 1) GitHub Actions (zero servers)
+
+1. Fork this repo
+2. **Settings → Secrets and variables → Actions → New repository secret:**
+
+| Secret | Where to get |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | @BotFather on Telegram |
+| `TELEGRAM_CHAT_ID` | @userinfobot |
+| `BREVO_API_KEY` | https://app.brevo.com/settings/keys/api |
+| `TO_EMAIL` | your inbox |
+
+3. **Actions → CareerOps Job Scan → Run workflow** (manual trigger) — watch it scan 5k+ jobs
+
+### 2) Local
 
 ```bash
+git clone https://github.com/waleedba19/career-ops-scanner
+cd career-ops-scanner
 pip install -r requirements.txt
-export TELEGRAM_BOT_TOKEN="..."
-export TELEGRAM_CHAT_ID="..."
-export BREVO_API_KEY="..."
-export TO_EMAIL="..."
-python scanner.py
+cp .env.example .env  # fill secrets
+python scanner.py                 # one scan
+make dashboard  # http://localhost:8000
+make api        # http://localhost:8001  (health, jobs, stats)
+make dev        # all three in parallel
 ```
+
+### 3) Docker (recommended for dashboard + Ollama)
+
+```bash
+docker-compose up --build -d
+open http://localhost:8000   # dashboard
+curl http://localhost:8001/api/health | jq
+docker logs -f careerops-scanner
+```
+
+---
+
+## ⚙️ Configuration (`config.py`)
+
+All tuning via env (see `.env.example`):
+
+```bash
+OLLAMA_MODEL=qwen2.5:1.5b
+CAREEROPS_TIER_CAP=2          # 1 lean, 2 balanced, 3 full (default 2)
+CAREEROPS_MIN_SCORE=65
+CAREEROPS_FRESH_H=0.5         # 30 min fresh window
+CAREEROPS_BATCH_SIZE=8
+CAREEROPS_ENABLE_OLLAMA=1
+```
+
+Fetcher tiers: Tier 1 (Greenhouse 34, Lever, Remotive, RemoteOK, WWR, Jobicy API, Arbeitnow, Himalayas API) always on; Tier 2 (+ Nodesk, YayRemote etc); Tier 3 (+ MENA/freelance). Controlled by `CAREEROPS_TIER_CAP`.
+
+---
+
+## 📊 Outputs
+
+- **Telegram** — professional cards with fit score, AI verdict, why-it-fits, apply link
+- **Email (Brevo)** — HTML + text + Excel `.xls` (5 sheets: All Jobs / Fresh Matches / Applications / Cover Letters / Daily Log) + up to 10 PDF cover letters
+- **Dashboard** `http://localhost:8000` — KPIs, tables, evolution, daily log
+- **API** `http://localhost:8001` — `/health`, `/metrics` (Prometheus), `/jobs`, `/stats`, `/scan/history`, `POST /apply`
+- **State** `state/*.json` — fresh_matches_history, smart_seen fingerprints, source_performance, evolution_brain (commit-persisted)
+
+**Red rows = not applied yet** in Excel + Telegram unapplied reminder.
+
+---
+
+## 🧠 How It Learns
+
+- **Smart dedup** — fingerprint `company|title[:30]|location[:20]` not just URL
+- **Learning module** — applied/rejected → category (+10) and company affinity
+- **Company research** — ATS detection, legitimacy score, red-flags
+- **Evolution tracker** — 90-day streak, best day, trending categories/sources
+- **Source manager** — auto-deactivates dead sources (14-day fail), discovers new RSS/JSON
+
+---
+
+## 🧪 Testing
+
+```bash
+python -m compileall -q .
+python test_all_modules.py   # learning + research + interview + cover letters + excel
+python test_improved.py      # freshness & scoring
+pytest -q
+```
+
+---
+
+## 📁 Project Layout
+
+```
+.
+├── config.py               — single source of truth
+├── scanner.py              — lean orchestrator (registry-driven, metrics hooks)
+├── fetchers/               — base.py + registry.py (tier, dedup, circuit-breaker)
+├── careerops_logger.py     — structured JSON logs
+├── metrics.py              — health.json + prometheus text
+├── dashboard/app.py        — live UI :8000
+├── api_server.py           — REST API :8001 (FastAPI or stdlib fallback)
+├── ollama_analyzer.py      — 5-dimension AI scoring
+├── notifier.py             — Telegram + Brevo (fixed nested f-string bug)
+├── excel_generator.py      — 5-sheet Excel
+├── source_manager.py / evolution_tracker.py / learning_module.py
+├── state/                  — persistent memory
+├── output/                 — generated artifacts (gitignored)
+├── Dockerfile / docker-compose.yml / Makefile / .env.example
+└── .github/workflows/scan.yml  — cached Ollama, pip cache, tier Cap, artifacts
+```
+
+---
+
+## 🔒 Secrets & Security
+
+- No secrets in code — only `os.getenv` + GitHub Secrets
+- `state_sync.py` uses short-lived `GITHUB_TOKEN` via Contents API
+- Telegram failure alert on scan failure (workflow `if: failure()`)
+- Brevo attachments capped at 5 MB (Excel) + 1 MB×10 PDFs
+
+---
+
+## 📦 Roadmap to Even Bigger
+
+- [ ] Vector search (job embeddings) for semantic matching beyond keywords
+- [ ] Playwright headless for JS-heavy boards
+- [ ] Postgres + pgvector replace JSON state at scale
+- [ ] Scheduler UI — adjust cron without editing YAML
+
+---
+
+**Made for Waleed — AI Job Search Intelligence that runs forever. 🔥**

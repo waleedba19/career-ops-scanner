@@ -1,6 +1,6 @@
 """
 CareerOps Excel Generator
-Produces XML-based Excel (.xls) with 5 sheets:
+Produces XML-based Excel (.xls) with 5 sheets — now with deep free-forever intel (email, urgency, desperation, opportunity, pain):
   1. All Jobs — full dump of everything scanned
   2. Fresh Matches — accumulated 75-100% matches across all scans
   3. Applications — track which jobs you've applied to
@@ -168,7 +168,7 @@ def generate_excel(
     all_fresh = merge_fresh_matches(jobs, history)
     save_fresh_history(all_fresh)
 
-    # ---- Fresh Matches rows (Sheet 2) — accumulated across all scans ----
+    # ---- Fresh Matches rows (Sheet 2) — accumulated across all scans — DEEP INTEL (free forever) ----
     fresh_rows = []
     for i, j in enumerate(all_fresh):
         fresh = get_freshness(j.get("posted"))
@@ -177,6 +177,16 @@ def generate_excel(
         url = j.get("url", "")
         applied_status = get_application_status(url)
         cover_path = j.get("cover_letter_path", "")
+        # Deep intel (free forever) — may be missing on old history rows
+        hiring_email = j.get("hiring_email", "")
+        email_verified = "✓" if j.get("email_verified") else ("guess" if hiring_email and j.get("email_guessed") else "")
+        urgency = j.get("urgency_score", 0)
+        desperation = j.get("desperation_index", 0)
+        opportunity = j.get("opportunity_score", j.get("score",0))
+        pain = j.get("pain_points", "")
+        # urgency label
+        urgency_label = f"{urgency} 🔥" if urgency >= 30 else str(urgency) if urgency else ""
+        desp_label = f"{desperation} 💥" if desperation >= 50 else str(desperation) if desperation else ""
         # Red rows = not applied yet; green rows = applied/tracked
         row_style = "applied" if applied_status != "Not Applied" else "unapplied"
         fresh_rows.append(f'''
@@ -190,6 +200,12 @@ def generate_excel(
       <Cell><Data ss:Type="String">{_esc(fresh["label"])}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(rec)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(applied_status)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(hiring_email)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(email_verified)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(urgency_label)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(desp_label)}</Data></Cell>
+      <Cell><Data ss:Type="String">{opportunity}%</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(pain)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(cover_path)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(scan_dt)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(url)}</Data></Cell>
@@ -359,20 +375,25 @@ def generate_excel(
     </Table>
   </Worksheet>
 
-  <!-- Sheet 2: Fresh Matches (accumulated 75-100% across all scans) -->
+  <!-- Sheet 2: Fresh Matches — DEEP INTEL (free forever): email, urgency, desperation, opportunity, pain -->
   <Worksheet ss:Name="Fresh Matches">
     <Table>
       <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="100"/>
-      <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="100"/>
-      <Column ss:Width="100"/><Column ss:Width="200"/><Column ss:Width="100"/><Column ss:Width="420"/>
-      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated across all scans)</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">All jobs matching 75-100% from every scan. Sort by score, then by scan date. Column I: mark Applied/Maybe/Rejected. RED rows = not applied yet — apply now! GREEN rows = applied/tracked.</Data></Cell></Row>
+      <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="120"/>
+      <Column ss:Width="100"/><Column ss:Width="180"/><Column ss:Width="70"/><Column ss:Width="70"/>
+      <Column ss:Width="70"/><Column ss:Width="70"/><Column ss:Width="220"/><Column ss:Width="200"/>
+      <Column ss:Width="100"/><Column ss:Width="420"/>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated, deep intel — free forever)</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">All 75-100% matches. RED=not applied — apply now! GREEN=applied. Columns J-O are free intel: Hiring Email (careers@ domain, MX ✓), Urgency (ASAP/immediate), Desperation (reposted), Opportunity (combined), Pain Points (why they need you). No paid API.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell>
         <Cell><Data ss:Type="String">Category</Data></Cell><Cell><Data ss:Type="String">Location</Data></Cell><Cell><Data ss:Type="String">Match</Data></Cell>
         <Cell><Data ss:Type="String">Freshness</Data></Cell><Cell><Data ss:Type="String">Recommendation</Data></Cell>
-        <Cell><Data ss:Type="String">Applied?</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
+        <Cell><Data ss:Type="String">Applied?</Data></Cell><Cell><Data ss:Type="String">Hiring Email</Data></Cell>
+        <Cell><Data ss:Type="String">Verified</Data></Cell><Cell><Data ss:Type="String">Urgency</Data></Cell>
+        <Cell><Data ss:Type="String">Desperation</Data></Cell><Cell><Data ss:Type="String">Opportunity</Data></Cell>
+        <Cell><Data ss:Type="String">Pain Points / Why They Need You</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
         <Cell><Data ss:Type="String">Found On</Data></Cell><Cell><Data ss:Type="String">Apply URL</Data></Cell>
       </Row>
       {fresh_rows_str}

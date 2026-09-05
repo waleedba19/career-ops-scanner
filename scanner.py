@@ -2664,7 +2664,7 @@ async def fetch_himalayas_rss(session: aiohttp.ClientSession) -> list[dict]:
 
 
 def load_history() -> dict:
-    for cand in [HISTORY_FILE, pathlib.Path(__file__).parent / "state" / "scan_history.json"]:
+    for cand in [HISTORY_FILE, Path(__file__).parent / "state" / "scan_history.json"]:
         if cand.exists():
             try:
                 return json.loads(cand.read_text())
@@ -2687,7 +2687,7 @@ def save_history(history: dict):
 
 def load_seen_urls() -> set:
     """Load the persistent seen URLs from disk — checks output/ then state/."""
-    for cand in [SEEN_URLS_FILE, pathlib.Path(__file__).parent / "state" / "seen_urls.json"]:
+    for cand in [SEEN_URLS_FILE, Path(__file__).parent / "state" / "seen_urls.json"]:
         if cand.exists():
             try:
                 data = json.loads(cand.read_text())
@@ -2714,7 +2714,7 @@ SMART_SEEN_FILE = OUTPUT_DIR / "smart_seen.json"
 
 def load_smart_seen() -> dict:
     """Load smart deduplication fingerprints — output/ then state/."""
-    for cand in [SMART_SEEN_FILE, pathlib.Path(__file__).parent / "state" / "smart_seen.json"]:
+    for cand in [SMART_SEEN_FILE, Path(__file__).parent / "state" / "smart_seen.json"]:
         if cand.exists():
             try:
                 return json.loads(cand.read_text())

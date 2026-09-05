@@ -212,3 +212,10 @@ def cleanup_old_cache(max_age_days: int = 30):
     
     save_company_cache(cleaned)
     return len(cache) - len(cleaned)
+
+
+# ---------------------------------------------------------------------------
+# Legacy alias — older test suites and callers import `research_company`.
+# Keep the canonical name above; this is a thin passthrough for compatibility.
+# ---------------------------------------------------------------------------
+research_company = get_company_research

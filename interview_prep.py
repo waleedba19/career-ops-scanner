@@ -239,3 +239,12 @@ def get_interview_prep_summary(jobs: list[dict]) -> str:
         lines.append(f"• {j.get('title', 'Unknown')} ({j.get('score', 0)}%) - {j.get('interview_question_count', 0)} questions")
     
     return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Legacy alias — older test suites and callers import `generate_interview_prep`.
+# Uses the saved CV profile and returns the question dict.
+# ---------------------------------------------------------------------------
+def generate_interview_prep(job: dict) -> dict:
+    """Legacy alias: generate interview questions using the saved CV profile."""
+    return generate_interview_questions(job, load_cv_profile())

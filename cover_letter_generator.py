@@ -683,3 +683,12 @@ async def generate_all_cover_letters(jobs: list[dict]) -> list[dict]:
             job["cover_letter_ai"] = False
         results.append(job)
     return results
+
+
+# ---------------------------------------------------------------------------
+# Legacy alias — older test suites and callers import `generate_cover_letter`.
+# Thin passthrough to the PDF generator; returns the generated PDF path.
+# ---------------------------------------------------------------------------
+def generate_cover_letter(job: dict) -> str:
+    """Legacy alias for generate_cover_letter_pdf."""
+    return generate_cover_letter_pdf(job)

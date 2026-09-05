@@ -64,6 +64,13 @@ jobs:
       - name: Run job scanner
         run: python scanner.py
 
+      - name: Notify failure on Telegram
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -H "Content-Type: application/json" \
+            -d '{"chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}", "text": "⚠️ CareerOps scan FAILED. Check: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+
       - name: Upload Excel report
         uses: actions/upload-artifact@v4
         if: always()

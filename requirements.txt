@@ -11,3 +11,7 @@ jinja2>=3.1,<4
 
 # Resilience & observability
 tenacity>=8.2,<9
+
+# Free-forever parsing (no API, no quota)
+beautifulsoup4>=4.12,<5
+lxml>=5.0,<6

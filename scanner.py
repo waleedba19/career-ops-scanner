@@ -62,6 +62,16 @@ except Exception:
     _metrics = None
     _log = None
 
+# ── Free Forever Intel — email/urgency/desperation + search (no paid API) ──
+try:
+    from company_intel.collector import enrich_jobs_with_intel
+except Exception:
+    enrich_jobs_with_intel = None
+try:
+    from fetchers.search_orchestrator import discover_via_search
+except Exception:
+    discover_via_search = None
+
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
@@ -4707,6 +4717,24 @@ async def run_scan():
                     print(f"  Fetcher error: {r}")
 
         print(f"Total fetched: {len(all_jobs)} jobs")
+
+        # ---- Free Forever Search: DuckDuckGo + sitemap (no API key) ----
+        try:
+            if discover_via_search is not None:
+                print("🔍 Free search: DuckDuckGo + sitemap...")
+                discovered = await discover_via_search(session)
+                if discovered:
+                    # dedup by URL against already fetched
+                    seen_urls_discover = {j.get("url") for j in all_jobs if j.get("url")}
+                    new_discovered = [j for j in discovered if j.get("url") not in seen_urls_discover]
+                    if new_discovered:
+                        print(f"  Search discovered: {len(new_discovered)} fresh URLs (free)")
+                        all_jobs.extend(new_discovered)
+                        print(f"  Total after search: {len(all_jobs)} jobs")
+                else:
+                    print("  Search discovered: 0 (free, no new URLs)")
+        except Exception as e:
+            print(f"  Free search skipped: {e}")
         
         # ---- Track source performance ----
         source_job_counts = {}
@@ -4956,6 +4984,21 @@ async def run_scan():
         
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
+
+        # ---- Free Forever Intel: urgency / desperation / email / pain points ----
+        try:
+            if enrich_jobs_with_intel is not None and final_verified:
+                print(f"🧠 Free intel: enriching {len(final_verified)} matches (email+urgency+desperation)...")
+                # reuse same aiohttp session for careers page fetch (free, 1 hop per job)
+                seen_for_desp = load_smart_seen() if 'load_smart_seen' in globals() else None
+                final_verified = await enrich_jobs_with_intel(final_verified, session, seen_for_desp)
+                # log
+                with_email = sum(1 for j in final_verified if j.get("hiring_email"))
+                urgent = sum(1 for j in final_verified if j.get("urgency_score",0) >= 30)
+                desp = sum(1 for j in final_verified if j.get("desperation_index",0) >= 40)
+                print(f"  Intel done: {with_email} with email, {urgent} urgent, {desp} desperate")
+        except Exception as e:
+            print(f"  Intel enrichment skipped: {e}")
         
         # ---- Research companies to improve scoring ----
         try:

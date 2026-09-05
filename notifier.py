@@ -99,54 +99,59 @@ def _esc(s) -> str:
 
 
 def format_job_card(job: dict, index: int) -> str:
-    """Format a single job as a clean, professional Telegram card."""
+    """Format a single job as a clean, professional Telegram card — now with free intel (email, urgency, desperation)."""
     from scanner import get_freshness
     fresh = get_freshness(job.get("posted"))
     salary = job.get("salary") or "Not specified"
     rec = get_recommendation(job.get("score", 0))
     source = job.get("source", "unknown")
     
-    # Build the card
     lines = []
-    
-    # Header with number and recommendation
-    lines.append(f"\U0001f4cb {index + 1}. {rec}")
+    # Header — sort key is now opportunity if present
+    opp = job.get("opportunity_score")
+    if opp and opp != job.get("score",0):
+        lines.append(f"\U0001f4cb {index + 1}. {rec}  (Opp {opp}% | Match {job.get('score',0)}%)")
+    else:
+        lines.append(f"\U0001f4cb {index + 1}. {rec}")
     lines.append("")
-    
-    # Title and company
     lines.append(f"\U0001f4bc {job.get('title', 'Unknown')}")
     lines.append(f"\U0001f3e2 {job.get('company', 'Unknown')}")
     lines.append("")
-    
-    # Key details in clean format
     lines.append(f"\U0001f4cd Location: {job.get('location', 'Remote')}")
     lines.append(f"\U0001f4b0 Pay: {salary}")
     lines.append(f"\u23f1 Posted: {fresh['label']}")
     lines.append(f"\U0001f3af Fit Score: {job.get('score', 0)}%")
+    if opp:
+        lines.append(f"\U0001f680 Opportunity: {opp}%")
     lines.append(f"\U0001f4c2 Source: {source}")
+    # Free intel
+    urgency = job.get("urgency_score",0)
+    desperation = job.get("desperation_index",0)
+    if urgency >= 20:
+        lines.append(f"\u23f0 Urgency: {urgency}/100 {'🔥 URGENT' if urgency>=30 else ''}")
+    if desperation >= 30:
+        lines.append(f"\U0001f4a5 Desperation: {desperation}/100 {'💥 DESPERATE' if desperation>=50 else ''}")
+    hiring_email = job.get("hiring_email","")
+    if hiring_email:
+        ver = "✓ verified" if job.get("email_verified") else "guess" if job.get("email_guessed") else "found"
+        lines.append(f"\u2709\ufe0f Hiring Email: {hiring_email} ({ver})")
+    pain = job.get("pain_points","")
+    if pain:
+        lines.append(f"\U0001f50d Pain: {pain[:120]}")
     lines.append("")
-    
-    # AI scoring if available
     ai_verdict = job.get("ai_verdict", "")
     ai_score = job.get("ai_overall_score", 0)
     if ai_verdict:
         emoji = get_verdict_emoji(ai_verdict)
         lines.append(f"{emoji} AI Assessment: {ai_verdict} ({ai_score}/100)")
-        
-        # One-line summary
         ai_summary = job.get("ai_insight", "")
         if ai_summary:
             lines.append(f"\U0001f4ac {ai_summary[:150]}")
         lines.append("")
-    
-    # Why this fits (brief)
     why = job.get("why", [])
     if why:
         lines.append(f"\U0001f517 Why it fits: {', '.join(why[:3])}")
-    
-    # Apply link
     lines.append(f"\U0001f517 Apply: {job.get('url', '')}")
-    
     return "\n".join(lines)
 
 
@@ -360,7 +365,17 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         fresh = get_freshness(j.get("posted"))
         salary = j.get("salary") or "Not specified"
         rec = get_recommendation(j.get("score", 0))
-        
+        # Deep intel (free forever)
+        hiring_email = j.get("hiring_email","")
+        urgency = j.get("urgency_score",0)
+        desperation = j.get("desperation_index",0)
+        opportunity = j.get("opportunity_score","")
+        pain = j.get("pain_points","")
+        email_html = f'<tr><td width="110" style="font-weight:bold;color:#0a7a0a;vertical-align:top">Hiring Email</td><td style="color:#111;vertical-align:top"><a href="mailto:{_esc(hiring_email)}" style="color:#0a7a0a;font-weight:bold">{_esc(hiring_email)}</a> {"✓ verified" if j.get("email_verified") else "(guess)" if j.get("email_guessed") else ""}</td></tr>' if hiring_email else ""
+        urgency_html = f'<tr><td width="110" style="font-weight:bold;color:#b91c1c;vertical-align:top">Urgency</td><td style="color:#b91c1c;vertical-align:top;font-weight:bold">{urgency}/100 {"🔥 URGENT" if urgency>=30 else ""}</td></tr>' if urgency>=20 else ""
+        desp_html = f'<tr><td width="110" style="font-weight:bold;color:#7c3aed;vertical-align:top">Desperation</td><td style="color:#7c3aed;vertical-align:top;font-weight:bold">{desperation}/100 {"💥 DESPERATE" if desperation>=50 else ""}</td></tr>' if desperation>=30 else ""
+        opp_html = f'<tr><td width="110" style="font-weight:bold;color:#0369a1;vertical-align:top">Opportunity</td><td style="color:#0369a1;vertical-align:top;font-weight:bold">{opportunity}% (combined)</td></tr>' if opportunity and opportunity != j.get("score",0) else ""
+        pain_html = f'<tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Pain Point</td><td style="color:#111;vertical-align:top;font-style:italic">{_esc(pain)}</td></tr>' if pain else ""
         # AI scoring
         ai_verdict = j.get("ai_verdict", "")
         ai_score = j.get("ai_overall_score", 0)
@@ -380,6 +395,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         why_html = ""
         if j.get("why"):
             why_html = f'<tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Why this fits</td><td style="color:#111;vertical-align:top">{_esc(", ".join(j["why"]))}</td></tr>'
+        # inject deep intel rows will be added via email_html etc
         
         return f'''
       <table width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #d0d0d0;border-radius:6px;margin:14px 0;font-family:Arial,Helvetica,sans-serif">
@@ -395,6 +411,11 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
             <tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Posted</td><td style="color:#111;vertical-align:top">{_esc(fresh["label"])}</td></tr>
             <tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Fit Score</td><td style="color:#111;vertical-align:top">{j.get("score", 0)}%</td></tr>
             <tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Source</td><td style="color:#111;vertical-align:top">{_esc(j.get("source", ""))}</td></tr>
+            {email_html}
+            {urgency_html}
+            {desp_html}
+            {opp_html}
+            {pain_html}
             {ai_html}
             {why_html}
           </table>

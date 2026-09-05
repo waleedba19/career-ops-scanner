@@ -16,23 +16,27 @@ def _load_brain() -> dict:
     """Load the evolution brain."""
     try:
         if EVOLUTION_FILE.exists():
-            return json.loads(EVOLUTION_FILE.read_text(encoding="utf-8"))
+            data = json.loads(EVOLUTION_FILE.read_text(encoding="utf-8"))
+            # Ensure all required keys exist (for backward compatibility)
+            defaults = {
+                "total_scans": 0, "total_matches": 0, "total_jobs_scanned": 0,
+                "best_day_matches": 0, "best_day_date": "",
+                "daily_history": [], "category_trends": {}, "source_trends": {},
+                "streak_days": 0, "last_scan_date": "",
+                "user_applied": [], "user_callbacks": [], "learning_notes": [],
+            }
+            for key, val in defaults.items():
+                if key not in data:
+                    data[key] = val
+            return data
     except Exception:
         pass
     return {
-        "total_scans": 0,
-        "total_matches": 0,
-        "total_jobs_scanned": 0,
-        "best_day_matches": 0,
-        "best_day_date": "",
-        "daily_history": [],
-        "category_trends": {},
-        "source_trends": {},
-        "streak_days": 0,
-        "last_scan_date": "",
-        "user_applied": [],
-        "user_callbacks": [],
-        "learning_notes": [],
+        "total_scans": 0, "total_matches": 0, "total_jobs_scanned": 0,
+        "best_day_matches": 0, "best_day_date": "",
+        "daily_history": [], "category_trends": {}, "source_trends": {},
+        "streak_days": 0, "last_scan_date": "",
+        "user_applied": [], "user_callbacks": [], "learning_notes": [],
     }
 
 

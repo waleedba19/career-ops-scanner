@@ -34,11 +34,11 @@ from interview_prep import generate_interview_prep_for_top_matches, get_intervie
 # Configuration
 # ---------------------------------------------------------------------------
 
-MIN_MATCH_SCORE = 75
+MIN_MATCH_SCORE = 65
 MAX_AGE_HOURS = 144  # 6 days (144 hours)
 MAX_AGE_FRESH_HOURS = 0.5  # 30 minutes for fresh jobs
 NEAR_MISS_MIN = 50
-NEAR_MISS_MAX = 74
+NEAR_MISS_MAX = 64
 NEAR_MISS_LIMIT = 6
 TOP_LIVENESS_CHECK = 6
 HISTORY_MAX = 5000
@@ -145,8 +145,8 @@ MATCH_BUCKETS = [
 ]
 
 NEGATIVE_KEYWORDS = [
-    "engineer", "developer", "software", "devops", "backend", "frontend",
-    "full stack", "sre", "security analyst", "data scientist", "ml engineer",
+    "software engineer", "backend engineer", "frontend engineer", "full stack engineer",
+    "devops", "sre", "security analyst", "data scientist", "ml engineer",
     "crypto", "blockchain", "solidity", "web3", "quant", "trading",
     "human resources", "employee relations", "people partner",
     "people business partner", "hrbp", "recruiter", "talent acquisition",
@@ -157,38 +157,43 @@ NEGATIVE_KEYWORDS = [
     "sales manager", "sales director", "regional sales",
     # Business partner / enablement roles
     "business partner", "field enablement", "enablement manager",
-    "revenue", "pipeline", "quota", "account manager",
+    "revenue", "pipeline", "account manager",
     # Leadership / management (not individual contributor)
     "content manager", "social media manager", "brand manager",
     "product marketing", "demand generation", "growth manager",
 ]
 
 NON_TARGET_ROLE = re.compile(
-    r"(expert|consultant|strategist|architect|analyst|planning|planner|"
-    r"project manager|program manager|product (manager|owner)|"
-    r"integration engineer|technical (writer|support)|"
-    r"data (engineer|scientist|analyst|architect|platform|governance|warehouse|lake|modeling|infrastructure)|"
-    r"smartsheet|excel (macro|vba|modeling|dashboard)|"
-    r"business (analyst|intelligence)|bi |etl|"
-    r"integrations? specialist|solution (architect|engineer|consultant)|"
-    # Enterprise/leadership titles — not individual contributor roles
-    r"\bhead of\b|\bdirector\b|\bvp\b|\bvice president\b|\bchief\b|"
-    r"\bcountry (manager|partner|lead)\b|\bregional (manager|director|lead)\b|"
-    r"\bsenior (manager|director|lead|partner|associate)\b|\bgeneral manager\b|"
-    r"\bsales (manager|director|lead|head|executive|representative)\b|"
-    r"\bmarketing (manager|director|lead)\b|\bbusiness development\b|"
-    r"\baccounts (manager|director|lead)\b|\bclient (manager|director|lead)\b|"
-    r"\benterprise (sales|account|manager)\b|\bquota\b|\bcommission\b|"
-    r"\bpayroll (clerk|manager|specialist)\b|"
-    # Content/Social management roles (not individual contributor)
-    r"\b(content|social media|brand) (manager|lead|director|head)\b|"
-    r"\bcontent producer\b|\bsocial media lead\b|"
-    r"\bproduct marketing\b|\bdemand generation\b|\bgrowth manager\b)",
+    r"\b(?:strategist|architect|planner|integration engineer)\b"
+    r"|project manager|program manager|product (?:manager|owner)"
+    r"|(?:data|business) (?:engineer|scientist|analyst|architect|platform|governance|warehouse|lake|modeling|infrastructure|intelligence)"
+    r"|technical (?:writer|support)"
+    r"|smartsheet|excel (?:macro|vba|modeling|dashboard)"
+    r"|business (?:analyst|intelligence)|\bbi\b|\betl\b"
+    r"|(?:integrations?) specialist|solution (?:architect|engineer|consultant)"
+    r"|\bhead of\b|\bdirector\b|\bvp\b|\bvice president\b|\bchief\b"
+    r"|\bcountry (?:manager|partner|lead)\b|\bregional (?:manager|director|lead)\b"
+    r"|\bsenior (?:manager|director|lead|partner|associate)\b|\bgeneral manager\b"
+    r"|\bsales (?:manager|director|lead|head|executive|representative)\b"
+    r"|\bmarketing (?:manager|director|lead)\b|\bbusiness development\b"
+    r"|\baccounts (?:manager|director|lead)\b|\bclient (?:manager|director|lead)\b"
+    r"|\benterprise (?:sales|account|manager)\b|\bquota\b|\bcommission\b"
+    r"|\bpayroll (?:clerk|manager|specialist)\b"
+    r"|\b(?:content|social media|brand) (?:manager|lead|director|head)\b"
+    r"|\bcontent producer\b|\bsocial media lead\b"
+    r"|\bproduct marketing\b|\bdemand generation\b|\bgrowth manager\b",
+    re.I,
+)
+
+# Keywords in NON_TARGET_ROLE that are OK when combined with target keywords
+# e.g., "Language Expert" is fine, "Data Analyst" is not
+NON_TARGET_ALLOWLIST = re.compile(
+    r"(language|translation|translator|content|copy|creative|english|esl|teaching|tutor|freelance|online|educational|legal|academic)",
     re.I,
 )
 
 SENIOR_PENALTY = re.compile(
-    r"(senior|\bsr\.?\b|partner|lead|principal|head of|\bvp\b|director|manager)", re.I
+    r"(principal (engineer|designer|architect)|head of|\bvp\b|director|\bchief\b)", re.I
 )
 
 REMOTE_MARKER = re.compile(
@@ -420,14 +425,14 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         re.compile(r"residents? only", re.I),
         re.compile(r"must be (a |an )?(u\.?s|united states|uk|eu|canadian|australian|german|french|british|european) (citizen|resident|national)", re.I),
         re.compile(r"(u\.?s|us|uk|eu|canadian|australian) (citizen|permanent resident|national)\b", re.I),
-        re.compile(r"authorized to work in", re.I),
-        re.compile(r"(work authorization|work authorisation|work permit required)", re.I),
+        re.compile(r"authorized to work in (the |)(u\.?s|us|united states|uk|canada|australia|eu)", re.I),
+        re.compile(r"(work authorization|work authorisation|work permit required) in (the |)(u\.?s|us|united states|uk|canada|australia)", re.I),
         re.compile(r"(no sponsoring|no sponsorship)", re.I),
         re.compile(r"(cannot|can't|unable to|do not|does not|will not|won't|no|without|not (available|provided|offered)).{0,20}(visa )?sponsorship", re.I),
         re.compile(r"visa sponsorship (is )?not (available|provided|offered)", re.I),
         re.compile(r"cannot (provide|offer|support|sponsor) (visa|sponsorship)", re.I),
         re.compile(r"must already (have|hold|possess).{0,40}(work permit|residence permit|visa|residency)", re.I),
-        re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within)", re.I),
+        re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within) (the |)(u\.?s|us|united states|uk|canada|australia)", re.I),
         re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
         # Location Restriction field
         re.compile(r"location\s+restriction\s*:?\s*(u\.?s|united\s+states|uk|eu|canadian|australian)", re.I),
@@ -452,9 +457,19 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         return True
     if REMOTE_MARKER.search(loc):
         return True
+    # Check if location is a specific country — accept most countries
+    # unless they are in a hard-blocked country list
+    BLOCKED_LOCATIONS = [
+        "united states", "us", "usa", "u.s.", "u.s.a.",
+        "canada", "australia", "united kingdom", "uk",
+    ]
+    # If location is just a country name (not a specific city), accept it
+    # unless it's in the blocked list
+    if loc and not any(city in loc for city in [",", "city", "town", "street", "avenue", "road", "district"]):
+        # Location is likely just a country/region name — accept unless blocked
+        if not any(b in loc for b in BLOCKED_LOCATIONS):
+            return True
     # Location has content but doesn't match any allowed term
-    # It's a specific city/country — reject (don't trust "remote" in description
-    # because many jobs say "remote-friendly" but require a specific location)
     return False
 
 
@@ -3866,9 +3881,9 @@ async def run_scan():
                 re.compile(r"only\s+available\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
                 re.compile(r"eligible\s+(for\s+only|only\s+for|if\s+you\s+are\s+in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
                 re.compile(r"must\s+be\s+(located\s+in|based\s+in|in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
-                re.compile(r"this\s+job\s+is\s+(only|restricted)\s+to", re.I),
-                re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in", re.I),
-                re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in", re.I),
+                re.compile(r"this\s+(job|position|role)\s+is\s+(only|restricted)\s+to\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+                re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+                re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
             ]
             early_rejected = False
             for pattern in EARLY_LOCATION_RESTRICTIONS:
@@ -3908,7 +3923,8 @@ async def run_scan():
             if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
                 filter_debug["no_positive"] += 1
                 continue
-            if NON_TARGET_ROLE.search(job.get("title", "")):
+            title = job.get("title", "")
+            if NON_TARGET_ROLE.search(title) and not NON_TARGET_ALLOWLIST.search(title):
                 filter_debug["non_target"] += 1
                 continue
             if matches_negative(job.get("title", ""), job.get("description", "")):
@@ -3960,8 +3976,12 @@ async def run_scan():
                 old_but_verified.append(job_data)
 
         def is_genuine(title: str) -> bool:
+            # If title has NON_TARGET patterns but also has allowed target keywords, it's OK
             if NON_TARGET_ROLE.search(title):
-                return False
+                if NON_TARGET_ALLOWLIST.search(title):
+                    pass  # Has target keywords, allow through
+                else:
+                    return False
             hits = 0
             title_hits = 0
             for bucket in MATCH_BUCKETS:
@@ -3985,7 +4005,7 @@ async def run_scan():
             if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
                 continue
             sc = get_match_score(job.get("title", ""), job.get("description", ""))
-            if sc["score"] < NEAR_MISS_MIN or sc["score"] >= 75 or sc["category"] == "Other":
+            if sc["score"] < NEAR_MISS_MIN or sc["score"] >= MIN_MATCH_SCORE or sc["category"] == "Other":
                 continue
             if not is_genuine(job.get("title", "")):
                 continue
@@ -4000,14 +4020,23 @@ async def run_scan():
             })
 
         near_misses.sort(key=lambda j: j["score"], reverse=True)
-        
+
         # Sort fresh jobs by score (highest first), then by age (newest first)
         scored.sort(key=lambda j: (-j["score"], j.get("age_hours", 0)))
-        
+
         # Sort old jobs by score (highest first)
         old_but_verified.sort(key=lambda j: -j["score"])
 
         new_jobs = [j for j in scored if j["url"] not in all_seen]
+
+        # Print filter debug summary
+        print("\n📊 Filter Debug Summary:")
+        for key, val in sorted(filter_debug.items()):
+            if val > 0:
+                print(f"   {key}: {val}")
+        print(f"   SCORED (passed all filters): {len(scored)}")
+        print(f"   Near Misses: {len(near_misses)}")
+        print(f"   Old but Verified: {len(old_but_verified)}")
 
         # ---- Liveness check on top fresh jobs ----
         to_check = new_jobs[:TOP_LIVENESS_CHECK]

@@ -1,0 +1,26 @@
+name: State Probe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Restore persistent state
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python state_sync.py download
+
+      - name: Upload a probe marker
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p output
+          echo '{"probe": "state-sync-works", "ts": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"}' > output/probe.json
+          python state_sync.py upload

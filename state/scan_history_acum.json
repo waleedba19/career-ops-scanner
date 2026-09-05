@@ -117,5 +117,60 @@
         "source": "remotive"
       }
     ]
+  },
+  {
+    "date": "2026-09-05T17:58:10.891725+00:00",
+    "matched_count": 6,
+    "all_count": 5058,
+    "jobs": [
+      {
+        "title": "<![CDATA[CDMX - Evaluar atenci&oacute;n y servicio en negocios de manera presencial -- 6]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/local-job/CDMX-Evaluar-atenci-servicio-negocios-40693012.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Crafting Inspirational Testimonials from Interviews]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/content-writing/Crafting-Inspirational-Testimonials-from.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Hindi-English Article Typing]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/transcription/Hindi-English-Article-Typing.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Quer&eacute;taro - Evaluar atenci&oacute;n y servicio de manera presencial -- 3]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/local-job/Quer-taro-Evaluar-atenci-servicio-40693002.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Evaluaci&oacute;n de Servicio Presencial en Canc&uacute;n]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/local-job/Evaluaci-Servicio-Presencial-Canc.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[CDMX y Zona Metropolitana - Evaluaci&oacute;n telef&oacute;nica de atenci&oacute;n y servicio -- 61498]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/local-job/CDMX-Zona-Metropolitana-Evaluaci-telef-40692995.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      }
+    ]
   }
 ]

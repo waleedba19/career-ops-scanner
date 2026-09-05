@@ -48,5 +48,15 @@
     "near_misses": 0,
     "sources": 14,
     "time": "10:10 PM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Morning (7 AM Libya)",
+    "scanned": 4307,
+    "matches": 0,
+    "old_verified": 0,
+    "near_misses": 1,
+    "sources": 14,
+    "time": "01:47 AM"
   }
 ]

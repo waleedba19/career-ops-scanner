@@ -394,6 +394,27 @@ def extract_salary(text: str) -> str:
 def is_open_worldwide(location: str, desc: str) -> bool:
     loc = (location or "").lower()
     text = (desc or "").lower() + " " + loc
+    
+    # Check description for location restriction warnings FIRST
+    # Many jobs have "Location Restriction: United States only" in description
+    # or "This position is only available in the US" patterns
+    RESTRICTION_PATTERNS = [
+        re.compile(r"location\s+restriction", re.I),
+        re.compile(r"only\s+available\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+        re.compile(r"position\s+is\s+(only|restricted)\s+(to|for)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+        re.compile(r"eligible\s+(for\s+only|only\s+for|if\s+you\s+are\s+in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+        re.compile(r"this\s+job\s+is\s+(only|restricted)\s+to", re.I),
+        re.compile(r"must\s+be\s+(located\s+in|based\s+in|in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+        re.compile(r"applicants\s+must\s+be\s+(located|based)\s+in", re.I),
+        re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in", re.I),
+        re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in", re.I),
+        re.compile(r"only\s+considering\s+candidates\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+        re.compile(r"only\s+hiring\s+(in|for)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+    ]
+    for pattern in RESTRICTION_PATTERNS:
+        if pattern.search(text):
+            return False
+    
     # Hard blockers — checked against full text (location + description)
     HARD_BLOCKERS = [
         re.compile(r"residents? only", re.I),
@@ -408,6 +429,8 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         re.compile(r"must already (have|hold|possess).{0,40}(work permit|residence permit|visa|residency)", re.I),
         re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within)", re.I),
         re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
+        # Location Restriction field
+        re.compile(r"location\s+restriction\s*:?\s*(u\.?s|united\s+states|uk|eu|canadian|australian)", re.I),
     ]
     for blocker in HARD_BLOCKERS:
         if blocker.search(text):
@@ -3831,6 +3854,29 @@ async def run_scan():
         for job in all_jobs:
             if not job.get("url"):
                 filter_debug["no_url"] += 1
+                continue
+            
+            # EARLY REJECT: Check for location restrictions in description
+            # Reject immediately if job has location restrictions
+            desc = (job.get("description") or "").lower()
+            job_title = (job.get("title") or "").lower()
+            # Patterns that indicate location restrictions
+            EARLY_LOCATION_RESTRICTIONS = [
+                re.compile(r"location\s+restriction", re.I),
+                re.compile(r"only\s+available\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+                re.compile(r"eligible\s+(for\s+only|only\s+for|if\s+you\s+are\s+in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+                re.compile(r"must\s+be\s+(located\s+in|based\s+in|in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+                re.compile(r"this\s+job\s+is\s+(only|restricted)\s+to", re.I),
+                re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in", re.I),
+                re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in", re.I),
+            ]
+            early_rejected = False
+            for pattern in EARLY_LOCATION_RESTRICTIONS:
+                if pattern.search(desc) or pattern.search(job_title):
+                    filter_debug["not_worldwide"] += 1
+                    early_rejected = True
+                    break
+            if early_rejected:
                 continue
             
             # Smart deduplication — skip if company+title+location already seen

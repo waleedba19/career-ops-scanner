@@ -1,4 +1,13 @@
+# Core — scanner, notifier, excel, cover letters
 aiohttp>=3.9,<4
 openpyxl>=3.1,<4
 fpdf2>=2.7,<3
 httpx>=0.27,<1
+
+# Dashboard & API (optional — fallback to stdlib if not installed)
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29,<1
+jinja2>=3.1,<4
+
+# Resilience & observability
+tenacity>=8.2,<9

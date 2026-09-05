@@ -4,29 +4,43 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
+          cache: 'pip'
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      - name: Syntax check all modules
+      - name: Syntax check (fail fast)
         run: python -m compileall -q .
-
-      - name: Run module test suite
+      - name: Module suite (learning, research, interview, cover letters, excel)
         run: python test_all_modules.py
-
-      - name: Run freshness/scoring tests
+      - name: Freshness & scoring
         run: python test_improved.py
+      - name: Dashboard & API smoke
+        run: |
+          python -c "import config; print('config ok', config.ROOT)"
+          python -c "import careerops_logger; print('logger ok')"
+          python -c "import metrics; print(metrics.get_health())"
+          python -c "import dashboard.app; print('dashboard ok')"
+          python -c "import api_server; print('api ok')"
+          python -c "from fetchers.registry import TIER_CAP, list_fetchers; print('fetchers', list_fetchers(TIER_CAP))"
+      - name: Excel generator smoke
+        run: python -c "from excel_generator import generate_excel; print(generate_excel([], '12:00 PM', [], [], {'all_count':0,'source_count':0,'fresh_count':0,'near_misses':[]}, {'total_scans':0})[:200])"
+
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t careerops:test .
+      - name: Run health smoke
+        run: docker run --rm careerops:test python -c "import scanner; print('scanner import ok')"

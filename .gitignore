@@ -1,2 +1,8 @@
-﻿output/
+output/
 output*/
+__pycache__/
+*.pyc
+*.pyo
+.env
+dashboard/static/*
+!dashboard/static/.gitkeep

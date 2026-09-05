@@ -5,21 +5,30 @@ on:
     - cron: '0 5 * * *'   # 05:00 UTC = 07:00 Libya — Morning Intel
     - cron: '0 13 * * *'  # 13:00 UTC = 15:00 Libya — Afternoon Briefing
     - cron: '0 20 * * *'  # 20:00 UTC = 22:00 Libya — Night Digest
-  workflow_dispatch:        # manual trigger from Actions tab
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore: ['README.md', 'ARCHITECTURE.md', 'dashboard/**']
+
+concurrency:
+  group: careerops-scan
+  cancel-in-progress: false
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 45
-
     permissions:
-      contents: write   # needed to persist scanner state to the state/ folder
+      contents: write
 
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
       BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
       TO_EMAIL:           ${{ secrets.TO_EMAIL }}
+      OLLAMA_MODEL:       qwen2.5:1.5b
+      CAREEROPS_TIER_CAP: "2"
+      CAREEROPS_BATCH_SIZE: "8"
 
     steps:
       - name: Checkout repository
@@ -34,43 +43,58 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: 'pip'
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: Cache Ollama model
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama
+          key: ollama-qwen2.5-1.5b
+
       - name: Install Ollama
         run: |
-          curl -fsSL https://ollama.com/install.sh | sh
+          if ! command -v ollama >/dev/null 2>&1; then
+            curl -fsSL https://ollama.com/install.sh | sh
+          fi
 
       - name: Start Ollama server
         run: |
-          ollama serve &
+          nohup ollama serve > /tmp/ollama.log 2>&1 &
           echo "OLLAMA_PID=$!" >> "$GITHUB_ENV"
 
       - name: Wait for Ollama to be ready
         run: |
           echo "Waiting for Ollama on localhost:11434..."
           for i in $(seq 1 30); do
-            if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+            if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
               echo "Ollama is ready"
               break
             fi
             echo "Attempt $i/30..."
             sleep 2
           done
-          if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+          if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
             echo "Ollama verified"
+            cat /tmp/ollama.log | tail -20 || true
           else
-            echo "WARNING: Ollama failed to start - scanner will run in fallback mode (template cover letters, no AI scoring)"
+            echo "WARNING: Ollama failed — scanner will run in template fallback mode"
+            cat /tmp/ollama.log | tail -50 || true
           fi
 
-      - name: Pull Ollama model
+      - name: Pull Ollama model (unified)
         run: |
-          if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
-            ollama pull llama3.1:8b
+          if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
+            ollama pull qwen2.5:1.5b || echo "model pull failed, continuing"
+            ollama list
           else
-            echo "Skipping model pull - Ollama not available"
+            echo "Skipping model pull — Ollama not available"
           fi
+
+      - name: Lint — compile check (fail fast)
+        run: python -m compileall -q .
 
       - name: Auto-discover new job sources
         run: python source_discovery.py
@@ -78,6 +102,12 @@ jobs:
 
       - name: Run job scanner
         run: python scanner.py
+
+      - name: Export metrics & health
+        if: always()
+        run: |
+          echo "=== health.json ==="; cat output/health.json 2>/dev/null || echo "no health"
+          echo "=== metrics.json ==="; cat output/metrics.json 2>/dev/null | head -n 80 || echo "no metrics"
 
       - name: Save persistent state
         if: always()
@@ -90,12 +120,24 @@ jobs:
         run: |
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -H "Content-Type: application/json" \
-            -d '{"chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}", "text": "⚠️ CareerOps scan FAILED. Check: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}'
+            -d '{"chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}", "text": "⚠️ CareerOps scan FAILED. Check: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' || true
 
-      - name: Upload Excel report
+      - name: Upload Excel report + dashboard snapshot
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: careerops-scan-${{ github.run_id }}
-          path: output/*.xls
+          path: |
+            output/*.xls
+            output/*.json
+            output/health.json
+            output/metrics.json
           retention-days: 30
+
+      - name: Upload dashboard as Pages artifact (optional)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: careerops-dashboard-${{ github.run_id }}
+          path: dashboard/
+          retention-days: 7

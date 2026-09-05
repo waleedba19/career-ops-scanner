@@ -479,6 +479,17 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     except Exception:
         pass
 
+    # Precompute suffix for job count message to avoid nested f-string issues
+    suffix = f", plus {len(near_all)} close position{'s' if len(near_all) != 1 else ''} for your review" if near_all else ""
+
+    # Build evolution section separately to avoid nested f-string syntax issues
+    evolution_html = ""
+    if has_evolution:
+        source_html = ""
+        if source_report and "No source data" not in source_report:
+            source_html = f'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;margin:16px 0 8px">\uD83D\uDCCA Source Performance</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(source_report)}</pre>'
+        evolution_html = f'<tr><td style="padding:16px 28px 16px;border-top:1px solid #e0e0e0"><p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">\U0001f9e0 AI Intelligence Report</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(evolution)}</pre>{source_html}</td></tr>'
+
     html = f'''<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -494,7 +505,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#555;margin:0">{_esc(date_str)} \xB7 {_esc(time_str)} \xB7 Scan #{scan_num}</p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;margin:14px 0 0;line-height:1.6">
             This cycle we reviewed <b>{all_count:,} job listings</b> across {source_count} sources.
-            <b>{len(jobs)} new match{'es' if len(jobs) != 1 else ''}{f', plus {len(near_all)} close position{"s" if len(near_all) != 1 else ""} for your review' if near_all else ''}</b>.
+            <b>{len(jobs)} new match{'es' if len(jobs) != 1 else ''}{suffix}</b>.
           </p>
         </td></tr>
         <tr><td style="padding:6px 28px 20px">
@@ -502,12 +513,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
           {near_html}
           {unapplied_html}
         </td></tr>
-        {f"""<tr><td style="padding:16px 28px 16px;border-top:1px solid #e0e0e0">
-          <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">🧠 AI Intelligence Report</p>
-          <pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(evolution)}</pre>
-          {f"""<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;margin:16px 0 8px">📊 Source Performance</p>
-          <pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(source_report)}</pre>""" if source_report and "No source data" not in source_report else ""}
-        </td></tr>""" if has_evolution else ""}
+        {evolution_html}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
             About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
@@ -530,7 +536,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     # Text body
     text = "CAREEROPS SERVICES \u2014 Personal Job Search Assistant\n"
     text += f"{date_str} \xB7 {time_str} \xB7 Scan #{scan_num}\n\n"
-    text += f"This cycle we reviewed {all_count:,} job listings across {source_count} sources and found {len(jobs)} new match{'es' if len(jobs) != 1 else ''}{f', plus {len(near_all)} close position{"s" if len(near_all) != 1 else ""} for your review' if near_all else ''}.\n\n"
+    text += f"This cycle we reviewed {all_count:,} job listings across {source_count} sources and found {len(jobs)} new match{'es' if len(jobs) != 1 else ''}{suffix}.\n\n"
 
     if not jobs:
         text += "\u2705 0 New Matches Found\n"

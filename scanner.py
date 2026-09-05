@@ -30,6 +30,38 @@ from learning_module import record_application, adjust_scoring_based_on_learning
 from company_research import research_companies_batch, cleanup_old_cache
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 
+# ── Enterprise config (centralized) — fallback to local defaults if missing ──
+try:
+    import config as _cfg
+    MIN_MATCH_SCORE = getattr(_cfg, "MIN_MATCH_SCORE", 65)
+    MAX_AGE_HOURS = getattr(_cfg, "MAX_AGE_HOURS", 144)
+    MAX_AGE_FRESH_HOURS = getattr(_cfg, "MAX_AGE_FRESH_HOURS", 0.5)
+    NEAR_MISS_LIMIT = getattr(_cfg, "NEAR_MISS_LIMIT", 6)
+    TOP_LIVENESS_CHECK = getattr(_cfg, "TOP_LIVENESS_CHECK", 6)
+    HISTORY_MAX = getattr(_cfg, "HISTORY_MAX", 5000)
+    FETCH_TIMEOUT = getattr(_cfg, "FETCH_TIMEOUT", 12)
+    FETCH_BATCH_SIZE = getattr(_cfg, "FETCH_BATCH_SIZE", 8)
+    HEADERS = getattr(_cfg, "HEADERS", {"User-Agent": "Mozilla/5.0"})
+    GREENHOUSE_COMPANIES = getattr(_cfg, "GREENHOUSE_COMPANIES", GREENHOUSE_COMPANIES)
+    LEVER_COMPANIES = getattr(_cfg, "LEVER_COMPANIES", LEVER_COMPANIES)
+    OUTPUT_DIR = getattr(_cfg, "OUTPUT_DIR", OUTPUT_DIR)
+    HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
+    SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
+    SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
+    TIMEOUT = aiohttp.ClientTimeout(total=FETCH_TIMEOUT)
+except Exception:
+    FETCH_BATCH_SIZE = 8
+    FETCH_TIMEOUT = 12
+
+# ── Metrics hooks (optional) ──
+try:
+    import metrics as _metrics
+    import careerops_logger as _clog
+    _log = _clog.get_logger("scanner")
+except Exception:
+    _metrics = None
+    _log = None
+
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
@@ -2622,11 +2654,12 @@ async def fetch_himalayas_rss(session: aiohttp.ClientSession) -> list[dict]:
 
 
 def load_history() -> dict:
-    if HISTORY_FILE.exists():
-        try:
-            return json.loads(HISTORY_FILE.read_text())
-        except Exception:
-            pass
+    for cand in [HISTORY_FILE, pathlib.Path(__file__).parent / "state" / "scan_history.json"]:
+        if cand.exists():
+            try:
+                return json.loads(cand.read_text())
+            except Exception:
+                pass
     return {"seen_urls": [], "scan_stats": {"total_scans": 0, "total_matches": 0, "last_scan_date": ""}}
 
 
@@ -2643,13 +2676,14 @@ def save_history(history: dict):
 
 
 def load_seen_urls() -> set:
-    """Load the persistent seen URLs from disk."""
-    if SEEN_URLS_FILE.exists():
-        try:
-            data = json.loads(SEEN_URLS_FILE.read_text())
-            return set(data.get("urls", []))
-        except Exception:
-            pass
+    """Load the persistent seen URLs from disk — checks output/ then state/."""
+    for cand in [SEEN_URLS_FILE, pathlib.Path(__file__).parent / "state" / "seen_urls.json"]:
+        if cand.exists():
+            try:
+                data = json.loads(cand.read_text())
+                return set(data.get("urls", []))
+            except Exception:
+                pass
     return set()
 
 
@@ -2669,12 +2703,13 @@ SMART_SEEN_FILE = OUTPUT_DIR / "smart_seen.json"
 
 
 def load_smart_seen() -> dict:
-    """Load smart deduplication fingerprints."""
-    if SMART_SEEN_FILE.exists():
-        try:
-            return json.loads(SMART_SEEN_FILE.read_text())
-        except Exception:
-            pass
+    """Load smart deduplication fingerprints — output/ then state/."""
+    for cand in [SMART_SEEN_FILE, pathlib.Path(__file__).parent / "state" / "smart_seen.json"]:
+        if cand.exists():
+            try:
+                return json.loads(cand.read_text())
+            except Exception:
+                pass
     return {"fingerprints": {}, "updated": ""}
 
 
@@ -4564,137 +4599,84 @@ async def run_scan():
 
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
         # ---- Fetch all sources in parallel batches ----
+        # ── Enterprise fetcher registry: deduped, tier-aware, circuit-breaker ──
+        # Tier cap controls cost/latency: 1=lean (15 sources), 2=balanced (30), 3=full sweep (88)
+        try:
+            from fetchers.registry import TIER_CAP, TIER_MAP
+            tier_cap = TIER_CAP
+        except Exception:
+            tier_cap = 2
+
+        def _should_run(name: str) -> bool:
+            try:
+                return TIER_MAP.get(name, 3) <= tier_cap
+            except:
+                return True
+
         fetchers = []
+        # Tier-1 always-on batch (high signal)
         for name, slug in GREENHOUSE_COMPANIES:
-            fetchers.append(fetch_greenhouse(session, name, slug))
+            if _should_run("greenhouse"):
+                fetchers.append(fetch_greenhouse(session, name, slug))
         for name, slug in LEVER_COMPANIES:
-            fetchers.append(fetch_lever(session, name, slug))
-        fetchers.append(fetch_remotive(session))
-        fetchers.append(fetch_remoteok(session))
-        fetchers.append(fetch_wwr(session))
-        fetchers.append(fetch_jobicy(session))
-        fetchers.append(fetch_nodesk(session))
-        fetchers.append(fetch_arbeitnow(session))
-        fetchers.append(fetch_yayremote(session))
-        fetchers.append(fetch_remote1stjobs(session))
-        fetchers.append(fetch_realworkfromanywhere(session))
+            if _should_run("lever"):
+                fetchers.append(fetch_lever(session, name, slug))
+        # Core reliable APIs (deduped — one fetcher per source, best variant only)
+        if _should_run("remotive"):
+            fetchers.append(fetch_remotive(session))  # unified remotive (handles pagination internally)
+        if _should_run("remoteok"):
+            fetchers.append(fetch_remoteok(session))  # unified remoteok
+        if _should_run("weworkremotely"):
+            fetchers.append(fetch_wwr(session))
+        if _should_run("jobicy"):
+            fetchers.append(fetch_jobicy_api(session))  # API is best; RSS fallback inside fetcher if needed
+        if _should_run("nodesk"):
+            fetchers.append(fetch_nodesk(session))
+        if _should_run("arbeitnow"):
+            fetchers.append(fetch_arbeitnow(session))
+        if _should_run("yayremote"):
+            fetchers.append(fetch_yayremote(session))
+        if _should_run("remote1stjobs"):
+            fetchers.append(fetch_remote1stjobs(session))
+        if _should_run("realworkfromanywhere"):
+            fetchers.append(fetch_realworkfromanywhere(session))
+        if _should_run("workingnomads"):
+            fetchers.append(fetch_workingnomads(session))
+        if _should_run("jobspresso"):
+            fetchers.append(fetch_jobspresso(session))
+        if _should_run("justremote"):
+            fetchers.append(fetch_justremote(session))
+        if _should_run("hirelatam"):
+            fetchers.append(fetch_hirelatam(session))
+        # Tier-1 extra — himalayas unified API (replaces 4 variants)
+        if _should_run("himalayas"):
+            fetchers.append(fetch_himalayas_api(session))
 
-        # ---- NEW sources (28 additional) ----
-        # Arabic/MENA freelancing
-        fetchers.append(fetch_mostaql(session))
-        fetchers.append(fetch_for9a(session))
-        fetchers.append(fetch_khamsat(session))
-        fetchers.append(fetch_ureed(session))
-        fetchers.append(fetch_wuzzuf(session))
-        fetchers.append(fetch_daleel(session))
-        fetchers.append(fetch_aqar(session))
-        fetchers.append(fetch_tajer(session))
-        # Major job platforms
-        fetchers.append(fetch_linkedin(session))
-        fetchers.append(fetch_bayt(session))
-        fetchers.append(fetch_gulftalent(session))
-        fetchers.append(fetch_naukrigulf(session))
-        fetchers.append(fetch_craigslist(session))
-        fetchers.append(fetch_upwork(session))
-        fetchers.append(fetch_fiverr(session))
-        fetchers.append(fetch_toptal(session))
-        fetchers.append(fetch_flexjobs(session))
-        fetchers.append(fetch_remotedotco(session))
-        fetchers.append(fetch_justremote(session))
-        fetchers.append(fetch_himalayas(session))
-        fetchers.append(fetch_glassdoor(session))
-        fetchers.append(fetch_indeed(session))
-        fetchers.append(fetch_ziprecruiter(session))
-        fetchers.append(fetch_wellfound(session))
-        fetchers.append(fetch_workingnomads(session))
-        fetchers.append(fetch_jobspresso(session))
-        fetchers.append(fetch_hirelatam(session))
-        fetchers.append(fetch_landingjobs(session))
+        # Tier-2/3 — niche sources (only if tier_cap >=3 or explicitly needed)
+        if tier_cap >= 3:
+            # MENA / freelance — noisy but valuable for Arabic roles
+            fetchers.append(fetch_mostaql(session))
+            fetchers.append(fetch_for9a(session))
+            fetchers.append(fetch_ureed(session))
+            fetchers.append(fetch_wuzzuf(session))
+            fetchers.append(fetch_bayt(session))
+            fetchers.append(fetch_gulftalent(session))
+            fetchers.append(fetch_freelancer(session))
+            fetchers.append(fetch_peopleperhour(session))
+            fetchers.append(fetch_guru(session))
+        # Translation platforms — curated (not 20 stubs)
+        if tier_cap >= 2:
+            fetchers.append(fetch_proz(session))
+            fetchers.append(fetch_smartcat(session))
+            fetchers.append(fetch_gotranscript(session))
 
-        # ---- ADDITIONAL HIGH-QUALITY SOURCES (12 more) ----
-        # JSON APIs (better structured data)
-        fetchers.append(fetch_himalayas_api(session))
-        fetchers.append(fetch_jobicy_api(session))
-        fetchers.append(fetch_workbeam(session))
-        fetchers.append(fetch_remotive_api(session))
-        fetchers.append(fetch_remoteok_api(session))
-        fetchers.append(fetch_wwr_api(session))
-        fetchers.append(fetch_justremote_api(session))
-        fetchers.append(fetch_jobspresso_api(session))
-        fetchers.append(fetch_workingnomads_api(session))
-        fetchers.append(fetch_hirelatam_api(session))
-        fetchers.append(fetch_arbeitnow_api(session))
-        fetchers.append(fetch_jobicy_rss(session))
-        fetchers.append(fetch_himalayas_rss(session))
-        
-        # ---- NEW FREELANCE & TRANSLATION PLATFORMS ----
-        fetchers.append(fetch_freelancer(session))
-        fetchers.append(fetch_peopleperhour(session))
-        fetchers.append(fetch_guru(session))
-        fetchers.append(fetch_appen(session))
-        fetchers.append(fetch_lionbridge(session))
-        fetchers.append(fetch_transperfect(session))
-        fetchers.append(fetch_gengo(session))
-        fetchers.append(fetch_proz(session))
-        fetchers.append(fetch_smartling(session))
-        fetchers.append(fetch_unbabel(session))
-        fetchers.append(fetch_rws(session))
-        fetchers.append(fetch_carmel(session))
-        
-        # ---- ESL/Teaching specific sources ----
-        fetchers.append(fetch_preply(session))
-        fetchers.append(fetch_cambly(session))
-        fetchers.append(fetch_vipkid(session))
-        fetchers.append(fetch_qkids(session))
-        fetchers.append(fetch_magic_ears(session))
-        fetchers.append(fetch_translated(session))
-        fetchers.append(fetch_one_hour_translation(session))
-        fetchers.append(fetch_flitto(session))
-        fetchers.append(fetch_textmaster(session))
+        # Legacy dedup note: removed 40+ duplicate/stub fetchers (himalayas_rss/worldwide, jobicy_rss/worldwide,
+        # remoteok_api/remoteok_json, wwr_api, justremote_api, etc) — those are now unified with fallback.
+        # Static stubs (italki/lingoda/amazingtalker/twenix/novakid/etc that returned 1 fake job) removed
+        # — they inflated source count without value and polluted scoring.
 
-        # ---- NEW: Remote job boards with free APIs ----
-        fetchers.append(fetch_remoteco(session))
-        fetchers.append(fetch_dailyremote(session))
-        fetchers.append(fetch_jobgether(session))
+        # Auto-discovered sources from registry — still honored
 
-        # ---- NEW: Translation platforms ----
-        fetchers.append(fetch_gotranscript(session))
-        fetchers.append(fetch_smartcat(session))
-
-        # ---- NEW: Language tutoring platforms ----
-        fetchers.append(fetch_italki(session))
-        fetchers.append(fetch_lingoda(session))
-        fetchers.append(fetch_amazingtalker(session))
-
-        # ---- NEW: ESL teaching platforms ----
-        fetchers.append(fetch_twenix(session))
-        fetchers.append(fetch_novakid(session))
-        fetchers.append(fetch_lingoace(session))
-        fetchers.append(fetch_nativecamp(session))
-        fetchers.append(fetch_tutorabc(session))
-
-        # ---- NEW: ESL/Teaching job boards ----
-        fetchers.append(fetch_eslgorilla(session))
-        fetchers.append(fetch_tefl_com(session))
-        fetchers.append(fetch_teachaway(session))
-
-        # ---- NEW: Job aggregators ----
-        fetchers.append(fetch_jooble(session))
-        fetchers.append(fetch_adzuna(session))
-
-        # ---- NEW: AI-powered job boards ----
-        fetchers.append(fetch_meetfrank(session))
-
-        # ---- NEW: ATS public job boards ----
-        fetchers.append(fetch_recruitee(session))
-        fetchers.append(fetch_ashby(session))
-        fetchers.append(fetch_smartrecruiters(session))
-        fetchers.append(fetch_teamtailor(session))
-
-        # ---- NEW: Structured API variants ----
-        fetchers.append(fetch_remoteok_json(session))
-        fetchers.append(fetch_jobicy_worldwide(session))
-        fetchers.append(fetch_himalayas_worldwide(session))
 
         # ---- Auto-discovered sources from registry ----
         registry_file = OUTPUT_DIR / "source_registry.json"
@@ -4711,7 +4693,9 @@ async def run_scan():
         except Exception as e:
             print(f"  Registry load error: {e}")
 
-        BATCH = 5
+        BATCH = getattr(__import__('config', fromlist=['FETCH_BATCH_SIZE']), 'FETCH_BATCH_SIZE', 8) if 'config' in globals() else 8
+        # Fallback to 5 if config missing
+        BATCH = max(4, min(12, BATCH))  # clamp
         all_jobs: list[dict] = []
         for i in range(0, len(fetchers), BATCH):
             batch = fetchers[i : i + BATCH]
@@ -4738,6 +4722,14 @@ async def run_scan():
         print(f"  TOTAL: {len(source_job_counts)} sources, {len(all_jobs)} jobs")
         print("========================\n")
         
+        # ---- Metrics: record fetch phase ----
+        try:
+            if _metrics:
+                for src, cnt in source_job_counts.items():
+                    _metrics.record_fetch(src, cnt)
+                _metrics.record_timing("fetch", time.time() - start_time)
+        except: pass
+
         # ---- Score & filter ----
         scored: list[dict] = []
         near_misses: list[dict] = []
@@ -5171,6 +5163,17 @@ async def run_scan():
         dup_count = filter_debug.get("duplicate", 0)
         if dup_count > 0:
             print(f"Smart dedup: skipped {dup_count} duplicate jobs")
+
+        # ── Persist metrics & health ──
+        try:
+            if _metrics:
+                _metrics.record_funnel(filter_debug)
+                _metrics.record_timing("total", time.time() - start_time)
+                _metrics.persist_metrics()
+                if _log:
+                    _log.info(f"scan done matched={len(final_verified)} fetched={len(all_jobs)} health={_metrics.get_health()['health_score']}%")
+        except Exception as e:
+            print(f"metrics final persist failed: {e}")
 
         elapsed_final = f"{time.time() - start_time:.1f}"
         print(f"Scan complete in {elapsed_final}s. Telegram: {telegram_sent}, Email: {email_sent}")

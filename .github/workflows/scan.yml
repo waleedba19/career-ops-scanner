@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
+    permissions:
+      contents: write   # needed to persist scanner state to the state/ folder
+
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -21,6 +24,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Restore persistent state
+        run: python state_sync.py download
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -63,6 +69,10 @@ jobs:
 
       - name: Run job scanner
         run: python scanner.py
+
+      - name: Save persistent state
+        if: always()
+        run: python state_sync.py upload
 
       - name: Notify failure on Telegram
         if: failure()

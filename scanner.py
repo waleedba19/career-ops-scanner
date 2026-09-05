@@ -3906,7 +3906,11 @@ async def run_scan():
                 src = job.get("source", "unknown")
                 source_match_counts[src] = source_match_counts.get(src, 0) + 1
             else:
-                # Older jobs go to a separate list for Ollama verification
+                # Older jobs go to a separate list for Ollama verification,
+                # but never re-report jobs the user has already seen
+                if job_data["url"] in all_seen:
+                    filter_debug["duplicate"] += 1
+                    continue
                 old_but_verified.append(job_data)
 
         def is_genuine(title: str) -> bool:
@@ -3923,6 +3927,8 @@ async def run_scan():
 
         for job in all_jobs:
             if not job.get("url") or len(near_misses) >= NEAR_MISS_LIMIT:
+                continue
+            if job.get("url") in all_seen:
                 continue
             posted = normalize_date(job.get("posted"))
             age = age_hours(posted) if posted else float("inf")
@@ -4188,6 +4194,9 @@ async def run_scan():
             if j["url"] not in seen_urls:
                 seen_urls.add(j["url"])
         for j in near_misses:
+            if j["url"] not in seen_urls:
+                seen_urls.add(j["url"])
+        for j in final_verified:
             if j["url"] not in seen_urls:
                 seen_urls.add(j["url"])
         history["seen_urls"] = list(seen_urls)

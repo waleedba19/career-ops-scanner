@@ -133,12 +133,51 @@ async def test_source(session: aiohttp.ClientSession, url: str) -> dict:
         return {"valid": False, "reason": str(e)[:100]}
 
 
+def _derive_source_name(url: str) -> str:
+    """Derive a readable source name from a URL."""
+    from urllib.parse import urlparse
+    try:
+        domain = urlparse(url).netloc.lower()
+        domain = re.sub(r"^www\.", "", domain)
+        domain = re.sub(r"\.(com|org|net|io|co|ai|dev|jobs)$", "", domain)
+        return re.sub(r"[^a-z0-9]+", "_", domain).strip("_") or "discovered"
+    except Exception:
+        return "discovered"
+
+
+async def _crawl_seed(session: aiohttp.ClientSession, seed_url: str) -> list[str]:
+    """Scan a seed page's HTML for links to feeds/APIs/job boards."""
+    try:
+        async with session.get(seed_url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            text = await resp.text()
+        found: list[str] = []
+        for pattern in JOB_BOARD_PATTERNS:
+            for match in re.findall(pattern, text, re.I)[:8]:
+                url = match.strip().strip('"\'')
+                if url.startswith("//"):
+                    url = "https:" + url
+                elif url.startswith("/"):
+                    url = "https://" + urlparse(seed_url).netloc + url
+                elif not url.startswith("http"):
+                    continue
+                if url not in found:
+                    found.append(url)
+        return found[:10]
+    except Exception:
+        return []
+
+
 async def discover_new_sources(registry: dict) -> list[dict]:
     """Discover new job sources from seeds and patterns."""
+    from urllib.parse import urlparse
+
     new_sources = []
     existing_urls = {s["url"] for s in registry.get("sources", [])}
     
     async with aiohttp.ClientSession() as session:
+        # Round 1: test the known seed URLs directly
         for url in DISCOVERY_SEEDS:
             if url in existing_urls:
                 continue
@@ -147,14 +186,45 @@ async def discover_new_sources(registry: dict) -> list[dict]:
             if result["valid"]:
                 source = {
                     "url": url,
+                    "source_name": _derive_source_name(url),
                     "type": result["type"],
                     "items": result.get("items", 0),
                     "added": datetime.now(timezone.utc).isoformat(),
                     "auto_discovered": True,
                 }
                 new_sources.append(source)
+                existing_urls.add(url)
                 log_discovery(url, "discovered", f"{result['type']} ({result.get('items', 0)} items)")
                 print(f"  ✓ Discovered: {url} ({result['type']}, {result.get('items', 0)} items)")
+            else:
+                log_discovery(url, "rejected", result.get("reason", ""))
+        
+        # Round 2: crawl seed pages for new feed/API links nobody has found yet
+        candidates = []
+        for url in DISCOVERY_SEEDS[:8]:
+            for found in await _crawl_seed(session, url):
+                if found not in existing_urls and found not in candidates:
+                    candidates.append(found)
+        
+        tested = 0
+        for url in candidates:
+            if tested >= 15:
+                break
+            tested += 1
+            result = await test_source(session, url)
+            if result["valid"]:
+                source = {
+                    "url": url,
+                    "source_name": _derive_source_name(url),
+                    "type": result["type"],
+                    "items": result.get("items", 0),
+                    "added": datetime.now(timezone.utc).isoformat(),
+                    "auto_discovered": True,
+                }
+                new_sources.append(source)
+                existing_urls.add(url)
+                log_discovery(url, "discovered", f"crawled: {result['type']} ({result.get('items', 0)} items)")
+                print(f"  ✓ Crawled & discovered: {url} ({result['type']}, {result.get('items', 0)} items)")
             else:
                 log_discovery(url, "rejected", result.get("reason", ""))
     
@@ -174,6 +244,8 @@ async def run_discovery():
         registry["sources"].extend(new_sources)
         registry["last_discovery"] = datetime.now(timezone.utc).isoformat()
         registry["total_discoveries"] = registry.get("total_discoveries", 0) + len(new_sources)
+        # Keep the registry bounded so it doesn't grow forever
+        registry["sources"] = registry.get("sources", [])[:60]
         save_registry(registry)
         print(f"  ✓ Added {len(new_sources)} new sources")
     else:

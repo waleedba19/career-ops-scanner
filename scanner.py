@@ -4118,7 +4118,9 @@ async def run_scan():
         date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         excel_path = OUTPUT_DIR / f"careerops-scan-{date_str}.xls"
         try:
-            excel_xml = generate_excel(final_verified, elapsed, near_misses, all_jobs, scan_info, stats)
+            # Pass the actual scan time, not the elapsed duration
+            scan_time_str = datetime.now(timezone.utc).strftime("%I:%M %p")
+            excel_xml = generate_excel(final_verified, scan_time_str, near_misses, all_jobs, scan_info, stats)
             excel_path.write_text(excel_xml, encoding="utf-8")
             print(f"Excel saved: {excel_path}")
         except Exception as e:

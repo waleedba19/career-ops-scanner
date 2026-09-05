@@ -5,6 +5,7 @@ Helps candidates prepare for interviews with personalized prep materials.
 """
 
 import json
+import re
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -164,8 +165,12 @@ def save_interview_prep(job: dict, questions: dict) -> str:
     """Save interview preparation materials to a file. Returns file path."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     
-    title = job.get("title", "unknown").replace("/", "-")[:50]
-    company = job.get("company", "unknown").replace("/", "-")[:30]
+    # Strip characters that are invalid in filenames (Windows and Unix)
+    def _safe(s: str) -> str:
+        return re.sub(r'[\\/:*?"<>|\x00-\x1f]', "-", s).strip()
+
+    title = _safe(job.get("title", "unknown"))[:50]
+    company = _safe(job.get("company", "unknown"))[:30]
     date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
     
     filename = f"{company}_{title}_{date_str}.json"

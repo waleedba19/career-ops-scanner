@@ -95,5 +95,55 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-05T17:43:24.038018+00:00"
+  },
+  "GoTranscript": {
+    "name": "GoTranscript",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T21:52:44.728939+00:00"
+  },
+  "iTalki": {
+    "name": "iTalki",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T21:52:44.729384+00:00"
+  },
+  "LingoAce": {
+    "name": "LingoAce",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T21:52:44.729638+00:00"
+  },
+  "TutorABC": {
+    "name": "TutorABC",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T21:52:44.729871+00:00"
+  },
+  "Eslgorilla": {
+    "name": "Eslgorilla",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-05T21:52:44.730102+00:00"
   }
 }

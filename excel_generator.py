@@ -210,9 +210,13 @@ def generate_excel(
             category = detailed[url]["category"]
             score = detailed[url]["score"]
         else:
-            cs = get_match_score(j.get("title", ""), "")
-            category = cs["category"]
-            score = cs["score"]
+            # Use pre-calculated match_score if available, otherwise recalculate
+            score = j.get("match_score") or j.get("ai_overall_score") or 0
+            category = j.get("category", "Other")
+            if score == 0:
+                cs = get_match_score(j.get("title", ""), j.get("description", ""))
+                category = cs["category"]
+                score = cs["score"]
 
         is_winner = any(w.get("url") == url for w in jobs)
         is_near = any(n.get("url") == url for n in near_misses)

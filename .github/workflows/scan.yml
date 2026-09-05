@@ -58,10 +58,19 @@ jobs:
             echo "Attempt $i/30..."
             sleep 2
           done
-          curl -s http://localhost:11434/api/tags || { echo "Ollama failed to start - scanner will run in fallback mode"; exit 1; }
+          if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+            echo "Ollama verified"
+          else
+            echo "WARNING: Ollama failed to start - scanner will run in fallback mode (template cover letters, no AI scoring)"
+          fi
 
       - name: Pull Ollama model
-        run: ollama pull llama3.1:8b
+        run: |
+          if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+            ollama pull llama3.1:8b
+          else
+            echo "Skipping model pull - Ollama not available"
+          fi
 
       - name: Auto-discover new job sources
         run: python source_discovery.py

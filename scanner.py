@@ -129,7 +129,10 @@ MATCH_BUCKETS = [
             (re.compile(r"proofread|proofreading|proofreader", re.I), 35),
             (re.compile(r"academic (editor|editing)|copy editor|editorial", re.I), 30),
             (re.compile(r"\b(editor|editing)\b", re.I), 20),
-            (re.compile(r"\b(content writer|writer|writing|content editor)\b", re.I), 15),
+            (re.compile(r"\b(content writer|writer|writing|content editor|copywriter|copywriting|blog writer|article writer|technical writer|creative writer|content specialist|content creator|content strategist)\b", re.I), 25),
+            (re.compile(r"\b(write|writes|wrote|author|authoring)\b", re.I), 15),
+            (re.compile(r"\b(blog|article|content|copy)\b.{0,20}\b(write|writer|writing|create|creating)\b", re.I), 20),
+            (re.compile(r"\bcontent creation\b", re.I), 25),
         ],
     },
     {
@@ -4448,200 +4451,8 @@ async def fetch_himalayas_worldwide(session: aiohttp.ClientSession) -> list[dict
 
 
 # ---------------------------------------------------------------------------
-# site: Search Queries — Search entire job platforms at once
+# site: Search Queries — Removed (DuckDuckGo blocks automated requests)
 # ---------------------------------------------------------------------------
-
-# Each query uses DuckDuckGo to search across entire job boards
-# This is equivalent to career-ops-hq's Level 3 WebSearch discovery
-SITE_SEARCH_QUERIES = [
-    # Greenhouse boards (covers 1000+ companies)
-    'site:boards.greenhouse.io translation OR "Arabic" OR "content writer" OR "ESL" OR "teaching"',
-    'site:boards.greenhouse.io "virtual assistant" OR "data entry" OR "admin assistant"',
-    'site:boards.greenhouse.io "language" OR "tutor" OR "instructor" OR "education"',
-    # Ashby boards
-    'site:jobs.ashbyhq.com translation OR "Arabic" OR "content" OR "writing" OR "editor"',
-    'site:jobs.ashbyhq.com "ESL" OR "teaching" OR "tutor" OR "language"',
-    # Lever boards
-    'site:jobs.lever.co translation OR "Arabic" OR "content writer" OR "copywriter"',
-    'site:jobs.lever.co "virtual assistant" OR "admin" OR "data entry" OR "transcription"',
-    # Workday boards
-    'site:myworkdayjobs.com translation OR "Arabic" OR "content" OR "writing"',
-    'site:myworkdayjobs.com "ESL" OR "teaching" OR "tutor" OR "education"',
-    # LinkedIn
-    'site:linkedin.com/jobs translation remote worldwide',
-    'site:linkedin.com/jobs "Arabic translator" remote',
-    'site:linkedin.com/jobs "ESL teacher" remote worldwide',
-    'site:linkedin.com/jobs "content writer" remote worldwide',
-    'site:linkedin.com/jobs "virtual assistant" remote worldwide',
-    'site:linkedin.com/jobs "data entry" remote worldwide',
-    'site:linkedin.com/jobs "copy editor" remote worldwide',
-    'site:linkedin.com/jobs "academic editor" remote worldwide',
-    'site:linkedin.com/jobs "online tutor" remote worldwide',
-    'site:linkedin.com/jobs "proofreader" remote worldwide',
-    # Indeed
-    'site:indeed.com translation remote worldwide',
-    'site:indeed.com "Arabic translator" remote',
-    'site:indeed.com "ESL teacher" remote worldwide',
-    'site:indeed.com "content writer" remote worldwide',
-    'site:indeed.com "virtual assistant" remote worldwide',
-    # Glassdoor
-    'site:glassdoor.com translation remote worldwide',
-    'site:glassdoor.com "Arabic" translator remote',
-    # Remote-specific boards
-    'site:remotive.com translation OR "Arabic" OR "content" OR "writing"',
-    'site:remotive.com "ESL" OR "teaching" OR "tutor" OR "language"',
-    'site:weworkremotely.com translation OR "Arabic" OR "content" OR "writing"',
-    'site:weworkremotely.com "ESL" OR "teaching" OR "tutor" OR "education"',
-    'site:remoteok.com translation OR "Arabic" OR "content" OR "writing"',
-    'site:remoteok.com "virtual assistant" OR "admin" OR "data entry"',
-    # Freelance platforms
-    'site:upwork.com translation "Arabic" remote',
-    'site:upwork.com "content writer" remote worldwide',
-    'site:upwork.com "virtual assistant" remote worldwide',
-    'site:upwork.com "data entry" remote worldwide',
-    'site:upwork.com "copywriting" remote worldwide',
-    'site:upwork.com proofreading OR editing remote worldwide',
-    'site:fiverr.com translation "Arabic" remote',
-    'site:fiverr.com "content writing" remote worldwide',
-    'site:fiverr.com "virtual assistant" remote worldwide',
-    'site:freelancer.com translation "Arabic" remote',
-    'site:freelancer.com "content writer" remote worldwide',
-    # Translation platforms
-    'site:proz.com translation "Arabic" remote',
-    'site:translatorscafe.com translation "Arabic" remote',
-    'site:smartcat.com translation "Arabic" remote',
-    # ESL/Teaching
-    'site:eslgazette.com online teaching remote worldwide',
-    'site:tefl.com online teaching remote worldwide',
-    'site:teachaway.com online teaching remote worldwide',
-    'site:preply.com teach English online remote',
-    'site: cambly.com teach English online remote',
-    # MENA job boards
-    'site:bayt.com translation "Arabic" remote worldwide',
-    'site:bayt.com "content writer" remote worldwide',
-    'site:bayt.com "virtual assistant" remote worldwide',
-    'site:gulftalent.com translation "Arabic" remote worldwide',
-    'site:naukrigulf.com translation "Arabic" remote worldwide',
-    # Job aggregators
-    'site:jooble.org translation "Arabic" remote worldwide',
-    'site:jooble.org "ESL teacher" remote worldwide',
-    'site:jooble.org "content writer" remote worldwide',
-    'site:jooble.org "virtual assistant" remote worldwide',
-    'site:adzuna.com translation remote worldwide',
-    'site:adzuna.com "content writer" remote worldwide',
-    # Niche boards
-    'site:remote.co translation OR "Arabic" OR "content" OR "writing"',
-    'site:remote.co "virtual assistant" OR "admin" OR "data entry"',
-    'site:himalayas.app translation OR "Arabic" OR "content" OR "writing"',
-    'site:himalayas.app "ESL" OR "teaching" OR "tutor" OR "education"',
-    'site: Arbeitnow.com translation OR "Arabic" OR "content" OR "writing"',
-    'site:jobspresso.co translation OR "Arabic" OR "content" OR "writing"',
-    'site:workingnomads.com translation OR "Arabic" OR "content" OR "writing"',
-    # General remote job searches
-    'remote jobs "Arabic translator" worldwide 2026',
-    'remote jobs "ESL teacher" worldwide 2026',
-    'remote jobs "content writer" worldwide 2026',
-    'remote jobs "virtual assistant" worldwide 2026',
-    'remote jobs "data entry" worldwide 2026',
-    'remote jobs "copy editor" worldwide 2026',
-    'remote jobs "proofreader" worldwide 2026',
-    'remote jobs "online tutor" worldwide 2026',
-    'remote jobs "academic editor" worldwide 2026',
-    'remote jobs "transcription" worldwide 2026',
-]
-
-
-async def fetch_duckduckgo_search(session: aiohttp.ClientSession, query: str) -> list[dict]:
-    """Search DuckDuckGo for jobs using site: queries."""
-    try:
-        # Use DuckDuckGo HTML search (no API key needed)
-        params = {"q": query, "t": "h_", "ia": "web"}
-        async with session.get(
-            "https://html.duckduckgo.com/html/",
-            params=params,
-            headers={**HEADERS, "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"},
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            html = await resp.text()
-            jobs = []
-            
-            # Extract search results
-            # DuckDuckGo HTML results have class="result__a" for links
-            results = re.findall(
-                r'<a[^>]+class="result__a"[^>]*href="([^"]*)"[^>]*>([^<]+)</a>',
-                html, re.I
-            )
-            
-            for url, title in results[:20]:
-                title = strip_html(title).strip()
-                if not title or len(title) < 5:
-                    continue
-                
-                # Decode DuckDuckGo redirect URL
-                if "uddg=" in url:
-                    import urllib.parse
-                    url = urllib.parse.unquote(url.split("uddg=")[1].split("&")[0])
-                
-                if not url.startswith("http"):
-                    continue
-                
-                # Extract company from URL or title
-                company = "Unknown"
-                if "greenhouse.io" in url:
-                    company = url.split("/")[-2].title() if len(url.split("/")) > 4 else "Greenhouse"
-                elif "ashbyhq.com" in url:
-                    company = url.split("/")[-2].title() if len(url.split("/")) > 4 else "Ashby"
-                elif "lever.co" in url:
-                    company = url.split("/")[-2].title() if len(url.split("/")) > 4 else "Lever"
-                elif "linkedin.com" in url:
-                    company = "LinkedIn"
-                elif "indeed.com" in url:
-                    company = "Indeed"
-                elif "upwork.com" in url:
-                    company = "Upwork"
-                elif "fiverr.com" in url:
-                    company = "Fiverr"
-                elif "bayt.com" in url:
-                    company = "Bayt"
-                elif "gulftalent.com" in url:
-                    company = "GulfTalent"
-                
-                # Determine source from URL
-                source = "websearch"
-                if "greenhouse.io" in url:
-                    source = "websearch_greenhouse"
-                elif "ashbyhq.com" in url:
-                    source = "websearch_ashby"
-                elif "lever.co" in url:
-                    source = "websearch_lever"
-                elif "linkedin.com" in url:
-                    source = "websearch_linkedin"
-                elif "indeed.com" in url:
-                    source = "websearch_indeed"
-                elif "upwork.com" in url:
-                    source = "websearch_upwork"
-                elif "fiverr.com" in url:
-                    source = "websearch_fiverr"
-                elif "bayt.com" in url:
-                    source = "websearch_bayt"
-                
-                jobs.append({
-                    "title": title,
-                    "company": company,
-                    "url": url,
-                    "location": "Remote (Worldwide)",
-                    "posted": "",
-                    "description": f"Found via search: {query[:100]}",
-                    "salary": "",
-                    "source": source,
-                })
-            
-            return jobs[:20]
-    except Exception as e:
-        print(f"  DuckDuckGo search error: {e}")
-        return []
 
 
 # ---------------------------------------------------------------------------
@@ -4884,11 +4695,6 @@ async def run_scan():
         fetchers.append(fetch_remoteok_json(session))
         fetchers.append(fetch_jobicy_worldwide(session))
         fetchers.append(fetch_himalayas_worldwide(session))
-
-        # ---- site: Search Queries — Search entire job platforms at once ----
-        print(f"\n🔍 Running {len(SITE_SEARCH_QUERIES)} site: search queries...")
-        for query in SITE_SEARCH_QUERIES:
-            fetchers.append(fetch_duckduckgo_search(session, query))
 
         # ---- Auto-discovered sources from registry ----
         registry_file = OUTPUT_DIR / "source_registry.json"

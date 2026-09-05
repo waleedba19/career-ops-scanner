@@ -10,12 +10,51 @@ Same format and styling as the Cloudflare Worker.
 """
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 HISTORY_FILE = Path(__file__).parent / "output" / "fresh_matches_history.json"
 APPLICATIONS_FILE = Path(__file__).parent / "output" / "applications.json"
+
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+# The workbook is built for a user in Libya: dates, slot names and the
+# "Live as of" stamps all use Libya time, never raw UTC.
+LIBYA_TZ = timezone(timedelta(hours=2))  # Africa/Tripoli
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
+
+
+# Market pulse — why this hour matters, shown on the workbook so the
+# snapshot reads in context instead of as a static dump.
+def market_pulse(hour: int) -> tuple[str, str]:
+    """Return (scan_slot_label, market_pulse_note) for a Libya local hour."""
+    if hour < 11:
+        return (
+            "Morning (7 AM Libya)",
+            "Morning market — fresh before the US wakes; early posts are quiet and less contested.",
+        )
+    if hour < 18:
+        return (
+            "Afternoon (3 PM Libya)",
+            "Mid-day European wave — most postings land 9 AM-4 PM CET, right in this window.",
+        )
+    return (
+        "Night (10 PM Libya)",
+        "Night shift — less competition now; US evening posts are just starting to appear.",
+    )
+
+
+# Rotating human note on the Fresh Matches sheet — changes with the hour.
+HUMAN_NOTES = (
+    "Red rows are still waiting on you — apply before they fill.",
+    "Sorted fresh-first, best-fit-first. Start at the top.",
+    "If a row looks right, don't overthink it — apply.",
+    "Every row here cleared the 75% gate. Trust the list.",
+)
 
 
 def _esc(s) -> str:
@@ -144,20 +183,18 @@ def generate_excel(
     """Generate the full XML-based Excel spreadsheet with accumulating Fresh Matches."""
     from scanner import get_freshness, get_match_score
 
-    now = datetime.now(timezone.utc)
+    now = now_libya()
     date_str = now.strftime("%Y-%m-%d")
-    time_str = scan_time or now.strftime("%I:%M %p")
+    live_str = now.strftime("%I:%M %p")
+    time_str = scan_time or live_str
     scan_date = now.isoformat()
     total_scanned = len(all_jobs) or scan_info.get("all_count", 0)
 
-    # Hour-based scan slot (UTC runs at 05:00, 13:00, 20:00)
+    # Hour-based scan slot + market context, in Libya local time
+    # (scheduled runs land at 07:00 / 15:00 / 22:00 Libya)
     hour = now.hour
-    if hour < 9:
-        scan_slot = "Morning (5 AM)"
-    elif hour < 17:
-        scan_slot = "Afternoon (1 PM)"
-    else:
-        scan_slot = "Night (8 PM)"
+    scan_slot, pulse = market_pulse(hour)
+    human_note = HUMAN_NOTES[(now.hour + now.minute) % len(HUMAN_NOTES)]
 
     # ---- Tag current matches with scan_date ----
     for j in jobs:
@@ -363,8 +400,9 @@ def generate_excel(
     <Table>
       <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="100"/>
       <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="80"/><Column ss:Width="420"/>
-      <Row ss:StyleID="title"><Cell><Data ss:Type="String">CareerOps Full Scan - {date_str} ({total_scanned} jobs scanned)</Data></Cell></Row>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">CareerOps Full Scan - {date_str} — Live as of {live_str} Libya ({total_scanned} jobs scanned)</Data></Cell></Row>
       <Row><Cell><Data ss:Type="String">Green = Fresh &amp; Ready to Apply | Red = Lower confidence / review first | White = not a close match</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">{pulse}</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell><Cell><Data ss:Type="String">Category</Data></Cell>
@@ -383,7 +421,8 @@ def generate_excel(
       <Column ss:Width="100"/><Column ss:Width="180"/><Column ss:Width="70"/><Column ss:Width="70"/>
       <Column ss:Width="70"/><Column ss:Width="70"/><Column ss:Width="220"/><Column ss:Width="200"/>
       <Column ss:Width="100"/><Column ss:Width="420"/>
-      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated, deep intel — free forever)</Data></Cell></Row>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} — Live as of {live_str} Libya (accumulated, deep intel — free forever)</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">{human_note}</Data></Cell></Row>
       <Row><Cell><Data ss:Type="String">All 75-100% matches. RED=not applied — apply now! GREEN=applied. Columns J-O are free intel: Hiring Email (careers@ domain, MX ✓), Urgency (ASAP/immediate), Desperation (reposted), Opportunity (combined), Pain Points (why they need you). No paid API.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
@@ -433,12 +472,12 @@ def generate_excel(
   <Worksheet ss:Name="Daily Log">
     <Table>
       <Column ss:Width="120"/><Column ss:Width="160"/><Column ss:Width="100"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="100"/>
-      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Daily Scan Log (accumulated)</Data></Cell></Row>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Daily Scan Log (accumulated) — dates and times in Libya (Africa/Tripoli, UTC+2)</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">Date</Data></Cell><Cell><Data ss:Type="String">Scan Slot</Data></Cell>
         <Cell><Data ss:Type="String">Total Scanned</Data></Cell><Cell><Data ss:Type="String">Fresh Matches</Data></Cell>
         <Cell><Data ss:Type="String">Old Verified</Data></Cell><Cell><Data ss:Type="String">Near Misses</Data></Cell>
-        <Cell><Data ss:Type="String">Sources</Data></Cell><Cell><Data ss:Type="String">Time (UTC)</Data></Cell>
+        <Cell><Data ss:Type="String">Sources</Data></Cell><Cell><Data ss:Type="String">Time (Libya)</Data></Cell>
       </Row>
       {daily_rows_str}
     </Table>

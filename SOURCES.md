@@ -23,7 +23,7 @@ The `Probe Sources` workflow now runs automatically (weekly Mon 03:30 UTC, on ev
 | 🔑 needs_key | 8 | JSearch ×2, Adzuna ×2, Jooble, Careerjet, ReliefWeb, Reed — add the secrets and they light up |
 | 💥 error | 4 | timeouts / oversized headers |
 
-**Highest-value confirmed sources (not in the scanner yet):**
+**Highest-value confirmed sources (now wired — see §0.1):**
 
 | Source | Items | Why it matters |
 |---|---:|---|
@@ -39,6 +39,31 @@ The `Probe Sources` workflow now runs automatically (weekly Mon 03:30 UTC, on ev
 | `precision:workingnomads-api` | 32 | structured JSON replaces the HTML scrape (*AI Content Analyst*) |
 | `esl-boards: eslcafe-international`, `eslbase` | 12 / 44 | ESL boards |
 | `themuse:writing-editing` | 20 | free, no key |
+
+### 0.1 What got wired into the scan after the probe (`fetchers/verified.py`)
+
+Add-only, registered in `fetchers/registry.py`, dispatched from `run_scan()`, covered offline by `test_verified_sources.py` (78 checks: parsers on real-shaped payloads, key-less no-ops, LinkedIn 999/429 behaviour, quality gates, wiring consistency).
+
+| Registry name | Tier | What runs | Requests / scan |
+|---|:-:|---|---:|
+| `linkedin` | 1 | LinkedIn guest search — 4 profile queries, `f_WT=2` (remote) + last 24 h; stops on HTTP 999, backs off on 429, never echoes the query into the description (that poisoned the scorer) | ≤ 4 |
+| `freelancer_api` | 1 | Freelancer projects API, keyword-precise (`arabic translation`, `english teacher`, `proofreading editing`) | 3 |
+| `freelancer` | 3 → **1** | the existing RSS fetcher — best converter in the system (30 of 56 all-time matches) now always runs | 1 |
+| `jobicy_tags` | 1 | Jobicy tag feeds `translation` / `teaching` / `writing` | 3 |
+| `impactpool` | 1 | Impactpool UN/NGO search (`arabic interpreter`, `arabic translator`, `translation`) | 3 |
+| `greenhouse_profile` | 1 | `config.GREENHOUSE_PROFILE_BOARDS`: Invisible (`agency`), Labelbox/Alignerr, Turing — reuses `fetch_greenhouse` | 3 |
+| `ashby` / `workable` / `smartrecruiters` | 2 | new ATS adapters over `config.ASHBY_COMPANIES` (Mercor), `WORKABLE_COMPANIES` (Tamatem), `SMARTRECRUITERS_COMPANIES` (Keywords Studios, TransPerfect — keyword-filtered list endpoint) | 1 / 1 / 12 |
+| `themuse` | 2 | The Muse public API, Writing & Editing + Education, remote-filtered | 2 |
+| `workingnomads` | 2 | switched to the JSON endpoint `api/exposed_jobs/` (the RSS twin 404s); old fetcher kept | 1 |
+| `jsearch` · `adzuna` · `jooble` · `reliefweb` | 1 · 1 · 2 · 1 | keyed aggregators — **no-op until the secret exists** (`RAPIDAPI_KEY`, `ADZUNA_APP_ID`+`ADZUNA_APP_KEY`, `JOOBLE_API_KEY`, `RELIEFWEB_APPNAME`; already passed through in `scan.yml`) | 2 / 2 / 3 / 1 |
+
+Also in the same change:
+
+* **Probe-blocked hosts are skipped, not deleted.** `config.PROBE_BLOCKED_SOURCES` (`mostaql`, `ureed`, `wuzzuf`, `bayt`, `gulftalent`, `proz`) are logged as *"Skipping probe-blocked sources"* instead of spending 7 doomed requests per scan; `CAREEROPS_FORCE_BLOCKED=1` restores them (useful from a residential IP). `for9a` still runs — it answered.
+* **Config-import bug fixed.** `scanner.py`'s `try: import config` block referenced `GREENHOUSE_COMPANIES` before it was defined, so every run silently fell into the `except` branch and ran on built-in defaults; the fallback now prints why it happened.
+* The auto-discovered `state/source_registry.json` entries that duplicate a dedicated fetcher (remotive, WWR, jobicy, himalayas RSS twins) are skipped.
+
+**Not wired on purpose** (probe "ok" but needs a real parser first): `html:remowork-arabic`, `html:untalent-arabic`, `html:eslbase`, `html:eslcafe-international` (samples were navigation text), `html:dataannotation` (titles concatenated with category + rate), `wellfound` (paid platform).
 
 **Confirmed blocked from Actions (as predicted):** Indeed (401 + challenge), Glassdoor, ZipRecruiter, Upwork, and — notable — **all MENA boards (Bayt, Wuzzuf, GulfTalent, Mostaql, Ureed)** and **ProZ**, which the production scanner currently spends 6 requests/scan on for 0 results. Their inventory is reachable via JSearch/Adzuna/Jooble once the keys exist.
 

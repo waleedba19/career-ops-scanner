@@ -26,8 +26,16 @@ jobs:
       TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
       BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
       TO_EMAIL:           ${{ secrets.TO_EMAIL }}
+      # Optional keyed aggregators (each fetcher is a no-op while its secret is unset).
+      # See SOURCES.md §0 — JSearch is the legitimate route to Indeed/LinkedIn/Glassdoor inventory.
+      RAPIDAPI_KEY:       ${{ secrets.RAPIDAPI_KEY }}
+      ADZUNA_APP_ID:      ${{ secrets.ADZUNA_APP_ID }}
+      ADZUNA_APP_KEY:     ${{ secrets.ADZUNA_APP_KEY }}
+      JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
+      RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
       OLLAMA_MODEL:       qwen2.5:1.5b
       CAREEROPS_TIER_CAP: "3"   # full sweep — includes MENA (for9a/ureed/wuzzuf/bayt/gulftalent) + freelance fleet
+      # CAREEROPS_FORCE_BLOCKED: "1"  # re-enable probe-blocked hosts (mostaql/ureed/wuzzuf/bayt/gulftalent/proz) — only useful off datacenter IPs
       CAREEROPS_FRESH_H: "8"    # fresh = posted within one scan cycle (scans run every 8h)
       CAREEROPS_BATCH_SIZE: "8"
 

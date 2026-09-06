@@ -50,6 +50,20 @@ TIER_3_SOURCES = [
 # Paid platforms — auto-reject (fees to apply)
 PAID_PLATFORMS = ["flexjobs", "tophire", "wellfound", "ziprecruiter"]
 
+# Sources the probe confirmed are BLOCKED from GitHub Actions IPs (403/429 +
+# challenge pages) — requesting them only burns time. They are skipped unless
+# CAREEROPS_FORCE_BLOCKED=1 (e.g. when running from a residential IP).
+PROBE_BLOCKED_SOURCES = ["mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz"]
+FORCE_BLOCKED_SOURCES = os.getenv("CAREEROPS_FORCE_BLOCKED", "0") == "1"
+
+# Optional keyed aggregators — the sanctioned route to Indeed / LinkedIn /
+# Glassdoor inventory. Each fetcher returns [] until its secret is present.
+RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY", "")          # JSearch (Google for Jobs)
+ADZUNA_APP_ID = os.getenv("ADZUNA_APP_ID", "")
+ADZUNA_APP_KEY = os.getenv("ADZUNA_APP_KEY", "")
+JOOBLE_API_KEY = os.getenv("JOOBLE_API_KEY", "")
+RELIEFWEB_APPNAME = os.getenv("RELIEFWEB_APPNAME", "")
+
 # ── Ollama ───────────────────────────────────────────────────────────────
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b")  # unified model
@@ -94,6 +108,25 @@ GREENHOUSE_COMPANIES = [
     ("OneTrust", "onetrust"), ("Block", "block"), ("Twilio", "twilio"),
 ]
 LEVER_COMPANIES = [("Appen", "appen")]
+
+# ── Profile-specific ATS boards (live-verified by the Probe Sources workflow,
+#    state/source_probe.md, 2026-09-06). Same shape as GREENHOUSE_COMPANIES.
+#    Add a slug here only after the probe reports it `ok`.
+GREENHOUSE_PROFILE_BOARDS = [
+    ("Invisible (AI Trainer projects)", "agency"),   # 829 jobs incl. Arabic Language Specialist, worldwide remote
+    ("Labelbox / Alignerr", "labelbox"),             # 10 jobs — Arabic language expert roles appear here
+    ("Turing", "turing"),                            # 26 jobs — LLM training linguists
+]
+ASHBY_COMPANIES = [
+    ("Mercor", "mercor"),                            # 96 jobs — AI expert marketplace
+]
+WORKABLE_COMPANIES = [
+    ("Tamatem Games", "tamatem"),                    # 18 jobs — Arabic game localization (Jordan, remote-friendly)
+]
+SMARTRECRUITERS_COMPANIES = [
+    ("Keywords Studios", "KeywordsStudios"),         # game localization / Arabic LQA
+    ("TransPerfect", "TransPerfect"),                # LSP — linguists, project managers
+]
 
 # ── Scoring ──────────────────────────────────────────────────────────────
 SCORING_WEIGHTS = {

@@ -26,6 +26,8 @@ test:
 	python -m compileall -q .
 	python test_all_modules.py
 	python test_improved.py
+	python test_quality_gates.py
+	python test_verified_sources.py
 
 lint:
 	python -m compileall -q .

@@ -27,7 +27,8 @@ jobs:
       BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
       TO_EMAIL:           ${{ secrets.TO_EMAIL }}
       OLLAMA_MODEL:       qwen2.5:1.5b
-      CAREEROPS_TIER_CAP: "2"
+      CAREEROPS_TIER_CAP: "3"   # full sweep — includes MENA (for9a/ureed/wuzzuf/bayt/gulftalent) + freelance fleet
+      CAREEROPS_FRESH_H: "8"    # fresh = posted within one scan cycle (scans run every 8h)
       CAREEROPS_BATCH_SIZE: "8"
 
     steps:

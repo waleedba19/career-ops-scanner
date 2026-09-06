@@ -121,12 +121,52 @@ def upload_state() -> int:
     return uploaded
 
 
+PROBE_FILES = ["source_probe.md", "source_probe.json"]
+
+
+def upload_probe() -> int:
+    """Upload the latest source-probe report (output/source_probe.*) to state/."""
+    api = _api()
+    if not api:
+        return 0
+    base, token = api
+    uploaded = 0
+    for rel in PROBE_FILES:
+        src = OUTPUT_DIR / rel
+        if not src.exists():
+            continue
+        try:
+            url = f"{base}/state/{rel}"
+            body: dict = {
+                "message": f"careerops: source probe report ({rel})",
+                "content": base64.b64encode(src.read_bytes()).decode("ascii"),
+            }
+            sha = _get_sha(base, token, url)
+            if sha:
+                body["sha"] = sha
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(body).encode("utf-8"),
+                method="PUT",
+                headers={**_HEADERS, "Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                if resp.status in (200, 201):
+                    uploaded += 1
+        except Exception as e:
+            print(f"  [state] upload {rel}: {e}")
+    print(f"[state] uploaded {uploaded} probe report files")
+    return uploaded
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "download":
         sys.exit(0 if download_state() else 0)
     elif cmd == "upload":
         sys.exit(0 if upload_state() else 0)
+    elif cmd == "upload-probe":
+        sys.exit(0 if upload_probe() else 0)
     else:
-        print("Usage: python state_sync.py [download|upload]")
+        print("Usage: python state_sync.py [download|upload|upload-probe]")
         sys.exit(2)

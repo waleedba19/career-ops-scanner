@@ -1,10 +1,14 @@
-.PHONY: install scan dashboard api test lint docker
+.PHONY: install scan probe dashboard api test lint docker
 
 install:
 	pip install -r requirements.txt
 
 scan:
 	python scanner.py
+
+probe:
+	@echo "Probing candidate sources (see SOURCES.md) -> output/source_probe.md"
+	python probe_sources.py
 
 dashboard:
 	python dashboard/app.py

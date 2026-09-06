@@ -21,6 +21,9 @@ FETCHERS: list[tuple[str, str, int, str]] = [
     ("jobspresso", "fetch_jobspresso", 2, "jobspresso"),
     ("justremote", "fetch_justremote", 2, "justremote"),
     ("hirelatam", "fetch_hirelatam", 2, "hirelatam"),
+    ("reddit_social", "fetch_reddit_social", 2, "reddit"),  # social signals: r/forhire, r/RemoteJobs, r/esl, ...
+    ("eslgorilla", "fetch_eslgorilla", 2, "eslgorilla"),  # online ESL board, 300+ live listings (live-verified 2026-09-06)
+    ("tes", "fetch_tes", 2, "tes"),  # 2,700+ teaching jobs, remote/online filter built in
     # Tier 2 — niche / freelance (opt-in via env if needed)
     ("freelancer", "fetch_freelancer", 3, "freelancer"),
     ("peopleperhour", "fetch_peopleperhour", 3, "peopleperhour"),

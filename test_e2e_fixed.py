@@ -168,7 +168,7 @@ async def verify_pipeline():
     
     # STEP 7: Verify company research
     print("\n[7] Company research...")
-    from company_research import research_company
+    from company_research import get_company_research as research_company
     
     try:
         r = research_company(scored[0].get("company", "Test"), scored[0].get("url", ""))
@@ -179,7 +179,7 @@ async def verify_pipeline():
     
     # STEP 8: Verify cover letter generation
     print("\n[8] Cover letter generation...")
-    from cover_letter_generator import generate_cover_letter
+    from cover_letter_generator import generate_cover_letter_pdf as generate_cover_letter
     
     try:
         cl = generate_cover_letter(scored[0])
@@ -190,7 +190,7 @@ async def verify_pipeline():
     
     # STEP 9: Verify interview prep
     print("\n[9] Interview preparation...")
-    from interview_prep import generate_interview_prep
+    from interview_prep import generate_interview_questions as generate_interview_prep
     
     try:
         top = [j for j in scored if j.get("score", 0) >= 85]

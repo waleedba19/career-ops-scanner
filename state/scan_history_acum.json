@@ -515,5 +515,84 @@
     "matched_count": 0,
     "all_count": 4420,
     "jobs": []
+  },
+  {
+    "date": "2026-09-06T21:00:09.148662+00:00",
+    "matched_count": 9,
+    "all_count": 4730,
+    "jobs": [
+      {
+        "title": "Financial Records Cleanup Specialist",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/data-cleansing/Financial-Records-Cleanup-Specialist.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Professional Proofreader & Editor Needed",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/copy-editing/Professional-Proofreader-Editor-Needed",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Campagne pubs r\u00e9seaux sociaux",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/conversion-rate-optimization/Campagne-pubs-seaux-sociaux.html",
+        "score": 82,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Islamic consultancy and e-learning wordpress website",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/web-development/Islamic-consultancy-learning-wordpress",
+        "score": 62,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "Arabic PR Specialist \u2014 Earned Media Placements for Saudi E-Commerce Brand (KSA Outlets) -- 2",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/public-relations/Arabic-Specialist-Earned-Media-40694474",
+        "score": 62,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "Linguist \u2014 Arabic & Spanish (Localization & CX)",
+        "company": "Healix Scrubs",
+        "url": "https://in.linkedin.com/jobs/view/linguist-%E2%80%94-arabic-spanish-localization-cx-at-healix-scrubs-4461836577",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "GEOINT Conveyance/Copy Editor- Springfield, VA",
+        "company": "BAE Systems, Inc.",
+        "url": "https://www.linkedin.com/jobs/view/geoint-conveyance-copy-editor-springfield-va-at-bae-systems-inc-4424827286",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic Translation for Web Manuals",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/technical-writing/Arabic-Translation-for-Web-Manuals",
+        "score": 97,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "Adult ESL Instructor",
+        "company": "IRC - International Rescue Committee",
+        "url": "https://www.impactpool.org/jobs/1224517",
+        "score": 100,
+        "category": "ESL",
+        "source": "impactpool"
+      }
+    ]
   }
 ]

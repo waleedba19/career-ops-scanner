@@ -1129,6 +1129,114 @@
     "scan_date": "2026-09-06T01:29:27.210551+00:00"
   },
   {
+    "title": "Executive Assistant",
+    "company": "Remote Raven",
+    "url": "https://himalayas.app/companies/remote-raven/jobs/executive-assistant",
+    "location": "Philippines",
+    "posted": 1788684347,
+    "description": "Position Summary We are seeking a highly capable, tech-savvy Executive Assistant to support a fast-paced executive overseeing a growing team of 85 employees. This role requires sharp judgment, extreme reliability, and the ability to operate at speed with minimal instruction. You will work directly with the Partner as a true right hand. Instructions will often arrive incomplete or in shorthand, and the output still needs to be right. The ideal candidate is proactive, analytical, and comfortable working with senior leaders who move quickly, communicate briefly, and expect precision. What We're Looking For Must-Haves Adaptive execution. You don't need perfect instructions. You fill in gaps, make decisions, and course-correct on the fly. Relational intelligence. You build trust easily, read between the lines, and manage relationships with warmth and professionalism. Comfortable with speed. You thrive in fast-paced environments. Urgency energizes you rather than overwhelms you. Low ego, high ownership. You are not territorial. You care about outcomes, not credit. Judgment under ambiguity. You can prioritize when everything feels urgent and make sound calls without full context. Ideal Profile High Sociability. Naturally connects with people and manages relationships effortlessly. Moderate to High Consistency. Brings structure without rigidity and can pivot when priorities shift. Moderate to High Precision. Catches details that matter without getting stuck in perfectionism. Moderate to High Intensity. Matches the Partner's pace and is comfortable moving quickly. Moderate to High Emotional Resonance. Reads emotional dynamics and provides a stabilizing presence during high-pressure moments. Key Responsibilities Email and Communication This is the center of the role. Manage, triage, categorize, and organize the Partner's inbox in Microsoft Outlook Learn the Partner's voice, priorities, and relationships well enough to draft responses on his behalf Draft replies for review, and send directly in defined situations once trust is established Distinguish what genuinely needs the Partner's attention from what does not, and handle the rest Keep the inbox clean, current, and free of dropped threads Executive and Business Support Provide high-level administrative and operational support Manage complex calendars, including syncing and coordinating multiple calendars Implement and manage scheduling automation and scheduling assistant tools Support both professional and occasional personal tasks as needed Act as a trusted partner who can keep pace with rapid decision-making Meetings, Notes, and Follow-Through Attend meetings, take clear and structured notes, and capture decisions and action items Proactively follow up on tasks, deadlines, and commitments after meetings Track priorities and ensure nothing falls through the cracks Follow up on behalf of the Partner in predefined situations Systems, Tools, and Technology Work confidently across a modern tech stack, including Microsoft Office Suite Microsoft Teams Calendar and scheduling tools Zoho or a similar CRM Adobe for document handling and organization Fathom for meeting recording and retrieval Password vault tools AI tools such as Claude, ChatGPT, and Gemini, used to improve efficiency, documentation, and analysis Data, Analysis, and Organization Support basic data analysis, reporting, and information synthesis Organize and maintain executive documentation and knowledge systems Ensure information is current, accurate, and accessible Confidentiality and Reliability Handle sensitive information with absolute discretion Maintain strong security practices, including disciplined password management Operate with a high level of accountability in a role that supports leaders who cannot afford execution failure This role does not include access to financial systems, banking, or treasury functions. Qualifications Required Proven experience as an Executive Assistant Exceptional organizational and follow-through skills Ability to operate at high speed with incomplete direction Strong written and verbal communication skills, including the ability to write convincingly in someone else's voice Comfortable working independently and making judgment calls within scope Tech-savvy and confident learning new systems quickly Ability to take ownership and perform under pressure Comfort working with AI tools for productivity and analysis Preferred Experience using CRM tools such as Zoho Experience supporting a founder or managing partner What to Expect This role requires flexibility, resilience, and comfort with constant change. You will work closely with a visionary, high-energy firm Partner who operates at altitude and moves fast. Your ability to stay grounded, keep things moving, and bring warmth to the chaos will be your greatest asset. If you need predictability, clear boundaries, or step-by-step direction, this role will be exhausting. If you thrive on variety, love solving problems in real time, and want to be at the center of the action, this could be the right fit. Requirements This is a full time role Rate is $7-$8/hr 100% Remote Originally posted on Himalayas",
+    "salary": "",
+    "source": "himalayas",
+    "postedISO": "2026-09-06T08:45:47+00:00",
+    "score": 100,
+    "category": "Admin",
+    "why": [
+      "virtual assistant administrative assistant admin assistant executive assistant (title+description)",
+      "admin administrative clerk office assistant (description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.43253745777777775,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 40,
+        "reason": "Requires some language skills and writing, but not specifically translation or academic supervision."
+      },
+      "experience_match": {
+        "score": 60,
+        "reason": "Has experience in ESL teaching and academic supervision, which is related but not directly in translation or writing."
+      },
+      "behavioral_fit": {
+        "score": 65,
+        "reason": "Remote work environment is suitable, but the academic environment is somewhat compatible."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the candidate's skills."
+      },
+      "career_alignment": {
+        "score": 80,
+        "reason": "Builds toward translation/teaching/academic career, aligns well with the candidate's skills."
+      },
+      "overall_score": 75,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "ESL teaching experience",
+        "Academic supervision experience"
+      ],
+      "gaps": [
+        "No direct translation or academic supervision experience"
+      ],
+      "recommendation": "The candidate has strong skills in ESL teaching and academic supervision, which aligns well with the job requirements. However, the need for direct translation and academic supervision experience could be a minor concern.",
+      "interview_prep": [
+        "Can you describe a time when you had to make quick decisions under pressure?",
+        "How do you approach managing relationships with senior leaders in a fast-paced environment?"
+      ],
+      "one_line_summary": "Waleed Ballag has strong skills in ESL teaching and academic supervision, but lacks direct translation and academic supervision experience, making this a moderate fit for the Executive Assistant role."
+    },
+    "ai_insight": "Waleed Ballag has strong skills in ESL teaching and academic supervision, but lacks direct translation and academic supervision experience, making this a moderate fit for the Executive Assistant role.",
+    "ai_overall_score": 75,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "ESL teaching experience",
+      "Academic supervision experience"
+    ],
+    "ai_gaps": [
+      "No direct translation or academic supervision experience"
+    ],
+    "ai_recommendation": "The candidate has strong skills in ESL teaching and academic supervision, which aligns well with the job requirements. However, the need for direct translation and academic supervision experience could be a minor concern.",
+    "ai_interview_prep": [
+      "Can you describe a time when you had to make quick decisions under pressure?",
+      "How do you approach managing relationships with senior leaders in a fast-paced environment?"
+    ],
+    "ai_technical_skills": 40,
+    "ai_experience_match": 60,
+    "ai_behavioral_fit": 65,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 80,
+    "urgency_score": 65,
+    "desperation_index": 31,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 62,
+    "company_research": {
+      "name": "Remote Raven",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T09:14:31.297848+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Remote Raven_Executive Assistant_20260906.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Remote Raven_Executive Assistant_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T09:15:46.601950+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",
@@ -2430,6 +2538,176 @@
     "scan_date": "2026-09-06T01:29:27.210551+00:00"
   },
   {
+    "title": "<![CDATA[Heartwarming Personal Experience Stories Article]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/article-writing/Heartwarming-Personal-Experience-Stories.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 04:48:47 -0400",
+    "description": "I\u2019m putting together an article that strings together several short, heart-warming personal experiences into one cohesive read for a broad, general-public audience. Each story should feel genuine and relatable,... (Budget: \u20b9750 - \u20b91250 INR, Jobs: Article Writing, Content Writing, Copywriting, Creative Writing, Editing, Fiction, Ghostwriting, Proofreading)",
+    "salary": "",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T04:48:47-04:00",
+    "score": 97,
+    "category": "Editing",
+    "why": [
+      "proofread proofreading proofreader (description)",
+      "editor editing (description)",
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (description)",
+      "blog article content copy .{0,20} write writer writing create creating (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.38254529555555555,
+    "ai_insight": "```json\n{\n  \"technical_skills\": {\n    \"score\": 0,\n    \"reason\": \"Job requires no specific language skills, translation, or academic work.\"\n  },\n  \"experience_match\": {\n    \"score\": 0,\n    \"reason\": \"No direct or related experience matches the job requirements.\"\n  },\n  \"behavioral_fit\": {\n    \"score\"",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_-![CDATA[Heartwarming Personal Experience Stories _20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_-![CDATA[Heartwarming Personal Experience Stories _20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T09:15:46.601950+00:00"
+  },
+  {
+    "title": "<![CDATA[\u0917\u093e\u0902\u0935 \u0915\u0940 \u0938\u092e\u0938\u094d\u092f\u093e\u0913\u0902 \u092a\u0930 \u0915\u0939\u093e\u0928\u0940]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/article-writing/project-40693910.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 04:44:26 -0400",
+    "description": "\u092e\u0948\u0902 \u090f\u0915 \u092e\u0930\u094d\u092e\u0938\u094d\u092a\u0930\u094d\u0936\u0940 \u0939\u093f\u0902\u0926\u0940 \u0915\u0939\u093e\u0928\u0940 \u0924\u0948\u092f\u093e\u0930 \u0915\u0930\u093e\u0928\u093e \u091a\u093e\u0939\u0924\u093e/\u091a\u093e\u0939\u0924\u0940 \u0939\u0942\u0901, \u091c\u093f\u0938\u0915\u093e \u0915\u0947\u0902\u0926\u094d\u0930\u0940\u092f \u0935\u093f\u0937\u092f \u0917\u093e\u0902\u0935 \u0915\u0940 \u0938\u092e\u0938\u094d\u092f\u093e\u090f\u0902 \u0939\u094b\u0902\u2014\u092a\u093e\u0928\u0940 \u0915\u0940 \u0915\u093f\u0932\u094d\u0932\u0924, \u0930\u094b\u091c\u093c\u0917\u093e\u0930 \u0915\u0940 \u0915\u092e\u0940, \u0936\u093f\u0915\u094d\u0937\u093e-\u0938\u094d\u0935\u093e\u0938\u094d\u0925\u094d\u092f \u091c\u0948\u0938\u0940 \u092c\u0941\u0928\u093f\u092f\u093e\u0926\u0940 \u091a\u0941\u0928\u094c\u0924\u093f\u092f\u093e\u0901\u2014\u0914\u0930 \u091c\u093f\u0928\u0915\u0947 \u092c\u0940\u091a \u090f\u0915 \u0938\u091a\u094d\u091a\u0940-\u0938\u0940 \u0932\u0917\u0928\u0947... (Budget: \u20b9750 - \u20b91250 INR, Jobs: Article Writing, Blog Writing, Content Writing, Copywriting, Creative Writing, Editing, Ghostwriting, Proofreading, Research, Script Writing)",
+    "salary": "",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T04:44:26-04:00",
+    "score": 97,
+    "category": "Editing",
+    "why": [
+      "proofread proofreading proofreader (description)",
+      "editor editing (description)",
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (description)",
+      "blog article content copy .{0,20} write writer writing create creating (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.4550458502777778,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 50,
+        "reason": "Requires language skills and academic work, but no direct translation or teaching experience."
+      },
+      "experience_match": {
+        "score": 60,
+        "reason": "Related experience in language services and academic supervision, but not in translation or teaching."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote, flexible, academic environment, but not specifically for translation/teaching/academic roles."
+      },
+      "location_logistics": {
+        "verdict": "FAIL",
+        "reason": "Requires US/EU citizenship and specific visa sponsorship, which are not compatible with remote work."
+      },
+      "career_alignment": {
+        "score": 70,
+        "reason": "Builds toward translation/teaching/academic career, but not in a senior leadership role."
+      },
+      "overall_score": 65,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "Awarded English Language Trainer of the Year"
+      ],
+      "gaps": [
+        "Direct translation experience",
+        "Senior leadership role"
+      ],
+      "recommendation": "Waleed Ballag's background is strong for translation and academic roles, but lacks direct translation experience and senior leadership opportunities.",
+      "interview_prep": [
+        "Can you discuss your experience in academic supervision and research guidance?",
+        "How do you approach translating legal documents for academic clients?",
+        "Can you share a time when you had to adapt your teaching methods to accommodate diverse learning styles?"
+      ],
+      "one_line_summary": "Waleed Ballag has strong academic and language skills, but lacks direct translation and senior leadership experience."
+    },
+    "ai_insight": "Waleed Ballag has strong academic and language skills, but lacks direct translation and senior leadership experience.",
+    "ai_overall_score": 65,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "Awarded English Language Trainer of the Year"
+    ],
+    "ai_gaps": [
+      "Direct translation experience",
+      "Senior leadership role"
+    ],
+    "ai_recommendation": "Waleed Ballag's background is strong for translation and academic roles, but lacks direct translation experience and senior leadership opportunities.",
+    "ai_interview_prep": [
+      "Can you discuss your experience in academic supervision and research guidance?",
+      "How do you approach translating legal documents for academic clients?",
+      "Can you share a time when you had to adapt your teaching methods to accommodate diverse learning styles?"
+    ],
+    "ai_technical_skills": 50,
+    "ai_experience_match": 60,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "FAIL",
+    "ai_career_alignment": 70,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_-![CDATA[\u0917\u093e\u0902\u0935 \u0915\u0940 \u0938\u092e\u0938\u094d\u092f\u093e\u0913\u0902 \u092a\u0930 \u0915\u0939\u093e\u0928\u0940]]-_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T09:15:46.601950+00:00"
+  },
+  {
     "title": "Freelance Copywriter",
     "company": "Coalition Technologies",
     "url": "https://remotive.com/remote-jobs/writing/freelance-copywriter-1749306",
@@ -2812,6 +3090,110 @@
     "scan_date": "2026-09-06T01:29:27.210551+00:00"
   },
   {
+    "title": "<![CDATA[Refine Script & Record Greeting]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/audio-editing/Refine-Script-Record-Greeting.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 04:51:39 -0400",
+    "description": "I have a short draft for our main company phone greeting and I\u2019d like a native-sounding female voice with a clear, polished English accent to bring it to life. The tone must stay professional and formal, reflecting the way we greet partners and clients... (Budget: $10 - $30 USD, Jobs: Audio Editing, Audio Production, Audio Services, English Spelling, Script Writing, Voice Acting, Voice Over, Voice Talent)",
+    "salary": "$10",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T04:51:39-04:00",
+    "score": 82,
+    "category": "Editing",
+    "why": [
+      "editor editing (description)",
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.33476669444444446,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 80,
+        "reason": "Requires native Arabic and C1 Advanced English proficiency, aligning with the job's need for a clear, polished English accent and professional tone."
+      },
+      "experience_match": {
+        "score": 85,
+        "reason": "Has experience in academic supervision, legal translation, and ESL teaching, which are all relevant to the job's requirements."
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "The job description emphasizes a remote, academic environment, which aligns well with Waleed's background and skills."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "The job is remote, worldwide, and the location requirements are compatible with Waleed's skills and experience."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "The job aligns with Waleed's career goals of securing stable remote work in translation or ESL teaching, and building long-term client relationships in academic services."
+      },
+      "overall_score": 85,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency",
+        "Experience in academic supervision",
+        "Legal translation experience"
+      ],
+      "gaps": [
+        "None"
+      ],
+      "recommendation": "Waleed's strong background in academic supervision, legal translation, and clear English skills make him a strong fit for this job. He can contribute effectively to the company's goal of building long-term client relationships in academic services.",
+      "one_line_summary": "Strong Fit: Native Arabic speaker, C1 Advanced English, Academic Supervisor, Legal Translator."
+    },
+    "ai_insight": "Strong Fit: Native Arabic speaker, C1 Advanced English, Academic Supervisor, Legal Translator.",
+    "ai_overall_score": 85,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency",
+      "Experience in academic supervision",
+      "Legal translation experience"
+    ],
+    "ai_gaps": [
+      "None"
+    ],
+    "ai_recommendation": "Waleed's strong background in academic supervision, legal translation, and clear English skills make him a strong fit for this job. He can contribute effectively to the company's goal of building long-term client relationships in academic services.",
+    "ai_interview_prep": "",
+    "ai_technical_skills": 80,
+    "ai_experience_match": 85,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 26,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_-![CDATA[Refine Script & Record Greeting]]-_20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T09:15:46.601950+00:00"
+  },
+  {
     "title": "<![CDATA[Indian Constitution Book Ghostwriter]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/ghostwriting/Indian-Constitution-Book-Ghostwriter.html",
@@ -2910,5 +3292,101 @@
     "cover_letter_ai": false,
     "interview_prep_generated": false,
     "scan_date": "2026-09-05T17:46:54.889469+00:00"
+  },
+  {
+    "title": "Accounts Payable Clerk (Entry Level Opportunity)",
+    "company": "jobicy",
+    "url": "https://jobicy.com/jobs/145235-accounts-payable-clerk-entry-level-opportunity",
+    "location": "Remote",
+    "posted": "Sun, 06 Sep 2026 05:40:08 +0000",
+    "description": "The role of an Accounts Payable Clerk at CanonicalWe have an exciting opportunity for an Accounts Payable Clerk to join our growing team. If you are passionate about the technology...",
+    "salary": "",
+    "source": "jobicy",
+    "postedISO": "2026-09-06T05:40:08+00:00",
+    "score": 70,
+    "category": "Admin",
+    "why": [
+      "admin administrative clerk office assistant (title+description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 3.526777966944444,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 65,
+        "reason": "Requires language skills and some academic work, but not exclusively"
+      },
+      "experience_match": {
+        "score": 75,
+        "reason": "Related experience in language services and academic supervision"
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote, flexible, and academic environment"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible"
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds toward translation/teaching/academic career"
+      },
+      "overall_score": 82.5,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency"
+      ],
+      "gaps": [
+        "No direct experience in engineering or development"
+      ],
+      "recommendation": "Waleed Ballag's background is strong in language and academic skills, but lacks direct engineering experience. This makes the role a good fit for him in terms of career progression.",
+      "interview_prep": "1. Can you describe a time when you supervised a research study? 2. How do you approach translating legal documents?",
+      "one_line_summary": "Waleed Ballag's strong language and academic background makes him a strong fit for the Accounts Payable Clerk role, despite lacking direct engineering experience."
+    },
+    "ai_insight": "Waleed Ballag's strong language and academic background makes him a strong fit for the Accounts Payable Clerk role, despite lacking direct engineering experience.",
+    "ai_overall_score": 82.5,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency"
+    ],
+    "ai_gaps": [
+      "No direct experience in engineering or development"
+    ],
+    "ai_recommendation": "Waleed Ballag's background is strong in language and academic skills, but lacks direct engineering experience. This makes the role a good fit for him in terms of career progression.",
+    "ai_interview_prep": "1. Can you describe a time when you supervised a research study? 2. How do you approach translating legal documents?",
+    "ai_technical_skills": 65,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "urgency_score": 0,
+    "desperation_index": 10,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "hi@jobicy.com",
+    "email_verified": false,
+    "all_emails": [
+      "hi@jobicy.com"
+    ],
+    "opportunity_score": 25,
+    "company_research": {
+      "name": "jobicy",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T09:14:31.298380+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/jobicy_Accounts Payable Clerk (Entry Level Opportunity)_20260906.pdf",
+    "cover_letter_type": "general",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T09:15:46.601950+00:00"
   }
 ]

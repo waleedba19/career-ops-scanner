@@ -187,5 +187,25 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-06T01:27:26.625654+00:00"
+  },
+  "Remote Raven": {
+    "name": "Remote Raven",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T09:14:31.297848+00:00"
+  },
+  "jobicy": {
+    "name": "jobicy",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T09:14:31.298380+00:00"
   }
 }

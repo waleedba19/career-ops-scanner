@@ -1237,6 +1237,121 @@
     "scan_date": "2026-09-06T09:15:46.601950+00:00"
   },
   {
+    "title": "Executive Assistant at a Global Business (Remote, SEA Based)",
+    "company": "himalayas_app",
+    "url": "https://himalayas.app/companies/paired-so/jobs/executive-assistant-at-a-global-business-remote-sea-based",
+    "location": "Remote",
+    "posted": "Sun, 06 Sep 2026 16:29:44 GMT",
+    "description": "Paired is a global recruiting agency that pairs remote work with top-tier talent.",
+    "salary": "",
+    "source": "himalayas_app",
+    "postedISO": "2026-09-06T16:29:44+00:00",
+    "score": 100,
+    "category": "Admin",
+    "why": [
+      "virtual assistant administrative assistant admin assistant executive assistant (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.03956349972222222,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 80,
+        "reason": "Requires Arabic-English translation, ESL teaching, and academic supervision skills."
+      },
+      "experience_match": {
+        "score": 85,
+        "reason": "Related experience in language services and academic supervision."
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "Remote, flexible, academic environment."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible."
+      },
+      "career_alignment": {
+        "score": 95,
+        "reason": "Builds toward translation/teaching/academic career."
+      },
+      "overall_score": 88,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Arabic-English translation skills",
+        "ESL teaching experience",
+        "Academic supervision background"
+      ],
+      "gaps": [
+        "None"
+      ],
+      "recommendation": "Waleed Ballag's skills and experience align well with the executive assistant position at Himalayas App. His ability to translate, supervise academic research, and work remotely makes him a strong fit for the role.",
+      "interview_prep": [
+        "Can you describe a time when you supervised a graduate-level research study?",
+        "How do you ensure the accuracy and quality of the translations you provide?"
+      ],
+      "one_line_summary": "Waleed Ballag's strong fit as an executive assistant due to his expertise in translation, academic supervision, and remote work capabilities."
+    },
+    "ai_insight": "Waleed Ballag's strong fit as an executive assistant due to his expertise in translation, academic supervision, and remote work capabilities.",
+    "ai_overall_score": 88,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Arabic-English translation skills",
+      "ESL teaching experience",
+      "Academic supervision background"
+    ],
+    "ai_gaps": [
+      "None"
+    ],
+    "ai_recommendation": "Waleed Ballag's skills and experience align well with the executive assistant position at Himalayas App. His ability to translate, supervise academic research, and work remotely makes him a strong fit for the role.",
+    "ai_interview_prep": [
+      "Can you describe a time when you supervised a graduate-level research study?",
+      "How do you ensure the accuracy and quality of the translations you provide?"
+    ],
+    "ai_technical_skills": 80,
+    "ai_experience_match": 85,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 95,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "himalayas_app",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T01:27:26.625654+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "ai_cover_letter_content": {
+      "opening": "Dear Hiring Manager at himalayas_app, I am writing to express my enthusiastic interest in the Executive Assistant position they currently offer. This role aligns perfectly with my professional goals of enhancing my leadership skills, improving communication, and deepening my understanding of global business operations.",
+      "experience": "I am excited to bring my extensive experience in academic supervision, research guidance, and teaching English as a Second Language (ESL/EFL) to the Executive Assistant role at himalayas_app. I have taught at prestigious educational institutions such as Higher Institute of Science and Technology, Anwar Al-Hayat School, and Al-Safwa Smart School for Private Education, where I have honed my skills in both online and in-person teaching, curriculum development, and academic translation.",
+      "skills": "My strong skills in academic supervision, editing, thesis review, thesis writing, and academic integrity compliance make me well-suited for the Executive Assistant position. I am proficient in using Microsoft Office Suite, Adobe Photoshop, SPSS Statistical Analysis, and have excellent cross-cultural communication skills. Additionally, my native Arabic and C1 Advanced English proficiency facilitate effective communication and project management.",
+      "closing": "I am available to discuss how my qualifications, experience, and skills make me an ideal fit for the Executive Assistant position at himalayas_app. I eagerly look forward to the possibility of interviewing and contributing to the team's success. Thank you for considering my application. I can be reached at [email] or [phone]."
+    },
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/himalayas_app_Executive Assistant at a Global Business (Remote, _20260906.pdf",
+    "cover_letter_type": "virtual_assistant",
+    "cover_letter_ai": true,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/himalayas_app_Executive Assistant at a Global Business (Remote, _20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T16:32:55.996179+00:00"
+  },
+  {
     "title": "Pashto: US-based Interpreter",
     "company": "himalayas_app",
     "url": "https://himalayas.app/companies/one-world-global-services/jobs/pashto-us-based-interpreter",

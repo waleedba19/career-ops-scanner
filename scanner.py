@@ -140,20 +140,15 @@ MATCH_BUCKETS = [
     {
         "name": "Arabic Translation",
         "phrases": [
-            # "Arabic" as core role requirement (not just a language mention)
-            # These only fire when Arabic is the primary focus of the role
-            (re.compile(r"arabic (translator|translat|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 65),
-            (re.compile(r"(translator|translat|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz]).{0,30}arabic", re.I), 65),
+            # Arabic must be the role, not a passing mention / "translate this dashboard"
+            (re.compile(r"arabic (translator|translation|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 65),
+            (re.compile(r"(translator|translation|interpreter|linguist|editor|proofreader|locali[sz]ation specialist).{0,40}arabic", re.I), 65),
             (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 70),
-            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 50),
-            (re.compile(r"\barabic\b", re.I), 40),
-            # Standalone translation/localization keywords
-            (re.compile(r"locali[sz]ation|locali[sz]e|l10n", re.I), 50),
-            (re.compile(r"translat|translation", re.I), 45),
-            (re.compile(r"linguist", re.I), 45),
-            (re.compile(r"interpreter|interpretation", re.I), 40),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 40),
+            (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator)\b", re.I), 40),
+            (re.compile(r"\b(language locali[sz]ation|locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 45),
             (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 60),
-            (re.compile(r"mENA.*arabic|arabic.*mENA", re.I), 55),
+            (re.compile(r"mena.*arabic|arabic.*mena", re.I), 55),
         ],
     },
     {
@@ -161,20 +156,17 @@ MATCH_BUCKETS = [
         "phrases": [
             (re.compile(r"\b(esl|efl|tesol|tefl)\b", re.I), 40),
             (re.compile(r"english (teacher|tutor|instructor|language|training|teaching)", re.I), 35),
-            (re.compile(r"\b(teacher|tutor|instructor|teaching|teach)\b", re.I), 15),
-            (re.compile(r"\btutoring\b", re.I), 15),
+            (re.compile(r"(online|remote|language) (teacher|tutor|instructor)", re.I), 30),
+            (re.compile(r"\b(esl|english) tutoring\b", re.I), 25),
         ],
     },
     {
         "name": "Editing",
         "phrases": [
-            (re.compile(r"proofread|proofreading|proofreader", re.I), 35),
-            (re.compile(r"academic (editor|editing)|copy editor|editorial", re.I), 30),
-            (re.compile(r"\b(editor|editing)\b", re.I), 20),
-            (re.compile(r"\b(content writer|writer|writing|content editor|copywriter|copywriting|blog writer|article writer|technical writer|creative writer|content specialist|content creator|content strategist)\b", re.I), 25),
-            (re.compile(r"\b(write|writes|wrote|author|authoring)\b", re.I), 15),
-            (re.compile(r"\b(blog|article|content|copy)\b.{0,20}\b(write|writer|writing|create|creating)\b", re.I), 20),
-            (re.compile(r"\bcontent creation\b", re.I), 25),
+            (re.compile(r"\b(proofreader|proofreading|proofread)\b", re.I), 35),
+            (re.compile(r"academic (editor|editing)|copy editor", re.I), 30),
+            (re.compile(r"\b(content writer|copywriter|copywriting|blog writer|article writer|content editor|content creator)\b", re.I), 25),
+            (re.compile(r"\bcontent creation\b", re.I), 20),
         ],
     },
     {
@@ -183,11 +175,48 @@ MATCH_BUCKETS = [
             (re.compile(r"\bdata entry\b", re.I), 42),
             (re.compile(r"\b(typist|transcription|transcribing|transcriber)\b", re.I), 35),
             (re.compile(r"virtual assistant|administrative assistant|admin assistant|executive assistant", re.I), 35),
-            (re.compile(r"data annotation|data labeling|data labeler|data entry (specialist|clerk|operator|agent)|quality analyst|qa reviewer", re.I), 24),
-            (re.compile(r"\b(admin|administrative|clerk|office assistant)\b", re.I), 15),
+            (re.compile(r"data annotation|data labeling|data labeler|data entry (specialist|clerk|operator|agent)", re.I), 24),
+            (re.compile(r"\boffice assistant\b", re.I), 20),
         ],
     },
 ]
+
+# Languages that are NOT the user's pair — a "Hindi writer" / "EN→ES interpreter"
+# must not land in Arabic Translation at 100.
+WRONG_LANGUAGE = re.compile(
+    r"\b(hindi|spanish|castilian|french|german|chinese|mandarin|japanese|korean|"
+    r"portuguese|italian|russian|turkish|urdu|bengali|tamil|dutch|polish|thai)\b",
+    re.I,
+)
+HAS_ARABIC = re.compile(r"\barabic\b", re.I)
+
+# Landing pages, signup CTAs, quote forms — not job listings
+STUB_TITLE = re.compile(
+    r"(get started|sign[- ]?up|teacher'?s portal|request a quote|join us|"
+    r"become a (tutor|teacher)|onboarding|careers home|log[- ]?in)",
+    re.I,
+)
+STUB_URL = re.compile(
+    r"(onboarding|tutorsignup|/teach/?$|/teachers/?$|/careers/?$|"
+    r"request-a-quote|estimate\?|/tutor/?$)",
+    re.I,
+)
+IN_PERSON_GIG = re.compile(
+    r"\b(presencial|in[- ]person|mystery shop|onsite visit|\blocal job\b)\b",
+    re.I,
+)
+# System/pricing "admin" / "translate a narrative" — not our roles
+NON_ROLE_ADMIN = re.compile(
+    r"\b(impartner|salesforce|prm|platform administrator|systems? admin|"
+    r"price realization|pricing strategy|principal .*manager)\b",
+    re.I,
+)
+COUNTRY_LOCKED_LOC = re.compile(
+    r"(remote\s*[-–—,]\s*(us|usa|u\.s\.a?|united states|canada|uk|united kingdom|australia|eu)"
+    r"|(united states|canada|uk|australia)\s+only"
+    r"|us only|canada only)",
+    re.I,
+)
 
 NEGATIVE_KEYWORDS = [
     "software engineer", "backend engineer", "frontend engineer", "full stack engineer",
@@ -226,7 +255,9 @@ NON_TARGET_ROLE = re.compile(
     r"|\bpayroll (?:clerk|manager|specialist)\b"
     r"|\b(?:content|social media|brand) (?:manager|lead|director|head)\b"
     r"|\bcontent producer\b|\bsocial media lead\b"
-    r"|\bproduct marketing\b|\bdemand generation\b|\bgrowth manager\b",
+    r"|\bproduct marketing\b|\bdemand generation\b|\bgrowth manager\b"
+    r"|\bprincipal\b|\bstrategy manager\b|\bprice realization\b"
+    r"|\bplatform administrator\b|\bimpartner\b",
     re.I,
 )
 
@@ -238,7 +269,8 @@ NON_TARGET_ALLOWLIST = re.compile(
 )
 
 SENIOR_PENALTY = re.compile(
-    r"(principal (engineer|designer|architect)|head of|\bvp\b|director|\bchief\b)", re.I
+    r"(principal\b|head of|\bvp\b|director|\bchief\b|strategy manager|price realization)",
+    re.I,
 )
 
 REMOTE_MARKER = re.compile(
@@ -422,8 +454,26 @@ def get_match_score(title: str, desc: str) -> dict:
         why_final.append("remote-friendly")
     if any(kw in t for kw in NEGATIVE_KEYWORDS):
         total -= 50
-    if SENIOR_PENALTY.search(text):
-        total -= 15
+    if SENIOR_PENALTY.search(t) or SENIOR_PENALTY.search(text):
+        total -= 40
+        why_final.append("senior/leadership penalty")
+    if NON_ROLE_ADMIN.search(t):
+        total -= 50
+        why_final.append("platform/pricing admin — not target")
+    # Hindi/Spanish/etc in the TITLE is never a match for this profile
+    if WRONG_LANGUAGE.search(t) and not HAS_ARABIC.search(text):
+        total = 0
+        best_cat = "Other"
+        why_final.append("wrong language in title")
+    # Generic "translator" without Arabic, or a different language pair, is not our Arabic bucket
+    if best_cat == "Arabic Translation":
+        if WRONG_LANGUAGE.search(text) and not HAS_ARABIC.search(text):
+            total = 0
+            best_cat = "Other"
+            why_final.append("wrong language pair")
+        elif not HAS_ARABIC.search(text):
+            total = min(total, 45)
+            why_final.append("no Arabic signal")
     total = max(0, min(100, total))
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final}
@@ -444,6 +494,9 @@ def extract_salary(text: str) -> str:
 def is_open_worldwide(location: str, desc: str) -> bool:
     loc = (location or "").lower()
     text = (desc or "").lower() + " " + loc
+    # "Remote - US" / "Remote - Canada" contains "remote" so must fail BEFORE the allowed-list check
+    if COUNTRY_LOCKED_LOC.search(loc) or COUNTRY_LOCKED_LOC.search(text):
+        return False
     
     # Check description for location restriction warnings FIRST
     # Many jobs have "Location Restriction: United States only" in description
@@ -533,6 +586,60 @@ def matches_negative(title: str, desc: str) -> bool:
     # which shouldn't block a relevant content/translation role
     t = (title or "").lower()
     return any(kw in t for kw in NEGATIVE_KEYWORDS)
+
+
+def is_stub_listing(job: dict) -> bool:
+    """True for signup/portal/quote pages and invented one-line 'jobs', not real listings."""
+    title = strip_html(job.get("title") or "")
+    url = job.get("url") or ""
+    desc = job.get("description") or ""
+    if "<![CDATA[" in (job.get("title") or ""):
+        return True
+    if STUB_TITLE.search(title):
+        return True
+    if STUB_URL.search(url):
+        return True
+    if len(desc.strip()) < 60 and re.search(r"(platform|sign up|portal|get started)", (title + " " + desc), re.I):
+        return True
+    return False
+
+
+def is_in_person_gig(job: dict) -> bool:
+    blob = f"{job.get('title') or ''} {job.get('description') or ''} {job.get('location') or ''}"
+    return bool(IN_PERSON_GIG.search(blob))
+
+
+def location_ai_fail(job: dict) -> bool:
+    """Hard reject when Ollama (or structured scoring) says location logistics FAIL."""
+    verdict = str(job.get("ai_location_verdict") or "").strip().upper()
+    if verdict == "FAIL":
+        return True
+    scoring = job.get("ai_scoring") or {}
+    loc = scoring.get("location_logistics") or {}
+    if str(loc.get("verdict") or "").strip().upper() == "FAIL":
+        return True
+    return False
+
+
+def drop_unqualified_matches(jobs: list[dict], reason_counts: dict | None = None) -> list[dict]:
+    """Final quality + location gate before notify / cover letters."""
+    kept = []
+    counts = reason_counts if reason_counts is not None else {}
+    for job in jobs:
+        if is_stub_listing(job):
+            counts["stub"] = counts.get("stub", 0) + 1
+            continue
+        if is_in_person_gig(job):
+            counts["in_person"] = counts.get("in_person", 0) + 1
+            continue
+        if location_ai_fail(job):
+            counts["ai_location_fail"] = counts.get("ai_location_fail", 0) + 1
+            continue
+        if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
+            counts["not_worldwide"] = counts.get("not_worldwide", 0) + 1
+            continue
+        kept.append(job)
+    return kept
 
 
 # ---------------------------------------------------------------------------
@@ -3807,16 +3914,7 @@ async def fetch_italki(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online Language Tutor (Arabic/English)",
-                "company": "iTalki",
-                "url": "https://www.italki.com/en/teachers",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach Arabic and English online. Set your own schedule and rates. 150+ countries.",
-                "salary": "Set your own rate",
-                "source": "italki",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  iTalki: {e}")
         return []
@@ -3836,16 +3934,7 @@ async def fetch_lingoda(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online English Teacher",
-                "company": "Lingoda",
-                "url": "https://www.lingoda.com/en/teach-english-online/",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach English online to adults. Flexible schedule. All materials provided.",
-                "salary": "€7-€12/hour",
-                "source": "lingoda",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  Lingoda: {e}")
         return []
@@ -3865,16 +3954,7 @@ async def fetch_amazingtalker(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online English/Arabic Tutor",
-                "company": "AmazingTalker",
-                "url": "https://www.amazingtalker.com/teach",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach languages online. Set your own rates ($16-$100/hr). No degree required.",
-                "salary": "$16-$100/hour",
-                "source": "amazingtalker",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  AmazingTalker: {e}")
         return []
@@ -3894,16 +3974,7 @@ async def fetch_twenix(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Business English Teacher",
-                "company": "Twenix",
-                "url": "https://twenix.com/teachers",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach business English to professionals in Spain and Italy. No prep required. $13-16/hr.",
-                "salary": "$13-$16/hour",
-                "source": "twenix",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  Twenix: {e}")
         return []
@@ -3923,16 +3994,7 @@ async def fetch_novakid(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online ESL Teacher (Kids)",
-                "company": "Novakid",
-                "url": "https://novakid.com/en/teach/",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach English to European kids ages 4-12. Gamified platform. $15-22/hr. Degree + TEFL required.",
-                "salary": "$15-$22/hour",
-                "source": "novakid",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  Novakid: {e}")
         return []
@@ -3952,16 +4014,7 @@ async def fetch_lingoace(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online English Teacher (Kids 4-15)",
-                "company": "LingoAce",
-                "url": "https://www.lingoace.com/teach/",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach English to kids ages 4-15. Flexible schedule. $14-20+/hr. Degree required.",
-                "salary": "$14-$20+/hour",
-                "source": "lingoace",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  LingoAce: {e}")
         return []
@@ -3981,16 +4034,7 @@ async def fetch_nativecamp(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online English Teacher",
-                "company": "Native Camp",
-                "url": "https://nativecamp.net/teachers/en",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach English online. Flexible schedule. No experience required.",
-                "salary": "$10-$15/hour",
-                "source": "nativecamp",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  Native Camp: {e}")
         return []
@@ -4010,16 +4054,7 @@ async def fetch_tutorabc(session: aiohttp.ClientSession) -> list[dict]:
         ) as resp:
             if resp.status != 200:
                 return []
-            return [{
-                "title": "Online English Teacher",
-                "company": "TutorABC",
-                "url": "https://join.tutorabcglobal.com.hk/english/",
-                "location": "Remote (Worldwide)",
-                "posted": "",
-                "description": "Teach English online. Flexible schedule. TEFL/TESOL required. 1+ year experience.",
-                "salary": "$12-$20/hour",
-                "source": "tutorabc",
-            }]
+            return []  # no invented listing
     except Exception as e:
         print(f"  TutorABC: {e}")
         return []
@@ -4764,7 +4799,8 @@ async def run_scan():
         fresh_total = 0
         old_but_verified = []
         filter_debug = {"no_url": 0, "paid": 0, "too_old": 0, "no_positive": 0,
-                        "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0, "duplicate": 0}
+                        "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0, "duplicate": 0,
+                        "stub": 0, "in_person": 0}
         
         # Load smart deduplication data
         smart_seen = load_smart_seen()
@@ -4772,6 +4808,15 @@ async def run_scan():
         for job in all_jobs:
             if not job.get("url"):
                 filter_debug["no_url"] += 1
+                continue
+            # Strip RSS CDATA junk from titles before any scoring
+            if job.get("title"):
+                job["title"] = strip_html(job["title"])
+            if is_stub_listing(job):
+                filter_debug["stub"] += 1
+                continue
+            if is_in_person_gig(job):
+                filter_debug["in_person"] += 1
                 continue
             
             # EARLY REJECT: Check for location restrictions in description
@@ -4984,6 +5029,14 @@ async def run_scan():
         
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
+
+        # Hard-fail: stub pages, in-person gigs, country-locked, AI location FAIL
+        # must never reach Telegram / email / cover letters.
+        quality_drops: dict = {}
+        before_q = len(final_verified)
+        final_verified = drop_unqualified_matches(final_verified, quality_drops)
+        if quality_drops:
+            print(f"Quality/location hard-fail dropped {before_q - len(final_verified)}: {quality_drops}")
 
         # ---- Free Forever Intel: urgency / desperation / email / pain points ----
         try:

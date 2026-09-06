@@ -148,5 +148,15 @@
     "near_misses": 0,
     "sources": 21,
     "time": "10:59 PM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Night (8 PM)",
+    "scanned": 4750,
+    "matches": 1,
+    "old_verified": 1,
+    "near_misses": 0,
+    "sources": 22,
+    "time": "11:55 PM"
   }
 ]

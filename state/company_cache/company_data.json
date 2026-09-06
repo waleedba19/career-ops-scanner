@@ -177,5 +177,15 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-06T01:05:48.064141+00:00"
+  },
+  "himalayas_app": {
+    "name": "himalayas_app",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T01:27:26.625654+00:00"
   }
 }

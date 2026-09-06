@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
-      contents: read
+      contents: write   # commit the report to state/ (same Contents-API pattern as state_sync.py)
     env:
       # Optional keyed aggregators — probe reports `needs_key` until these exist
       RAPIDAPI_KEY:      ${{ secrets.RAPIDAPI_KEY }}
@@ -78,3 +78,11 @@ jobs:
             output/source_probe.md
             output/source_probe.json
           retention-days: 30
+
+      # Persist the latest report in the repo (state/source_probe.md + .json) so it is
+      # readable on GitHub without downloading artifacts. Only on main (not on PRs).
+      - name: Save report to state/
+        if: always() && github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python state_sync.py upload-probe

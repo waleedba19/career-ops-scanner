@@ -262,5 +262,17 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-06T20:57:30.578901+00:00"
+  },
+  "Merryland International School": {
+    "name": "Merryland International School",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-06T21:55:34.868574+00:00"
   }
 }

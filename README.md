@@ -103,6 +103,17 @@ CAREEROPS_ENABLE_OLLAMA=1
 
 Fetcher tiers: Tier 1 (Greenhouse 34, Lever, Remotive, RemoteOK, WWR, Jobicy API, Arbeitnow, Himalayas API) always on; Tier 2 (+ Nodesk, YayRemote etc); Tier 3 (+ MENA/freelance). Controlled by `CAREEROPS_TIER_CAP`.
 
+### 🔍 Source coverage — audit & expansion
+
+**[SOURCES.md](SOURCES.md)** is the honest inventory: what actually runs today (19 sources at the production tier cap), which of them produce matches, why Indeed / LinkedIn / Glassdoor can't be scraped directly and what the legit routes are, and a ~150-candidate expansion catalog (`source_candidates.json`).
+
+```bash
+make probe                                   # or: python probe_sources.py [--group ats-language-ai ...]
+# GitHub: Actions → "Probe Sources" → Run workflow  (report in job summary + artifact)
+```
+
+The probe hits every candidate once from the runner's IP and reports `ok / empty / blocked / not_found / needs_key / error` with item counts, plus ready-to-paste `GREENHOUSE_COMPANIES` / Ashby / Workable snippets for the boards that answered. The `ok` list is the real answer to "how many sources can we add".
+
 ---
 
 ## 📊 Outputs

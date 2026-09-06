@@ -458,5 +458,20 @@
         "source": "remotive"
       }
     ]
+  },
+  {
+    "date": "2026-09-06T16:21:48.050017+00:00",
+    "matched_count": 1,
+    "all_count": 4310,
+    "jobs": [
+      {
+        "title": "Pashto: US-based Interpreter",
+        "company": "himalayas_app",
+        "url": "https://himalayas.app/companies/one-world-global-services/jobs/pashto-us-based-interpreter",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "himalayas_app"
+      }
+    ]
   }
 ]

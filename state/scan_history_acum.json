@@ -285,5 +285,76 @@
     "matched_count": 0,
     "all_count": 4307,
     "jobs": []
+  },
+  {
+    "date": "2026-09-06T01:29:48.739358+00:00",
+    "matched_count": 8,
+    "all_count": 4419,
+    "jobs": [
+      {
+        "title": "E-Commerce Copywriter",
+        "company": "himalayas_app",
+        "url": "https://himalayas.app/companies/zulay-kitchen/jobs/e-commerce-copywriter-699926399",
+        "score": 100,
+        "category": "Editing",
+        "source": "himalayas_app"
+      },
+      {
+        "title": "Executive Assistant to CEO",
+        "company": "himalayas_app",
+        "url": "https://himalayas.app/companies/vireo-health/jobs/executive-assistant-to-ceo",
+        "score": 100,
+        "category": "Admin",
+        "source": "himalayas_app"
+      },
+      {
+        "title": "<![CDATA[Premium Social Media Content Creation]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/adobe-photoshop/Premium-Social-Media-Content-Creation.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Quick Segment Video Editing]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/graphic-design/Quick-Segment-Video-Editing.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Argentina Part-Time Remote Customer Support]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/customer-service/Argentina-Part-Time-Remote-Customer.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "AI-Savvy Executive & Operations Specialist",
+        "company": "Vertu Agent",
+        "url": "https://himalayas.app/companies/vertu-agent/jobs/ai-savvy-executive-operations-specialist-7559662549",
+        "score": 100,
+        "category": "Admin",
+        "source": "himalayas"
+      },
+      {
+        "title": "Weloglobal?Department=Welocalize",
+        "company": "Search Discovered",
+        "url": "https://jobs.lever.co/weloglobal?department=Welocalize",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "search_discovered"
+      },
+      {
+        "title": "Video Editor (LinkedIn Content)",
+        "company": "Spiralyze",
+        "url": "https://himalayas.app/companies/spiralyze/jobs/video-editor-linkedin-content-4586664181",
+        "score": 90,
+        "category": "Editing",
+        "source": "himalayas"
+      }
+    ]
   }
 ]

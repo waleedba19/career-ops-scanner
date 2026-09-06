@@ -105,7 +105,7 @@ Fetcher tiers: Tier 1 (Greenhouse 34, Lever, Remotive, RemoteOK, WWR, Jobicy API
 
 ### 🔍 Source coverage — audit & expansion
 
-**[SOURCES.md](SOURCES.md)** is the honest inventory: what actually runs today (19 sources at the production tier cap), which of them produce matches, why Indeed / LinkedIn / Glassdoor can't be scraped directly and what the legit routes are, and a ~150-candidate expansion catalog (`source_candidates.json`).
+**[SOURCES.md](SOURCES.md)** is the honest inventory: what actually runs today (31 sources at the production tier cap before the probe wiring → 34 after it, 38 once the optional API keys exist, with 6 probe-blocked hosts skipped — see §0.1), which of them produce matches, why Indeed / LinkedIn / Glassdoor can't be scraped directly and what the legit routes are, and a ~150-candidate expansion catalog (`source_candidates.json`).
 
 ```bash
 make probe                                   # or: python probe_sources.py [--group ats-language-ai ...]
@@ -115,6 +115,10 @@ make probe                                   # or: python probe_sources.py [--gr
 Runs automatically (weekly + on every catalog change); the latest live report is committed to **[`state/source_probe.md`](state/source_probe.md)**. First run: **47 of 150 candidates respond with jobs from the runner** (LinkedIn guest search works; Indeed/Glassdoor/ZipRecruiter and all MENA boards are blocked).
 
 The probe hits every candidate once from the runner's IP and reports `ok / empty / blocked / not_found / needs_key / error` with item counts, plus ready-to-paste `GREENHOUSE_COMPANIES` / Ashby / Workable snippets for the boards that answered. The `ok` list is the real answer to "how many sources can we add".
+
+**Wired from the probe (`fetchers/verified.py`, add-only):** LinkedIn guest search (4 profile queries, remote + last 24 h), Freelancer projects API, Jobicy tag feeds, Impactpool (UN/NGO Arabic interpreter roles), Invisible / Labelbox / Turing Greenhouse boards, new Ashby / Workable / SmartRecruiters adapters (Mercor, Tamatem, Keywords Studios, TransPerfect), The Muse, Working Nomads JSON. Probe-blocked hosts (Bayt, Wuzzuf, GulfTalent, Mostaql, Ureed, ProZ) are skipped with a log line instead of wasting requests — set `CAREEROPS_FORCE_BLOCKED=1` to try them anyway.
+
+**Optional secrets that unlock Indeed / LinkedIn / Glassdoor inventory legitimately** (each fetcher is a silent no-op until set): `RAPIDAPI_KEY` (JSearch), `ADZUNA_APP_ID` + `ADZUNA_APP_KEY`, `JOOBLE_API_KEY`, `RELIEFWEB_APPNAME`. Add them under *Settings → Secrets → Actions*; `scan.yml` already passes them through. Offline tests: `python test_verified_sources.py`.
 
 ---
 

@@ -29,6 +29,14 @@ from cover_letter_generator import generate_all_cover_letters
 from learning_module import record_application, adjust_scoring_based_on_learning, get_learning_insights
 from company_research import research_companies_batch, cleanup_old_cache
 from fetchers.social import fetch_reddit_social
+from fetchers.verified import (
+    fetch_linkedin_guest, fetch_freelancer_api, fetch_jobicy_tags, fetch_impactpool,
+    fetch_themuse, fetch_ashby_board, fetch_workable_board, fetch_smartrecruiters_board,
+    fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
+    # keyed variants — imported under distinct names because scanner.py still defines
+    # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
+    fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
+)
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 
 # ── Enterprise config (centralized) — fallback to local defaults if missing ──
@@ -43,16 +51,31 @@ try:
     FETCH_TIMEOUT = getattr(_cfg, "FETCH_TIMEOUT", 12)
     FETCH_BATCH_SIZE = getattr(_cfg, "FETCH_BATCH_SIZE", 8)
     HEADERS = getattr(_cfg, "HEADERS", {"User-Agent": "Mozilla/5.0"})
-    GREENHOUSE_COMPANIES = getattr(_cfg, "GREENHOUSE_COMPANIES", GREENHOUSE_COMPANIES)
-    LEVER_COMPANIES = getattr(_cfg, "LEVER_COMPANIES", LEVER_COMPANIES)
-    OUTPUT_DIR = getattr(_cfg, "OUTPUT_DIR", OUTPUT_DIR)
+    # NOTE: defaults must not reference module globals defined further down —
+    # an eager NameError here used to send every run into the except branch.
+    GREENHOUSE_COMPANIES = getattr(_cfg, "GREENHOUSE_COMPANIES", None) or []
+    LEVER_COMPANIES = getattr(_cfg, "LEVER_COMPANIES", None) or []
+    GREENHOUSE_PROFILE_BOARDS = getattr(_cfg, "GREENHOUSE_PROFILE_BOARDS", [])
+    ASHBY_COMPANIES = getattr(_cfg, "ASHBY_COMPANIES", [])
+    WORKABLE_COMPANIES = getattr(_cfg, "WORKABLE_COMPANIES", [])
+    SMARTRECRUITERS_COMPANIES = getattr(_cfg, "SMARTRECRUITERS_COMPANIES", [])
+    PROBE_BLOCKED_SOURCES = getattr(_cfg, "PROBE_BLOCKED_SOURCES", [])
+    FORCE_BLOCKED_SOURCES = getattr(_cfg, "FORCE_BLOCKED_SOURCES", False)
+    OUTPUT_DIR = Path(getattr(_cfg, "OUTPUT_DIR", Path(__file__).parent / "output"))
     HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
     SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
     SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
     TIMEOUT = aiohttp.ClientTimeout(total=FETCH_TIMEOUT)
-except Exception:
+except Exception as _cfg_err:
+    print(f"  Config import fallback (using built-in defaults): {_cfg_err}")
     FETCH_BATCH_SIZE = 8
     FETCH_TIMEOUT = 12
+    GREENHOUSE_PROFILE_BOARDS = []
+    ASHBY_COMPANIES = []
+    WORKABLE_COMPANIES = []
+    SMARTRECRUITERS_COMPANIES = []
+    PROBE_BLOCKED_SOURCES = []
+    FORCE_BLOCKED_SOURCES = False
 
 # ── Metrics hooks (optional) ──
 try:
@@ -4844,7 +4867,9 @@ async def run_scan():
         if _should_run("realworkfromanywhere"):
             fetchers.append(fetch_realworkfromanywhere(session))
         if _should_run("workingnomads"):
-            fetchers.append(fetch_workingnomads(session))
+            # Probe: /jobsfeed RSS answers 404 from the runner; the public JSON endpoint
+            # (api/exposed_jobs/) returned 32 fresh items. Old fetcher kept as-is above.
+            fetchers.append(fetch_workingnomads_json(session))
         if _should_run("jobspresso"):
             fetchers.append(fetch_jobspresso(session))
         if _should_run("justremote"):
@@ -4863,23 +4888,73 @@ async def run_scan():
         if _should_run("himalayas"):
             fetchers.append(fetch_himalayas_api(session))
 
+        # ── Verified sources (Probe Sources workflow, state/source_probe.md) ──
+        # Precision-first: each asks the source for the profile terms directly.
+        if _should_run("linkedin"):
+            fetchers.append(fetch_linkedin_guest(session))
+        if _should_run("freelancer_api"):
+            fetchers.append(fetch_freelancer_api(session))
+        if _should_run("jobicy_tags"):
+            fetchers.append(fetch_jobicy_tags(session))
+        if _should_run("impactpool"):
+            fetchers.append(fetch_impactpool(session))
+        if _should_run("greenhouse_profile"):
+            for name, slug in GREENHOUSE_PROFILE_BOARDS:
+                fetchers.append(fetch_greenhouse(session, name, slug))
+        if _should_run("ashby"):
+            for name, slug in ASHBY_COMPANIES:
+                fetchers.append(fetch_ashby_board(session, name, slug))
+        if _should_run("workable"):
+            for name, slug in WORKABLE_COMPANIES:
+                fetchers.append(fetch_workable_board(session, name, slug))
+        if _should_run("smartrecruiters"):
+            for name, slug in SMARTRECRUITERS_COMPANIES:
+                fetchers.append(fetch_smartrecruiters_board(session, name, slug))
+        if _should_run("themuse"):
+            fetchers.append(fetch_themuse(session))
+        # Keyed aggregators — the legit route to Indeed/LinkedIn/Glassdoor inventory.
+        # Each is a no-op (returns []) until its secret is configured.
+        if _should_run("jsearch"):
+            fetchers.append(fetch_jsearch(session))
+        if _should_run("adzuna"):
+            fetchers.append(fetch_adzuna_keyed(session))
+        if _should_run("jooble"):
+            fetchers.append(fetch_jooble_keyed(session))
+        if _should_run("reliefweb"):
+            fetchers.append(fetch_reliefweb(session))
+
+        # Best converter in the whole system (30 of 56 all-time matches) — tier 1 now
+        if _should_run("freelancer"):
+            fetchers.append(fetch_freelancer(session))
+
+        def _blocked(name: str) -> bool:
+            """Probe-confirmed blocked from Actions IPs — skip unless forced."""
+            if FORCE_BLOCKED_SOURCES:
+                return False
+            if name in PROBE_BLOCKED_SOURCES:
+                return True
+            return False
+
         # Tier-2/3 — niche sources (only if tier_cap >=3 or explicitly needed)
         if tier_cap >= 3:
-            # MENA / freelance — noisy but valuable for Arabic roles
-            fetchers.append(fetch_mostaql(session))
-            fetchers.append(fetch_for9a(session))
-            fetchers.append(fetch_ureed(session))
-            fetchers.append(fetch_wuzzuf(session))
-            fetchers.append(fetch_bayt(session))
-            fetchers.append(fetch_gulftalent(session))
-            fetchers.append(fetch_freelancer(session))
+            # MENA / freelance — valuable for Arabic roles, but the probe showed
+            # mostaql/ureed/wuzzuf/bayt/gulftalent answer 403 + challenge page from
+            # the runner; they are skipped (not deleted) until CAREEROPS_FORCE_BLOCKED=1.
+            for nm, fn in (("mostaql", fetch_mostaql), ("for9a", fetch_for9a), ("ureed", fetch_ureed),
+                           ("wuzzuf", fetch_wuzzuf), ("bayt", fetch_bayt), ("gulftalent", fetch_gulftalent)):
+                if not _blocked(nm):
+                    fetchers.append(fn(session))
             fetchers.append(fetch_peopleperhour(session))
             fetchers.append(fetch_guru(session))
         # Translation platforms — curated (not 20 stubs)
         if tier_cap >= 2:
-            fetchers.append(fetch_proz(session))
+            if not _blocked("proz"):
+                fetchers.append(fetch_proz(session))
             fetchers.append(fetch_smartcat(session))
             fetchers.append(fetch_gotranscript(session))
+        skipped_blocked = [n for n in PROBE_BLOCKED_SOURCES if _blocked(n)]
+        if skipped_blocked:
+            print(f"  Skipping probe-blocked sources ({len(skipped_blocked)}): {', '.join(skipped_blocked)}")
 
         # Legacy dedup note: removed 40+ duplicate/stub fetchers (himalayas_rss/worldwide, jobicy_rss/worldwide,
         # remoteok_api/remoteok_json, wwr_api, justremote_api, etc) — those are now unified with fallback.
@@ -4894,9 +4969,15 @@ async def run_scan():
         try:
             if registry_file.exists():
                 registry = json.loads(registry_file.read_text(encoding="utf-8"))
+                # Sources already covered by a dedicated fetcher — the auto-discovered
+                # RSS twin only duplicates jobs (himalayas_app etc.) and burns a request.
+                _covered = {"remotive", "weworkremotely", "wwr", "jobicy", "himalayas", "himalayas_app",
+                            "remoteok", "justremote", "linkedin", "arbeitnow", "workingnomads", "jobspresso"}
                 for src in registry.get("sources", []):
                     url = src.get("url", "")
                     src_type = src.get("type", "")
+                    if (src.get("source_name") or "").lower() in _covered:
+                        continue
                     if url and src_type == "rss":
                         fetchers.append(fetch_generic_rss(session, url, src.get("source_name", "discovered")))
                     elif url and src_type == "json":

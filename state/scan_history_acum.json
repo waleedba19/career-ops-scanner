@@ -473,5 +473,20 @@
         "source": "himalayas_app"
       }
     ]
+  },
+  {
+    "date": "2026-09-06T16:33:13.233637+00:00",
+    "matched_count": 1,
+    "all_count": 4422,
+    "jobs": [
+      {
+        "title": "Executive Assistant at a Global Business (Remote, SEA Based)",
+        "company": "himalayas_app",
+        "url": "https://himalayas.app/companies/paired-so/jobs/executive-assistant-at-a-global-business-remote-sea-based",
+        "score": 100,
+        "category": "Admin",
+        "source": "himalayas_app"
+      }
+    ]
   }
 ]

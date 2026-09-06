@@ -17,6 +17,19 @@ on:
         default: ""
   schedule:
     - cron: "30 3 * * 1"   # Mondays 03:30 UTC — before the 05:00 scan
+  # Re-probe automatically whenever the catalog or the probe itself changes,
+  # both on the PR (so the report is visible before merge) and after merge to main.
+  push:
+    branches: [main]
+    paths:
+      - source_candidates.json
+      - probe_sources.py
+      - .github/workflows/probe_sources.yml
+  pull_request:
+    paths:
+      - source_candidates.json
+      - probe_sources.py
+      - .github/workflows/probe_sources.yml
 
 jobs:
   probe:
@@ -44,12 +57,15 @@ jobs:
       - run: pip install "aiohttp>=3.9,<4"
 
       - name: Probe
+        env:
+          PROBE_ONLY:   ${{ github.event.inputs.only || '' }}
+          PROBE_GROUPS: ${{ github.event.inputs.groups || '' }}
         run: |
           ARGS=""
-          if [ -n "${{ github.event.inputs.only }}" ]; then
-            ARGS="--only ${{ github.event.inputs.only }}"
-          elif [ -n "${{ github.event.inputs.groups }}" ]; then
-            for g in ${{ github.event.inputs.groups }}; do ARGS="$ARGS --group $g"; done
+          if [ -n "$PROBE_ONLY" ]; then
+            ARGS="--only $PROBE_ONLY"
+          elif [ -n "$PROBE_GROUPS" ]; then
+            for g in $PROBE_GROUPS; do ARGS="$ARGS --group $g"; done
           fi
           python probe_sources.py $ARGS --concurrency 6 --timeout 15
 

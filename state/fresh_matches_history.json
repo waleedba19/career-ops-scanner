@@ -1452,6 +1452,347 @@
     "scan_date": "2026-09-06T18:21:19.031661+02:00"
   },
   {
+    "title": "Linguist \u2014 Arabic & Spanish (Localization & CX)",
+    "company": "Healix Scrubs",
+    "url": "https://in.linkedin.com/jobs/view/linguist-%E2%80%94-arabic-spanish-localization-cx-at-healix-scrubs-4461836577",
+    "location": "Remote \u2014 Greater Delhi Area",
+    "posted": "2026-09-06",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "arabic translator",
+    "postedISO": "2026-09-06T00:00:00",
+    "score": 100,
+    "category": "Arabic Translation",
+    "why": [
+      "translator translation interpreter linguist editor proofreader localisation specialist .{0,40}arabic (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 20.73614341361111,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 50,
+        "reason": "Requires language skills and academic work, but lacks direct translation experience."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Has experience in ESL teaching, academic supervision, and legal translation, which are relevant skills."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote work environment and academic setting align well with the candidate's skills."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote location fits the candidate's background and qualifications."
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds towards translation/teaching/academic career, aligning with the job's focus."
+      },
+      "overall_score": 78,
+      "verdict": "Good Fit",
+      "strengths": [
+        "ESL teaching",
+        "Academic supervision",
+        "Legal translation"
+      ],
+      "gaps": [
+        "No direct translation experience"
+      ],
+      "recommendation": "Waleed Ballag's qualifications make him a strong fit for the Linguist \u2014 Arabic & Spanish (Localization & CX) role at Healix Scrubs. His background in ESL teaching and academic supervision, combined with his language skills, make him well-suited for the job's requirements.",
+      "interview_prep": [
+        "Can you discuss your experience in academic supervision and how it relates to the job requirements?",
+        "How do your language skills, particularly in Arabic and English, translate to the localization and customer experience (CX) aspects of the role?"
+      ],
+      "one_line_summary": "Waleed Ballag's background in ESL teaching and academic supervision makes him a strong fit for the Localization & CX role at Healix Scrubs."
+    },
+    "ai_insight": "Waleed Ballag's background in ESL teaching and academic supervision makes him a strong fit for the Localization & CX role at Healix Scrubs.",
+    "ai_overall_score": 78,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "ESL teaching",
+      "Academic supervision",
+      "Legal translation"
+    ],
+    "ai_gaps": [
+      "No direct translation experience"
+    ],
+    "ai_recommendation": "Waleed Ballag's qualifications make him a strong fit for the Linguist \u2014 Arabic & Spanish (Localization & CX) role at Healix Scrubs. His background in ESL teaching and academic supervision, combined with his language skills, make him well-suited for the job's requirements.",
+    "ai_interview_prep": [
+      "Can you discuss your experience in academic supervision and how it relates to the job requirements?",
+      "How do your language skills, particularly in Arabic and English, translate to the localization and customer experience (CX) aspects of the role?"
+    ],
+    "ai_technical_skills": 50,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Needs native Arabic speaker (rare)",
+    "email_guessed": true,
+    "hiring_email": "careers@in.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@in.linkedin.com",
+      "hr@in.linkedin.com",
+      "jobs@in.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Healix Scrubs",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-06T20:57:30.577768+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Healix Scrubs_Linguist \u2014 Arabic & Spanish (Localization & CX)_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
+    "title": "GEOINT Conveyance/Copy Editor- Springfield, VA",
+    "company": "BAE Systems, Inc.",
+    "url": "https://www.linkedin.com/jobs/view/geoint-conveyance-copy-editor-springfield-va-at-bae-systems-inc-4424827286",
+    "location": "Remote \u2014 Springfield, VA",
+    "posted": "2026-09-06",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-06T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "academic editor editing copy editor (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 20.736145126944447,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 65,
+        "reason": "Requires C1 Advanced English proficiency and experience in academic supervision and translation, but does not require direct engineering or development skills."
+      },
+      "experience_match": {
+        "score": 75,
+        "reason": "Direct experience in academic supervision and translation, with some related experience in language services."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote work environment, academic setting, and experience in language instruction align well with the job requirements."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the candidate's skills."
+      },
+      "career_alignment": {
+        "score": 80,
+        "reason": "Builds towards translation/teaching/academic career, aligns well with the candidate's goals."
+      },
+      "overall_score": 80,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency",
+        "Experience in academic supervision and translation"
+      ],
+      "gaps": [
+        "No direct experience in engineering or development"
+      ],
+      "recommendation": "Waleed Ballag's skills and experience align well with the GEOINT Conveyance/Copy Editor role. He has the necessary language skills and experience in academic supervision and translation, making him a strong fit for the position.",
+      "interview_prep": [
+        "Can you discuss your experience in academic supervision and how it relates to the GEOINT Conveyance/Copy Editor role?",
+        "How do you approach translating legal documents, and what experience do you have in this area?"
+      ],
+      "one_line_summary": "Waleed Ballag's strong fit for the GEOINT Conveyance/Copy Editor role due to his native Arabic speaker status and experience in academic supervision and translation."
+    },
+    "ai_insight": "Waleed Ballag's strong fit for the GEOINT Conveyance/Copy Editor role due to his native Arabic speaker status and experience in academic supervision and translation.",
+    "ai_overall_score": 80,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency",
+      "Experience in academic supervision and translation"
+    ],
+    "ai_gaps": [
+      "No direct experience in engineering or development"
+    ],
+    "ai_recommendation": "Waleed Ballag's skills and experience align well with the GEOINT Conveyance/Copy Editor role. He has the necessary language skills and experience in academic supervision and translation, making him a strong fit for the position.",
+    "ai_interview_prep": [
+      "Can you discuss your experience in academic supervision and how it relates to the GEOINT Conveyance/Copy Editor role?",
+      "How do you approach translating legal documents, and what experience do you have in this area?"
+    ],
+    "ai_technical_skills": 65,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 80,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@linkedin.com",
+      "hr@linkedin.com",
+      "jobs@linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "BAE Systems, Inc.",
+      "legitimacy_score": 65,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board",
+        "Appears to be registered business"
+      ],
+      "last_updated": "2026-09-06T20:57:30.578324+00:00"
+    },
+    "company_legitimacy": 65,
+    "company_summary": "2 positive signals",
+    "score_adjustment": 4,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/BAE Systems, Inc._GEOINT Conveyance-Copy Editor- Springfield, VA_20260906.pdf",
+    "cover_letter_type": "virtual_assistant",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/BAE Systems, Inc._GEOINT Conveyance-Copy Editor- Springfield, VA_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
+    "title": "Adult ESL Instructor",
+    "company": "IRC - International Rescue Committee",
+    "url": "https://www.impactpool.org/jobs/1224517",
+    "location": "Remote | New York City",
+    "posted": "",
+    "description": "IRC - International Rescue Committee \u00b7 Remote | New York City \u00b7 Mid - Mid level",
+    "salary": "",
+    "source": "impactpool",
+    "postedISO": "2026-09-06T20:44:10.435409+00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "esl efl tesol tefl (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": Infinity,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 70,
+        "reason": "Requires language skills and academic work, but not exclusively translation or ESL teaching."
+      },
+      "experience_match": {
+        "score": 85,
+        "reason": "Direct experience in academic supervision and research guidance, related to the job."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "Remote work environment and academic setting align well with the job."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote and worldwide locations are compatible with the job."
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds toward translation/teaching/academic career, aligning well with the job."
+      },
+      "overall_score": 80,
+      "verdict": "Good Fit",
+      "strengths": [
+        "ESL/EFL instruction",
+        "Academic supervision",
+        "Remote work"
+      ],
+      "gaps": [
+        "No specific programming or engineering skills"
+      ],
+      "recommendation": "Waleed Ballag is a strong fit for the Adult ESL Instructor role at IRC. He has relevant experience and skills that align well with the job requirements.",
+      "interview_prep": [
+        "Can you describe a time when you supervised a research study?",
+        "How do you ensure the accuracy of translations in legal and academic contexts?",
+        "Can you share an experience where you helped a graduate student improve their thesis writing skills?"
+      ],
+      "one_line_summary": "Waleed Ballag is a strong fit for the Adult ESL Instructor role at IRC with his relevant experience and skills."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the Adult ESL Instructor role at IRC with his relevant experience and skills.",
+    "ai_overall_score": 80,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "ESL/EFL instruction",
+      "Academic supervision",
+      "Remote work"
+    ],
+    "ai_gaps": [
+      "No specific programming or engineering skills"
+    ],
+    "ai_recommendation": "Waleed Ballag is a strong fit for the Adult ESL Instructor role at IRC. He has relevant experience and skills that align well with the job requirements.",
+    "ai_interview_prep": [
+      "Can you describe a time when you supervised a research study?",
+      "How do you ensure the accuracy of translations in legal and academic contexts?",
+      "Can you share an experience where you helped a graduate student improve their thesis writing skills?"
+    ],
+    "ai_technical_skills": 70,
+    "ai_experience_match": 85,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Needs ESL teacher, likely understaffed",
+    "email_guessed": true,
+    "hiring_email": "careers@impactpool.org",
+    "email_verified": false,
+    "all_emails": [
+      "careers@impactpool.org",
+      "hr@impactpool.org",
+      "jobs@impactpool.org"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "IRC - International Rescue Committee",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T20:57:30.578901+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IRC - International Rescue Com_Adult ESL Instructor_20260906.pdf",
+    "cover_letter_type": "teaching",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IRC - International Rescue Com_Adult ESL Instructor_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",
@@ -3358,6 +3699,331 @@
     "scan_date": "2026-09-06T18:23:23.202848+00:00"
   },
   {
+    "title": "Financial Records Cleanup Specialist",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/data-cleansing/Financial-Records-Cleanup-Specialist.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 16:04:54 -0400",
+    "description": "I\u2019m looking for a detail-minded virtual assistant to take ownership of my raw financial spreadsheets and turn them into clean, well-organized data I can trust. The files include bank transactions, expense reports, and a few scattered CSV exports from payment platforms... (Budget: $15 - $25 USD, Jobs: Data Analysis, Data Cleansing, Data Entry, Data Management, Data Processing, Excel, Google Sheets, Virtual Assistant)",
+    "salary": "$15",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T16:04:54-04:00",
+    "score": 97,
+    "category": "Admin",
+    "why": [
+      "data entry (description)",
+      "virtual assistant administrative assistant admin assistant executive assistant (description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.6546606641666666,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 90,
+        "reason": "Requires language skills, writing, and academic work"
+      },
+      "experience_match": {
+        "score": 85,
+        "reason": "Related experience in language services and academic supervision"
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote and academic environment"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, or compatible"
+      },
+      "career_alignment": {
+        "score": 80,
+        "reason": "Builds toward translation/teaching/academic career"
+      },
+      "overall_score": 80,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency"
+      ],
+      "gaps": [
+        "No direct experience in engineering or development"
+      ],
+      "recommendation": "Waleed Ballag's skills and experience align well with the job requirements, making this a strong fit. He can leverage his language skills and academic background to contribute effectively.",
+      "interview_prep": "1. Can you describe a time when you used SPSS for data analysis in a translation project? 2. How do you ensure the accuracy of academic research supervision reports?",
+      "one_line_summary": "Waleed Ballag's skills and experience make him a strong fit for the Financial Records Cleanup Specialist role."
+    },
+    "ai_insight": "Waleed Ballag's skills and experience make him a strong fit for the Financial Records Cleanup Specialist role.",
+    "ai_overall_score": 80,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency"
+    ],
+    "ai_gaps": [
+      "No direct experience in engineering or development"
+    ],
+    "ai_recommendation": "Waleed Ballag's skills and experience align well with the job requirements, making this a strong fit. He can leverage his language skills and academic background to contribute effectively.",
+    "ai_interview_prep": "1. Can you describe a time when you used SPSS for data analysis in a translation project? 2. How do you ensure the accuracy of academic research supervision reports?",
+    "ai_technical_skills": 90,
+    "ai_experience_match": 85,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 80,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_Financial Records Cleanup Specialist_20260906.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_Financial Records Cleanup Specialist_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
+    "title": "Professional Proofreader & Editor Needed",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/copy-editing/Professional-Proofreader-Editor-Needed",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-06T15:03:07+00:00",
+    "description": "Hi there, I\u2019m looking for a native English speaker who can professionally proofread, edit, and rephrase my documents. I\u2019m seeking a reliable and detail-oriented freelancer who can work with me on a long-term basis. I\u2019ll share the project details, requirements, and other relevant information through the chat box. If you\u2019re interested, please feel free to place your bid. Thank you, and happy bidding!",
+    "salary": "30.0-250.0 USD",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T15:03:07+00:00",
+    "score": 97,
+    "category": "Editing",
+    "why": [
+      "proofreader proofreading proofread (title+description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 5.684223149722222,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 70,
+        "reason": "Requires language skills, writing, and academic work, but lacks direct translation or ESL teaching experience."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "Has experience in academic supervision, which is relevant to the job description."
+      },
+      "behavioral_fit": {
+        "score": 75,
+        "reason": "Remote work environment is compatible, but there is some friction in the academic setting."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the job description."
+      },
+      "career_alignment": {
+        "score": 80,
+        "reason": "Builds toward translation/teaching/academic career, aligning well with the job description."
+      },
+      "overall_score": 78,
+      "verdict": "Good Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency"
+      ],
+      "gaps": [
+        "Direct translation experience",
+        "Academic supervision experience"
+      ],
+      "recommendation": "Waleed Ballag is a strong fit for the job as he has relevant skills and experience in academic supervision, which aligns well with the job description. He can contribute to the role of a professional proofreader and editor, focusing on academic writing and editing.",
+      "interview_prep": [
+        "Can you describe a time when you supervised a graduate-level research study?",
+        "How do you ensure the accuracy and quality of the proofreading work you do?"
+      ],
+      "one_line_summary": "Waleed Ballag is a strong fit with his academic supervision background and native language skills, making him a valuable addition to the Freelancer.com team."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit with his academic supervision background and native language skills, making him a valuable addition to the Freelancer.com team.",
+    "ai_overall_score": 78,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency"
+    ],
+    "ai_gaps": [
+      "Direct translation experience",
+      "Academic supervision experience"
+    ],
+    "ai_recommendation": "Waleed Ballag is a strong fit for the job as he has relevant skills and experience in academic supervision, which aligns well with the job description. He can contribute to the role of a professional proofreader and editor, focusing on academic writing and editing.",
+    "ai_interview_prep": [
+      "Can you describe a time when you supervised a graduate-level research study?",
+      "How do you ensure the accuracy and quality of the proofreading work you do?"
+    ],
+    "ai_technical_skills": 70,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 75,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 80,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_Professional Proofreader & Editor Needed_20260906.pdf",
+    "cover_letter_type": "virtual_assistant",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_Professional Proofreader & Editor Needed_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
+    "title": "Arabic Translation for Web Manuals",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/technical-writing/Arabic-Translation-for-Web-Manuals",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-04T22:51:23+00:00",
+    "description": "I have a series of English webpages that double as online technical manuals and I need every word rendered accurately into Arabic. The language is precise, filled with procedure-style explanations, part numbers, and interface terms, so I\u2019m counting on a translator who is comfortable with technical writing as well as web-ready copy. The pages sit in simple HTML; if you can return the Arabic in the same tags, great\u2014otherwise a clean Word file, clearly mapped to each page section, is fine. Consistency of terminology is crucial, so if you rely on CAT tools such as Trados or memoQ, please mention it. I\u2019ll supply the original URLs and any existing glossaries the moment we kick off. Deliverables \u2022 Complete Arabic text for every webpage / manual section \u2022 Original formatting or tag structure preserved \u2022 A short terminology list for future updates Once I review the first translated page and confirm the tone and accuracy, we can proceed in small batches until the site is fully localized.",
+    "salary": "8.0-15.0 USD",
+    "source": "freelancer",
+    "postedISO": "2026-09-04T22:51:23+00:00",
+    "score": 97,
+    "category": "Arabic Translation",
+    "why": [
+      "arabic translator translation interpreter linguist editor proofreader content writer qa tester localis (title)",
+      "translator translation specialist staff translator freelance translator (description)"
+    ],
+    "is_fresh": false,
+    "age_hours": 45.879768919722224,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 70,
+        "reason": "Requires technical writing and web-ready copy, but not exclusively Arabic-English translation."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Has experience in academic supervision and web content localization, but not exclusively in translation."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote work environment, academic setting, and a mix of writing and translation skills."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the job's requirements."
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds towards translation/teaching/academic career, aligns well with the job's requirements."
+      },
+      "overall_score": 82,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Technical writing skills",
+        "Academic supervision experience"
+      ],
+      "gaps": [
+        "Need for on-site presence"
+      ],
+      "recommendation": "Waleed Ballag has a strong fit for the Arabic Translation for Web Manuals job. His background in academic supervision and technical writing skills makes him a good fit for the remote, worldwide nature of the job. However, the need for on-site presence in a specific city is a dealbreaker.",
+      "interview_prep": [
+        "Can you describe a time when you translated a technical manual for an academic project?",
+        "How do you ensure consistency in terminology when translating technical documentation?"
+      ],
+      "one_line_summary": "Waleed Ballag has a strong fit for the Arabic Translation for Web Manuals job due to his academic background and technical writing skills, but the requirement for on-site presence is a dealbreaker."
+    },
+    "ai_insight": "Waleed Ballag has a strong fit for the Arabic Translation for Web Manuals job due to his academic background and technical writing skills, but the requirement for on-site presence is a dealbreaker.",
+    "ai_overall_score": 82,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Technical writing skills",
+      "Academic supervision experience"
+    ],
+    "ai_gaps": [
+      "Need for on-site presence"
+    ],
+    "ai_recommendation": "Waleed Ballag has a strong fit for the Arabic Translation for Web Manuals job. His background in academic supervision and technical writing skills makes him a good fit for the remote, worldwide nature of the job. However, the need for on-site presence in a specific city is a dealbreaker.",
+    "ai_interview_prep": [
+      "Can you describe a time when you translated a technical manual for an academic project?",
+      "How do you ensure consistency in terminology when translating technical documentation?"
+    ],
+    "ai_technical_skills": 70,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "No native QA, backlog of Arabic content; Translation backlog / scaling",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_Arabic Translation for Web Manuals_20260906.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_Arabic Translation for Web Manuals_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
     "title": "Freelance Copywriter",
     "company": "Coalition Technologies",
     "url": "https://remotive.com/remote-jobs/writing/freelance-copywriter-1749306",
@@ -4070,6 +4736,109 @@
     "scan_date": "2026-09-06T16:02:07.833131+00:00"
   },
   {
+    "title": "Campagne pubs r\u00e9seaux sociaux",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/conversion-rate-optimization/Campagne-pubs-seaux-sociaux.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 16:28:57 -0400",
+    "description": "Je cherche un sp\u00e9cialiste capable de concevoir et de lancer une publicit\u00e9 en ligne cibl\u00e9e sur les r\u00e9seaux sociaux. Objectif : concevoir une campagne percutante qui maximise la port\u00e9e et l\u2019engagement sur Facebook, Instagram et Tik Tok... (Budget: $10 - $30 USD, Jobs: Analytics, Content Creation, Conversion Rate Optimization, Copywriting, Creative Design, Facebook Ads, Instagram Ads, Marketing Strategy, Social Media Management, Social Media Marketing)",
+    "salary": "$10",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T16:28:57-04:00",
+    "score": 82,
+    "category": "Editing",
+    "why": [
+      "content writer copywriter copywriting blog writer article writer content editor content creator (description)",
+      "content creation (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.2538252805555556,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 70,
+        "reason": "Requires some language skills and academic work, but not exclusively."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "Direct experience in ESL teaching and academic supervision, with some related experience."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "Remote work environment, academic focus, and career alignment towards translation/teaching/academic."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the job requirements."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds toward translation/teaching/academic career, with a focus on academic services."
+      },
+      "overall_score": 82,
+      "verdict": "Good Fit",
+      "strengths": [
+        "ESL/EFL Instruction",
+        "Academic Supervision",
+        "Native Arabic Speaker"
+      ],
+      "gaps": [
+        "No direct experience in analytics, content creation, conversion rate optimization, or AI tools"
+      ],
+      "recommendation": "Waleed Ballag's experience in ESL/EFL instruction and academic supervision aligns well with the job requirements. His native Arabic speaker status and ability to handle language translation and editing make him a strong fit for the position.",
+      "interview_prep": "1. What is your experience in academic supervision and research guidance? 2. How do you approach the creation of a compelling social media campaign? 3. Can you describe a time when you successfully translated legal documents?",
+      "one_line_summary": "Waleed Ballag's background in ESL/EFL instruction and academic supervision makes him a strong fit for the social media campaign position."
+    },
+    "ai_insight": "Waleed Ballag's background in ESL/EFL instruction and academic supervision makes him a strong fit for the social media campaign position.",
+    "ai_overall_score": 82,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "ESL/EFL Instruction",
+      "Academic Supervision",
+      "Native Arabic Speaker"
+    ],
+    "ai_gaps": [
+      "No direct experience in analytics, content creation, conversion rate optimization, or AI tools"
+    ],
+    "ai_recommendation": "Waleed Ballag's experience in ESL/EFL instruction and academic supervision aligns well with the job requirements. His native Arabic speaker status and ability to handle language translation and editing make him a strong fit for the position.",
+    "ai_interview_prep": "1. What is your experience in academic supervision and research guidance? 2. How do you approach the creation of a compelling social media campaign? 3. Can you describe a time when you successfully translated legal documents?",
+    "ai_technical_skills": 70,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 26,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_Campagne pubs r\u00e9seaux sociaux_20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
     "title": "<![CDATA[Indian Constitution Book Ghostwriter]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/ghostwriting/Indian-Constitution-Book-Ghostwriter.html",
@@ -4370,5 +5139,105 @@
     "cover_letter_ai": false,
     "interview_prep_generated": false,
     "scan_date": "2026-09-06T16:02:07.833131+00:00"
+  },
+  {
+    "title": "Islamic consultancy and e-learning wordpress website",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/web-development/Islamic-consultancy-learning-wordpress",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-06T16:39:52+00:00",
+    "description": "I\u2019m ready to launch an online hub that combines Islamic consultancy with structured e-learning. The site has to feel welcoming, modern, and entirely focused on authentic, accessible knowledge. From one dashboard I want to be able to publish lessons, open up one-to-one or group consultancy sessions, and share supporting resources as they grow. Core expectations \u2022 A clean, mobile-responsive front-end built with a reliable CMS or framework you recommend. \u2022 Full learning-management capability\u2014uploading video or audio lessons, attaching PDFs or slides, tracking student progress, and issuing certificates automatically. \u2022 A booking flow for consultancy: visitors select a slot on my calendar, pay securely, and receive a confirmation with the meeting link. \u2022 Member management: tiered access so free visitors see some content while subscribers unlock the full course catalog and live guidance. \u2022 Payment gateway integration (PayPal, Stripe, or a locally compliant option) plus coupon support for limited-time scholarships. \u2022 Multilingual foundations\u2014English first, with the structure ready for Arabic localisation. \u2022 Admin area where I can post articles, schedule live webinars, moderate comments, and review analytics at a glance. \u2022 SEO-friendly architecture so the material is easy to find for seekers of Islamic knowledge. Acceptance criteria 1. A staging link where I can test every flow\u2014from creating a lesson to completing a checkout\u2014before we migrate to my domain. 2. Page-load times under three seconds on standard hosting. 3. Clear written handover: theme files, database export, and a short video walkthrough of daily tasks. If you have experience deploying LMS plugins (Moodle, LearnDash, TutorLMS) or frameworks such as Laravel + Nova, let me know which route you\u2019d take and why. Please include a live example of an education or consultancy site you\u2019ve delivered recently\u2014seeing it in action helps me decide quickly. Looking forward to collaborating and getting this platform live.",
+    "salary": "30.0-250.0 CAD",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T16:39:52+00:00",
+    "score": 62,
+    "category": "Arabic Translation",
+    "why": [
+      "arabic translator translation interpreter linguist editor proofreader content writer qa tester localis (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 4.071702494444445,
+    "ai_insight": "```json\n{\n  \"technical_skills\": {\n    \"score\": 85,\n    \"reason\": \"The job requires a CMS or framework for a website, which is a technical skill that aligns with the candidate's experience in ESL teaching and academic supervision.\"\n  },\n  \"experience_match\": {\n    \"score\": 80,\n    \"reason\": \"The cand",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "No native QA, backlog of Arabic content",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 20,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_Islamic consultancy and e-learning wordpress websi_20260906.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
+  },
+  {
+    "title": "Arabic PR Specialist \u2014 Earned Media Placements for Saudi E-Commerce Brand (KSA Outlets) -- 2",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/public-relations/Arabic-Specialist-Earned-Media-40694474",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-06T14:35:14+00:00",
+    "description": "About the client We are an established Saudi e-commerce retailer selling smart wearables, audio, and smart-home accessories to customers across KSA and the GCC. We are a registered company with several years of trading history and meaningful monthly order volume. Brand identity will be shared with shortlisted candidates under NDA. What we need Genuine editorial press coverage in credible Saudi news outlets \u2014 articles written by journalists, published on the outlet's own editorial judgment. We are not buying advertorials, sponsored posts, \"paid articles,\" press-release distribution, or placements on content-farm/aggregator sites. Paid and sponsored coverage does not serve the purpose behind this project, so it has no value to us regardless of how the outlet labels it. Scope of work Develop 2\u20133 newsworthy angles from material we provide (consumer-trend data from our own sales, seasonal buying behaviour, company story, category growth in KSA). Write Arabic press materials and journalist pitches. Pitch your own contacts at Saudi business, tech, and general-news outlets. Secure and confirm published editorial placements. Deliver live URLs with publication dates. Target outlet tier (examples, not exhaustive) Al Eqtisadiah, Argaam, Maal, Asharq Business, Al Arabiya Business, Arab News, Saudi Gazette, Okaz, Al Riyadh, Sabq, Ajel, Independent Arabia. Deliverables & milestones Milestone 1: Angle memo + Arabic press kit + target media list with named contacts Milestone 2: First confirmed editorial placement in a tier-1 KSA outlet Milestone 3: Two additional confirmed placements in distinct outlets What we provide Brand assets, product samples if needed, proprietary sales and category-trend data for the story, spokesperson availability for interviews, and fast turnaround on approvals. Requirements Based in Saudi Arabia with active, personal relationships with KSA newsroom editors and journalists Native Arabic writing at publication standard; working English for coordination Ver",
+    "salary": "250.0-750.0 USD",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T14:35:14+00:00",
+    "score": 62,
+    "category": "Arabic Translation",
+    "why": [
+      "translator translation interpreter linguist editor proofreader localisation specialist .{0,40}arabic (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 6.1489264175,
+    "ai_insight": "```json\n{\n  \"technical_skills\": {\"score\": 20, \"reason\": \"Requires language skills, writing, and academic work but lacks translation and teaching experience.\"},\n  \"experience_match\": {\"score\": 50, \"reason\": \"Has experience in ESL teaching and academic supervision, but lacks direct translation and aca",
+    "urgency_score": 0,
+    "desperation_index": 15,
+    "pain_points": "Needs native Arabic speaker (rare)",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 26,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T20:59:46.251196+00:00"
   }
 ]

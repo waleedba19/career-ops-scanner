@@ -145,5 +145,37 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-05T21:52:44.730102+00:00"
+  },
+  "Vertu Agent": {
+    "name": "Vertu Agent",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T01:05:48.063255+00:00"
+  },
+  "Search Discovered": {
+    "name": "Search Discovered",
+    "legitimacy_score": 70,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Uses professional ATS"
+    ],
+    "last_updated": "2026-09-06T01:05:48.063735+00:00"
+  },
+  "Spiralyze": {
+    "name": "Spiralyze",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T01:05:48.064141+00:00"
   }
 }

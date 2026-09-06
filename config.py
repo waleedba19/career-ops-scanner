@@ -19,7 +19,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 # ── Scanning ─────────────────────────────────────────────────────────────
 MIN_MATCH_SCORE = int(os.getenv("CAREEROPS_MIN_SCORE", "65"))
 MAX_AGE_HOURS = int(os.getenv("CAREEROPS_MAX_AGE_H", "144"))  # 6 days
-MAX_AGE_FRESH_HOURS = float(os.getenv("CAREEROPS_FRESH_H", "0.5"))  # 30 min
+MAX_AGE_FRESH_HOURS = float(os.getenv("CAREEROPS_FRESH_H", "8"))  # 1 scan cycle (was 0.5)
 NEAR_MISS_MIN = 50
 NEAR_MISS_MAX = 64
 NEAR_MISS_LIMIT = int(os.getenv("CAREEROPS_NEAR_MISS_LIMIT", "6"))

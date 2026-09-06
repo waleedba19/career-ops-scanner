@@ -58,5 +58,55 @@
     "near_misses": 1,
     "sources": 14,
     "time": "01:47 AM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Morning (5 AM)",
+    "scanned": 4419,
+    "matches": 8,
+    "old_verified": 0,
+    "near_misses": 0,
+    "sources": 16,
+    "time": "03:29 AM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Afternoon (1 PM)",
+    "scanned": 4419,
+    "matches": 5,
+    "old_verified": 0,
+    "near_misses": 0,
+    "sources": 16,
+    "time": "11:15 AM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Afternoon (1 PM)",
+    "scanned": 4422,
+    "matches": 6,
+    "old_verified": 1,
+    "near_misses": 2,
+    "sources": 16,
+    "time": "06:02 PM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Night (10 PM Libya)",
+    "scanned": 4310,
+    "matches": 1,
+    "old_verified": 0,
+    "near_misses": 0,
+    "sources": 14,
+    "time": "06:21 PM"
+  },
+  {
+    "date": "2026-09-06",
+    "slot": "Afternoon (1 PM)",
+    "scanned": 4422,
+    "matches": 1,
+    "old_verified": 0,
+    "near_misses": 0,
+    "sources": 16,
+    "time": "06:32 PM"
   }
 ]

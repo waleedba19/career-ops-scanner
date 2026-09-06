@@ -7,35 +7,9 @@ import base64
 import html as html_mod
 import os
 import re
-import zlib
 from datetime import datetime, timedelta, timezone
 
 import aiohttp
-
-# ---------------------------------------------------------------------------
-# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013)
-# Every user-facing date/time in messages, email and Excel uses Libya time,
-# never raw UTC, so a 00:11 scan in Tripoli reads as 00:11 on the 6th, not
-# 22:11 on the 5th.
-# ---------------------------------------------------------------------------
-
-LIBYA_TZ = timezone(timedelta(hours=2))  # Africa/Tripoli
-
-
-def now_utc() -> datetime:
-    return datetime.now(timezone.utc)
-
-
-def now_libya() -> datetime:
-    """Current time in Libya (Africa/Tripoli, UTC+2)."""
-    return datetime.now(LIBYA_TZ)
-
-
-def libya_time_str() -> str:
-    """'00:11 AM Libya (22:11 UTC)' — Libya-first, UTC in parentheses."""
-    lib = now_libya()
-    utc = now_utc()
-    return f"{lib.strftime('%I:%M %p')} Libya ({utc.strftime('%H:%M')} UTC)"
 
 
 def strip_html(html_text: str) -> str:
@@ -61,63 +35,6 @@ TO_EMAIL = os.getenv("TO_EMAIL", "")
 
 
 # ---------------------------------------------------------------------------
-# Human-live message variety — every run reads differently, no two identical
-# ---------------------------------------------------------------------------
-
-# 3 greetings per scan slot; rotate by (hour + minute) % 3 so back-to-back
-# manual runs in the same slot read differently while staying natural.
-HUMAN_GREETINGS = {
-    "Morning Intel": (
-        "Good morning — I ran the early shift before the market woke up, so today's freshest posts are already at the top of this.",
-        "Morning — the overnight queue is sorted and the first wave of new postings is in your hands.",
-        "Hi — early shift done. I went through the new posts so you can start the day with a clear list, not a pile.",
-    ),
-    "Afternoon Briefing": (
-        "Afternoon — the European boards refreshed this hour, so I ran the mid-day pass and sorted what actually matters.",
-        "Hey — halfway through the day. I chased down everything posted since the morning scan.",
-        "Mid-day check: I pulled the fresh European wave before it got buried under re-postings.",
-    ),
-    "Night Digest": (
-        "Late check — I stayed up so you don't have to.",
-        "Night shift is running — I picked through the evening posts while you rest.",
-        "Quiet-hours digest: I did the late sweep so your morning starts clear.",
-    ),
-}
-
-# 4 closings; rotate by (minute + second) % 4 so they change nearly every run.
-HUMAN_CLOSINGS = (
-    "Take care — I'll keep the boards under watch.",
-    "See you at the next scan; I've got the watch from here.",
-    "You've got the details, I've got the monitoring.",
-    "Rest easy — the next cycle is already queued.",
-)
-
-# 3 zero-match notes; pick by a stable hash of (date + scan number) so the
-# wording changes per run but is reproducible for the same run.
-NO_MATCH_NOTES = (
-    "No new position passed all four gates this cycle. I checked {all_count:,} listings — {fresh_count} were fresh — and none cleared the bar. I'll flag you the moment one does; no near-miss noise.",
-    "Quiet cycle: {all_count:,} reviewed, {fresh_count} fresh, zero that cleared every gate. The filters are doing their job — when something real shows up, you'll hear from me first.",
-    "Nothing new passed the full gate this time ({all_count:,} reviewed, {fresh_count} fresh). Rather than send you half-fits, I'm holding the line — the next qualifying role lands here the moment it does.",
-)
-
-
-def pick_greeting(label: dict) -> str:
-    now = now_libya()
-    pool = HUMAN_GREETINGS.get(label["label"], HUMAN_GREETINGS["Morning Intel"])
-    return pool[(now.hour + now.minute) % len(pool)]
-
-
-def pick_closing() -> str:
-    now = now_libya()
-    return HUMAN_CLOSINGS[(now.minute + now.second) % len(HUMAN_CLOSINGS)]
-
-
-def pick_no_match_note(date: str, scan_num: int, all_count: int, fresh_count: int) -> str:
-    idx = zlib.crc32(f"{date}-{scan_num}".encode()) % len(NO_MATCH_NOTES)
-    return NO_MATCH_NOTES[idx].format(all_count=all_count, fresh_count=fresh_count)
-
-
-# ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
@@ -129,30 +46,23 @@ SCAN_LABELS = [
 
 
 def get_scan_label() -> dict:
-    """Scan label by Libya local hour (runs at 07:00 / 15:00 / 22:00 Libya)."""
-    h = now_libya().hour
-    if h < 11:
+    h = datetime.now(timezone.utc).hour
+    if h < 9:
         return SCAN_LABELS[0]
-    if h < 18:
+    if h < 17:
         return SCAN_LABELS[1]
     return SCAN_LABELS[2]
 
 
-def next_scan_time() -> tuple[str, bool]:
-    """Next scheduled scan in Libya time → (time_str, is_tomorrow)."""
-    h = now_libya().hour
-    if h < 7:
-        return "07:00", False
-    if h < 15:
-        return "15:00", False
-    if h < 22:
-        return "22:00", False
-    return "07:00", True
-
-
-def next_scan_line() -> str:
-    t, tomorrow = next_scan_time()
-    return f"Next scan: {t} Libya ({'tomorrow morning' if tomorrow else 'today'})"
+def next_scan_time() -> str:
+    h = datetime.now(timezone.utc).hour
+    if h < 5:
+        return "05:00"
+    if h < 13:
+        return "13:00"
+    if h < 20:
+        return "20:00"
+    return "05:00"
 
 
 def get_recommendation(score: int) -> str:
@@ -261,6 +171,58 @@ def format_near_miss_card(job: dict, index: int) -> str:
     return "\n".join(lines)
 
 
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+# The scanner's notify phase imports now_libya() from this module to stamp
+# user-facing Excel / email dates in Libya time, never raw UTC.
+LIBYA_TZ = timezone(timedelta(hours=2))
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
+
+
+def fresh_window_phrase() -> str:
+    """Human phrase for the fresh-match window (e.g. 'the last 8 hours') — tracks live config."""
+    try:
+        from config import MAX_AGE_FRESH_HOURS
+        h = float(MAX_AGE_FRESH_HOURS)
+    except Exception:
+        h = 8.0
+    if h < 1:
+        return f"the last {int(h * 60)} minutes"
+    if h < 24:
+        return f"the last {int(h)} hours"
+    return f"the last {int(h / 24)} days"
+
+
+def gates_line() -> str:
+    """Human-readable filter gates — always in sync with the live config."""
+    try:
+        from config import MAX_AGE_FRESH_HOURS
+        from scanner import MIN_MATCH_SCORE
+        h = float(MAX_AGE_FRESH_HOURS)
+        if h < 1:
+            window = f"within {int(h * 60)} min"
+        elif h < 24:
+            window = f"within {int(h)} hours"
+        else:
+            window = f"within {int(h / 24)} days"
+        return (f"{MIN_MATCH_SCORE}%+ CV match \u00b7 posted {window} \u00b7 "
+                f"open worldwide \u00b7 no visa/residency restrictions")
+    except Exception:
+        return "65%+ CV match \u00b7 posted within 8 hours \u00b7 open worldwide \u00b7 no visa/residency restrictions"
+
+
+def match_range_label() -> str:
+    """Match-score range for copy — tracks the live config threshold."""
+    try:
+        from config import MIN_MATCH_SCORE
+        return f"{MIN_MATCH_SCORE}-100%"
+    except Exception:
+        return "65-100%"
+
+
 # ---------------------------------------------------------------------------
 # Professional Telegram Message Builder
 # ---------------------------------------------------------------------------
@@ -274,10 +236,8 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     from learning_module import get_learning_insights
     
     label = get_scan_label()
-    now = now_libya()
-    date = now.strftime("%Y-%m-%d")
-    date_human = now.strftime("%A, %B %d, %Y")
-    time_str = f"{now.strftime('%I:%M %p')} Libya ({now_utc().strftime('%H:%M')} UTC)"
+    date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    time_str = datetime.now(timezone.utc).strftime("%H:%M UTC")
     scan_num = stats.get("total_scans", 0)
     all_count = scan_info.get("all_count", 0)
     source_count = scan_info.get("source_count", 0)
@@ -286,9 +246,8 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     
     msg = ""
     
-    # Live header — Libya date + time, then a rotating human greeting
-    msg += f"{label['emoji']} {label['label']} \u2014 {date_human} \u2014 {now.strftime('%I:%M %p')} Libya\n"
-    msg += f"{pick_greeting(label)}\n"
+    # Professional header with evolution
+    msg += f"{label['emoji']} {label['label']} \u2014 {date}\n"
     msg += "\n"
     msg += "\U0001f4bc CAREEROPS SERVICES\n"
     msg += "AI-Powered Job Search Intelligence\n"
@@ -340,12 +299,15 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         pass
     
     if len(jobs) == 0:
-        # No matches — rotating human note instead of the same template
+        # No matches — but show what we learned
         msg += "\u2705 0 New Matches Found\n"
         msg += "\n"
-        msg += pick_no_match_note(date, scan_num, all_count, fresh_count) + "\n"
+        msg += "No new positions passed all filters this cycle:\n"
+        msg += f"Gates: {gates_line()}\n"
         msg += "\n"
-        msg += "Gates: 75%+ CV match \u00b7 posted within 30 min \u00b7 open worldwide \u00b7 no visa/residency restrictions.\n"
+        msg += f"Of {all_count:,} listings reviewed, {fresh_count} were fresh \u2014 none met every gate.\n"
+        msg += "\n"
+        msg += "Our AI continues monitoring. Qualifying roles arrive within hours.\n"
     else:
         # Matches found
         msg += f"\u2705 {len(jobs)} New Match{'es' if len(jobs) != 1 else ''} Found\n"
@@ -362,7 +324,7 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         # Near misses section
         if near_all:
             msg += "\U0001f4a1 Additional Close Matches (50-74%)\n"
-            msg += "Below your 75% threshold \u2014 review at your discretion:\n"
+            msg += "Below your match threshold \u2014 review at your discretion:\n"
             msg += "\n"
             for j in near_all[:5]:
                 msg += format_near_miss_card(j, 0) + "\n"
@@ -377,12 +339,11 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         msg += "\u2500" * 28 + "\n"
         msg += source_report + "\n"
     
-    # Human sign-off — rotating closing, Libya next-scan time
+    # Professional sign-off
     msg += "\n"
     msg += "\u2500" * 28 + "\n"
-    msg += f"{next_scan_line()}\n"
-    msg += f"{pick_closing()}\n"
-    msg += "\n"
+    msg += f"Next scan: {next_scan_time()} today\n"
+    msg += "Best regards,\n"
     msg += "CareerOps Services \u2014 AI Job Search Intelligence\n"
     
     return msg
@@ -435,12 +396,8 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     from evolution_tracker import get_evolution_summary
     from source_manager import get_source_report
     
-    now = now_libya()
-    date_str = now.strftime("%A, %B %d, %Y")
-    date_iso = now.strftime("%Y-%m-%d")
-    time_str = now.strftime("%I:%M %p Libya")
-    greeting = pick_greeting(get_scan_label())
-    closing = pick_closing()
+    date_str = datetime.now(timezone.utc).strftime("%A, %B %d, %Y")
+    time_str = datetime.now(timezone.utc).strftime("%I:%M %p UTC")
     scan_num = stats.get("total_scans", 0)
     all_count = scan_info.get("all_count", 0)
     source_count = scan_info.get("source_count", 0)
@@ -543,18 +500,17 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
 
     # Build jobs HTML
     if not jobs:
-        no_match_note = _esc(pick_no_match_note(date_iso, scan_num, all_count, fresh_count))
         jobs_html = f'''<p style="margin:14px 0;font-size:13px;color:#333;line-height:1.6">
-        \u2705 <b>0 New Matches Found</b> \u2014 {no_match_note}
-        Gates: 75%+ match with your profile \u00b7 posted within 30 minutes \u00b7 open to worldwide applicants \u00b7 no visa or residency restrictions.
-        The next scan runs automatically at the next scheduled slot and any qualifying role reaches you within hours of being posted.</p>'''
+        \u2705 <b>0 New Matches Found</b> \u2014 No new position passed every filter. Gates: {_esc(gates_line())}.
+        For full transparency: of {all_count:,} job listings reviewed across {source_count} sources, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate.
+        We will keep watching the market for you; the next scan runs automatically at the next scheduled slot and any qualifying role reaches you within hours of being posted.</p>'''
     else:
         jobs_html = "".join(job_card_html(j, i) for i, j in enumerate(jobs))
 
     near_html = ""
     if near_all:
         near_html = f'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;border-bottom:1px solid #d0d0d0;padding:16px 0 6px;margin-top:18px">Additional Close Matches (50-74%)</p>'
-        near_html += '<p style="margin:8px 0 0;font-size:12px;color:#555">Below your 75% threshold \u2014 review at your discretion.</p>'
+        near_html += '<p style="margin:8px 0 0;font-size:12px;color:#555">Below your match threshold \u2014 review at your discretion.</p>'
         near_html += "".join(near_card_html(j, i) for i, j in enumerate(near_all[:6]))
 
     # Unapplied jobs from previous scans — shown in red so they stand out
@@ -617,7 +573,6 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         </td></tr>
         <tr><td style="padding:18px 28px 0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#555;margin:0">{_esc(date_str)} \xB7 {_esc(time_str)} \xB7 Scan #{scan_num}</p>
-          <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;margin:10px 0 0;line-height:1.6">{_esc(greeting)}</p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;margin:14px 0 0;line-height:1.6">
             This cycle we reviewed <b>{all_count:,} job listings</b> across {source_count} sources.
             <b>{len(jobs)} new match{'es' if len(jobs) != 1 else ''}{suffix}</b>.
@@ -631,13 +586,13 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         {evolution_html}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
-            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
+            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
           </p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
-            {next_scan_line()}.
+            The next scan is at <b>{next_scan_time()} today</b>.
           </p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
-            {_esc(closing)}<br>
+            Best regards,<br>
             <b>CareerOps Services</b><br>
             <span style="font-size:12px;color:#888">AI-Powered Job Search Intelligence \u2014 matching is algorithmic; always review each posting before applying.</span>
           </p>
@@ -651,19 +606,18 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     # Text body
     text = "CAREEROPS SERVICES \u2014 Personal Job Search Assistant\n"
     text += f"{date_str} \xB7 {time_str} \xB7 Scan #{scan_num}\n\n"
-    text += f"{greeting}\n\n"
     text += f"This cycle we reviewed {all_count:,} job listings across {source_count} sources and found {len(jobs)} new match{'es' if len(jobs) != 1 else ''}{suffix}.\n\n"
 
     if not jobs:
         text += "\u2705 0 New Matches Found\n"
-        text += pick_no_match_note(date_iso, scan_num, all_count, fresh_count) + "\n\n"
+        text += f"No new position passed every filter. Gates: {gates_line()}. Of those reviewed, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate. We will keep watching.\n\n"
     else:
         for i, j in enumerate(jobs):
             text += format_job_card(j, i) + "\n\n"
 
     if near_all:
         text += "\nADDITIONAL CLOSE MATCHES (50-74%)\n"
-        text += "Below your 75% threshold \u2014 review at your discretion:\n\n"
+        text += "Below your match threshold \u2014 review at your discretion:\n\n"
         for j in near_all[:6]:
             from scanner import get_freshness
             fresh = get_freshness(j.get("posted"))
@@ -675,9 +629,9 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     if unapplied_text:
         text += unapplied_text
 
-    text += "About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
-    text += f"{next_scan_line()}.\n\n"
-    text += f"{closing}\n\nCareerOps Services \u2014 your personal job search assistant.\n"
+    text += f"About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
+    text += f"The next scan is at {next_scan_time()} today.\n\n"
+    text += "Best regards,\nCareerOps Services \u2014 your personal job search assistant.\n"
 
     return {"html": html, "text": text}
 

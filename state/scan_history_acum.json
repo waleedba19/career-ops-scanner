@@ -403,5 +403,60 @@
         "source": "jobicy"
       }
     ]
+  },
+  {
+    "date": "2026-09-06T16:02:36.476326+00:00",
+    "matched_count": 6,
+    "all_count": 4422,
+    "jobs": [
+      {
+        "title": "<![CDATA[Profitable Content Editing Support]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/graphic-design/Profitable-Content-Editing-Support.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Daily Excel Sales Data Entry]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/data-management/Daily-Excel-Sales-Data-Entry.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Thriller Novel Content Editor Needed]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/content-development/Thriller-Novel-Content-Editor-Needed.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Revisi SOP Perusahaan Terstruktur]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/copywriting/Revisi-SOP-Perusahaan-Terstruktur.html",
+        "score": 82,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Accounts Payable Clerk (Entry Level Opportunity)",
+        "company": "Canonical",
+        "url": "https://www.remote1stjobs.com/jobs/accounts-payable-clerk-entry-level-opportunity-canonical-mtpvptkl?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
+        "score": 70,
+        "category": "Admin",
+        "source": "remote1stjobs"
+      },
+      {
+        "title": "SaaS Product Support Jedi",
+        "company": "Creative Force",
+        "url": "https://remotive.com/remote-jobs/customer-service/saas-product-support-jedi-2091087",
+        "score": 90,
+        "category": "Editing",
+        "source": "remotive"
+      }
+    ]
   }
 ]

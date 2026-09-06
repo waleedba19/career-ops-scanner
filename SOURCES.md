@@ -1,6 +1,6 @@
 # CareerOps — Source Coverage Audit & Expansion Plan
 
-_Last audited: 2026-09-06 against branch `arena/01a077cd-career-ops-scanner`._
+_Last audited: 2026-09-06 against `main` @ `5a123fe` (after PRs #3–#5: tier cap 3, `eslgorilla`/`tes`/`reddit_social` added)._
 
 This document answers three questions honestly:
 
@@ -15,14 +15,14 @@ This document answers three questions honestly:
 | Metric | Number | Where it comes from |
 |---|---|---|
 | Sources the docs claim | "30+" (README), "53+" (AGENTS.md), "88" (ARCHITECTURE) | marketing drift |
-| `fetch_*` functions defined in `scanner.py` | **101** | `grep "^async def fetch_"` |
-| …of which are **never called** (dead code) | **71** (56 distinct sites + 15 duplicate variants) | call-site analysis |
-| Sources that run in production (`CAREEROPS_TIER_CAP=2` in `scan.yml`) | **19** | `run_scan()` + `fetchers/registry.py` |
-| Extra sources unlocked at tier 3 (currently **off**) | +9 → 28 max | `if tier_cap >= 3:` block |
-| Jobs fetched (cumulative in `state/source_performance.json`) | ~28,000 | |
-| Fresh matches produced (cumulative, `evolution_brain.json`) | **13** | 0.05 % conversion |
+| `fetch_*` functions defined in `scanner.py` (+ `fetchers/social.py`) | **102** | `grep "^async def fetch_"` |
+| …of which are **never called** (dead code) | **70** (55 distinct sites + 15 duplicate variants) | call-site analysis |
+| Sources that run in production (`CAREEROPS_TIER_CAP=3` in `scan.yml` since PR #3) | **31** (19 registry + 3 translation + 9 MENA/freelance) | `run_scan()` + `fetchers/registry.py` |
+| Sources that would run at the local default (`TIER_CAP=2`) | 22 | same |
+| Jobs fetched (cumulative in `state/source_performance.json`) | ~55,400 | |
+| Fresh matches produced (cumulative, 11 scans) | **41–56** | ~0.1 % conversion |
 
-**The 19 that really run:** greenhouse (34 company boards), lever (1 board: Appen), remotive, remoteok, weworkremotely, jobicy, arbeitnow, himalayas, nodesk, yayremote, remote1stjobs, realworkfromanywhere, workingnomads, jobspresso, justremote, hirelatam, proz, smartcat, gotranscript.
+**The 31 that really run (tier cap 3):** greenhouse (34 company boards), lever (1 board: Appen), remotive, remoteok, weworkremotely, jobicy, arbeitnow, himalayas, nodesk, yayremote, remote1stjobs, realworkfromanywhere, workingnomads, jobspresso, justremote, hirelatam, reddit_social, eslgorilla, tes, proz, smartcat, gotranscript, mostaql, for9a, ureed, wuzzuf, bayt, gulftalent, freelancer, peopleperhour, guru.
 
 **Dead code that the docs still advertise as sources:** indeed, linkedin, glassdoor, ziprecruiter, wellfound, upwork, fiverr, toptal, craigslist, flexjobs, appen*, lionbridge, transperfect, gengo, smartling*, unbabel, rws, carmel, translated, one_hour_translation, flitto, textmaster, preply, cambly, vipkid, qkids, magic_ears, italki, lingoda, amazingtalker, twenix, novakid, lingoace, nativecamp, tutorabc, eslgorilla, tefl_com, teachaway, recruitee, ashby, smartrecruiters, teamtailor, workbeam, remote.co, dailyremote, jobgether, landing.jobs, khamsat, daleel, aqar, tajer, naukrigulf, jooble, adzuna, meetfrank. (*covered indirectly via Greenhouse/Lever boards.)
 
@@ -36,22 +36,23 @@ From `state/source_performance.json` + `state/evolution_brain.json`:
 
 | Source | Fetched | Matches | Conversion | Status today |
 |---|---:|---:|---:|---|
-| **freelancer** (RSS) | 80 | 16 | **20 %** | ❌ tier 3 → **not running in production** |
-| gotranscript | 6 | 2 | 33 % | ✅ running |
+| **freelancer** (RSS) | 180 | 30 | **17 %** | ✅ running since PR #3 (tier cap 3) — by far the best source |
+| himalayas (+ `himalayas_app` RSS dup) | 560 | 9 | 1.6 % | ✅ running (fetched twice — dedupe) |
+| gotranscript | 18 | 2 | 11 % | ✅ running |
+| search_discovered (DDG + sitemaps) | 160 | 3 | 1.9 % | ✅ running |
 | qkids | 8 | 2 | 25 % | ❌ dead code |
 | cambly | 8 | 1 | 12 % | ❌ dead code |
 | textmaster | 12 | 1 | 8 % | ❌ dead code |
-| nodesk | 240 | 1 | 0.4 % | ✅ running |
-| remoteok | 1,000 | 1 | 0.1 % | ✅ running |
-| **greenhouse** (34 boards) | **20,850** | **0** | 0 % | ✅ running |
-| jobicy | 3,565 | 0 | 0 % | ✅ running |
-| weworkremotely | 1,456 | 0 | 0 % | ✅ running |
-| remotive / himalayas / lever / remote1stjobs / justremote / jobspresso | ~1,100 | 0 | 0 % | ✅ running |
+| nodesk / remote1stjobs / remoteok / jobicy | 8,200 | 4 | 0.05 % | ✅ running |
+| **greenhouse** (34 boards) | **41,700** | **0** | 0 % | ✅ running |
+| weworkremotely | 2,548 | 0 | 0 % | ✅ running |
+| for9a | 828 | 0 | 0 % | ✅ running |
+| remotive / lever / justremote / jobspresso / rws / smartling | ~1,000 | 0 | 0 % | ✅ running |
 
 **Takeaways**
 
-- **"Deep and strong" ≠ "more sites".** The system already pulls 28k jobs and gets 13 matches. Volume from generic tech boards (Stripe, Airbnb, Figma, Reddit… on Greenhouse) is pure noise for an Arabic-translation / ESL / academic-editing profile.
-- **The single best source is switched off.** `freelancer` is 400× more efficient than Greenhouse and is gated behind `tier_cap >= 3`, which the workflow never enables.
+- **"Deep and strong" ≠ "more sites".** The system already pulls 55k jobs and gets ~50 matches. Volume from generic tech boards (Stripe, Airbnb, Figma, Reddit… on Greenhouse) is pure noise for an Arabic-translation / ESL / academic-editing profile.
+- **One source produces more than half of all matches.** `freelancer` (30 of 56) converts at 17 % while Greenhouse converts at 0 % on 41,700 jobs. PR #3 turned it on; the next step is to query it precisely (Freelancer public API with `query=arabic translation`, Tier D below) instead of its generic RSS.
 - **The Greenhouse company list is optimised for the wrong thing.** Of the 34 slugs, only ~8 are plausibly relevant (smartling, lokalise, duolingo, scaleai, outschool, khanacademy, coursera, okx). The other 26 cost 26 requests + ~20k jobs of noise per scan.
 - **Coverage is measured in the wrong unit.** The metric that matters is _matches per source per week_, not source count. `source_manager.py` already tracks this — it just isn't used to decide what runs.
 
@@ -82,7 +83,7 @@ Everything below is in machine-readable form in [`source_candidates.json`](sourc
 
 | # | Change | Why |
 |---|---|---|
-| A1 | Promote `freelancer`, `peopleperhour`, `guru`, `gotranscript` to tier ≤ 2 | Best conversion in the whole system; currently off |
+| A1 | Promote `freelancer` and `gotranscript` to tier 1 in `registry.py` (so they also run at `TIER_CAP=2`, e.g. locally / lean mode) | Best conversion in the whole system; today only on because the workflow forces tier 3 |
 | A2 | Move the 26 irrelevant Greenhouse tech slugs to tier 3; keep the 8 language/EdTech ones | −26 requests, −20k noise jobs per scan |
 | A3 | Add relevant Greenhouse/Lever slugs (see Tier E) | Same fetcher, right companies |
 | A4 | Fix `PAID_PLATFORMS` (drop wellfound/ziprecruiter) | They're free for candidates |
@@ -175,8 +176,8 @@ Scribbr, Scribendi, Cactus/Editage, Enago, Wordvice, PaperTrue, Proof-Reading-Se
 
 | Phase | Sources live | New matches expected/week (est.) | Effort |
 |---|---:|---|---|
-| Today | 19 (28 at tier 3) | ~2 | — |
-| **Phase 1** — Tier A + JSearch + Adzuna + LinkedIn guest + freelancer API | ~30 | 10–20 | 1 day: config + 3 fetchers + 3 secrets |
+| Today | 31 (tier cap 3) | ~4–5 | — |
+| **Phase 1** — Tier A + JSearch + Adzuna + LinkedIn guest + freelancer API | ~38 | 10–20 | 1 day: config + 3 fetchers + 3 secrets |
 | **Phase 2** — ATS adapters (Ashby/Workable/SmartRecruiters/Recruitee/Teamtailor) + ~40 verified profile boards from the probe | ~70 (5 adapters × many companies count as boards, not sources) | 30–50 | 2–3 days |
 | **Phase 3** — Jooble, Careerjet, ReliefWeb, MENA keyword pages, watchers, JSON-LD generic | ~90 | +10–20, incl. UN/NGO Arabic roles | 2 days |
 

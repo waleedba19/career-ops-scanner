@@ -103,7 +103,7 @@
   },
   {
    "id": "baseline:freelancer-rss",
-   "name": "Freelancer.com RSS (tier 3 = OFF in prod, best converter: 16 matches / 80 jobs)",
+   "name": "Freelancer.com RSS (running since PR #3 at tier cap 3; best converter: 30 matches / 180 jobs)",
    "group": "baseline",
    "adapter": "rss",
    "url": "https://www.freelancer.com/rss.xml",
@@ -111,7 +111,7 @@
    "needs_key": [],
    "confidence": "confirmed",
    "suggested_tier": 1,
-   "why": "20% conversion — promote to tier 1"
+   "why": "17% conversion — >50% of all matches; promote to tier 1 in registry so it also runs at TIER_CAP=2"
   },
   {
    "id": "precision:remotive-translator",

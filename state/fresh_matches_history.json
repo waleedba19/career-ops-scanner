@@ -1793,6 +1793,118 @@
     "scan_date": "2026-09-06T20:59:46.251196+00:00"
   },
   {
+    "title": "English Second Language Instructor",
+    "company": "Merryland International School",
+    "url": "https://eg.linkedin.com/jobs/view/english-second-language-instructor-at-merryland-international-school-4464029802",
+    "location": "Remote \u2014 Cairo, Egypt",
+    "posted": "2026-09-06",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-06T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "online remote language teacher tutor instructor (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 21.8934146725,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 60,
+        "reason": "Requires language skills and academic work, but not exclusively translation or teaching."
+      },
+      "experience_match": {
+        "score": 75,
+        "reason": "Direct experience in academic supervision and language instruction."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "Remote work environment, flexible schedule, and academic focus."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the candidate's skills."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds toward translation/teaching/academic career with potential for senior roles."
+      },
+      "overall_score": 81,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Strong language skills",
+        "Academic supervision experience"
+      ],
+      "gaps": [
+        "None identified"
+      ],
+      "recommendation": "Strong fit for the English Second Language Instructor position. The candidate's skills and experience align well with the job requirements, and the remote work environment is suitable for the candidate's preferences.",
+      "interview_prep": [
+        "Can you discuss a time when you supervised a graduate-level research study?",
+        "How do you approach translating legal documents for academic purposes?"
+      ],
+      "one_line_summary": "Strong fit for the English Second Language Instructor position with strong language skills and academic supervision experience."
+    },
+    "ai_insight": "Strong fit for the English Second Language Instructor position with strong language skills and academic supervision experience.",
+    "ai_overall_score": 81,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Strong language skills",
+      "Academic supervision experience"
+    ],
+    "ai_gaps": [
+      "None identified"
+    ],
+    "ai_recommendation": "Strong fit for the English Second Language Instructor position. The candidate's skills and experience align well with the job requirements, and the remote work environment is suitable for the candidate's preferences.",
+    "ai_interview_prep": [
+      "Can you discuss a time when you supervised a graduate-level research study?",
+      "How do you approach translating legal documents for academic purposes?"
+    ],
+    "ai_technical_skills": 60,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@eg.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@eg.linkedin.com",
+      "hr@eg.linkedin.com",
+      "jobs@eg.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Merryland International School",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-06T21:55:34.868574+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Merryland International School_English Second Language Instructor_20260906.pdf",
+    "cover_letter_type": "general",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Merryland International School_English Second Language Instructor_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T21:55:50.045992+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",

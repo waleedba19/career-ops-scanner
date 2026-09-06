@@ -10,6 +10,40 @@ This document answers three questions honestly:
 
 ---
 
+## 0. Live probe result — 2026-09-06 18:25 UTC, from the GitHub Actions runner
+
+The `Probe Sources` workflow now runs automatically (weekly Mon 03:30 UTC, on every push to `main` or PR touching the catalog, and on demand). The latest report is always at **[`state/source_probe.md`](state/source_probe.md)**. First live run over all 150 candidates:
+
+| status | count | meaning |
+|---|---:|---|
+| ✅ **ok** | **47** | responded with parseable jobs from the runner IP |
+| ⛔ blocked | 22 | 403/429/challenge page — Indeed, Glassdoor, ZipRecruiter, Upwork, ProZ, Bayt, Wuzzuf, GulfTalent, Mostaql, Ureed, UNjobs, TranslatorsCafe, Scribbr… |
+| ❓ not_found | 51 | slug guesses that don't exist on that ATS (Unbabel/Lilt/Preply/Babbel/Cambly… are on a different ATS — next iteration tries the alternatives) |
+| ⚪ empty | 18 | endpoint valid, 0 items right now, or page needs a JS/JSON-LD parser (Nagwa, TransPerfect, Prolific, Deel, TELUS, Lionbridge, RWS, Acolad) |
+| 🔑 needs_key | 8 | JSearch ×2, Adzuna ×2, Jooble, Careerjet, ReliefWeb, Reed — add the secrets and they light up |
+| 💥 error | 4 | timeouts / oversized headers |
+
+**Highest-value confirmed sources (not in the scanner yet):**
+
+| Source | Items | Why it matters |
+|---|---:|---|
+| `linkedin:guest-*` (4 profile queries, remote, last 24 h) | 10 each | **LinkedIn works from the runner** — samples: *Translator – Emirati Talent*, *Hourly-Paid Teacher of English*, *English Editor*, *Scientific Editor* |
+| `greenhouse:agency` (Invisible) | 829 | Largest AI-trainer board incl. Arabic Language Specialist roles, worldwide |
+| `precision:jobicy-translation` | 44 | keyword-filtered feed — *Translation Project Manager* in first results |
+| `un-ngo: impactpool-arabic` | 15 | *Interpreter – Arabic/Sudanese Arabic (IOM)*, *Interpreter (Arabic)* |
+| `html:remowork-arabic` | 209 | curated remote-Arabic board |
+| `freelancer:api-*` (3 queries) | 20 each | keyword-precise version of the 17 %-conversion RSS |
+| `ashby:mercor`, `greenhouse:turing`, `greenhouse:labelbox`, `html:dataannotation` | 96 / 26 / 10 / 79 | AI-data linguist marketplaces |
+| `smartrecruiters:KeywordsStudios`, `smartrecruiters:TransPerfect` | 48 / 18 | game localisation / LSP boards |
+| `workable:tamatem`, `html:tarjama-careers` | 18 / 5 | Arabic game localisation, Arabic LSP |
+| `precision:workingnomads-api` | 32 | structured JSON replaces the HTML scrape (*AI Content Analyst*) |
+| `esl-boards: eslcafe-international`, `eslbase` | 12 / 44 | ESL boards |
+| `themuse:writing-editing` | 20 | free, no key |
+
+**Confirmed blocked from Actions (as predicted):** Indeed (401 + challenge), Glassdoor, ZipRecruiter, Upwork, and — notable — **all MENA boards (Bayt, Wuzzuf, GulfTalent, Mostaql, Ureed)** and **ProZ**, which the production scanner currently spends 6 requests/scan on for 0 results. Their inventory is reachable via JSearch/Adzuna/Jooble once the keys exist.
+
+---
+
 ## 1. TL;DR — claimed vs. real
 
 | Metric | Number | Where it comes from |

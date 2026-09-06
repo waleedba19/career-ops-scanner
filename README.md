@@ -112,6 +112,8 @@ make probe                                   # or: python probe_sources.py [--gr
 # GitHub: Actions → "Probe Sources" → Run workflow  (report in job summary + artifact)
 ```
 
+Runs automatically (weekly + on every catalog change); the latest live report is committed to **[`state/source_probe.md`](state/source_probe.md)**. First run: **47 of 150 candidates respond with jobs from the runner** (LinkedIn guest search works; Indeed/Glassdoor/ZipRecruiter and all MENA boards are blocked).
+
 The probe hits every candidate once from the runner's IP and reports `ok / empty / blocked / not_found / needs_key / error` with item counts, plus ready-to-paste `GREENHOUSE_COMPANIES` / Ashby / Workable snippets for the boards that answered. The `ok` list is the real answer to "how many sources can we add".
 
 ---

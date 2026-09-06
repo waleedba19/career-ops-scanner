@@ -356,5 +356,52 @@
         "source": "himalayas"
       }
     ]
+  },
+  {
+    "date": "2026-09-06T09:16:07.173358+00:00",
+    "matched_count": 5,
+    "all_count": 4419,
+    "jobs": [
+      {
+        "title": "<![CDATA[Heartwarming Personal Experience Stories Article]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/article-writing/Heartwarming-Personal-Experience-Stories.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Executive Assistant",
+        "company": "Remote Raven",
+        "url": "https://himalayas.app/companies/remote-raven/jobs/executive-assistant",
+        "score": 100,
+        "category": "Admin",
+        "source": "himalayas"
+      },
+      {
+        "title": "<![CDATA[\u0917\u093e\u0902\u0935 \u0915\u0940 \u0938\u092e\u0938\u094d\u092f\u093e\u0913\u0902 \u092a\u0930 \u0915\u0939\u093e\u0928\u0940]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/article-writing/project-40693910.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "<![CDATA[Refine Script & Record Greeting]]>",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/audio-editing/Refine-Script-Record-Greeting.html",
+        "score": 82,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Accounts Payable Clerk (Entry Level Opportunity)",
+        "company": "jobicy",
+        "url": "https://jobicy.com/jobs/145235-accounts-payable-clerk-entry-level-opportunity",
+        "score": 70,
+        "category": "Admin",
+        "source": "jobicy"
+      }
+    ]
   }
 ]

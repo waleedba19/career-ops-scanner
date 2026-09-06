@@ -227,5 +227,40 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-06T16:00:38.150220+00:00"
+  },
+  "Healix Scrubs": {
+    "name": "Healix Scrubs",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-06T20:57:30.577768+00:00"
+  },
+  "BAE Systems, Inc.": {
+    "name": "BAE Systems, Inc.",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-06T20:57:30.578324+00:00"
+  },
+  "IRC - International Rescue Committee": {
+    "name": "IRC - International Rescue Committee",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T20:57:30.578901+00:00"
   }
 }

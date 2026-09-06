@@ -207,5 +207,25 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-06T09:14:31.298380+00:00"
+  },
+  "Canonical": {
+    "name": "Canonical",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T16:00:38.149608+00:00"
+  },
+  "Creative Force": {
+    "name": "Creative Force",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-06T16:00:38.150220+00:00"
   }
 }

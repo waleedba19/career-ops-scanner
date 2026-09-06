@@ -1237,6 +1237,106 @@
     "scan_date": "2026-09-06T09:15:46.601950+00:00"
   },
   {
+    "title": "Pashto: US-based Interpreter",
+    "company": "himalayas_app",
+    "url": "https://himalayas.app/companies/one-world-global-services/jobs/pashto-us-based-interpreter",
+    "location": "Remote",
+    "posted": "Sun, 06 Sep 2026 16:14:01 GMT",
+    "description": "WE ARE HIRING EXPERIENCED INTERPRETERS PER MINUTE!!!",
+    "salary": "",
+    "source": "himalayas_app",
+    "postedISO": "2026-09-06T16:14:01+00:00",
+    "score": 100,
+    "category": "Arabic Translation",
+    "why": [
+      "interpreter interpretation (title+description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.10261117472222223,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 50,
+        "reason": "Requires language skills, writing, and academic work, but not exclusively translation or ESL teaching."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Direct experience in academic supervision and research guidance, but not exclusively in translation or ESL teaching."
+      },
+      "behavioral_fit": {
+        "score": 60,
+        "reason": "Remote, flexible, academic environment, but not exclusively focused on translation or ESL teaching."
+      },
+      "location_logistics": {
+        "verdict": "FAIL",
+        "reason": "Requires US/EU citizenship and specific visa sponsorship, which are not compatible with remote work."
+      },
+      "career_alignment": {
+        "score": 50,
+        "reason": "Builds toward academic services, but not exclusively in translation or ESL teaching."
+      },
+      "overall_score": 50,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Academic Supervision & Research Guidance",
+        "Native Arabic Speaker"
+      ],
+      "gaps": [
+        "US/EU Citizenship & Visa Sponsorship"
+      ],
+      "recommendation": "Waleed Ballag's background in academic supervision and research guidance aligns well with the academic services offered by the company, but the requirement for US/EU citizenship and specific visa sponsorship makes it a moderate fit. He can consider building a strong foundation in academic services while seeking opportunities for a senior translator or academic coordinator role.",
+      "interview_prep": "1. Can you discuss your experience in academic supervision and research guidance? 2. How do you approach the translation of legal and academic documents? 3. What is your experience with data analysis using SPSS?",
+      "one_line_summary": "Waleed Ballag has a strong academic background, but the requirement for US/EU citizenship and specific visa sponsorship makes it a moderate fit for the Pashto interpreter role."
+    },
+    "ai_insight": "Waleed Ballag has a strong academic background, but the requirement for US/EU citizenship and specific visa sponsorship makes it a moderate fit for the Pashto interpreter role.",
+    "ai_overall_score": 50,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Academic Supervision & Research Guidance",
+      "Native Arabic Speaker"
+    ],
+    "ai_gaps": [
+      "US/EU Citizenship & Visa Sponsorship"
+    ],
+    "ai_recommendation": "Waleed Ballag's background in academic supervision and research guidance aligns well with the academic services offered by the company, but the requirement for US/EU citizenship and specific visa sponsorship makes it a moderate fit. He can consider building a strong foundation in academic services while seeking opportunities for a senior translator or academic coordinator role.",
+    "ai_interview_prep": "1. Can you discuss your experience in academic supervision and research guidance? 2. How do you approach the translation of legal and academic documents? 3. What is your experience with data analysis using SPSS?",
+    "ai_technical_skills": 50,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 60,
+    "ai_location_verdict": "FAIL",
+    "ai_career_alignment": 50,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Localization gap for Arabic",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "himalayas_app",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T01:27:26.625654+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/himalayas_app_Pashto- US-based Interpreter_20260906.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/himalayas_app_Pashto- US-based Interpreter_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T18:21:19.031661+02:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",

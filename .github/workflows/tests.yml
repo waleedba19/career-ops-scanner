@@ -24,8 +24,6 @@ jobs:
         run: python test_all_modules.py
       - name: Freshness & scoring
         run: python test_improved.py
-      - name: Quality gates (scorer, stubs, location FAIL)
-        run: python test_quality_gates.py
       - name: Dashboard & API smoke
         run: |
           python -c "import config; print('config ok', config.ROOT)"

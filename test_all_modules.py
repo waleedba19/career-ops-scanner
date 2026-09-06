@@ -299,6 +299,124 @@ def test_scanner_integration():
     return True
 
 
+def test_reddit_social():
+    """Test Reddit social-signal fetcher (offline parser + wiring)."""
+    print("=" * 60)
+    print("TEST 7: Reddit Social Signals")
+    print("=" * 60)
+
+    from fetchers.social import parse_reddit_listing, fetch_reddit_social, REDDIT_TARGETS
+    from fetchers.registry import TIER_MAP, list_fetchers
+
+    # Wiring: registered + active under the current tier cap
+    assert "reddit_social" in list_fetchers(2), "reddit_social missing from tier<=2 fleet"
+    assert TIER_MAP.get("reddit_social") == 2, "reddit_social should be tier 2"
+    print(f"[OK] Fleet wiring: {len(REDDIT_TARGETS)} community targets, tier 2")
+
+    # Parser: valid payload
+    payload = {"data": {"children": [
+        {"data": {"title": "Hiring: Remote ESL teacher (evenings)",
+                  "permalink": "/r/forhire/comments/abc123/hiring_esl/",
+                  "subreddit": "forhire", "selftext": "Looking for a native-level instructor...",
+                  "created_utc": 1757100000}},
+        {"data": {"title": "Arabic-English freelance translation",
+                  "permalink": "https://www.reddit.com/r/Translation/comments/xyz/",
+                  "subreddit": "Translation", "selftext": "",
+                  "created_utc": 1757200000}},
+        {"data": {"title": "", "permalink": "/r/esl/comments/bad/",
+                  "subreddit": "esl", "selftext": "no title should be skipped"}},
+    ]}}
+    jobs = parse_reddit_listing(payload)
+    assert len(jobs) == 2, f"expected 2 parsed jobs, got {len(jobs)}"
+    assert jobs[0]["source"] == "reddit_social"
+    assert jobs[0]["company"] == "r/forhire"
+    assert jobs[0]["url"].startswith("https://www.reddit.com/r/forhire/")
+    assert jobs[0]["posted"].startswith("2025-09-05"), jobs[0]["posted"]
+    assert jobs[1]["url"].startswith("https://www.reddit.com/r/Translation/")
+    assert jobs[0]["title"] == "Hiring: Remote ESL teacher (evenings)"
+    print(f"[OK] Parser: 2/2 valid posts parsed, 1 malformed skipped")
+
+    # Parser: hostile inputs
+    assert parse_reddit_listing(None) == []
+    assert parse_reddit_listing({}) == []
+    assert parse_reddit_listing({"data": None}) == []
+    print("[OK] Parser: hostile payloads handled")
+
+    print("[PASS] Reddit Social Signals: ALL TESTS PASSED\n")
+    return True
+
+
+def test_new_boards():
+    """Test the two newly added niche boards (offline parsers + wiring)."""
+    print("=" * 60)
+    print("TEST 8: New Niche Boards (ESL Gorilla + TES)")
+    print("=" * 60)
+
+    from scanner import parse_eslgorilla_html, parse_tes_html
+    from fetchers.registry import TIER_MAP, list_fetchers
+
+    # Wiring: both registered + active under the current tier cap
+    for name in ("eslgorilla", "tes"):
+        assert name in list_fetchers(2), f"{name} missing from tier<=2 fleet"
+        assert TIER_MAP.get(name) == 2, f"{name} should be tier 2"
+    print("[OK] Fleet wiring: eslgorilla + tes registered, tier 2")
+
+    # --- ESL Gorilla parser: mixed card + bullet markup, dedup, non-remote filter ---
+    esl_html = (
+        '<a href="https://eslgorilla.com/jobs/online-english-teacher-remote-meridian">'
+        '<h3>Online English Teacher &ndash; Remote | Up to $17/50-min Class</h3>'
+        '<p>fully online classes. Flexible schedule, worldwide candidates welcome.</p></a>'
+        '<a href="https://eslgorilla.com/jobs/kids-esl-teacher-blinc">'
+        '<strong>Kids ESL Teacher - BlingABC</strong><span>Remote</span></a>'
+        '<li><a href="https://eslgorilla.com/jobs/online-esl-teacher-novacat">Online ESL Teacher — Remote</a></li>'
+        '<li><a href="https://eslgorilla.com/jobs/adult-conversation-jobs">Adult Conversation Practice — Worldwide</a></li>'
+        '<li><a href="https://eslgorilla.com/jobs/offline-campus-lagos">In-person Campus Teacher — Lagos, Nigeria</a></li>'
+        # duplicate slug should be dropped
+        '<li><a href="https://eslgorilla.com/jobs/online-esl-teacher-novacat">Online ESL Teacher — Remote</a></li>'
+    )
+    jobs = parse_eslgorilla_html(esl_html)
+    assert len(jobs) == 4, f"expected 4 unique ESL jobs (dup + non-remote filtered), got {len(jobs)}"
+    assert all("Lagos" not in j["title"] + j["location"] for j in jobs), "non-remote job must be filtered"
+    assert all(j["source"] == "eslgorilla" for j in jobs)
+    assert all("&ndash;" not in j["title"] for j in jobs), "entities must be unescaped"
+    bullet = next(j for j in jobs if j["url"].endswith("/online-esl-teacher-novacat"))
+    assert bullet["title"] == "Online ESL Teacher" and bullet["location"] == "Remote", bullet
+    assert jobs[0]["salary"] == "$17", jobs[0]["salary"]
+    print(f"[OK] ESL Gorilla parser: {len(jobs)} jobs, dedup + non-remote filter + entity unescape")
+
+    # --- TES parser: keeps remote/online only, drops in-person UK, dedups Apply link ---
+    tes_html = (
+        '<a href="https://www.tes.com/jobs/vacancy/remote-online-english-teacher-2341001">Remote Online English Teacher</a>'
+        '<span>£25 - £30 per hour</span><span>New</span>'
+        '<img alt="Lingua Online Academy logo" src="x.jpg"><span>Remote (Worldwide)</span>'
+        '<p>We are seeking a passionate online English teacher to work fully remotely from anywhere.</p><span>Today</span>'
+        '<a href="https://www.tes.com/jobs/vacancy/remote-online-english-teacher-2341001">Apply</a>'
+        '<a href="https://www.tes.com/jobs/vacancy/ks2-teacher-wandsworth-2341763">KS2 Teacher - Maternity Cover</a>'
+        '<img alt="Dolphin School logo" src="y.jpg"><span>Wandsworth</span>'
+        '<p>We are seeking a committed Key Stage 2 Teacher for a full-time maternity cover role.</p><span>Today</span>'
+        '<a href="https://www.tes.com/jobs/vacancy/online-ell-tutor-global-2341770"><strong>Online ELL Tutor</strong></a>'
+        '<img alt="Global Edu logo" src="z.jpg"><span>Remote</span>'
+        '<p>Looking for an experienced ELL tutor to deliver online lessons. Work remotely worldwide.</p><span>2 days ago</span>'
+    )
+    tjobs = parse_tes_html(tes_html)
+    assert len(tjobs) == 2, f"expected 2 TES remote jobs (in-person UK dropped), got {len(tjobs)}"
+    assert all(j["source"] == "tes" for j in tjobs)
+    assert any(j["title"] == "Remote Online English Teacher" and j["company"] == "Lingua Online Academy" for j in tjobs)
+    assert any(j["title"] == "Online ELL Tutor" and j["company"] == "Global Edu" for j in tjobs)
+    assert not any("Wandsworth" in (j["title"] + j["company"] + j["location"]) for j in tjobs), "in-person UK must be filtered"
+    print(f"[OK] TES parser: {len(tjobs)} remote jobs, in-person UK filtered, Apply-link dedup")
+
+    # Hostile / empty inputs
+    assert parse_eslgorilla_html("") == []
+    assert parse_eslgorilla_html("no job links here") == []
+    assert parse_tes_html("") == []
+    assert parse_tes_html("<p>nothing</p>") == []
+    print("[OK] Hostile/empty inputs handled")
+
+    print("[PASS] New Niche Boards (ESL Gorilla + TES): ALL TESTS PASSED\n")
+    return True
+
+
 def main():
     """Run all tests."""
     import shutil
@@ -331,6 +449,8 @@ def main():
         results.append(("Interview Preparation", test_interview_prep()))
         results.append(("Excel Integration", test_excel_integration()))
         results.append(("Scanner Integration", test_scanner_integration()))
+        results.append(("Reddit Social Signals", test_reddit_social()))
+        results.append(("New Niche Boards", test_new_boards()))
 
         # Run async test
         results.append(("AI Cover Letter", asyncio.run(test_cover_letter_ai())))

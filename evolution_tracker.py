@@ -11,6 +11,27 @@ from datetime import datetime, timezone, timedelta
 OUTPUT_DIR = Path(__file__).parent / "output"
 EVOLUTION_FILE = OUTPUT_DIR / "evolution_brain.json"
 
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+# The brain's day boundary, streaks and "live as of" stamps all follow
+# the user's local day, not UTC.
+LIBYA_TZ = timezone(timedelta(hours=2))  # Africa/Tripoli
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
+
+
+def libya_phase(hour: int) -> str:
+    """Short market phase label for a Libya local hour."""
+    if 5 <= hour < 11:
+        return "morning market"
+    if hour < 18:
+        return "mid-day European wave"
+    if hour < 23:
+        return "night shift"
+    return "late-night watch"
+
 
 def _load_brain() -> dict:
     """Load the evolution brain."""
@@ -49,7 +70,7 @@ def _save_brain(brain: dict):
 def record_scan(stats: dict):
     """Record a scan's results into the brain."""
     brain = _load_brain()
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = now_libya().strftime("%Y-%m-%d")
     
     brain["total_scans"] += 1
     brain["total_matches"] += stats.get("matches", 0)
@@ -65,8 +86,8 @@ def record_scan(stats: dict):
         last = brain.get("last_scan_date", "")
         if last:
             try:
-                last_dt = datetime.strptime(last, "%Y-%m-%d").replace(tzinfo=timezone.utc)
-                today_dt = datetime.strptime(today, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                last_dt = datetime.strptime(last, "%Y-%m-%d")
+                today_dt = datetime.strptime(today, "%Y-%m-%d")
                 if (today_dt - last_dt).days == 1:
                     brain["streak_days"] = brain.get("streak_days", 0) + 1
                 elif (today_dt - last_dt).days > 1:
@@ -109,12 +130,16 @@ def record_scan(stats: dict):
 def get_evolution_summary() -> str:
     """Generate an evolving summary of the system's performance."""
     brain = _load_brain()
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    now = now_libya()
+    today = now.strftime("%Y-%m-%d")
     
     if brain["total_scans"] == 0:
         return "🧠 First scan — building memory..."
     
     lines = []
+    
+    # Live stamp — Libya time + market phase, so the brain reads "now"
+    lines.append(f"🕐 Live as of {now.strftime('%I:%M %p')} Libya — {libya_phase(now.hour)}")
     
     # Streak
     streak = brain.get("streak_days", 0)
@@ -126,7 +151,7 @@ def get_evolution_summary() -> str:
     lines.append(f"📈 {brain['total_scans']} scans | {brain['total_matches']} total matches | avg {avg_matches:.1f}/scan")
     
     # Recent trend (last 7 days)
-    recent = [d for d in brain["daily_history"] if d["date"] >= (datetime.now(timezone.utc) - timedelta(days=7)).strftime("%Y-%m-%d")]
+    recent = [d for d in brain["daily_history"] if d["date"] >= (now_libya() - timedelta(days=7)).strftime("%Y-%m-%d")]
     if len(recent) >= 2:
         first_half = sum(d["matches"] for d in recent[:len(recent)//2])
         second_half = sum(d["matches"] for d in recent[len(recent)//2:])
@@ -161,7 +186,7 @@ def record_user_feedback(job_url: str, action: str):
     action = 'applied' | 'rejected' | 'callback' | 'interview'
     """
     brain = _load_brain()
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = now_libya().strftime("%Y-%m-%d")
     
     entry = {"url": job_url, "action": action, "date": today}
     
@@ -190,7 +215,7 @@ def get_acceptance_rate() -> float:
 def add_learning_note(note: str):
     """Add a learning note to the brain."""
     brain = _load_brain()
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = now_libya().strftime("%Y-%m-%d")
     brain["learning_notes"].append({"date": today, "note": note})
     brain["learning_notes"] = brain["learning_notes"][-50:]
     _save_brain(brain)

@@ -1,11 +1,11 @@
 {
-  "total_scans": 2,
-  "total_matches": 2,
-  "streak_days": 1,
-  "last_scan_date": "2026-09-05",
-  "total_jobs_scanned": 5058,
-  "best_day_matches": 0,
-  "best_day_date": "",
+  "total_scans": 10,
+  "total_matches": 40,
+  "streak_days": 2,
+  "last_scan_date": "2026-09-06",
+  "total_jobs_scanned": 40877,
+  "best_day_matches": 11,
+  "best_day_date": "2026-09-05",
   "daily_history": [
     {
       "date": "2026-09-05",
@@ -15,10 +15,148 @@
       "near_misses": 2,
       "sources": 20,
       "fresh_count": 2874
+    },
+    {
+      "date": "2026-09-05",
+      "total_fetched": 5216,
+      "matches": 11,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 27,
+      "fresh_count": 2917
+    },
+    {
+      "date": "2026-09-05",
+      "total_fetched": 4307,
+      "matches": 0,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 14,
+      "fresh_count": 2188
+    },
+    {
+      "date": "2026-09-06",
+      "total_fetched": 4307,
+      "matches": 0,
+      "old_verified": 0,
+      "near_misses": 1,
+      "sources": 14,
+      "fresh_count": 2191
+    },
+    {
+      "date": "2026-09-06",
+      "total_fetched": 4419,
+      "matches": 7,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 16,
+      "fresh_count": 2307
+    },
+    {
+      "date": "2026-09-06",
+      "total_fetched": 4419,
+      "matches": 8,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 16,
+      "fresh_count": 2308
+    },
+    {
+      "date": "2026-09-06",
+      "total_fetched": 4419,
+      "matches": 5,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 16,
+      "fresh_count": 2304
+    },
+    {
+      "date": "2026-09-06",
+      "total_fetched": 4422,
+      "matches": 6,
+      "old_verified": 1,
+      "near_misses": 2,
+      "sources": 16,
+      "fresh_count": 2292
+    },
+    {
+      "date": "2026-09-06",
+      "total_fetched": 4310,
+      "matches": 1,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 14,
+      "fresh_count": 2172
     }
   ],
-  "category_trends": {},
-  "source_trends": {},
+  "category_trends": {
+    "Arabic Translation": {
+      "count": 7,
+      "last_seen": "2026-09-06"
+    },
+    "Editing": {
+      "count": 18,
+      "last_seen": "2026-09-06"
+    },
+    "ESL": {
+      "count": 4,
+      "last_seen": "2026-09-05"
+    },
+    "Admin": {
+      "count": 9,
+      "last_seen": "2026-09-06"
+    }
+  },
+  "source_trends": {
+    "freelancer": {
+      "matches": 19,
+      "last_seen": "2026-09-06"
+    },
+    "gotranscript": {
+      "matches": 2,
+      "last_seen": "2026-09-05"
+    },
+    "italki": {
+      "matches": 1,
+      "last_seen": "2026-09-05"
+    },
+    "lingoace": {
+      "matches": 1,
+      "last_seen": "2026-09-05"
+    },
+    "tutorabc": {
+      "matches": 1,
+      "last_seen": "2026-09-05"
+    },
+    "eslgorilla": {
+      "matches": 1,
+      "last_seen": "2026-09-05"
+    },
+    "himalayas": {
+      "matches": 5,
+      "last_seen": "2026-09-06"
+    },
+    "search_discovered": {
+      "matches": 2,
+      "last_seen": "2026-09-06"
+    },
+    "himalayas_app": {
+      "matches": 3,
+      "last_seen": "2026-09-06"
+    },
+    "jobicy": {
+      "matches": 1,
+      "last_seen": "2026-09-06"
+    },
+    "remote1stjobs": {
+      "matches": 1,
+      "last_seen": "2026-09-06"
+    },
+    "remotive": {
+      "matches": 1,
+      "last_seen": "2026-09-06"
+    }
+  },
   "user_applied": [],
   "user_callbacks": [],
   "learning_notes": []

@@ -8,11 +8,20 @@ Uses Ollama for AI-powered customization when available.
 import json
 import re
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from fpdf import FPDF
 
 OUTPUT_DIR = Path(__file__).parent / "output" / "cover_letters"
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
+
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+# Letter date lines and file names follow the user's local day, not UTC.
+LIBYA_TZ = timezone(timedelta(hours=2))  # Africa/Tripoli
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
 
 
 def load_cv_profile() -> dict:
@@ -180,7 +189,7 @@ def _generate_translation_letter(pdf: FPDF, job: dict, profile: dict) -> None:
 
     # Date
     pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, datetime.now().strftime("%B %d, %Y"), ln=True)
+    pdf.cell(0, 6, now_libya().strftime("%B %d, %Y"), ln=True)
     pdf.ln(5)
 
     # Recipient
@@ -310,7 +319,7 @@ def _generate_teaching_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     pdf.ln(10)
 
     pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, datetime.now().strftime("%B %d, %Y"), ln=True)
+    pdf.cell(0, 6, now_libya().strftime("%B %d, %Y"), ln=True)
     pdf.ln(5)
 
     pdf.set_font("Helvetica", "B", 10)
@@ -387,7 +396,7 @@ def _generate_writing_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     pdf.ln(10)
 
     pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, datetime.now().strftime("%B %d, %Y"), ln=True)
+    pdf.cell(0, 6, now_libya().strftime("%B %d, %Y"), ln=True)
     pdf.ln(5)
 
     pdf.set_font("Helvetica", "B", 10)
@@ -463,7 +472,7 @@ def _generate_general_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     pdf.ln(10)
 
     pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, datetime.now().strftime("%B %d, %Y"), ln=True)
+    pdf.cell(0, 6, now_libya().strftime("%B %d, %Y"), ln=True)
     pdf.ln(5)
 
     pdf.set_font("Helvetica", "B", 10)
@@ -539,7 +548,7 @@ def generate_cover_letter_pdf(job: dict) -> str:
 
     title = _safe(job.get("title", "unknown"))[:50]
     company = _safe(job.get("company", job.get("source", "unknown")))[:30]
-    date_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+    date_str = now_libya().strftime("%Y%m%d")
 
     filename = f"{company}_{title}_{date_str}.pdf"
     filepath = OUTPUT_DIR / filename
@@ -595,7 +604,7 @@ def _generate_ai_enhanced_letter(pdf: FPDF, job: dict, profile: dict, ai_content
 
     # Date
     pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, datetime.now().strftime("%B %d, %Y"), ln=True)
+    pdf.cell(0, 6, now_libya().strftime("%B %d, %Y"), ln=True)
     pdf.ln(5)
 
     # Recipient
@@ -674,3 +683,12 @@ async def generate_all_cover_letters(jobs: list[dict]) -> list[dict]:
             job["cover_letter_ai"] = False
         results.append(job)
     return results
+
+
+# ---------------------------------------------------------------------------
+# Legacy alias — older test suites and callers import `generate_cover_letter`.
+# Thin passthrough to the PDF generator; returns the generated PDF path.
+# ---------------------------------------------------------------------------
+def generate_cover_letter(job: dict) -> str:
+    """Legacy alias for generate_cover_letter_pdf."""
+    return generate_cover_letter_pdf(job)

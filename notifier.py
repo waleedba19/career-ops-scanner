@@ -7,7 +7,7 @@ import base64
 import html as html_mod
 import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import aiohttp
 
@@ -171,6 +171,58 @@ def format_near_miss_card(job: dict, index: int) -> str:
     return "\n".join(lines)
 
 
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+# The scanner's notify phase imports now_libya() from this module to stamp
+# user-facing Excel / email dates in Libya time, never raw UTC.
+LIBYA_TZ = timezone(timedelta(hours=2))
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
+
+
+def fresh_window_phrase() -> str:
+    """Human phrase for the fresh-match window (e.g. 'the last 8 hours') — tracks live config."""
+    try:
+        from config import MAX_AGE_FRESH_HOURS
+        h = float(MAX_AGE_FRESH_HOURS)
+    except Exception:
+        h = 8.0
+    if h < 1:
+        return f"the last {int(h * 60)} minutes"
+    if h < 24:
+        return f"the last {int(h)} hours"
+    return f"the last {int(h / 24)} days"
+
+
+def gates_line() -> str:
+    """Human-readable filter gates — always in sync with the live config."""
+    try:
+        from config import MAX_AGE_FRESH_HOURS
+        from scanner import MIN_MATCH_SCORE
+        h = float(MAX_AGE_FRESH_HOURS)
+        if h < 1:
+            window = f"within {int(h * 60)} min"
+        elif h < 24:
+            window = f"within {int(h)} hours"
+        else:
+            window = f"within {int(h / 24)} days"
+        return (f"{MIN_MATCH_SCORE}%+ CV match \u00b7 posted {window} \u00b7 "
+                f"open worldwide \u00b7 no visa/residency restrictions")
+    except Exception:
+        return "65%+ CV match \u00b7 posted within 8 hours \u00b7 open worldwide \u00b7 no visa/residency restrictions"
+
+
+def match_range_label() -> str:
+    """Match-score range for copy — tracks the live config threshold."""
+    try:
+        from config import MIN_MATCH_SCORE
+        return f"{MIN_MATCH_SCORE}-100%"
+    except Exception:
+        return "65-100%"
+
+
 # ---------------------------------------------------------------------------
 # Professional Telegram Message Builder
 # ---------------------------------------------------------------------------
@@ -251,10 +303,7 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         msg += "\u2705 0 New Matches Found\n"
         msg += "\n"
         msg += "No new positions passed all filters this cycle:\n"
-        msg += "\u2022 75%+ match with your CV\n"
-        msg += "\u2022 Posted within 30 minutes\n"
-        msg += "\u2022 Open to worldwide applicants\n"
-        msg += "\u2022 No visa or residency restrictions\n"
+        msg += f"Gates: {gates_line()}\n"
         msg += "\n"
         msg += f"Of {all_count:,} listings reviewed, {fresh_count} were fresh \u2014 none met every gate.\n"
         msg += "\n"
@@ -275,7 +324,7 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         # Near misses section
         if near_all:
             msg += "\U0001f4a1 Additional Close Matches (50-74%)\n"
-            msg += "Below your 75% threshold \u2014 review at your discretion:\n"
+            msg += "Below your match threshold \u2014 review at your discretion:\n"
             msg += "\n"
             for j in near_all[:5]:
                 msg += format_near_miss_card(j, 0) + "\n"
@@ -452,8 +501,8 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     # Build jobs HTML
     if not jobs:
         jobs_html = f'''<p style="margin:14px 0;font-size:13px;color:#333;line-height:1.6">
-        \u2705 <b>0 New Matches Found</b> \u2014 No new position passed every filter (75%+ match with your profile, posted within 30 minutes, open to worldwide applicants, no visa or residency restrictions).
-        For full transparency: of {all_count:,} job listings reviewed across {source_count} sources, only {fresh_count} were posted within the last 30 minutes \u2014 and none met every gate.
+        \u2705 <b>0 New Matches Found</b> \u2014 No new position passed every filter. Gates: {_esc(gates_line())}.
+        For full transparency: of {all_count:,} job listings reviewed across {source_count} sources, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate.
         We will keep watching the market for you; the next scan runs automatically at the next scheduled slot and any qualifying role reaches you within hours of being posted.</p>'''
     else:
         jobs_html = "".join(job_card_html(j, i) for i, j in enumerate(jobs))
@@ -461,7 +510,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     near_html = ""
     if near_all:
         near_html = f'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;border-bottom:1px solid #d0d0d0;padding:16px 0 6px;margin-top:18px">Additional Close Matches (50-74%)</p>'
-        near_html += '<p style="margin:8px 0 0;font-size:12px;color:#555">Below your 75% threshold \u2014 review at your discretion.</p>'
+        near_html += '<p style="margin:8px 0 0;font-size:12px;color:#555">Below your match threshold \u2014 review at your discretion.</p>'
         near_html += "".join(near_card_html(j, i) for i, j in enumerate(near_all[:6]))
 
     # Unapplied jobs from previous scans — shown in red so they stand out
@@ -537,7 +586,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         {evolution_html}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
-            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
+            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
           </p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
             The next scan is at <b>{next_scan_time()} today</b>.
@@ -561,14 +610,14 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
 
     if not jobs:
         text += "\u2705 0 New Matches Found\n"
-        text += f"No new position passed every filter (75%+ match, posted within 30 minutes, open to worldwide applicants, no visa or residency restrictions). Of those reviewed, only {fresh_count} were posted within the last 30 minutes \u2014 and none met every gate. We will keep watching.\n\n"
+        text += f"No new position passed every filter. Gates: {gates_line()}. Of those reviewed, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate. We will keep watching.\n\n"
     else:
         for i, j in enumerate(jobs):
             text += format_job_card(j, i) + "\n\n"
 
     if near_all:
         text += "\nADDITIONAL CLOSE MATCHES (50-74%)\n"
-        text += "Below your 75% threshold \u2014 review at your discretion:\n\n"
+        text += "Below your match threshold \u2014 review at your discretion:\n\n"
         for j in near_all[:6]:
             from scanner import get_freshness
             fresh = get_freshness(j.get("posted"))
@@ -580,7 +629,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     if unapplied_text:
         text += unapplied_text
 
-    text += "About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches (75-100% only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
+    text += f"About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
     text += f"The next scan is at {next_scan_time()} today.\n\n"
     text += "Best regards,\nCareerOps Services \u2014 your personal job search assistant.\n"
 

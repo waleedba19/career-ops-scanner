@@ -22,6 +22,15 @@ def _esc(s) -> str:
     return str(s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
 
+def min_score_label() -> str:
+    """Match-threshold range for sheet descriptions — tracks the live config."""
+    try:
+        from config import MIN_MATCH_SCORE
+        return f"{MIN_MATCH_SCORE}-100%"
+    except Exception:
+        return "65-100%"
+
+
 def get_recommendation(score: int) -> str:
     if score >= 90:
         return "STRONG MATCH - Clear fit with your CV. We recommend applying."
@@ -384,7 +393,7 @@ def generate_excel(
       <Column ss:Width="70"/><Column ss:Width="70"/><Column ss:Width="220"/><Column ss:Width="200"/>
       <Column ss:Width="100"/><Column ss:Width="420"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated, deep intel — free forever)</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">All 75-100% matches. RED=not applied — apply now! GREEN=applied. Columns J-O are free intel: Hiring Email (careers@ domain, MX ✓), Urgency (ASAP/immediate), Desperation (reposted), Opportunity (combined), Pain Points (why they need you). No paid API.</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">All {min_score_label()} matches. RED=not applied — apply now! GREEN=applied. Columns J-O are free intel: Hiring Email (careers@ domain, MX ✓), Urgency (ASAP/immediate), Desperation (reposted), Opportunity (combined), Pain Points (why they need you). No paid API.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell>

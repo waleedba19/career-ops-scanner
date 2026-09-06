@@ -154,7 +154,337 @@
       "seen": "2026-09-05T17:53:01.205318+00:00",
       "title": "<![CDATA[CDMX y Zona Metropolitana - Evaluaci&oacute;n telef&oacute;nica de atenci&oacute;n y servicio -- 61498]]>",
       "company": "Freelancer.com"
+    },
+    "riotgames|staffmachinelearningengineerau|singapore": {
+      "seen": "2026-09-05T21:52:27.762636+00:00",
+      "title": "Staff Machine Learning Engineer, Audio - Singapore Efficiency Team",
+      "company": "Riot Games"
+    },
+    "discord|seniorproductdesignerdeveloper|sanfranciscobayarea": {
+      "seen": "2026-09-05T21:52:29.408808+00:00",
+      "title": "Senior Product Designer, Developer Success",
+      "company": "Discord"
+    },
+    "stripe|administrativecoordinator|bengaluru": {
+      "seen": "2026-09-05T21:52:30.070381+00:00",
+      "title": "Administrative Coordinator",
+      "company": "Stripe"
+    },
+    "stripe|commspublicgoods|sanfrancisco": {
+      "seen": "2026-09-05T21:52:30.210346+00:00",
+      "title": "Comms, Public Goods",
+      "company": "Stripe"
+    },
+    "asana|managerexecutiveassistant|sanfrancisco": {
+      "seen": "2026-09-05T21:52:30.799886+00:00",
+      "title": "Manager, Executive Assistant ",
+      "company": "Asana"
+    },
+    "asana|manageritclientendpointenginee|sanfrancisco": {
+      "seen": "2026-09-05T21:52:30.813617+00:00",
+      "title": "Manager, IT Client Endpoint Engineering",
+      "company": "Asana"
+    },
+    "asana|productdesignercoordinate|warsaw": {
+      "seen": "2026-09-05T21:52:30.863617+00:00",
+      "title": "Product Designer, Coordinate",
+      "company": "Asana"
+    },
+    "asana|seniorinfrastructureengineerso|warsaw": {
+      "seen": "2026-09-05T21:52:30.993858+00:00",
+      "title": "Senior Infrastructure Engineer (Software-Focused)",
+      "company": "Asana"
+    },
+    "asana|seniortechnicalconsultant|dublin": {
+      "seen": "2026-09-05T21:52:31.097209+00:00",
+      "title": "Senior Technical Consultant",
+      "company": "Asana"
+    },
+    "asana|techleadplatformreliabilityeng|warsaw": {
+      "seen": "2026-09-05T21:52:31.235541+00:00",
+      "title": "Tech Lead, Platform Reliability Engineering",
+      "company": "Asana"
+    },
+    "pinterest|srleadcorporatecommunications|newyorknyusremoteus": {
+      "seen": "2026-09-05T21:52:32.667224+00:00",
+      "title": "Sr. Lead, Corporate Communications",
+      "company": "Pinterest"
+    },
+    "instacart|analyticsengineerii|canadaremoteonabbcor": {
+      "seen": "2026-09-05T21:52:33.152036+00:00",
+      "title": "Analytics Engineer II",
+      "company": "Instacart"
+    },
+    "twilio|principalengineer|remoteus": {
+      "seen": "2026-09-05T21:52:35.877936+00:00",
+      "title": "Principal Engineer",
+      "company": "Twilio"
+    },
+    "twilio|productoperationsspecialistl3|remoteindia": {
+      "seen": "2026-09-05T21:52:35.967444+00:00",
+      "title": "Product Operations Specialist L3",
+      "company": "Twilio"
+    },
+    "twilio|staffengineeroffensivesecurity|remoteus": {
+      "seen": "2026-09-05T21:52:36.441700+00:00",
+      "title": "Staff Engineer - Offensive Security",
+      "company": "Twilio"
+    },
+    "jobicy|internationalaudiovideoarmenia|remote": {
+      "seen": "2026-09-05T21:52:37.064107+00:00",
+      "title": "International Audio/Video Remote Armenian Interpreter",
+      "company": "Jobicy"
+    },
+    "jobicy|internationalaudiovideoarabici|remote": {
+      "seen": "2026-09-05T21:52:37.065363+00:00",
+      "title": "International Audio/Video Remote Arabic Interpreters",
+      "company": "Jobicy"
+    },
+    "jobicy|internationalaudiovideoafghani|remote": {
+      "seen": "2026-09-05T21:52:37.066405+00:00",
+      "title": "International Audio/Video Remote Afghani/Dari Interpreter",
+      "company": "Jobicy"
+    },
+    "nodesk|customeroperationswritingspeci|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.111465+00:00",
+      "title": "Remote Customer Operations & Writing Specialist (Entry Level) at Clerky - NoDesk",
+      "company": "Nodesk"
+    },
+    "spiralyze|videoeditorlinkedincontent|mexico": {
+      "seen": "2026-09-05T21:52:37.143495+00:00",
+      "title": "Video Editor (LinkedIn Content)",
+      "company": "Spiralyze"
+    },
+    "huzzle|contentmarketer|colombia": {
+      "seen": "2026-09-05T21:52:37.163488+00:00",
+      "title": "Remote Content Marketer",
+      "company": "Huzzle"
+    },
+    "languageservicesassociates|internationalaudiovideoarmenia|anywhere": {
+      "seen": "2026-09-05T21:52:37.189526+00:00",
+      "title": "International Audio/Video Remote Armenian Interpreter",
+      "company": "Language Services Associates"
+    },
+    "languageservicesassociates|internationalaudiovideoarabici|anywhere": {
+      "seen": "2026-09-05T21:52:37.191532+00:00",
+      "title": "International Audio/Video Remote Arabic Interpreters",
+      "company": "Language Services Associates"
+    },
+    "languageservicesassociates|internationalaudiovideoafghani|anywhere": {
+      "seen": "2026-09-05T21:52:37.193611+00:00",
+      "title": "International Audio/Video Remote Afghani/Dari Interpreter",
+      "company": "Language Services Associates"
+    },
+    "mactores|fullstackproductengineerintern|anywhere": {
+      "seen": "2026-09-05T21:52:37.222466+00:00",
+      "title": "Full Stack Product Engineer Intern, Agent Native",
+      "company": "Mactores"
+    },
+    "thinkacademyus|earlychildhoodteacherpt|anywhere": {
+      "seen": "2026-09-05T21:52:37.273035+00:00",
+      "title": "Early Childhood Teacher (PT)",
+      "company": "Think Academy US"
+    },
+    "thinkacademyus|earlychildhoodteacher|anywhere": {
+      "seen": "2026-09-05T21:52:37.277309+00:00",
+      "title": "Early Childhood Teacher",
+      "company": "Think Academy US"
+    },
+    "thinkacademyus|prekteacher|anywhere": {
+      "seen": "2026-09-05T21:52:37.281560+00:00",
+      "title": "PreK Teacher",
+      "company": "Think Academy US"
+    },
+    "freelancercom|cdataintensiveonlinearabicspea|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.833292+00:00",
+      "title": "<![CDATA[Intensive Online Arabic Speaking Tutor]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatacardiologyresearcharticle|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.834488+00:00",
+      "title": "<![CDATA[Cardiology Research Article Writer]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdataseoblogpostsyoutubeinstag|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.837185+00:00",
+      "title": "<![CDATA[SEO Blog Posts: YouTube & Instagram]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdataonlinefrenchfluencytutorn|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.837958+00:00",
+      "title": "<![CDATA[Online French Fluency Tutor Needed]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatanonfictionbookproofreadin|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.838679+00:00",
+      "title": "<![CDATA[Non-Fiction Book Proofreading]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatamentalhealtharticlewritin|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.839768+00:00",
+      "title": "<![CDATA[Mental Health Article Writing]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatafreeverselovepoemcreation|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.842380+00:00",
+      "title": "<![CDATA[Free-Verse Love Poem Creation]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatatoddleranimalstorywritern|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.843644+00:00",
+      "title": "<![CDATA[Toddler Animal Story Writer Needed]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdataeuropetravelguideblogwrit|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.844374+00:00",
+      "title": "<![CDATA[Europe Travel Guide Blog Writer]]>",
+      "company": "Freelancer.com"
+    },
+    "gotranscript|translatorbookameeting|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.846501+00:00",
+      "title": "Translator - Book a Meeting",
+      "company": "GoTranscript"
+    },
+    "gotranscript|translatorjoinusasatranslator|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.846789+00:00",
+      "title": "Translator - Join us as a translator",
+      "company": "GoTranscript"
+    },
+    "italki|onlinelanguagetutorarabicengli|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.847075+00:00",
+      "title": "Online Language Tutor (Arabic/English)",
+      "company": "iTalki"
+    },
+    "lingoace|onlineenglishteacherkids415|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.847391+00:00",
+      "title": "Online English Teacher (Kids 4-15)",
+      "company": "LingoAce"
+    },
+    "tutorabc|onlineenglishteacher|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.847655+00:00",
+      "title": "Online English Teacher",
+      "company": "TutorABC"
+    },
+    "eslgorilla|onlineesljobs|remoteworldwide": {
+      "seen": "2026-09-05T21:52:37.847789+00:00",
+      "title": "Online ESL Jobs",
+      "company": "Eslgorilla"
+    },
+    "creativeforce|saasproductsupportjedi|remote": {
+      "seen": "2026-09-05T21:52:37.877189+00:00",
+      "title": "SaaS Product Support Jedi",
+      "company": "Creative Force"
+    },
+    "searchdiscovered|welocalizelocationalgeria|remote": {
+      "seen": "2026-09-05T22:10:50.798065+00:00",
+      "title": "Welocalize?Location=Algeria",
+      "company": "Search Discovered"
+    },
+    "spiralyze|videoeditorlinkedincontent|jordan": {
+      "seen": "2026-09-06T01:22:45.294735+00:00",
+      "title": "Video Editor (LinkedIn Content)",
+      "company": "Spiralyze"
+    },
+    "vertuagent|aisavvyexecutiveoperationsspec|argentina": {
+      "seen": "2026-09-06T01:22:45.309673+00:00",
+      "title": "AI-Savvy Executive & Operations Specialist",
+      "company": "Vertu Agent"
+    },
+    "freelancercom|cdatapremiumsocialmediacontent|remoteworldwide": {
+      "seen": "2026-09-06T01:22:45.322708+00:00",
+      "title": "<![CDATA[Premium Social Media Content Creation]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdataquicksegmentvideoediting|remoteworldwide": {
+      "seen": "2026-09-06T01:22:45.324505+00:00",
+      "title": "<![CDATA[Quick Segment Video Editing]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdataargentinacustomersupport|remoteworldwide": {
+      "seen": "2026-09-06T01:22:45.329617+00:00",
+      "title": "<![CDATA[Argentina Part-Time Remote Customer Support]]>",
+      "company": "Freelancer.com"
+    },
+    "himalayasapp|ecommercecopywriter|remote": {
+      "seen": "2026-09-06T01:22:45.612879+00:00",
+      "title": "E-Commerce Copywriter",
+      "company": "himalayas_app"
+    },
+    "himalayasapp|executiveassistanttoceo|remote": {
+      "seen": "2026-09-06T01:22:45.613257+00:00",
+      "title": "Executive Assistant to CEO",
+      "company": "himalayas_app"
+    },
+    "searchdiscovered|weloglobaldepartmentwelocalize|remote": {
+      "seen": "2026-09-06T01:22:45.617447+00:00",
+      "title": "Weloglobal?Department=Welocalize",
+      "company": "Search Discovered"
+    },
+    "remoteraven|executiveassistant|philippines": {
+      "seen": "2026-09-06T09:11:44.140896+00:00",
+      "title": "Executive Assistant",
+      "company": "Remote Raven"
+    },
+    "freelancercom|cdatarefinescriptrecordgreetin|remoteworldwide": {
+      "seen": "2026-09-06T09:11:44.160921+00:00",
+      "title": "<![CDATA[Refine Script & Record Greeting]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdataheartwarmingpersonalexper|remoteworldwide": {
+      "seen": "2026-09-06T09:11:44.163829+00:00",
+      "title": "<![CDATA[Heartwarming Personal Experience Stories Article]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdata|remoteworldwide": {
+      "seen": "2026-09-06T09:11:44.165861+00:00",
+      "title": "<![CDATA[\u0917\u093e\u0902\u0935 \u0915\u0940 \u0938\u092e\u0938\u094d\u092f\u093e\u0913\u0902 \u092a\u0930 \u0915\u0939\u093e\u0928\u0940]]>",
+      "company": "Freelancer.com"
+    },
+    "jobicy|accountspayableclerkentrylevel|remote": {
+      "seen": "2026-09-06T09:11:44.401184+00:00",
+      "title": "Accounts Payable Clerk (Entry Level Opportunity)",
+      "company": "jobicy"
+    },
+    "creativeforce|saasproductsupportjedi|europeemeaukgermanyf": {
+      "seen": "2026-09-06T15:56:30.002091+00:00",
+      "title": "SaaS Product Support Jedi",
+      "company": "Creative Force"
+    },
+    "iapwe|writer|worldwide": {
+      "seen": "2026-09-06T15:56:30.004074+00:00",
+      "title": "Freelance Writer",
+      "company": "IAPWE"
+    },
+    "canonical|accountspayableclerkentrylevel|emeaukremote": {
+      "seen": "2026-09-06T15:56:30.782848+00:00",
+      "title": "Accounts Payable Clerk (Entry Level Opportunity)",
+      "company": "Canonical"
+    },
+    "freelancercom|cdataprofitablecontenteditings|remoteworldwide": {
+      "seen": "2026-09-06T15:56:30.904180+00:00",
+      "title": "<![CDATA[Profitable Content Editing Support]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatadailyexcelsalesdataentry|remoteworldwide": {
+      "seen": "2026-09-06T15:56:30.907431+00:00",
+      "title": "<![CDATA[Daily Excel Sales Data Entry]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatarevisisopperusahaanterstr|remoteworldwide": {
+      "seen": "2026-09-06T15:56:30.913739+00:00",
+      "title": "<![CDATA[Revisi SOP Perusahaan Terstruktur]]>",
+      "company": "Freelancer.com"
+    },
+    "freelancercom|cdatathrillernovelcontentedito|remoteworldwide": {
+      "seen": "2026-09-06T15:56:30.916198+00:00",
+      "title": "<![CDATA[Thriller Novel Content Editor Needed]]>",
+      "company": "Freelancer.com"
+    },
+    "himalayasapp|pashtousbasedinterpreter|remote": {
+      "seen": "2026-09-06T16:20:10.401214+00:00",
+      "title": "Pashto: US-based Interpreter",
+      "company": "himalayas_app"
     }
   },
-  "updated": "2026-09-05T18:09:53.290502+00:00"
+  "updated": "2026-09-06T16:21:50.305590+00:00"
 }

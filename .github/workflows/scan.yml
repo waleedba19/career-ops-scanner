@@ -6,13 +6,6 @@ on:
     - cron: '0 13 * * *'  # 13:00 UTC = 15:00 Libya — Afternoon Briefing
     - cron: '0 20 * * *'  # 20:00 UTC = 22:00 Libya — Night Digest
   workflow_dispatch:
-    inputs:
-      tier_cap:
-        description: 'Fetcher tier — 1 lean, 2 balanced (cron default), 3 full sweep'
-        required: false
-        default: '3'
-        type: choice
-        options: ['1', '2', '3']
   push:
     branches: [main]
     paths-ignore: ['README.md', 'ARCHITECTURE.md', 'dashboard/**']
@@ -34,8 +27,8 @@ jobs:
       BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
       TO_EMAIL:           ${{ secrets.TO_EMAIL }}
       OLLAMA_MODEL:       qwen2.5:1.5b
-      # Cron / push → balanced (2). Manual dispatch defaults to full sweep (3).
-      CAREEROPS_TIER_CAP: ${{ github.event.inputs.tier_cap || '2' }}
+      CAREEROPS_TIER_CAP: "3"   # full sweep — includes MENA (for9a/ureed/wuzzuf/bayt/gulftalent) + freelance fleet
+      CAREEROPS_FRESH_H: "8"    # fresh = posted within one scan cycle (scans run every 8h)
       CAREEROPS_BATCH_SIZE: "8"
 
     steps:

@@ -7,7 +7,7 @@ import base64
 import html as html_mod
 import os
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import aiohttp
 
@@ -169,6 +169,31 @@ def format_near_miss_card(job: dict, index: int) -> str:
     lines.append(f"  \U0001f517 Review: {job.get('url', '')}")
     
     return "\n".join(lines)
+
+
+# Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
+# The scanner's notify phase imports now_libya() from this module to stamp
+# user-facing Excel / email dates in Libya time, never raw UTC.
+LIBYA_TZ = timezone(timedelta(hours=2))
+
+
+def now_libya() -> datetime:
+    """Current time in Libya (Africa/Tripoli, UTC+2)."""
+    return datetime.now(LIBYA_TZ)
+
+
+def fresh_window_phrase() -> str:
+    """Human phrase for the fresh-match window (e.g. 'the last 8 hours') — tracks live config."""
+    try:
+        from config import MAX_AGE_FRESH_HOURS
+        h = float(MAX_AGE_FRESH_HOURS)
+    except Exception:
+        h = 8.0
+    if h < 1:
+        return f"the last {int(h * 60)} minutes"
+    if h < 24:
+        return f"the last {int(h)} hours"
+    return f"the last {int(h / 24)} days"
 
 
 def gates_line() -> str:
@@ -477,7 +502,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     if not jobs:
         jobs_html = f'''<p style="margin:14px 0;font-size:13px;color:#333;line-height:1.6">
         \u2705 <b>0 New Matches Found</b> \u2014 No new position passed every filter. Gates: {_esc(gates_line())}.
-        For full transparency: of {all_count:,} job listings reviewed across {source_count} sources, only {fresh_count} were posted within the last 30 minutes \u2014 and none met every gate.
+        For full transparency: of {all_count:,} job listings reviewed across {source_count} sources, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate.
         We will keep watching the market for you; the next scan runs automatically at the next scheduled slot and any qualifying role reaches you within hours of being posted.</p>'''
     else:
         jobs_html = "".join(job_card_html(j, i) for i, j in enumerate(jobs))
@@ -585,7 +610,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
 
     if not jobs:
         text += "\u2705 0 New Matches Found\n"
-        text += f"No new position passed every filter. Gates: {gates_line()}. Of those reviewed, only {fresh_count} were posted within the last 30 minutes \u2014 and none met every gate. We will keep watching.\n\n"
+        text += f"No new position passed every filter. Gates: {gates_line()}. Of those reviewed, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate. We will keep watching.\n\n"
     else:
         for i, j in enumerate(jobs):
             text += format_job_card(j, i) + "\n\n"

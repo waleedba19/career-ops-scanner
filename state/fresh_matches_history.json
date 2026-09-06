@@ -2708,6 +2708,332 @@
     "scan_date": "2026-09-06T09:15:46.601950+00:00"
   },
   {
+    "title": "<![CDATA[Profitable Content Editing Support]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/graphic-design/Profitable-Content-Editing-Support.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 11:45:40 -0400",
+    "description": "I have a mix of raw material\u2014some draft text, unpolished images, and a few video clips\u2014that all need a professional touch before they can start earning. I\u2019m still finalising which items will move first, so I\u2019m looking for an adaptable editor who\u2019s comfortable jumping between formats... (Budget: $250 - $750 USD, Jobs: Adobe Creative Cloud, Content Writing, Copywriting, Editing, GIMP, Graphic Design, SEO Writing, Video Editing)",
+    "salary": "$250",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T11:45:40-04:00",
+    "score": 97,
+    "category": "Editing",
+    "why": [
+      "editor editing (title+description)",
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (description)",
+      "blog article content copy .{0,20} write writer writing create creating (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.18080641472222223,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 85,
+        "reason": "Job requires language skills, writing, and academic work, which aligns with the candidate's background and certifications."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "The candidate has experience in ESL teaching, academic supervision, and legal translation, which are relevant to the job requirements."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "The candidate's remote work experience and ability to work with diverse clients align well with the job's remote and flexible nature."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "The job is remote and worldwide, which is compatible with the candidate's preference for remote work."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "The candidate's career goals align with the job's potential for stable remote work and long-term client relationships in academic services."
+      },
+      "overall_score": 85,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "language skills",
+        "academic experience",
+        "remote work experience"
+      ],
+      "gaps": [
+        "none"
+      ],
+      "recommendation": "Waleed Ballag's skills and experience make him a strong fit for the job. He can contribute to the translation or ESL teaching aspect and build a strong relationship with academic clients.",
+      "interview_prep": [
+        "Can you describe a time when you had to translate legal documents for a client? How did you approach the task?",
+        "How do you handle academic writing and research supervision in your current role?"
+      ],
+      "one_line_summary": "Waleed Ballag is a strong fit for the job due to his language skills, academic experience, and ability to work remotely."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the job due to his language skills, academic experience, and ability to work remotely.",
+    "ai_overall_score": 85,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "language skills",
+      "academic experience",
+      "remote work experience"
+    ],
+    "ai_gaps": [
+      "none"
+    ],
+    "ai_recommendation": "Waleed Ballag's skills and experience make him a strong fit for the job. He can contribute to the translation or ESL teaching aspect and build a strong relationship with academic clients.",
+    "ai_interview_prep": [
+      "Can you describe a time when you had to translate legal documents for a client? How did you approach the task?",
+      "How do you handle academic writing and research supervision in your current role?"
+    ],
+    "ai_technical_skills": 85,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_-![CDATA[Profitable Content Editing Support]]-_20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_-![CDATA[Profitable Content Editing Support]]-_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T16:02:07.833131+00:00"
+  },
+  {
+    "title": "<![CDATA[Daily Excel Sales Data Entry]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/data-management/Daily-Excel-Sales-Data-Entry.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 11:40:44 -0400",
+    "description": "I update my product-sales workbook every evening, but the volume has grown past what I can comfortably handle alone. I\u2019m looking for someone who can take over the daily Excel entry of all product sales that come through each day... (Budget: \u20b9750 - \u20b91250 INR, Jobs: Data Analysis, Data Entry, Data Management, Data Processing, Excel, Excel Macros, Excel VBA, Visual Basic)",
+    "salary": "",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T11:40:44-04:00",
+    "score": 97,
+    "category": "Admin",
+    "why": [
+      "data entry (title+description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.26302959388888886,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 80,
+        "reason": "The job requires data entry and Excel skills, which are transferable from the candidate's background in ESL teaching and academic supervision."
+      },
+      "experience_match": {
+        "score": 85,
+        "reason": "The candidate has experience in ESL teaching, academic supervision, and data entry, which aligns well with the job requirements."
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "The candidate's background in ESL teaching and academic supervision makes them well-suited for the remote, flexible environment of the job."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "The job is remote and the candidate is located worldwide, which is compatible with the candidate's skills and preferences."
+      },
+      "career_alignment": {
+        "score": 95,
+        "reason": "The candidate's skills and experience align well with the goal of building a career in translation and academic services."
+      },
+      "overall_score": 87,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "ESL teaching experience",
+        "Academic supervision experience",
+        "Data entry skills"
+      ],
+      "gaps": [
+        "No specific skills or experience in engineering or programming"
+      ],
+      "recommendation": "The candidate's background in ESL teaching and academic supervision makes them a strong fit for this job. Their skills in data entry and remote work align well with the requirements, and they have the potential to grow into a senior translator or academic coordinator role.",
+      "interview_prep": "1. What is your experience in academic supervision and research guidance? 2. How do you manage and review student projects in the field of linguistics? 3. Can you share an example of a project you supervised that involved academic editing and thesis review?",
+      "one_line_summary": "ESL instructor with academic supervision experience, skilled in data entry and remote work, a strong fit for the job."
+    },
+    "ai_insight": "ESL instructor with academic supervision experience, skilled in data entry and remote work, a strong fit for the job.",
+    "ai_overall_score": 87,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "ESL teaching experience",
+      "Academic supervision experience",
+      "Data entry skills"
+    ],
+    "ai_gaps": [
+      "No specific skills or experience in engineering or programming"
+    ],
+    "ai_recommendation": "The candidate's background in ESL teaching and academic supervision makes them a strong fit for this job. Their skills in data entry and remote work align well with the requirements, and they have the potential to grow into a senior translator or academic coordinator role.",
+    "ai_interview_prep": "1. What is your experience in academic supervision and research guidance? 2. How do you manage and review student projects in the field of linguistics? 3. Can you share an example of a project you supervised that involved academic editing and thesis review?",
+    "ai_technical_skills": 80,
+    "ai_experience_match": 85,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 95,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_-![CDATA[Daily Excel Sales Data Entry]]-_20260906.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_-![CDATA[Daily Excel Sales Data Entry]]-_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T16:02:07.833131+00:00"
+  },
+  {
+    "title": "<![CDATA[Thriller Novel Content Editor Needed]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/content-development/Thriller-Novel-Content-Editor-Needed.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 11:23:51 -0400",
+    "description": "I'm seeking a skilled content editor for my thriller novel. The focus areas for the editor will be: - Character Development - Plot Consistency - Pacing and Flow I have some general feedback, but I'm open to the editor's expertise... (Budget: $250 - $750 USD, Jobs: Character Design, Content Development, Content Writing, Editing, Fiction, Ghostwriting, Writing Tutoring)",
+    "salary": "$250",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T11:23:51-04:00",
+    "score": 97,
+    "category": "Editing",
+    "why": [
+      "editor editing (title+description)",
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (title+description)",
+      "blog article content copy .{0,20} write writer writing create creating (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.5444209341666667,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 0,
+        "reason": "Job does not require any specific language skills, writing, or academic work."
+      },
+      "experience_match": {
+        "score": 0,
+        "reason": "No relevant experience in translation, ESL teaching, or academic supervision."
+      },
+      "behavioral_fit": {
+        "score": 0,
+        "reason": "No remote or flexible work experience."
+      },
+      "location_logistics": {
+        "verdict": "FAIL",
+        "reason": "Requires on-site presence in specific city, US/EU citizenship required, visa sponsorship needed."
+      },
+      "career_alignment": {
+        "score": 0,
+        "reason": "Does not align with the candidate's career goals of translation/teaching/academic career."
+      },
+      "overall_score": 0,
+      "verdict": "Weak Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency"
+      ],
+      "gaps": [
+        "Translation/ESL teaching/academic supervision experience"
+      ],
+      "recommendation": "The candidate should consider applying for a remote position that aligns more closely with their skills and career aspirations.",
+      "interview_prep": "1. Can you explain your experience in academic supervision and research guidance? 2. How do you handle tight deadlines and multiple projects simultaneously? 3. What is your approach to developing a curriculum for academic writing courses?",
+      "one_line_summary": "Waleed Ballag lacks the required skills and experience for the job, making it a weak fit."
+    },
+    "ai_insight": "Waleed Ballag lacks the required skills and experience for the job, making it a weak fit.",
+    "ai_overall_score": 0,
+    "ai_verdict": "Weak Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency"
+    ],
+    "ai_gaps": [
+      "Translation/ESL teaching/academic supervision experience"
+    ],
+    "ai_recommendation": "The candidate should consider applying for a remote position that aligns more closely with their skills and career aspirations.",
+    "ai_interview_prep": "1. Can you explain your experience in academic supervision and research guidance? 2. How do you handle tight deadlines and multiple projects simultaneously? 3. What is your approach to developing a curriculum for academic writing courses?",
+    "ai_technical_skills": 0,
+    "ai_experience_match": 0,
+    "ai_behavioral_fit": 0,
+    "ai_location_verdict": "FAIL",
+    "ai_career_alignment": 0,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "ai_cover_letter_content": {
+      "opening": "I am excited to apply for the Thriller Novel Content Editor position at Freelancer.com, as it aligns perfectly with my experience and skills in thriller novel development and editing.",
+      "experience": "I have extensive experience as an ESL teacher and secondary supervisor at higher institutes, where I have honed my skills in academic supervision, research guidance, content development, and editing.",
+      "skills": "My skills include academic editing, thesis review, thesis writing, teaching, curriculum development, bidirectional translation, and expertise in Microsoft Office, Adobe Photoshop, SPSS, and academic formats like APA/MLA/Harvard.",
+      "closing": "I am eager to discuss how my background and skills can contribute to the success of this project. Please feel free to schedule an interview at your convenience. Thank you for considering my application!"
+    },
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_-![CDATA[Thriller Novel Content Editor Needed]]-_20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": true,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_-![CDATA[Thriller Novel Content Editor Needed]]-_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T16:02:07.833131+00:00"
+  },
+  {
     "title": "Freelance Copywriter",
     "company": "Coalition Technologies",
     "url": "https://remotive.com/remote-jobs/writing/freelance-copywriter-1749306",
@@ -3090,6 +3416,117 @@
     "scan_date": "2026-09-06T01:29:27.210551+00:00"
   },
   {
+    "title": "SaaS Product Support Jedi",
+    "company": "Creative Force",
+    "url": "https://remotive.com/remote-jobs/customer-service/saas-product-support-jedi-2091087",
+    "location": "Europe, EMEA, UK, Germany, France, European timezones",
+    "posted": "2026-09-05T08:34:20",
+    "description": "We\u2019re on the hunt for a sharp, self-driven SaaS pro who\u2019s as comfortable troubleshooting API and integrations as they are navigating human conversations. Our European client base is growing fast and we need someone who can keep up. Our software isn\u2019t your average plug-and-play; it has a steep learning curve so you\u2019ll need to be technically savvy while also being the kind of person clients genuinely enjoy talking to. If you\u2019ve got SaaS in your DNA, thrive in async/remote environments, and can juggle multiple threads without breaking a sweat \u2014 keep reading. The role You\u2019ll join a lean, high-performing global support team working across two SaaS products, Award Force and Good Grants. Day to day you\u2019ll be communicating with colleagues and clients across countries, cultures, and time zones. Support happens across email tickets, phone, and 1-1 Zoom calls. Once you\u2019ve leveled up on product knowledge, you\u2019ll run onboarding sessions and client meetings covering issue resolution, best practices, and product adoption. You\u2019ll also be hands-on with bug testing and reporting, feeding considered feedback to our product teams\u2014 always pushing to make our products better. We have a startup mindset. We experiment with new tools, iterate on processes, and move fast. Got a great idea? Pitch it. We\u2019re not big on bureaucracy, only results. We don\u2019t expect you to be a slave to your chair but flexibility is a must. You\u2019ll need to tick these boxes You\u2019re based in the UTC +1 or +2 timezone range. This is non-negotiable. Our European team and clients operate in this window and we don\u2019t allow shift work. If you live outside this range, this one\u2019s not for you 2+ years of professional experience, ideally in a SaaS support or client-facing role Native-level English fluency (bilingual? Even better!) Terms like HTML, CSS, JS, API, integrations, dev console, staging & production environments, GitHub repos, and database queries don\u2019t make you flinch. You don\u2019t need to write code, but you need to get it You\u2019ve got exceptional interpersonal and communication skills\u2014written and verbal Client calls energise you. Four to five Zoom meetings a day? Bring it on You\u2019re a natural problem solver who loves helping others untangle theirs Your writing is clean, well-structured, and detail-oriented You\u2019re curious by nature and love learning new things You\u2019re not allergic to upselling or fielding \u201csales-y\u201d questions You\u2019re organised and process-driven. Multiple tools for different workflows? No problem \u2014 you thrive in that setup You\u2019re self-motivated and independent, but you also value being part of a tight-knit team Remote work isn\u2019t just something you dabble in\u2014it\u2019s where you do your best work. You\u2019ve got fast, reliable internet and a distraction-free workspace ready to go Responsibilities Product support Go deep on product knowledge through self-driven learning\u2014become the expert Be the first point of contact on all inbound support via email/tickets, phone, and eventually live chat Run 1-1 Zoom sessions with clients for technical consultation and query resolution Maintain our consistently impressive first-reply-time metric (yeah, we\u2019re proud of it) Provide technically accurate responses backed by hands-on testing of scenarios Collaborate with engineering to squash bugs and keep clients in the loop with timely updates Spot patterns in user issues and flag them for product improvement Be seriously good with clients Speed matters. Respond quickly and decisively Listen deeply\u2014get to the root of the issue and own it until it\u2019s resolved Treat every client interaction with genuine respect and appreciation Build trusting, long-term relationships rooted in honesty and transparency",
+    "salary": "",
+    "source": "remotive",
+    "postedISO": "2026-09-05T08:34:20",
+    "score": 90,
+    "category": "Editing",
+    "why": [
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (description)",
+      "write writes wrote author authoring (description)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 31.36944270861111,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 50,
+        "reason": "Requires technical knowledge of SaaS products and some language skills, but not exclusively translation or teaching."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Has experience in language instruction and academic supervision, which are relevant to the job."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote and flexible work environment aligns well with the candidate's skills."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote and worldwide location is compatible with the candidate's skills."
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds towards translation/teaching/academic career, with potential for senior roles."
+      },
+      "overall_score": 78,
+      "verdict": "Good Fit",
+      "strengths": [
+        "Strong technical knowledge of SaaS products",
+        "Excellent language skills",
+        "Remote work experience"
+      ],
+      "gaps": [
+        "Need for more experience in engineering or development"
+      ],
+      "recommendation": "Waleed Ballag is well-suited for the SaaS Product Support role. His background in academic supervision and language instruction makes him a strong fit for the job.",
+      "interview_prep": [
+        "Can you describe a time when you had to troubleshoot an issue in a complex SaaS product?",
+        "How do you approach client meetings and onboarding sessions to ensure clients feel comfortable and informed?"
+      ],
+      "one_line_summary": "Waleed Ballag's diverse skills and remote work experience make him a strong fit for the SaaS Product Support role."
+    },
+    "ai_insight": "Waleed Ballag's diverse skills and remote work experience make him a strong fit for the SaaS Product Support role.",
+    "ai_overall_score": 78,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "Strong technical knowledge of SaaS products",
+      "Excellent language skills",
+      "Remote work experience"
+    ],
+    "ai_gaps": [
+      "Need for more experience in engineering or development"
+    ],
+    "ai_recommendation": "Waleed Ballag is well-suited for the SaaS Product Support role. His background in academic supervision and language instruction makes him a strong fit for the job.",
+    "ai_interview_prep": [
+      "Can you describe a time when you had to troubleshoot an issue in a complex SaaS product?",
+      "How do you approach client meetings and onboarding sessions to ensure clients feel comfortable and informed?"
+    ],
+    "ai_technical_skills": 50,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@remotive.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@remotive.com",
+      "hr@remotive.com",
+      "jobs@remotive.com"
+    ],
+    "opportunity_score": 27,
+    "company_research": {
+      "name": "Creative Force",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T16:00:38.150220+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Creative Force_SaaS Product Support Jedi_20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Creative Force_SaaS Product Support Jedi_20260906.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-06T16:02:07.833131+00:00"
+  },
+  {
     "title": "<![CDATA[Refine Script & Record Greeting]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/audio-editing/Refine-Script-Record-Greeting.html",
@@ -3192,6 +3629,121 @@
     "cover_letter_ai": false,
     "interview_prep_generated": false,
     "scan_date": "2026-09-06T09:15:46.601950+00:00"
+  },
+  {
+    "title": "<![CDATA[Revisi SOP Perusahaan Terstruktur]]>",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/copywriting/Revisi-SOP-Perusahaan-Terstruktur.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Sun, 06 Sep 2026 11:25:53 -0400",
+    "description": "Saya mencari bantuan administrasi untuk meninjau dan merevisi dokumen Prosedur Operasional Standar (SOP) perusahaan saya. Naskah awal sudah tersedia; fokus pekerjaan adalah meningkatkan kejelasan, konsistensi, dan keter\u00adstrukturan agar mudah diterapkan oleh tim lapangan maupun manajemen... (Budget: $250 - $750 USD, Jobs: Copywriting, Data Entry, Document Checking, Editing, Excel, Microsoft Word, Technical Writing, Word)",
+    "salary": "$250",
+    "source": "freelancer",
+    "postedISO": "2026-09-06T11:25:53-04:00",
+    "score": 82,
+    "category": "Editing",
+    "why": [
+      "editor editing (description)",
+      "content writer writer writing content editor copywriter copywriting blog writer article writer technical writer creative writer content specialist content creator content strategist (description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.5105312949999999,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 20,
+        "reason": "Requires language skills and writing, but lacks direct experience in translation or academic supervision."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Has experience in ESL teaching and academic supervision, but lacks direct experience in translation or academic supervision."
+      },
+      "behavioral_fit": {
+        "score": 60,
+        "reason": "Remote work environment is compatible, but lacks experience in academic services or senior roles."
+      },
+      "location_logistics": {
+        "verdict": "FAIL",
+        "reason": "Requires on-site presence in specific city, US/EU citizenship required, and visa sponsorship needed."
+      },
+      "career_alignment": {
+        "score": 50,
+        "reason": "Builds toward academic services, but lacks senior leadership experience."
+      },
+      "overall_score": 50,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "ESL teaching",
+        "Academic supervision"
+      ],
+      "gaps": [
+        "Translation/teaching/academic experience",
+        "Senior leadership role"
+      ],
+      "recommendation": "Waleed Ballag is a strong fit for the job, but may need to supplement his skills in translation and academic supervision to meet the career goals.",
+      "interview_prep": [
+        "Can you discuss your experience in academic supervision and how it has prepared you for the role?",
+        "How do you plan to apply your language skills and writing experience to improve the clarity and structure of the SOP documents?"
+      ],
+      "one_line_summary": "Waleed Ballag is a strong fit for the job, but needs to enhance his translation and academic supervision skills."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the job, but needs to enhance his translation and academic supervision skills.",
+    "ai_overall_score": 50,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "ESL teaching",
+      "Academic supervision"
+    ],
+    "ai_gaps": [
+      "Translation/teaching/academic experience",
+      "Senior leadership role"
+    ],
+    "ai_recommendation": "Waleed Ballag is a strong fit for the job, but may need to supplement his skills in translation and academic supervision to meet the career goals.",
+    "ai_interview_prep": [
+      "Can you discuss your experience in academic supervision and how it has prepared you for the role?",
+      "How do you plan to apply your language skills and writing experience to improve the clarity and structure of the SOP documents?"
+    ],
+    "ai_technical_skills": 20,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 60,
+    "ai_location_verdict": "FAIL",
+    "ai_career_alignment": 50,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 26,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "ai_cover_letter_content": {
+      "opening": "I am excited to apply for the opportunity to revise our company's SOPs as it aligns with my background and qualifications.",
+      "experience": "In my role as an ESL teacher and secondary supervisor at the Higher Institute of Science and Technology, I honed my skills in academic supervision, research guidance, and curriculum development.",
+      "skills": "My strong skills include academic editing, thesis review, and ESL/EFL instruction. I am also proficient in Microsoft Office Suite, Adobe Photoshop, and SPSS Statistical Analysis.",
+      "closing": "I am available for an interview and eager to discuss how my experience and skills can contribute to the success of this project. Thank you for considering my application."
+    },
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_-![CDATA[Revisi SOP Perusahaan Terstruktur]]-_20260906.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": true,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T16:02:07.833131+00:00"
   },
   {
     "title": "<![CDATA[Indian Constitution Book Ghostwriter]]>",
@@ -3388,5 +3940,111 @@
     "cover_letter_ai": false,
     "interview_prep_generated": false,
     "scan_date": "2026-09-06T09:15:46.601950+00:00"
+  },
+  {
+    "title": "Accounts Payable Clerk (Entry Level Opportunity)",
+    "company": "Canonical",
+    "url": "https://www.remote1stjobs.com/jobs/accounts-payable-clerk-entry-level-opportunity-canonical-mtpvptkl?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
+    "location": "EMEA,  UK, Remote",
+    "posted": "2026-09-06T14:00:25.0985+00:00",
+    "description": "The role of an Accounts Payable Clerk at CanonicalWe have an exciting opportunity for an Accounts Payable Clerk to join our growing team. If you are passionate about the technology industry and want to work for a company that aligns with your interests, we might be the place for you! Canonical, and our world class\u2026 The role of an Accounts Payable Clerk at Canonical We have an exciting opportunity for an Accounts Payable Clerk to join our growing team. If you are passionate about the techn",
+    "salary": "",
+    "source": "remote1stjobs",
+    "postedISO": "2026-09-06T14:00:25.098500+00:00",
+    "score": 70,
+    "category": "Admin",
+    "why": [
+      "admin administrative clerk office assistant (title+description)"
+    ],
+    "is_fresh": true,
+    "age_hours": 1.934912006388889,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 50,
+        "reason": "Job requires some language skills and writing, but no direct translation or academic supervision experience."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Has experience in ESL teaching, academic supervision, and legal translation, which are related but not perfect matches."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "Remote work and flexible environment align well with the candidate's skills and goals."
+      },
+      "location_logistics": {
+        "verdict": "FAIL",
+        "reason": "Requires on-site presence in specific city, which is a dealbreaker."
+      },
+      "career_alignment": {
+        "score": 70,
+        "reason": "Builds towards academic supervision and research guidance, but not directly into senior roles."
+      },
+      "overall_score": 76.5,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "ESL teaching experience",
+        "Academic supervision experience",
+        "Legal translation experience"
+      ],
+      "gaps": [
+        "No direct translation or academic supervision experience"
+      ],
+      "recommendation": "Waleed's background in ESL teaching, academic supervision, and legal translation makes him a strong fit for the Accounts Payable Clerk role, but he lacks direct experience in translation and academic supervision. He should focus on developing these skills to better align with the career goals.",
+      "interview_prep": [
+        "Can you describe a time when you supervised a graduate-level research study?",
+        "How do you approach translating legal documents for academic clients?"
+      ],
+      "one_line_summary": "Waleed has a strong background in ESL teaching and academic supervision, but lacks direct translation and academic supervision experience, making this a moderate fit for the Accounts Payable Clerk role."
+    },
+    "ai_insight": "Waleed has a strong background in ESL teaching and academic supervision, but lacks direct translation and academic supervision experience, making this a moderate fit for the Accounts Payable Clerk role.",
+    "ai_overall_score": 76.5,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "ESL teaching experience",
+      "Academic supervision experience",
+      "Legal translation experience"
+    ],
+    "ai_gaps": [
+      "No direct translation or academic supervision experience"
+    ],
+    "ai_recommendation": "Waleed's background in ESL teaching, academic supervision, and legal translation makes him a strong fit for the Accounts Payable Clerk role, but he lacks direct experience in translation and academic supervision. He should focus on developing these skills to better align with the career goals.",
+    "ai_interview_prep": [
+      "Can you describe a time when you supervised a graduate-level research study?",
+      "How do you approach translating legal documents for academic clients?"
+    ],
+    "ai_technical_skills": 50,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "FAIL",
+    "ai_career_alignment": 70,
+    "urgency_score": 0,
+    "desperation_index": 10,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@remote1stjobs.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@remote1stjobs.com",
+      "hr@remote1stjobs.com",
+      "jobs@remote1stjobs.com"
+    ],
+    "opportunity_score": 25,
+    "company_research": {
+      "name": "Canonical",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-06T16:00:38.149608+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Canonical_Accounts Payable Clerk (Entry Level Opportunity)_20260906.pdf",
+    "cover_letter_type": "general",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-06T16:02:07.833131+00:00"
   }
 ]

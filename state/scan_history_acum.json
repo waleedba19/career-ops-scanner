@@ -609,5 +609,68 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-07T10:08:11.598122+00:00",
+    "matched_count": 7,
+    "all_count": 4747,
+    "jobs": [
+      {
+        "title": "Fitness Reviews PDF to Word",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/proofreading/Fitness-Reviews-PDF-Word.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Executive Assistant - Arabic speaking",
+        "company": "Bridgestone International UK",
+        "url": "https://uk.linkedin.com/jobs/view/executive-assistant-arabic-speaking-at-bridgestone-international-uk-4461881651",
+        "score": 100,
+        "category": "Admin",
+        "source": "linkedin"
+      },
+      {
+        "title": "Specialist Dermatologist (Arabic Speaker) - Abu Dhabi",
+        "company": "Allocation Assist Middle East",
+        "url": "https://ae.linkedin.com/jobs/view/specialist-dermatologist-arabic-speaker-abu-dhabi-at-allocation-assist-middle-east-4461824992",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "PTE Academic English Teacher",
+        "company": "PTE MAGIC",
+        "url": "https://id.linkedin.com/jobs/view/pte-academic-english-teacher-at-pte-magic-4462903395",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Hiring now! Entry-Level English Teacher (ESL) | No Experience Needed",
+        "company": "English 1",
+        "url": "https://nz.linkedin.com/jobs/view/hiring-now%21-entry-level-english-teacher-esl-no-experience-needed-at-english-1-4464077704",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Content Writer/Editor",
+        "company": "Houzeo",
+        "url": "https://in.linkedin.com/jobs/view/content-writer-editor-at-houzeo-4461898141",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      },
+      {
+        "title": "Multilingual Online Language Teachers Needed IV",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/language-tutoring/Multilingual-Online-Language-Teachers-40695277",
+        "score": 97,
+        "category": "ESL",
+        "source": "freelancer"
+      }
+    ]
   }
 ]

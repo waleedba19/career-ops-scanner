@@ -703,5 +703,36 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-07T22:29:59.788651+00:00",
+    "matched_count": 3,
+    "all_count": 4769,
+    "jobs": [
+      {
+        "title": "US-Based Proofreader for Diverse Texts",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/copy-editing/Based-Proofreader-for-Diverse-Texts",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Website Technology Content Writer Needed",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/seo/Website-Technology-Content-Writer-Needed",
+        "score": 87,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "26-27 SY Teaching Jobs: ESL/ENL/ELL",
+        "company": "Kreyco",
+        "url": "https://www.linkedin.com/jobs/view/26-27-sy-teaching-jobs-esl-enl-ell-at-kreyco-4464364959",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

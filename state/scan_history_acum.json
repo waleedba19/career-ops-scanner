@@ -672,5 +672,36 @@
         "source": "freelancer"
       }
     ]
+  },
+  {
+    "date": "2026-09-07T18:07:58.187257+00:00",
+    "matched_count": 3,
+    "all_count": 4606,
+    "jobs": [
+      {
+        "title": "Excel Photo, labeling, transcribing audio into short text for input, proof reading",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/administrative-support/Excel-Photo-labeling-transcribing-audio",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "English Teacher - Full remote",
+        "company": "Tusclasesparticulares",
+        "url": "https://es.linkedin.com/jobs/view/english-teacher-full-remote-at-tusclasesparticulares-4463194779",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor",
+        "company": "WPP Production",
+        "url": "https://uy.linkedin.com/jobs/view/copy-editor-at-wpp-production-4456382474",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

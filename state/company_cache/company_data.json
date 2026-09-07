@@ -334,5 +334,29 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-07T10:06:03.058488+00:00"
+  },
+  "Tusclasesparticulares": {
+    "name": "Tusclasesparticulares",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T18:06:56.153417+00:00"
+  },
+  "WPP Production": {
+    "name": "WPP Production",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T18:06:56.153931+00:00"
   }
 }

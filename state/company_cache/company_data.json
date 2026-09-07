@@ -274,5 +274,65 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-06T21:55:34.868574+00:00"
+  },
+  "Bridgestone International UK": {
+    "name": "Bridgestone International UK",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T10:06:03.056551+00:00"
+  },
+  "Allocation Assist Middle East": {
+    "name": "Allocation Assist Middle East",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T10:06:03.057184+00:00"
+  },
+  "PTE MAGIC": {
+    "name": "PTE MAGIC",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T10:06:03.057617+00:00"
+  },
+  "English 1": {
+    "name": "English 1",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T10:06:03.058072+00:00"
+  },
+  "Houzeo": {
+    "name": "Houzeo",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-07T10:06:03.058488+00:00"
   }
 }

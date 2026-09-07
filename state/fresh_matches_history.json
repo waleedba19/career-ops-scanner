@@ -2471,6 +2471,228 @@
     "scan_date": "2026-09-07T10:07:48.662424+00:00"
   },
   {
+    "title": "English Teacher - Full remote",
+    "company": "Tusclasesparticulares",
+    "url": "https://es.linkedin.com/jobs/view/english-teacher-full-remote-at-tusclasesparticulares-4463194779",
+    "location": "Remote \u2014 Spain",
+    "posted": "2026-09-07",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-07T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 18.037511298333335,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 85,
+        "reason": "The job requires Arabic-English translation, ESL teaching, and academic supervision, which aligns well with the candidate's skills and experience."
+      },
+      "experience_match": {
+        "score": 90,
+        "reason": "The candidate has extensive experience in ESL teaching, academic supervision, and legal translation, which are all relevant to the job requirements."
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "The candidate's background and skills are well-suited for a remote, academic environment, and they have experience in related fields."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "The job is remote and the candidate is from a compatible location, worldwide."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "The candidate's career goals align well with the job, focusing on translation, teaching, and academic services."
+      },
+      "overall_score": 88,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "ESL teaching",
+        "Academic supervision",
+        "Legal translation"
+      ],
+      "gaps": [
+        "None"
+      ],
+      "recommendation": "The candidate is well-suited for the remote English Teacher position, focusing on translation, teaching, and academic services.",
+      "interview_prep": "1. What is your experience in academic supervision and research guidance? 2. Can you share an example of a legal translation you have worked on? 3. How do you approach the development of an academic writing proposal?",
+      "one_line_summary": "Waleed Ballag is a strong fit for the English Teacher position with a background in ESL teaching, academic supervision, and legal translation."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the English Teacher position with a background in ESL teaching, academic supervision, and legal translation.",
+    "ai_overall_score": 88,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "ESL teaching",
+      "Academic supervision",
+      "Legal translation"
+    ],
+    "ai_gaps": [
+      "None"
+    ],
+    "ai_recommendation": "The candidate is well-suited for the remote English Teacher position, focusing on translation, teaching, and academic services.",
+    "ai_interview_prep": "1. What is your experience in academic supervision and research guidance? 2. Can you share an example of a legal translation you have worked on? 3. How do you approach the development of an academic writing proposal?",
+    "ai_technical_skills": 85,
+    "ai_experience_match": 90,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Needs ESL teacher, likely understaffed",
+    "email_guessed": true,
+    "hiring_email": "careers@es.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@es.linkedin.com",
+      "hr@es.linkedin.com",
+      "jobs@es.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Tusclasesparticulares",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-07T18:06:56.153417+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Tusclasesparticulares_English Teacher - Full remote_20260907.pdf",
+    "cover_letter_type": "teaching",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Tusclasesparticulares_English Teacher - Full remote_20260907.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-07T18:07:41.407744+00:00"
+  },
+  {
+    "title": "Copy Editor",
+    "company": "WPP Production",
+    "url": "https://uy.linkedin.com/jobs/view/copy-editor-at-wpp-production-4456382474",
+    "location": "Remote \u2014 Montevideo, Montevideo, Uruguay",
+    "posted": "2026-09-07",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-07T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "academic editor editing copy editor (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 18.03751148138889,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 65,
+        "reason": "Requires language skills, writing, and academic work, but lacks direct translation and teaching experience."
+      },
+      "experience_match": {
+        "score": 75,
+        "reason": "Has experience in ESL teaching, academic supervision, and legal translation, which aligns well with the job requirements."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote, flexible, academic environment, and compatible with the job's requirements."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the job's requirements."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds toward translation/teaching/academic career, aligns well with the job's requirements."
+      },
+      "overall_score": 81.5,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "ESL teaching",
+        "Academic supervision",
+        "Legal translation"
+      ],
+      "gaps": [
+        "No direct translation experience"
+      ],
+      "recommendation": "Waleed Ballag is a strong fit for the Copy Editor role at WPP Production. His background in ESL teaching and academic supervision aligns well with the job requirements, and he can build on his experience to grow in the role.",
+      "interview_prep": [
+        "What is your experience in academic supervision and research guidance?",
+        "Can you describe a time when you used SPSS for data analysis in your work?"
+      ],
+      "one_line_summary": "Waleed Ballag is a strong fit for the Copy Editor role with a background in ESL teaching and academic supervision, aligning well with the job's requirements."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the Copy Editor role with a background in ESL teaching and academic supervision, aligning well with the job's requirements.",
+    "ai_overall_score": 81.5,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "ESL teaching",
+      "Academic supervision",
+      "Legal translation"
+    ],
+    "ai_gaps": [
+      "No direct translation experience"
+    ],
+    "ai_recommendation": "Waleed Ballag is a strong fit for the Copy Editor role at WPP Production. His background in ESL teaching and academic supervision aligns well with the job requirements, and he can build on his experience to grow in the role.",
+    "ai_interview_prep": [
+      "What is your experience in academic supervision and research guidance?",
+      "Can you describe a time when you used SPSS for data analysis in your work?"
+    ],
+    "ai_technical_skills": 65,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@uy.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@uy.linkedin.com",
+      "hr@uy.linkedin.com",
+      "jobs@uy.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "WPP Production",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-07T18:06:56.153931+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/WPP Production_Copy Editor_20260907.pdf",
+    "cover_letter_type": "proofreading",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/WPP Production_Copy Editor_20260907.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-07T18:07:41.407744+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",
@@ -4856,6 +5078,109 @@
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "scan_date": "2026-09-07T10:07:48.662424+00:00"
+  },
+  {
+    "title": "Excel Photo, labeling, transcribing audio into short text for input, proof reading",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/administrative-support/Excel-Photo-labeling-transcribing-audio",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-07T16:18:36+00:00",
+    "description": "I have a pre-formatted Excel form in a workbook with several worksheets. Need photos inserted from a file into pre-formatted boxes in the excel form from my step-by-step audio tape (ie insert jpeg into certain location). Absolutely no changes to the form\u2019s format or AI allowed. Add\u2019l services might include: making selections on the excel form from audio tape, proof reading, transcribing short audio tapes for text boxes. Accuracy and attention to detail are essential as this form is used in loan eval. Start rate is $18 per hour. Increases based on meeting deadlines and being accurate. No coding or macro work is required and programmer not right fit here. This is pure administrative support to me perform my services to clients as a top consultant. Deliverables from you to me via dropbox. I will upload digital audio tape with instructions paired with the input form and access to photo files. To ensure skills and reliability, freelancers will be required to complete a brief unpaid test involving an audio tape and file with 8 photos before engagement. If you\u2019re organized, attentive to detail, supportive, meet deadlines, responsive, and English is either your first language or you are fluent, you\u2019ll fit right in. Knowledge of commercial real estate terminology is big plus. Independent contractor relationship.",
+    "salary": "15.0-25.0 USD",
+    "source": "freelancer",
+    "postedISO": "2026-09-07T16:18:36+00:00",
+    "score": 97,
+    "category": "Admin",
+    "why": [
+      "typist transcription transcribing transcriber (title+description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 1.7275243105555556,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 80,
+        "reason": "Requires language skills and academic supervision, but no specific technical skills"
+      },
+      "experience_match": {
+        "score": 85,
+        "reason": "Direct experience in ESL teaching and academic supervision, aligns with the job requirements"
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "Remote and academic environment, aligns well with the job's nature"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the job's requirements"
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds towards translation/teaching/academic career, aligns well with the job's nature"
+      },
+      "overall_score": 85,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Language skills and academic supervision",
+        "Remote and academic environment"
+      ],
+      "gaps": [
+        "None"
+      ],
+      "recommendation": "Waleed Ballag is well-suited for the Freelancer.com job as it requires language skills and academic supervision, aligning well with his background and experience.",
+      "interview_prep": "1. What is your experience in academic supervision and research guidance? 2. How do you ensure accuracy and attention to detail in your work? 3. Can you provide an example of how you have used your skills in a previous role?",
+      "one_line_summary": "Waleed Ballag is a strong fit for the Freelancer.com job due to his language skills and academic supervision experience."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the Freelancer.com job due to his language skills and academic supervision experience.",
+    "ai_overall_score": 85,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Language skills and academic supervision",
+      "Remote and academic environment"
+    ],
+    "ai_gaps": [
+      "None"
+    ],
+    "ai_recommendation": "Waleed Ballag is well-suited for the Freelancer.com job as it requires language skills and academic supervision, aligning well with his background and experience.",
+    "ai_interview_prep": "1. What is your experience in academic supervision and research guidance? 2. How do you ensure accuracy and attention to detail in your work? 3. Can you provide an example of how you have used your skills in a previous role?",
+    "ai_technical_skills": 80,
+    "ai_experience_match": 85,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_Excel Photo, labeling, transcribing audio into sho_20260907.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_Excel Photo, labeling, transcribing audio into sho_20260907.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-07T18:07:41.407744+00:00"
   },
   {
     "title": "Freelance Copywriter",

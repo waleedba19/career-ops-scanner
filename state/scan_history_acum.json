@@ -734,5 +734,76 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-08T09:35:27.189456+00:00",
+    "matched_count": 8,
+    "all_count": 4699,
+    "jobs": [
+      {
+        "title": "Versatile Virtual Assistant Support",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/administrative-support/Versatile-Virtual-Assistant-Support-40697968",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "History Article Proofreading Expert",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/academic-research/History-Article-Proofreading-Expert",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Health & Wellness Article Writer",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/seo/Health-Wellness-Article-Writer-40698250.html",
+        "score": 87,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Creator Economy Blog Series - Researcher and Content Writer",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/seo/Creator-Economy-Blog-Series-Researcher",
+        "score": 87,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Administrative Assistant \u2013 Import & Export Documentation (Arabic Speaker)",
+        "company": "Khidmah",
+        "url": "https://ae.linkedin.com/jobs/view/administrative-assistant-%E2%80%93-import-export-documentation-arabic-speaker-at-khidmah-4462932860",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "MIA Passenger Service Agent (Bilingual: English, Arabic)",
+        "company": "Swissport",
+        "url": "https://www.linkedin.com/jobs/view/mia-passenger-service-agent-bilingual-english-arabic-at-swissport-4464386443",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Entry-Level English Teacher (ESL) | No Experience Needed",
+        "company": "English 1",
+        "url": "https://nz.linkedin.com/jobs/view/entry-level-english-teacher-esl-no-experience-needed-at-english-1-4464426699",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Content Editor",
+        "company": "KAVI",
+        "url": "https://in.linkedin.com/jobs/view/content-editor-at-kavi-4437773411",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

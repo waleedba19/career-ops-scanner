@@ -406,5 +406,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-08T09:33:02.867633+00:00"
+  },
+  "PakWheels.com": {
+    "name": "PakWheels.com",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-08T17:02:47.534237+00:00"
   }
 }

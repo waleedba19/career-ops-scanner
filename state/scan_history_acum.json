@@ -805,5 +805,52 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-08T17:04:09.984979+00:00",
+    "matched_count": 5,
+    "all_count": 4718,
+    "jobs": [
+      {
+        "title": "We need English into Arabic translator",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/arabic-translator/need-English-into-Arabic-translator",
+        "score": 97,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "AI Email Data Entry Automation",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/ai-automation/Email-Data-Entry-Automation",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "We need Arabic into English and vise versa translator",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/language-tutoring/need-Arabic-into-English-vise",
+        "score": 97,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "Arabic Translator",
+        "company": "PakWheels.com",
+        "url": "https://pk.linkedin.com/jobs/view/arabic-translator-at-pakwheels-com-4464481500",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Hiring now! Entry-Level English Teacher (ESL) | No Experience Needed",
+        "company": "English 1",
+        "url": "https://vn.linkedin.com/jobs/view/hiring-now%21-entry-level-english-teacher-esl-no-experience-needed-at-english-1-4464496010",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

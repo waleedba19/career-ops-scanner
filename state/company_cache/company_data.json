@@ -370,5 +370,41 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-07T22:28:50.818656+00:00"
+  },
+  "Khidmah": {
+    "name": "Khidmah",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-08T09:33:02.866239+00:00"
+  },
+  "Swissport": {
+    "name": "Swissport",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-08T09:33:02.866914+00:00"
+  },
+  "KAVI": {
+    "name": "KAVI",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-08T09:33:02.867633+00:00"
   }
 }

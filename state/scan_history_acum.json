@@ -852,5 +852,44 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-08T22:19:52.378725+00:00",
+    "matched_count": 4,
+    "all_count": 4726,
+    "jobs": [
+      {
+        "title": "Administrative Support: Schedule & Files",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/microsoft-outlook/Administrative-Support-Schedule-Files.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Expert Lip Reading Transcription",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/video-editing/Expert-Lip-Reading-Transcription",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Executive Virtual Assistant (JOB ID: EVASS2025)",
+        "company": "My Hero VA",
+        "url": "https://himalayas.app/companies/my-hero-va/jobs/executive-virtual-assistant-job-id-evass2025",
+        "score": 100,
+        "category": "Admin",
+        "source": "himalayas"
+      },
+      {
+        "title": "English Teacher Jobs in PlanetSpark Office - Work from Home",
+        "company": "VIHU",
+        "url": "https://in.linkedin.com/jobs/view/english-teacher-jobs-in-planetspark-office-work-from-home-at-vihu-4462256062",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

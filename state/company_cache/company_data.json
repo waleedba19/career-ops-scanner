@@ -418,5 +418,27 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-08T17:02:47.534237+00:00"
+  },
+  "My Hero VA": {
+    "name": "My Hero VA",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-08T22:18:28.510627+00:00"
+  },
+  "VIHU": {
+    "name": "VIHU",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-08T22:18:28.511332+00:00"
   }
 }

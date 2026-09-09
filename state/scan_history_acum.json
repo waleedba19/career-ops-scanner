@@ -985,5 +985,60 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-09T22:17:25.237659+00:00",
+    "matched_count": 6,
+    "all_count": 4740,
+    "jobs": [
+      {
+        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
+        "company": "Jobgether",
+        "url": "https://in.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-jobgether-4463829008",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic Speaker",
+        "company": "VFS Global",
+        "url": "https://az.linkedin.com/jobs/view/arabic-speaker-at-vfs-global-4465034452",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Hostess (Arabic Speaker) l DoubleTree by Hilton Sharjah Waterfront Hotel & Residences",
+        "company": "Hilton",
+        "url": "https://ae.linkedin.com/jobs/view/hostess-arabic-speaker-l-doubletree-by-hilton-sharjah-waterfront-hotel-residences-at-hilton-4437840207",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
+        "company": "Jobgether",
+        "url": "https://ee.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-jobgether-4463821551",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic Language Teacher",
+        "company": "Qur'\u0101n Academy for Young Scholars",
+        "url": "https://www.linkedin.com/jobs/view/arabic-language-teacher-at-qur-%C4%81n-academy-for-young-scholars-4463083269",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "English Teacher",
+        "company": "BrainLight Learning Center (BLC)",
+        "url": "https://ph.linkedin.com/jobs/view/english-teacher-at-brainlight-learning-center-blc-4463583575",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

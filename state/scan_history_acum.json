@@ -938,5 +938,52 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-09T17:05:32.152242+00:00",
+    "matched_count": 5,
+    "all_count": 4561,
+    "jobs": [
+      {
+        "title": "Virtual Assistant \u2013 English Communication & Admin Support",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/slack/Virtual-Assistant-English-Communication",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Taiwan\u2019s Cultural Diplomacy Content Writer",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/content-writing/Taiwan-Cultural-Diplomacy-Content-Writer",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Language Teacher - Full Remote",
+        "company": "Letuelezioni",
+        "url": "https://it.linkedin.com/jobs/view/language-teacher-full-remote-at-letuelezioni-4461576557",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "LX Copy Editor",
+        "company": "TaskUs",
+        "url": "https://ph.linkedin.com/jobs/view/lx-copy-editor-at-taskus-4433971999",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      },
+      {
+        "title": "Proofreader",
+        "company": "Wholesome Book Publishing & Authority House",
+        "url": "https://www.linkedin.com/jobs/view/proofreader-at-wholesome-book-publishing-authority-house-4463842162",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

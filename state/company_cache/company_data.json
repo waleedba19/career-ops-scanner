@@ -488,5 +488,53 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-09T17:03:53.885523+00:00"
+  },
+  "VFS Global": {
+    "name": "VFS Global",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T22:15:30.306538+00:00"
+  },
+  "Hilton": {
+    "name": "Hilton",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T22:15:30.307322+00:00"
+  },
+  "Qur'\u0101n Academy for Young Scholars": {
+    "name": "Qur'\u0101n Academy for Young Scholars",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T22:15:30.308188+00:00"
+  },
+  "BrainLight Learning Center (BLC)": {
+    "name": "BrainLight Learning Center (BLC)",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T22:15:30.308843+00:00"
   }
 }

@@ -3802,6 +3802,340 @@
     "scan_date": "2026-09-09T09:36:44.967488+00:00"
   },
   {
+    "title": "Language Teacher - Full Remote",
+    "company": "Letuelezioni",
+    "url": "https://it.linkedin.com/jobs/view/language-teacher-full-remote-at-letuelezioni-4461576557",
+    "location": "Remote \u2014 Italy",
+    "posted": "2026-09-09",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-09T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "online remote language teacher tutor instructor (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 16.99107899111111,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 60,
+        "reason": "Job requires language skills and academic supervision, but does not explicitly mention translation or ESL teaching."
+      },
+      "experience_match": {
+        "score": 75,
+        "reason": "Direct experience in academic supervision and language teaching."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote work environment aligns well with the candidate's skills and experience."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote location is compatible with the candidate's skills and experience."
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds towards academic supervision and research roles."
+      },
+      "overall_score": 80,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Strong language skills and academic experience"
+      ],
+      "gaps": [
+        "No direct experience in engineering or development"
+      ],
+      "recommendation": "The candidate has strong language skills and experience in academic supervision, making them a strong fit for the language teacher role. The remote work environment aligns well with their skills, but they lack direct experience in engineering or development, which could be a gap in their career path.",
+      "interview_prep": [
+        "Can you describe a time when you supervised a research study?",
+        "How do you approach translating legal documents for academic purposes?",
+        "Can you share a project where you used SPSS for data analysis?"
+      ],
+      "one_line_summary": "Strong fit for language teacher role with a moderate alignment towards academic supervision."
+    },
+    "ai_insight": "Strong fit for language teacher role with a moderate alignment towards academic supervision.",
+    "ai_overall_score": 80,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Strong language skills and academic experience"
+    ],
+    "ai_gaps": [
+      "No direct experience in engineering or development"
+    ],
+    "ai_recommendation": "The candidate has strong language skills and experience in academic supervision, making them a strong fit for the language teacher role. The remote work environment aligns well with their skills, but they lack direct experience in engineering or development, which could be a gap in their career path.",
+    "ai_interview_prep": [
+      "Can you describe a time when you supervised a research study?",
+      "How do you approach translating legal documents for academic purposes?",
+      "Can you share a project where you used SPSS for data analysis?"
+    ],
+    "ai_technical_skills": 60,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@it.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@it.linkedin.com",
+      "hr@it.linkedin.com",
+      "jobs@it.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Letuelezioni",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-09T17:03:53.884201+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Letuelezioni_Language Teacher - Full Remote_20260909.pdf",
+    "cover_letter_type": "teaching",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Letuelezioni_Language Teacher - Full Remote_20260909.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-09T17:05:09.345675+00:00"
+  },
+  {
+    "title": "LX Copy Editor",
+    "company": "TaskUs",
+    "url": "https://ph.linkedin.com/jobs/view/lx-copy-editor-at-taskus-4433971999",
+    "location": "Remote \u2014 Pasig, National Capital Region, Philippines",
+    "posted": "2026-09-09",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-09T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "academic editor editing copy editor (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 16.991079328333335,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 85,
+        "reason": "Job requires language skills, writing, and academic work, which aligns with the candidate's background."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "Candidate has direct experience in ESL teaching and academic supervision, which is relevant to the job."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "Remote work and academic environment align well with the candidate's skills and preferences."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote and worldwide locations are compatible with the candidate's preferences."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Job aligns with the candidate's career goals of securing stable remote work and growing into senior roles."
+      },
+      "overall_score": 85,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "C1 Advanced English proficiency",
+        "Experienced in academic supervision and research"
+      ],
+      "gaps": [
+        "None identified"
+      ],
+      "recommendation": "Waleed Ballag is highly aligned with the LX Copy Editor role, offering a strong fit for the job requirements and career aspirations.",
+      "interview_prep": [
+        "Can you describe a time when you supervised a research study and its impact on the academic community?",
+        "How do you approach translating legal documents, and what tools do you use to ensure accuracy?"
+      ],
+      "one_line_summary": "Waleed Ballag's strong fit for the LX Copy Editor role aligns with his extensive experience in academic supervision and translation."
+    },
+    "ai_insight": "Waleed Ballag's strong fit for the LX Copy Editor role aligns with his extensive experience in academic supervision and translation.",
+    "ai_overall_score": 85,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "C1 Advanced English proficiency",
+      "Experienced in academic supervision and research"
+    ],
+    "ai_gaps": [
+      "None identified"
+    ],
+    "ai_recommendation": "Waleed Ballag is highly aligned with the LX Copy Editor role, offering a strong fit for the job requirements and career aspirations.",
+    "ai_interview_prep": [
+      "Can you describe a time when you supervised a research study and its impact on the academic community?",
+      "How do you approach translating legal documents, and what tools do you use to ensure accuracy?"
+    ],
+    "ai_technical_skills": 85,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@ph.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@ph.linkedin.com",
+      "hr@ph.linkedin.com",
+      "jobs@ph.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "TaskUs",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-09T17:03:53.884920+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/TaskUs_LX Copy Editor_20260909.pdf",
+    "cover_letter_type": "proofreading",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/TaskUs_LX Copy Editor_20260909.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-09T17:05:09.345675+00:00"
+  },
+  {
+    "title": "Proofreader",
+    "company": "Wholesome Book Publishing & Authority House",
+    "url": "https://www.linkedin.com/jobs/view/proofreader-at-wholesome-book-publishing-authority-house-4463842162",
+    "location": "Remote \u2014 Springfield, MO",
+    "posted": "2026-09-09",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-09T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "proofreader proofreading proofread (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 16.991079441666667,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 85,
+        "reason": "The job requires language skills and academic work, which aligns with the candidate's background and certifications."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "The candidate has experience in ESL teaching, academic supervision, and legal translation, which are relevant to the Proofreader role."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "The candidate's background and skills suggest a strong fit for a remote, academic environment."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "The job is remote and the candidate is flexible, making it a good fit."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "The candidate's career goals align well with the Proofreader role, focusing on translation and academic services."
+      },
+      "overall_score": 84,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Strong language skills",
+        "Experience in academic supervision",
+        "Remote work flexibility"
+      ],
+      "gaps": [
+        "None identified"
+      ],
+      "recommendation": "The candidate has strong language skills and experience in academic supervision, making them a strong fit for the Proofreader role. They can contribute to the company's academic services and build a career in translation or ESL teaching.",
+      "interview_prep": "1. Can you discuss your experience in academic supervision and how it relates to the Proofreader role? 2. How do you approach proofreading and ensuring high-quality output in a remote environment? 3. Can you share an example of a proofreading project you've worked on recently?",
+      "one_line_summary": "A strong fit with experience in academic supervision and language skills, suitable for a remote Proofreader role."
+    },
+    "ai_insight": "A strong fit with experience in academic supervision and language skills, suitable for a remote Proofreader role.",
+    "ai_overall_score": 84,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Strong language skills",
+      "Experience in academic supervision",
+      "Remote work flexibility"
+    ],
+    "ai_gaps": [
+      "None identified"
+    ],
+    "ai_recommendation": "The candidate has strong language skills and experience in academic supervision, making them a strong fit for the Proofreader role. They can contribute to the company's academic services and build a career in translation or ESL teaching.",
+    "ai_interview_prep": "1. Can you discuss your experience in academic supervision and how it relates to the Proofreader role? 2. How do you approach proofreading and ensuring high-quality output in a remote environment? 3. Can you share an example of a proofreading project you've worked on recently?",
+    "ai_technical_skills": 85,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@linkedin.com",
+      "hr@linkedin.com",
+      "jobs@linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Wholesome Book Publishing & Authority House",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-09T17:03:53.885523+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Wholesome Book Publishing & Au_Proofreader_20260909.pdf",
+    "cover_letter_type": "proofreading",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Wholesome Book Publishing & Au_Proofreader_20260909.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-09T17:05:09.345675+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",
@@ -7166,6 +7500,225 @@
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "scan_date": "2026-09-09T09:36:44.967488+00:00"
+  },
+  {
+    "title": "Virtual Assistant \u2013 English Communication & Admin Support",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/slack/Virtual-Assistant-English-Communication",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-09T16:57:52+00:00",
+    "description": "I\u2019m looking for a friendly, reliable Virtual Assistant who speaks fluent English and enjoys communicating with people. You\u2019ll help with: \u2022 Email management and follow-ups \u2022 Data entry and simple administrative tasks \u2022 Scheduling and calendar management \u2022 Team coordination and daily updates \u2022 Occasional voice/video calls I\u2019m looking for someone who is organized, proactive, reliable, and comfortable communicating in English. Budget: $800\u2013$1,200/month depending on experience. Please send a short introduction about yourself, your experience, and your availability.",
+    "salary": "250.0-750.0 USD",
+    "source": "freelancer",
+    "postedISO": "2026-09-09T16:57:52+00:00",
+    "score": 97,
+    "category": "Admin",
+    "why": [
+      "data entry (description)",
+      "virtual assistant administrative assistant admin assistant executive assistant (title+description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.026649133055555555,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 50,
+        "reason": "Requires some language skills and writing, but not exclusively translation or academic work."
+      },
+      "experience_match": {
+        "score": 70,
+        "reason": "Has experience in ESL teaching and academic supervision, which are relevant to the job."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote work environment and flexible schedule align well with the job's requirements."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the job's requirements."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds toward translation/teaching/academic career, aligning well with the job's requirements."
+      },
+      "overall_score": 78.5,
+      "verdict": "Good Fit",
+      "strengths": [
+        "ESL teaching experience",
+        "Academic supervision experience"
+      ],
+      "gaps": [
+        "No direct experience in engineering or development"
+      ],
+      "recommendation": "Waleed Ballag's skills and experience align well with the job requirements, making it a strong fit. He can contribute effectively to the virtual assistant role and build on his career goals.",
+      "interview_prep": [
+        "What is your experience in academic supervision and research guidance?",
+        "Can you describe a time when you had to manage a team of students in a remote setting?"
+      ],
+      "one_line_summary": "Waleed Ballag's background in ESL teaching and academic supervision makes him a strong fit for the virtual assistant role."
+    },
+    "ai_insight": "Waleed Ballag's background in ESL teaching and academic supervision makes him a strong fit for the virtual assistant role.",
+    "ai_overall_score": 78.5,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "ESL teaching experience",
+      "Academic supervision experience"
+    ],
+    "ai_gaps": [
+      "No direct experience in engineering or development"
+    ],
+    "ai_recommendation": "Waleed Ballag's skills and experience align well with the job requirements, making it a strong fit. He can contribute effectively to the virtual assistant role and build on his career goals.",
+    "ai_interview_prep": [
+      "What is your experience in academic supervision and research guidance?",
+      "Can you describe a time when you had to manage a team of students in a remote setting?"
+    ],
+    "ai_technical_skills": 50,
+    "ai_experience_match": 70,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_Virtual Assistant \u2013 English Communication & Admin _20260909.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-09T17:05:09.345675+00:00"
+  },
+  {
+    "title": "Taiwan\u2019s Cultural Diplomacy Content Writer",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/content-writing/Taiwan-Cultural-Diplomacy-Content-Writer",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-09T16:46:37+00:00",
+    "description": "Hi, I\u2019m looking for a native Chinese writer to help turn English materials into clear, natural Chinese about Taiwan\u2019s cultural diplomacy and soft power. The content should feel practical and timely \u2014 how Taiwan is using culture, food, film, education, and lifestyle to build international influence and shape global perceptions of the island. It should feel modern and readable for Chinese readers, not stiff or formal. Here\u2019s a small example of the kind of text: English: Taiwan has become a global soft power success story. Through its unique food scene, innovative cinema, beautiful design, and vibrant pop culture, Taiwan is quietly winning hearts around the world. From Michelin-starred street food to hit TV dramas and award-winning designers, the island is proving that culture can be one of its strongest diplomatic tools. Please adapt the sample above into natural Chinese in your proposal so I can see your style. I\u2019m looking for a native Simplified Chinese speaker who can write clearly and naturally. Budget is $40 and I\u2019d like the work done in about 2\u20133 days. If the $20 bid fee is a problem, you can apply using the PDF/docs attached to the project.",
+    "salary": "250.0-750.0 GBP",
+    "source": "freelancer",
+    "postedISO": "2026-09-09T16:46:37+00:00",
+    "score": 97,
+    "category": "Editing",
+    "why": [
+      "content writer copywriter copywriting blog writer article writer content editor content creator (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.21414999444444444,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 60,
+        "reason": "Requires language skills, writing, and academic work, but lacks direct translation experience."
+      },
+      "experience_match": {
+        "score": 75,
+        "reason": "Has direct experience in ESL teaching and academic supervision, which aligns with the job requirements."
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote work environment, flexible schedule, and academic setting align well with the candidate's goals."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote location and worldwide availability are compatible with the candidate's skills and preferences."
+      },
+      "career_alignment": {
+        "score": 85,
+        "reason": "Builds towards a senior translator or academic coordinator role, aligning with the candidate's long-term career goals."
+      },
+      "overall_score": 80,
+      "verdict": "Good Fit",
+      "strengths": [
+        "Native Arabic and English skills",
+        "Experience in ESL and academic supervision"
+      ],
+      "gaps": [
+        "No direct translation experience"
+      ],
+      "recommendation": "Waleed Ballag's strong background in ESL and academic supervision makes him a strong fit for the Taiwan\u2019s Cultural Diplomacy Content Writer role. His ability to adapt to a remote environment and align with a career in translation or academic services is a significant strength.",
+      "interview_prep": [
+        "What is your experience in academic supervision and research guidance?",
+        "Can you share an example of how you adapted English materials into natural Chinese for a client?"
+      ],
+      "one_line_summary": "Waleed Ballag's strong background in ESL and academic supervision makes him a strong fit for the Taiwan\u2019s Cultural Diplomacy Content Writer role."
+    },
+    "ai_insight": "Waleed Ballag's strong background in ESL and academic supervision makes him a strong fit for the Taiwan\u2019s Cultural Diplomacy Content Writer role.",
+    "ai_overall_score": 80,
+    "ai_verdict": "Good Fit",
+    "ai_strengths": [
+      "Native Arabic and English skills",
+      "Experience in ESL and academic supervision"
+    ],
+    "ai_gaps": [
+      "No direct translation experience"
+    ],
+    "ai_recommendation": "Waleed Ballag's strong background in ESL and academic supervision makes him a strong fit for the Taiwan\u2019s Cultural Diplomacy Content Writer role. His ability to adapt to a remote environment and align with a career in translation or academic services is a significant strength.",
+    "ai_interview_prep": [
+      "What is your experience in academic supervision and research guidance?",
+      "Can you share an example of how you adapted English materials into natural Chinese for a client?"
+    ],
+    "ai_technical_skills": 60,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 85,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Content needs, scaling blog/docs",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_Taiwan\u2019s Cultural Diplomacy Content Writer_20260909.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-09T17:05:09.345675+00:00"
   },
   {
     "title": "Freelance Copywriter",

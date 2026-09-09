@@ -452,5 +452,41 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-09T09:35:29.455335+00:00"
+  },
+  "Letuelezioni": {
+    "name": "Letuelezioni",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T17:03:53.884201+00:00"
+  },
+  "TaskUs": {
+    "name": "TaskUs",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T17:03:53.884920+00:00"
+  },
+  "Wholesome Book Publishing & Authority House": {
+    "name": "Wholesome Book Publishing & Authority House",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T17:03:53.885523+00:00"
   }
 }

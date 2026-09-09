@@ -891,5 +891,52 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-09T09:37:03.236683+00:00",
+    "matched_count": 5,
+    "all_count": 4477,
+    "jobs": [
+      {
+        "title": "Efficient Excel Data Entry",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/google-sheets/Efficient-Excel-Data-Entry.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Copy Digital Data into Word",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/copywriting/Copy-Digital-Data-into-Word.html",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
+        "company": "Jobgether",
+        "url": "https://br.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-jobgether-4463814603",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Entry-Level English Teacher",
+        "company": "English 1",
+        "url": "https://ca.linkedin.com/jobs/view/entry-level-english-teacher-at-english-1-4464970898",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Web Content Editor",
+        "company": "Houzeo",
+        "url": "https://in.linkedin.com/jobs/view/web-content-editor-at-houzeo-4463003497",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

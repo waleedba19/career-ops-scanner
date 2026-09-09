@@ -440,5 +440,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-08T22:18:28.511332+00:00"
+  },
+  "Jobgether": {
+    "name": "Jobgether",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-09T09:35:29.455335+00:00"
   }
 }

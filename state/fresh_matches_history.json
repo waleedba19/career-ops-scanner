@@ -9979,6 +9979,112 @@
     "scan_date": "2026-09-10T23:18:00.317051+00:00"
   },
   {
+    "title": "WordPress & GHL Virtual Assistant",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/elementor/WordPress-GHL-Virtual-Assistant.html",
+    "location": "Remote (Worldwide)",
+    "posted": "Thu, 10 Sep 2026 19:25:00 -0400",
+    "description": "I\u2019m looking for a tech-savvy virtual assistant who can jump straight into my WordPress sites, work confidently inside Elementor, and keep everything running smoothly while we scale. Day-to-day you\u2019ll handle... (Budget: $2 - $8 CAD, Jobs: Canva, CRM, Data Entry, Elementor, GoHighLevel, HTML, Virtual Assistant, WordPress)",
+    "salary": "",
+    "source": "freelancer",
+    "postedISO": "2026-09-10T19:25:00-04:00",
+    "score": 97,
+    "category": "Admin",
+    "why": [
+      "data entry (description)",
+      "virtual assistant administrative assistant admin assistant executive assistant (title+description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.31227948055555554,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 85,
+        "reason": "Job requires WordPress, Elementor, and GHL, which are relevant to the candidate's skills and experience."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "Candidate has experience in ESL teaching, academic supervision, and legal translation, which aligns well with the job's requirements."
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "The job is remote, flexible, and academic-oriented, which matches the candidate's skills and career goals."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "The job is remote and worldwide compatible, with no specific country or visa requirements."
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "The job aligns with the candidate's career goals of securing stable remote work in translation or ESL teaching, building long-term client relationships, and contributing to graduate-level research supervision."
+      },
+      "overall_score": 85,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Remote work experience",
+        "Academic supervision skills",
+        "Strong language skills"
+      ],
+      "gaps": [
+        "None"
+      ],
+      "recommendation": "Waleed Ballag's skills and experience align well with the job requirements, making this a strong fit. He can contribute effectively to the WordPress & GHL Virtual Assistant role.",
+      "interview_prep": "1. Can you share an example of a time when you supervised a research study in an academic setting? 2. How do you handle data analysis using SPSS? 3. Describe a challenging translation project you've worked on.",
+      "one_line_summary": "Waleed Ballag's skills and experience make this a strong fit for the WordPress & GHL Virtual Assistant role."
+    },
+    "ai_insight": "Waleed Ballag's skills and experience make this a strong fit for the WordPress & GHL Virtual Assistant role.",
+    "ai_overall_score": 85,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Remote work experience",
+      "Academic supervision skills",
+      "Strong language skills"
+    ],
+    "ai_gaps": [
+      "None"
+    ],
+    "ai_recommendation": "Waleed Ballag's skills and experience align well with the job requirements, making this a strong fit. He can contribute effectively to the WordPress & GHL Virtual Assistant role.",
+    "ai_interview_prep": "1. Can you share an example of a time when you supervised a research study in an academic setting? 2. How do you handle data analysis using SPSS? 3. Describe a challenging translation project you've worked on.",
+    "ai_technical_skills": 85,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_WordPress & GHL Virtual Assistant_20260911.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_WordPress & GHL Virtual Assistant_20260911.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-10T23:44:49.418117+00:00"
+  },
+  {
     "title": "Freelance Copywriter",
     "company": "Coalition Technologies",
     "url": "https://remotive.com/remote-jobs/writing/freelance-copywriter-1749306",

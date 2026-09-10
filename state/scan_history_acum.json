@@ -1203,5 +1203,20 @@
     "matched_count": 0,
     "all_count": 2428,
     "jobs": []
+  },
+  {
+    "date": "2026-09-10T22:09:45.211767+00:00",
+    "matched_count": 1,
+    "all_count": 2431,
+    "jobs": [
+      {
+        "title": "Automotive Content Proofreader & Post-Editor (M/F/D)",
+        "company": "Infopro Digital Automotive",
+        "url": "https://it.linkedin.com/jobs/view/automotive-content-proofreader-post-editor-m-f-d-at-infopro-digital-automotive-4463910831",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

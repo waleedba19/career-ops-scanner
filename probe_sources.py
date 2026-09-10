@@ -185,6 +185,27 @@ def count_items(adapter: str, body: str, content_type: str) -> tuple[int, list[s
             titles = re.findall(r"<entry>[\s\S]*?<title[^>]*>([\s\S]*?)</title>", b)
     elif adapter == "personio_xml":
         titles = re.findall(r"<position>[\s\S]*?<name>([\s\S]*?)</name>", b)
+    elif adapter == "bamboohr_json":
+        d = _json(b)
+        jobs = _first_list(d, ["jobs", "results"])
+        titles = [(j.get("title") or j.get("name") or "") for j in jobs if isinstance(j, dict)]
+    elif adapter == "breezy_json":
+        d = _json(b)
+        jobs = d if isinstance(d, list) else []
+        titles = [j.get("name", "") for j in jobs if isinstance(j, dict)]
+    elif adapter == "pinpoint_json":
+        d = _json(b)
+        jobs = _first_list(d, ["jobs", "data"])
+        titles = [j.get("title", "") for j in jobs if isinstance(j, dict)]
+    elif adapter == "rippling_json":
+        d = _json(b)
+        jobs = _first_list(d, ["jobs", "results"])
+        titles = [j.get("title", "") for j in jobs if isinstance(j, dict)]
+    elif adapter == "jobvite_rss":
+        items = re.findall(r"<item>[\s\S]*?</item>", b)
+        for it in items:
+            m = re.search(r"<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?</title>", it)
+            titles.append((m.group(1) if m else "").strip())
     elif adapter == "json_jobs":
         d = _json(b)
         jobs = _first_list(d, ["jobs", "results", "data", "postings", "offers", "items"])

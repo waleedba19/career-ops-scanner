@@ -536,5 +536,52 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-09T22:15:30.308843+00:00"
+  },
+  "ElevenLabs": {
+    "name": "ElevenLabs",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-10T09:36:46.784139+00:00"
+  },
+  "Invisible (AI Trainer projects)": {
+    "name": "Invisible (AI Trainer projects)",
+    "legitimacy_score": 70,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Uses professional ATS"
+    ],
+    "last_updated": "2026-09-10T09:36:46.784919+00:00"
+  },
+  "Stride, Inc.": {
+    "name": "Stride, Inc.",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-10T09:36:46.785865+00:00"
+  },
+  "4level1": {
+    "name": "4level1",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-10T09:36:46.786502+00:00"
   }
 }

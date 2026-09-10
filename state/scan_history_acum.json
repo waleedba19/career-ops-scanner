@@ -1119,5 +1119,60 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-10T16:57:13.953038+00:00",
+    "matched_count": 6,
+    "all_count": 4728,
+    "jobs": [
+      {
+        "title": "PDF Text Data Entry",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/copy-typing/PDF-Text-Data-Entry-40703550.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "English Lecture Audio Transcription",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/academic-writing/English-Lecture-Audio-Transcription-40703433",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Social Media Hype Video Editor Needed",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/adobe-premiere-pro/Social-Media-Hype-Video-Editor",
+        "score": 92,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Arabic Copywriter",
+        "company": "Styli",
+        "url": "https://ae.linkedin.com/jobs/view/arabic-copywriter-at-styli-4463480022",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      },
+      {
+        "title": "Guest Experience Expert - Arabic Speaker",
+        "company": "Aloft Hotels",
+        "url": "https://ae.linkedin.com/jobs/view/guest-experience-expert-arabic-speaker-at-aloft-hotels-4464121950",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Hiring now! Entry-Level English Teacher (ESL) | No Experience Needed",
+        "company": "English 1",
+        "url": "https://nz.linkedin.com/jobs/view/hiring-now%21-entry-level-english-teacher-esl-no-experience-needed-at-english-1-4465399796",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

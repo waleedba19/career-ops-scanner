@@ -140,6 +140,35 @@ def test_parsers():
                                                  "date": {"created": "2026-09-06T00:00:00+00:00"}, "country": [{"name": "Libya"}], "body": "Interpret."}}]})
     check("reliefweb: parsed", shaped(rw) and rw[0]["company"] == "IOM" and rw[0]["location"] == "Libya")
 
+    # New fetchers (added 2026-09-10)
+    remowork_html = """
+    <a href="https://remowork.life/jobs/arabic-translator-123"><div>Arabic Translator</div><div>Remote Co</div><div>Remote</div></a>
+    <a href="https://remowork.life/jobs/esl-teacher-456"><div>ESL Teacher</div><div>Language School</div><div>Worldwide</div></a>
+    <a href="/about"><div>About</div></a>
+    """
+    rw_jobs = V.parse_remowork(remowork_html)
+    check("remowork: 2 jobs parsed, nav ignored", len(rw_jobs) == 2 and shaped(rw_jobs))
+    check("remowork: title/company/location", rw_jobs[0]["title"] == "Arabic Translator" and rw_jobs[0]["company"] == "Remote Co")
+
+    eslbase_html = """
+    <a href="https://www.eslbase.com/teaching-jobs/esl-teacher-japan-123"><div>ESL Teacher</div><div>Japan Language School</div><div>Tokyo, Japan</div></a>
+    <a href="https://www.eslbase.com/teaching-jobs/online-tutor-456"><div>Online English Tutor</div><div>EduCorp</div><div>Remote</div></a>
+    """
+    esl = V.parse_eslbase(eslbase_html)
+    check("eslbase: 2 jobs parsed", len(esl) == 2 and shaped(esl))
+    check("eslbase: title/company", esl[0]["title"] == "ESL Teacher" and esl[0]["company"] == "Japan Language School")
+
+    recruitee = V.parse_recruitee({"offers": [{"title": "Arabic Content Moderator", "location": "Remote", "remote": True,
+                                                "careers_url": "https://lingoda.recruitee.com/o/arabic-content-moderator",
+                                                "created_at": "2026-09-01", "description": "<p>Moderate content</p>"}]}, "Lingoda")
+    check("recruitee: parsed + remote flag", shaped(recruitee) and recruitee[0]["location"].startswith("Remote") and recruitee[0]["company"] == "Lingoda")
+
+    teamtailor_xml = """
+    <rss><channel><item><title>ESL Teacher</title><link>https://novakid.teamtailor.com/jobs/esl-teacher</link><description>Teach English</description></item></channel></rss>
+    """
+    tt = V.parse_teamtailor_rss(teamtailor_xml, "Novakid")
+    check("teamtailor: parsed from RSS", shaped(tt) and tt[0]["title"] == "ESL Teacher" and tt[0]["company"] == "Novakid")
+
 
 # ── 2. keyed fetchers are no-ops without secrets ───────────────────────────
 
@@ -256,11 +285,15 @@ def test_wiring():
     from fetchers.registry import FETCHERS, TIER_MAP
     names = {n for n, _, _, _ in FETCHERS}
     for n in ("linkedin", "freelancer_api", "jobicy_tags", "impactpool", "greenhouse_profile", "ashby", "workable",
-              "smartrecruiters", "themuse", "jsearch", "adzuna", "jooble", "reliefweb", "freelancer"):
+              "smartrecruiters", "themuse", "jsearch", "adzuna", "jooble", "reliefweb", "freelancer",
+              "remowork", "eslbase", "recruitee", "teamtailor"):
         check(f"registry has {n}", n in names)
     check("freelancer promoted to tier 1", TIER_MAP.get("freelancer") == 1)
     check("linkedin is tier 1", TIER_MAP.get("linkedin") == 1)
-    for var in ("GREENHOUSE_PROFILE_BOARDS", "ASHBY_COMPANIES", "WORKABLE_COMPANIES", "SMARTRECRUITERS_COMPANIES"):
+    check("remowork is tier 2", TIER_MAP.get("remowork") == 2)
+    check("eslbase is tier 2", TIER_MAP.get("eslbase") == 2)
+    for var in ("GREENHOUSE_PROFILE_BOARDS", "ASHBY_COMPANIES", "WORKABLE_COMPANIES", "SMARTRECRUITERS_COMPANIES",
+                "RECRUITEE_COMPANIES", "TEAMTAILOR_COMPANIES"):
         lst = getattr(config, var)
         check(f"config.{var} well-formed", all(isinstance(t, tuple) and len(t) == 2 and all(isinstance(x, str) and x for x in t) for t in lst) and lst)
     check("blocked list = probe-confirmed set", set(config.PROBE_BLOCKED_SOURCES) == {"mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz"})
@@ -268,7 +301,7 @@ def test_wiring():
           and scanner.PROBE_BLOCKED_SOURCES == config.PROBE_BLOCKED_SOURCES)
     for fn in ("fetch_linkedin_guest", "fetch_freelancer_api", "fetch_jobicy_tags", "fetch_impactpool", "fetch_themuse",
                "fetch_ashby_board", "fetch_workable_board", "fetch_smartrecruiters_board", "fetch_jsearch", "fetch_adzuna_keyed",
-               "fetch_jooble_keyed", "fetch_reliefweb"):
+               "fetch_jooble_keyed", "fetch_reliefweb", "fetch_remowork", "fetch_eslbase", "fetch_recruitee_board", "fetch_teamtailor_board"):
         check(f"scanner imports {fn}", callable(getattr(scanner, fn, None)))
     src = Path("scanner.py").read_text(encoding="utf-8")
     for nm in ("mostaql", "wuzzuf", "bayt", "gulftalent", "proz"):

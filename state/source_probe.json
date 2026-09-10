@@ -1,6 +1,6 @@
 {
  "meta": {
-  "ran_at": "2026-09-07 08:34 UTC",
+  "ran_at": "2026-09-10 23:39 UTC",
   "where": "github-actions",
   "concurrency": 6,
   "timeout": 15
@@ -15,12 +15,12 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 119,
+   "latency_ms": 102,
    "items": 18,
    "sample": [
-    "Sales Jedi",
-    "SaaS Product Support Jedi",
-    "Freelance Writer"
+    "Inside Sales Contractor",
+    "Tier III Service Desk Engineer",
+    "Sales Jedi"
    ],
    "detail": "209193 bytes, application/json",
    "url": "https://remotive.com/api/remote-jobs?limit=20"
@@ -34,14 +34,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 637,
+   "latency_ms": 927,
    "items": 20,
    "sample": [
-    "International Audio/Video Remote Armenian Interpreter",
-    "International Audio/Video Remote Arabic Interpreters",
-    "International Audio/Video Remote Afghani/Dari Interpreter"
+    "IT Associate",
+    "Enterprise Sales VP, Labor and Trust",
+    "Product Manager, Orchestrator"
    ],
-   "detail": "130125 bytes, application/json",
+   "detail": "131216 bytes, application/json",
    "url": "https://jobicy.com/api/v2/remote-jobs?count=20&geo=anywhere"
   },
   {
@@ -53,14 +53,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 366,
-   "items": 100,
+   "latency_ms": 532,
+   "items": 99,
    "sample": [
-    "AI Response Analyst",
-    "Junior Crypto Analyst & Trader",
-    "Customer Support & Success Specialist"
+    "Business Development Manager",
+    "Quality Dispense Technician North",
+    "Social Comms"
    ],
-   "detail": "378318 bytes, application/json",
+   "detail": "645609 bytes, application/json",
    "url": "https://remoteok.com/api"
   },
   {
@@ -72,14 +72,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 419,
-   "items": 91,
+   "latency_ms": 517,
+   "items": 90,
    "sample": [
-    "Veracode: Principal Account Executive",
-    "Legion: Director of Production Engineering",
-    "Fastly: Senior SRE - Networks"
+    "Toptal: Power Platform Solutions Architect",
+    "TestGorilla: Sr. People &amp; Talent Operations Partner",
+    "Coaching.com: Membership Coordinator"
    ],
-   "detail": "968267 bytes, application/rss+xml",
+   "detail": "899220 bytes, application/rss+xml",
    "url": "https://weworkremotely.com/remote-jobs.rss"
   },
   {
@@ -91,14 +91,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 157,
+   "latency_ms": 126,
    "items": 20,
    "sample": [
-    "Change Business Partner - MRP",
-    "Senior Associate, Underwriter (Remote, any state, US)",
-    "Principal Technology Architect"
+    "Senior Graphic Designer - AM",
+    "Senior AI Product Manager, EMEA",
+    "Lead Analyst, Credit Risk Strategy"
    ],
-   "detail": "156881 bytes, application/json",
+   "detail": "154050 bytes, application/json",
    "url": "https://himalayas.app/jobs/api?limit=20"
   },
   {
@@ -110,14 +110,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 203,
+   "latency_ms": 308,
    "items": 250,
    "sample": [
-    "Performance Marketing Manager (m/w/d) - Berlin",
-    "Senior BI Developer (m/w/d)",
-    "Buchhalter Mieten (m/w/d) Teilzeit"
+    "Data Engineer:in / IT Support (m/w/d)",
+    "Performance Marketing Working Student – Talent Acquisition ",
+    "Mitarbeiter /Leiter (w|m|d) interne Qualitätssicherung Wirtschaftsprüfung – Vollzeit oder Teilzeit"
    ],
-   "detail": "2329748 bytes, application/json",
+   "detail": "2254881 bytes, application/json",
    "url": "https://www.arbeitnow.com/api/job-board-api"
   },
   {
@@ -129,14 +129,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 49,
+   "latency_ms": 161,
    "items": 20,
    "sample": [
-    "Edit Konten E-Learning Teknologi",
-    "Middle Eastern Buyers&rsquo; Sourcing Agent | Garment &amp; Apparel Manufacturing &ndash; Bangladesh Factory",
-    "Recruitment Specialist for Talent Acquisition"
+    "Thorough Code Review of Decentralized, Encrypted Social Networking App, Anti-Surveillance Tool, and Network Monitoring Tool",
+    "Bangun Toko Shopify Minimalis Modern",
+    "WordPress &amp; GHL Virtual Assistant"
    ],
-   "detail": "73406 bytes, text/xml",
+   "detail": "74361 bytes, text/xml",
    "url": "https://www.freelancer.com/rss.xml"
   },
   {
@@ -148,12 +148,12 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 16,
+   "latency_ms": 22,
    "items": 18,
    "sample": [
-    "Sales Jedi",
-    "SaaS Product Support Jedi",
-    "Freelance Writer"
+    "Inside Sales Contractor",
+    "Tier III Service Desk Engineer",
+    "Sales Jedi"
    ],
    "detail": "209193 bytes, application/json",
    "url": "https://remotive.com/api/remote-jobs?search=translator&limit=50"
@@ -167,12 +167,12 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 29,
+   "latency_ms": 21,
    "items": 18,
    "sample": [
-    "Sales Jedi",
-    "SaaS Product Support Jedi",
-    "Freelance Writer"
+    "Inside Sales Contractor",
+    "Tier III Service Desk Engineer",
+    "Sales Jedi"
    ],
    "detail": "209193 bytes, application/json",
    "url": "https://remotive.com/api/remote-jobs?search=teacher&limit=50"
@@ -186,12 +186,12 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 12,
+   "latency_ms": 19,
    "items": 18,
    "sample": [
-    "Sales Jedi",
-    "SaaS Product Support Jedi",
-    "Freelance Writer"
+    "Inside Sales Contractor",
+    "Tier III Service Desk Engineer",
+    "Sales Jedi"
    ],
    "detail": "209193 bytes, application/json",
    "url": "https://remotive.com/api/remote-jobs?search=writer&limit=50"
@@ -205,14 +205,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 714,
-   "items": 42,
+   "latency_ms": 1115,
+   "items": 44,
    "sample": [
     "Translation Project Manager",
     "Alliance Manager, Translational Medicine",
-    "Junior Web Builder (Fully Remote, PH-Based Only, Fresh Grads Welcome to Apply)"
+    "Senior Brand Designer, Experiential"
    ],
-   "detail": "302315 bytes, application/json",
+   "detail": "317999 bytes, application/json",
    "url": "https://jobicy.com/api/v2/remote-jobs?count=50&tag=translation"
   },
   {
@@ -224,14 +224,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 727,
+   "latency_ms": 1147,
    "items": 50,
    "sample": [
-    "Specialty Insurance Underwriter/Coverage Attorney/Consultant/Professional (Contract)",
-    "Senior Solutions Architect - ACE",
-    "Network IT Specialist"
+    "AI Engineer - FDE (Forward Deployed Engineer)",
+    "Work from home as a Private Online German Tutor for Ukrainians - Part Time",
+    "Senior Customer Marketing Manager"
    ],
-   "detail": "364730 bytes, application/json",
+   "detail": "371293 bytes, application/json",
    "url": "https://jobicy.com/api/v2/remote-jobs?count=50&tag=teaching"
   },
   {
@@ -243,14 +243,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 345,
+   "latency_ms": 831,
    "items": 100,
    "sample": [
+    "Social Comms",
     "AI Response Analyst",
-    "courier",
     "Senior Level Designer"
    ],
-   "detail": "691061 bytes, application/json",
+   "detail": "697251 bytes, application/json",
    "url": "https://remoteok.com/api?tag=writing"
   },
   {
@@ -262,14 +262,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 159,
-   "items": 49,
+   "latency_ms": 196,
+   "items": 50,
    "sample": [
-    "Ace Ventures: Executive Personal Assistant to the Founder (Remote, UAE or Europe)",
-    "Reddit: Director, Privacy Legal",
-    "LawnStarter: Software Engineering Manager"
+    "TestGorilla: Sr. People &amp; Talent Operations Partner",
+    "Toptal: Senior Security Compliance Consultant (SOC 2 &amp; GRC Specialist)",
+    "Salesloft: Enterprise Account Director"
    ],
-   "detail": "366733 bytes, application/rss+xml",
+   "detail": "389711 bytes, application/rss+xml",
    "url": "https://weworkremotely.com/categories/all-other-remote-jobs.rss"
   },
   {
@@ -281,14 +281,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 372,
-   "items": 32,
+   "latency_ms": 823,
+   "items": 43,
    "sample": [
-    "AI Image Evaluation Analyst",
-    "AI Content Analyst (No Experience Required)",
-    "Data Analyst (No Experience Required)"
+    "Client Success Manager",
+    "Video Creator (100% remote)",
+    "Senior Java & React Developer"
    ],
-   "detail": "132332 bytes, application/json",
+   "detail": "199565 bytes, application/json",
    "url": "https://www.workingnomads.com/api/exposed_jobs/"
   },
   {
@@ -300,14 +300,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 159,
-   "items": 829,
+   "latency_ms": 252,
+   "items": 831,
    "sample": [
     "3D Modeling & Python Specialist - Freelance AI Trainer Project",
     "Accounting Specialist - Freelance AI Trainer Project",
     "Actuarial Science Specialist - Freelance AI Trainer Project"
    ],
-   "detail": "3542233 bytes, application/json",
+   "detail": "3555847 bytes, application/json",
    "url": "https://boards-api.greenhouse.io/v1/boards/agency/jobs?content=true"
   },
   {
@@ -319,7 +319,7 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 80,
+   "latency_ms": 79,
    "items": 10,
    "sample": [
     "Accounts Payable, Spend Management Coordinator",
@@ -338,7 +338,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 33,
+   "latency_ms": 42,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -353,7 +353,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 21,
+   "latency_ms": 45,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -368,7 +368,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 50,
+   "latency_ms": 122,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -383,7 +383,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 40,
+   "latency_ms": 137,
    "items": 0,
    "sample": [],
    "detail": "28 bytes, application/json",
@@ -398,14 +398,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 52,
-   "items": 96,
+   "latency_ms": 99,
+   "items": 101,
    "sample": [
     "Infrastructure Engineer ",
     "Strategic Project Lead",
     "Strategic Projects Lead, Deeptune"
    ],
-   "detail": "1118864 bytes, application/json",
+   "detail": "1188503 bytes, application/json",
    "url": "https://api.ashbyhq.com/posting-api/job-board/mercor"
   },
   {
@@ -417,7 +417,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 20,
+   "latency_ms": 38,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -432,7 +432,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 8,
+   "latency_ms": 17,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -447,7 +447,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 20,
+   "latency_ms": 107,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -462,14 +462,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 35,
-   "items": 26,
+   "latency_ms": 50,
+   "items": 22,
    "sample": [
     "AI Engagement Lead",
     "Chief of Staff (CEO's Office)",
     "Client Director, Frontier Data - US"
    ],
-   "detail": "444913 bytes, application/json",
+   "detail": "394170 bytes, application/json",
    "url": "https://boards-api.greenhouse.io/v1/boards/turing/jobs?content=true"
   },
   {
@@ -481,7 +481,7 @@
    "suggested_tier": 1,
    "status": "empty",
    "http": 200,
-   "latency_ms": 130,
+   "latency_ms": 194,
    "items": 0,
    "sample": [],
    "detail": "46 bytes, application/json",
@@ -496,7 +496,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 109,
+   "latency_ms": 194,
    "items": 0,
    "sample": [],
    "detail": "53 bytes, application/json",
@@ -511,7 +511,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 19,
+   "latency_ms": 32,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -526,7 +526,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 88,
+   "latency_ms": 144,
    "items": 0,
    "sample": [],
    "detail": "46 bytes, application/json",
@@ -541,7 +541,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 20,
+   "latency_ms": 33,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -556,7 +556,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 369,
+   "latency_ms": 436,
    "items": 0,
    "sample": [],
    "detail": "52 bytes, application/json",
@@ -571,7 +571,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 337,
+   "latency_ms": 420,
    "items": 0,
    "sample": [],
    "detail": "52 bytes, application/json",
@@ -586,7 +586,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 350,
+   "latency_ms": 600,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -601,7 +601,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 22,
+   "latency_ms": 36,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -616,7 +616,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 20,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -631,14 +631,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 56,
-   "items": 79,
+   "latency_ms": 410,
+   "items": 94,
    "sample": [
     "Software EngineerCoding$75 – $150+ / hr312 hired recently",
     "GeneralistGeneral$25 – $50 / hr452 hired recently",
     "Data ScientistData &amp; ML$75 – $150+ / hr92 hired recently"
    ],
-   "detail": "99494 bytes, text/html",
+   "detail": "107072 bytes, text/html",
    "url": "https://www.dataannotation.tech/"
   },
   {
@@ -650,7 +650,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 319,
+   "latency_ms": 59,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -665,7 +665,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 26,
+   "latency_ms": 34,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -680,7 +680,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 315,
+   "latency_ms": 67,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -695,7 +695,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 23,
+   "latency_ms": 91,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -710,7 +710,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 21,
+   "latency_ms": 32,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -725,7 +725,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 19,
+   "latency_ms": 34,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -740,7 +740,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 330,
+   "latency_ms": 376,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -755,7 +755,7 @@
    "suggested_tier": 1,
    "status": "empty",
    "http": 200,
-   "latency_ms": 338,
+   "latency_ms": 421,
    "items": 0,
    "sample": [],
    "detail": "52 bytes, application/json",
@@ -770,14 +770,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 385,
-   "items": 48,
+   "latency_ms": 440,
+   "items": 53,
    "sample": [
-    "ゲームエンジンプログラマー",
-    "Video Game Engine Programmer",
-    "Unreal Engineプログラマー"
+    "Technical Artist ",
+    "Game Designer – Japan & Global Game Development",
+    "Game Programmer – Japan & Global Game Development"
    ],
-   "detail": "69787 bytes, application/json",
+   "detail": "76616 bytes, application/json",
    "url": "https://api.smartrecruiters.com/v1/companies/KeywordsStudios/postings"
   },
   {
@@ -789,7 +789,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 34,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -804,7 +804,7 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 374,
+   "latency_ms": 404,
    "items": 18,
    "sample": [
     "Account Manager - Client Services",
@@ -823,10 +823,10 @@
    "suggested_tier": 3,
    "status": "empty",
    "http": 200,
-   "latency_ms": 347,
+   "latency_ms": 330,
    "items": 0,
    "sample": [],
-   "detail": "243621 bytes, text/html",
+   "detail": "243745 bytes, text/html",
    "url": "https://www.transperfect.com/about/careers"
   },
   {
@@ -838,7 +838,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 352,
+   "latency_ms": 402,
    "items": 0,
    "sample": [],
    "detail": "52 bytes, application/json",
@@ -853,7 +853,7 @@
    "suggested_tier": 3,
    "status": "error",
    "http": 0,
-   "latency_ms": 109,
+   "latency_ms": 604,
    "items": 0,
    "sample": [],
    "detail": "ClientResponseError: 400, message='Got more than 8190 bytes when reading: b\"default-src \\'self\\' \\'unsafe-inlin",
@@ -868,7 +868,7 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 335,
+   "latency_ms": 378,
    "items": 0,
    "sample": [],
    "detail": "52 bytes, application/json",
@@ -883,7 +883,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 111,
+   "latency_ms": 49,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -898,7 +898,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 29,
+   "latency_ms": 114,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -913,7 +913,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 31,
+   "latency_ms": 114,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -928,7 +928,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 26,
+   "latency_ms": 106,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -943,7 +943,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 43,
+   "latency_ms": 114,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -958,7 +958,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 19,
+   "latency_ms": 32,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -973,7 +973,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 20,
+   "latency_ms": 46,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -988,7 +988,7 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 452,
+   "latency_ms": 343,
    "items": 5,
    "sample": [
     "07\nCareers",
@@ -1007,7 +1007,7 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 476,
+   "latency_ms": 1026,
    "items": 2,
    "sample": [
     "العربية",
@@ -1025,7 +1025,7 @@
    "suggested_tier": 3,
    "status": "empty",
    "http": 200,
-   "latency_ms": 2458,
+   "latency_ms": 5641,
    "items": 0,
    "sample": [],
    "detail": "132990 bytes, text/html",
@@ -1040,7 +1040,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 455,
+   "latency_ms": 297,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -1055,7 +1055,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 23,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1070,7 +1070,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 81,
+   "latency_ms": 19,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1085,7 +1085,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 36,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1100,7 +1100,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 410,
+   "latency_ms": 478,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1115,7 +1115,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 19,
+   "latency_ms": 36,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1130,7 +1130,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 162,
+   "latency_ms": 251,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1145,7 +1145,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 393,
+   "latency_ms": 487,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1160,7 +1160,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 429,
-   "latency_ms": 656,
+   "latency_ms": 1032,
    "items": 0,
    "sample": [],
    "detail": "HTTP 429",
@@ -1175,7 +1175,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 22,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1190,7 +1190,7 @@
    "suggested_tier": 1,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 82,
+   "latency_ms": 18,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1205,7 +1205,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 171,
+   "latency_ms": 263,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1220,7 +1220,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 28,
+   "latency_ms": 108,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1235,7 +1235,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 20,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1250,7 +1250,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 24,
+   "latency_ms": 35,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1265,10 +1265,10 @@
    "suggested_tier": 1,
    "status": "empty",
    "http": 200,
-   "latency_ms": 506,
+   "latency_ms": 792,
    "items": 0,
    "sample": [],
-   "detail": "186380 bytes, text/html",
+   "detail": "186382 bytes, text/html",
    "url": "https://www.nagwa.com/en/careers/"
   },
   {
@@ -1280,7 +1280,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 33,
+   "latency_ms": 104,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1295,7 +1295,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 344,
+   "latency_ms": 18,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1310,7 +1310,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 248,
+   "latency_ms": 914,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1325,10 +1325,10 @@
    "suggested_tier": 3,
    "status": "empty",
    "http": 200,
-   "latency_ms": 100,
+   "latency_ms": 1771,
    "items": 0,
    "sample": [],
-   "detail": "213025 bytes, text/html",
+   "detail": "213026 bytes, text/html",
    "url": "https://www.almentor.net/careers"
   },
   {
@@ -1340,7 +1340,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 147,
+   "latency_ms": 19,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1355,7 +1355,7 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 41,
+   "latency_ms": 122,
    "items": 19,
    "sample": [
     "Business Development/ Sales Executive - EMEA | Turkish Speaking Preferred",
@@ -1374,7 +1374,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 179,
+   "latency_ms": 263,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1389,7 +1389,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 93,
+   "latency_ms": 463,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1404,7 +1404,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 36,
+   "latency_ms": 126,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1531,14 +1531,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 468,
+   "latency_ms": 346,
    "items": 20,
    "sample": [
-    "(Contract)  IDAM Analyst",
     "Analyst,Underwriter",
-    "Analyst,Underwriter"
+    "Analyst,Underwriter",
+    "P&C Middle Market Energy Renewal Underwriter"
    ],
-   "detail": "93210 bytes, application/json",
+   "detail": "96044 bytes, application/json",
    "url": "https://www.themuse.com/api/public/jobs?page=1&category=Writing%20and%20Editing&level=Mid%20Level"
   },
   {
@@ -1550,14 +1550,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 420,
+   "latency_ms": 429,
    "items": 10,
    "sample": [
-    "Linguist — Arabic &amp; Spanish (Localization &amp; CX)",
-    "Localization Specialist",
-    "Independent Contractor Translators &amp; Interpreters – Multiple Languages"
+    "Arabic Linguist CAT II - CENTCOM",
+    "مترجم طبي عربي–تركي",
+    "Arabic Copywriter"
    ],
-   "detail": "30488 bytes, text/html",
+   "detail": "30855 bytes, text/html",
    "url": "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=arabic%20translator&location=Worldwide&f_WT=2&f_TPR=r86400&start=0"
   },
   {
@@ -1569,14 +1569,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 429,
+   "latency_ms": 517,
    "items": 10,
    "sample": [
-    "Linguist — Arabic &amp; Spanish (Localization &amp; CX)",
-    "Language Enabled OSINT Collector (WMD Focused)",
-    "Linguist I"
+    "Examiner - International GCSE - Arabic as a First Language",
+    "Arabic Linguist CAT II - CENTCOM",
+    "Search Evaluator Specialist - Arabic Speaking (Third-Party Associate)"
    ],
-   "detail": "31164 bytes, text/html",
+   "detail": "31061 bytes, text/html",
    "url": "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=arabic%20linguist&location=Worldwide&f_WT=2&f_TPR=r86400&start=0"
   },
   {
@@ -1588,14 +1588,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 456,
+   "latency_ms": 425,
    "items": 10,
    "sample": [
+    "Reading Tutor – PH",
     "English Tutor",
-    "Product Trainer",
-    "Hourly-Paid Teacher of English"
+    "Corporate English Trainer"
    ],
-   "detail": "30569 bytes, text/html",
+   "detail": "30671 bytes, text/html",
    "url": "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=esl%20teacher%20online&location=Worldwide&f_WT=2&f_TPR=r86400&start=0"
   },
   {
@@ -1607,14 +1607,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 455,
+   "latency_ms": 453,
    "items": 10,
    "sample": [
-    "Content Writer/Editor",
-    "English Editor (Cover Letter Required)",
-    "Scientific Editor, Medicine and Life Sciences (Work-from-home)"
+    "Editorial Proofreader | US Shift (7:00 PM Onwards)",
+    "Editor: Bioinformatics (Work-from-home)",
+    "Marketing Copy Editor &amp; Proofreader"
    ],
-   "detail": "30644 bytes, text/html",
+   "detail": "29526 bytes, text/html",
    "url": "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=proofreader%20editor&location=Worldwide&f_WT=2&f_TPR=r86400&start=0"
   },
   {
@@ -1626,14 +1626,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 165,
+   "latency_ms": 199,
    "items": 20,
    "sample": [
-    "Arabic B2G Profile & Cards",
-    "Complete B2C Travel Booking Platform for TAHLEEQ TRAVEL & TOURISM",
-    "تصميم ملف تعريفي احترافي باللغة العربية لبوابة البيع المباشر"
+    "Polish Speakers Needed for 813 Short Sentence Voice Recording Project",
+    " Egypt Arabic Speakers Needed for 438 Short Sentence Voice Recording Project",
+    "Convert MRMS GRIB2 to GEMPAK"
    ],
-   "detail": "73970 bytes, application/json",
+   "detail": "64042 bytes, application/json",
    "url": "https://www.freelancer.com/api/projects/0.1/projects/active/?query=arabic%20translation&limit=20&compact=true&full_description=false"
   },
   {
@@ -1645,14 +1645,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 183,
+   "latency_ms": 222,
    "items": 20,
    "sample": [
-    "Mexico-Based E-Commerce Admin Consultant",
-    "Write 250-Page Managerial Economics Textbook",
-    "Remote Telemarketer - Philippines (Experienced)"
+    "AI Training: Image Reviewing & Annotation -- 2",
+    "AI Training Subject Matter Expert — Accounting",
+    "SEO Content Writer for Diverse Topics"
    ],
-   "detail": "25977 bytes, application/json",
+   "detail": "26368 bytes, application/json",
    "url": "https://www.freelancer.com/api/projects/0.1/projects/active/?query=english%20teacher&limit=20&compact=true"
   },
   {
@@ -1664,14 +1664,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 133,
+   "latency_ms": 216,
    "items": 20,
    "sample": [
-    "YouTube Documentary-Style Video Editor Required",
-    "Engaging Promotional Video Editing",
-    "AI Video Editing Research"
+    "Quick Chrome Addon Enhancement",
+    "Female Content Creator & Video Editor Needed",
+    "YouTube Gaming Video Editor"
    ],
-   "detail": "25973 bytes, application/json",
+   "detail": "25612 bytes, application/json",
    "url": "https://www.freelancer.com/api/projects/0.1/projects/active/?query=proofreading%20editing&limit=20&compact=true"
   },
   {
@@ -1683,7 +1683,7 @@
    "suggested_tier": 3,
    "status": "empty",
    "http": 202,
-   "latency_ms": 233,
+   "latency_ms": 223,
    "items": 0,
    "sample": [],
    "detail": "2371 bytes, text/html",
@@ -1696,12 +1696,12 @@
    "adapter": "html",
    "confidence": "guess",
    "suggested_tier": 3,
-   "status": "not_found",
-   "http": 404,
-   "latency_ms": 135,
+   "status": "blocked",
+   "http": 403,
+   "latency_ms": 85,
    "items": 0,
    "sample": [],
-   "detail": "HTTP 404",
+   "detail": "HTTP 403",
    "url": "https://www.guru.com/d/jobs/q/arabic-translation/"
   },
   {
@@ -1713,7 +1713,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 102,
+   "latency_ms": 72,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -1728,7 +1728,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 429,
-   "latency_ms": 33,
+   "latency_ms": 148,
    "items": 0,
    "sample": [],
    "detail": "HTTP 429",
@@ -1743,14 +1743,14 @@
    "suggested_tier": 1,
    "status": "ok",
    "http": 200,
-   "latency_ms": 1594,
-   "items": 209,
+   "latency_ms": 1073,
+   "items": 202,
    "sample": [
     "Jobs",
     "Job Tracker",
     "Browse Job Categories"
    ],
-   "detail": "236711 bytes, text/html",
+   "detail": "229140 bytes, text/html",
    "url": "https://remowork.life/jobs/languages/arabic"
   },
   {
@@ -1762,7 +1762,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 569,
+   "latency_ms": 1061,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -1777,7 +1777,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 30,
+   "latency_ms": 85,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -1792,7 +1792,7 @@
    "suggested_tier": 3,
    "status": "error",
    "http": 0,
-   "latency_ms": 15527,
+   "latency_ms": 15939,
    "items": 0,
    "sample": [],
    "detail": "timeout >15s",
@@ -1807,7 +1807,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 99,
+   "latency_ms": 68,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -1822,14 +1822,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 208,
+   "latency_ms": 343,
    "items": 6,
    "sample": [
     "Job  Search  Tips",
     "Jobseekers guide",
     "Review Jobgether &nbsp;→"
    ],
-   "detail": "615320 bytes, text/html",
+   "detail": "591531 bytes, text/html",
    "url": "https://jobgether.com/remote-jobs"
   },
   {
@@ -1841,7 +1841,7 @@
    "suggested_tier": 3,
    "status": "empty",
    "http": 200,
-   "latency_ms": 149,
+   "latency_ms": 322,
    "items": 0,
    "sample": [],
    "detail": "79755 bytes, text/html",
@@ -1854,12 +1854,12 @@
    "adapter": "html",
    "confidence": "guess",
    "suggested_tier": 3,
-   "status": "error",
-   "http": 0,
-   "latency_ms": 325,
+   "status": "blocked",
+   "http": 403,
+   "latency_ms": 595,
    "items": 0,
    "sample": [],
-   "detail": "ClientConnectorError: Cannot connect to host europeremotely.com:443 ssl:False [Connection reset by peer]",
+   "detail": "HTTP 403",
    "url": "https://europeremotely.com/"
   },
   {
@@ -1871,14 +1871,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 2624,
+   "latency_ms": 2015,
    "items": 50,
    "sample": [
-    "Senior Solutions Architect",
-    "Spanish & English Speaking Customer Service - 2nd Shift",
-    "Spanish and English Speaking Customer Service - 2nd Shift"
+    "Security Engineer ",
+    "Risk Partnerships Manager, Banks & Treasury",
+    "Product Manager, Sail Core"
    ],
-   "detail": "45144 bytes, application/json",
+   "detail": "45229 bytes, application/json",
    "url": "https://www.remote1stjobs.com/jobs.json"
   },
   {
@@ -1890,7 +1890,7 @@
    "suggested_tier": 1,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 53,
+   "latency_ms": 64,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -1905,7 +1905,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 257,
+   "latency_ms": 476,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -1920,7 +1920,7 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 1860,
+   "latency_ms": 3165,
    "items": 2,
    "sample": [
     "Need More Linguistic Jobs?",
@@ -1938,10 +1938,10 @@
    "suggested_tier": 1,
    "status": "empty",
    "http": 200,
-   "latency_ms": 182,
+   "latency_ms": 487,
    "items": 0,
    "sample": [],
-   "detail": "428357 bytes, text/html",
+   "detail": "428358 bytes, text/html",
    "url": "https://gotranscript.com/translation-jobs"
   },
   {
@@ -1953,7 +1953,7 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 349,
+   "latency_ms": 182,
    "items": 12,
    "sample": [
     "Job Center",
@@ -1972,7 +1972,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 139,
+   "latency_ms": 576,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -1987,14 +1987,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 1120,
-   "items": 44,
+   "latency_ms": 1511,
+   "items": 43,
    "sample": [
     "Get job alerts",
     "Get job alerts",
-    "Hiring Online English teachers! Earn 8 to 20 dollars per hour!"
+    "English Teaching Jobs in Vietnam with VUS"
    ],
-   "detail": "322674 bytes, text/html",
+   "detail": "324301 bytes, text/html",
    "url": "https://www.eslbase.com/jobs/"
   },
   {
@@ -2006,7 +2006,7 @@
    "suggested_tier": 3,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 226,
+   "latency_ms": 402,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -2021,7 +2021,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 45,
+   "latency_ms": 56,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2036,14 +2036,14 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 663,
-   "items": 14,
+   "latency_ms": 1378,
+   "items": 10,
    "sample": [
     "Interpreter – Arabic/Sudanese Arabic\n\n\nIRC - International Rescue Committee\n\n\n\nRemote | Baltimore\n\nJunior - Junior level",
-    "Interpreter (Arabic)\n\n\nIOM - International Organization for Migration\n\n\n\nAthens\n\nUG - Ungraded",
-    "Interpreter (Arabic)\n\n\nIOM - International Organization for Migration\n\n\n\nUG - Ungraded"
+    "Interpreter (Arabic)\n\n\nIOM - International Organization for Migration\n\n\n\nUG - Ungraded",
+    "Consultants template\n\n\nWHO - World Health Organization\n\n\n\nRemote | Iraq\n\nSenior"
    ],
-   "detail": "123729 bytes, text/html",
+   "detail": "124305 bytes, text/html",
    "url": "https://www.impactpool.org/search?q=arabic"
   },
   {
@@ -2055,14 +2055,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 1099,
-   "items": 192,
+   "latency_ms": 1664,
+   "items": 190,
    "sample": [
     "Openings",
     "Search",
-    "Save the Children"
+    "WFP - World Food Programme"
    ],
-   "detail": "94071 bytes, text/html",
+   "detail": "94116 bytes, text/html",
    "url": "https://untalent.org/jobs?q=arabic"
   },
   {
@@ -2074,14 +2074,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 156,
+   "latency_ms": 406,
    "items": 8,
    "sample": [
     "Find a Job",
     "Jobs",
     "Communications"
    ],
-   "detail": "228008 bytes, text/html",
+   "detail": "228159 bytes, text/html",
    "url": "https://www.idealist.org/en/jobs?q=arabic&remote=true"
   },
   {
@@ -2093,7 +2093,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 159,
+   "latency_ms": 115,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2108,7 +2108,7 @@
    "suggested_tier": 2,
    "status": "error",
    "http": 0,
-   "latency_ms": 15265,
+   "latency_ms": 15697,
    "items": 0,
    "sample": [],
    "detail": "timeout >15s",
@@ -2123,7 +2123,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 100,
+   "latency_ms": 79,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2138,7 +2138,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 105,
+   "latency_ms": 141,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2153,7 +2153,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 230,
+   "latency_ms": 420,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -2168,14 +2168,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 1548,
-   "items": 5,
+   "latency_ms": 1935,
+   "items": 4,
    "sample": [
-    "Jobs in Jordan (47)",
+    "Jobs in Jordan (51)",
     "Jobs in Saudi Arabia (4)",
     "Jobs in UAE (1)"
    ],
-   "detail": "303025 bytes, text/html",
+   "detail": "307593 bytes, text/html",
    "url": "https://www.akhtaboot.com/en/jobs/search?q=translator"
   },
   {
@@ -2187,7 +2187,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 301,
+   "latency_ms": 461,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -2202,7 +2202,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 58,
+   "latency_ms": 124,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2217,7 +2217,7 @@
    "suggested_tier": 2,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 100,
+   "latency_ms": 199,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2232,7 +2232,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 203,
+   "latency_ms": 458,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -2247,7 +2247,7 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 1867,
+   "latency_ms": 2020,
    "items": 18,
    "sample": [
     "Employer Brand Promise",
@@ -2266,7 +2266,7 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 200,
-   "latency_ms": 78,
+   "latency_ms": 705,
    "items": 9,
    "sample": [
     "Academic Editor",
@@ -2285,7 +2285,7 @@
    "suggested_tier": 2,
    "status": "not_found",
    "http": 404,
-   "latency_ms": 1458,
+   "latency_ms": 1313,
    "items": 0,
    "sample": [],
    "detail": "HTTP 404",
@@ -2300,7 +2300,7 @@
    "suggested_tier": 2,
    "status": "ok",
    "http": 201,
-   "latency_ms": 584,
+   "latency_ms": 440,
    "items": 3,
    "sample": [
     "Jobs",
@@ -2319,10 +2319,10 @@
    "suggested_tier": 2,
    "status": "empty",
    "http": 200,
-   "latency_ms": 514,
+   "latency_ms": 707,
    "items": 0,
    "sample": [],
-   "detail": "342275 bytes, text/html",
+   "detail": "345101 bytes, text/html",
    "url": "https://www.proof-reading-service.com/en/pages/careers"
   },
   {
@@ -2334,7 +2334,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 401,
-   "latency_ms": 21,
+   "latency_ms": 39,
    "items": 0,
    "sample": [],
    "detail": "HTTP 401 + challenge page",
@@ -2349,7 +2349,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 7,
+   "latency_ms": 13,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2364,7 +2364,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 49,
+   "latency_ms": 75,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -2379,7 +2379,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 100,
+   "latency_ms": 66,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403 + challenge page",
@@ -2394,14 +2394,14 @@
    "suggested_tier": 3,
    "status": "ok",
    "http": 200,
-   "latency_ms": 319,
-   "items": 68,
+   "latency_ms": 387,
+   "items": 70,
    "sample": [
     "Find Jobs",
-    "Senior Research Engineer",
-    "Senior Software Engineer, Security"
+    "Enterprise Solutions Engineer",
+    "Design Engineer, Site"
    ],
-   "detail": "844606 bytes, text/html",
+   "detail": "840741 bytes, text/html",
    "url": "https://wellfound.com/role/r/translator"
   },
   {
@@ -2413,7 +2413,7 @@
    "suggested_tier": 3,
    "status": "blocked",
    "http": 403,
-   "latency_ms": 49,
+   "latency_ms": 111,
    "items": 0,
    "sample": [],
    "detail": "HTTP 403",
@@ -2428,10 +2428,10 @@
    "suggested_tier": 3,
    "status": "empty",
    "http": 200,
-   "latency_ms": 70,
+   "latency_ms": 125,
    "items": 0,
    "sample": [],
-   "detail": "91858 bytes, text/html",
+   "detail": "92864 bytes, text/html",
    "url": "https://www.google.com/search?q=arabic+translator+remote&ibp=htl;jobs"
   }
  ]

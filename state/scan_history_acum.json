@@ -1174,5 +1174,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-10T22:00:06.817054+00:00",
+    "matched_count": 2,
+    "all_count": 2429,
+    "jobs": [
+      {
+        "title": "Arabic Linguist CAT II - CENTCOM",
+        "company": "Amentum",
+        "url": "https://kw.linkedin.com/jobs/view/arabic-linguist-cat-ii-centcom-at-amentum-4444976516",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor",
+        "company": "Smurfit Westrock",
+        "url": "https://www.linkedin.com/jobs/view/copy-editor-at-smurfit-westrock-4465840591",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

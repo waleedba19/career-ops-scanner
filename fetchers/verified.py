@@ -1046,3 +1046,207 @@ async def fetch_europeremotely(session: aiohttp.ClientSession) -> list[dict]:
     jobs = parse_europeremotely(body) if status == 200 else []
     print(f"  Europe Remotely: {len(jobs)} jobs")
     return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 18. BambooHR — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_bamboohr(payload, company: str) -> list[dict]:
+    out: list[dict] = []
+    if not isinstance(payload, dict):
+        return out
+    for j in payload.get("jobs") or payload.get("results") or []:
+        if not isinstance(j, dict) or not j.get("title") and not j.get("name"):
+            continue
+        title = j.get("title") or j.get("name") or ""
+        loc = j.get("location") or j.get("city") or ""
+        if j.get("remote") or "remote" in (j.get("workplace") or "").lower():
+            loc = f"Remote — {loc}" if loc else "Remote"
+        out.append({
+            "title": title[:160],
+            "company": company,
+            "url": j.get("url") or j.get("applyUrl") or j.get("href") or "",
+            "location": loc or "See posting",
+            "posted": j.get("postedAt") or j.get("createdAt") or "",
+            "description": _clean(j.get("description") or "")[:3000],
+            "salary": "",
+            "source": "bamboohr",
+        })
+    return [j for j in out if j["url"]]
+
+
+async def fetch_bamboohr_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, data = await _get_json(session, f"https://{slug}.bamboohr.com/careers/list")
+    return parse_bamboohr(data, company) if status == 200 and data else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 19. Breezy — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_breezy(payload, company: str) -> list[dict]:
+    out: list[dict] = []
+    if not isinstance(payload, list):
+        return out
+    for j in payload:
+        if not isinstance(j, dict) or not j.get("name"):
+            continue
+        loc = j.get("location") or ""
+        if j.get("remote"):
+            loc = f"Remote — {loc}" if loc else "Remote"
+        out.append({
+            "title": j.get("name", "")[:160],
+            "company": company,
+            "url": j.get("url") or j.get("absolute_url") or "",
+            "location": loc or "See posting",
+            "posted": j.get("published_at") or "",
+            "description": _clean(j.get("description") or "")[:3000],
+            "salary": "",
+            "source": "breezy",
+        })
+    return [j for j in out if j["url"]]
+
+
+async def fetch_breezy_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, data = await _get_json(session, f"https://{slug}.breezy.hr/positions")
+    return parse_breezy(data, company) if status == 200 and isinstance(data, list) else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 20. Pinpoint — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_pinpoint(payload, company: str) -> list[dict]:
+    out: list[dict] = []
+    if not isinstance(payload, dict):
+        return out
+    for j in payload.get("jobs") or payload.get("data") or []:
+        if not isinstance(j, dict) or not j.get("title"):
+            continue
+        loc = j.get("location") or ""
+        if j.get("remote"):
+            loc = f"Remote — {loc}" if loc else "Remote"
+        out.append({
+            "title": j.get("title", "")[:160],
+            "company": company,
+            "url": j.get("url") or j.get("apply_url") or "",
+            "location": loc or "See posting",
+            "posted": j.get("created_at") or "",
+            "description": _clean(j.get("description") or "")[:3000],
+            "salary": "",
+            "source": "pinpoint",
+        })
+    return [j for j in out if j["url"]]
+
+
+async def fetch_pinpoint_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, data = await _get_json(session, f"https://{slug}.pinpointhq.com/api/v1/jobs")
+    return parse_pinpoint(data, company) if status == 200 else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 21. Rippling — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_rippling(payload, company: str) -> list[dict]:
+    out: list[dict] = []
+    if not isinstance(payload, dict):
+        return out
+    for j in payload.get("jobs") or payload.get("results") or []:
+        if not isinstance(j, dict) or not j.get("title"):
+            continue
+        loc = j.get("location") or ""
+        if j.get("remote"):
+            loc = f"Remote — {loc}" if loc else "Remote"
+        out.append({
+            "title": j.get("title", "")[:160],
+            "company": company,
+            "url": j.get("url") or j.get("apply_url") or "",
+            "location": loc or "See posting",
+            "posted": j.get("created_at") or "",
+            "description": _clean(j.get("description") or "")[:3000],
+            "salary": "",
+            "source": "rippling",
+        })
+    return [j for j in out if j["url"]]
+
+
+async def fetch_rippling_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, data = await _get_json(session, f"https://ats.rippling.com/{slug}/jobs")
+    return parse_rippling(data, company) if status == 200 else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 22. Jobvite — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_jobvite_rss(xml: str, company: str) -> list[dict]:
+    out: list[dict] = []
+    items = re.findall(r'<item>([\s\S]*?)</item>', xml or "")
+    for item in items:
+        title_m = re.search(r'<title[^>]*>([\s\S]*?)</title>', item)
+        link_m = re.search(r'<link[^>]*>([\s\S]*?)</link>', item)
+        desc_m = re.search(r'<description[^>]*>([\s\S]*?)</description>', item)
+        if not title_m or not link_m:
+            continue
+        title = _clean(title_m.group(1))
+        url = _clean(link_m.group(1))
+        desc = _clean(desc_m.group(1)) if desc_m else ""
+        if not title or not url:
+            continue
+        out.append({
+            "title": title[:160],
+            "company": company,
+            "url": url,
+            "location": "See posting",
+            "posted": "",
+            "description": desc[:2000],
+            "salary": "",
+            "source": "jobvite",
+        })
+    return out
+
+
+async def fetch_jobvite_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, body = await _get_text(session, f"https://jobs.jobvite.com/{slug}/search?nl=1&format=rss")
+    return parse_jobvite_rss(body, company) if status == 200 else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 23. Personio — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_personio_html(html: str, company: str) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    # Personio uses structured job cards
+    cards = re.findall(r'<a[^>]+href="(/job-offer/[^"]+)"[^>]*>([\s\S]*?)</a>', html or "")
+    for href, inner in cards:
+        url = f"https://{company}.jobs.personio.com" + href if not href.startswith("http") else href
+        if url in seen:
+            continue
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if not parts:
+            continue
+        title = parts[0]
+        if len(title) < 5:
+            continue
+        loc = parts[1] if len(parts) > 1 else "See posting"
+        seen.add(url)
+        out.append({
+            "title": title[:160],
+            "company": company,
+            "url": url,
+            "location": loc,
+            "posted": "",
+            "description": " · ".join(parts[1:])[:500],
+            "salary": "",
+            "source": "personio",
+        })
+    return out
+
+
+async def fetch_personio_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, body = await _get_text(session, f"https://{slug}.jobs.personio.com/search?query=")
+    return parse_personio_html(body, company) if status == 200 else []

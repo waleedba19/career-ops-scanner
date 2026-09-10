@@ -55,6 +55,13 @@ FETCHERS: list[tuple[str, str, int, str]] = [
     ("dailyremote", "fetch_dailyremote", 3, "dailyremote"),           # DailyRemote HTML scrape
     ("dynamitejobs", "fetch_dynamitejobs", 3, "dynamitejobs"),        # Dynamite Jobs HTML scrape
     ("europeremotely", "fetch_europeremotely", 3, "europeremotely"),  # Europe Remotely HTML scrape
+    # ── Additional ATS adapters ──
+    ("bamboohr", "fetch_bamboohr_boards", 2, "bamboohr"),             # BambooHR ATS
+    ("breezy", "fetch_breezy_boards", 2, "breezy"),                   # Breezy ATS
+    ("pinpoint", "fetch_pinpoint_boards", 2, "pinpoint"),             # Pinpoint ATS
+    ("rippling", "fetch_rippling_boards", 2, "rippling"),              # Rippling ATS
+    ("jobvite", "fetch_jobvite_boards", 2, "jobvite"),                # Jobvite ATS
+    ("personio", "fetch_personio_boards", 2, "personio"),             # Personio ATS
 ]
 
 TIER_MAP = {name: tier for name, _, tier, _ in FETCHERS}

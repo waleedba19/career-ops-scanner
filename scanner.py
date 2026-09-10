@@ -35,6 +35,8 @@ from fetchers.verified import (
     fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
     fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
     fetch_euremotejobs, fetch_remotejobleads, fetch_dailyremote, fetch_dynamitejobs, fetch_europeremotely,
+    fetch_bamboohr_board, fetch_breezy_board, fetch_pinpoint_board, fetch_rippling_board,
+    fetch_jobvite_board, fetch_personio_board,
     # keyed variants — imported under distinct names because scanner.py still defines
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
@@ -63,6 +65,12 @@ try:
     SMARTRECRUITERS_COMPANIES = getattr(_cfg, "SMARTRECRUITERS_COMPANIES", [])
     RECRUITEE_COMPANIES = getattr(_cfg, "RECRUITEE_COMPANIES", [])
     TEAMTAILOR_COMPANIES = getattr(_cfg, "TEAMTAILOR_COMPANIES", [])
+    BAMBOOHR_COMPANIES = getattr(_cfg, "BAMBOOHR_COMPANIES", [])
+    BREEZY_COMPANIES = getattr(_cfg, "BREEZY_COMPANIES", [])
+    PINPOINT_COMPANIES = getattr(_cfg, "PINPOINT_COMPANIES", [])
+    RIPPLING_COMPANIES = getattr(_cfg, "RIPPLING_COMPANIES", [])
+    JOBVITE_COMPANIES = getattr(_cfg, "JOBVITE_COMPANIES", [])
+    PERSONIO_COMPANIES = getattr(_cfg, "PERSONIO_COMPANIES", [])
     PROBE_BLOCKED_SOURCES = getattr(_cfg, "PROBE_BLOCKED_SOURCES", [])
     FORCE_BLOCKED_SOURCES = getattr(_cfg, "FORCE_BLOCKED_SOURCES", False)
     OUTPUT_DIR = Path(getattr(_cfg, "OUTPUT_DIR", Path(__file__).parent / "output"))
@@ -78,6 +86,14 @@ except Exception as _cfg_err:
     ASHBY_COMPANIES = []
     WORKABLE_COMPANIES = []
     SMARTRECRUITERS_COMPANIES = []
+    RECRUITEE_COMPANIES = []
+    TEAMTAILOR_COMPANIES = []
+    BAMBOOHR_COMPANIES = []
+    BREEZY_COMPANIES = []
+    PINPOINT_COMPANIES = []
+    RIPPLING_COMPANIES = []
+    JOBVITE_COMPANIES = []
+    PERSONIO_COMPANIES = []
     PROBE_BLOCKED_SOURCES = []
     FORCE_BLOCKED_SOURCES = False
 
@@ -141,30 +157,69 @@ ARABIC_PLATFORMS = [
 ]
 
 # ---------------------------------------------------------------------------
-# Job sources — Greenhouse companies (profile-optimized)
+# Job sources — Greenhouse companies (profile-optimized, expanded)
 # ---------------------------------------------------------------------------
 
 GREENHOUSE_COMPANIES = [
     # AI Data / Linguist Marketplaces (highest relevance)
     ("xAI", "xai"), ("Scale AI", "scaleai"), ("Outlier", "outlier"),
+    ("Surge AI", "surgeai"), ("Micro1", "micro1"), ("Prolific", "prolific"),
+    ("Telus International", "telusinternational"), ("Toloka", "toloka"),
+    ("Appen", "appen"), ("Centific", "centific"),
     # Language & Translation
     ("Smartling", "smartling"), ("Lokalise", "lokalise"), ("Phrase", "phrase"),
     ("Unbabel", "unbabel"), ("Lilt", "lilt"), ("Acclaro", "acclaro"),
-    ("Andovar", "andovar"), ("Straker", "straker"),
+    ("Andovar", "andovar"), ("Straker", "straker"), ("RWS", "rws"),
+    ("Lionbridge", "lionbridge"), ("TransPerfect", "transperfect"),
+    ("Keywords Studios", "keywordsstudios"), ("Welocalize", "welocalize"),
+    ("Cactus", "cactus"), ("Editage", "editage"), ("Enago", "enago"),
+    ("Wordvice", "wordvice"), ("Scribbr", "scribbr"), ("Scribendi", "scribendi"),
+    ("PaperTrue", "papertrue"), ("ProofreadNow", "proofreadnow"),
     # EdTech / ESL
     ("Duolingo", "duolingo"), ("Outschool", "outschool"), ("Khan Academy", "khanacademy"),
     ("Coursera", "coursera"), ("Preply", "preply"), ("Babbel", "babbel"),
     ("Busuu", "busuu"), ("Lingoda", "lingoda"), ("Engoo", "engoo"),
     ("Novakid", "novakid"), ("Open English", "openenglish"),
+    ("VIPKid", "vipkid"), ("Qkids", "qkids"), ("Magic Ears", "magicears"),
+    ("GoGoKid", "gogokid"), ("Ziyou Da", "ziyouda"),
+    ("italki", "italki"), ("Cambly", "cambly"), ("Native Camp", "nativecamp"),
+    ("TutorABC", "tutorabc"), ("Lingostar", "lingostar"),
+    ("Nagwa", "nagwa"), ("Abwaab", "abwaab"), ("Noon Academy", "noonacademy"),
+    ("Edraak", "edraak"), ("Almentor", "almentor"), ("Baims", "baims"),
     # MENA / Arabic Content
     ("OKX", "okx"), ("WPP Media", "wppmedia"), ("Anghami", "anghami"),
     ("Tamatem", "tamatem"), ("Mawdoo3", "mawdoo3"), ("Sarwa", "sarwa"),
-    # Academic Editing
-    ("Scribbr", "scribbr"), ("Scribendi", "scribendi"), ("Enago", "enago"),
-    ("Wordvice", "wordvice"), ("PaperTrue", "papertrue"),
-    # Remote-first Tech (keeping only relevant ones)
+    ("Careem", "careem"), ("Noon", "noon"), ("Tarjama", "tarjama"),
+    ("Saudisoft", "saudisoft"), ("Future Group", "futuregroup"),
+    ("Blend", "blend"), ("Alconost", "alconost"),
+    # Remote-first Tech (relevant ones)
     ("KAYAK", "kayak"), ("Mozilla", "mozilla"), ("GitLab", "gitlab"),
-    ("Cloudflare", "cloudflare"),
+    ("Cloudflare", "cloudflare"), ("Automattic", "automattic"),
+    ("Buffer", "buffer"), ("Zapier", "zapier"), ("Toptal", "toptal"),
+    ("Remote.com", "remote"), ("Deel", "deel"), ("Oyster", "oyster"),
+    ("Papaya Global", "papayaglobal"), ("Rippling", "rippling"),
+    # Content & Writing
+    ("Contentful", "contentful"), ("Notion", "notion"), ("Figma", "figma"),
+    ("Canva", "canva"), ("Visme", "visme"), ("Prezi", "prezi"),
+    # Publishing & Media
+    ("Headspace", "headspace"), ("Calm", "calm"),
+    ("Masterclass", "masterclass"), ("Skillshare", "skillshare"),
+    ("Udemy", "udemy"), ("LinkedIn Learning", "linkedinlearning"),
+    # More AI/Data Companies
+    ("Labelbox", "labelbox"), ("Invisible", "agency"), ("Turing", "turing"),
+    ("Handshake", "joinhandshake"),
+    ("Snorkel AI", "snorkelai"), ("Weights & Biases", "wandb"),
+    ("LangChain", "langchain"), ("Pinecone", "pinecone"),
+    ("Cohere", "cohere"), ("Mistral", "mistral"),
+    ("Anthropic", "anthropic"), ("OpenAI", "openai"),
+    # Gaming (localization)
+    ("Riot Games", "riotgames"), ("Electronic Arts", "ea"),
+    ("Ubisoft", "ubisoft"), ("Take-Two", "take2"),
+    ("Playrix", "playrix"), ("Supercell", "supercell"),
+    # More Translation/Language
+    ("Gengo", "gengo"), ("One Hour Translation", "onehourtranslation"),
+    ("TextMaster", "textmaster"), ("Flitto", "flitto"),
+    ("Translated", "translated"), ("Smartcat", "smartcat"),
 ]
 
 LEVER_COMPANIES = [
@@ -173,6 +228,21 @@ LEVER_COMPANIES = [
     ("Lilt", "lilt"),
     ("Anghami", "anghami"),
     ("Noon Academy", "noonacademy"),
+    ("Vice Media", "vice"),
+    ("Figma", "figma"),
+    ("Notion", "notion"),
+    ("Coinbase", "coinbase"),
+    ("Square", "square"),
+    ("DoorDash", "doordash"),
+    ("Flexport", "flexport"),
+    ("GitLab", "gitlab"),
+    ("Postmates", "postmates"),
+    ("WeWork", "wework"),
+    ("N26", "n26"),
+    ("Revolut", "revolut"),
+    ("Monzo", "monzo"),
+    ("Nubank", "nubank"),
+    ("Klarna", "klarna"),
 ]
 
 # ---------------------------------------------------------------------------
@@ -4951,6 +5021,24 @@ async def run_scan():
             fetchers.append(fetch_dynamitejobs(session))
         if _should_run("europeremotely"):
             fetchers.append(fetch_europeremotely(session))
+        if _should_run("bamboohr"):
+            for name, slug in BAMBOOHR_COMPANIES:
+                fetchers.append(fetch_bamboohr_board(session, name, slug))
+        if _should_run("breezy"):
+            for name, slug in BREEZY_COMPANIES:
+                fetchers.append(fetch_breezy_board(session, name, slug))
+        if _should_run("pinpoint"):
+            for name, slug in PINPOINT_COMPANIES:
+                fetchers.append(fetch_pinpoint_board(session, name, slug))
+        if _should_run("rippling"):
+            for name, slug in RIPPLING_COMPANIES:
+                fetchers.append(fetch_rippling_board(session, name, slug))
+        if _should_run("jobvite"):
+            for name, slug in JOBVITE_COMPANIES:
+                fetchers.append(fetch_jobvite_board(session, name, slug))
+        if _should_run("personio"):
+            for name, slug in PERSONIO_COMPANIES:
+                fetchers.append(fetch_personio_board(session, name, slug))
         # Keyed aggregators — the legit route to Indeed/LinkedIn/Glassdoor inventory.
         # Each is a no-op (returns []) until its secret is configured.
         if _should_run("jsearch"):

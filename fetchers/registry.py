@@ -49,6 +49,12 @@ FETCHERS: list[tuple[str, str, int, str]] = [
     ("eslbase", "fetch_eslbase", 2, "eslbase"),                        # ESL teaching jobs (44 items)
     ("recruitee", "fetch_recruitee_boards", 2, "recruitee"),           # ATS adapter for Lingoda, Preply, Cambly
     ("teamtailor", "fetch_teamtailor_boards", 2, "teamtailor"),        # ATS adapter for Novakid, Open English
+    # ── Free remote boards (no API key required) ──
+    ("euremotejobs", "fetch_euremotejobs", 2, "euremotejobs"),        # EU Remote Jobs RSS feed
+    ("remotejobleads", "fetch_remotejobleads", 2, "remotejobleads"),  # Remote Job Leads RSS feed
+    ("dailyremote", "fetch_dailyremote", 3, "dailyremote"),           # DailyRemote HTML scrape
+    ("dynamitejobs", "fetch_dynamitejobs", 3, "dynamitejobs"),        # Dynamite Jobs HTML scrape
+    ("europeremotely", "fetch_europeremotely", 3, "europeremotely"),  # Europe Remotely HTML scrape
 ]
 
 TIER_MAP = {name: tier for name, _, tier, _ in FETCHERS}

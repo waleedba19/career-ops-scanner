@@ -34,6 +34,7 @@ from fetchers.verified import (
     fetch_themuse, fetch_ashby_board, fetch_workable_board, fetch_smartrecruiters_board,
     fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
     fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
+    fetch_euremotejobs, fetch_remotejobleads, fetch_dailyremote, fetch_dynamitejobs, fetch_europeremotely,
     # keyed variants — imported under distinct names because scanner.py still defines
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
@@ -4940,6 +4941,16 @@ async def run_scan():
             fetchers.append(fetch_remowork(session))
         if _should_run("eslbase"):
             fetchers.append(fetch_eslbase(session))
+        if _should_run("euremotejobs"):
+            fetchers.append(fetch_euremotejobs(session))
+        if _should_run("remotejobleads"):
+            fetchers.append(fetch_remotejobleads(session))
+        if _should_run("dailyremote"):
+            fetchers.append(fetch_dailyremote(session))
+        if _should_run("dynamitejobs"):
+            fetchers.append(fetch_dynamitejobs(session))
+        if _should_run("europeremotely"):
+            fetchers.append(fetch_europeremotely(session))
         # Keyed aggregators — the legit route to Indeed/LinkedIn/Glassdoor inventory.
         # Each is a no-op (returns []) until its secret is configured.
         if _should_run("jsearch"):

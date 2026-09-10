@@ -859,3 +859,190 @@ def parse_teamtailor_rss(xml: str, company: str) -> list[dict]:
 async def fetch_teamtailor_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
     status, body = await _get_text(session, f"https://{slug}.teamtailor.com/jobs.rss")
     return parse_teamtailor_rss(body, company) if status == 200 else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 13. EU Remote Jobs — RSS feed (free, no key)
+# ───────────────────────────────────────────────────────────────────────────
+
+EUREMOTEJOBS_URL = "https://euremotejobs.com/?feed=job_feed"
+
+
+def parse_rss_generic(xml: str, source: str) -> list[dict]:
+    """Generic RSS parser for job feeds."""
+    out: list[dict] = []
+    items = re.findall(r'<item>([\s\S]*?)</item>', xml or "")
+    for item in items:
+        title_m = re.search(r'<title[^>]*>([\s\S]*?)</title>', item)
+        link_m = re.search(r'<link[^>]*>([\s\S]*?)</link>', item)
+        desc_m = re.search(r'<description[^>]*>([\s\S]*?)</description>', item)
+        pub_m = re.search(r'<pubDate[^>]*>([\s\S]*?)</pubDate>', item)
+        if not title_m or not link_m:
+            continue
+        title = _clean(title_m.group(1))
+        url = _clean(link_m.group(1))
+        desc = _clean(desc_m.group(1)) if desc_m else ""
+        posted = _clean(pub_m.group(1)) if pub_m else ""
+        if not title or not url:
+            continue
+        out.append({
+            "title": title[:160],
+            "company": source,
+            "url": url,
+            "location": "Remote",
+            "posted": posted,
+            "description": desc[:2000],
+            "salary": "",
+            "source": source,
+        })
+    return out
+
+
+async def fetch_euremotejobs(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, EUREMOTEJOBS_URL)
+    jobs = parse_rss_generic(body, "euremotejobs") if status == 200 else []
+    print(f"  EU Remote Jobs: {len(jobs)} jobs")
+    return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 14. Remote Job Leads — RSS feed (free, no key)
+# ───────────────────────────────────────────────────────────────────────────
+
+REMOTEJOBLEADS_URL = "https://www.remotejobleads.com/feed/"
+
+
+async def fetch_remotejobleads(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, REMOTEJOBLEADS_URL)
+    jobs = parse_rss_generic(body, "remotejobleads") if status == 200 else []
+    print(f"  Remote Job Leads: {len(jobs)} jobs")
+    return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 15. DailyRemote — HTML scrape (free, no key)
+# ───────────────────────────────────────────────────────────────────────────
+
+DAILYREMOTE_URL = "https://dailyremote.com/remote-jobs"
+_DAILYREMOTE_CARD = re.compile(r'<a[^>]+href="(https?://dailyremote\.com/remote-jobs/[^"]+)"[^>]*>([\s\S]*?)</a>', re.I)
+
+
+def parse_dailyremote(html: str) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    for href, inner in _DAILYREMOTE_CARD.findall(html or ""):
+        url = href if href.startswith("http") else "https://dailyremote.com" + href
+        if url in seen or "/remote-jobs/" not in url:
+            continue
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if not parts:
+            continue
+        title = parts[0]
+        if len(title) < 5:
+            continue
+        company = parts[1] if len(parts) > 1 else "DailyRemote"
+        seen.add(url)
+        out.append({
+            "title": title[:160],
+            "company": company[:120],
+            "url": url,
+            "location": "Remote",
+            "posted": "",
+            "description": " · ".join(parts[1:])[:500],
+            "salary": "",
+            "source": "dailyremote",
+        })
+    return out
+
+
+async def fetch_dailyremote(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, DAILYREMOTE_URL)
+    jobs = parse_dailyremote(body) if status == 200 else []
+    print(f"  DailyRemote: {len(jobs)} jobs")
+    return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 16. Dynamite Jobs — HTML scrape (free, no key)
+# ───────────────────────────────────────────────────────────────────────────
+
+DYNAMITEJOBS_URL = "https://dynamitejobs.com/remote-jobs"
+_DYNAMITE_CARD = re.compile(r'<a[^>]+href="(https?://dynamitejobs\.com/remote-jobs/[^"]+)"[^>]*>([\s\S]*?)</a>', re.I)
+
+
+def parse_dynamitejobs(html: str) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    for href, inner in _DYNAMITE_CARD.findall(html or ""):
+        url = href if href.startswith("http") else "https://dynamitejobs.com" + href
+        if url in seen or "/remote-jobs/" not in url:
+            continue
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if not parts:
+            continue
+        title = parts[0]
+        if len(title) < 5:
+            continue
+        company = parts[1] if len(parts) > 1 else "Dynamite Jobs"
+        seen.add(url)
+        out.append({
+            "title": title[:160],
+            "company": company[:120],
+            "url": url,
+            "location": "Remote",
+            "posted": "",
+            "description": " · ".join(parts[1:])[:500],
+            "salary": "",
+            "source": "dynamitejobs",
+        })
+    return out
+
+
+async def fetch_dynamitejobs(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, DYNAMITEJOBS_URL)
+    jobs = parse_dynamitejobs(body) if status == 200 else []
+    print(f"  Dynamite Jobs: {len(jobs)} jobs")
+    return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 17. Europe Remotely — HTML scrape (free, no key)
+# ───────────────────────────────────────────────────────────────────────────
+
+EUROPEREMOTELY_URL = "https://europeremotely.com/"
+_EUROPE_CARD = re.compile(r'<a[^>]+href="(https?://europeremotely\.com/[^"]+)"[^>]*>([\s\S]*?)</a>', re.I)
+
+
+def parse_europeremotely(html: str) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    for href, inner in _EUROPE_CARD.findall(html or ""):
+        url = href if href.startswith("http") else "https://europeremotely.com" + href
+        if url in seen or "/job" not in url.lower():
+            continue
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if not parts:
+            continue
+        title = parts[0]
+        if len(title) < 5:
+            continue
+        company = parts[1] if len(parts) > 1 else "Europe Remotely"
+        seen.add(url)
+        out.append({
+            "title": title[:160],
+            "company": company[:120],
+            "url": url,
+            "location": "Remote (Europe)",
+            "posted": "",
+            "description": " · ".join(parts[1:])[:500],
+            "salary": "",
+            "source": "europeremotely",
+        })
+    return out
+
+
+async def fetch_europeremotely(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, EUROPEREMOTELY_URL)
+    jobs = parse_europeremotely(body) if status == 200 else []
+    print(f"  Europe Remotely: {len(jobs)} jobs")
+    return jobs

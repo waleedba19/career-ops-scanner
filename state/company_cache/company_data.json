@@ -583,5 +583,29 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-10T09:36:46.786502+00:00"
+  },
+  "Styli": {
+    "name": "Styli",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-10T16:55:30.377469+00:00"
+  },
+  "Aloft Hotels": {
+    "name": "Aloft Hotels",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-10T16:55:30.378143+00:00"
   }
 }

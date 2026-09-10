@@ -35,8 +35,7 @@ from fetchers.verified import (
     fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
     fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
     fetch_euremotejobs, fetch_remotejobleads, fetch_dailyremote, fetch_dynamitejobs, fetch_europeremotely,
-    fetch_bamboohr_board, fetch_breezy_board, fetch_pinpoint_board, fetch_rippling_board,
-    fetch_jobvite_board, fetch_personio_board,
+    fetch_bamboohr_board, fetch_jobvite_board, fetch_personio_board,
     # keyed variants — imported under distinct names because scanner.py still defines
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
@@ -89,9 +88,6 @@ except Exception as _cfg_err:
     RECRUITEE_COMPANIES = []
     TEAMTAILOR_COMPANIES = []
     BAMBOOHR_COMPANIES = []
-    BREEZY_COMPANIES = []
-    PINPOINT_COMPANIES = []
-    RIPPLING_COMPANIES = []
     JOBVITE_COMPANIES = []
     PERSONIO_COMPANIES = []
     PROBE_BLOCKED_SOURCES = []
@@ -5024,15 +5020,6 @@ async def run_scan():
         if _should_run("bamboohr"):
             for name, slug in BAMBOOHR_COMPANIES:
                 fetchers.append(fetch_bamboohr_board(session, name, slug))
-        if _should_run("breezy"):
-            for name, slug in BREEZY_COMPANIES:
-                fetchers.append(fetch_breezy_board(session, name, slug))
-        if _should_run("pinpoint"):
-            for name, slug in PINPOINT_COMPANIES:
-                fetchers.append(fetch_pinpoint_board(session, name, slug))
-        if _should_run("rippling"):
-            for name, slug in RIPPLING_COMPANIES:
-                fetchers.append(fetch_rippling_board(session, name, slug))
         if _should_run("jobvite"):
             for name, slug in JOBVITE_COMPANIES:
                 fetchers.append(fetch_jobvite_board(session, name, slug))

@@ -185,22 +185,16 @@ def count_items(adapter: str, body: str, content_type: str) -> tuple[int, list[s
             titles = re.findall(r"<entry>[\s\S]*?<title[^>]*>([\s\S]*?)</title>", b)
     elif adapter == "personio_xml":
         titles = re.findall(r"<position>[\s\S]*?<name>([\s\S]*?)</name>", b)
-    elif adapter == "bamboohr_json":
-        d = _json(b)
-        jobs = _first_list(d, ["jobs", "results"])
-        titles = [(j.get("title") or j.get("name") or "") for j in jobs if isinstance(j, dict)]
-    elif adapter == "breezy_json":
-        d = _json(b)
-        jobs = d if isinstance(d, list) else []
-        titles = [j.get("name", "") for j in jobs if isinstance(j, dict)]
-    elif adapter == "pinpoint_json":
-        d = _json(b)
-        jobs = _first_list(d, ["jobs", "data"])
-        titles = [j.get("title", "") for j in jobs if isinstance(j, dict)]
-    elif adapter == "rippling_json":
-        d = _json(b)
-        jobs = _first_list(d, ["jobs", "results"])
-        titles = [j.get("title", "") for j in jobs if isinstance(j, dict)]
+    elif adapter == "bamboohr_html":
+        # BambooHR returns HTML — look for job links
+        cards = re.findall(r'<a[^>]+href="(/jobs/[^"]+|/careers/[^"]+)"[^>]*>([\s\S]*?)</a>', b, re.I)
+        for href, inner in cards:
+            m = re.search(r'>([\s\S]*?)<', inner)
+            if m and len(m.group(1).strip()) >= 5:
+                titles.append(m.group(1).strip())
+        if not titles:
+            # Fallback: JSON-LD
+            titles = re.findall(r'"@type"\s*:\s*"JobPosting"[\s\S]{0,400}?"title"\s*:\s*"([^"]{3,120})"', b)
     elif adapter == "jobvite_rss":
         items = re.findall(r"<item>[\s\S]*?</item>", b)
         for it in items:

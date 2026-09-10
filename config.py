@@ -268,21 +268,6 @@ BAMBOOHR_COMPANIES = [
     ("Abwaab", "abwaab"),                            # EdTech, MENA
     ("Noon Academy", "noonacademy"),                 # EdTech, Saudi
 ]
-BREEZY_COMPANIES = [
-    ("Tarjama", "tarjama"),                          # Translation, UAE
-    ("Saudisoft", "saudisoft"),                      # Tech, Saudi
-    ("Careem", "careem"),                            # Tech, UAE
-]
-PINPOINT_COMPANIES = [
-    ("Edraak", "edraak"),                            # EdTech, Egypt
-    ("Almentor", "almentor"),                        # EdTech, MENA
-    ("Baims", "baims"),                              # EdTech, Kuwait
-]
-RIPPLING_COMPANIES = [
-    ("Deel", "deel"),                                # Global hiring
-    ("Remote.com", "remote"),                        # Global HR
-    ("Oyster", "oyster"),                            # Global employment
-]
 JOBVITE_COMPANIES = [
     ("TELUS International", "telusinternational"),   # AI training, linguists
     ("Concentrix", "concentrix"),                    # BPO, language services

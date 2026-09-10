@@ -607,5 +607,29 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-10T16:55:30.378143+00:00"
+  },
+  "Amentum": {
+    "name": "Amentum",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-10T21:59:25.606083+00:00"
+  },
+  "Smurfit Westrock": {
+    "name": "Smurfit Westrock",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-10T21:59:25.607039+00:00"
   }
 }

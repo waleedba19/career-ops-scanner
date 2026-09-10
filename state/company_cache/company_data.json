@@ -631,5 +631,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-10T21:59:25.607039+00:00"
+  },
+  "Infopro Digital Automotive": {
+    "name": "Infopro Digital Automotive",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-10T22:09:22.049390+00:00"
   }
 }

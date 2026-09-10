@@ -1040,5 +1040,84 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-10T09:39:25.694066+00:00",
+    "matched_count": 9,
+    "all_count": 4594,
+    "jobs": [
+      {
+        "title": "Paper Text Data Entry - 10/09/2026 04:56 EDT",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/data-entry/Paper-Text-Data-Entry-EDT.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Transcribe Mixed-Content Notes to Word",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/microsoft-word/Transcribe-Mixed-Content-Notes-Word.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Urgent: Arabic Corporate Presentation Redesign",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/adobe-illustrator/Urgent-Arabic-Corporate-Presentation",
+        "score": 97,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "Executive Assistant - Finance",
+        "company": "ElevenLabs",
+        "url": "https://www.remote1stjobs.com/jobs/executive-assistant-finance-elevenlabs-mtv01kkn?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
+        "score": 100,
+        "category": "Admin",
+        "source": "remote1stjobs"
+      },
+      {
+        "title": "Arabic Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible (AI Trainer projects)",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4603921101",
+        "score": 82,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Emirati) Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible (AI Trainer projects)",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4681603101",
+        "score": 82,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Chemistry Specialist (Fluent in Egyptian Arabic) - Freelance AI Trainer Project",
+        "company": "Invisible (AI Trainer projects)",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4664178101",
+        "score": 77,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "High School English Teacher",
+        "company": "Stride, Inc.",
+        "url": "https://www.linkedin.com/jobs/view/high-school-english-teacher-at-stride-inc-4465609791",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "English Language Instructor",
+        "company": "4level1",
+        "url": "https://eg.linkedin.com/jobs/view/english-language-instructor-at-4level1-4465626486",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

@@ -5709,6 +5709,114 @@
     "scan_date": "2026-09-10T21:59:55.891790+00:00"
   },
   {
+    "title": "Automotive Content Proofreader & Post-Editor (M/F/D)",
+    "company": "Infopro Digital Automotive",
+    "url": "https://it.linkedin.com/jobs/view/automotive-content-proofreader-post-editor-m-f-d-at-infopro-digital-automotive-4463910831",
+    "location": "Remote \u2014 Udine, Friuli-Venezia Giulia, Italy",
+    "posted": "2026-09-10",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-10T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "proofreader proofreading proofread (title)",
+      "remote-friendly"
+    ],
+    "is_fresh": false,
+    "age_hours": 22.14009875416667,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 85,
+        "reason": "Job requires language skills, writing, and academic work, including translation and research supervision."
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "Direct experience in academic supervision and language instruction aligns well with the job requirements."
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "Remote work and flexible environment align well with the candidate's preference."
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible with the candidate's preference."
+      },
+      "career_alignment": {
+        "score": 95,
+        "reason": "Job aligns with the candidate's career goals of becoming a senior translator or academic coordinator."
+      },
+      "overall_score": 85.5,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Strong language skills",
+        "Experience in academic supervision",
+        "Remote work compatibility"
+      ],
+      "gaps": [
+        "None identified"
+      ],
+      "recommendation": "The candidate is well-suited for the role due to their strong language skills and experience in academic supervision, which aligns well with the job requirements. The ability to work remotely and the career alignment towards senior roles in translation or academic services are significant strengths.",
+      "interview_prep": "1. How do you handle complex language translation tasks in academic research? 2. Can you share an experience where you supervised a graduate-level research study? 3. How do you ensure the accuracy and originality of academic papers?",
+      "one_line_summary": "Strong Fit: Experienced ESL Instructor and Academic Supervisor with strong language skills and academic supervision experience aligning well with the job requirements."
+    },
+    "ai_insight": "Strong Fit: Experienced ESL Instructor and Academic Supervisor with strong language skills and academic supervision experience aligning well with the job requirements.",
+    "ai_overall_score": 85.5,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Strong language skills",
+      "Experience in academic supervision",
+      "Remote work compatibility"
+    ],
+    "ai_gaps": [
+      "None identified"
+    ],
+    "ai_recommendation": "The candidate is well-suited for the role due to their strong language skills and experience in academic supervision, which aligns well with the job requirements. The ability to work remotely and the career alignment towards senior roles in translation or academic services are significant strengths.",
+    "ai_interview_prep": "1. How do you handle complex language translation tasks in academic research? 2. Can you share an experience where you supervised a graduate-level research study? 3. How do you ensure the accuracy and originality of academic papers?",
+    "ai_technical_skills": 85,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 95,
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@it.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@it.linkedin.com",
+      "hr@it.linkedin.com",
+      "jobs@it.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Infopro Digital Automotive",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-10T22:09:22.049390+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Infopro Digital Automotive_Automotive Content Proofreader & Post-Editor (M-F-_20260911.pdf",
+    "cover_letter_type": "proofreading",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Infopro Digital Automotive_Automotive Content Proofreader & Post-Editor (M-F-_20260911.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-10T22:09:37.227718+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",

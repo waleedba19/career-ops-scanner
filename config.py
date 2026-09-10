@@ -94,20 +94,36 @@ HEADERS = {
 }
 
 # ── Greenhouse ───────────────────────────────────────────────────────────
+# Profile-optimized: AI-data, language, EdTech, translation-focused companies
 GREENHOUSE_COMPANIES = [
-    ("KAYAK", "kayak"), ("2K", "2k"), ("xAI", "xai"), ("OKX", "okx"),
-    ("WPP Media", "wppmedia"), ("Duolingo", "duolingo"), ("Smartling", "smartling"),
-    ("Lokalise", "lokalise"), ("Scale AI", "scaleai"), ("Outschool", "outschool"),
-    ("Khan Academy", "khanacademy"), ("Mozilla", "mozilla"), ("Riot Games", "riotgames"),
-    ("Coursera", "coursera"), ("Cloudflare", "cloudflare"), ("GitLab", "gitlab"),
-    ("Discord", "discord"), ("Figma", "figma"), ("Airbnb", "airbnb"),
-    ("Stripe", "stripe"), ("Asana", "asana"), ("Twitch", "twitch"),
-    ("Roblox", "roblox"), ("Squarespace", "squarespace"), ("Reddit", "reddit"),
-    ("Pinterest", "pinterest"), ("Coinbase", "coinbase"), ("Instacart", "instacart"),
-    ("Okta", "okta"), ("Datadog", "datadog"), ("Contentful", "contentful"),
-    ("OneTrust", "onetrust"), ("Block", "block"), ("Twilio", "twilio"),
+    # AI Data / Linguist Marketplaces (highest relevance)
+    ("xAI", "xai"), ("Scale AI", "scaleai"), ("Outlier", "outlier"),
+    # Language & Translation
+    ("Smartling", "smartling"), ("Lokalise", "lokalise"), ("Phrase", "phrase"),
+    ("Unbabel", "unbabel"), ("Lilt", "lilt"), ("Acclaro", "acclaro"),
+    ("Andovar", "andovar"), ("Straker", "straker"),
+    # EdTech / ESL
+    ("Duolingo", "duolingo"), ("Outschool", "outschool"), ("Khan Academy", "khanacademy"),
+    ("Coursera", "coursera"), ("Preply", "preply"), ("Babbel", "babbel"),
+    ("Busuu", "busuu"), ("Lingoda", "lingoda"), ("Engoo", "engoo"),
+    ("Novakid", "novakid"), ("Open English", "openenglish"),
+    # MENA / Arabic Content
+    ("OKX", "okx"), ("WPP Media", "wppmedia"), ("Anghami", "anghami"),
+    ("Tamatem", "tamatem"), ("Mawdoo3", "mawdoo3"), ("Sarwa", "sarwa"),
+    # Academic Editing
+    ("Scribbr", "scribbr"), ("Scribendi", "scribendi"), ("Enago", "enago"),
+    ("Wordvice", "wordvice"), ("PaperTrue", "papertrue"),
+    # Remote-first Tech (keeping only relevant ones)
+    ("KAYAK", "kayak"), ("Mozilla", "mozilla"), ("GitLab", "gitlab"),
+    ("Cloudflare", "cloudflare"),
 ]
-LEVER_COMPANIES = [("Appen", "appen")]
+LEVER_COMPANIES = [
+    ("Appen", "appen"),
+    ("Unbabel", "unbabel"),
+    ("Lilt", "lilt"),
+    ("Anghami", "anghami"),
+    ("Noon Academy", "noonacademy"),
+]
 
 # ── Profile-specific ATS boards (live-verified by the Probe Sources workflow,
 #    state/source_probe.md, 2026-09-06). Same shape as GREENHOUSE_COMPANIES.
@@ -116,16 +132,45 @@ GREENHOUSE_PROFILE_BOARDS = [
     ("Invisible (AI Trainer projects)", "agency"),   # 829 jobs incl. Arabic Language Specialist, worldwide remote
     ("Labelbox / Alignerr", "labelbox"),             # 10 jobs — Arabic language expert roles appear here
     ("Turing", "turing"),                            # 26 jobs — LLM training linguists
+    ("Prolific", "prolific"),                        # AI data annotation, research
+    ("Deel", "deel"),                                # Global hiring, remote roles
+    ("Handshake", "joinhandshake"),                  # AI/ML jobs
+    ("Toloka", "toloka"),                            # Data annotation, Arabic
+    ("TELUS International", "telusinternational"),   # AI training, linguists
+    ("Welocalize", "welocalize"),                    # Localization, translation
+    ("RWS", "rws"),                                  # Language services
+    ("Keywords Studios", "KeywordsStudios"),          # Game localization
+    ("TransPerfect", "TransPerfect"),                # LSP
+    ("Lionbridge", "lionbridge"),                    # Language services
+    ("Appen", "appen"),                              # AI data
+    ("Centific", "centific"),                        # Formerly OneForma
+    ("Surge AI", "surgeai"),                         # AI linguists
+    ("Micro1", "micro1"),                            # AI expert marketplace
 ]
 ASHBY_COMPANIES = [
     ("Mercor", "mercor"),                            # 96 jobs — AI expert marketplace
+    ("Deel", "deel"),                                # Global hiring
+    ("Scale AI", "scaleai"),                         # AI data
 ]
 WORKABLE_COMPANIES = [
     ("Tamatem Games", "tamatem"),                    # 18 jobs — Arabic game localization (Jordan, remote-friendly)
+    ("Abwaab", "abwaab"),                            # EdTech, MENA
+    ("Nagwa", "nagwa"),                              # EdTech, Egypt (Arabic content)
 ]
 SMARTRECRUITERS_COMPANIES = [
     ("Keywords Studios", "KeywordsStudios"),         # game localization / Arabic LQA
     ("TransPerfect", "TransPerfect"),                # LSP — linguists, project managers
+    ("Lionbridge", "lionbridge"),                    # Language services
+    ("RWS", "rws"),                                  # Language services
+]
+RECRUITEE_COMPANIES = [
+    ("Lingoda", "lingoda"),                          # ESL, online teaching
+    ("Preply", "preply"),                            # Language tutoring
+    ("Cambly", "cambly"),                            # ESL, online teaching
+]
+TEAMTAILOR_COMPANIES = [
+    ("Novakid", "novakid"),                          # ESL, online teaching
+    ("Open English", "openenglish"),                 # ESL, Latin America
 ]
 
 # ── Scoring ──────────────────────────────────────────────────────────────

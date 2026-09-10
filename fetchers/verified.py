@@ -703,3 +703,159 @@ async def fetch_reliefweb(session: aiohttp.ClientSession) -> list[dict]:
     jobs = parse_reliefweb(data) if status == 200 else []
     print(f"  ReliefWeb: {len(jobs)} UN/NGO jobs")
     return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 9. Remowork — curated remote Arabic jobs board (probe: 209 items)
+# ───────────────────────────────────────────────────────────────────────────
+
+REMOWORK_URL = "https://remowork.life/jobs/languages/arabic"
+_REMOWORK_CARD = re.compile(r'<a[^>]+href="(https?://remowork\.life/jobs/[^"]+)"[^>]*>([\s\S]*?)</a>', re.I)
+
+
+def parse_remowork(html: str) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    for href, inner in _REMOWORK_CARD.findall(html or ""):
+        url = href if href.startswith("http") else "https://remowork.life" + href
+        if url in seen or "/jobs/" not in url:
+            continue
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if not parts:
+            continue
+        title = parts[0]
+        if len(title) < 5:
+            continue
+        company = parts[1] if len(parts) > 1 else "Remowork"
+        loc = parts[2] if len(parts) > 2 else "Remote"
+        seen.add(url)
+        out.append({
+            "title": title[:160],
+            "company": company[:120],
+            "url": url,
+            "location": loc or "Remote",
+            "posted": "",
+            "description": " · ".join(parts[1:])[:500],
+            "salary": "",
+            "source": "remowork",
+        })
+    return out
+
+
+async def fetch_remowork(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, REMOWORK_URL)
+    jobs = parse_remowork(body) if status == 200 else []
+    print(f"  Remowork: {len(jobs)} Arabic remote jobs")
+    return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 10. ESLbase — ESL teaching jobs (probe: 44 items)
+# ───────────────────────────────────────────────────────────────────────────
+
+ESLBASE_URL = "https://www.eslbase.com/teaching-jobs"
+_ESLBASE_CARD = re.compile(r'<a[^>]+href="(https?://www\.eslbase\.com/teaching-jobs/[^"]+)"[^>]*>([\s\S]*?)</a>', re.I)
+
+
+def parse_eslbase(html: str) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    for href, inner in _ESLBASE_CARD.findall(html or ""):
+        url = href if href.startswith("http") else "https://www.eslbase.com" + href
+        if url in seen:
+            continue
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if not parts:
+            continue
+        title = parts[0]
+        if len(title) < 5:
+            continue
+        company = parts[1] if len(parts) > 1 else "ESL School"
+        loc = parts[2] if len(parts) > 2 else "See posting"
+        seen.add(url)
+        out.append({
+            "title": title[:160],
+            "company": company[:120],
+            "url": url,
+            "location": loc or "See posting",
+            "posted": "",
+            "description": " · ".join(parts[1:])[:500],
+            "salary": "",
+            "source": "eslbase",
+        })
+    return out
+
+
+async def fetch_eslbase(session: aiohttp.ClientSession) -> list[dict]:
+    status, body = await _get_text(session, ESLBASE_URL)
+    jobs = parse_eslbase(body) if status == 200 else []
+    print(f"  ESLbase: {len(jobs)} ESL jobs")
+    return jobs
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 11. Recruitee — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_recruitee(payload, company: str) -> list[dict]:
+    out: list[dict] = []
+    if not isinstance(payload, dict):
+        return out
+    for j in payload.get("offers") or []:
+        if not isinstance(j, dict) or not j.get("title"):
+            continue
+        loc = j.get("location") or ""
+        if j.get("remote"):
+            loc = f"Remote — {loc}" if loc else "Remote"
+        out.append({
+            "title": j.get("title", "")[:160],
+            "company": company,
+            "url": j.get("careers_url") or j.get("apply_url") or "",
+            "location": loc or "See posting",
+            "posted": j.get("created_at") or "",
+            "description": _clean(j.get("description") or "")[:3000],
+            "salary": "",
+            "source": "recruitee",
+        })
+    return [j for j in out if j["url"]]
+
+
+async def fetch_recruitee_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, data = await _get_json(session, f"https://{slug}.recruitee.com/api/offers/")
+    return parse_recruitee(data, company) if status == 200 else []
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 12. Teamtailor — ATS adapter (new)
+# ───────────────────────────────────────────────────────────────────────────
+
+def parse_teamtailor_rss(xml: str, company: str) -> list[dict]:
+    out: list[dict] = []
+    items = re.findall(r'<item>([\s\S]*?)</item>', xml or "")
+    for item in items:
+        title_m = re.search(r'<title[^>]*>([\s\S]*?)</title>', item)
+        link_m = re.search(r'<link[^>]*>([\s\S]*?)</link>', item)
+        desc_m = re.search(r'<description[^>]*>([\s\S]*?)</description>', item)
+        if not title_m or not link_m:
+            continue
+        title = _clean(title_m.group(1))
+        url = _clean(link_m.group(1))
+        desc = _clean(desc_m.group(1)) if desc_m else ""
+        if not title or not url:
+            continue
+        out.append({
+            "title": title[:160],
+            "company": company,
+            "url": url,
+            "location": "See posting",
+            "posted": "",
+            "description": desc[:2000],
+            "salary": "",
+            "source": "teamtailor",
+        })
+    return out
+
+
+async def fetch_teamtailor_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
+    status, body = await _get_text(session, f"https://{slug}.teamtailor.com/jobs.rss")
+    return parse_teamtailor_rss(body, company) if status == 200 else []

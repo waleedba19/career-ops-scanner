@@ -33,6 +33,7 @@ from fetchers.verified import (
     fetch_linkedin_guest, fetch_freelancer_api, fetch_jobicy_tags, fetch_impactpool,
     fetch_themuse, fetch_ashby_board, fetch_workable_board, fetch_smartrecruiters_board,
     fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
+    fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
     # keyed variants — imported under distinct names because scanner.py still defines
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
@@ -59,6 +60,8 @@ try:
     ASHBY_COMPANIES = getattr(_cfg, "ASHBY_COMPANIES", [])
     WORKABLE_COMPANIES = getattr(_cfg, "WORKABLE_COMPANIES", [])
     SMARTRECRUITERS_COMPANIES = getattr(_cfg, "SMARTRECRUITERS_COMPANIES", [])
+    RECRUITEE_COMPANIES = getattr(_cfg, "RECRUITEE_COMPANIES", [])
+    TEAMTAILOR_COMPANIES = getattr(_cfg, "TEAMTAILOR_COMPANIES", [])
     PROBE_BLOCKED_SOURCES = getattr(_cfg, "PROBE_BLOCKED_SOURCES", [])
     FORCE_BLOCKED_SOURCES = getattr(_cfg, "FORCE_BLOCKED_SOURCES", False)
     OUTPUT_DIR = Path(getattr(_cfg, "OUTPUT_DIR", Path(__file__).parent / "output"))
@@ -137,24 +140,39 @@ ARABIC_PLATFORMS = [
 ]
 
 # ---------------------------------------------------------------------------
-# Job sources — Greenhouse companies
+# Job sources — Greenhouse companies (profile-optimized)
 # ---------------------------------------------------------------------------
 
 GREENHOUSE_COMPANIES = [
-    ("KAYAK", "kayak"), ("2K", "2k"), ("xAI", "xai"), ("OKX", "okx"),
-    ("WPP Media", "wppmedia"), ("Duolingo", "duolingo"), ("Smartling", "smartling"),
-    ("Lokalise", "lokalise"), ("Scale AI", "scaleai"), ("Outschool", "outschool"),
-    ("Khan Academy", "khanacademy"), ("Mozilla", "mozilla"), ("Riot Games", "riotgames"),
-    ("Coursera", "coursera"), ("Cloudflare", "cloudflare"), ("GitLab", "gitlab"),
-    ("Discord", "discord"), ("Figma", "figma"), ("Airbnb", "airbnb"),
-    ("Stripe", "stripe"), ("Asana", "asana"), ("Twitch", "twitch"),
-    ("Roblox", "roblox"), ("Squarespace", "squarespace"), ("Reddit", "reddit"),
-    ("Pinterest", "pinterest"), ("Coinbase", "coinbase"), ("Instacart", "instacart"),
-    ("Okta", "okta"), ("Datadog", "datadog"), ("Contentful", "contentful"),
-    ("OneTrust", "onetrust"), ("Block", "block"), ("Twilio", "twilio"),
+    # AI Data / Linguist Marketplaces (highest relevance)
+    ("xAI", "xai"), ("Scale AI", "scaleai"), ("Outlier", "outlier"),
+    # Language & Translation
+    ("Smartling", "smartling"), ("Lokalise", "lokalise"), ("Phrase", "phrase"),
+    ("Unbabel", "unbabel"), ("Lilt", "lilt"), ("Acclaro", "acclaro"),
+    ("Andovar", "andovar"), ("Straker", "straker"),
+    # EdTech / ESL
+    ("Duolingo", "duolingo"), ("Outschool", "outschool"), ("Khan Academy", "khanacademy"),
+    ("Coursera", "coursera"), ("Preply", "preply"), ("Babbel", "babbel"),
+    ("Busuu", "busuu"), ("Lingoda", "lingoda"), ("Engoo", "engoo"),
+    ("Novakid", "novakid"), ("Open English", "openenglish"),
+    # MENA / Arabic Content
+    ("OKX", "okx"), ("WPP Media", "wppmedia"), ("Anghami", "anghami"),
+    ("Tamatem", "tamatem"), ("Mawdoo3", "mawdoo3"), ("Sarwa", "sarwa"),
+    # Academic Editing
+    ("Scribbr", "scribbr"), ("Scribendi", "scribendi"), ("Enago", "enago"),
+    ("Wordvice", "wordvice"), ("PaperTrue", "papertrue"),
+    # Remote-first Tech (keeping only relevant ones)
+    ("KAYAK", "kayak"), ("Mozilla", "mozilla"), ("GitLab", "gitlab"),
+    ("Cloudflare", "cloudflare"),
 ]
 
-LEVER_COMPANIES = [("Appen", "appen")]
+LEVER_COMPANIES = [
+    ("Appen", "appen"),
+    ("Unbabel", "unbabel"),
+    ("Lilt", "lilt"),
+    ("Anghami", "anghami"),
+    ("Noon Academy", "noonacademy"),
+]
 
 # ---------------------------------------------------------------------------
 # Scoring system — enhanced for Arabic speaker focus
@@ -4910,8 +4928,18 @@ async def run_scan():
         if _should_run("smartrecruiters"):
             for name, slug in SMARTRECRUITERS_COMPANIES:
                 fetchers.append(fetch_smartrecruiters_board(session, name, slug))
+        if _should_run("recruitee"):
+            for name, slug in RECRUITEE_COMPANIES:
+                fetchers.append(fetch_recruitee_board(session, name, slug))
+        if _should_run("teamtailor"):
+            for name, slug in TEAMTAILOR_COMPANIES:
+                fetchers.append(fetch_teamtailor_board(session, name, slug))
         if _should_run("themuse"):
             fetchers.append(fetch_themuse(session))
+        if _should_run("remowork"):
+            fetchers.append(fetch_remowork(session))
+        if _should_run("eslbase"):
+            fetchers.append(fetch_eslbase(session))
         # Keyed aggregators — the legit route to Indeed/LinkedIn/Glassdoor inventory.
         # Each is a no-op (returns []) until its secret is configured.
         if _should_run("jsearch"):

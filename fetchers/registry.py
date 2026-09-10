@@ -44,6 +44,11 @@ FETCHERS: list[tuple[str, str, int, str]] = [
     ("freelancer", "fetch_freelancer", 1, "freelancer"),  # promoted: 30 of 56 all-time matches came from here
     ("peopleperhour", "fetch_peopleperhour", 3, "peopleperhour"),
     ("guru", "fetch_guru", 3, "guru"),
+    # ── New sources (added 2026-09-10) ──
+    ("remowork", "fetch_remowork", 2, "remowork"),                    # curated remote Arabic jobs (121 items)
+    ("eslbase", "fetch_eslbase", 2, "eslbase"),                        # ESL teaching jobs (44 items)
+    ("recruitee", "fetch_recruitee_boards", 2, "recruitee"),           # ATS adapter for Lingoda, Preply, Cambly
+    ("teamtailor", "fetch_teamtailor_boards", 2, "teamtailor"),        # ATS adapter for Novakid, Open English
 ]
 
 TIER_MAP = {name: tier for name, _, tier, _ in FETCHERS}

@@ -643,5 +643,53 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-10T22:09:22.049390+00:00"
+  },
+  "Bitget": {
+    "name": "Bitget",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-11T09:31:56.925692+00:00"
+  },
+  "AP Guru": {
+    "name": "AP Guru",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-11T09:31:56.926587+00:00"
+  },
+  "Lawrence Public Schools": {
+    "name": "Lawrence Public Schools",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-11T09:31:56.927402+00:00"
+  },
+  "I CAN READ Indonesia": {
+    "name": "I CAN READ Indonesia",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-11T09:31:56.928137+00:00"
   }
 }

@@ -1353,5 +1353,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-11T16:54:42.060949+00:00",
+    "matched_count": 2,
+    "all_count": 3224,
+    "jobs": [
+      {
+        "title": "Engaging Instagram Content Creator -- 2",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/social-media-marketing/Engaging-Instagram-Content-Creator-40705288",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "ESP Online Tutor",
+        "company": "Leela Home elearning",
+        "url": "https://dz.linkedin.com/jobs/view/esp-online-tutor-at-leela-home-elearning-4463979160",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

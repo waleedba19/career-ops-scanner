@@ -1282,5 +1282,76 @@
     "matched_count": 0,
     "all_count": 3232,
     "jobs": []
+  },
+  {
+    "date": "2026-09-11T09:34:12.682310+00:00",
+    "matched_count": 8,
+    "all_count": 3213,
+    "jobs": [
+      {
+        "title": "Online ESL Teacher for Young Child",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/english-tutoring/Online-ESL-Teacher-for-Young",
+        "score": 97,
+        "category": "ESL",
+        "source": "freelancer"
+      },
+      {
+        "title": "Proofread Danish Website Content",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/website-localization/Proofread-Danish-Website-Content",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Virtual Assistant for Job Applications & Operations (5\u201310 hrs/wk, PST Afternoons)",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/google-docs/Virtual-Assistant-for-Job-Applications",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Personal Quran Interpretation Counseling",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/personal-development/Personal-Quran-Interpretation-Counseling",
+        "score": 62,
+        "category": "Arabic Translation",
+        "source": "freelancer"
+      },
+      {
+        "title": "Arabic Translator",
+        "company": "Bitget",
+        "url": "https://www.linkedin.com/jobs/view/arabic-translator-at-bitget-4466036614",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "IB English Tutor",
+        "company": "AP Guru",
+        "url": "https://in.linkedin.com/jobs/view/ib-english-tutor-at-ap-guru-4463949986",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "ESL TEACHER",
+        "company": "Lawrence Public Schools",
+        "url": "https://www.linkedin.com/jobs/view/esl-teacher-at-lawrence-public-schools-4463958373",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "English Teacher",
+        "company": "I CAN READ Indonesia",
+        "url": "https://id.linkedin.com/jobs/view/english-teacher-at-i-can-read-indonesia-4464506994",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

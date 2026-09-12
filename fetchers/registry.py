@@ -1,79 +1,177 @@
-"""Registry — single source for which fetchers run, in which tier, and deduplicated."""
-from typing import Callable
+"""Registry — true registry with lazy loading for CareerOps fetchers."""
+import os
+from typing import Callable, Optional
+from .base import BaseFetcher, FetchResult
 
-# Maps fetcher name -> (callable_name, tier, dedup_key)
-# dedup_key groups variants (himalayas*, jobicy*, etc) so only the best runs
-FETCHERS: list[tuple[str, str, int, str]] = [
+# Registry mapping: name -> (tier, module_path, class_name)
+# Lazy loading: fetcher modules are only imported when needed
+REGISTRY: dict[str, dict] = {
     # Tier 1 — primary, high signal (always on)
-    ("greenhouse", "fetch_greenhouse_batch", 1, "greenhouse"),
-    ("lever", "fetch_lever_batch", 1, "lever"),
-    ("remotive", "fetch_remotive", 1, "remotive"),
-    ("remoteok", "fetch_remoteok", 1, "remoteok"),
-    ("weworkremotely", "fetch_wwr", 1, "wwr"),
-    ("jobicy", "fetch_jobicy_api", 1, "jobicy"),  # API is best; RSS fallback inside
-    ("arbeitnow", "fetch_arbeitnow", 1, "arbeitnow"),
-    ("himalayas", "fetch_himalayas_api", 1, "himalayas"),  # JSON API best
-    ("nodesk", "fetch_nodesk", 2, "nodesk"),
-    ("yayremote", "fetch_yayremote", 2, "yayremote"),
-    ("remote1stjobs", "fetch_remote1stjobs", 2, "remote1st"),
-    ("realworkfromanywhere", "fetch_realworkfromanywhere", 2, "realwork"),
-    ("workingnomads", "fetch_workingnomads_json", 2, "workingnomads"),  # JSON endpoint (probe-verified); RSS twin 404s
-    ("jobspresso", "fetch_jobspresso", 2, "jobspresso"),
-    ("justremote", "fetch_justremote", 2, "justremote"),
-    ("hirelatam", "fetch_hirelatam", 2, "hirelatam"),
-    ("reddit_social", "fetch_reddit_social", 2, "reddit"),  # social signals: r/forhire, r/RemoteJobs, r/esl, ...
-    ("eslgorilla", "fetch_eslgorilla", 2, "eslgorilla"),  # online ESL board, 300+ live listings (live-verified 2026-09-06)
-    ("tes", "fetch_tes", 2, "tes"),  # 2,700+ teaching jobs, remote/online filter built in
-    # ── Verified by the Probe Sources workflow (state/source_probe.md, 2026-09-06) ──
-    # Tier 1: precision sources that returned profile-relevant jobs from the runner IP
-    ("linkedin", "fetch_linkedin_guest", 1, "linkedin"),               # 4 profile queries, remote, last 24h
-    ("freelancer_api", "fetch_freelancer_api", 1, "freelancer_api"),   # keyword-precise; RSS variant converts at 17%
-    ("jobicy_tags", "fetch_jobicy_tags", 1, "jobicy_tags"),            # tag=translation/teaching/writing
-    ("impactpool", "fetch_impactpool", 1, "impactpool"),               # UN/NGO — Arabic interpreter demand
-    ("greenhouse_profile", "fetch_greenhouse_profile", 1, "greenhouse_profile"),  # Invisible/Labelbox/Turing boards
-    ("ashby", "fetch_ashby_boards", 2, "ashby"),                       # Mercor
-    ("workable", "fetch_workable_boards", 2, "workable"),              # Tamatem
-    ("smartrecruiters", "fetch_smartrecruiters_boards", 2, "smartrecruiters"),  # Keywords Studios, TransPerfect
-    ("themuse", "fetch_themuse", 2, "themuse"),                        # free public API, remote-filtered
-    # Keyed aggregators — no-ops until the secret exists (RAPIDAPI_KEY, ADZUNA_*, JOOBLE_API_KEY, RELIEFWEB_APPNAME)
-    ("jsearch", "fetch_jsearch", 1, "jsearch"),                        # Google for Jobs → Indeed/LinkedIn/Glassdoor
-    ("adzuna", "fetch_adzuna", 1, "adzuna"),
-    ("jooble", "fetch_jooble", 2, "jooble"),
-    ("reliefweb", "fetch_reliefweb", 1, "reliefweb"),
-    # Tier 2 — niche / freelance
-    ("freelancer", "fetch_freelancer", 1, "freelancer"),  # promoted: 30 of 56 all-time matches came from here
-    ("peopleperhour", "fetch_peopleperhour", 3, "peopleperhour"),
-    ("guru", "fetch_guru", 3, "guru"),
-    # ── New sources (added 2026-09-10) ──
-    ("remowork", "fetch_remowork", 2, "remowork"),                    # curated remote Arabic jobs (121 items)
-    ("eslbase", "fetch_eslbase", 2, "eslbase"),                        # ESL teaching jobs (44 items)
-    ("recruitee", "fetch_recruitee_boards", 2, "recruitee"),           # ATS adapter for Lingoda, Preply, Cambly
-    ("teamtailor", "fetch_teamtailor_boards", 2, "teamtailor"),        # ATS adapter for Novakid, Open English
-    # ── Free remote boards (no API key required) ──
-    ("euremotejobs", "fetch_euremotejobs", 2, "euremotejobs"),        # EU Remote Jobs RSS feed
-    ("remotejobleads", "fetch_remotejobleads", 2, "remotejobleads"),  # Remote Job Leads RSS feed
-    ("dailyremote", "fetch_dailyremote", 3, "dailyremote"),           # DailyRemote HTML scrape
-    ("dynamitejobs", "fetch_dynamitejobs", 3, "dynamitejobs"),        # Dynamite Jobs HTML scrape
-    ("europeremotely", "fetch_europeremotely", 3, "europeremotely"),  # Europe Remotely HTML scrape
-    # ── Additional ATS adapters ──
-    ("bamboohr", "fetch_bamboohr_boards", 2, "bamboohr"),             # BambooHR ATS (HTML)
-    ("jobvite", "fetch_jobvite_boards", 2, "jobvite"),                # Jobvite ATS (RSS)
-    ("personio", "fetch_personio_boards", 2, "personio"),             # Personio ATS (HTML)
-]
+    "greenhouse": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_batch"},
+    "lever": {"tier": 1, "module": "fetchers.verified", "class": "fetch_lever_batch"},
+    "remotive": {"tier": 1, "module": "fetchers.verified", "class": "fetch_remotive"},
+    "remoteok": {"tier": 1, "module": "fetchers.verified", "class": "fetch_remoteok"},
+    "weworkremotely": {"tier": 1, "module": "fetchers.verified", "class": "fetch_wwr"},
+    "jobicy": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jobicy_api"},
+    "arbeitnow": {"tier": 1, "module": "fetchers.verified", "class": "fetch_arbeitnow"},
+    "himalayas": {"tier": 1, "module": "fetchers.verified", "class": "fetch_himalayas_api"},
+    "linkedin": {"tier": 1, "module": "fetchers.verified", "class": "fetch_linkedin_guest"},
+    "freelancer_api": {"tier": 1, "module": "fetchers.verified", "class": "fetch_freelancer_api"},
+    "jobicy_tags": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jobicy_tags"},
+    "impactpool": {"tier": 1, "module": "fetchers.verified", "class": "fetch_impactpool"},
+    "greenhouse_profile": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_profile"},
+    "jsearch": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jsearch"},
+    "adzuna": {"tier": 1, "module": "fetchers.verified", "class": "fetch_adzuna"},
+    "reliefweb": {"tier": 1, "module": "fetchers.verified", "class": "fetch_reliefweb"},
+    "freelancer": {"tier": 1, "module": "fetchers.verified", "class": "fetch_freelancer"},
+    
+    # Tier 2 — balanced (good volume)
+    "nodesk": {"tier": 2, "module": "fetchers.verified", "class": "fetch_nodesk"},
+    "yayremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_yayremote"},
+    "remote1stjobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remote1stjobs"},
+    "realworkfromanywhere": {"tier": 2, "module": "fetchers.verified", "class": "fetch_realworkfromanywhere"},
+    "workingnomads": {"tier": 2, "module": "fetchers.verified", "class": "fetch_workingnomads_json"},
+    "jobspresso": {"tier": 2, "module": "fetchers.verified", "class": "fetch_jobspresso"},
+    "justremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_justremote"},
+    "hirelatam": {"tier": 2, "module": "fetchers.verified", "class": "fetch_hirelatam"},
+    "reddit_social": {"tier": 2, "module": "fetchers.social", "class": "fetch_reddit_social"},
+    "eslgorilla": {"tier": 2, "module": "fetchers.verified", "class": "fetch_eslgorilla"},
+    "tes": {"tier": 2, "module": "fetchers.verified", "class": "fetch_tes"},
+    "ashby": {"tier": 2, "module": "fetchers.verified", "class": "fetch_ashby_boards"},
+    "workable": {"tier": 2, "module": "fetchers.verified", "class": "fetch_workable_boards"},
+    "smartrecruiters": {"tier": 2, "module": "fetchers.verified", "class": "fetch_smartrecruiters_boards"},
+    "themuse": {"tier": 2, "module": "fetchers.verified", "class": "fetch_themuse"},
+    "jooble": {"tier": 2, "module": "fetchers.verified", "class": "fetch_jooble"},
+    "remowork": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remowork"},
+    "eslbase": {"tier": 2, "module": "fetchers.verified", "class": "fetch_eslbase"},
+    "recruitee": {"tier": 2, "module": "fetchers.verified", "class": "fetch_recruitee_boards"},
+    "teamtailor": {"tier": 2, "module": "fetchers.verified", "class": "fetch_teamtailor_boards"},
+    "euremotejobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_euremotejobs"},
+    "remotejobleads": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remotejobleads"},
+    "bamboohr": {"tier": 2, "module": "fetchers.verified", "class": "fetch_bamboohr_boards"},
+    "jobvite": {"tier": 2, "module": "fetchers.verified", "class": "fetch_jobvite_boards"},
+    "personio": {"tier": 2, "module": "fetchers.verified", "class": "fetch_personio_boards"},
+    
+    # Tier 3 — niche / MENA / freelance (noisy, use sparingly)
+    "peopleperhour": {"tier": 3, "module": "fetchers.verified", "class": "fetch_peopleperhour"},
+    "guru": {"tier": 3, "module": "fetchers.verified", "class": "fetch_guru"},
+    "dailyremote": {"tier": 3, "module": "fetchers.verified", "class": "fetch_dailyremote"},
+    "dynamitejobs": {"tier": 3, "module": "fetchers.verified", "class": "fetch_dynamitejobs"},
+    "europeremotely": {"tier": 3, "module": "fetchers.verified", "class": "fetch_europeremotely"},
+}
 
-TIER_MAP = {name: tier for name, _, tier, _ in FETCHERS}
-DEDUP_KEYS = {dedup: name for name, _, _, dedup in FETCHERS}
+# Blocked sources (from probe testing)
+PROBE_BLOCKED_SOURCES = ["mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz"]
+FORCE_BLOCKED_SOURCES = os.getenv("CAREEROPS_FORCE_BLOCKED", "0") == "1"
 
-def get_fetcher(name: str):
-    return next((x for x in FETCHERS if x[0]==name), None)
+# Circuit breaker state
+_circuit: dict[str, float] = {}
+FAIL_THRESHOLD = 5
+COOLDOWN_SEC = 600
 
-def list_fetchers(max_tier: int = 3):
+
+def _circuit_open(name: str) -> bool:
+    """Check if a source is in circuit breaker state."""
+    import time
+    opened = _circuit.get(name, 0)
+    return time.time() < opened
+
+
+def _mark_failure(name: str):
+    """Mark a source as failed."""
+    import time
+    _circuit[name] = time.time() + COOLDOWN_SEC
+
+
+def _mark_success(name: str):
+    """Mark a source as successful (reset circuit)."""
+    _circuit.pop(name, None)
+
+
+def get_fetcher(name: str) -> Optional[dict]:
+    """Get fetcher info by name."""
+    return REGISTRY.get(name)
+
+
+def list_fetchers(max_tier: int = 3) -> list[str]:
     """Return fetcher names up to tier."""
-    return [name for name,_,tier,_ in FETCHERS if tier <= max_tier]
+    return [name for name, info in REGISTRY.items() if info["tier"] <= max_tier]
+
+
+def get_available_tiers() -> list[int]:
+    """Get list of available tiers."""
+    tiers = set(info["tier"] for info in REGISTRY.values())
+    return sorted(tiers)
+
+
+def fetch_source(name: str, tier_cap: int = 0) -> list[dict]:
+    """Fetch one source; returns list of raw job dicts."""
+    import time
+    
+    if name not in REGISTRY:
+        return []
+    
+    info = REGISTRY[name]
+    
+    # Check tier cap
+    if tier_cap and info["tier"] > tier_cap:
+        return []
+    
+    # Check blocked sources
+    if not FORCE_BLOCKED_SOURCES and name in PROBE_BLOCKED_SOURCES:
+        print(f"  [{name}] blocked by probe - skipping")
+        return []
+    
+    # Check circuit breaker
+    if _circuit_open(name):
+        print(f"  [{name}] circuit open - skipping")
+        return []
+    
+    # Lazy load the fetcher function
+    try:
+        import importlib
+        module = importlib.import_module(info["module"])
+        fetch_fn = getattr(module, info["class"])
+        
+        # For now, we need to pass a session - this will be refactored
+        # when we modularize the fetchers
+        import aiohttp
+        async def _fetch():
+            async with aiohttp.ClientSession() as session:
+                return await fetch_fn(session)
+        
+        # Run the async function
+        import asyncio
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # We're in an async context, create a task
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as pool:
+                    result = pool.submit(asyncio.run, _fetch()).result()
+                return result
+            else:
+                return loop.run_until_complete(_fetch())
+        except RuntimeError:
+            return asyncio.run(_fetch())
+        
+    except Exception as e:
+        _mark_failure(name)
+        print(f"  [{name}] ERROR: {e}")
+        return []
+
+
+def fetch_all(tier_cap: int = 3, names: list[str] | None = None) -> dict[str, list[dict]]:
+    """Fetch all sources up to tier cap."""
+    out = {}
+    for name in (names or list(REGISTRY)):
+        out[name] = fetch_source(name, tier_cap)
+    return out
+
 
 # Env-driven tier cap: 1=lean & fast, 2=balanced, 3=full sweep (default 2)
-import os
 try:
     TIER_CAP = int(os.getenv("CAREEROPS_TIER_CAP", "2"))
-except: TIER_CAP = 2
+except:
+    TIER_CAP = 2
 TIER_CAP = max(1, min(3, TIER_CAP))

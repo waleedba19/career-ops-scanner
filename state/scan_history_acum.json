@@ -1518,5 +1518,28 @@
     "matched_count": 0,
     "all_count": 3205,
     "jobs": []
+  },
+  {
+    "date": "2026-09-12T23:17:26.305875+00:00",
+    "matched_count": 2,
+    "all_count": 3224,
+    "jobs": [
+      {
+        "title": "Local Virtual Assistant Needed",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/administrative-support/Local-Virtual-Assistant-Needed-40707745.html",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      },
+      {
+        "title": "Middle School ESL Teacher (Anticipated Openings 2026-2027)",
+        "company": "Springfield Public Schools (Massachusetts)",
+        "url": "https://www.linkedin.com/jobs/view/middle-school-esl-teacher-anticipated-openings-2026-2027-at-springfield-public-schools-massachusetts-4464295658",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

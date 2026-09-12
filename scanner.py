@@ -41,6 +41,7 @@ from fetchers.verified import (
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
 )
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
+from scheduler import SmartScheduler, create_scheduler
 
 # ── Enterprise config (centralized) — single source of truth ──
 import config as _cfg
@@ -4864,6 +4865,19 @@ async def run_scan():
     start_time = time.time()
     print("CareerOps GitHub Actions scan starting...")
 
+    # Initialize scheduler
+    import sys
+    mode = "adaptive"
+    for arg in sys.argv[1:]:
+        if arg.startswith("--mode="):
+            mode = arg.split("=")[1]
+        elif arg == "--mode" and sys.argv.index(arg) + 1 < len(sys.argv):
+            mode = sys.argv[sys.argv.index(arg) + 1]
+    
+    scheduler = create_scheduler(mode)
+    scheduler.start()
+    print(f"  [scheduler] Mode: {mode}, Budget: {scheduler.total_budget}s ({scheduler.total_budget//60}min)")
+
     history = load_history()
     seen_urls = set(history["seen_urls"])
     persistent_seen = load_seen_urls()
@@ -5598,6 +5612,11 @@ async def run_scan():
 
         elapsed_final = f"{time.time() - start_time:.1f}"
         print(f"Scan complete in {elapsed_final}s. Telegram: {telegram_sent}, Email: {email_sent}")
+        
+        # Scheduler status
+        scheduler_status = scheduler.get_status()
+        print(f"  [scheduler] Status: {scheduler_status['elapsed']:.0f}s elapsed, {scheduler_status['remaining']:.0f}s remaining")
+        print(f"  [scheduler] Tiers: {scheduler_status['available_tiers']}, AI jobs: {scheduler_status['max_ai_jobs']}")
 
         # Output JSON result for GitHub Actions
         result = {

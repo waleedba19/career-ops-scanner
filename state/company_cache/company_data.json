@@ -739,5 +739,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-12T16:02:58.463732+00:00"
+  },
+  "State of Iowa - Executive Branch": {
+    "name": "State of Iowa - Executive Branch",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-12T21:49:49.218967+00:00"
   }
 }

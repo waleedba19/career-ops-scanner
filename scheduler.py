@@ -151,8 +151,8 @@ def create_scheduler(mode: str = "comprehensive") -> SmartScheduler:
             budget = SmartScheduler.DEEP_SCAN_BUDGET
         elif 20 <= hour < 22:  # Night scan
             budget = SmartScheduler.STANDARD_SCAN_BUDGET
-        else:  # Other times
-            budget = SmartScheduler.STANDARD_SCAN_BUDGET
+        else:  # Other times - use comprehensive for manual triggers
+            budget = SmartScheduler.COMPREHENSIVE_SCAN_BUDGET
     else:
         budget = budgets.get(mode, SmartScheduler.COMPREHENSIVE_SCAN_BUDGET)
 

@@ -1477,5 +1477,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-12T21:50:34.550745+00:00",
+    "matched_count": 2,
+    "all_count": 3183,
+    "jobs": [
+      {
+        "title": "Multifaceted Virtual Support & Content Creation",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/writing/Multifaceted-Virtual-Support-Content",
+        "score": 77,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Proofreader",
+        "company": "State of Iowa - Executive Branch",
+        "url": "https://www.linkedin.com/jobs/view/proofreader-at-state-of-iowa-executive-branch-4464249445",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

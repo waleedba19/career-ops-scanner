@@ -42,6 +42,7 @@ from fetchers.verified import (
 )
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 from scheduler import SmartScheduler, create_scheduler
+from deep_reader import enrich_jobs_with_deep_read
 
 # ── Enterprise config (centralized) — single source of truth ──
 import config as _cfg
@@ -5396,6 +5397,17 @@ async def run_scan():
             print(f"Company research: {len(researched)} companies, {len(boosted)} boosted, {len(flagged)} flagged")
         except Exception as e:
             print(f"Company research failed: {e}")
+        
+        # ---- Deep read top candidates (if time permits) ----
+        if scheduler.should_continue():
+            scheduler.start_phase("deep_read")
+            try:
+                final_verified = enrich_jobs_with_deep_read(final_verified, max_deep_reads=20)
+                deep_read_count = sum(1 for j in final_verified if j.get("deep_read"))
+                print(f"Deep read completed: {deep_read_count} pages read")
+            except Exception as e:
+                print(f"Deep read failed: {e}")
+            scheduler.end_phase("deep_read")
         
         # ---- Generate cover letters for fresh matches (AI-enhanced) ----
         try:

@@ -2,10 +2,22 @@ name: CareerOps Job Scan
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # 05:00 UTC = 07:00 Libya — Morning Intel
-    - cron: '0 13 * * *'  # 13:00 UTC = 15:00 Libya — Afternoon Briefing
-    - cron: '0 20 * * *'  # 20:00 UTC = 22:00 Libya — Night Digest
+    - cron: '0 5 * * *'   # 05:00 UTC = 07:00 Libya — Morning Intel (Comprehensive)
+    - cron: '0 13 * * *'  # 13:00 UTC = 15:00 Libya — Afternoon Briefing (Deep)
+    - cron: '0 20 * * *'  # 20:00 UTC = 22:00 Libya — Night Digest (Standard)
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Scan mode (quick/standard/deep/comprehensive/adaptive)'
+        required: false
+        default: 'adaptive'
+        type: choice
+        options:
+          - quick
+          - standard
+          - deep
+          - comprehensive
+          - adaptive
   push:
     branches: [main]
     paths-ignore: ['README.md', 'ARCHITECTURE.md', 'dashboard/**']
@@ -17,7 +29,7 @@ concurrency:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 360  # 6 hours for comprehensive scans
     permissions:
       contents: write
 
@@ -27,17 +39,15 @@ jobs:
       BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
       TO_EMAIL:           ${{ secrets.TO_EMAIL }}
       # Optional keyed aggregators (each fetcher is a no-op while its secret is unset).
-      # See SOURCES.md §0 — JSearch is the legitimate route to Indeed/LinkedIn/Glassdoor inventory.
       RAPIDAPI_KEY:       ${{ secrets.RAPIDAPI_KEY }}
       ADZUNA_APP_ID:      ${{ secrets.ADZUNA_APP_ID }}
       ADZUNA_APP_KEY:     ${{ secrets.ADZUNA_APP_KEY }}
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
       OLLAMA_MODEL:       qwen2.5:1.5b
-      CAREEROPS_TIER_CAP: "3"   # full sweep — includes MENA (for9a/ureed/wuzzuf/bayt/gulftalent) + freelance fleet
-      # CAREEROPS_FORCE_BLOCKED: "1"  # re-enable probe-blocked hosts (mostaql/ureed/wuzzuf/bayt/gulftalent/proz) — only useful off datacenter IPs
-      CAREEROPS_FRESH_H: "8"    # fresh = posted within one scan cycle (scans run every 8h)
+      CAREEROPS_TIER_CAP: "3"   # full sweep
       CAREEROPS_BATCH_SIZE: "8"
+      SCAN_MODE:          ${{ github.event.inputs.mode || 'adaptive' }}
 
     steps:
       - name: Checkout repository
@@ -109,8 +119,8 @@ jobs:
         run: python source_discovery.py
         continue-on-error: true
 
-      - name: Run job scanner
-        run: python scanner.py
+      - name: Run job scanner (adaptive mode)
+        run: python scanner.py --mode ${{ env.SCAN_MODE }}
 
       - name: Export metrics & health
         if: always()

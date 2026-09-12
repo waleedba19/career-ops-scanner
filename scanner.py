@@ -4889,14 +4889,14 @@ async def run_scan():
         # ── Enterprise fetcher registry: deduped, tier-aware, circuit-breaker ──
         # Tier cap controls cost/latency: 1=lean (15 sources), 2=balanced (30), 3=full sweep (88)
         try:
-            from fetchers.registry import TIER_CAP, TIER_MAP
+            from fetchers.registry import TIER_CAP, REGISTRY
             tier_cap = TIER_CAP
         except Exception:
             tier_cap = 2
 
         def _should_run(name: str) -> bool:
             try:
-                return TIER_MAP.get(name, 3) <= tier_cap
+                return REGISTRY.get(name, {}).get("tier", 3) <= tier_cap
             except:
                 return True
 

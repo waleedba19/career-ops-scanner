@@ -42,56 +42,37 @@ from fetchers.verified import (
 )
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 
-# ── Enterprise config (centralized) — fallback to local defaults if missing ──
-try:
-    import config as _cfg
-    MIN_MATCH_SCORE = getattr(_cfg, "MIN_MATCH_SCORE", 65)
-    MAX_AGE_HOURS = getattr(_cfg, "MAX_AGE_HOURS", 144)
-    MAX_AGE_FRESH_HOURS = getattr(_cfg, "MAX_AGE_FRESH_HOURS", 0.5)
-    NEAR_MISS_LIMIT = getattr(_cfg, "NEAR_MISS_LIMIT", 6)
-    TOP_LIVENESS_CHECK = getattr(_cfg, "TOP_LIVENESS_CHECK", 6)
-    HISTORY_MAX = getattr(_cfg, "HISTORY_MAX", 5000)
-    FETCH_TIMEOUT = getattr(_cfg, "FETCH_TIMEOUT", 12)
-    FETCH_BATCH_SIZE = getattr(_cfg, "FETCH_BATCH_SIZE", 8)
-    HEADERS = getattr(_cfg, "HEADERS", {"User-Agent": "Mozilla/5.0"})
-    # NOTE: defaults must not reference module globals defined further down —
-    # an eager NameError here used to send every run into the except branch.
-    GREENHOUSE_COMPANIES = getattr(_cfg, "GREENHOUSE_COMPANIES", None) or []
-    LEVER_COMPANIES = getattr(_cfg, "LEVER_COMPANIES", None) or []
-    GREENHOUSE_PROFILE_BOARDS = getattr(_cfg, "GREENHOUSE_PROFILE_BOARDS", [])
-    ASHBY_COMPANIES = getattr(_cfg, "ASHBY_COMPANIES", [])
-    WORKABLE_COMPANIES = getattr(_cfg, "WORKABLE_COMPANIES", [])
-    SMARTRECRUITERS_COMPANIES = getattr(_cfg, "SMARTRECRUITERS_COMPANIES", [])
-    RECRUITEE_COMPANIES = getattr(_cfg, "RECRUITEE_COMPANIES", [])
-    TEAMTAILOR_COMPANIES = getattr(_cfg, "TEAMTAILOR_COMPANIES", [])
-    BAMBOOHR_COMPANIES = getattr(_cfg, "BAMBOOHR_COMPANIES", [])
-    BREEZY_COMPANIES = getattr(_cfg, "BREEZY_COMPANIES", [])
-    PINPOINT_COMPANIES = getattr(_cfg, "PINPOINT_COMPANIES", [])
-    RIPPLING_COMPANIES = getattr(_cfg, "RIPPLING_COMPANIES", [])
-    JOBVITE_COMPANIES = getattr(_cfg, "JOBVITE_COMPANIES", [])
-    PERSONIO_COMPANIES = getattr(_cfg, "PERSONIO_COMPANIES", [])
-    PROBE_BLOCKED_SOURCES = getattr(_cfg, "PROBE_BLOCKED_SOURCES", [])
-    FORCE_BLOCKED_SOURCES = getattr(_cfg, "FORCE_BLOCKED_SOURCES", False)
-    OUTPUT_DIR = Path(getattr(_cfg, "OUTPUT_DIR", Path(__file__).parent / "output"))
-    HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
-    SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
-    SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
-    TIMEOUT = aiohttp.ClientTimeout(total=FETCH_TIMEOUT)
-except Exception as _cfg_err:
-    print(f"  Config import fallback (using built-in defaults): {_cfg_err}")
-    FETCH_BATCH_SIZE = 8
-    FETCH_TIMEOUT = 12
-    GREENHOUSE_PROFILE_BOARDS = []
-    ASHBY_COMPANIES = []
-    WORKABLE_COMPANIES = []
-    SMARTRECRUITERS_COMPANIES = []
-    RECRUITEE_COMPANIES = []
-    TEAMTAILOR_COMPANIES = []
-    BAMBOOHR_COMPANIES = []
-    JOBVITE_COMPANIES = []
-    PERSONIO_COMPANIES = []
-    PROBE_BLOCKED_SOURCES = []
-    FORCE_BLOCKED_SOURCES = False
+# ── Enterprise config (centralized) — single source of truth ──
+import config as _cfg
+MIN_MATCH_SCORE = _cfg.MIN_MATCH_SCORE
+MAX_AGE_HOURS = _cfg.MAX_AGE_HOURS
+MAX_AGE_FRESH_HOURS = _cfg.MAX_AGE_FRESH_HOURS
+NEAR_MISS_MIN = _cfg.NEAR_MISS_MIN
+NEAR_MISS_MAX = _cfg.NEAR_MISS_MAX
+NEAR_MISS_LIMIT = _cfg.NEAR_MISS_LIMIT
+TOP_LIVENESS_CHECK = _cfg.TOP_LIVENESS_CHECK
+HISTORY_MAX = _cfg.HISTORY_MAX
+FETCH_TIMEOUT = _cfg.FETCH_TIMEOUT
+FETCH_BATCH_SIZE = _cfg.FETCH_BATCH_SIZE
+HEADERS = _cfg.HEADERS
+GREENHOUSE_COMPANIES = _cfg.GREENHOUSE_COMPANIES
+LEVER_COMPANIES = _cfg.LEVER_COMPANIES
+GREENHOUSE_PROFILE_BOARDS = _cfg.GREENHOUSE_PROFILE_BOARDS
+ASHBY_COMPANIES = _cfg.ASHBY_COMPANIES
+WORKABLE_COMPANIES = _cfg.WORKABLE_COMPANIES
+SMARTRECRUITERS_COMPANIES = _cfg.SMARTRECRUITERS_COMPANIES
+RECRUITEE_COMPANIES = _cfg.RECRUITEE_COMPANIES
+TEAMTAILOR_COMPANIES = _cfg.TEAMTAILOR_COMPANIES
+BAMBOOHR_COMPANIES = _cfg.BAMBOOHR_COMPANIES
+JOBVITE_COMPANIES = _cfg.JOBVITE_COMPANIES
+PERSONIO_COMPANIES = _cfg.PERSONIO_COMPANIES
+PROBE_BLOCKED_SOURCES = _cfg.PROBE_BLOCKED_SOURCES
+FORCE_BLOCKED_SOURCES = _cfg.FORCE_BLOCKED_SOURCES
+OUTPUT_DIR = _cfg.OUTPUT_DIR
+HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
+SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
+SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
+TIMEOUT = aiohttp.ClientTimeout(total=FETCH_TIMEOUT)
 
 # ── Metrics hooks (optional) ──
 try:
@@ -111,26 +92,6 @@ try:
     from fetchers.search_orchestrator import discover_via_search
 except Exception:
     discover_via_search = None
-
-# ---------------------------------------------------------------------------
-# Configuration
-# ---------------------------------------------------------------------------
-
-MIN_MATCH_SCORE = 65
-MAX_AGE_HOURS = 144  # 6 days (144 hours)
-MAX_AGE_FRESH_HOURS = 8  # one full scan cycle (scans run every 8h)
-NEAR_MISS_MIN = 50
-NEAR_MISS_MAX = 64
-NEAR_MISS_LIMIT = 6
-TOP_LIVENESS_CHECK = 6
-HISTORY_MAX = 5000
-OUTPUT_DIR = Path(__file__).parent / "output"
-HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
-SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
-SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
-
-HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-TIMEOUT = aiohttp.ClientTimeout(total=10)
 
 # ---------------------------------------------------------------------------
 # Paid platforms to filter out (require fees to apply)

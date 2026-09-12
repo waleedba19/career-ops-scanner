@@ -1407,5 +1407,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-12T09:10:33.065780+00:00",
+    "matched_count": 2,
+    "all_count": 3218,
+    "jobs": [
+      {
+        "title": "Creative Content Writer Needed",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/seo/Creative-Content-Writer-Needed-40706655",
+        "score": 97,
+        "category": "Editing",
+        "source": "freelancer"
+      },
+      {
+        "title": "Pakistani Virtual Assistant for Admin Support",
+        "company": "Freelancer.com",
+        "url": "https://www.freelancer.com/projects/social-media-management/Pakistani-Virtual-Assistant-for-Admin",
+        "score": 97,
+        "category": "Admin",
+        "source": "freelancer"
+      }
+    ]
   }
 ]

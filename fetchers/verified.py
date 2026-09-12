@@ -1179,3 +1179,648 @@ def parse_personio_html(html: str, company: str) -> list[dict]:
 async def fetch_personio_board(session: aiohttp.ClientSession, company: str, slug: str) -> list[dict]:
     status, body = await _get_text(session, f"https://{slug}.jobs.personio.com/search?query=")
     return parse_personio_html(body, company) if status == 200 else []
+
+
+# ============================================================================
+# NEW BATCH FETCHERS — Added for source expansion
+# ============================================================================
+
+async def fetch_upwork(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Upwork RSS feed."""
+    url = "https://www.upwork.com/ab/feed/jobs/rss?q=remote&sort=recency"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:50]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Upwork Client",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "upwork",
+            })
+    return jobs
+
+
+async def fetch_stackoverflow(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Stack Overflow Jobs RSS."""
+    url = "https://stackoverflow.com/jobs/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:50]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": _extract_tag(item, "author") or "Stack Overflow Job",
+                "url": link,
+                "location": _extract_tag(item, "location") or "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "stackoverflow",
+            })
+    return jobs
+
+
+async def fetch_github_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from GitHub Jobs API."""
+    url = "https://jobs.github.com/positions.json"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    try:
+        data = json.loads(body)
+    except:
+        return []
+    
+    jobs = []
+    for item in data[:50]:
+        jobs.append({
+            "title": _clean(item.get("title", ""))[:160],
+            "company": _clean(item.get("company", "")),
+            "url": item.get("url", ""),
+            "location": item.get("location", "Remote"),
+            "posted": item.get("created_at", ""),
+            "description": _clean(item.get("description", ""))[:500],
+            "salary": "",
+            "source": "github_jobs",
+        })
+    return jobs
+
+
+async def fetch_hackernews(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Hacker News Who's Hiring."""
+    url = "https://hacker-news.firebaseio.com/v0/jobstories.json"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    try:
+        ids = json.loads(body)
+    except:
+        return []
+    
+    jobs = []
+    for job_id in ids[:30]:
+        item_url = f"https://hacker-news.firebaseio.com/v0/item/{job_id}.json"
+        item_status, item_body = await _get_text(session, item_url)
+        if item_status == 200:
+            try:
+                item = json.loads(item_body)
+                if item and item.get("title"):
+                    jobs.append({
+                        "title": _clean(item.get("title", ""))[:160],
+                        "company": "Hacker News Poster",
+                        "url": item.get("url", f"https://news.ycombinator.com/item?id={job_id}"),
+                        "location": "Remote",
+                        "posted": datetime.fromtimestamp(item.get("time", 0), tz=timezone.utc).isoformat() if item.get("time") else "",
+                        "description": _clean(item.get("text", ""))[:500] if item.get("text") else "",
+                        "salary": "",
+                        "source": "hackernews",
+                    })
+            except:
+                pass
+    return jobs
+
+
+async def fetch_indeed(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Indeed RSS feed."""
+    url = "https://www.indeed.com/rss?q=remote&sort=date"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:50]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Indeed Job",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "indeed",
+            })
+    return jobs
+
+
+async def fetch_landing_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Landing Jobs RSS."""
+    url = "https://landing.jobs/blog/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Landing Jobs",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "landing_jobs",
+            })
+    return jobs
+
+
+async def fetch_flexjobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from FlexJobs RSS."""
+    url = "https://www.flexjobs.com/blog/feed/"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "FlexJobs",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "flexjobs",
+            })
+    return jobs
+
+
+async def fetch_remote_co(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Remote.co RSS."""
+    url = "https://remote.co/feed/"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Remote.co Job",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "remote_co",
+            })
+    return jobs
+
+
+async def fetch_toptal(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Toptal RSS."""
+    url = "https://www.toptal.com/careers/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Toptal",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "toptal",
+            })
+    return jobs
+
+
+async def fetch_wellfound(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Wellfound (AngelList) RSS."""
+    url = "https://wellfound.com/role"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    # Parse HTML for job listings
+    cards = re.findall(r'<a[^>]+href="(/company/[^"]+/jobs/[^"]+)"[^>]*>([\s\S]*?)</a>', body)
+    for href, inner in cards[:30]:
+        url = f"https://wellfound.com{href}" if not href.startswith("http") else href
+        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
+        if parts:
+            jobs.append({
+                "title": parts[0][:160] if parts else "Startup Role",
+                "company": parts[1] if len(parts) > 1 else "Startup",
+                "url": url,
+                "location": "Remote",
+                "posted": "",
+                "description": " ".join(parts[1:])[:500] if len(parts) > 1 else "",
+                "salary": "",
+                "source": "wellfound",
+            })
+    return jobs
+
+
+async def fetch_edtech_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from EdTech Careers RSS."""
+    url = "https://www.edtechcareers.com/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "EdTech Company",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "edtech_jobs",
+            })
+    return jobs
+
+
+async def fetch_translation_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from ProZ RSS for translation jobs."""
+    url = "https://www.proz.com/jobs/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "ProZ Client",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "translation_jobs",
+            })
+    return jobs
+
+
+async def fetch_esl_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from ESL Cafe RSS."""
+    url = "https://www.eslcafe.com/jobs/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "ESL School",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "esl_jobs",
+            })
+    return jobs
+
+
+async def fetch_teaching_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from TES RSS."""
+    url = "https://www.tes.com/jobs/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "TES School",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "teaching_jobs",
+            })
+    return jobs
+
+
+async def fetch_writing_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Writing Jobs RSS."""
+    url = "https://www.writingjobs.com/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Writing Client",
+                "url": link,
+                "location": "Remote",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "writing_jobs",
+            })
+    return jobs
+
+
+async def fetch_bayt(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Bayt.com HTML."""
+    url = "https://www.bayt.com/en/international/jobs/"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    cards = re.findall(r'<div[^>]+class="[^"]*job[^"]*"[^>]*>([\s\S]*?)</div>', body)
+    for card in cards[:30]:
+        title_match = re.search(r'<h2[^>]*>([\s\S]*?)</h2>', card)
+        link_match = re.search(r'href="([^"]+)"', card)
+        if title_match and link_match:
+            title = _clean(title_match.group(1))
+            link = link_match.group(1)
+            if not link.startswith("http"):
+                link = f"https://www.bayt.com{link}"
+            jobs.append({
+                "title": title[:160],
+                "company": "Bayt.com Job",
+                "url": link,
+                "location": "MENA",
+                "posted": "",
+                "description": "",
+                "salary": "",
+                "source": "bayt",
+            })
+    return jobs
+
+
+async def fetch_gulftalent(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from GulfTalent HTML."""
+    url = "https://www.gulftalent.com/jobs"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    cards = re.findall(r'<div[^>]+class="[^"]*job[^"]*"[^>]*>([\s\S]*?)</div>', body)
+    for card in cards[:30]:
+        title_match = re.search(r'<h2[^>]*>([\s\S]*?)</h2>', card)
+        link_match = re.search(r'href="([^"]+)"', card)
+        if title_match and link_match:
+            title = _clean(title_match.group(1))
+            link = link_match.group(1)
+            if not link.startswith("http"):
+                link = f"https://www.gulftalent.com{link}"
+            jobs.append({
+                "title": title[:160],
+                "company": "GulfTalent Job",
+                "url": link,
+                "location": "Gulf",
+                "posted": "",
+                "description": "",
+                "salary": "",
+                "source": "gulftalent",
+            })
+    return jobs
+
+
+async def fetch_naukrigulf(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from NaukriGulf HTML."""
+    url = "https://www.naukrigulf.com/jobs"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    cards = re.findall(r'<div[^>]+class="[^"]*job[^"]*"[^>]*>([\s\S]*?)</div>', body)
+    for card in cards[:30]:
+        title_match = re.search(r'<h2[^>]*>([\s\S]*?)</h2>', card)
+        link_match = re.search(r'href="([^"]+)"', card)
+        if title_match and link_match:
+            title = _clean(title_match.group(1))
+            link = link_match.group(1)
+            if not link.startswith("http"):
+                link = f"https://www.naukrigulf.com{link}"
+            jobs.append({
+                "title": title[:160],
+                "company": "NaukriGulf Job",
+                "url": link,
+                "location": "Gulf",
+                "posted": "",
+                "description": "",
+                "salary": "",
+                "source": "naukrigulf",
+            })
+    return jobs
+
+
+async def fetch_mostaql(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from Mostaql RSS (Arabic freelance)."""
+    url = "https://www.mostaql.com/jobs/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "Mostaql Client",
+                "url": link,
+                "location": "MENA",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "mostaql",
+            })
+    return jobs
+
+
+async def fetch_for9a(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from For9a RSS (Arabic freelance)."""
+    url = "https://for9a.com/jobs/feed"
+    status, body = await _get_text(session, url)
+    if status != 200:
+        return []
+    
+    jobs = []
+    items = re.findall(r"<item>[\s\S]*?</item>", body)
+    for item in items[:30]:
+        title = _extract_tag(item, "title")
+        link = _extract_tag(item, "link")
+        desc = _extract_tag(item, "description")
+        if title and link:
+            jobs.append({
+                "title": _clean(title)[:160],
+                "company": "For9a Client",
+                "url": link,
+                "location": "MENA",
+                "posted": _extract_tag(item, "pubDate") or "",
+                "description": _clean(desc)[:500] if desc else "",
+                "salary": "",
+                "source": "for9a",
+            })
+    return jobs
+
+
+# ============================================================================
+# BATCH FETCHERS — These call the individual board fetchers in parallel
+# ============================================================================
+
+async def fetch_greenhouse_batch(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Greenhouse boards."""
+    from .greenhouse import GREENHOUSE_BOARDS
+    tasks = [fetch_greenhouse_board(session, name, slug) for name, slug in GREENHOUSE_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_lever_batch(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Lever boards."""
+    from .lever import LEVER_BOARDS
+    tasks = [fetch_lever_board(session, name, slug) for name, slug in LEVER_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_ashby_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Ashby boards."""
+    from .ashby import ASHBY_BOARDS
+    tasks = [fetch_ashby_board(session, name, slug) for name, slug in ASHBY_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_workable_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Workable boards."""
+    from .workable import WORKABLE_BOARDS
+    tasks = [fetch_workable_board(session, name, slug) for name, slug in WORKABLE_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_smartrecruiters_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all SmartRecruiters boards."""
+    from .smartrecruiters import SMARTRECRUITERS_BOARDS
+    tasks = [fetch_smartrecruiters_board(session, name, slug) for name, slug in SMARTRECRUITERS_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_recruitee_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Recruitee boards."""
+    from .recruitee import RECRUITEE_BOARDS
+    tasks = [fetch_recruitee_board(session, name, slug) for name, slug in RECRUITEE_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_teamtailor_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all TeamTailor boards."""
+    from .teamtailor import TEAMTAILOR_BOARDS
+    tasks = [fetch_teamtailor_board(session, name, slug) for name, slug in TEAMTAILOR_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_bamboohr_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all BambooHR boards."""
+    from .bamboohr import BAMBOOHR_BOARDS
+    tasks = [fetch_bamboohr_board(session, name, slug) for name, slug in BAMBOOHR_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_jobvite_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Jobvite boards."""
+    from .jobvite import JOBVITE_BOARDS
+    tasks = [fetch_jobvite_board(session, name, slug) for name, slug in JOBVITE_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]
+
+
+async def fetch_personio_boards(session: aiohttp.ClientSession) -> list[dict]:
+    """Fetch from all Personio boards."""
+    from .personio import PERSONIO_BOARDS
+    tasks = [fetch_personio_board(session, name, slug) for name, slug in PERSONIO_BOARDS]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    return [j for r in results if isinstance(r, list) for j in r]

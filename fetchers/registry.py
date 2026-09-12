@@ -24,6 +24,11 @@ REGISTRY: dict[str, dict] = {
     "adzuna": {"tier": 1, "module": "fetchers.verified", "class": "fetch_adzuna"},
     "reliefweb": {"tier": 1, "module": "fetchers.verified", "class": "fetch_reliefweb"},
     "freelancer": {"tier": 1, "module": "fetchers.verified", "class": "fetch_freelancer"},
+    "upwork": {"tier": 1, "module": "fetchers.verified", "class": "fetch_upwork"},
+    "stackoverflow": {"tier": 1, "module": "fetchers.verified", "class": "fetch_stackoverflow"},
+    "github_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_github_jobs"},
+    "hackernews": {"tier": 1, "module": "fetchers.verified", "class": "fetch_hackernews"},
+    "indeed": {"tier": 1, "module": "fetchers.verified", "class": "fetch_indeed"},
     
     # Tier 2 — balanced (good volume)
     "nodesk": {"tier": 2, "module": "fetchers.verified", "class": "fetch_nodesk"},
@@ -51,6 +56,16 @@ REGISTRY: dict[str, dict] = {
     "bamboohr": {"tier": 2, "module": "fetchers.verified", "class": "fetch_bamboohr_boards"},
     "jobvite": {"tier": 2, "module": "fetchers.verified", "class": "fetch_jobvite_boards"},
     "personio": {"tier": 2, "module": "fetchers.verified", "class": "fetch_personio_boards"},
+    "landing_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_landing_jobs"},
+    "flexjobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_flexjobs"},
+    "remote_co": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remote_co"},
+    "toptal": {"tier": 2, "module": "fetchers.verified", "class": "fetch_toptal"},
+    "wellfound": {"tier": 2, "module": "fetchers.verified", "class": "fetch_wellfound"},
+    "edtech_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_edtech_jobs"},
+    "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
+    "esl_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_esl_jobs"},
+    "teaching_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_teaching_jobs"},
+    "writing_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_writing_jobs"},
     
     # Tier 3 — niche / MENA / freelance (noisy, use sparingly)
     "peopleperhour": {"tier": 3, "module": "fetchers.verified", "class": "fetch_peopleperhour"},
@@ -58,6 +73,11 @@ REGISTRY: dict[str, dict] = {
     "dailyremote": {"tier": 3, "module": "fetchers.verified", "class": "fetch_dailyremote"},
     "dynamitejobs": {"tier": 3, "module": "fetchers.verified", "class": "fetch_dynamitejobs"},
     "europeremotely": {"tier": 3, "module": "fetchers.verified", "class": "fetch_europeremotely"},
+    "bayt": {"tier": 3, "module": "fetchers.verified", "class": "fetch_bayt"},
+    "gulftalent": {"tier": 3, "module": "fetchers.verified", "class": "fetch_gulftalent"},
+    "naukrigulf": {"tier": 3, "module": "fetchers.verified", "class": "fetch_naukrigulf"},
+    "mostaql": {"tier": 3, "module": "fetchers.verified", "class": "fetch_mostaql"},
+    "for9a": {"tier": 3, "module": "fetchers.verified", "class": "fetch_for9a"},
 }
 
 # Blocked sources (from probe testing)

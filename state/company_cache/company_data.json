@@ -751,5 +751,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-12T21:49:49.218967+00:00"
+  },
+  "Springfield Public Schools (Massachusetts)": {
+    "name": "Springfield Public Schools (Massachusetts)",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-12T23:16:40.711270+00:00"
   }
 }

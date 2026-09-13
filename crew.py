@@ -1,6 +1,7 @@
 """CareerOps Crew — Multi-agent job search and application system."""
 import json
 import os
+import re
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -13,124 +14,8 @@ OUTPUT_DIR = Path(__file__).parent / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def create_researcher_agent():
-    """Create the Job Researcher agent."""
-    try:
-        from crewai import Agent
-        from tools import DuckDuckGoSearchTool, RSSFeedTool, CompanyCareerScraper
-        
-        return Agent(
-            role="Job Researcher",
-            goal="Find Arabic translator and ESL teaching remote jobs across the web",
-            backstory="""You are an expert job researcher specializing in finding remote Arabic
-            translation and ESL teaching positions. You search DuckDuckGo, RSS feeds,
-            and company career pages to discover new opportunities daily. You know that
-            companies like TransPerfect, Lionbridge, RWS, Appen, and Telus International
-            often hire Arabic translators.""",
-            tools=[DuckDuckGoSearchTool(), RSSFeedTool(), CompanyCareerScraper()],
-            verbose=True,
-            allow_delegation=False,
-        )
-    except ImportError:
-        print("Warning: CrewAI not installed. Using fallback researcher.")
-        return None
-
-
-def create_scraper_agent():
-    """Create the Job Scraper agent."""
-    try:
-        from crewai import Agent
-        from tools import PlaywrightScraperTool
-        
-        return Agent(
-            role="Job Scraper",
-            goal="Extract detailed job information from career pages and ATS systems",
-            backstory="""You are a web scraping expert who can extract job details from any website.
-            You use Playwright for JavaScript-heavy sites and simple HTTP for static pages.
-            You extract title, company, location, salary, requirements, and apply URLs.""",
-            tools=[PlaywrightScraperTool()],
-            verbose=True,
-            allow_delegation=False,
-        )
-    except ImportError:
-        print("Warning: CrewAI not installed. Using fallback scraper.")
-        return None
-
-
-def create_scorer_agent():
-    """Create the Job Scorer agent."""
-    try:
-        from crewai import Agent
-        from tools import OllamaScoringTool, KeywordMatchTool, CompanyReputationTool
-        
-        return Agent(
-            role="Job Scorer",
-            goal="Score and rank jobs based on match with Arabic translator profile",
-            backstory="""You are an expert job matcher who evaluates how well a job matches
-            Waleed's profile: Arabic-English translator, ESL teacher, 5+ years
-            experience, remote work, worldwide. You score jobs 0-100.""",
-            tools=[OllamaScoringTool(), KeywordMatchTool(), CompanyReputationTool()],
-            verbose=True,
-            allow_delegation=False,
-        )
-    except ImportError:
-        print("Warning: CrewAI not installed. Using fallback scorer.")
-        return None
-
-
-def create_applicant_agent():
-    """Create the Application Filler agent."""
-    try:
-        from crewai import Agent
-        from tools import PlaywrightFormFiller, GreenhouseFormTool
-        
-        return Agent(
-            role="Application Filler",
-            goal="Fill job application forms automatically using Playwright",
-            backstory="""You are an automation expert who fills job application forms across
-            Greenhouse, Lever, Ashby, and other ATS platforms. You upload CVs
-            and cover letters, fill personal details, and prepare for human review.""",
-            tools=[PlaywrightFormFiller(), GreenhouseFormTool()],
-            verbose=True,
-            allow_delegation=False,
-        )
-    except ImportError:
-        print("Warning: CrewAI not installed. Using fallback applicant.")
-        return None
-
-
-def create_document_agent():
-    """Create the Document Generator agent."""
-    try:
-        from crewai import Agent
-        from tools import OllamaWritingTool
-        
-        return Agent(
-            role="Document Generator",
-            goal="Generate tailored CV and cover letter for each job application",
-            backstory="""You are a professional document writer who creates tailored CVs and
-            cover letters for each job application. You highlight Arabic translation
-            experience, legal translation, ESL teaching, and academic supervision.""",
-            tools=[OllamaWritingTool()],
-            verbose=True,
-            allow_delegation=False,
-        )
-    except ImportError:
-        print("Warning: CrewAI not installed. Using fallback document writer.")
-        return None
-
-
-def run_crew_search(top_n: int = 10):
-    """Run the full crew search pipeline with email and company website extraction."""
-    print(f"\n{'='*60}")
-    print(f"CAREEROPS 2.0 — AI-Powered Job Search")
-    print(f"Started: {datetime.now(timezone.utc).isoformat()}")
-    print(f"{'='*60}\n")
-
-
 def extract_email_from_text(text: str) -> str:
     """Extract email address from text."""
-    import re
     if not text:
         return ""
     # Common email patterns
@@ -145,7 +30,7 @@ def extract_email_from_text(text: str) -> str:
         if match:
             email = match.group(1) if match.lastindex else match.group(0)
             # Filter out common non-personal emails
-            skip_domains = ['example.com', 'sentry.io', 'wixpress.com', 'github.com']
+            skip_domains = ['example.com', 'sentry.io', 'wixpress.com', 'github.com', 'sentry-next.wixpress.com']
             if not any(domain in email.lower() for domain in skip_domains):
                 return email
     return ""
@@ -191,19 +76,23 @@ def get_company_website(company_name: str) -> str:
     
     # Try to construct website from company name
     if company_name:
-        # Remove common suffixes
         name = company_name.lower().strip()
         for suffix in [' inc', ' llc', ' ltd', ' corp', ' corporation', ' company', ' co']:
             name = name.replace(suffix, '')
-        # Construct website
         return f"https://www.{name.replace(' ', '')}.com"
     
     return ""
 
 
-# Search queries for Arabic translator jobs (25 queries)
+def run_crew_search(top_n: int = 10):
+    """Run the full crew search pipeline with email and company website extraction."""
+    print(f"\n{'='*60}")
+    print(f"CAREEROPS 2.0 — AI-Powered Job Search")
+    print(f"Started: {datetime.now(timezone.utc).isoformat()}")
+    print(f"{'='*60}\n")
+    
+    # Search queries for Arabic translator jobs (25 queries)
     search_queries = [
-        # Core Arabic translation
         "Arabic translator remote jobs 2026",
         "Arabic English translation work from home",
         "Arabic linguist remote position",
@@ -212,30 +101,23 @@ def get_company_website(company_name: str) -> str:
         "Legal translator Arabic remote jobs",
         "Academic translator Arabic remote",
         "Medical translator Arabic remote",
-        # ESL/Teaching
         "ESL teacher Arabic speaker remote",
         "English teacher Arabic online",
         "Online tutoring Arabic native speaker",
         "ESL instructor remote Middle East",
-        # Localization
         "Localization specialist Arabic remote",
         "Arabic localization jobs work from home",
         "Software localization Arabic translator",
-        # Content
         "Arabic content writer remote",
         "Arabic copywriter work from home",
         "Bilingual content creator Arabic",
-        # Data/AI
         "Arabic data annotation remote",
         "Arabic AI trainer jobs",
         "Arabic language expert remote",
-        # Industry-specific
         "Arabic legal translation services",
         "Arabic medical translation jobs",
         "Arabic financial translation remote",
-        # General
         "Arabic speaker remote jobs worldwide",
-        "Bilingual Arabic English jobs remote",
     ]
     
     # RSS feeds for translation jobs
@@ -246,7 +128,6 @@ def get_company_website(company_name: str) -> str:
     
     # Company career pages (35 companies)
     career_pages = [
-        # Major LSPs (Language Service Providers)
         ("TransPerfect", "https://www.transperfect.com/careers"),
         ("Lionbridge", "https://www.lionbridge.com/careers"),
         ("RWS", "https://www.rws.com/careers"),
@@ -255,37 +136,31 @@ def get_company_website(company_name: str) -> str:
         ("OneForma", "https://www.oneforma.com/careers"),
         ("CETRA", "https://www.cetra.com/careers"),
         ("Propio LS", "https://www.propio.com/careers"),
-        # AI Data Companies
         ("Appen", "https://www.appen.com/careers"),
         ("Telus International", "https://www.telusinternational.com/careers"),
         ("Centific", "https://www.centific.com/careers"),
         ("Scale AI", "https://scale.com/careers"),
         ("Surge AI", "https://surgeai.com/careers"),
         ("AuraOne", "https://www.auraone.com/careers"),
-        # ESL/Language Platforms
         ("LanguageBird", "https://www.languagebird.com/teach"),
         ("VIPKid", "https://www.vipkid.com/careers"),
         ("Cambly", "https://www.cambly.com/careers"),
         ("Preply", "https://preply.com/careers"),
         ("italki", "https://www.italki.com/careers"),
         ("Lingoda", "https://www.lingoda.com/careers"),
-        # MENA Companies
         ("Tarjama", "https://www.tarjama.com/careers"),
         ("Tamatem Games", "https://www.tamatemgames.com/careers"),
         ("Careem", "https://www.careem.com/careers"),
         ("Noon Academy", "https://www.noonacademy.com/careers"),
         ("AsiaLocalize", "https://www.asialocalize.com/careers"),
-        # Tech Companies with Localization
         ("Google", "https://careers.google.com/"),
         ("Microsoft", "https://careers.microsoft.com/"),
         ("Amazon", "https://www.amazon.jobs/"),
         ("Apple", "https://www.apple.com/careers/"),
         ("Meta", "https://www.metacareers.com/"),
-        # Remote-First Companies
         ("Remote.com", "https://remote.com/careers"),
         ("Deel", "https://www.deel.com/careers"),
         ("Oyster", "https://www.oysterhr.com/careers"),
-        # Freelance Platforms
         ("ProZ", "https://www.proz.com/translation-jobs"),
         ("TranslatorsCafe", "https://www.translatorscafe.com/jobs/"),
     ]
@@ -296,7 +171,7 @@ def get_company_website(company_name: str) -> str:
     # 1. DuckDuckGo Search
     print("[1/5] Searching DuckDuckGo...")
     try:
-        from tools import DuckDuckGoSearchTool
+        from tools.search_tools import DuckDuckGoSearchTool
         search_tool = DuckDuckGoSearchTool()
         
         for query in search_queries:
@@ -320,7 +195,7 @@ def get_company_website(company_name: str) -> str:
     # 2. RSS Feeds
     print("[2/5] Parsing RSS feeds...")
     try:
-        from tools import RSSFeedTool
+        from tools.search_tools import RSSFeedTool
         rss_tool = RSSFeedTool()
         
         for feed_url in rss_feeds:
@@ -344,7 +219,7 @@ def get_company_website(company_name: str) -> str:
     # 3. Company Career Pages
     print("[3/5] Checking company career pages...")
     try:
-        from tools import CompanyCareerScraper
+        from tools.search_tools import CompanyCareerScraper
         career_tool = CompanyCareerScraper()
         
         for company_name, career_url in career_pages:
@@ -370,7 +245,7 @@ def get_company_website(company_name: str) -> str:
     scored_jobs = []
     
     try:
-        from tools import KeywordMatchTool
+        from tools.ollama_tools import KeywordMatchTool
         keyword_tool = KeywordMatchTool()
         
         for job in all_jobs[:50]:  # Limit to 50 jobs
@@ -443,4 +318,7 @@ if __name__ == "__main__":
     print("\nTop 10 Jobs Found:")
     for i, job in enumerate(results, 1):
         print(f"{i}. [{job.get('score', 0)}] {job.get('title', 'Unknown')}")
-        print(f"   {job.get('url', '')}")
+        print(f"   Company: {job.get('company', 'Unknown')}")
+        print(f"   URL: {job.get('url', '')}")
+        print(f"   Email: {job.get('email', 'Not found')}")
+        print(f"   Website: {job.get('company_website', '')}")

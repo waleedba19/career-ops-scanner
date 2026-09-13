@@ -36,10 +36,12 @@ from fetchers.verified import (
     fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
     fetch_euremotejobs, fetch_remotejobleads, fetch_dailyremote, fetch_dynamitejobs, fetch_europeremotely,
     fetch_bamboohr_board, fetch_jobvite_board, fetch_personio_board,
+    fetch_translation_jobs, fetch_esl_jobs,
     # keyed variants — imported under distinct names because scanner.py still defines
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
 )
+from fetchers.arabic_translation import fetch as fetch_arabic_companies
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 from scheduler import SmartScheduler, create_scheduler
 from deep_reader import enrich_jobs_with_deep_read
@@ -4935,6 +4937,14 @@ async def run_scan():
         if _should_run("teamtailor"):
             for name, slug in TEAMTAILOR_COMPANIES:
                 fetchers.append(fetch_teamtailor_board(session, name, slug))
+        
+        # ── Arabic Translation & ESL Sources ──
+        if _should_run("translation_jobs"):
+            fetchers.append(fetch_translation_jobs(session))
+        if _should_run("esl_jobs"):
+            fetchers.append(fetch_esl_jobs(session))
+        if _should_run("arabic_companies"):
+            fetchers.append(fetch_arabic_companies())
         if _should_run("themuse"):
             fetchers.append(fetch_themuse(session))
         if _should_run("remowork"):

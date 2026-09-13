@@ -868,5 +868,47 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-13T20:49:02.059316+00:00"
+  },
+  "Lifelancer": {
+    "name": "Lifelancer",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-13T23:19:05.766559+00:00"
+  },
+  "xAI": {
+    "name": "xAI",
+    "legitimacy_score": 70,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Uses professional ATS"
+    ],
+    "last_updated": "2026-09-13T23:19:05.767860+00:00"
+  },
+  "mercor": {
+    "name": "mercor",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-13T23:19:05.768912+00:00"
+  },
+  "SGS": {
+    "name": "SGS",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-13T23:19:05.769899+00:00"
   }
 }

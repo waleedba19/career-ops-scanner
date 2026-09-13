@@ -17,11 +17,11 @@ INTERVIEW_PREP_DIR = OUTPUT_DIR / "interview_prep"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Scanning ─────────────────────────────────────────────────────────────
-MIN_MATCH_SCORE = int(os.getenv("CAREEROPS_MIN_SCORE", "20"))  # Very low to show all jobs
+MIN_MATCH_SCORE = int(os.getenv("CAREEROPS_MIN_SCORE", "50"))  # 75-100 STRONG, 50-74 GOOD, <50 REVIEW
 MAX_AGE_HOURS = int(os.getenv("CAREEROPS_MAX_AGE_H", "144"))  # 6 days
 MAX_AGE_FRESH_HOURS = float(os.getenv("CAREEROPS_FRESH_H", "8"))  # 1 scan cycle (was 0.5)
-NEAR_MISS_MIN = 50
-NEAR_MISS_MAX = 64
+NEAR_MISS_MIN = 40
+NEAR_MISS_MAX = 49
 NEAR_MISS_LIMIT = int(os.getenv("CAREEROPS_NEAR_MISS_LIMIT", "6"))
 TOP_LIVENESS_CHECK = int(os.getenv("CAREEROPS_LIVENESS_TOP", "6"))
 HISTORY_MAX = 5000

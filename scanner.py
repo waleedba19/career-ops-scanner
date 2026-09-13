@@ -49,11 +49,17 @@ from deep_reader import enrich_jobs_with_deep_read
 
 # CareerOps 2.0 — CrewAI integration
 try:
-    from crew import run_crew_search
+    from crew import run_crew_search, get_company_website, extract_email_from_text
     CREWAI_AVAILABLE = True
 except ImportError:
     CREWAI_AVAILABLE = False
     print("Warning: CrewAI not available. Using legacy scanner only.")
+
+    def get_company_website(company_name: str) -> str:
+        return ""
+
+    def extract_email_from_text(text: str) -> str:
+        return ""
 
 # ── Enterprise config (centralized) — single source of truth ──
 import config as _cfg
@@ -86,6 +92,46 @@ HISTORY_FILE = OUTPUT_DIR / "scan_history.json"
 SEEN_URLS_FILE = OUTPUT_DIR / "seen_urls.json"
 SCAN_HISTORY_FILE = OUTPUT_DIR / "scan_history_acum.json"
 TIMEOUT = aiohttp.ClientTimeout(total=FETCH_TIMEOUT)
+
+
+# ── Validated ATS boards (state/valid_company_slugs.json from company_board_probe.py) ──
+# When present, only slugs confirmed returning HTTP 200 are fetched — eliminating
+# the HTTP-404 spam / wasted requests. Falls back to config lists otherwise.
+def _load_valid_slugs() -> dict:
+    try:
+        p = Path(__file__).parent / "state" / "valid_company_slugs.json"
+        if p.exists():
+            data = json.loads(p.read_text(encoding="utf-8"))
+            return data.get("valid", {})
+    except Exception:
+        pass
+    return {}
+
+
+_VALID_SLUGS = _load_valid_slugs()
+if _VALID_SLUGS:
+    if _VALID_SLUGS.get("greenhouse"):
+        GREENHOUSE_COMPANIES = [tuple(x) for x in _VALID_SLUGS["greenhouse"]]
+        GREENHOUSE_PROFILE_BOARDS = []  # already merged into GREENHOUSE_COMPANIES
+    if _VALID_SLUGS.get("lever"):
+        LEVER_COMPANIES = [tuple(x) for x in _VALID_SLUGS["lever"]]
+    if _VALID_SLUGS.get("ashby"):
+        ASHBY_COMPANIES = [tuple(x) for x in _VALID_SLUGS["ashby"]]
+    if _VALID_SLUGS.get("workable"):
+        WORKABLE_COMPANIES = [tuple(x) for x in _VALID_SLUGS["workable"]]
+    if _VALID_SLUGS.get("smartrecruiters"):
+        SMARTRECRUITERS_COMPANIES = [tuple(x) for x in _VALID_SLUGS["smartrecruiters"]]
+    if _VALID_SLUGS.get("recruitee"):
+        RECRUITEE_COMPANIES = [tuple(x) for x in _VALID_SLUGS["recruitee"]]
+    if _VALID_SLUGS.get("teamtailor"):
+        TEAMTAILOR_COMPANIES = [tuple(x) for x in _VALID_SLUGS["teamtailor"]]
+    if _VALID_SLUGS.get("bamboohr"):
+        BAMBOOHR_COMPANIES = [tuple(x) for x in _VALID_SLUGS["bamboohr"]]
+    if _VALID_SLUGS.get("jobvite"):
+        JOBVITE_COMPANIES = [tuple(x) for x in _VALID_SLUGS["jobvite"]]
+    if _VALID_SLUGS.get("personio"):
+        PERSONIO_COMPANIES = [tuple(x) for x in _VALID_SLUGS["personio"]]
+    print(f"ATS boards: using {len(_VALID_SLUGS)} validated adapters from probe")
 
 # ── Metrics hooks (optional) ──
 try:
@@ -489,61 +535,111 @@ def phrase_label(re_obj) -> str:
     return re.sub(r"\s+", " ", src).strip()
 
 
+# Bucket weight multipliers — Arabic translation is the candidate's prime skill.
+_BUCKET_WEIGHT = {
+    "Arabic Translation": 1.0,
+    "ESL": 0.85,
+    "Editing": 0.75,
+    "Admin": 0.70,
+}
+
+# Trusted companies that are strongly Arabic-translation / language-service relevant.
+TRUSTED_COMPANIES = frozenset({
+    "transperfect", "lionbridge", "rws", "keywords studios", "welocalize",
+    "oneforma", "appen", "telus international", "centific", "scale ai",
+    "surge ai", "auraone", "proz", "translatorscafe", "smartcat", "gengo",
+    "unbabel", "lilt", "phrase", "lokalise", "smartling", "tarjama",
+    "tamatem games", "tamatem", "careem", "mawdoo3", "nagwa", "abwaab",
+    "noon academy", "edraak", "almentor", "baims", "cambly", "preply",
+    "italki", "lingoda", "busuu", "babbel", "enrolled", "vipkid", "engoo",
+    "novakid", "tutorabc", "magic ears", "qkids",
+})
+
+
+def _bucket_best(bucket: dict, t: str, d: str) -> tuple[float, list[str]]:
+    """Compute the best single-phrase hit for a bucket (title+desc bonus)."""
+    best = 0.0
+    why: list[str] = []
+    for pattern, w in bucket["phrases"]:
+        in_title = bool(pattern.search(t))
+        in_desc = bool(pattern.search(d))
+        if not (in_title or in_desc):
+            continue
+        if in_title and in_desc:
+            val = w * 2.2
+        elif in_title:
+            val = w * 1.6
+        else:
+            val = min(w * 0.8, w)
+        if val > best:
+            best = val
+            where = "title+description" if (in_title and in_desc) else ("title" if in_title else "description")
+            why = [f"{phrase_label(pattern)} ({where})"]
+    return min(best, 65.0), why
+
+
 def get_match_score(title: str, desc: str) -> dict:
+    """Baseline + tiered scoring. Remote/worldwide listings never zero out.
+
+    75-100 = STRONG CV match, 50-74 = GOOD, below 50 = REVIEW (still shown).
+    """
     t = (title or "").lower()
     d = (desc or "").lower()
     text = t + " " + d
-    best = 0
+
+    # 1) Baseline — genuinely remote/international listings get a floor
+    base = 0.0
+    why: list[str] = []
+    if REMOTE_MARKER.search(text):
+        base = 30.0
+        why.append("remote-friendly (baseline)")
+    elif re.search(r"\bworldwide\b|\binternational(?: listing)?\b|\bopen to all\b|\bglobal\b", text):
+        base = 20.0
+        why.append("international listing (baseline)")
+
+    # 2) Best keyword bucket, scaled by the candidate's skill priority
+    best = 0.0
     best_cat = "Other"
     best_why: list[str] = []
     for bucket in MATCH_BUCKETS:
-        b_score = 0.0
-        hits = 0
-        desc_hits = 0
-        why: list[str] = []
-        for pattern, w in bucket["phrases"]:
-            in_title = bool(pattern.search(t))
-            in_desc = bool(pattern.search(d))
-            if in_title or in_desc:
-                weight = w * 2.5 if (in_title and in_desc) else (w * 2 if in_title else w)
-                b_score += weight
-                hits += 1
-                if in_desc:
-                    desc_hits += 1
-                where = "title+description" if (in_title and in_desc) else ("title" if in_title else "description")
-                entry = f"{phrase_label(pattern)} ({where})"
-                if entry not in why:
-                    why.append(entry)
-        if hits >= 2:
-            b_score += 25
-        if desc_hits >= 2:
-            b_score += 15
-        title_hits = sum(1 for pattern, _ in bucket["phrases"] if pattern.search(t))
-        if title_hits > 0:
-            b_score *= 1.8
-        b_score = min(b_score, 100)
+        b_score, b_why = _bucket_best(bucket, t, d)
+        b_score = b_score * _BUCKET_WEIGHT.get(bucket["name"], 0.7)
         if b_score > best:
             best = b_score
             best_cat = bucket["name"]
-            best_why = why
-    total = best
-    why_final = best_why[:6]
-    if REMOTE_MARKER.search(text):
-        total += 10
-        why_final.append("remote-friendly")
+            best_why = b_why
+
+    total = base + best
+    why_final = list(dict.fromkeys(why + best_why))[:6]
+    if best_cat != "Other":
+        why_final.append(f"matches {best_cat} profile")
+
+    # 3) Penalties
     if any(kw in t for kw in NEGATIVE_KEYWORDS):
-        total -= 50
+        total -= 30
+        why_final.append("negative keywords in title")
     if SENIOR_PENALTY.search(t) or SENIOR_PENALTY.search(text):
-        total -= 40
+        total -= 15
         why_final.append("senior/leadership penalty")
     if NON_ROLE_ADMIN.search(t):
-        total -= 50
+        total -= 20
         why_final.append("platform/pricing admin — not target")
-    # REMOVED: Keyword requirement - now flexible scoring
-    # Jobs without Arabic keywords still get scored based on other factors
+    if WRONG_LANGUAGE.search(t) and not HAS_ARABIC.search(text):
+        total -= 25
+        why_final.append("wrong-language role (no Arabic signal)")
+
     total = max(0, min(100, total))
     total = round(total / 5) * 5
-    return {"score": total, "category": best_cat, "why": why_final}
+    return {"score": total, "category": best_cat, "why": why_final[:8]}
+
+
+def apply_company_bonus(job: dict) -> int:
+    """+10 for trusted translation/language employers; returns adjusted score."""
+    company = str(job.get("company") or "").lower().strip()
+    cur = int(job.get("score") or 0)
+    if any(key in company or company in key for key in TRUSTED_COMPANIES):
+        return min(100, cur + 10)
+    return cur
 
 
 def extract_salary(text: str) -> str:
@@ -688,22 +784,30 @@ def location_ai_fail(job: dict) -> bool:
 
 
 def drop_unqualified_matches(jobs: list[dict], reason_counts: dict | None = None) -> list[dict]:
-    """Final quality + location gate before notify / cover letters."""
+    """Final quality gate before notify / cover letters.
+
+    Hard drops only (stub listings, AI-confirmed location/visa blockers).
+    in-person and country-locked wording are kept but re-tagged as flags so the
+    user sees every job and decides.
+    """
     kept = []
     counts = reason_counts if reason_counts is not None else {}
     for job in jobs:
         if is_stub_listing(job):
             counts["stub"] = counts.get("stub", 0) + 1
             continue
-        if is_in_person_gig(job):
-            counts["in_person"] = counts.get("in_person", 0) + 1
-            continue
         if location_ai_fail(job):
             counts["ai_location_fail"] = counts.get("ai_location_fail", 0) + 1
             continue
+        flags = list(job.get("flags") or [])
+        if is_in_person_gig(job):
+            if "in-person/onsite" not in flags:
+                flags.append("in-person/onsite")
         if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
-            counts["not_worldwide"] = counts.get("not_worldwide", 0) + 1
-            continue
+            if "country-locked location" not in flags:
+                flags.append("country-locked location")
+        if flags:
+            job["flags"] = flags
         kept.append(job)
     return kept
 
@@ -5066,6 +5170,23 @@ async def run_scan():
                     print("  Search discovered: 0 (free, no new URLs)")
         except Exception as e:
             print(f"  Free search skipped: {e}")
+
+        # ---- CrewAI intelligent search merge (run as its own workflow step) ----
+        try:
+            crewai_file = OUTPUT_DIR / "crewai_jobs.json"
+            if crewai_file.exists():
+                crew_jobs = json.loads(crewai_file.read_text(encoding="utf-8"))
+                if isinstance(crew_jobs, list) and crew_jobs:
+                    seen_urls_crew = {j.get("url") for j in all_jobs if j.get("url")}
+                    new_crew = [j for j in crew_jobs if j.get("url") and j["url"] not in seen_urls_crew]
+                    if new_crew:
+                        print(f"🧠 CrewAI search merged: {len(new_crew)} job URLs into pipeline")
+                        all_jobs.extend(new_crew)
+                        print(f"  Total after CrewAI: {len(all_jobs)} jobs")
+                    else:
+                        print("  CrewAI merge: 0 new URLs (all duplicates)")
+        except Exception as e:
+            print(f"  CrewAI merge skipped: {e}")
         
         # ---- Track source performance ----
         source_job_counts = {}
@@ -5110,15 +5231,20 @@ async def run_scan():
             if is_stub_listing(job):
                 filter_debug["stub"] += 1
                 continue
+
+            # Soft gates are now TAGS, not drops: the job is still shown and scored,
+            # and flagged for the reviewer to decide. Only truly unusable listings
+            # (no URL, stub/portal, paid platform, >6 days old, duplicate) are dropped.
+            flags: list[str] = []
+
+            # In-person / onsite wording
             if is_in_person_gig(job):
                 filter_debug["in_person"] += 1
-                continue
-            
-            # EARLY REJECT: Check for location restrictions in description
-            # Reject immediately if job has location restrictions
+                flags.append("in-person/onsite")
+
+            # Location restrictions in title/description (US-only etc.)
             desc = (job.get("description") or "").lower()
             job_title = (job.get("title") or "").lower()
-            # Patterns that indicate location restrictions
             EARLY_LOCATION_RESTRICTIONS = [
                 re.compile(r"location\s+restriction", re.I),
                 re.compile(r"only\s+available\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
@@ -5128,55 +5254,48 @@ async def run_scan():
                 re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
                 re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
             ]
-            early_rejected = False
-            for pattern in EARLY_LOCATION_RESTRICTIONS:
-                if pattern.search(desc) or pattern.search(job_title):
-                    filter_debug["not_worldwide"] += 1
-                    early_rejected = True
-                    break
-            if early_rejected:
-                continue
-            
+            if any(p.search(desc) or p.search(job_title) for p in EARLY_LOCATION_RESTRICTIONS):
+                filter_debug["not_worldwide"] += 1
+                flags.append("location-restricted")
+
             # Smart deduplication — skip if company+title+location already seen
             if is_duplicate(job, smart_seen):
                 filter_debug["duplicate"] += 1
                 continue
-            
+
             # Filter out paid platforms
             if is_paid_platform(job.get("source", "")):
                 filter_debug["paid"] += 1
                 continue
-            
+
             posted = normalize_date(job.get("posted"))
             age = age_hours(posted) if posted else float("inf")
-            
-            # Check if job is within 6-day window
-            # If posted is None (date unknown), still include the job — treat as recent
+
             # Only drop jobs where we KNOW the date and it's older than 6 days
             if posted is not None and age > MAX_AGE_HOURS:
                 filter_debug["too_old"] += 1
                 continue
-            
+
             fresh_total += 1
-            
-            # Check if it's a fresh job (within 30 minutes)
-            # Jobs with unknown dates are treated as fresh (no date = likely recent)
             is_fresh = posted is not None and age <= MAX_AGE_FRESH_HOURS
-            
-            # REMOVED: Keyword requirement - now all jobs pass this filter
-            # if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
-            #     filter_debug["no_positive"] += 1
-            #     continue
+
             title = job.get("title", "")
+
+            # Non-target role wording (manager/strategist/etc.) -> tag, not drop
             if NON_TARGET_ROLE.search(title) and not NON_TARGET_ALLOWLIST.search(title):
                 filter_debug["non_target"] += 1
-                continue
+                flags.append("non-target role title")
+
+            # Negative sales/enterprise keywords -> tag, not drop (score penalizes too)
             if matches_negative(job.get("title", ""), job.get("description", "")):
                 filter_debug["negative"] += 1
-                continue
+                flags.append("negative-keyword title")
+
+            # Country-locked location wording -> tag, not drop
             if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
                 filter_debug["not_worldwide"] += 1
-                continue
+                flags.append("country-locked location")
+
             scored_job = get_match_score(job.get("title", ""), job.get("description", ""))
             # Apply learning adjustments based on application history
             adjusted_score = adjust_scoring_based_on_learning({
@@ -5187,10 +5306,9 @@ async def run_scan():
             })
             if adjusted_score != scored_job["score"]:
                 scored_job["score"] = adjusted_score
-            if scored_job["score"] < MIN_MATCH_SCORE:
-                filter_debug["low_score"] += 1
-                continue
-            
+            # +10 for trusted translation/language employers
+            scored_job["score"] = apply_company_bonus({**job, "score": scored_job["score"]})
+
             salary = job.get("salary") or extract_salary(job.get("description", ""))
             job_data = {
                 **job,
@@ -5201,11 +5319,15 @@ async def run_scan():
                 "salary": salary,
                 "is_fresh": is_fresh,
                 "age_hours": age,
+                "flags": flags,
+                "company_website": get_company_website(job.get("company", "")),
+                "email": extract_email_from_text(job.get("description", "")),
+                "tier": "STRONG" if scored_job["score"] >= 75 else ("GOOD" if scored_job["score"] >= 50 else "REVIEW"),
             }
-            
+
             # Mark as seen for smart deduplication
             mark_seen(job, smart_seen)
-            
+
             # Separate fresh jobs from older jobs
             if is_fresh:
                 scored.append(job_data)
@@ -5325,6 +5447,16 @@ async def run_scan():
         
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
+
+        # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74),
+        # then a small REVIEW preview. Excel "All Jobs" sheet still contains every
+        # fetched job, so nothing is lost — this only bounds AI/time on what we act on.
+        final_verified.sort(key=lambda j: -int(j.get("score") or 0))
+        strong = [j for j in final_verified if int(j.get("score") or 0) >= 75][:30]
+        good = [j for j in final_verified if 50 <= int(j.get("score") or 0) < 75][:20]
+        review_keep = [j for j in final_verified if int(j.get("score") or 0) < 50][:5]
+        final_verified = strong + good + review_keep
+        final_verified.sort(key=lambda j: (-j.get("is_fresh", False), -int(j.get("score") or 0)))
 
         quality_drops: dict = {}
         before_q = len(final_verified)

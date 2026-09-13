@@ -263,6 +263,12 @@ def enrich_jobs_with_deep_read(jobs: list[dict], max_deep_reads: int = 20) -> li
                     job["requirements"] = result["requirements"]
                 if result.get("contact"):
                     job["contact"] = result["contact"]
+                    ce = (result["contact"] or {}).get("email")
+                    if ce and not job.get("hiring_email"):
+                        job["hiring_email"] = ce
+                    cu = (result["contact"] or {}).get("apply_url")
+                    if cu and not job.get("apply_url"):
+                        job["apply_url"] = cu
                 if result.get("deadline"):
                     job["deadline"] = result["deadline"]
                 if result.get("salary"):

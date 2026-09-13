@@ -135,6 +135,13 @@ def format_job_card(job: dict, index: int) -> str:
     if hiring_email:
         ver = "✓ verified" if job.get("email_verified") else "guess" if job.get("email_guessed") else "found"
         lines.append(f"\u2709\ufe0f Hiring Email: {hiring_email} ({ver})")
+    elif job.get("email"):
+        lines.append(f"\u2709\ufe0f Contact Email: {job['email']}")
+    website = job.get("company_website","")
+    if website:
+        lines.append(f"\U0001f310 Company Website: {website}")
+    elif job.get("company"):
+        lines.append(f"\U0001f310 Website: look up \"{job['company']}\"")
     pain = job.get("pain_points","")
     if pain:
         lines.append(f"\U0001f50d Pain: {pain[:120]}")
@@ -421,6 +428,12 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         opportunity = j.get("opportunity_score","")
         pain = j.get("pain_points","")
         email_html = f'<tr><td width="110" style="font-weight:bold;color:#0a7a0a;vertical-align:top">Hiring Email</td><td style="color:#111;vertical-align:top"><a href="mailto:{_esc(hiring_email)}" style="color:#0a7a0a;font-weight:bold">{_esc(hiring_email)}</a> {"✓ verified" if j.get("email_verified") else "(guess)" if j.get("email_guessed") else ""}</td></tr>' if hiring_email else ""
+        website = j.get("company_website","")
+        website_html = ""
+        if website:
+            website_html = f'<tr><td width="110" style="font-weight:bold;color:#0369a1;vertical-align:top">Company Website</td><td style="color:#111;vertical-align:top"><a href="{_esc(website)}" style="color:#1a5fb4;font-weight:bold">{_esc(website)}</a></td></tr>'
+        elif j.get("company"):
+            website_html = f'<tr><td width="110" style="font-weight:bold;color:#0369a1;vertical-align:top">Company Website</td><td style="color:#555;vertical-align:top">Search "{_esc(j.get("company"))}"</td></tr>'
         urgency_html = f'<tr><td width="110" style="font-weight:bold;color:#b91c1c;vertical-align:top">Urgency</td><td style="color:#b91c1c;vertical-align:top;font-weight:bold">{urgency}/100 {"🔥 URGENT" if urgency>=30 else ""}</td></tr>' if urgency>=20 else ""
         desp_html = f'<tr><td width="110" style="font-weight:bold;color:#7c3aed;vertical-align:top">Desperation</td><td style="color:#7c3aed;vertical-align:top;font-weight:bold">{desperation}/100 {"💥 DESPERATE" if desperation>=50 else ""}</td></tr>' if desperation>=30 else ""
         opp_html = f'<tr><td width="110" style="font-weight:bold;color:#0369a1;vertical-align:top">Opportunity</td><td style="color:#0369a1;vertical-align:top;font-weight:bold">{opportunity}% (combined)</td></tr>' if opportunity and opportunity != j.get("score",0) else ""
@@ -461,6 +474,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
             <tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Fit Score</td><td style="color:#111;vertical-align:top">{j.get("score", 0)}%</td></tr>
             <tr><td width="110" style="font-weight:bold;color:#555;vertical-align:top">Source</td><td style="color:#111;vertical-align:top">{_esc(j.get("source", ""))}</td></tr>
             {email_html}
+            {website_html}
             {urgency_html}
             {desp_html}
             {opp_html}

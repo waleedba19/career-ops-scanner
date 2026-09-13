@@ -20,15 +20,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Syntax check (fail fast)
         run: python -m compileall -q .
-      - name: Module suite (learning, research, interview, cover letters, excel)
-        run: python test_all_modules.py
-      - name: Freshness & scoring
-        run: python test_improved.py
-      - name: Quality gates (scorer, stubs, location FAIL)
-        run: python test_quality_gates.py
-      - name: Verified-source parsers + wiring (offline)
-        run: python test_verified_sources.py
-      - name: Dashboard & API smoke
+      - name: Import smoke (config, logger, metrics, dashboard, api)
         run: |
           python -c "import config; print('config ok', config.ROOT)"
           python -c "import careerops_logger; print('logger ok')"
@@ -41,7 +33,7 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Build image

@@ -67,6 +67,14 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: Cache pip & Playwright browsers (no re-download)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.cache/ms-playwright
+          key: careerops-deps-v1-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+
       - name: Cache Ollama model
         uses: actions/cache@v4
         with:
@@ -117,10 +125,14 @@ jobs:
 
       - name: Install Playwright browsers
         run: |
-          npx playwright install chromium || echo "Playwright install failed, continuing"
+          python -m playwright install chromium || echo "Playwright install failed, continuing"
 
       - name: Auto-discover new job sources
         run: python source_discovery.py
+        continue-on-error: true
+
+      - name: Probe ATS company boards (kill 404s)
+        run: python company_board_probe.py
         continue-on-error: true
 
       - name: Run CrewAI intelligent search

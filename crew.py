@@ -277,7 +277,27 @@ def run_crew_search(top_n: int = 10):
     
     # 5. Save results
     print("[5/5] Saving results...")
-    
+
+    # Write a normalized file the main scanner merges into all_jobs (source="crewai")
+    crewai_out = []
+    for job in scored_jobs[:50]:
+        crewai_out.append({
+            "title": (job.get("title") or "Opportunity").strip(),
+            "url": job.get("url", ""),
+            "company": job.get("company", ""),
+            "description": job.get("description", ""),
+            "source": "crewai",
+            "posted": "",
+            "company_website": job.get("company_website", ""),
+            "email": job.get("email", ""),
+            "score": job.get("score", 0),
+            "category": job.get("category", "Other"),
+        })
+    crewai_file = OUTPUT_DIR / "crewai_jobs.json"
+    with open(crewai_file, "w", encoding="utf-8") as f:
+        json.dump(crewai_out, f, indent=2, ensure_ascii=False)
+    print(f"  CrewAI jobs for scanner: {len(crewai_out)} -> output/crewai_jobs.json")
+
     # Save to JSON
     output_file = OUTPUT_DIR / f"search_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(output_file, "w", encoding="utf-8") as f:
@@ -311,8 +331,8 @@ def run_crew_search(top_n: int = 10):
 
 
 if __name__ == "__main__":
-    # Run search
-    results = run_crew_search(top_n=10)
+    # Run search (top 50 for scanner merge + display top 10)
+    results = run_crew_search(top_n=50)
     
     # Print summary
     print("\nTop 10 Jobs Found:")

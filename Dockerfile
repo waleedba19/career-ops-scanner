@@ -1,22 +1,28 @@
+# CareerOps Scanner — immortal agent image.
+# All Python deps + Chromium are baked in; workflow runs with zero installs.
 FROM python:3.12-slim
 
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
 WORKDIR /app
 
-# System deps for fpdf & health
-RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/*
+# System deps: Chromium runtime libs (Playwright), git, curl
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libglib2.0-0 libnspr4 libnss3 libdbus-1-3 libatk1.0-0 libatk-bridge2.0-0 \
+    libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
+    libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 libxshmfence1 \
+    curl git ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt \
+    && python -m playwright install chromium --with-deps \
+    && rm -rf /root/.cache/ms-playwright/.links 2>/dev/null || true
 
-COPY . .
+COPY . /app
 
-# Create runtime dirs
-RUN mkdir -p output/logs output/cover_letters output/interview_prep state/company_cache
+ENV PYTHONUNBUFFERED=1
+ENV OLLAMA_URL=http://localhost:11434
+ENV OLLAMA_MODEL=qwen2.5:1.5b
+ENV SCAN_MODE=adaptive
+ENV CAREEROPS_TIER_CAP=3
 
-EXPOSE 8000 8001
-
-# Healthcheck hits API
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD curl -sf http://localhost:8001/api/health || exit 1
-
-CMD ["sh","-c","python dashboard/app.py & python api_server.py & python scanner.py"]
+CMD ["python", "scanner.py"]

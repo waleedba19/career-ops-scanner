@@ -211,6 +211,8 @@ def generate_excel(
       <Cell><Data ss:Type="String">{_esc(applied_status)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(hiring_email)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(email_verified)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(j.get("company_website", ""))}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(hiring_email or j.get("email") or "")}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(urgency_label)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(desp_label)}</Data></Cell>
       <Cell><Data ss:Type="String">{opportunity}%</Data></Cell>
@@ -258,6 +260,8 @@ def generate_excel(
       <Cell><Data ss:Type="String">{_esc(fresh["label"])}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(j.get("source", ""))}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(url)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(j.get("company_website", ""))}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(j.get("hiring_email") or j.get("email") or "")}</Data></Cell>
     </Row>''')
 
     # ---- Daily Log rows (Sheet 3) — accumulate across scans ----
@@ -379,6 +383,7 @@ def generate_excel(
         <Cell><Data ss:Type="String">Role</Data></Cell><Cell><Data ss:Type="String">Category</Data></Cell>
         <Cell><Data ss:Type="String">Location</Data></Cell><Cell><Data ss:Type="String">Match</Data></Cell>
         <Cell><Data ss:Type="String">Freshness</Data></Cell><Cell><Data ss:Type="String">Source</Data></Cell><Cell><Data ss:Type="String">Apply URL</Data></Cell>
+        <Cell><Data ss:Type="String">Company Website</Data></Cell><Cell><Data ss:Type="String">Contact Email</Data></Cell>
       </Row>
       {dump_rows_str}
     </Table>
@@ -393,14 +398,15 @@ def generate_excel(
       <Column ss:Width="70"/><Column ss:Width="70"/><Column ss:Width="220"/><Column ss:Width="200"/>
       <Column ss:Width="100"/><Column ss:Width="420"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated, deep intel — free forever)</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">All {min_score_label()} matches. RED=not applied — apply now! GREEN=applied. Columns J-O are free intel: Hiring Email (careers@ domain, MX ✓), Urgency (ASAP/immediate), Desperation (reposted), Opportunity (combined), Pain Points (why they need you). No paid API.</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">All {min_score_label()} matches. RED=not applied — apply now! GREEN=applied. Includes Hiring Email, Company Website, Contact Email, Urgency, Desperation, Opportunity, Pain Points. No paid API.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell>
         <Cell><Data ss:Type="String">Category</Data></Cell><Cell><Data ss:Type="String">Location</Data></Cell><Cell><Data ss:Type="String">Match</Data></Cell>
         <Cell><Data ss:Type="String">Freshness</Data></Cell><Cell><Data ss:Type="String">Recommendation</Data></Cell>
         <Cell><Data ss:Type="String">Applied?</Data></Cell><Cell><Data ss:Type="String">Hiring Email</Data></Cell>
-        <Cell><Data ss:Type="String">Verified</Data></Cell><Cell><Data ss:Type="String">Urgency</Data></Cell>
+        <Cell><Data ss:Type="String">Verified</Data></Cell><Cell><Data ss:Type="String">Company Website</Data></Cell><Cell><Data ss:Type="String">Contact Email</Data></Cell>
+        <Cell><Data ss:Type="String">Urgency</Data></Cell>
         <Cell><Data ss:Type="String">Desperation</Data></Cell><Cell><Data ss:Type="String">Opportunity</Data></Cell>
         <Cell><Data ss:Type="String">Pain Points / Why They Need You</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
         <Cell><Data ss:Type="String">Found On</Data></Cell><Cell><Data ss:Type="String">Apply URL</Data></Cell>

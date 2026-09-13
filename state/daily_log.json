@@ -638,5 +638,35 @@
     "near_misses": 0,
     "sources": 20,
     "time": "10:42 PM"
+  },
+  {
+    "date": "2026-09-13",
+    "slot": "Night (8 PM)",
+    "scanned": 3121,
+    "matches": 1,
+    "old_verified": 1,
+    "near_misses": 0,
+    "sources": 20,
+    "time": "10:49 PM"
+  },
+  {
+    "date": "2026-09-13",
+    "slot": "Night (8 PM)",
+    "scanned": 3121,
+    "matches": 0,
+    "old_verified": 0,
+    "near_misses": 0,
+    "sources": 20,
+    "time": "10:54 PM"
+  },
+  {
+    "date": "2026-09-13",
+    "slot": "Night (8 PM)",
+    "scanned": 3121,
+    "matches": 0,
+    "old_verified": 0,
+    "near_misses": 0,
+    "sources": 20,
+    "time": "11:05 PM"
   }
 ]

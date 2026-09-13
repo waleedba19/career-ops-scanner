@@ -126,8 +126,9 @@ def run_crew_search(top_n: int = 10):
     print(f"CAREEROPS 2.0 — AI-Powered Job Search")
     print(f"Started: {datetime.now(timezone.utc).isoformat()}")
     print(f"{'='*60}\n")
-    
-    def extract_email_from_text(text: str) -> str:
+
+
+def extract_email_from_text(text: str) -> str:
     """Extract email address from text."""
     import re
     if not text:

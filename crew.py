@@ -121,13 +121,86 @@ def create_document_agent():
 
 
 def run_crew_search(top_n: int = 10):
-    """Run the full crew search pipeline."""
+    """Run the full crew search pipeline with email and company website extraction."""
     print(f"\n{'='*60}")
     print(f"CAREEROPS 2.0 — AI-Powered Job Search")
     print(f"Started: {datetime.now(timezone.utc).isoformat()}")
     print(f"{'='*60}\n")
     
-    # Search queries for Arabic translator jobs (25 queries)
+    def extract_email_from_text(text: str) -> str:
+    """Extract email address from text."""
+    import re
+    if not text:
+        return ""
+    # Common email patterns
+    email_patterns = [
+        r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
+        r'email[:\s]*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        r'contact[:\s]*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        r'apply[:\s]*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+    ]
+    for pattern in email_patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            email = match.group(1) if match.lastindex else match.group(0)
+            # Filter out common non-personal emails
+            skip_domains = ['example.com', 'sentry.io', 'wixpress.com', 'github.com']
+            if not any(domain in email.lower() for domain in skip_domains):
+                return email
+    return ""
+
+
+def get_company_website(company_name: str) -> str:
+    """Get company website from name."""
+    # Known company websites
+    company_websites = {
+        "transperfect": "https://www.transperfect.com",
+        "lionbridge": "https://www.lionbridge.com",
+        "rws": "https://www.rws.com",
+        "keywords studios": "https://www.keywordsstudios.com",
+        "welocalize": "https://www.welocalize.com",
+        "appen": "https://www.appen.com",
+        "telus international": "https://www.telusinternational.com",
+        "centific": "https://www.centific.com",
+        "scale ai": "https://scale.com",
+        "surge ai": "https://surgeai.com",
+        "oneforma": "https://www.oneforma.com",
+        "proz": "https://www.proz.com",
+        "tarjama": "https://www.tarjama.com",
+        "careem": "https://www.careem.com",
+        "languagebird": "https://www.languagebird.com",
+        "vipkid": "https://www.vipkid.com",
+        "cambly": "https://www.cambly.com",
+        "preply": "https://preply.com",
+        "italki": "https://www.italki.com",
+        "remote.com": "https://remote.com",
+        "deel": "https://www.deel.com",
+        "oyster": "https://www.oysterhr.com",
+        "google": "https://careers.google.com",
+        "microsoft": "https://careers.microsoft.com",
+        "amazon": "https://www.amazon.jobs",
+        "apple": "https://www.apple.com/careers",
+        "meta": "https://www.metacareers.com",
+    }
+    
+    company_lower = company_name.lower().strip()
+    for key, website in company_websites.items():
+        if key in company_lower or company_lower in key:
+            return website
+    
+    # Try to construct website from company name
+    if company_name:
+        # Remove common suffixes
+        name = company_name.lower().strip()
+        for suffix in [' inc', ' llc', ' ltd', ' corp', ' corporation', ' company', ' co']:
+            name = name.replace(suffix, '')
+        # Construct website
+        return f"https://www.{name.replace(' ', '')}.com"
+    
+    return ""
+
+
+# Search queries for Arabic translator jobs (25 queries)
     search_queries = [
         # Core Arabic translation
         "Arabic translator remote jobs 2026",
@@ -300,16 +373,22 @@ def run_crew_search(top_n: int = 10):
         keyword_tool = KeywordMatchTool()
         
         for job in all_jobs[:50]:  # Limit to 50 jobs
-            result = keyword_tool._run(f"{job.get('title', '')} {job.get('url', '')}")
+            result = keyword_tool._run(f"{job.get('title', '')} {job.get('url', '')} {job.get('description', '')}")
             try:
                 score_data = json.loads(result)
                 job["score"] = score_data.get("score", 0)
                 job["category"] = score_data.get("category", "Other")
                 job["reasons"] = score_data.get("reasons", [])
-                scored_jobs.append(job)
             except:
                 job["score"] = 0
-                scored_jobs.append(job)
+            
+            # Extract email from job description
+            job["email"] = extract_email_from_text(job.get("description", ""))
+            
+            # Get company website
+            job["company_website"] = get_company_website(job.get("company", ""))
+            
+            scored_jobs.append(job)
     except Exception as e:
         print(f"  Scoring error: {e}")
     
@@ -335,7 +414,10 @@ def run_crew_search(top_n: int = 10):
         f.write(f"{'='*60}\n\n")
         for i, job in enumerate(scored_jobs[:top_n], 1):
             f.write(f"{i}. [{job.get('score', 0)}] {job.get('title', 'Unknown')}\n")
+            f.write(f"   Company: {job.get('company', 'Unknown')}\n")
             f.write(f"   URL: {job.get('url', '')}\n")
+            f.write(f"   Company Website: {job.get('company_website', '')}\n")
+            f.write(f"   Email: {job.get('email', 'Not found')}\n")
             f.write(f"   Source: {job.get('source', 'unknown')}\n")
             if job.get('reasons'):
                 f.write(f"   Reasons: {', '.join(job['reasons'][:3])}\n")

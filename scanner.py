@@ -539,18 +539,8 @@ def get_match_score(title: str, desc: str) -> dict:
     if NON_ROLE_ADMIN.search(t):
         total -= 50
         why_final.append("platform/pricing admin — not target")
-    if WRONG_LANGUAGE.search(t) and not HAS_ARABIC.search(text):
-        total = 0
-        best_cat = "Other"
-        why_final.append("wrong language in title")
-    if best_cat == "Arabic Translation":
-        if WRONG_LANGUAGE.search(text) and not HAS_ARABIC.search(text):
-            total = 0
-            best_cat = "Other"
-            why_final.append("wrong language pair")
-        elif not HAS_ARABIC.search(text):
-            total = min(total, 45)
-            why_final.append("no Arabic signal")
+    # REMOVED: Keyword requirement - now flexible scoring
+    # Jobs without Arabic keywords still get scored based on other factors
     total = max(0, min(100, total))
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final}

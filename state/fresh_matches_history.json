@@ -7894,6 +7894,57 @@
     "scan_date": "2026-09-13T17:31:04.917433+00:00"
   },
   {
+    "title": "Healthcare Virtual Assistant (Mental Health Practice | Remote)",
+    "company": "Ataraxis Management",
+    "url": "https://himalayas.app/companies/ataraxis-management/jobs/healthcare-virtual-assistant-mental-health-practice-remote-7686738480",
+    "location": "Costa Rica",
+    "posted": 1789320606,
+    "description": "We're Hiring: Healthcare Virtual Assistant (Mental Health Practice | Remote) Do you have experience supporting a US-based mental health or behavioral health practice? We're looking for an experienced Healthcare Virtual Assistant to join a growing mental health team. Key Responsibilities: \ufeffAnswer patient calls, texts, and callbacks \ufeffSchedule appointments for multiple therapists \ufeffVerify insurance eligibility and benefits \ufeffReview and submit claims in SimplePractice \ufeffSupport daily front-office operations and collaborate with the team Qualifications: \ufeffAt least 2 years of US healthcare administrative experience \ufeffMental health/behavioral health practice experience is strongly preferred \ufeffExperience with patient scheduling and insurance verification \ufeffSimplePractice experience is REQUIRED! \ufeffExcellent verbal and written English communication skills \ufeffOrganized, reliable, coachable, and detail-oriented \ufeffComfortable with productivity monitoring software Work Setup: Remote \ufeffOPEN TO LATAM and PH applicants!!! How to Apply: Send your updated resume/CV to with the subject line Healthcare Virtual Assistant \u2013 Mental Health. Applicants with experience in mental health, behavioral health, psychology, counseling, or psychotherapy practices will be prioritized. Originally posted on Himalayas",
+    "salary": "",
+    "source": "himalayas",
+    "postedISO": "2026-09-13T17:30:06+00:00",
+    "score": 100,
+    "category": "Admin",
+    "why": [
+      "virtual assistant administrative assistant admin assistant executive assistant (title+description)",
+      "remote-friendly"
+    ],
+    "is_fresh": true,
+    "age_hours": 1.1958372397222221,
+    "ai_insight": "```json\n{\n  \"technical_skills\": {\"score\": 40, \"reason\": \"Requires some language skills but not exclusively translation or ESL teaching.\"},\n  \"experience_match\": {\"score\": 50, \"reason\": \"Has experience in academic supervision and translation, but not exclusively in mental health or healthcare.\"},\n  \"",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Ataraxis Management",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-13T18:43:05.168040+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Ataraxis Management_Healthcare Virtual Assistant (Mental Health Practi_20260913.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Ataraxis Management_Healthcare Virtual Assistant (Mental Health Practi_20260913.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-13T18:43:35.740197+00:00"
+  },
+  {
     "title": "<![CDATA[Hindi content writing ]]>",
     "company": "Freelancer.com",
     "url": "https://www.freelancer.com/projects/article-rewriting/Hindi-content-writing.html",
@@ -14011,6 +14062,75 @@
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "scan_date": "2026-09-13T18:15:30.308077+00:00"
+  },
+  {
+    "title": "English Handwriting Transcription Project",
+    "company": "Freelancer.com",
+    "url": "https://www.freelancer.com/projects/content-writing/English-Handwriting-Transcription",
+    "location": "Remote (Worldwide)",
+    "posted": "2026-09-13T18:38:23+00:00",
+    "description": "I have a collection of images containing handwritten English documents that must be converted into clean, editable text. Every word on each page needs to be transcribed exactly as it appears, preserving original spelling, punctuation, and line breaks where practical so the digital version mirrors the source. Image quality varies slightly, but all pages are legible; the primary challenge is ensuring character-perfect accuracy and consistent formatting across the whole set. I will supply the scanned images in batches and expect the completed transcriptions returned in either Word or plain-text format, clearly labelled to match the original file names. Accuracy is paramount: I will spot-check at least 10 % of the output, and an error rate above 1 % will require revision. Please be comfortable working solely in English handwriting and following any small style notes I include with each batch. If you have questions about any unclear mark or abbreviation, flag it in the file so I can verify the correct wording.",
+    "salary": "$250",
+    "source": "freelancer",
+    "postedISO": "2026-09-13T18:38:23+00:00",
+    "score": 97,
+    "category": "Admin",
+    "why": [
+      "typist transcription transcribing transcriber (title)"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.05780287666666667,
+    "ai_insight": "```json\n{\n  \"technical_skills\": {\n    \"score\": 80,\n    \"reason\": \"Job requires Arabic-English translation, ESL teaching, and academic supervision skills, which are closely aligned with the candidate's background.\"\n  },\n  \"experience_match\": {\n    \"score\": 90,\n    \"reason\": \"Candidate has extensive e",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "support@freelancer.com",
+    "email_verified": false,
+    "all_emails": [
+      "support@freelancer.com",
+      "press@freelancer.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Freelancer.com",
+      "legitimacy_score": 40,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [
+        "Freelance platform (may not be full-time)"
+      ],
+      "positive_signals": [],
+      "last_updated": "2026-09-05T17:43:24.036132+00:00"
+    },
+    "company_legitimacy": 40,
+    "company_summary": "1 red flags",
+    "score_adjustment": -3,
+    "deep_read": {
+      "url": "https://www.freelancer.com/projects/content-writing/English-Handwriting-Transcription",
+      "title": "English Handwriting Transcription Project",
+      "description": "English Handwriting Transcription Project | Freelancer Hire freelancers By skill Looking for a freelancer with a specific skill? Start here. By location Search for freelancers based on their location and timezone. By category Find freelancers that suit a certain project category. Graphic designers Website designers Mobile app developers Software developers 3D artists Illustration Other popular skills View more Web developers Writers Marketing specialists SEO specialists Data entry clerks Virtual assistants Translators Financial experts Manufacturers Logistics experts Fashion designers Graphic Designers Logo Designers 3D Graphic Designers Web Designers Web Developers Mobile App Developers Writers Internet Marketing Specialists SEO Specialists Data Entry Clerks Virtual Assistants Software Developers Translators Financial Experts Lawyers Manufacturers Logistics Experts Photoshop Designers Illustrators Motion Graphics Designers 2D Animators 3D Animators Business Card Designers Tattoo Designers Stationery Designers Fashion Designers Brochure Designers T-Shirt Designers Other Graphic Designers 3D Modelers 3D Renderers Other 3D Graphic Designers Wordpress Web Designers Squarespace Web Designers Wix Web Designers Shopify Web Designers Magento Web Designers PHP Web Developers HTML5 Web Developers CSS Web Developers Javascript Web Developers Ruby on Rails Web Developers node.js Web Developers Angular.js Web Developers React.js Web Developers Other Web Developers iPhone Mobile App Developers Android Mobile App Developers PhoneGap Mobile App Developers Flutter Mobile App Developers Xamarin Mobile App Developers Other Mobile App Developers Article Writers Copywriters Ghostwriters Other Writers Social Media Marketing Specialists Other Internet Marketing Specialists Java Software Developers C++ Software Developers Python Software Developers Database Software Developers Linux Software Developers Objective C Software Developers Other Software Developers Spanish Translators English Translators Portuguese Translators French Translators German Translators Other Translators View more Working with international freelancers Find out more Where to find the best developers Find out more Do you need a local freelancer? Find out more Building an international team Find out more Choose from millions of freelancers worldwide. View more United States United Kingdom Canada India Australia Pakistan Bangladesh Indonesia Brazil China Turkey Philippines View more Find work By skill Search for work that requires a particular skill. By language Find projects that are in your language. Featured jobs Explore our current list of excited top featured projects. Find contests Unleash your talent and find freelancer contests to enter. Website jobs Graphic design jobs Data entry jobs Mobile app development jobs Internet marketing jobs Local jobs Other popular jobs View more Software development jobs Internet marketing jobs Data entry jobs SEO jobs Writing jobs Legal jobs Finance jobs Manufa",
+      "eligibility": [],
+      "requirements": [],
+      "contact": {
+        "phone": "12500-3750"
+      },
+      "deadline": null,
+      "salary": "$250",
+      "location": "Remote",
+      "is_remote": true
+    },
+    "contact": {
+      "phone": "12500-3750"
+    },
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Freelancer.com_English Handwriting Transcription Project_20260913.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Freelancer.com_English Handwriting Transcription Project_20260913.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-13T18:43:35.740197+00:00"
   },
   {
     "title": "Freelance Copywriter",

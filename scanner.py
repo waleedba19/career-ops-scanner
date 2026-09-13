@@ -41,7 +41,6 @@ from fetchers.verified import (
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
 )
-from fetchers.arabic_translation import fetch as fetch_arabic_companies
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 from scheduler import SmartScheduler, create_scheduler
 from deep_reader import enrich_jobs_with_deep_read
@@ -4943,8 +4942,6 @@ async def run_scan():
             fetchers.append(fetch_translation_jobs(session))
         if _should_run("esl_jobs"):
             fetchers.append(fetch_esl_jobs(session))
-        if _should_run("arabic_companies"):
-            fetchers.append(fetch_arabic_companies())
         if _should_run("themuse"):
             fetchers.append(fetch_themuse(session))
         if _should_run("remowork"):

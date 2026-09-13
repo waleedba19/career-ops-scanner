@@ -751,5 +751,54 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-12T21:49:49.218967+00:00"
+  },
+  "Springfield Public Schools (Massachusetts)": {
+    "name": "Springfield Public Schools (Massachusetts)",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-12T23:16:40.711270+00:00"
+  },
+  "Publicis Groupe": {
+    "name": "Publicis Groupe",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-13T10:07:56.988746+00:00"
+  },
+  "JPMorganChase": {
+    "name": "JPMorganChase",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-13T10:07:56.989747+00:00"
+  },
+  "Fanatics": {
+    "name": "Fanatics",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-13T10:07:56.990593+00:00"
   }
 }

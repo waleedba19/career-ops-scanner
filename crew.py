@@ -127,16 +127,41 @@ def run_crew_search(top_n: int = 10):
     print(f"Started: {datetime.now(timezone.utc).isoformat()}")
     print(f"{'='*60}\n")
     
-    # Search queries for Arabic translator jobs
+    # Search queries for Arabic translator jobs (25 queries)
     search_queries = [
+        # Core Arabic translation
         "Arabic translator remote jobs 2026",
         "Arabic English translation work from home",
         "Arabic linguist remote position",
-        "ESL teacher Arabic speaker remote",
-        "Localization specialist Arabic remote",
-        "Bilingual Arabic translator jobs",
-        "Legal translator Arabic remote",
+        "Arabic translator freelance online",
+        "Arabic document translation remote",
+        "Legal translator Arabic remote jobs",
         "Academic translator Arabic remote",
+        "Medical translator Arabic remote",
+        # ESL/Teaching
+        "ESL teacher Arabic speaker remote",
+        "English teacher Arabic online",
+        "Online tutoring Arabic native speaker",
+        "ESL instructor remote Middle East",
+        # Localization
+        "Localization specialist Arabic remote",
+        "Arabic localization jobs work from home",
+        "Software localization Arabic translator",
+        # Content
+        "Arabic content writer remote",
+        "Arabic copywriter work from home",
+        "Bilingual content creator Arabic",
+        # Data/AI
+        "Arabic data annotation remote",
+        "Arabic AI trainer jobs",
+        "Arabic language expert remote",
+        # Industry-specific
+        "Arabic legal translation services",
+        "Arabic medical translation jobs",
+        "Arabic financial translation remote",
+        # General
+        "Arabic speaker remote jobs worldwide",
+        "Bilingual Arabic English jobs remote",
     ]
     
     # RSS feeds for translation jobs
@@ -145,15 +170,50 @@ def run_crew_search(top_n: int = 10):
         "https://www.eslcafe.com/jobs/feed",
     ]
     
-    # Company career pages
+    # Company career pages (35 companies)
     career_pages = [
+        # Major LSPs (Language Service Providers)
         ("TransPerfect", "https://www.transperfect.com/careers"),
         ("Lionbridge", "https://www.lionbridge.com/careers"),
         ("RWS", "https://www.rws.com/careers"),
-        ("Appen", "https://www.appen.com/careers"),
-        ("Telus International", "https://www.telusinternational.com/careers"),
+        ("Keywords Studios", "https://www.keywordsstudios.com/careers"),
         ("Welocalize", "https://www.welocalize.com/careers"),
         ("OneForma", "https://www.oneforma.com/careers"),
+        ("CETRA", "https://www.cetra.com/careers"),
+        ("Propio LS", "https://www.propio.com/careers"),
+        # AI Data Companies
+        ("Appen", "https://www.appen.com/careers"),
+        ("Telus International", "https://www.telusinternational.com/careers"),
+        ("Centific", "https://www.centific.com/careers"),
+        ("Scale AI", "https://scale.com/careers"),
+        ("Surge AI", "https://surgeai.com/careers"),
+        ("AuraOne", "https://www.auraone.com/careers"),
+        # ESL/Language Platforms
+        ("LanguageBird", "https://www.languagebird.com/teach"),
+        ("VIPKid", "https://www.vipkid.com/careers"),
+        ("Cambly", "https://www.cambly.com/careers"),
+        ("Preply", "https://preply.com/careers"),
+        ("italki", "https://www.italki.com/careers"),
+        ("Lingoda", "https://www.lingoda.com/careers"),
+        # MENA Companies
+        ("Tarjama", "https://www.tarjama.com/careers"),
+        ("Tamatem Games", "https://www.tamatemgames.com/careers"),
+        ("Careem", "https://www.careem.com/careers"),
+        ("Noon Academy", "https://www.noonacademy.com/careers"),
+        ("AsiaLocalize", "https://www.asialocalize.com/careers"),
+        # Tech Companies with Localization
+        ("Google", "https://careers.google.com/"),
+        ("Microsoft", "https://careers.microsoft.com/"),
+        ("Amazon", "https://www.amazon.jobs/"),
+        ("Apple", "https://www.apple.com/careers/"),
+        ("Meta", "https://www.metacareers.com/"),
+        # Remote-First Companies
+        ("Remote.com", "https://remote.com/careers"),
+        ("Deel", "https://www.deel.com/careers"),
+        ("Oyster", "https://www.oysterhr.com/careers"),
+        # Freelance Platforms
+        ("ProZ", "https://www.proz.com/translation-jobs"),
+        ("TranslatorsCafe", "https://www.translatorscafe.com/jobs/"),
     ]
     
     # Collect all jobs

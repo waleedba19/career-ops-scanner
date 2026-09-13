@@ -32,27 +32,57 @@ class OllamaScoringTool(BaseTool):
         try:
             import urllib.request
             
-            prompt = f"""You are an expert job matcher. Score this job 0-100 based on match
-with this profile:
+            prompt = f"""You are an expert job matcher for Arabic translators. Score this job 0-100.
+
+PROFILE:
 - Name: Waleed Ballag
 - Skills: Arabic-English translation, legal translation, ESL teaching, academic supervision
-- Experience: 5+ years translation, 15 theses supervised
+- Experience: 5+ years translation, 15 theses supervised, MA in Applied Linguistics
 - Requirements: Remote work, worldwide, no visa restrictions
+- Location: Libya (can work worldwide)
 
-Job to score:
+JOB TO SCORE:
 Title: {job_title}
 Company: {company}
-Description: {job_description[:1000]}
+Description: {job_description[:1200]}
 
-Score each criteria:
-1. Arabic translation match (40 points) - Does title/description mention Arabic, translation, linguist?
-2. Remote work (20 points) - Is it remote/worldwide?
-3. ESL/teaching match (15 points) - Does it involve teaching, ESL, tutoring?
-4. Salary match (15 points) - Is salary above $40,000/year?
-5. Application ease (10 points) - Is it on Greenhouse/Lever/Ashby?
+SCORING CRITERIA (100 points total):
+1. ARABIC TRANSLATION (40 points):
+   - "arabic translator" or "arabic translation" in title = 40
+   - "arabic" + "translator/translation/linguist" in description = 35
+   - "arabic speaker" or "bilingual arabic" = 30
+   - "translation" without "arabic" = 15
+   - No translation mention = 0
 
-Return ONLY a JSON object with this format:
-{{"score": <0-100>, "category": "<Arabic Translation|ESL|Editing|Admin|Other>", "reasons": ["reason1", "reason2"]}}"""
+2. REMOTE WORK (20 points):
+   - "remote" or "work from home" = 20
+   - "worldwide" or "anywhere" = 20
+   - "distributed" = 15
+   - No remote mention = 0
+
+3. ESL/TEACHING (15 points):
+   - "esl" or "efl" or "tesol" = 15
+   - "english teacher" or "tutor" = 12
+   - "teaching" or "instructor" = 10
+
+4. SALARY (15 points):
+   - Above $50,000/year = 15
+   - $30,000-$50,000/year = 10
+   - Below $30,000/year = 5
+   - No salary = 5
+
+5. APPLICATION EASE (10 points):
+   - Greenhouse/Lever/Ashby ATS = 10
+   - Direct company application = 8
+   - Third-party platform = 5
+
+PENALTIES:
+- Senior/Lead/Director level = -20
+- Wrong language (hindi, spanish, etc.) = -30
+- US/UK only (not worldwide) = -15
+
+Return ONLY a JSON object:
+{{"score": <0-100>, "category": "<Arabic Translation|ESL|Translation|Other>", "reasons": ["reason1", "reason2", "reason3"]}}"""
 
             data = json.dumps({
                 "model": "qwen2.5:1.5b",
@@ -104,24 +134,42 @@ class OllamaWritingTool(BaseTool):
             if document_type == "cover_letter":
                 prompt = f"""Write a professional cover letter (250-350 words) for this job application.
 
-Applicant Profile:
+APPLICANT PROFILE:
 - Name: Waleed Ballag
 - Title: Arabic-English Translator | ESL Instructor | Localization Specialist
-- Experience: 5+ years translation, legal translation, academic supervision
-- Skills: Arabic (native), English (C1), SPSS, academic editing
-- Location: Libya (remote worldwide)
+- Location: Al-Ajelat City, Libya (remote worldwide)
+- Email: mr.waleed.ballag@gmail.com
 
-Job Details:
+EXPERIENCE:
+- 5+ years Arabic-English translation (legal, academic, document)
+- Assistant Legal Translator at Afaq Office for Legal Translation Services (2019-2022)
+- ESL Teacher & Academic Supervisor (15 theses supervised)
+- MA in Applied Linguistics, University of Zawia (2025)
+- BA in English Language, University of Sabratha (2014)
+
+SKILLS:
+- Arabic (Native), English (C1 Advanced)
+- Legal translation, academic translation, document translation
+- ESL/EFL instruction, curriculum development
+- SPSS, academic editing, thesis writing
+- Microsoft Office, Adobe Photoshop
+
+JOB DETAILS:
 Title: {job_title}
 Company: {company}
-Description: {job_description[:800]}
+Description: {job_description[:600]}
 
-Requirements:
+REQUIREMENTS:
 - Professional, academic, personable tone
-- Highlight Arabic translation expertise
-- Mention legal translation experience
-- Show enthusiasm for the role
+- Start with enthusiasm for the role
+- Highlight Arabic translation expertise (2-3 specific examples)
+- Mention legal translation experience at Afaq Office
+- Show ESL teaching and academic supervision experience
+- Connect skills to job requirements
+- End with call to action
 - Keep to 250-350 words
+- Do NOT use generic phrases like "I am writing to express my interest"
+- Be specific about what you can offer THIS company
 
 Write ONLY the cover letter text, no headers or explanations:"""
             else:

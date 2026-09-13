@@ -30,6 +30,7 @@ REGISTRY: dict[str, dict] = {
     "indeed": {"tier": 1, "module": "fetchers.verified", "class": "fetch_indeed"},
     "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
     "esl_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_esl_jobs"},
+    "arabic_companies": {"tier": 1, "module": "fetchers.arabic_translation", "class": "fetch"},
     
     # Tier 2 — balanced (good volume) - Asian/South Asian & MENA Focus
     "nodesk": {"tier": 2, "module": "fetchers.verified", "class": "fetch_nodesk"},

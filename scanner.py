@@ -5163,9 +5163,10 @@ async def run_scan():
             # Jobs with unknown dates are treated as fresh (no date = likely recent)
             is_fresh = posted is not None and age <= MAX_AGE_FRESH_HOURS
             
-            if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
-                filter_debug["no_positive"] += 1
-                continue
+            # REMOVED: Keyword requirement - now all jobs pass this filter
+            # if not matches_positive(job.get("title", ""), "") and not matches_positive(job.get("title", ""), job.get("description", "")):
+            #     filter_debug["no_positive"] += 1
+            #     continue
             title = job.get("title", "")
             if NON_TARGET_ROLE.search(title) and not NON_TARGET_ALLOWLIST.search(title):
                 filter_debug["non_target"] += 1

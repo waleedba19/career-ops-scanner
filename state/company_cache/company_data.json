@@ -824,5 +824,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-13T17:30:33.896577+00:00"
+  },
+  "Ataraxis Management": {
+    "name": "Ataraxis Management",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-13T18:43:05.168040+00:00"
   }
 }

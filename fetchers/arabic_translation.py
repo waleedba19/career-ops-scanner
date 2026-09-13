@@ -64,38 +64,38 @@ def fetch(timeout: int = 15) -> list[dict]:
                 raw = resp.read().decode("utf-8", "replace")
             html = _shared.strip_html(raw)[:5000]
             
-            # Look for job listings
+            # Look for job listings - simple pattern matching
             job_patterns = [
-                r'(?:arabic|translator|translation|localization|linguist|esl|language)[^<]*',
-                r'href="([^"]*(?:arabic|translator|translation|linguist)[^"]*)"',
+                r'arabic[^<]*translator[^<]*',
+                r'translator[^<]*arabic[^<]*',
+                r'arabic[^<]*translation[^<]*',
+                r'translation[^<]*arabic[^<]*',
+                r'linguist[^<]*arabic[^<]*',
+                r'esl[^<]*arabic[^<]*',
             ]
             
             for pattern in job_patterns:
                 matches = re.findall(pattern, html, re.I)
-                for match in matches[:5]:  # Limit to 5 per company
-                    if isinstance(match, tuple):
-                        job_url = match[0] if match else ""
-                    else:
-                        job_url = url
+                for match in matches[:3]:  # Limit to 3 per pattern
+                    if not isinstance(match, str):
+                        continue
                     
                     # Clean up the job title
-                    title = re.sub(r'<[^>]+>', '', match).strip() if isinstance(match, str) else ""
-                    if not title:
-                        title = f"{name} - Arabic Translation"
+                    title = re.sub(r'<[^>]+>', '', match).strip()
+                    if not title or len(title) < 5:
+                        continue
                     
-                    # Ensure URL is complete
-                    if job_url and not job_url.startswith("http"):
-                        job_url = url.rstrip('/') + '/' + job_url.lstrip('/')
+                    job_url = url
                     
-                    key = f"{name}|{job_url}"
+                    key = f"{name}|{title[:50]}"
                     if key in seen:
                         continue
                     seen.add(key)
                     
                     items.append({
-                        "title": title[:160],
+                        "title": f"{name} - {title[:100]}"[:160],
                         "company": name,
-                        "url": job_url or url,
+                        "url": job_url,
                         "location": "Remote",
                         "description": f"Arabic translation opportunity at {name}",
                         "source": "arabic_translation_companies",

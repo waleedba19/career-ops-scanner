@@ -32,7 +32,7 @@ from learning_module import record_application, adjust_scoring_based_on_learning
 from company_research import research_companies_batch, cleanup_old_cache
 from fetchers.social import fetch_reddit_social
 from fetchers.verified import (
-    fetch_linkedin_guest, fetch_freelancer_api, fetch_jobicy_tags, fetch_impactpool,
+    fetch_linkedin_guest, fetch_jobicy_tags, fetch_impactpool,
     fetch_themuse, fetch_ashby_board, fetch_workable_board, fetch_smartrecruiters_board,
     fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
     fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
@@ -4922,8 +4922,6 @@ async def run_scan():
         # Precision-first: each asks the source for the profile terms directly.
         if _should_run("linkedin"):
             fetchers.append(fetch_linkedin_guest(session))
-        if _should_run("freelancer_api"):
-            fetchers.append(fetch_freelancer_api(session))
         if _should_run("jobicy_tags"):
             fetchers.append(fetch_jobicy_tags(session))
         if _should_run("impactpool"):

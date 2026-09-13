@@ -5429,8 +5429,10 @@ async def run_scan():
         print(f"Filter funnel: {filter_debug}")
 
         # ---- Ollama AI analysis ----
-        # Analyze fresh jobs first
-        verified = await analyze_jobs_with_ollama(verified)
+        # Analyze fresh jobs first — bound to top candidates so a full
+        # funnel-open scan doesn't burn hours on hundreds of LLM calls.
+        OLLAMA_ANALYZE_CAP = 40
+        verified = await analyze_jobs_with_ollama(verified[:OLLAMA_ANALYZE_CAP]) + verified[OLLAMA_ANALYZE_CAP:]
         
         # For old jobs, use Ollama to verify they're still active
         # Only include old jobs that Ollama confirms are still relevant

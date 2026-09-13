@@ -1793,5 +1793,34 @@
     "matched_count": 0,
     "all_count": 3120,
     "jobs": []
+  },
+  {
+    "date": "2026-09-13T20:37:47.592659+00:00",
+    "matched_count": 2,
+    "all_count": 3121,
+    "jobs": [
+      {
+        "title": "Chinese Specialist, Taiwan (Localization Specialist)",
+        "company": "lululemon",
+        "url": "https://tw.linkedin.com/jobs/view/chinese-specialist-taiwan-localization-specialist-at-lululemon-4464717103",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "French Language Translator",
+        "company": "COE - Council of Europe",
+        "url": "https://www.impactpool.org/jobs/1234422",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-13T20:42:38.543247+00:00",
+    "matched_count": 0,
+    "all_count": 3122,
+    "jobs": []
   }
 ]

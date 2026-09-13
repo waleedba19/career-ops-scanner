@@ -1822,5 +1822,20 @@
     "matched_count": 0,
     "all_count": 3122,
     "jobs": []
+  },
+  {
+    "date": "2026-09-13T20:49:32.991638+00:00",
+    "matched_count": 1,
+    "all_count": 3121,
+    "jobs": [
+      {
+        "title": "Japanese & English Interpreter/Translator",
+        "company": "People First Recruitment",
+        "url": "https://uk.linkedin.com/jobs/view/japanese-english-interpreter-translator-at-people-first-recruitment-4467003074",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

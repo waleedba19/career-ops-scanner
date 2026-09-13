@@ -11,6 +11,8 @@ ARABIC_TRANSLATION_COMPANIES = [
     {"name": "Appen", "url": "https://www.appen.com/careers", "type": "ai_data"},
     {"name": "Telus International", "url": "https://www.telusinternational.com/careers", "type": "ai_data"},
     {"name": "Centific", "url": "https://www.centific.com/careers", "type": "ai_data"},
+    {"name": "Welo Data", "url": "https://www.welodata.com/careers", "type": "ai_data"},
+    {"name": "Meridial", "url": "https://www.meridial.com/careers", "type": "ai_data"},
     
     # Translation & Language Services (Remote)
     {"name": "TransPerfect", "url": "https://www.transperfect.com/careers", "type": "translation"},
@@ -18,6 +20,9 @@ ARABIC_TRANSLATION_COMPANIES = [
     {"name": "RWS", "url": "https://www.rws.com/careers", "type": "translation"},
     {"name": "Keywords Studios", "url": "https://www.keywordsstudios.com/careers", "type": "translation"},
     {"name": "OneForma", "url": "https://www.oneforma.com/careers", "type": "translation"},
+    {"name": "Welocalize", "url": "https://www.welocalize.com/careers", "type": "translation"},
+    {"name": "CETRA", "url": "https://www.cetra.com/careers", "type": "translation"},
+    {"name": "Propio LS", "url": "https://www.propio.com/careers", "type": "translation"},
     
     # ESL & Language Teaching (Remote)
     {"name": "LanguageBird", "url": "https://www.languagebird.com/teach", "type": "esl"},
@@ -25,16 +30,21 @@ ARABIC_TRANSLATION_COMPANIES = [
     {"name": "Cambly", "url": "https://www.cambly.com/careers", "type": "esl"},
     {"name": "Preply", "url": "https://preply.com/careers", "type": "esl"},
     {"name": "italki", "url": "https://www.italki.com/careers", "type": "esl"},
+    {"name": "LanguageLine Solutions", "url": "https://www.languageline.com/careers", "type": "esl"},
     
     # MENA Region Companies
     {"name": "Tarjama", "url": "https://www.tarjama.com/careers", "type": "translation"},
     {"name": "Tamatem Games", "url": "https://www.tamatemgames.com/careers", "type": "localization"},
     {"name": "Careem", "url": "https://www.careem.com/careers", "type": "tech"},
     {"name": "Noon Academy", "url": "https://www.noonacademy.com/careers", "type": "edtech"},
+    {"name": "AsiaLocalize", "url": "https://www.asialocalize.com/careers", "type": "translation"},
     
     # Freelance Platforms (Direct URL jobs)
     {"name": "ProZ", "url": "https://www.proz.com/translation-jobs", "type": "freelance"},
     {"name": "TranslatorsCafe", "url": "https://www.translatorscafe.com/jobs/", "type": "freelance"},
+    {"name": "TranslaStars", "url": "https://jobs.translastars.com/jobs/remote-jobs", "type": "freelance"},
+    {"name": "RemoWork", "url": "https://remowork.life/jobs/languages/arabic", "type": "freelance"},
+    {"name": "Flexstack", "url": "https://flexstack.my-board.org/remote-jobs", "type": "freelance"},
 ]
 
 def fetch(timeout: int = 15) -> list[dict]:

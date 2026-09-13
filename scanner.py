@@ -2989,49 +2989,7 @@ def append_to_scan_history(matched_jobs: list[dict], scan_info: dict):
 
 
 # ---------------------------------------------------------------------------
-# 42. Freelancer.com — Global freelance marketplace
-# ---------------------------------------------------------------------------
-
-async def fetch_freelancer(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from Freelancer.com RSS feed."""
-    try:
-        async with session.get(
-            "https://www.freelancer.com/rss.xml",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            xml = await resp.text()
-            items = re.findall(r"<item>[\s\S]*?</item>", xml)
-            jobs = []
-            for item in items[:200]:
-                def get(tag):
-                    m = re.search(rf"<{tag}>([\s\S]*?)</{tag}>", item)
-                    return m.group(1) if m else ""
-                title = get("title").replace("&amp;", "&").strip()
-                if not title:
-                    continue
-                link = get("link").strip()
-                desc = strip_html(get("description") or "")
-                jobs.append({
-                    "title": title,
-                    "company": "Freelancer.com",
-                    "url": link,
-                    "location": "Remote (Worldwide)",
-                    "posted": get("pubDate") or "",
-                    "description": desc,
-                    "salary": "",
-                    "source": "freelancer",
-                })
-            return jobs[:200]
-    except Exception as e:
-        print(f"  Freelancer: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 43. PeoplePerHour — UK/EU freelance platform
+# 42. PeoplePerHour — UK/EU freelance platform
 # ---------------------------------------------------------------------------
 
 async def fetch_peopleperhour(session: aiohttp.ClientSession) -> list[dict]:
@@ -5012,10 +4970,6 @@ async def run_scan():
             fetchers.append(fetch_jooble_keyed(session))
         if _should_run("reliefweb"):
             fetchers.append(fetch_reliefweb(session))
-
-        # Best converter in the whole system (30 of 56 all-time matches) — tier 1 now
-        if _should_run("freelancer"):
-            fetchers.append(fetch_freelancer(session))
 
         def _blocked(name: str) -> bool:
             """Probe-confirmed blocked from Actions IPs — skip unless forced."""

@@ -10,17 +10,29 @@
     "portfolio": "https://linktr.ee/WaleedBA19",
     "blog": "waleed-ballag.blogspot.com"
   },
-  "title": "ESL Instructor, Academic Supervisor & Bilingual Translator",
-  "summary": "Dedicated ESL Instructor and Academic Secondary Supervisor committed to fostering student success through results-oriented teaching methodologies. Proven ability to facilitate consistent academic growth across diverse learner backgrounds. Skilled in adapting instruction for both large and small class settings, creating inclusive and engaging learning environments. Extensive experience supervising 15 graduate-level research studies and providing comprehensive academic services including thesis writing, editing, proposal development, and data analysis for MA-level projects. Native Arabic speaker with C1 Advanced English proficiency.",
+  "title": "Arabic-English Translator | ESL Instructor | Localization Specialist",
+  "summary": "Professional Arabic-English bilingual translator with 5+ years of experience in legal, academic, and document translation. Native Arabic speaker with C1 Advanced English proficiency. Proven expertise in accurate, contextually-appropriate translations for legal documents, academic papers, and business communications. Experienced in localization, terminology management, and cross-cultural communication. Remote-ready with excellent time management and self-motivation skills.",
   "skills": {
-    "academic": ["Academic Supervision & Research Guidance", "Academic Editing & Thesis Review", "Thesis Writing & Development", "Proposal Development", "Data Analysis (SPSS, thematic coding)", "Plagiarism Checking & Originality", "Survey & Instrument Development", "Viva Preparation Support"],
-    "teaching": ["ESL/EFL Instruction", "Online & In-person Teaching", "Curriculum Development", "Student Assessment", "Gamification in Education", "Mobile-Assisted Language Learning"],
-    "translation": ["Arabic-English Bidirectional Translation", "Academic Translation", "Legal Translation", "Document Translation", "Contextual Research for Translation"],
+    "translation": ["Arabic-English Bidirectional Translation", "Legal Translation", "Academic Translation", "Document Translation", "Localization", "Terminology Management", "CAT Tools", "Translation Memory", "Contextual Research for Translation", "Proofreading & Editing"],
+    "academic": ["Academic Supervision & Research Guidance", "Academic Editing & Thesis Review", "Thesis Writing & Development", "Proposal Development", "Data Analysis (SPSS, thematic coding)"],
+    "teaching": ["ESL/EFL Instruction", "Online & In-person Teaching", "Curriculum Development", "Student Assessment"],
     "technical": ["Microsoft Office Suite (Expert)", "Adobe Photoshop", "SPSS Statistical Analysis", "AI Tools & Advanced Programs", "Data Entry & Archiving"],
     "languages": ["Arabic (Native)", "English (C1 Advanced)"],
-    "soft": ["Academic Integrity Compliance", "APA/MLA/Harvard Formatting", "Cross-cultural Communication", "Remote Collaboration", "Time Management"]
+    "soft": ["Cross-cultural Communication", "Remote Collaboration", "Time Management", "Attention to Detail", "Academic Integrity Compliance"]
   },
   "experience": [
+    {
+      "title": "Assistant Legal Translator",
+      "company": "Afaq Office for Legal Translation Services",
+      "period": "11/2019 – 10/2022",
+      "location": "Misrata City, Libya",
+      "bullets": [
+        "Accurate formatted translations in Arabic and English for legal documents",
+        "Rapid document conversion with contextual accuracy and cultural sensitivity",
+        "Managed external correspondence and legal documentation",
+        "Specialized in contracts, court documents, and official certificates"
+      ]
+    },
     {
       "title": "ESL Teacher & Secondary Supervisor",
       "company": "Higher Institute of Science and Technology",
@@ -44,17 +56,6 @@
       ]
     },
     {
-      "title": "ESL Teacher",
-      "company": "Anwar Al-Hayat School for Private Education",
-      "period": "10/2024 – 2025",
-      "location": "Al-Ajéelat City, Libya",
-      "bullets": [
-        "English language teacher at secondary level",
-        "Designed interesting and informative lessons",
-        "Applied advanced pedagogical methods"
-      ]
-    },
-    {
       "title": "ESL Trainer",
       "company": "Muhtarifon Al-Awael Centre for Training",
       "period": "12/2023 – 05/2024",
@@ -63,27 +64,6 @@
         "English language trainer for Strategic Programs Office at National Oil Corporation",
         "Training petroleum graduates in professional English",
         "Awarded English Language Trainer of the Year"
-      ]
-    },
-    {
-      "title": "ESL Teacher",
-      "company": "Luqman Al-Hakim School",
-      "period": "09/2023 – 12/2023",
-      "location": "Al-Ajéelat City, Libya",
-      "bullets": [
-        "English Language Teacher for middle and high school",
-        "Advanced pedagogical methods and curriculum development"
-      ]
-    },
-    {
-      "title": "Assistant Legal Translator",
-      "company": "Afaq Office for Legal Translation Services",
-      "period": "11/2019 – 10/2022",
-      "location": "Misrata City, Libya",
-      "bullets": [
-        "Accurate formatted translations in Arabic and English",
-        "Rapid document conversion with contextual accuracy",
-        "Managed external correspondence and legal documentation"
       ]
     },
     {
@@ -137,11 +117,11 @@
   "supervision": {
     "total_studies": 15,
     "completed_theses": 11,
-    "themes": ["Teacher Perspectives & Beliefs", "Student-Centered Learning", "Technology-Assisted Learning", "Assessment & Evaluation", "Skill-Specific Instruction", "Parental Involvement", "Collaborative Learning"]
+    "themes": ["Teacher Perspectives & Beliefs", "Student-Centered Learning", "Technology-Assisted Learning", "Assessment & Evaluation", "Skill-Specific Instruction"]
   },
   "cover_letter_style": {
     "tone": "Professional, academic, and personable",
     "length": "250-350 words",
-    "focus": "Highlight ESL teaching expertise, academic supervision, bilingual translation, and graduate-level research experience"
+    "focus": "Highlight Arabic-English translation expertise, legal translation experience, academic supervision, and bilingual communication skills"
   }
 }

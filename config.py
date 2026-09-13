@@ -30,21 +30,22 @@ FETCH_BATCH_SIZE = int(os.getenv("CAREEROPS_BATCH_SIZE", "8"))
 FETCH_CONCURRENCY = int(os.getenv("CAREEROPS_CONCURRENCY", "25"))
 
 # ── Sources ──────────────────────────────────────────────────────────────
-# Primary tier — high signal, low noise
+# Primary tier — high signal, low noise — FOCUSED ON ARABIC TRANSLATION
 TIER_1_SOURCES = [
     "greenhouse", "lever", "remotive", "remoteok", "weworkremotely",
     "jobicy", "arbeitnow", "himalayas", "jobicy_api",
+    "translation_jobs", "esl_jobs", "linkedin",
 ]
-# Secondary tier — good volume
+# Secondary tier — good volume — Asian/South Asian & MENA Focus
 TIER_2_SOURCES = [
     "nodesk", "yayremote", "remote1stjobs", "realworkfromanywhere",
     "workingnomads", "jobspresso", "justremote", "hirelatam",
+    "teaching_jobs", "writing_jobs", "edtech_jobs",
 ]
-# Tertiary — niche / MENA / freelance (noisy, use sparingly)
+# Tertiary — niche / MENA (noisy, use sparingly)
 TIER_3_SOURCES = [
-    "mostaql", "for9a", "khamsat", "ureed", "wuzzuf",
     "bayt", "gulftalent", "naukrigulf",
-    "freelancer", "peopleperhour", "guru",
+    "peopleperhour", "guru",
 ]
 
 # Paid platforms — auto-reject (fees to apply)

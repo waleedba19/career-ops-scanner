@@ -5,8 +5,9 @@ from .base import BaseFetcher, FetchResult
 
 # Registry mapping: name -> (tier, module_path, class_name)
 # Lazy loading: fetcher modules are only imported when needed
+# FOCUSED ON: Arabic Translator, ESL Teacher, Translation Jobs
 REGISTRY: dict[str, dict] = {
-    # Tier 1 — primary, high signal (always on)
+    # Tier 1 — primary, high signal (always on) - Translation & Language Focus
     "greenhouse": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_batch"},
     "lever": {"tier": 1, "module": "fetchers.verified", "class": "fetch_lever_batch"},
     "remotive": {"tier": 1, "module": "fetchers.verified", "class": "fetch_remotive"},
@@ -16,21 +17,21 @@ REGISTRY: dict[str, dict] = {
     "arbeitnow": {"tier": 1, "module": "fetchers.verified", "class": "fetch_arbeitnow"},
     "himalayas": {"tier": 1, "module": "fetchers.verified", "class": "fetch_himalayas_api"},
     "linkedin": {"tier": 1, "module": "fetchers.verified", "class": "fetch_linkedin_guest"},
-    "freelancer_api": {"tier": 1, "module": "fetchers.verified", "class": "fetch_freelancer_api"},
     "jobicy_tags": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jobicy_tags"},
     "impactpool": {"tier": 1, "module": "fetchers.verified", "class": "fetch_impactpool"},
     "greenhouse_profile": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_profile"},
     "jsearch": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jsearch"},
     "adzuna": {"tier": 1, "module": "fetchers.verified", "class": "fetch_adzuna"},
     "reliefweb": {"tier": 1, "module": "fetchers.verified", "class": "fetch_reliefweb"},
-    "freelancer": {"tier": 1, "module": "fetchers.verified", "class": "fetch_freelancer"},
     "upwork": {"tier": 1, "module": "fetchers.verified", "class": "fetch_upwork"},
     "stackoverflow": {"tier": 1, "module": "fetchers.verified", "class": "fetch_stackoverflow"},
     "github_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_github_jobs"},
     "hackernews": {"tier": 1, "module": "fetchers.verified", "class": "fetch_hackernews"},
     "indeed": {"tier": 1, "module": "fetchers.verified", "class": "fetch_indeed"},
+    "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
+    "esl_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_esl_jobs"},
     
-    # Tier 2 — balanced (good volume)
+    # Tier 2 — balanced (good volume) - Asian/South Asian & MENA Focus
     "nodesk": {"tier": 2, "module": "fetchers.verified", "class": "fetch_nodesk"},
     "yayremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_yayremote"},
     "remote1stjobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remote1stjobs"},

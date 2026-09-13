@@ -1,6 +1,7 @@
 """Arabic Translation Jobs - Specific companies and platforms hiring Arabic translators."""
 import re
-from ._shared import get, strip_html
+import urllib.request
+from . import _shared
 
 # Specific companies and platforms that hire Arabic translators
 ARABIC_TRANSLATION_COMPANIES = [
@@ -57,9 +58,11 @@ def fetch(timeout: int = 15) -> list[dict]:
             url = company["url"]
             name = company["name"]
             
-            # Fetch the careers page
-            raw = get(url, timeout)
-            html = strip_html(raw, limit=5000)
+            # Fetch the careers page using urllib
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                raw = resp.read().decode("utf-8", "replace")
+            html = _shared.strip_html(raw)[:5000]
             
             # Look for job listings
             job_patterns = [

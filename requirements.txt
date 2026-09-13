@@ -15,3 +15,16 @@ tenacity>=8.2,<9
 # Free-forever parsing (no API, no quota)
 beautifulsoup4>=4.12,<5
 lxml>=5.0,<6
+
+# AI Agent Framework
+crewai>=0.152,<1
+crewai-tools>=0.14,<1
+
+# Browser Automation
+playwright>=1.45,<2
+
+# Free Web Search (no API key)
+duckduckgo-search>=6.0,<7
+
+# Lightweight Web Scraping
+crw>=0.1,<1

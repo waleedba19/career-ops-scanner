@@ -115,8 +115,17 @@ jobs:
       - name: Lint — compile check (fail fast)
         run: python -m compileall -q .
 
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install chromium || echo "Playwright install failed, continuing"
+
       - name: Auto-discover new job sources
         run: python source_discovery.py
+        continue-on-error: true
+
+      - name: Run CrewAI intelligent search
+        if: env.SCAN_MODE == 'comprehensive' || env.SCAN_MODE == 'adaptive'
+        run: python crew.py
         continue-on-error: true
 
       - name: Run job scanner (adaptive mode)

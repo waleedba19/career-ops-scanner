@@ -3,6 +3,8 @@ CareerOps Job Scanner — GitHub Actions Edition
 Ported from Cloudflare Worker (index.js) to Python.
 Uses aiohttp for async HTTP, concurrent.futures for parallel fetching,
 and Ollama for AI-powered job analysis.
+
+CareerOps 2.0 — Now with CrewAI multi-agent system for intelligent job search.
 """
 
 import asyncio
@@ -44,6 +46,14 @@ from fetchers.verified import (
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 from scheduler import SmartScheduler, create_scheduler
 from deep_reader import enrich_jobs_with_deep_read
+
+# CareerOps 2.0 — CrewAI integration
+try:
+    from crew import run_crew_search
+    CREWAI_AVAILABLE = True
+except ImportError:
+    CREWAI_AVAILABLE = False
+    print("Warning: CrewAI not available. Using legacy scanner only.")
 
 # ── Enterprise config (centralized) — single source of truth ──
 import config as _cfg

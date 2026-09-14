@@ -1086,5 +1086,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-14T22:25:28.026103+00:00"
+  },
+  "Staffing for Doctors": {
+    "name": "Staffing for Doctors",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-14T22:49:47.662445+00:00"
   }
 }

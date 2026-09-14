@@ -789,7 +789,9 @@ def parse_eslbase(html: str) -> list[dict]:
 async def fetch_eslbase(session: aiohttp.ClientSession) -> list[dict]:
     status, body = await _get_text(session, ESLBASE_URL)
     jobs = parse_eslbase(body) if status == 200 else []
-    print(f"  ESLbase: {len(jobs)} ESL jobs")
+    # Only keep jobs mentioning arabic
+    jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
+    print(f"  ESLbase: {len(jobs)} ESL jobs (arabic-only)")
     return jobs
 
 
@@ -1514,7 +1516,8 @@ async def fetch_translation_jobs(session: aiohttp.ClientSession) -> list[dict]:
                 "salary": "",
                 "source": "translation_jobs",
             })
-    return jobs
+    arabic_jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','')).lower()]
+    return arabic_jobs[:50]
 
 
 async def fetch_esl_jobs(session: aiohttp.ClientSession) -> list[dict]:
@@ -1541,7 +1544,8 @@ async def fetch_esl_jobs(session: aiohttp.ClientSession) -> list[dict]:
                 "salary": "",
                 "source": "esl_jobs",
             })
-    return jobs
+    arabic_jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','')).lower()]
+    return arabic_jobs[:50]
 
 
 async def fetch_teaching_jobs(session: aiohttp.ClientSession) -> list[dict]:

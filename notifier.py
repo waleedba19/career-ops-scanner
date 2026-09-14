@@ -309,6 +309,8 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         # No matches — but show what we learned
         msg += "\u2705 0 New Matches Found\n"
         msg += "\n"
+        msg += "No Arabic translation jobs found this scan.\n"
+        msg += "\n"
         msg += "No new positions passed all filters this cycle:\n"
         msg += f"Gates: {gates_line()}\n"
         msg += "\n"

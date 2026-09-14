@@ -3368,6 +3368,8 @@ async def fetch_proz(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": "",
                     "source": "proz",
                 })
+            # Only keep jobs mentioning arabic
+            jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
             return jobs[:100]
     except Exception as e:
         print(f"  ProZ: {e}")
@@ -3458,6 +3460,8 @@ async def fetch_eslgorilla(session: aiohttp.ClientSession) -> list[dict]:
             print(f"  ESL Gorilla ({page}): {e}")
     if jobs:
         print(f"  ESL Gorilla: {len(jobs)} online ESL jobs")
+    # Only keep jobs mentioning arabic
+    jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
     return jobs[:30]
 
 
@@ -3553,6 +3557,8 @@ async def fetch_tes(session: aiohttp.ClientSession) -> list[dict]:
             print(f"  TES ({page}): {e}")
     if jobs:
         print(f"  TES: {len(jobs)} remote/online teaching jobs")
+    # Only keep jobs mentioning arabic
+    jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
     return jobs[:20]
 
 
@@ -4180,6 +4186,8 @@ async def fetch_gotranscript(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": "",
                     "source": "gotranscript",
                 })
+            # Only keep jobs mentioning arabic
+            jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
             return jobs[:50]
     except Exception as e:
         print(f"  GoTranscript: {e}")
@@ -4205,6 +4213,8 @@ async def fetch_smartcat(session: aiohttp.ClientSession) -> list[dict]:
             for j in jobs:
                 j["source"] = "smartcat"
                 j["location"] = "Remote (Worldwide)"
+            # Only keep jobs mentioning arabic
+            jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
             return jobs[:50]
     except Exception as e:
         print(f"  Smartcat: {e}")
@@ -4994,10 +5004,6 @@ async def run_scan():
             fetchers.append(fetch_for9a(session))
         if not _blocked("wuzzuf"):
             fetchers.append(fetch_wuzzuf(session))
-        if not _blocked("bayt"):
-            fetchers.append(fetch_bayt(session))
-        if not _blocked("gulftalent"):
-            fetchers.append(fetch_gulftalent(session))
         if _should_run("jsearch"):
             fetchers.append(fetch_jsearch(session))
 

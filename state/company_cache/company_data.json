@@ -976,5 +976,29 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-14T15:04:17.793981+00:00"
+  },
+  "ILENG Academy": {
+    "name": "ILENG Academy",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T15:08:54.528703+00:00"
+  },
+  "Private Business": {
+    "name": "Private Business",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T15:08:54.529866+00:00"
   }
 }

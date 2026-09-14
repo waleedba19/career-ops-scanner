@@ -211,44 +211,44 @@ MATCH_BUCKETS = [
     {
         "name": "Arabic Translation",
         "phrases": [
-            (re.compile(r"arabic (translator|translation|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 65),
-            (re.compile(r"(translator|translation|interpreter|linguist|editor|proofreader|locali[sz]ation specialist).{0,40}arabic", re.I), 65),
-            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 70),
-            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 40),
-            (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator)\b", re.I), 40),
-            (re.compile(r"\b(language locali[sz]ation|locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 45),
-            (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 60),
-            (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 60),
-            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 60),
-            (re.compile(r"mena.*arabic|arabic.*mena", re.I), 55),
+            (re.compile(r"arabic (translator|translation|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 90),
+            (re.compile(r"(translator|translation|interpreter|linguist|editor|proofreader|locali[sz]ation specialist).{0,40}arabic", re.I), 90),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 90),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 80),
+            (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator)\b", re.I), 85),
+            (re.compile(r"\b(language locali[sz]ation|locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 85),
+            (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 90),
+            (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 90),
+            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 85),
+            (re.compile(r"mena.*arabic|arabic.*mena", re.I), 85),
         ],
     },
     {
         "name": "ESL",
         "phrases": [
-            (re.compile(r"\b(esl|efl|tesol|tefl)\b", re.I), 40),
-            (re.compile(r"english (teacher|tutor|instructor|language|training|teaching)", re.I), 35),
-            (re.compile(r"(online|remote|language) (teacher|tutor|instructor)", re.I), 30),
-            (re.compile(r"\b(esl|english) tutoring\b", re.I), 25),
+            (re.compile(r"\b(esl|efl|tesol|tefl)\b", re.I), 85),
+            (re.compile(r"english (teacher|tutor|instructor|language|training|teaching)", re.I), 80),
+            (re.compile(r"(online|remote|language) (teacher|tutor|instructor)", re.I), 75),
+            (re.compile(r"\b(esl|english) tutoring\b", re.I), 75),
         ],
     },
     {
         "name": "Editing",
         "phrases": [
-            (re.compile(r"\b(proofreader|proofreading|proofread)\b", re.I), 35),
-            (re.compile(r"academic (editor|editing)|copy editor", re.I), 30),
-            (re.compile(r"\b(content writer|copywriter|copywriting|blog writer|article writer|content editor|content creator)\b", re.I), 25),
-            (re.compile(r"\bcontent creation\b", re.I), 20),
+            (re.compile(r"\b(proofreader|proofreading|proofread)\b", re.I), 80),
+            (re.compile(r"academic (editor|editing)|copy editor", re.I), 80),
+            (re.compile(r"\b(content writer|copywriter|copywriting|blog writer|article writer|content editor|content creator)\b", re.I), 80),
+            (re.compile(r"\bcontent creation\b", re.I), 75),
         ],
     },
     {
         "name": "Admin",
         "phrases": [
-            (re.compile(r"\bdata entry\b", re.I), 42),
-            (re.compile(r"\b(typist|transcription|transcribing|transcriber)\b", re.I), 35),
-            (re.compile(r"virtual assistant|administrative assistant|admin assistant|executive assistant", re.I), 35),
-            (re.compile(r"data annotation|data labeling|data labeler|data entry (specialist|clerk|operator|agent)", re.I), 24),
-            (re.compile(r"\boffice assistant\b", re.I), 20),
+            (re.compile(r"\bdata entry\b", re.I), 80),
+            (re.compile(r"\b(typist|transcription|transcribing|transcriber)\b", re.I), 80),
+            (re.compile(r"virtual assistant|administrative assistant|admin assistant|executive assistant", re.I), 80),
+            (re.compile(r"data annotation|data labeling|data labeler|data entry (specialist|clerk|operator|agent)", re.I), 75),
+            (re.compile(r"\boffice assistant\b", re.I), 75),
         ],
     },
 ]
@@ -482,9 +482,9 @@ def phrase_label(re_obj) -> str:
 # Bucket weight multipliers — Arabic translation is the candidate's prime skill.
 _BUCKET_WEIGHT = {
     "Arabic Translation": 1.0,
-    "ESL": 0.85,
-    "Editing": 0.75,
-    "Admin": 0.70,
+    "ESL": 1.0,
+    "Editing": 1.0,
+    "Admin": 1.0,
 }
 
 # Trusted companies that are strongly Arabic-translation / language-service relevant.
@@ -519,7 +519,7 @@ def _bucket_best(bucket: dict, t: str, d: str) -> tuple[float, list[str]]:
             best = val
             where = "title+description" if (in_title and in_desc) else ("title" if in_title else "description")
             why = [f"{phrase_label(pattern)} ({where})"]
-    return min(best, 65.0), why
+    return min(best, 95.0), why
 
 
 def get_match_score(title: str, desc: str) -> dict:
@@ -560,19 +560,15 @@ def get_match_score(title: str, desc: str) -> dict:
     if best_cat != "Other":
         why_final.append(f"matches {best_cat} profile")
 
-    # 3) Penalties
+    # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):
-        total -= 30
-        why_final.append("negative keywords in title")
-    if SENIOR_PENALTY.search(t) or SENIOR_PENALTY.search(text):
-        total -= 15
-        why_final.append("senior/leadership penalty")
+        return {"score": 0, "category": "Other", "why": ["hard drop: non-target role keyword in title"]}
+    if SENIOR_PENALTY.search(t):
+        return {"score": 0, "category": "Other", "why": ["hard drop: senior/leadership title"]}
     if NON_ROLE_ADMIN.search(t):
-        total -= 20
-        why_final.append("platform/pricing admin — not target")
+        return {"score": 0, "category": "Other", "why": ["hard drop: admin/platform role"]}
     if WRONG_LANGUAGE.search(t) and not HAS_ARABIC.search(text):
-        total -= 25
-        why_final.append("wrong-language role (no Arabic signal)")
+        return {"score": 0, "category": "Other", "why": ["hard drop: wrong language, no Arabic"]}
 
     total = max(0, min(100, total))
     # HARD RULE: if no Arabic/translation/ESL/content keywords matched at all,

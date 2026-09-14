@@ -1,9 +1,9 @@
 {
-  "total_scans": 86,
-  "total_matches": 199,
+  "total_scans": 87,
+  "total_matches": 201,
   "streak_days": 11,
   "last_scan_date": "2026-09-15",
-  "total_jobs_scanned": 264523,
+  "total_jobs_scanned": 264854,
   "best_day_matches": 16,
   "best_day_date": "2026-09-15",
   "daily_history": [
@@ -771,6 +771,15 @@
       "near_misses": 0,
       "sources": 7,
       "fresh_count": 0
+    },
+    {
+      "date": "2026-09-15",
+      "total_fetched": 331,
+      "matches": 2,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 11,
+      "fresh_count": 2
     }
   ],
   "category_trends": {
@@ -787,12 +796,12 @@
       "last_seen": "2026-09-15"
     },
     "Admin": {
-      "count": 41,
-      "last_seen": "2026-09-14"
+      "count": 42,
+      "last_seen": "2026-09-15"
     },
     "Other": {
-      "count": 8,
-      "last_seen": "2026-09-14"
+      "count": 9,
+      "last_seen": "2026-09-15"
     }
   },
   "source_trends": {
@@ -821,8 +830,8 @@
       "last_seen": "2026-09-05"
     },
     "himalayas": {
-      "matches": 15,
-      "last_seen": "2026-09-14"
+      "matches": 17,
+      "last_seen": "2026-09-15"
     },
     "search_discovered": {
       "matches": 2,

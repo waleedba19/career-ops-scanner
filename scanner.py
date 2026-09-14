@@ -4965,179 +4965,41 @@ async def run_scan():
                 return True
 
         fetchers = []
-        # Tier-1 always-on batch (high signal)
-        for name, slug in GREENHOUSE_COMPANIES:
-            if _should_run("greenhouse"):
-                fetchers.append(fetch_greenhouse(session, name, slug))
-        for name, slug in LEVER_COMPANIES:
-            if _should_run("lever"):
-                fetchers.append(fetch_lever(session, name, slug))
-        # Core reliable APIs (deduped — one fetcher per source, best variant only)
-        if _should_run("remotive"):
-            fetchers.append(fetch_remotive(session))  # unified remotive (handles pagination internally)
-        if _should_run("remoteok"):
-            fetchers.append(fetch_remoteok(session))  # unified remoteok
-        if _should_run("weworkremotely"):
-            fetchers.append(fetch_wwr(session))
-        if _should_run("jobicy"):
-            fetchers.append(fetch_jobicy_api(session))  # API is best; RSS fallback inside fetcher if needed
-        if _should_run("nodesk"):
-            fetchers.append(fetch_nodesk(session))
-        if _should_run("arbeitnow"):
-            fetchers.append(fetch_arbeitnow(session))
-        if _should_run("yayremote"):
-            fetchers.append(fetch_yayremote(session))
-        if _should_run("remote1stjobs"):
-            fetchers.append(fetch_remote1stjobs(session))
-        if _should_run("realworkfromanywhere"):
-            fetchers.append(fetch_realworkfromanywhere(session))
-        if _should_run("workingnomads"):
-            # Probe: /jobsfeed RSS answers 404 from the runner; the public JSON endpoint
-            # (api/exposed_jobs/) returned 32 fresh items. Old fetcher kept as-is above.
-            fetchers.append(fetch_workingnomads_json(session))
-        if _should_run("jobspresso"):
-            fetchers.append(fetch_jobspresso(session))
-        if _should_run("justremote"):
-            fetchers.append(fetch_justremote(session))
-        if _should_run("hirelatam"):
-            fetchers.append(fetch_hirelatam(session))
-        # Social signals — niche communities post jobs/gigs that boards miss
-        if _should_run("reddit_social"):
-            fetchers.append(fetch_reddit_social(session))
-        # Niche boards live-verified 2026-09-06 (SSR HTML, remote-filtered)
-        if _should_run("eslgorilla"):
-            fetchers.append(fetch_eslgorilla(session))
-        if _should_run("tes"):
-            fetchers.append(fetch_tes(session))
-        # Tier-1 extra — himalayas unified API (replaces 4 variants)
-        if _should_run("himalayas"):
-            fetchers.append(fetch_himalayas_api(session))
-
-        # ── Verified sources (Probe Sources workflow, state/source_probe.md) ──
-        # Precision-first: each asks the source for the profile terms directly.
-        if _should_run("linkedin"):
-            fetchers.append(fetch_linkedin_guest(session))
-        if _should_run("jobicy_tags"):
-            fetchers.append(fetch_jobicy_tags(session))
-        if _should_run("impactpool"):
-            fetchers.append(fetch_impactpool(session))
-        if _should_run("greenhouse_profile"):
-            for name, slug in GREENHOUSE_PROFILE_BOARDS:
-                fetchers.append(fetch_greenhouse(session, name, slug))
-        if _should_run("ashby"):
-            for name, slug in ASHBY_COMPANIES:
-                fetchers.append(fetch_ashby_board(session, name, slug))
-        if _should_run("workable"):
-            for name, slug in WORKABLE_COMPANIES:
-                fetchers.append(fetch_workable_board(session, name, slug))
-        if _should_run("smartrecruiters"):
-            for name, slug in SMARTRECRUITERS_COMPANIES:
-                fetchers.append(fetch_smartrecruiters_board(session, name, slug))
-        if _should_run("recruitee"):
-            for name, slug in RECRUITEE_COMPANIES:
-                fetchers.append(fetch_recruitee_board(session, name, slug))
-        if _should_run("teamtailor"):
-            for name, slug in TEAMTAILOR_COMPANIES:
-                fetchers.append(fetch_teamtailor_board(session, name, slug))
-        
-        # ── Arabic Translation & ESL Sources ──
+        # ── TRANSLATION & ESL ONLY — no general remote boards ──
+        # Every source here is specifically for translation, ESL, bilingual, or language jobs
         if _should_run("translation_jobs"):
             fetchers.append(fetch_translation_jobs(session))
         if _should_run("esl_jobs"):
             fetchers.append(fetch_esl_jobs(session))
-        if _should_run("themuse"):
-            fetchers.append(fetch_themuse(session))
-        if _should_run("remowork"):
-            fetchers.append(fetch_remowork(session))
         if _should_run("eslbase"):
             fetchers.append(fetch_eslbase(session))
-        if _should_run("euremotejobs"):
-            fetchers.append(fetch_euremotejobs(session))
-        if _should_run("remotejobleads"):
-            fetchers.append(fetch_remotejobleads(session))
-        if _should_run("dailyremote"):
-            fetchers.append(fetch_dailyremote(session))
-        if _should_run("dynamitejobs"):
-            fetchers.append(fetch_dynamitejobs(session))
-        if _should_run("europeremotely"):
-            fetchers.append(fetch_europeremotely(session))
-        if _should_run("bamboohr"):
-            for name, slug in BAMBOOHR_COMPANIES:
-                fetchers.append(fetch_bamboohr_board(session, name, slug))
-        if _should_run("jobvite"):
-            for name, slug in JOBVITE_COMPANIES:
-                fetchers.append(fetch_jobvite_board(session, name, slug))
-        if _should_run("personio"):
-            for name, slug in PERSONIO_COMPANIES:
-                fetchers.append(fetch_personio_board(session, name, slug))
-        # Keyed aggregators — the legit route to Indeed/LinkedIn/Glassdoor inventory.
-        # Each is a no-op (returns []) until its secret is configured.
+        if _should_run("eslgorilla"):
+            fetchers.append(fetch_eslgorilla(session))
+        if _should_run("tes"):
+            fetchers.append(fetch_tes(session))
+        if _should_run("smartcat"):
+            fetchers.append(fetch_smartcat(session))
+        if _should_run("gotranscript"):
+            fetchers.append(fetch_gotranscript(session))
+        if not _blocked("proz"):
+            fetchers.append(fetch_proz(session))
+        if _should_run("impactpool"):
+            fetchers.append(fetch_impactpool(session))
+        if _should_run("linkedin"):
+            fetchers.append(fetch_linkedin_guest(session))
+        # MENA / freelance — Arabic job boards
+        if not _blocked("mostaql"):
+            fetchers.append(fetch_mostaql(session))
+        if not _blocked("for9a"):
+            fetchers.append(fetch_for9a(session))
+        if not _blocked("wuzzuf"):
+            fetchers.append(fetch_wuzzuf(session))
+        if not _blocked("bayt"):
+            fetchers.append(fetch_bayt(session))
+        if not _blocked("gulftalent"):
+            fetchers.append(fetch_gulftalent(session))
         if _should_run("jsearch"):
             fetchers.append(fetch_jsearch(session))
-        if _should_run("adzuna"):
-            fetchers.append(fetch_adzuna_keyed(session))
-        if _should_run("jooble"):
-            fetchers.append(fetch_jooble_keyed(session))
-        if _should_run("reliefweb"):
-            fetchers.append(fetch_reliefweb(session))
-
-        def _blocked(name: str) -> bool:
-            """Probe-confirmed blocked from Actions IPs — skip unless forced."""
-            if FORCE_BLOCKED_SOURCES:
-                return False
-            if name in PROBE_BLOCKED_SOURCES:
-                return True
-            return False
-
-        # Tier-2/3 — niche sources (only if tier_cap >=3 or explicitly needed)
-        if tier_cap >= 3:
-            # MENA / freelance — valuable for Arabic roles, but the probe showed
-            # mostaql/ureed/wuzzuf/bayt/gulftalent answer 403 + challenge page from
-            # the runner; they are skipped (not deleted) until CAREEROPS_FORCE_BLOCKED=1.
-            for nm, fn in (("mostaql", fetch_mostaql), ("for9a", fetch_for9a), ("ureed", fetch_ureed),
-                           ("wuzzuf", fetch_wuzzuf), ("bayt", fetch_bayt), ("gulftalent", fetch_gulftalent)):
-                if not _blocked(nm):
-                    fetchers.append(fn(session))
-            fetchers.append(fetch_peopleperhour(session))
-            fetchers.append(fetch_guru(session))
-        # Translation platforms — curated (not 20 stubs)
-        if tier_cap >= 2:
-            if not _blocked("proz"):
-                fetchers.append(fetch_proz(session))
-            fetchers.append(fetch_smartcat(session))
-            fetchers.append(fetch_gotranscript(session))
-        skipped_blocked = [n for n in PROBE_BLOCKED_SOURCES if _blocked(n)]
-        if skipped_blocked:
-            print(f"  Skipping probe-blocked sources ({len(skipped_blocked)}): {', '.join(skipped_blocked)}")
-
-        # Legacy dedup note: removed 40+ duplicate/stub fetchers (himalayas_rss/worldwide, jobicy_rss/worldwide,
-        # remoteok_api/remoteok_json, wwr_api, justremote_api, etc) — those are now unified with fallback.
-        # Static stubs (italki/lingoda/amazingtalker/twenix/novakid/etc that returned 1 fake job) removed
-        # — they inflated source count without value and polluted scoring.
-
-        # Auto-discovered sources from registry — still honored
-
-
-        # ---- Auto-discovered sources from registry ----
-        registry_file = OUTPUT_DIR / "source_registry.json"
-        try:
-            if registry_file.exists():
-                registry = json.loads(registry_file.read_text(encoding="utf-8"))
-                # Sources already covered by a dedicated fetcher — the auto-discovered
-                # RSS twin only duplicates jobs (himalayas_app etc.) and burns a request.
-                _covered = {"remotive", "weworkremotely", "wwr", "jobicy", "himalayas", "himalayas_app",
-                            "remoteok", "justremote", "linkedin", "arbeitnow", "workingnomads", "jobspresso"}
-                for src in registry.get("sources", []):
-                    url = src.get("url", "")
-                    src_type = src.get("type", "")
-                    if (src.get("source_name") or "").lower() in _covered:
-                        continue
-                    if url and src_type == "rss":
-                        fetchers.append(fetch_generic_rss(session, url, src.get("source_name", "discovered")))
-                    elif url and src_type == "json":
-                        fetchers.append(fetch_generic_json(session, url, src.get("source_name", "discovered")))
-        except Exception as e:
-            print(f"  Registry load error: {e}")
 
         BATCH = getattr(__import__('config', fromlist=['FETCH_BATCH_SIZE']), 'FETCH_BATCH_SIZE', 8) if 'config' in globals() else 8
         # Fallback to 5 if config missing

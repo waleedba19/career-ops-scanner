@@ -1024,5 +1024,55 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-14T21:56:42.552035+00:00"
+  },
+  "Leidos": {
+    "name": "Leidos",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T22:11:35.928984+00:00"
+  },
+  "CACI International Inc": {
+    "name": "CACI International Inc",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-14T22:11:35.930134+00:00"
+  },
+  "1-Stop Asia Recruiting": {
+    "name": "1-Stop Asia Recruiting",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T22:11:35.931300+00:00"
+  },
+  "TLA-LLC": {
+    "name": "TLA-LLC",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-14T22:11:35.932450+00:00"
   }
 }

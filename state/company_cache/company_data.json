@@ -1012,5 +1012,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-14T20:04:38.337480+00:00"
+  },
+  "Northwestern Medicine": {
+    "name": "Northwestern Medicine",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T21:56:42.552035+00:00"
   }
 }

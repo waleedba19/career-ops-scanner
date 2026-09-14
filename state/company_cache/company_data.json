@@ -910,5 +910,29 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-13T23:19:05.769899+00:00"
+  },
+  "Careem": {
+    "name": "Careem",
+    "legitimacy_score": 70,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Uses professional ATS"
+    ],
+    "last_updated": "2026-09-14T11:05:44.313961+00:00"
+  },
+  "InTouch": {
+    "name": "InTouch",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T11:05:44.315562+00:00"
   }
 }

@@ -55,6 +55,13 @@ try:
 except ImportError:
     WIDE_SEARCH_AVAILABLE = False
     print("Warning: Wide search not available.")
+
+# ── Playwright search (real browser, bypasses 403s) ──
+try:
+    from fetchers.playwright_search import fetch_with_playwright
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    PLAYWRIGHT_AVAILABLE = False
 from auto_sources import get_active_sources as get_auto_sources, fetch_generic_rss
 
 
@@ -5033,6 +5040,10 @@ async def run_scan():
         # ── Worldwide Arabic search: DDG + verified feeds ──
         if WIDE_SEARCH_AVAILABLE:
             fetchers.append(fetch_worldwide_arabic_jobs(session))
+
+        # ── Playwright search (real browser, bypasses 403s) ──
+        if PLAYWRIGHT_AVAILABLE:
+            fetchers.append(fetch_with_playwright(session))
 
         BATCH = getattr(__import__('config', fromlist=['FETCH_BATCH_SIZE']), 'FETCH_BATCH_SIZE', 8) if 'config' in globals() else 8
         # Fallback to 5 if config missing

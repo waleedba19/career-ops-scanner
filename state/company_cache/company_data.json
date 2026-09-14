@@ -1074,5 +1074,17 @@
       "Appears to be registered business"
     ],
     "last_updated": "2026-09-14T22:11:35.932450+00:00"
+  },
+  "Humana": {
+    "name": "Humana",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T22:25:28.026103+00:00"
   }
 }

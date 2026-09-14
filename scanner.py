@@ -177,88 +177,30 @@ ARABIC_PLATFORMS = [
 # ---------------------------------------------------------------------------
 
 GREENHOUSE_COMPANIES = [
-    # AI Data / Linguist Marketplaces (highest relevance)
-    ("xAI", "xai"), ("Scale AI", "scaleai"), ("Outlier", "outlier"),
-    ("Surge AI", "surgeai"), ("Micro1", "micro1"), ("Prolific", "prolific"),
-    ("Telus International", "telusinternational"), ("Toloka", "toloka"),
-    ("Appen", "appen"), ("Centific", "centific"),
-    # Language & Translation
-    ("Smartling", "smartling"), ("Lokalise", "lokalise"), ("Phrase", "phrase"),
-    ("Unbabel", "unbabel"), ("Lilt", "lilt"), ("Acclaro", "acclaro"),
-    ("Andovar", "andovar"), ("Straker", "straker"), ("RWS", "rws"),
-    ("Lionbridge", "lionbridge"), ("TransPerfect", "transperfect"),
-    ("Keywords Studios", "keywordsstudios"), ("Welocalize", "welocalize"),
-    ("Cactus", "cactus"), ("Editage", "editage"), ("Enago", "enago"),
-    ("Wordvice", "wordvice"), ("Scribbr", "scribbr"), ("Scribendi", "scribendi"),
-    ("PaperTrue", "papertrue"), ("ProofreadNow", "proofreadnow"),
-    # EdTech / ESL
-    ("Duolingo", "duolingo"), ("Outschool", "outschool"), ("Khan Academy", "khanacademy"),
-    ("Coursera", "coursera"), ("Preply", "preply"), ("Babbel", "babbel"),
-    ("Busuu", "busuu"), ("Lingoda", "lingoda"), ("Engoo", "engoo"),
-    ("Novakid", "novakid"), ("Open English", "openenglish"),
-    ("VIPKid", "vipkid"), ("Qkids", "qkids"), ("Magic Ears", "magicears"),
-    ("GoGoKid", "gogokid"), ("Ziyou Da", "ziyouda"),
-    ("italki", "italki"), ("Cambly", "cambly"), ("Native Camp", "nativecamp"),
-    ("TutorABC", "tutorabc"), ("Lingostar", "lingostar"),
-    ("Nagwa", "nagwa"), ("Abwaab", "abwaab"), ("Noon Academy", "noonacademy"),
-    ("Edraak", "edraak"), ("Almentor", "almentor"), ("Baims", "baims"),
-    # MENA / Arabic Content
-    ("OKX", "okx"), ("WPP Media", "wppmedia"), ("Anghami", "anghami"),
-    ("Tamatem", "tamatem"), ("Mawdoo3", "mawdoo3"), ("Sarwa", "sarwa"),
-    ("Careem", "careem"), ("Noon", "noon"), ("Tarjama", "tarjama"),
-    ("Saudisoft", "saudisoft"), ("Future Group", "futuregroup"),
-    ("Blend", "blend"), ("Alconost", "alconost"),
-    # Remote-first Tech (relevant ones)
-    ("KAYAK", "kayak"), ("Mozilla", "mozilla"), ("GitLab", "gitlab"),
-    ("Cloudflare", "cloudflare"), ("Automattic", "automattic"),
-    ("Buffer", "buffer"), ("Zapier", "zapier"), ("Toptal", "toptal"),
-    ("Remote.com", "remote"), ("Deel", "deel"), ("Oyster", "oyster"),
-    ("Papaya Global", "papayaglobal"), ("Rippling", "rippling"),
-    # Content & Writing
-    ("Contentful", "contentful"), ("Notion", "notion"), ("Figma", "figma"),
-    ("Canva", "canva"), ("Visme", "visme"), ("Prezi", "prezi"),
-    # Publishing & Media
-    ("Headspace", "headspace"), ("Calm", "calm"),
-    ("Masterclass", "masterclass"), ("Skillshare", "skillshare"),
-    ("Udemy", "udemy"), ("LinkedIn Learning", "linkedinlearning"),
-    # More AI/Data Companies
-    ("Labelbox", "labelbox"), ("Invisible", "agency"), ("Turing", "turing"),
-    ("Handshake", "joinhandshake"),
-    ("Snorkel AI", "snorkelai"), ("Weights & Biases", "wandb"),
-    ("LangChain", "langchain"), ("Pinecone", "pinecone"),
-    ("Cohere", "cohere"), ("Mistral", "mistral"),
-    ("Anthropic", "anthropic"), ("OpenAI", "openai"),
-    # Gaming (localization)
-    ("Riot Games", "riotgames"), ("Electronic Arts", "ea"),
-    ("Ubisoft", "ubisoft"), ("Take-Two", "take2"),
-    ("Playrix", "playrix"), ("Supercell", "supercell"),
-    # More Translation/Language
-    ("Gengo", "gengo"), ("One Hour Translation", "onehourtranslation"),
-    ("TextMaster", "textmaster"), ("Flitto", "flitto"),
-    ("Translated", "translated"), ("Smartcat", "smartcat"),
+    # ── Verified live (HTTP 200, has jobs) — probed 2026-09-14 ──
+    # Language & Translation (priority)
+    ("Smartling", "smartling"), ("Lokalise", "lokalise"),
+    # AI Data / Language AI (hire Arabic speakers for data labeling, prompt eval)
+    ("xAI", "xai"), ("Scale AI", "scaleai"), ("Prolific", "prolific"),
+    ("Toloka", "tolatola"), ("Snorkel AI", "snorkelai"),
+    ("Anthropic", "anthropic"), ("Invisible", "agency"),
+    ("Labelbox", "labelbox"), ("Turing", "turing"),
+    # EdTech / Education (hire language tutors, content reviewers)
+    ("Duolingo", "duolingo"), ("Outschool", "outschool"),
+    ("Khan Academy", "khanacademy"), ("Coursera", "coursera"),
+    ("Udemy", "udemy"), ("Masterclass", "masterclass"),
+    # MENA / Arabic-market companies
+    ("OKX", "okx"), ("Careem", "careem"), ("Blend", "blend"),
+    # Remote-first Tech (large boards, filter post-fetch)
+    ("WPP Media", "wppmedia"), ("Cloudflare", "cloudflare"),
+    ("GitLab", "gitlab"), ("Figma", "figma"),
+    ("Contentful", "contentful"), ("Remote.com", "remote"),
+    ("Calm", "calm"), ("KAYAK", "kayak"),
 ]
 
 LEVER_COMPANIES = [
+    # ── Verified live (HTTP 200) — probed 2026-09-14 ──
     ("Appen", "appen"),
-    ("Unbabel", "unbabel"),
-    ("Lilt", "lilt"),
-    ("Anghami", "anghami"),
-    ("Noon Academy", "noonacademy"),
-    ("Vice Media", "vice"),
-    ("Figma", "figma"),
-    ("Notion", "notion"),
-    ("Coinbase", "coinbase"),
-    ("Square", "square"),
-    ("DoorDash", "doordash"),
-    ("Flexport", "flexport"),
-    ("GitLab", "gitlab"),
-    ("Postmates", "postmates"),
-    ("WeWork", "wework"),
-    ("N26", "n26"),
-    ("Revolut", "revolut"),
-    ("Monzo", "monzo"),
-    ("Nubank", "nubank"),
-    ("Klarna", "klarna"),
 ]
 
 # ---------------------------------------------------------------------------
@@ -587,15 +529,10 @@ def get_match_score(title: str, desc: str) -> dict:
     d = (desc or "").lower()
     text = t + " " + d
 
-    # 1) Baseline — genuinely remote/international listings get a floor
+    # 1) Baseline — NO free points for "remote" alone.
+    #    Remote is only a bonus AFTER Arabic/translation keywords hit.
     base = 0.0
     why: list[str] = []
-    if REMOTE_MARKER.search(text):
-        base = 30.0
-        why.append("remote-friendly (baseline)")
-    elif re.search(r"\bworldwide\b|\binternational(?: listing)?\b|\bopen to all\b|\bglobal\b", text):
-        base = 20.0
-        why.append("international listing (baseline)")
 
     # 2) Best keyword bucket, scaled by the candidate's skill priority
     best = 0.0
@@ -611,6 +548,13 @@ def get_match_score(title: str, desc: str) -> dict:
 
     total = base + best
     why_final = list(dict.fromkeys(why + best_why))[:6]
+    # Remote/worldwide is only a BONUS when Arabic/translation already matched
+    if best > 0 and REMOTE_MARKER.search(text):
+        total += 15.0
+        why_final.append("remote/worldwide (bonus)")
+    elif best > 0 and re.search(r"\bworldwide\b|\binternational(?: listing)?\b|\bopen to all\b|\bglobal\b", text):
+        total += 10.0
+        why_final.append("international listing (bonus)")
     if best_cat != "Other":
         why_final.append(f"matches {best_cat} profile")
 
@@ -629,6 +573,10 @@ def get_match_score(title: str, desc: str) -> dict:
         why_final.append("wrong-language role (no Arabic signal)")
 
     total = max(0, min(100, total))
+    # HARD RULE: if no Arabic/translation/ESL/content keywords matched at all,
+    # the job cannot score above 0 — it's irrelevant to this profile.
+    if best == 0:
+        total = 0
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final[:8]}
 

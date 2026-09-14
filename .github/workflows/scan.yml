@@ -2,9 +2,8 @@ name: CareerOps Job Scan
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # 05:00 UTC = 07:00 Libya — Morning Intel (Comprehensive)
-    - cron: '0 13 * * *'  # 13:00 UTC = 15:00 Libya — Afternoon Briefing (Deep)
-    - cron: '0 20 * * *'  # 20:00 UTC = 22:00 Libya — Night Digest (Standard)
+    - cron: '0 7 * * *'   # 07:00 UTC = 09:00 Libya — Morning Scan
+    - cron: '0 16 * * *'  # 16:00 UTC = 18:00 Libya — Evening Scan
   workflow_dispatch:
     inputs:
       mode:
@@ -44,9 +43,9 @@ jobs:
       ADZUNA_APP_KEY:     ${{ secrets.ADZUNA_APP_KEY }}
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
-      OLLAMA_MODEL:       qwen2.5:1.5b
-      CAREEROPS_TIER_CAP: "3"   # full sweep
-      CAREEROPS_BATCH_SIZE: "8"
+      OLLAMA_MODEL:       qwen2.5:3b
+      CAREEROPS_TIER_CAP: "1"   # lean & fast — only verified sources
+      CAREEROPS_BATCH_SIZE: "12"
       SCAN_MODE:          ${{ github.event.inputs.mode || 'adaptive' }}
 
     steps:
@@ -79,7 +78,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.ollama
-          key: ollama-qwen2.5-1.5b
+          key: ollama-qwen2.5-3b
 
       - name: Install Ollama
         run: |
@@ -114,7 +113,7 @@ jobs:
       - name: Pull Ollama model (unified)
         run: |
           if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
-            ollama pull qwen2.5:1.5b || echo "model pull failed, continuing"
+            ollama pull qwen2.5:3b || echo "model pull failed, continuing"
             ollama list
           else
             echo "Skipping model pull — Ollama not available"

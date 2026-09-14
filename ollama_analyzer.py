@@ -13,7 +13,7 @@ from pathlib import Path
 import aiohttp
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b")
+MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
 
 # Load real CV profile
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
@@ -258,6 +258,13 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
         try:
             payload = {
                 "model": MODEL,
+                "system": (
+                    "You are a strict job-matching evaluator. The candidate is an Arabic-English "
+                    "translator and ESL teacher from Libya. ONLY score jobs HIGH if they require "
+                    "Arabic translation, ESL teaching, bilingual content, or localization. "
+                    "Engineering, sales, data science, electrician, bookkeeping, or any non-language "
+                    "role MUST score below 30. Be harsh. Do NOT give high scores to irrelevant jobs."
+                ),
                 "prompt": prompt,
                 "stream": False,
                 "options": {

@@ -1,0 +1,89 @@
+{
+  "working": [
+    [
+      "Appen",
+      "appen"
+    ]
+  ],
+  "dead": [
+    [
+      "Anghami",
+      "anghami"
+    ],
+    [
+      "Coinbase",
+      "coinbase"
+    ],
+    [
+      "DoorDash",
+      "doordash"
+    ],
+    [
+      "Figma",
+      "figma"
+    ],
+    [
+      "Flexport",
+      "flexport"
+    ],
+    [
+      "Klarna",
+      "klarna"
+    ],
+    [
+      "Lilt",
+      "lilt"
+    ],
+    [
+      "Monzo",
+      "monzo"
+    ],
+    [
+      "N26",
+      "n26"
+    ],
+    [
+      "Noon Academy",
+      "noonacademy"
+    ],
+    [
+      "Notion",
+      "notion"
+    ],
+    [
+      "Nubank",
+      "nubank"
+    ],
+    [
+      "Postmates",
+      "postmates"
+    ],
+    [
+      "Revolut",
+      "revolut"
+    ],
+    [
+      "Square",
+      "square"
+    ],
+    [
+      "Unbabel",
+      "unbabel"
+    ],
+    [
+      "Vice Media",
+      "vice"
+    ],
+    [
+      "WeWork",
+      "wework"
+    ]
+  ],
+  "timeouts": [
+    [
+      "GitLab",
+      "gitlab"
+    ]
+  ],
+  "errors": []
+}

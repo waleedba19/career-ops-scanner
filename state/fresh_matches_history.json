@@ -541,6 +541,96 @@
     "scan_date": "2026-09-14T22:11:37.181512+00:00"
   },
   {
+    "title": "Senior Proofreader",
+    "company": "Humana",
+    "url": "https://www.linkedin.com/jobs/view/senior-proofreader-at-humana-4465235868",
+    "location": "Remote \u2014 United States",
+    "posted": "2026-09-14",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "$86,300",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-14T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "proofreader proofreading proofread (title)",
+      "remote/worldwide (bonus)",
+      "matches Editing profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 22.424384929722223,
+    "flags": [
+      "location-restricted",
+      "country-locked location"
+    ],
+    "company_website": "https://www.humana.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@linkedin.com",
+      "hr@linkedin.com",
+      "jobs@linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Humana",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-14T22:25:28.026103+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "deep_read": {
+      "url": "https://www.linkedin.com/jobs/view/senior-proofreader-at-humana-4465235868",
+      "title": "Senior Proofreader",
+      "description": "Become a part of our caring community Humana is looking for a Senior Proofreader to help ensure every member, patient, and provider communication is accurate, clear, compliant, and consistent with brand standards. In this role, you will support high-volume marketing and operational work by reviewing content across digital, print, and direct-to-consumer channels before it reaches the people who rely on Humana for trusted health information. A typical day may include proofreading campaign materials, validating revisions against marked-up files, checking content for grammar, punctuation, formatting, accessibility, and brand consistency, and partnering with writers, designers, project managers, and quality assurance leaders to resolve issues before final delivery. The Senior Proofreader reviews customer-facing and internal communications to ensure content is error-free, consistent, and ready for production. This role supports quality assurance processes by verifying that creative and content deliverables meet approved copy, brand, accessibility, and regulatory standards. The work directly contributes to clearer member and patient experiences by reducing errors and improving confidence in Humana communications. The Senior Proofreader also helps teams maintain efficient workflows by identifying patterns, documenting issues, and supporting continuous improvement. Key Role Functions Proofread marketing, member, patient, provider, and operational materials for grammar, punctuation, spelling, formatting, style, and consistency Compare final content against approved source files, change requests, and marked-up documents to confirm all revisions are accurate and complete Apply Humana brand, editorial, accessibility, and quality standards across print, digital, email, web, SMS, social, and direct mail deliverables Collaborate with writers, designers, project managers, compliance partners, and quality assurance leaders to resolve content issues before release Track recurring errors, share proofreading insights, and recommend process improvements that strengthen content quality and member experience Required Qualifications Use your skills to make an impact Bachelor\u2019s degree in English, Communications, Journalism, Marketing, or a related field, or equivalent professional experience 5+ years of professional proofreading, editing, copyediting, or quality review experience 2+ years of experience reviewing customer-facing content in marketing, communications, healthcare, insurance, financial services, or another regulated environment Demonstrated ability to proofread across multiple channels, including print, web, email, direct mail, social, and digital communications Proficiency with Microsoft Word, Adobe Acrobat, and collaborative workflow or review tools Preferred Qualifications Experience proofreading Medicare, Medicaid, pharmacy, provider, or healthcare marketing materials Experience applying AP Style, brand voice guidelines, editorial style guides, or regulate",
+      "eligibility": [
+        "support collaboration, key meetings, and leadership engagement",
+        "meet the following criteria: At minimum, a download speed of 25 Mbps and an upload speed of 10 Mbps is required; wireless, wired cable or DSL connection is suggested",
+        "for a bonus incentive plan. This incentive opportunity is based upon company and/or individual performance"
+      ],
+      "requirements": [
+        "\u2014 talk with your recruiter to learn more. Base pay range $86,300"
+      ],
+      "contact": {},
+      "deadline": "09-17-2026 About Us About Humana: Humana Inc",
+      "salary": "$86,300",
+      "location": "Remote",
+      "is_remote": true
+    },
+    "eligibility": [
+      "support collaboration, key meetings, and leadership engagement",
+      "meet the following criteria: At minimum, a download speed of 25 Mbps and an upload speed of 10 Mbps is required; wireless, wired cable or DSL connection is suggested",
+      "for a bonus incentive plan. This incentive opportunity is based upon company and/or individual performance"
+    ],
+    "requirements": [
+      "\u2014 talk with your recruiter to learn more. Base pay range $86,300"
+    ],
+    "deadline": "09-17-2026 About Us About Humana: Humana Inc",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Humana_Senior Proofreader_20260915.pdf",
+    "cover_letter_type": "proofreading",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Humana_Senior Proofreader_20260915.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-14T22:25:28.799481+00:00"
+  },
+  {
     "title": "Kurdish/Arabic Translators",
     "company": "Leidos",
     "url": "https://www.linkedin.com/jobs/view/kurdish-arabic-translators-at-leidos-4399045497",

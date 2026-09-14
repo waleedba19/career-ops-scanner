@@ -5416,24 +5416,17 @@ async def run_scan():
         print(f"Scored: {len(scored)}, Old but verified: {len(old_but_verified)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
         print(f"Filter funnel: {filter_debug}")
 
-        # ---- Ollama AI analysis ----
-        # Analyze fresh jobs first — bound to top candidates so a full
-        # funnel-open scan doesn't burn hours on hundreds of LLM calls.
-        OLLAMA_ANALYZE_CAP = 15
+        # ---- Ollama AI analysis (lightweight — only top 3 for personal notes) ----
+        # Keyword scoring is the primary gate. Ollama only writes a brief
+        # "why this fits Waleed" note for the top few matches.
+        OLLAMA_ANALYZE_CAP = 3
         verified = await analyze_jobs_with_ollama(verified[:OLLAMA_ANALYZE_CAP]) + verified[OLLAMA_ANALYZE_CAP:]
         
-        # For old jobs, use Ollama to verify they're still active
-        # Only include old jobs that Ollama confirms are still relevant
-        old_verified = []
-        if old_but_verified:
-            print(f"Checking {len(old_but_verified)} older jobs with Ollama...")
-            old_analyzed = await analyze_jobs_with_ollama(old_but_verified[:10])  # Check top 10
-            for job in old_analyzed:
-                # Include old jobs only if they have high scores (85+) and AI confirms relevance
-                if job.get("score", 0) >= 85 and job.get("ai_overall_score", 0) >= 70:
-                    job["is_old_verified"] = True
-                    old_verified.append(job)
-            print(f"  Old jobs verified by AI: {len(old_verified)}")
+        # Old jobs: keyword score >= 85 means it's relevant, no Ollama needed
+        old_verified = [j for j in old_but_verified if j.get("score", 0) >= 85]
+        for job in old_verified:
+            job["is_old_verified"] = True
+        print(f"  Old jobs keyword-verified: {len(old_verified)}")
         
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
@@ -5454,59 +5447,74 @@ async def run_scan():
         if quality_drops:
             print(f"Quality/location hard-fail dropped {before_q - len(final_verified)}: {quality_drops}")
 
-        # ---- Free Forever Intel: urgency / desperation / email / pain points ----
+        # ---- Free Forever Intel: email/urgency for top 5 only ----
         try:
             if enrich_jobs_with_intel is not None and final_verified:
-                print(f"🧠 Free intel: enriching {len(final_verified)} matches (email+urgency+desperation)...")
-                # reuse same aiohttp session for careers page fetch (free, 1 hop per job)
+                intel_targets = final_verified[:5]
+                print(f"🧠 Free intel: enriching {len(intel_targets)} matches (email+urgency)...")
                 seen_for_desp = load_smart_seen() if 'load_smart_seen' in globals() else None
-                final_verified = await enrich_jobs_with_intel(final_verified, session, seen_for_desp)
-                # log
-                with_email = sum(1 for j in final_verified if j.get("hiring_email"))
-                urgent = sum(1 for j in final_verified if j.get("urgency_score",0) >= 30)
-                desp = sum(1 for j in final_verified if j.get("desperation_index",0) >= 40)
-                print(f"  Intel done: {with_email} with email, {urgent} urgent, {desp} desperate")
+                enriched = await enrich_jobs_with_intel(intel_targets, session, seen_for_desp)
+                # Merge enriched data back
+                enriched_urls = {j["url"]: j for j in enriched if j.get("url")}
+                for i, job in enumerate(final_verified):
+                    if job.get("url") in enriched_urls:
+                        final_verified[i].update(enriched_urls[job["url"]])
+                with_email = sum(1 for j in final_verified[:5] if j.get("hiring_email"))
+                print(f"  Intel done: {with_email} with email")
         except Exception as e:
             print(f"  Intel enrichment skipped: {e}")
         
-        # ---- Research companies to improve scoring ----
+        # ---- Research companies for top 5 only ----
         try:
-            final_verified = research_companies_batch(final_verified)
-            # Log research results
-            researched = [j for j in final_verified if j.get("company_research")]
-            boosted = [j for j in final_verified if j.get("score_adjustment", 0) > 0]
-            flagged = [j for j in final_verified if j.get("company_research", {}).get("red_flags")]
-            print(f"Company research: {len(researched)} companies, {len(boosted)} boosted, {len(flagged)} flagged")
+            research_targets = final_verified[:5]
+            final_verified_researched = research_companies_batch(research_targets)
+            researched_urls = {j["url"]: j for j in final_verified_researched if j.get("url")}
+            for i, job in enumerate(final_verified[:5]):
+                if job.get("url") in researched_urls:
+                    final_verified[i].update(researched_urls[job["url"]])
+            boosted = sum(1 for j in final_verified[:5] if j.get("score_adjustment", 0) > 0)
+            print(f"Company research: top 5, {boosted} boosted")
         except Exception as e:
             print(f"Company research failed: {e}")
         
-        # ---- Deep read top candidates (if time permits) ----
-        if scheduler.should_continue():
-            scheduler.start_phase("deep_read")
-            try:
-                final_verified = enrich_jobs_with_deep_read(final_verified, max_deep_reads=20)
-                deep_read_count = sum(1 for j in final_verified if j.get("deep_read"))
-                print(f"Deep read completed: {deep_read_count} pages read")
-            except Exception as e:
-                print(f"Deep read failed: {e}")
-            scheduler.end_phase("deep_read")
-        
-        # ---- Generate cover letters for fresh matches (AI-enhanced) ----
+        # ---- Deep read top 3 candidates only ----
         try:
-            final_verified = await generate_all_cover_letters(final_verified)
-            ai_count = sum(1 for j in final_verified if j.get("cover_letter_ai"))
-            print(f"Generated {len(final_verified)} cover letters ({ai_count} AI-enhanced).")
+            deep_targets = final_verified[:3]
+            enriched_deep = enrich_jobs_with_deep_read(deep_targets, max_deep_reads=3)
+            deep_urls = {j["url"]: j for j in enriched_deep if j.get("url")}
+            for i, job in enumerate(final_verified[:3]):
+                if job.get("url") in deep_urls:
+                    final_verified[i].update(deep_urls[job["url"]])
+            deep_read_count = sum(1 for j in final_verified[:3] if j.get("deep_read"))
+            print(f"Deep read completed: {deep_read_count} pages read")
+        except Exception as e:
+            print(f"Deep read failed: {e}")
+        
+        # ---- Generate cover letters for top 5 matches only ----
+        try:
+            cl_targets = final_verified[:5]
+            cl_enriched = await generate_all_cover_letters(cl_targets)
+            cl_urls = {j["url"]: j for j in cl_enriched if j.get("url")}
+            for i, job in enumerate(final_verified[:5]):
+                if job.get("url") in cl_urls:
+                    final_verified[i].update(cl_urls[job["url"]])
+            ai_count = sum(1 for j in final_verified[:5] if j.get("cover_letter_ai"))
+            print(f"Generated {min(5, len(final_verified))} cover letters ({ai_count} AI-enhanced).")
         except Exception as e:
             print(f"Cover letter generation failed: {e}")
         
-        # ---- Generate interview prep for top matches (score >= 85%) ----
+        # ---- Generate interview prep for top 3 matches (score >= 85%) ----
         try:
-            final_verified = generate_interview_prep_for_top_matches(final_verified, min_score=85)
-            prep_count = sum(1 for j in final_verified if j.get("interview_prep_generated"))
-            if prep_count > 0:
-                print(f"Generated interview prep for {prep_count} top matches.")
-                prep_summary = get_interview_prep_summary(final_verified)
-                print(prep_summary)
+            prep_targets = [j for j in final_verified[:5] if int(j.get("score", 0)) >= 85][:3]
+            if prep_targets:
+                prep_enriched = generate_interview_prep_for_top_matches(prep_targets, min_score=85)
+                prep_urls = {j["url"]: j for j in prep_enriched if j.get("url")}
+                for i, job in enumerate(final_verified[:5]):
+                    if job.get("url") in prep_urls:
+                        final_verified[i].update(prep_urls[job["url"]])
+                prep_count = sum(1 for j in final_verified[:5] if j.get("interview_prep_generated"))
+                if prep_count > 0:
+                    print(f"Generated interview prep for {prep_count} top matches.")
         except Exception as e:
             print(f"Interview prep generation failed: {e}")
 

@@ -1,11 +1,11 @@
 {
-  "total_scans": 81,
-  "total_matches": 182,
-  "streak_days": 10,
-  "last_scan_date": "2026-09-14",
-  "total_jobs_scanned": 263348,
-  "best_day_matches": 11,
-  "best_day_date": "2026-09-05",
+  "total_scans": 82,
+  "total_matches": 198,
+  "streak_days": 11,
+  "last_scan_date": "2026-09-15",
+  "total_jobs_scanned": 263615,
+  "best_day_matches": 16,
+  "best_day_date": "2026-09-15",
   "daily_history": [
     {
       "date": "2026-09-05",
@@ -726,20 +726,29 @@
       "near_misses": 0,
       "sources": 5,
       "fresh_count": 0
+    },
+    {
+      "date": "2026-09-15",
+      "total_fetched": 267,
+      "matches": 16,
+      "old_verified": 16,
+      "near_misses": 0,
+      "sources": 7,
+      "fresh_count": 58
     }
   ],
   "category_trends": {
     "Arabic Translation": {
-      "count": 39,
-      "last_seen": "2026-09-14"
+      "count": 53,
+      "last_seen": "2026-09-15"
     },
     "Editing": {
       "count": 56,
       "last_seen": "2026-09-14"
     },
     "ESL": {
-      "count": 36,
-      "last_seen": "2026-09-14"
+      "count": 38,
+      "last_seen": "2026-09-15"
     },
     "Admin": {
       "count": 41,
@@ -810,6 +819,10 @@
     "greenhouse": {
       "matches": 6,
       "last_seen": "2026-09-14"
+    },
+    "linkedin_playwright": {
+      "matches": 16,
+      "last_seen": "2026-09-15"
     }
   },
   "user_applied": [],

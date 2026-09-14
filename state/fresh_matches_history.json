@@ -17334,6 +17334,62 @@
     "scan_date": "2026-09-14T11:06:30.357800+00:00"
   },
   {
+    "title": "Instructional Systems Designer",
+    "company": "Team Carney",
+    "url": "https://himalayas.app/companies/team-carney/jobs/instructional-systems-designer",
+    "location": "United States",
+    "posted": 1789385611,
+    "description": "At Team Carney , we believe that true performance acceleration happens at the intersection of innovative learning and deep strategic expertise. Since 1994, our mission has been to provide top-tier training, learning, and human capital solutions that empower Federal Government agencies to meet their critical mandates. We are seeking a high-performing Instructional Systems Designer (ISD) to support the Federal Deposit Insurance Corporation (FDIC) Corporate University (CU) Course Maintenance Program. This position is contingent on contract award. Work Schedule and Location Employment Status: Full-Time Location: Remote within the U.S., with anticipated travel to the FDIC Dallas Regional Office (Dallas, TX) approximately once per quarter Who You Are & What You\u2019ll Do As an Instructional Systems Designer (ISD) supporting the FDIC Corporate University Course Maintenance Program, you will serve in a Key Personnel capacity responsible for maintaining, revising, and modernizing a comprehensive catalog of professional courses and training collateral. You will work in close collaboration with FDIC Corporate University personnel, Subject Matter Experts (SMEs), and technical monitors to update existing courseware across all instructional delivery formats. In this role, you will analyze source documentation, review Course Change Sheets, and update learning products across Instructor-Led Training (ILT), Virtual Instructor-Led Training (VILT), Web-Based Training (WBT), Instructional Video, and electronic Job Aids. You will ensure all updated and converted training assets align with Corporate University design standards, templates, style guides, and Section 508 accessibility requirements. Key responsibilities include: Collaborating closely with FDIC CU personnel, project managers, and SMEs to design, update, and maintain courseware. Updating and revising instructional materials across multiple modalities, including design plans, instructor guides, participant guides, slide decks, case studies, and virtual classroom setups. Reviewing Course Change Sheets and updating content to reflect regulatory, technical, or procedural changes. Developing asynchronous Web-Based Training (WBT) using approved templates and authoring tools (such as Lectora). Creating, scripting, and captioning instructional multimedia, including video files developed in Camtasia (with separate SRT or VTT caption files). Developing and updating electronic performance support tools and job aids in MS Word and PDF formats. Ensuring all deliverables comply with CU technical guidelines, template specifications, and Section 508 accessibility standards. Routing completed deliverables through quality assurance reviews and uploading finalized products to FDIC systems of record and LMS repositories. What You Bring to the Table - Requirements Education: Bachelor\u2019s degree from an accredited institution in Education, Instructional Design, or a related subject. Experience: Minimum of five (5) years of professional field instructional design experience (excluding time in school). Accessibility Training / Certification: DHS Trusted Tester trained or certified (preferred or able to meet program testing requirements). Demonstrated Functional Experience: Proven, hands-on experience across all of the following core competencies: Technical writing and editing for professional and regulatory audiences. Converting existing and legacy course materials into modern instructional formats. Web-based course development and instructional authoring tools. Multimedia technology integration and visual design. Required Software & Technology Skills: Microsoft Word: Advanced proficiency, including table formatting, custom styles, headers/footers, table of contents creation and updates, page and section breaks, field codes, and working with macros. Microsoft PowerPoint: Advanced proficiency, including slide masters, custom layouts, placeholders, layering, graphic manipulation, and macros. Microsoft Excel: High proficiency in data entry, formatting, sorting, and filtering. Desirable Software & Technology Skills: Lectora Inspire / Lectora Desktop (version 21 or equivalent) Camtasia (video production and closed captioning) Adobe Creative Suite (Photoshop, Illustrator) Adobe Connect and Microsoft Teams (virtual training and classroom management) DHS Trusted Tester Section 508 conformance testing processes Why Join Team Carney ? When you join Team Carney , you join a legacy of excellence. We focus on our people because when we make a positive impact on the lives of our employees, they are able to make a positive impact on our clients. We offer a full suite of competitive benefits, including: Health & Wellness: Multiple medical, dental, and vision insurance options (BCBS CareFirst), health spending accounts (HSA), and flexible spending accounts (FSA). Financial Security: 401(k) retirement plan with company match, plus Carney-paid life and disability insurance. Work-Life Harmony: Generous Paid Time Off (PTO), 11 paid holidays, and 6 weeks of paid parental leave. Professional & Personal Growth: Annual tuition assistance (up to $5,000) and student loan repayment. Get Out and Learn: Up to $200 annually to learn almost anything (from pottery to coding!). Get Out and Run: Up to $200 annually to participate in fitness and active lifestyle events. Continuous Development: Ad hoc training and ongoing professional development access. Originally posted on Himalayas",
+    "salary": "$200",
+    "source": "himalayas",
+    "postedISO": "2026-09-14T11:33:31+00:00",
+    "score": 40,
+    "category": "Admin",
+    "why": [
+      "data entry (description)",
+      "remote/worldwide (bonus)",
+      "matches Admin profile"
+    ],
+    "is_fresh": true,
+    "age_hours": 1.4920070119444444,
+    "flags": [
+      "country-locked location"
+    ],
+    "company_website": "https://www.teamcarney.com",
+    "email": "",
+    "tier": "REVIEW",
+    "ai_insight": "{\n  \"technical_skills\": {\"score\": 40, \"reason\": \"No specific mention of Arabic translation or ESL teaching in job description\"},\n  \"experience_match\": {\"score\": 20, \"reason\": \"No direct experience in translation or ESL teaching mentioned in job description\"},\n  \"behavioral_fit\": {\"score\": 50, \"reaso",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 12,
+    "company_research": {
+      "name": "Team Carney",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-14T14:02:15.009897+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Team Carney_Instructional Systems Designer_20260914.pdf",
+    "cover_letter_type": "writing",
+    "cover_letter_ai": false,
+    "interview_prep_generated": false,
+    "scan_date": "2026-09-14T14:02:15.151904+00:00"
+  },
+  {
     "title": "Medium Voltage Electrician (Construction)",
     "company": "xAI",
     "url": "https://job-boards.greenhouse.io/xai/jobs/5219541007",

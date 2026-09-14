@@ -2079,5 +2079,140 @@
     "matched_count": 0,
     "all_count": 205,
     "jobs": []
+  },
+  {
+    "date": "2026-09-14T22:11:37.210491+00:00",
+    "matched_count": 16,
+    "all_count": 267,
+    "jobs": [
+      {
+        "title": "Kurdish/Arabic Translators",
+        "company": "Leidos",
+        "url": "https://www.linkedin.com/jobs/view/kurdish-arabic-translators-at-leidos-4399045497",
+        "score": 99.0,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Bilingual Kurdish (Sorani)/Arabic Linguist - Travel Only",
+        "company": "CACI International Inc",
+        "url": "https://www.linkedin.com/jobs/view/bilingual-kurdish-sorani-arabic-linguist-travel-only-at-caci-international-inc-4397554982",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "English into Tagalog Translator for a Leading Translation Service Company",
+        "company": "1-Stop Asia Recruiting",
+        "url": "https://www.linkedin.com/jobs/view/english-into-tagalog-translator-for-a-leading-translation-service-company-at-1-stop-asia-recruiting-4435342935",
+        "score": 99.0,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Linguists -Arabic Kurdish-Sorani Kurdish-Kurmanji",
+        "company": "TLA-LLC",
+        "url": "https://www.linkedin.com/jobs/view/linguists-arabic-kurdish-sorani-kurdish-kurmanji-at-tla-llc-4447006862",
+        "score": 99,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Kurdish (Sorani) / Arabic Translators",
+        "company": "Leidos",
+        "url": "https://www.linkedin.com/jobs/view/kurdish-sorani-arabic-translators-at-leidos-4399032908",
+        "score": 97,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Bilingual Kurdish/Arabic Linguist - Travel Only",
+        "company": "CACI International Inc",
+        "url": "https://www.linkedin.com/jobs/view/bilingual-kurdish-arabic-linguist-travel-only-at-caci-international-inc-4431978348",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Arabic Linguist - Travel (2026-0001)",
+        "company": "Acclaim Technical Services",
+        "url": "https://www.linkedin.com/jobs/view/arabic-linguist-travel-2026-0001-at-acclaim-technical-services-4423506022",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Translator & Project Coordinator",
+        "company": "World Wide Professional Solutions",
+        "url": "https://www.linkedin.com/jobs/view/translator-project-coordinator-at-world-wide-professional-solutions-4457600950",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Medical Interpreter Arabic",
+        "company": "Advocate Health Care",
+        "url": "https://www.linkedin.com/jobs/view/medical-interpreter-arabic-at-advocate-health-care-4434892379",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Translator",
+        "company": "Intelliswift - An LTTS Company",
+        "url": "https://www.linkedin.com/jobs/view/translator-at-intelliswift-an-ltts-company-4464585772",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Medical Assistant/Certified Phlebotomy Technician (Bilingual English/Arabic))",
+        "company": "URBAN HEALTH PLAN, INC.",
+        "url": "https://www.linkedin.com/jobs/view/medical-assistant-certified-phlebotomy-technician-bilingual-english-arabic-at-urban-health-plan-inc-4461405795",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "English to Vietnamese Translator at a Leading Translation Service Company",
+        "company": "1-Stop Asia Recruiting",
+        "url": "https://www.linkedin.com/jobs/view/english-to-vietnamese-translator-at-a-leading-translation-service-company-at-1-stop-asia-recruiting-3628460103",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
+        "company": "Jobgether",
+        "url": "https://www.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-jobgether-4463818559",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Foreign Language Instructors at DOS, National Foreign Affairs Training Center \"NFATC\" (former FSI)",
+        "company": "International Center for Language Studies\u2013ICLS",
+        "url": "https://www.linkedin.com/jobs/view/foreign-language-instructors-at-dos-national-foreign-affairs-training-center-nfatc-former-fsi-at-international-center-for-language-studies%E2%80%93icls-4346324839",
+        "score": 95,
+        "category": "ESL",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Modern Standard Arabic Associate Language Instructor",
+        "company": "Threat Tec, LLC",
+        "url": "https://www.linkedin.com/jobs/view/modern-standard-arabic-associate-language-instructor-at-threat-tec-llc-3835865508",
+        "score": 95,
+        "category": "ESL",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Arabic Interpreter - Flexible Schedule",
+        "company": "Burnes Home Accents",
+        "url": "https://www.linkedin.com/jobs/view/arabic-interpreter-flexible-schedule-at-burnes-home-accents-4422332638",
+        "score": 95,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      }
+    ]
   }
 ]

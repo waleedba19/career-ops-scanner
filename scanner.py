@@ -4,7 +4,7 @@ Ported from Cloudflare Worker (index.js) to Python.
 Uses aiohttp for async HTTP, concurrent.futures for parallel fetching,
 and Ollama for AI-powered job analysis.
 
-CareerOps 2.0 — Now with CrewAI multi-agent system for intelligent job search.
+CareerOps 2.0 — intelligent job search.
 """
 
 import asyncio
@@ -47,19 +47,69 @@ from interview_prep import generate_interview_prep_for_top_matches, get_intervie
 from scheduler import SmartScheduler, create_scheduler
 from deep_reader import enrich_jobs_with_deep_read
 
-# CareerOps 2.0 — CrewAI integration
-try:
-    from crew import run_crew_search, get_company_website, extract_email_from_text
-    CREWAI_AVAILABLE = True
-except ImportError:
-    CREWAI_AVAILABLE = False
-    print("Warning: CrewAI not available. Using legacy scanner only.")
 
-    def get_company_website(company_name: str) -> str:
+def extract_email_from_text(text: str) -> str:
+    """Extract email address from text."""
+    if not text:
         return ""
+    email_patterns = [
+        r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
+        r'email[:\s]*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        r'contact[:\s]*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+        r'apply[:\s]*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})',
+    ]
+    for pattern in email_patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            email = match.group(1) if match.lastindex else match.group(0)
+            skip_domains = ['example.com', 'sentry.io', 'wixpress.com', 'github.com', 'sentry-next.wixpress.com']
+            if not any(domain in email.lower() for domain in skip_domains):
+                return email
+    return ""
 
-    def extract_email_from_text(text: str) -> str:
-        return ""
+
+def get_company_website(company_name: str) -> str:
+    """Get company website from name."""
+    company_websites = {
+        "transperfect": "https://www.transperfect.com",
+        "lionbridge": "https://www.lionbridge.com",
+        "rws": "https://www.rws.com",
+        "keywords studios": "https://www.keywordsstudios.com",
+        "welocalize": "https://www.welocalize.com",
+        "appen": "https://www.appen.com",
+        "telus international": "https://www.telusinternational.com",
+        "centific": "https://www.centific.com",
+        "scale ai": "https://scale.com",
+        "surge ai": "https://surgeai.com",
+        "oneforma": "https://www.oneforma.com",
+        "proz": "https://www.proz.com",
+        "tarjama": "https://www.tarjama.com",
+        "careem": "https://www.careem.com",
+        "languagebird": "https://www.languagebird.com",
+        "vipkid": "https://www.vipkid.com",
+        "cambly": "https://www.cambly.com",
+        "preply": "https://preply.com",
+        "italki": "https://www.italki.com",
+        "remote.com": "https://remote.com",
+        "deel": "https://www.deel.com",
+        "oyster": "https://www.oysterhr.com",
+        "google": "https://careers.google.com",
+        "microsoft": "https://careers.microsoft.com",
+        "amazon": "https://www.amazon.jobs",
+        "apple": "https://www.apple.com/careers",
+        "meta": "https://www.metacareers.com",
+    }
+    company_lower = company_name.lower().strip()
+    for key, website in company_websites.items():
+        if key in company_lower or company_lower in key:
+            return website
+    if company_name:
+        name = company_name.lower().strip()
+        for suffix in [' inc', ' llc', ' ltd', ' corp', ' corporation', ' company', ' co']:
+            name = name.replace(suffix, '')
+        return f"https://www.{name.replace(' ', '')}.com"
+    return ""
+
 
 # ── Enterprise config (centralized) — single source of truth ──
 import config as _cfg
@@ -216,7 +266,8 @@ MATCH_BUCKETS = [
             (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 90),
             (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 80),
             (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator)\b", re.I), 85),
-            (re.compile(r"\b(language locali[sz]ation|locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 85),
+            (re.compile(r"\b(locali[sz]ation specialist|l10n specialist|i18n linguist)\b.{0,40}(arabic|english|bilingual|translation)", re.I), 85),
+            (re.compile(r"(arabic|english|bilingual|translation).{0,40}\b(locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 85),
             (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 90),
             (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 90),
             (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 85),
@@ -661,14 +712,18 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     # Check if location matches allowed regions/worldwide terms
     if any(a in loc for a in ALLOWED_LOCATIONS):
         return True
-    if REMOTE_MARKER.search(loc):
-        return True
-    # Check if location is a specific country — accept most countries
-    # unless they are in a hard-blocked country list
+    # BLOCKED_LOCATIONS must be checked BEFORE REMOTE_MARKER —
+    # otherwise "Remote — United States" matches "remote" and short-circuits.
     BLOCKED_LOCATIONS = [
         "united states", "us", "usa", "u.s.", "u.s.a.",
         "canada", "australia", "united kingdom", "uk",
     ]
+    if any(b in loc for b in BLOCKED_LOCATIONS):
+        return False
+    if REMOTE_MARKER.search(loc):
+        return True
+    # Check if location is a specific country — accept most countries
+    # unless they are in a hard-blocked country list
     # If location is just a country name (not a specific city), accept it
     # unless it's in the blocked list
     if loc and not any(city in loc for city in [",", "city", "town", "street", "avenue", "road", "district"]):
@@ -5117,22 +5172,6 @@ async def run_scan():
         except Exception as e:
             print(f"  Free search skipped: {e}")
 
-        # ---- CrewAI intelligent search merge (run as its own workflow step) ----
-        try:
-            crewai_file = OUTPUT_DIR / "crewai_jobs.json"
-            if crewai_file.exists():
-                crew_jobs = json.loads(crewai_file.read_text(encoding="utf-8"))
-                if isinstance(crew_jobs, list) and crew_jobs:
-                    seen_urls_crew = {j.get("url") for j in all_jobs if j.get("url")}
-                    new_crew = [j for j in crew_jobs if j.get("url") and j["url"] not in seen_urls_crew]
-                    if new_crew:
-                        print(f"🧠 CrewAI search merged: {len(new_crew)} job URLs into pipeline")
-                        all_jobs.extend(new_crew)
-                        print(f"  Total after CrewAI: {len(all_jobs)} jobs")
-                    else:
-                        print("  CrewAI merge: 0 new URLs (all duplicates)")
-        except Exception as e:
-            print(f"  CrewAI merge skipped: {e}")
         
         # ---- Track source performance ----
         source_job_counts = {}
@@ -5191,6 +5230,7 @@ async def run_scan():
             # Location restrictions in title/description (US-only etc.)
             desc = (job.get("description") or "").lower()
             job_title = (job.get("title") or "").lower()
+            job_loc = (job.get("location") or "").lower()
             EARLY_LOCATION_RESTRICTIONS = [
                 re.compile(r"location\s+restriction", re.I),
                 re.compile(r"only\s+available\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
@@ -5199,8 +5239,10 @@ async def run_scan():
                 re.compile(r"this\s+(job|position|role)\s+is\s+(only|restricted)\s+to\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
                 re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
                 re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in\s+(the\s+)?(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+                re.compile(r"remote\s*[-–—,]\s*(us|usa|u\.s\.a?|united states)", re.I),
+                re.compile(r"remote\s*[\(\[]\s*(us|usa|u\.s\.a?|united states)\s*[\)\]]", re.I),
             ]
-            if any(p.search(desc) or p.search(job_title) for p in EARLY_LOCATION_RESTRICTIONS):
+            if any(p.search(desc) or p.search(job_title) or p.search(job_loc) for p in EARLY_LOCATION_RESTRICTIONS):
                 filter_debug["not_worldwide"] += 1
                 flags.append("location-restricted")
 
@@ -5377,7 +5419,7 @@ async def run_scan():
         # ---- Ollama AI analysis ----
         # Analyze fresh jobs first — bound to top candidates so a full
         # funnel-open scan doesn't burn hours on hundreds of LLM calls.
-        OLLAMA_ANALYZE_CAP = 40
+        OLLAMA_ANALYZE_CAP = 15
         verified = await analyze_jobs_with_ollama(verified[:OLLAMA_ANALYZE_CAP]) + verified[OLLAMA_ANALYZE_CAP:]
         
         # For old jobs, use Ollama to verify they're still active
@@ -5385,7 +5427,7 @@ async def run_scan():
         old_verified = []
         if old_but_verified:
             print(f"Checking {len(old_but_verified)} older jobs with Ollama...")
-            old_analyzed = await analyze_jobs_with_ollama(old_but_verified[:20])  # Check top 20
+            old_analyzed = await analyze_jobs_with_ollama(old_but_verified[:10])  # Check top 10
             for job in old_analyzed:
                 # Include old jobs only if they have high scores (85+) and AI confirms relevance
                 if job.get("score", 0) >= 85 and job.get("ai_overall_score", 0) >= 70:

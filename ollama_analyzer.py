@@ -272,7 +272,7 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
                     "num_predict": 500,
                 },
             }
-            timeout = aiohttp.ClientTimeout(total=60)
+            timeout = aiohttp.ClientTimeout(total=120)
             async with session.post(
                 f"{OLLAMA_URL}/api/generate",
                 json=payload,

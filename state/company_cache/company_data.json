@@ -956,5 +956,25 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-14T14:17:36.680719+00:00"
+  },
+  "Toloka AI": {
+    "name": "Toloka AI",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-14T15:04:17.793171+00:00"
+  },
+  "Cloudera": {
+    "name": "Cloudera",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-14T15:04:17.793981+00:00"
   }
 }

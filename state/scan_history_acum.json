@@ -2035,5 +2035,28 @@
     "matched_count": 0,
     "all_count": 202,
     "jobs": []
+  },
+  {
+    "date": "2026-09-14T20:04:39.399295+00:00",
+    "matched_count": 2,
+    "all_count": 203,
+    "jobs": [
+      {
+        "title": "Copy Editor - Molecule Creative Services",
+        "company": "Avantor",
+        "url": "https://www.linkedin.com/jobs/view/copy-editor-molecule-creative-services-at-avantor-4467231333",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor - Molecule Creative Services",
+        "company": "Avantor",
+        "url": "https://www.linkedin.com/jobs/view/copy-editor-molecule-creative-services-at-avantor-4467231330",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

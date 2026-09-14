@@ -977,6 +977,7 @@ async def fetch_remotive(session: aiohttp.ClientSession) -> list[dict]:
         except Exception as e:
             print(f"  Remotive: {e}")
             break
+    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
     return jobs
 
 
@@ -1010,6 +1011,7 @@ async def fetch_remoteok(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": j.get("salary", ""),
                     "source": "remoteok",
                 })
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs
     except Exception as e:
         print(f"  RemoteOK: {e}")
@@ -1039,6 +1041,7 @@ async def fetch_wwr(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": "",
                     "source": "weworkremotely",
                 })
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs
     except Exception as e:
         print(f"  WWR: {e}")
@@ -1116,6 +1119,7 @@ async def fetch_nodesk(session: aiohttp.ClientSession) -> list[dict]:
                     pass
                 if len(jobs) >= 40:
                     break
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs
     except Exception as e:
         print(f"  Nodesk: {e}")
@@ -1147,6 +1151,7 @@ async def fetch_arbeitnow(session: aiohttp.ClientSession) -> list[dict]:
                     })
         except Exception as e:
             print(f"  Arbeitnow {base}: {e}")
+    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
     return jobs
 
 
@@ -2474,6 +2479,7 @@ async def fetch_himalayas_api(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": f"{j.get('salaryMin', '')} - {j.get('salaryMax', '')} {j.get('currency', '')}".strip(" - ") if j.get("salaryMin") or j.get("salaryMax") else "",
                     "source": "himalayas",
                 })
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs[:200]
     except Exception as e:
         print(f"  Himalayas API: {e}")
@@ -2510,6 +2516,7 @@ async def fetch_jobicy_api(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": salary,
                     "source": "jobicy",
                 })
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs[:200]
     except Exception as e:
         print(f"  Jobicy API: {e}")
@@ -5006,6 +5013,22 @@ async def run_scan():
                 return False
             return name in PROBE_BLOCKED_SOURCES
 
+        # ── General remote boards (have Arabic jobs buried in them) ──
+        if _should_run("remotive"):
+            fetchers.append(fetch_remotive(session))
+        if _should_run("remoteok"):
+            fetchers.append(fetch_remoteok(session))
+        if _should_run("weworkremotely"):
+            fetchers.append(fetch_wwr(session))
+        if _should_run("jobicy"):
+            fetchers.append(fetch_jobicy_api(session))
+        if _should_run("arbeitnow"):
+            fetchers.append(fetch_arbeitnow(session))
+        if _should_run("himalayas"):
+            fetchers.append(fetch_himalayas_api(session))
+        if _should_run("nodesk"):
+            fetchers.append(fetch_nodesk(session))
+
         # ── TRANSLATION & ESL ONLY — no general remote boards ──
         # Every source here is specifically for translation, ESL, bilingual, or language jobs
         if _should_run("translation_jobs"):
@@ -5049,16 +5072,22 @@ async def run_scan():
         # Fallback to 5 if config missing
         BATCH = max(4, min(12, BATCH))  # clamp
         all_jobs: list[dict] = []
+        fetcher_errors = 0
+        fetcher_successes = 0
         for i in range(0, len(fetchers), BATCH):
             batch = fetchers[i : i + BATCH]
             results = await asyncio.gather(*batch, return_exceptions=True)
             for r in results:
                 if isinstance(r, list):
                     all_jobs.extend(r)
+                    fetcher_successes += 1
                 elif isinstance(r, Exception):
                     print(f"  Fetcher error: {r}")
+                    fetcher_errors += 1
 
-        print(f"Total fetched: {len(all_jobs)} jobs")
+        print(f"Total fetched: {len(all_jobs)} jobs ({fetcher_successes} sources OK, {fetcher_errors} errors)")
+        if fetcher_errors > fetcher_successes:
+            print(f"  WARNING: More fetcher errors ({fetcher_errors}) than successes ({fetcher_successes})")
 
         # ---- Free Forever Search: DuckDuckGo + sitemap (no API key) ----
         try:
@@ -5636,6 +5665,14 @@ async def run_scan():
 
         elapsed_final = f"{time.time() - start_time:.1f}"
         print(f"Scan complete in {elapsed_final}s. Telegram: {telegram_sent}, Email: {email_sent}")
+
+        # Health check alert
+        if fetcher_errors > 0:
+            try:
+                alert_msg = f"\u26a0\ufe0f CareerOps health alert: {fetcher_errors} source(s) failed this scan. Check: https://github.com/waleedba19/career-ops-scanner/actions"
+                await send_telegram(alert_msg)
+            except Exception:
+                pass
         
         # Scheduler status
         scheduler_status = scheduler.get_status()

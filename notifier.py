@@ -7,6 +7,7 @@ import base64
 import html as html_mod
 import os
 import re
+import asyncio
 from datetime import datetime, timedelta, timezone
 
 import aiohttp
@@ -396,18 +397,27 @@ async def send_telegram(text: str) -> bool:
     ok = True
     async with aiohttp.ClientSession() as session:
         for chunk in chunks:
-            try:
-                payload = {"chat_id": TG_CHAT, "text": chunk}
-                async with session.post(url, json=payload, timeout=aiohttp.ClientTimeout(total=10)) as resp:
-                    if resp.status != 200:
-                        body = await resp.text()
-                        print(f"Telegram HTTP {resp.status}: {body}")
-                        ok = False
+            for attempt in range(3):
+                try:
+                    payload = {"chat_id": TG_CHAT, "text": chunk}
+                    async with session.post(url, json=payload, timeout=aiohttp.ClientTimeout(total=15)) as resp:
+                        if resp.status == 200:
+                            print("Telegram message sent")
+                            break
+                        elif resp.status == 429:
+                            await asyncio.sleep(5)
+                            continue
+                        else:
+                            body = await resp.text()
+                            print(f"Telegram HTTP {resp.status}: {body}")
+                            ok = False
+                            break
+                except Exception as e:
+                    print(f"Telegram attempt {attempt+1} error: {e}")
+                    if attempt < 2:
+                        await asyncio.sleep(2)
                     else:
-                        print("Telegram message sent")
-            except Exception as e:
-                print(f"Telegram error: {e}")
-                ok = False
+                        ok = False
     return ok
 
 
@@ -740,21 +750,32 @@ async def send_email(subject: str, text_body: str, html_body: str, excel_path: s
 
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.post(
-                "https://api.brevo.com/v3/smtp/email",
-                json=payload,
-                headers={
-                    "Content-Type": "application/json",
-                    "api-key": BREVO_KEY,
-                },
-                timeout=aiohttp.ClientTimeout(total=15),
-            ) as resp:
-                data = await resp.text()
-                print(f"Brevo response: {resp.status} {data}")
-                if resp.status not in (200, 201):
-                    print(f"Brevo FAILED: {resp.status} - {data}")
-                    return False
-                return True
+            for attempt in range(3):
+                try:
+                    async with session.post(
+                        "https://api.brevo.com/v3/smtp/email",
+                        json=payload,
+                        headers={
+                            "Content-Type": "application/json",
+                            "api-key": BREVO_KEY,
+                        },
+                        timeout=aiohttp.ClientTimeout(total=15),
+                    ) as resp:
+                        data = await resp.text()
+                        print(f"Brevo response: {resp.status} {data}")
+                        if resp.status in (200, 201):
+                            return True
+                        elif resp.status == 429:
+                            await asyncio.sleep(5)
+                            continue
+                        else:
+                            print(f"Brevo FAILED: {resp.status} - {data}")
+                            break
+                except Exception as e:
+                    print(f"Email attempt {attempt+1} error: {e}")
+                    if attempt < 2:
+                        await asyncio.sleep(2)
+        return False
     except Exception as e:
         print(f"Email error: {e}")
         return False

@@ -152,6 +152,23 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{"chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}", "text": "⚠️ CareerOps scan FAILED. Check: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' || true
 
+      - name: Notify scan results on Telegram
+        if: always()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          # Read the scan result JSON if it exists
+          if [ -f output/health.json ]; then
+            MATCHES=$(python -c "import json; d=json.load(open('output/health.json')); print(d.get('total_matches', 0))")
+            ERRORS=$(python -c "import json; d=json.load(open('output/health.json')); print(d.get('total_errors', 0))")
+            if [ "$ERRORS" -gt 0 ]; then
+              curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+                -H "Content-Type: application/json" \
+                -d "{\"chat_id\": \"$TELEGRAM_CHAT_ID\", \"text\": \"Warning: CareerOps scan had $ERRORS errors. Check: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" || true
+            fi
+          fi
+
       - name: Upload Excel report + dashboard snapshot
         uses: actions/upload-artifact@v4
         if: always()

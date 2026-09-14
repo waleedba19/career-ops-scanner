@@ -482,10 +482,10 @@
     },
     "remoteok": {
       "first_seen": "2026-09-05",
-      "total_fetched": 7755,
+      "total_fetched": 7756,
       "total_matches": 1,
       "last_active": "2026-09-14",
-      "consecutive_empty": 77,
+      "consecutive_empty": 78,
       "status": "inactive",
       "daily_stats": [
         {
@@ -589,11 +589,6 @@
           "matches": 0
         },
         {
-          "date": "2026-09-13",
-          "fetched": 99,
-          "matches": 0
-        },
-        {
           "date": "2026-09-14",
           "fetched": 99,
           "matches": 0
@@ -616,6 +611,11 @@
         {
           "date": "2026-09-14",
           "fetched": 99,
+          "matches": 0
+        },
+        {
+          "date": "2026-09-14",
+          "fetched": 1,
           "matches": 0
         },
         {
@@ -1282,10 +1282,10 @@
     },
     "for9a": {
       "first_seen": "2026-09-05",
-      "total_fetched": 7084,
+      "total_fetched": 7176,
       "total_matches": 0,
       "last_active": "2026-09-14",
-      "consecutive_empty": 77,
+      "consecutive_empty": 78,
       "status": "inactive",
       "daily_stats": [
         {
@@ -1379,7 +1379,7 @@
           "matches": 0
         },
         {
-          "date": "2026-09-13",
+          "date": "2026-09-14",
           "fetched": 92,
           "matches": 0
         },
@@ -2547,17 +2547,12 @@
     },
     "search_discovered": {
       "first_seen": "2026-09-05",
-      "total_fetched": 1415,
+      "total_fetched": 1435,
       "total_matches": 3,
       "last_active": "2026-09-14",
-      "consecutive_empty": 71,
+      "consecutive_empty": 72,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-13",
-          "fetched": 19,
-          "matches": 0
-        },
         {
           "date": "2026-09-13",
           "fetched": 19,
@@ -2656,6 +2651,11 @@
         {
           "date": "2026-09-14",
           "fetched": 17,
+          "matches": 0
+        },
+        {
+          "date": "2026-09-14",
+          "fetched": 20,
           "matches": 0
         },
         {
@@ -2867,17 +2867,12 @@
     },
     "linkedin": {
       "first_seen": "2026-09-06",
-      "total_fetched": 2346,
+      "total_fetched": 2380,
       "total_matches": 0,
       "last_active": "2026-09-14",
-      "consecutive_empty": 69,
+      "consecutive_empty": 70,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-13",
-          "fetched": 34,
-          "matches": 0
-        },
         {
           "date": "2026-09-13",
           "fetched": 33,
@@ -3022,15 +3017,20 @@
           "date": "2026-09-14",
           "fetched": 34,
           "matches": 0
+        },
+        {
+          "date": "2026-09-14",
+          "fetched": 34,
+          "matches": 0
         }
       ]
     },
     "impactpool": {
       "first_seen": "2026-09-06",
-      "total_fetched": 3970,
+      "total_fetched": 4028,
       "total_matches": 0,
       "last_active": "2026-09-14",
-      "consecutive_empty": 69,
+      "consecutive_empty": 70,
       "status": "inactive",
       "daily_stats": [
         {
@@ -3104,11 +3104,6 @@
           "matches": 0
         },
         {
-          "date": "2026-09-13",
-          "fetched": 56,
-          "matches": 0
-        },
-        {
           "date": "2026-09-14",
           "fetched": 57,
           "matches": 0
@@ -3151,6 +3146,11 @@
         {
           "date": "2026-09-14",
           "fetched": 57,
+          "matches": 0
+        },
+        {
+          "date": "2026-09-14",
+          "fetched": 58,
           "matches": 0
         },
         {
@@ -3872,12 +3872,17 @@
     },
     "for9a_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 6,
+      "total_fetched": 8,
       "total_matches": 0,
       "last_active": "2026-09-14",
-      "consecutive_empty": 3,
+      "consecutive_empty": 4,
       "status": "active",
       "daily_stats": [
+        {
+          "date": "2026-09-14",
+          "fetched": 2,
+          "matches": 0
+        },
         {
           "date": "2026-09-14",
           "fetched": 2,
@@ -3897,5 +3902,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-14T22:25:28.794607+00:00"
+  "last_cleanup": "2026-09-14T22:29:43.838960+00:00"
 }

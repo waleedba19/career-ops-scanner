@@ -217,6 +217,8 @@ MATCH_BUCKETS = [
             (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 40),
             (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator)\b", re.I), 40),
             (re.compile(r"\b(language locali[sz]ation|locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 45),
+            (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 60),
+            (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 60),
             (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 60),
             (re.compile(r"mena.*arabic|arabic.*mena", re.I), 55),
         ],

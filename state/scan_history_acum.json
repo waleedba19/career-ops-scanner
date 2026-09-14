@@ -2220,5 +2220,20 @@
     "matched_count": 0,
     "all_count": 207,
     "jobs": []
+  },
+  {
+    "date": "2026-09-14T22:25:28.824418+00:00",
+    "matched_count": 1,
+    "all_count": 246,
+    "jobs": [
+      {
+        "title": "Senior Proofreader",
+        "company": "Humana",
+        "url": "https://www.linkedin.com/jobs/view/senior-proofreader-at-humana-4465235868",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

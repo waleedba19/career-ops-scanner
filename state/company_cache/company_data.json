@@ -934,5 +934,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-14T11:05:44.315562+00:00"
+  },
+  "Team Carney": {
+    "name": "Team Carney",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-14T14:02:15.009897+00:00"
   }
 }

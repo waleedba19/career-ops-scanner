@@ -347,14 +347,30 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         msg += "\n"
         msg += "\u2500" * 28 + "\n"
         msg += source_report + "\n"
-    
+
+    # Learning summary line
+    try:
+        total_applied = learning.get("total_applied", 0)
+        total_matches_count = stats.get("total_matches", 0)
+        top_cat = ""
+        if learning.get("top_skills"):
+            top_cat = learning["top_skills"][0][0]
+        if total_applied > 0 or total_matches_count > 0:
+            msg += "\n"
+            msg += f"Scan #{scan_num} | {total_matches_count} matches total"
+            if top_cat:
+                msg += f" | Top: {top_cat}"
+            msg += "\n"
+    except Exception:
+        pass
+
     # Professional sign-off
     msg += "\n"
     msg += "\u2500" * 28 + "\n"
     msg += f"Next scan: {next_scan_time()} today\n"
     msg += "Best regards,\n"
     msg += "CareerOps Services \u2014 AI Job Search Intelligence\n"
-    
+
     return msg
 
 
@@ -576,6 +592,31 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
             source_html = f'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;margin:16px 0 8px">\uD83D\uDCCA Source Performance</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(source_report)}</pre>'
         evolution_html = f'<tr><td style="padding:16px 28px 16px;border-top:1px solid #e0e0e0"><p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">\U0001f9e0 AI Intelligence Report</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(evolution)}</pre>{source_html}</td></tr>'
 
+    # Learning summary HTML for email
+    learning_summary_html = ""
+    try:
+        from learning_module import get_learning_insights
+        li = get_learning_insights()
+        total_applied = li.get("total_applied", 0)
+        acceptance_rate = li.get("acceptance_rate", 0)
+        top_cat = li["top_skills"][0][0] if li.get("top_skills") else ""
+        top_comp = li["top_companies"][0][0] if li.get("top_companies") else ""
+        if total_applied > 0 or stats.get("total_matches", 0) > 0:
+            learning_summary_html = (
+                '<tr><td style="padding:12px 28px;border-top:1px solid #e0e0e0">'
+                '<p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">'
+                '\U0001f4a1 Learning Intelligence</p>'
+                '<table width="100%" cellpadding="4" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333">'
+                f'<tr><td style="font-weight:bold;width:140">Total Applied</td><td>{total_applied}</td></tr>'
+                f'<tr><td style="font-weight:bold">Interview Rate</td><td>{acceptance_rate}%</td></tr>'
+                f'<tr><td style="font-weight:bold">Total Matches</td><td>{stats.get("total_matches", 0)}</td></tr>'
+                f'<tr><td style="font-weight:bold">Top Category</td><td>{_esc(top_cat) if top_cat else "N/A"}</td></tr>'
+                f'<tr><td style="font-weight:bold">Top Company</td><td>{_esc(top_comp) if top_comp else "N/A"}</td></tr>'
+                '</table></td></tr>'
+            )
+    except Exception:
+        pass
+
     html = f'''<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -600,9 +641,10 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
           {unapplied_html}
         </td></tr>
         {evolution_html}
+        {learning_summary_html}
         <tr><td style="padding:16px 28px 20px;border-top:1px solid #e0e0e0">
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#333;margin:0;line-height:1.6">
-            About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.
+            About the workbook: the attached Excel file contains 6 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), Learning (intelligence dashboard), and Daily Log.
           </p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111;margin:16px 0 0;line-height:1.6">
             The next scan is at <b>{next_scan_time()} today</b>.
@@ -645,7 +687,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     if unapplied_text:
         text += unapplied_text
 
-    text += f"About the workbook: the attached Excel file contains 5 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), and Daily Log.\n\n"
+    text += f"About the workbook: the attached Excel file contains 6 sheets \u2014 All Jobs (full dump), Fresh Matches ({match_range_label()} only), Applications (track your status), Cover Letters (generated for each match), Learning (intelligence dashboard), and Daily Log.\n\n"
     text += f"The next scan is at {next_scan_time()} today.\n\n"
     text += "Best regards,\nCareerOps Services \u2014 your personal job search assistant.\n"
 

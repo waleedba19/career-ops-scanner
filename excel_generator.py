@@ -358,6 +358,62 @@ def generate_excel(
     </Row>''')
     cover_rows_str = "".join(cover_rows) if cover_rows else '<Row><Cell><Data ss:Type="String">No cover letters generated yet.</Data></Cell></Row>'
 
+    # ---- Learning sheet (Sheet 6) ----
+    try:
+        from learning_module import load_learning_data, get_learning_insights
+        from evolution_tracker import _load_brain
+        from source_manager import _load_registry
+        from company_patterns import get_top_companies
+        ld = load_learning_data()
+        li = get_learning_insights()
+        brain = _load_brain()
+        reg = _load_registry()
+
+        total_scans = brain.get("total_scans", 0)
+        total_matches = brain.get("total_matches", 0)
+        total_applied = len(ld.get("applied_jobs", []))
+        acceptance_rate = ld.get("acceptance_rate", 0)
+
+        learning_rows = []
+        # Summary stats
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Summary</Data></Cell><Cell><Data ss:Type="String">Value</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Total Scans</Data></Cell><Cell><Data ss:Type="Number">{total_scans}</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Total Matches</Data></Cell><Cell><Data ss:Type="Number">{total_matches}</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Total Applied</Data></Cell><Cell><Data ss:Type="Number">{total_applied}</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Acceptance Rate</Data></Cell><Cell><Data ss:Type="String">{acceptance_rate}%</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Streak Days</Data></Cell><Cell><Data ss:Type="Number">{brain.get("streak_days", 0)}</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Best Day Matches</Data></Cell><Cell><Data ss:Type="Number">{brain.get("best_day_matches", 0)}</Data></Cell></Row>''')
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Best Day Date</Data></Cell><Cell><Data ss:Type="String">{_esc(brain.get("best_day_date", ""))}</Data></Cell></Row>''')
+        # Blank separator
+        learning_rows.append(f'''<Row></Row>''')
+        # Top categories (skill_preferences)
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Top Categories</Data></Cell><Cell><Data ss:Type="String">Applications</Data></Cell></Row>''')
+        for cat, count in sorted(ld.get("skill_preferences", {}).items(), key=lambda x: -x[1])[:10]:
+            learning_rows.append(f'''<Row><Cell><Data ss:Type="String">{_esc(cat)}</Data></Cell><Cell><Data ss:Type="Number">{count}</Data></Cell></Row>''')
+        # Blank separator
+        learning_rows.append(f'''<Row></Row>''')
+        # Top companies (company_preferences)
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Top Companies</Data></Cell><Cell><Data ss:Type="String">Applications</Data></Cell></Row>''')
+        for comp, count in sorted(ld.get("company_preferences", {}).items(), key=lambda x: -x[1])[:10]:
+            learning_rows.append(f'''<Row><Cell><Data ss:Type="String">{_esc(comp)}</Data></Cell><Cell><Data ss:Type="Number">{count}</Data></Cell></Row>''')
+        # Blank separator
+        learning_rows.append(f'''<Row></Row>''')
+        # Top sources (source_performance.json)
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Top Sources</Data></Cell><Cell><Data ss:Type="String">Matches</Data></Cell><Cell><Data ss:Type="String">Fetched</Data></Cell></Row>''')
+        src_ranked = sorted(reg.get("sources", {}).items(), key=lambda x: x[1].get("total_matches", 0), reverse=True)[:10]
+        for name, src_data in src_ranked:
+            learning_rows.append(f'''<Row><Cell><Data ss:Type="String">{_esc(name)}</Data></Cell><Cell><Data ss:Type="Number">{src_data.get("total_matches", 0)}</Data></Cell><Cell><Data ss:Type="Number">{src_data.get("total_fetched", 0)}</Data></Cell></Row>''')
+        # Blank separator
+        learning_rows.append(f'''<Row></Row>''')
+        # Top companies from company_patterns
+        learning_rows.append(f'''<Row><Cell><Data ss:Type="String">Company Pattern Top Companies</Data></Cell><Cell><Data ss:Type="String">Matches</Data></Cell><Cell><Data ss:Type="String">Last Match</Data></Cell></Row>''')
+        for cp in get_top_companies(limit=10):
+            learning_rows.append(f'''<Row><Cell><Data ss:Type="String">{_esc(cp["name"])}</Data></Cell><Cell><Data ss:Type="Number">{cp["total_matches"]}</Data></Cell><Cell><Data ss:Type="String">{_esc(cp["last_match"])}</Data></Cell></Row>''')
+    except Exception as e:
+        learning_rows = [f'''<Row><Cell><Data ss:Type="String">Learning data not available: {_esc(str(e))}</Data></Cell></Row>''']
+
+    learning_rows_str = "".join(learning_rows)
+
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
@@ -444,7 +500,17 @@ def generate_excel(
     </Table>
   </Worksheet>
 
-  <!-- Sheet 5: Daily Log (accumulated across scans) -->
+  <!-- Sheet 5: Learning (learning data and insights) -->
+  <Worksheet ss:Name="Learning">
+    <Table>
+      <Column ss:Width="200"/><Column ss:Width="120"/><Column ss:Width="120"/>
+      <Row ss:StyleID="title"><Cell><Data ss:Type="String">Learning Intelligence - {date_str}</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">Data from learning_module, evolution_brain, source_performance, and company_patterns</Data></Cell></Row>
+      {learning_rows_str}
+    </Table>
+  </Worksheet>
+
+  <!-- Sheet 6: Daily Log (accumulated across scans) -->
   <Worksheet ss:Name="Daily Log">
     <Table>
       <Column ss:Width="120"/><Column ss:Width="160"/><Column ss:Width="100"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="100"/>

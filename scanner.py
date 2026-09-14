@@ -30,6 +30,7 @@ from evolution_tracker import record_scan, get_evolution_summary
 from cover_letter_generator import generate_all_cover_letters
 from learning_module import record_application, adjust_scoring_based_on_learning, get_learning_insights
 from company_research import research_companies_batch, cleanup_old_cache
+from company_patterns import record_company_match, get_company_priority
 from fetchers.social import fetch_reddit_social
 from fetchers.verified import (
     fetch_linkedin_guest, fetch_jobicy_tags, fetch_impactpool,
@@ -46,6 +47,7 @@ from fetchers.verified import (
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 from scheduler import SmartScheduler, create_scheduler
 from deep_reader import enrich_jobs_with_deep_read
+from auto_sources import get_active_sources as get_auto_sources, fetch_generic_rss
 
 
 def extract_email_from_text(text: str) -> str:
@@ -4976,6 +4978,13 @@ async def run_scan():
 
         fetchers = []
 
+        # Auto-discovered sources (from auto_sources.py)
+        try:
+            for src in get_auto_sources():
+                fetchers.append(fetch_generic_rss(session, src["url"], src["name"]))
+        except Exception as e:
+            print(f"  Auto-sources load failed: {e}")
+
         def _blocked(name: str) -> bool:
             """Check if a source is probe-confirmed blocked from Actions IPs."""
             if FORCE_BLOCKED_SOURCES:
@@ -5171,6 +5180,10 @@ async def run_scan():
                 scored_job["score"] = adjusted_score
             # +10 for trusted translation/language employers
             scored_job["score"] = apply_company_bonus({**job, "score": scored_job["score"]})
+            # Company pattern learning: boost/demote based on past matches
+            company_priority = get_company_priority(job.get("company", ""))
+            if company_priority != 0:
+                scored_job["score"] = max(0, min(100, scored_job["score"] + company_priority))
 
             salary = job.get("salary") or extract_salary(job.get("description", ""))
             job_data = {
@@ -5190,6 +5203,18 @@ async def run_scan():
 
             # Mark as seen for smart deduplication
             mark_seen(job, smart_seen)
+
+            # Record company pattern for learning
+            if scored_job["score"] > 0:
+                try:
+                    record_company_match(
+                        job.get("company", ""),
+                        job.get("title", ""),
+                        scored_job.get("category", "Other"),
+                        scored_job["score"],
+                    )
+                except Exception:
+                    pass
 
             # Separate fresh jobs from older jobs
             if is_fresh:

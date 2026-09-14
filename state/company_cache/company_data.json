@@ -1000,5 +1000,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-14T15:08:54.529866+00:00"
+  },
+  "Avantor": {
+    "name": "Avantor",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-14T20:04:38.337480+00:00"
   }
 }

@@ -72,6 +72,9 @@ async def fetch_with_playwright(session=None) -> list[dict]:
         if browser:
             try:
                 await browser.close()
+            except RuntimeError:
+                # Event loop already closed — safe to ignore
+                pass
             except Exception:
                 pass
 
@@ -90,7 +93,7 @@ async def _scrape_proz(browser) -> list[dict]:
     page = await browser.new_page()
     try:
         await page.goto(url, wait_until="domcontentloaded", timeout=30000)
-        await page.wait_for_load_state("networkidle", timeout=15000)
+        await page.wait_for_load_state("networkidle", timeout=30000)
         # Give JS-rendered content a moment
         await asyncio.sleep(2)
 
@@ -168,7 +171,7 @@ async def _scrape_linkedin(browser) -> list[dict]:
             "Accept-Language": "en-US,en;q=0.9",
         })
         await page.goto(url, wait_until="domcontentloaded", timeout=30000)
-        await page.wait_for_load_state("networkidle", timeout=15000)
+        await page.wait_for_load_state("networkidle", timeout=30000)
         await asyncio.sleep(2)
 
         jobs = await page.evaluate("""() => {

@@ -4975,6 +4975,13 @@ async def run_scan():
                 return True
 
         fetchers = []
+
+        def _blocked(name: str) -> bool:
+            """Check if a source is probe-confirmed blocked from Actions IPs."""
+            if FORCE_BLOCKED_SOURCES:
+                return False
+            return name in PROBE_BLOCKED_SOURCES
+
         # ── TRANSLATION & ESL ONLY — no general remote boards ──
         # Every source here is specifically for translation, ESL, bilingual, or language jobs
         if _should_run("translation_jobs"):

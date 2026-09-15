@@ -1182,5 +1182,25 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-15T18:04:06.964203+00:00"
+  },
+  "Doxel": {
+    "name": "Doxel",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T18:15:47.798836+00:00"
+  },
+  "Vanderbilt University Medical Center": {
+    "name": "Vanderbilt University Medical Center",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T18:15:47.800173+00:00"
   }
 }

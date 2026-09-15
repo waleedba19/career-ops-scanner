@@ -631,6 +631,180 @@
     "scan_date": "2026-09-14T22:25:28.799481+00:00"
   },
   {
+    "title": "General English Instructor",
+    "company": "4level1",
+    "url": "https://eg.linkedin.com/jobs/view/general-english-instructor-at-4level1-4467707934",
+    "location": "Remote \u2014 Cairo, Egypt",
+    "posted": "2026-09-15",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-15T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.405733416944445,
+    "flags": [],
+    "company_website": "https://www.4level1.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@eg.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@eg.linkedin.com",
+      "hr@eg.linkedin.com",
+      "jobs@eg.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "4level1",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-10T09:36:46.786502+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/4level1_General English Instructor_20260915.pdf",
+    "cover_letter_type": "general",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/4level1_General English Instructor_20260915.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
+  },
+  {
+    "title": "Online English Teachers (Telugu)",
+    "company": "instrucko",
+    "url": "https://in.linkedin.com/jobs/view/online-english-teachers-telugu-at-instrucko-4466507288",
+    "location": "Remote \u2014 Telangana, India",
+    "posted": "2026-09-15",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-15T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.405733680277779,
+    "flags": [],
+    "company_website": "https://www.instrucko.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Needs ESL teacher, likely understaffed",
+    "email_guessed": true,
+    "hiring_email": "careers@in.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@in.linkedin.com",
+      "hr@in.linkedin.com",
+      "jobs@in.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "instrucko",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-15T12:27:13.708078+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/instrucko_Online English Teachers (Telugu)_20260915.pdf",
+    "cover_letter_type": "teaching",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/instrucko_Online English Teachers (Telugu)_20260915.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
+  },
+  {
+    "title": "PTE English Teacher",
+    "company": "PTE MAGIC",
+    "url": "https://th.linkedin.com/jobs/view/pte-english-teacher-at-pte-magic-4466162314",
+    "location": "Remote \u2014 Bangkok City, Thailand",
+    "posted": "2026-09-15",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-15T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.405733817222222,
+    "flags": [],
+    "company_website": "https://www.ptemagic.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
+  },
+  {
+    "title": "Lead Content Editor - Bangalore Candidates only",
+    "company": "Simplilearn",
+    "url": "https://in.linkedin.com/jobs/view/lead-content-editor-bangalore-candidates-only-at-simplilearn-4466199660",
+    "location": "Remote \u2014 Bengaluru South, Karnataka, India",
+    "posted": "2026-09-15",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "proofreader editor",
+    "postedISO": "2026-09-15T00:00:00",
+    "score": 100,
+    "category": "Editing",
+    "why": [
+      "content writer copywriter copywriting blog writer article writer content editor content creator (title)",
+      "remote/worldwide (bonus)",
+      "matches Editing profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.405734201944446,
+    "flags": [],
+    "company_website": "https://www.simplilearn.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
+  },
+  {
     "title": "Kurdish/Arabic Translators",
     "company": "Leidos",
     "url": "https://www.linkedin.com/jobs/view/kurdish-arabic-translators-at-leidos-4399045497",
@@ -1946,5 +2120,279 @@
     "cover_letter_type": "virtual_assistant",
     "cover_letter_ai": false,
     "scan_date": "2026-09-15T00:53:02.084385+00:00"
+  },
+  {
+    "title": "Japanese Transcription Expert - Remote | Upto $33/hr",
+    "company": "mercor",
+    "url": "https://himalayas.app/companies/mercor/jobs/japanese-transcription-expert-remote-upto-33-hr-3039334221",
+    "location": "Canada",
+    "posted": 1789471729,
+    "description": "About the job Mercor connects elite creative and technical talent with leading AI research labs. Headquartered in San Francisco, our investors include Benchmark , General Catalyst , Peter Thiel , Adam D'Angelo , Larry Summers , and Jack Dorsey . Position: PDF Annotation & Transcription Experts \u2013 Japanese Type: Contract Compensation: $34/hour Location: Remote Role Responsibilities Source documents by finding publicly accessible Japanese PDFs with multimodal elements and record their origins. Annotate structure by identifying and bounding every meaningful region, assigning component types and reading-order indices. Record relationships by linking regions to their parent components like figures or tables. Transcribe faithfully, reproducing all text exactly as it appears, including kanji , hiragana , katakana , and handwritten content. Capture page metadata such as language, document type, source, page dimensions, and flags for tables and handwriting. Review a colleague's work, ensuring tasks are reviewed end-to-end by a second Japanese expert. Qualifications Must-Have Native Japanese speaker with full command of kanji , hiragana , and katakana . Professional experience in interpretation, journalism, transcription, translation, or editorial work. Exact character-level accuracy, prioritizing precision over speed. Systematic approach, applying a taxonomy consistently across documents. Comfort with unfamiliar layouts like vertical text and multi-column newspapers. Preferred Experience with AI training data annotation, labeling, or bilingual evaluation. Skills in transcription and localization, including MTPE , subtitling, and OCR correction. Document production experience such as typesetting, copy-editing, or proofreading. Knowledge of script and encoding, including Unicode normalization and Japanese input methods. Resources & Support For details about the interview process and platform information, please check: For any help or support, reach out to: PS: Our team reviews applications daily. Please complete your AI interview and application steps to be considered for this opportunity. Originally posted on Himalayas",
+    "salary": "$34/hour",
+    "source": "himalayas",
+    "postedISO": "2026-09-15T11:28:49+00:00",
+    "score": 0,
+    "category": "Other",
+    "why": [
+      "hard drop: wrong language, no Arabic"
+    ],
+    "is_fresh": true,
+    "age_hours": 0.9254504947222222,
+    "flags": [
+      "country-locked location"
+    ],
+    "company_website": "https://www.mercor.com",
+    "email": "",
+    "tier": "REVIEW",
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 90,
+        "reason": "Requires Arabic-English translation and ESL teaching"
+      },
+      "experience_match": {
+        "score": 90,
+        "reason": "Direct experience in translation and academic supervision"
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "Remote, flexible, and compatible with academic environment"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, or compatible"
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds toward translation/teaching/academic career"
+      },
+      "overall_score": 89,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Direct experience in translation and academic supervision",
+        "Remote, flexible, and compatible with academic environment",
+        "Builds toward translation/teaching/academic career"
+      ],
+      "gaps": [
+        "None"
+      ],
+      "recommendation": "Waleed Ballag has strong technical skills and experience that align well with the job requirements. He should emphasize his experience in translation and academic supervision during the interview.",
+      "interview_prep": [
+        "Question: How do you manage to balance your current teaching responsibilities with your research studies? Answer: I have successfully managed both by optimizing my time and prioritizing tasks based on their importance and deadlines.",
+        "Question: Can you describe a project where you had to adapt to a new technology or tool? Answer: I recently adapted to SPSS for data analysis, which helped me improve the quality of my research studies.",
+        "Question: How do you ensure the accuracy and fidelity of your translations? Answer: I use a multi-step process that includes proofreading, editing, and revising to ensure the highest quality of my translations."
+      ],
+      "one_line_summary": "Waleed Ballag is a strong fit for the Japanese Transcription Expert role with his extensive experience in translation and academic supervision."
+    },
+    "ai_insight": "Waleed Ballag is a strong fit for the Japanese Transcription Expert role with his extensive experience in translation and academic supervision.",
+    "ai_overall_score": 89,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Direct experience in translation and academic supervision",
+      "Remote, flexible, and compatible with academic environment",
+      "Builds toward translation/teaching/academic career"
+    ],
+    "ai_gaps": [
+      "None"
+    ],
+    "ai_recommendation": "Waleed Ballag has strong technical skills and experience that align well with the job requirements. He should emphasize his experience in translation and academic supervision during the interview.",
+    "ai_interview_prep": [
+      "Question: How do you manage to balance your current teaching responsibilities with your research studies? Answer: I have successfully managed both by optimizing my time and prioritizing tasks based on their importance and deadlines.",
+      "Question: Can you describe a project where you had to adapt to a new technology or tool? Answer: I recently adapted to SPSS for data analysis, which helped me improve the quality of my research studies.",
+      "Question: How do you ensure the accuracy and fidelity of your translations? Answer: I use a multi-step process that includes proofreading, editing, and revising to ensure the highest quality of my translations."
+    ],
+    "ai_technical_skills": 90,
+    "ai_experience_match": 90,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 0,
+    "company_research": {
+      "name": "mercor",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-13T23:19:05.768912+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/mercor_Japanese Transcription Expert - Remote - Upto $33-_20260915.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
+  },
+  {
+    "title": "BCBA, LBA - Flexible Schedules",
+    "company": "Horizon Blue ABA",
+    "url": "https://himalayas.app/companies/horizon-blue-aba/jobs/bcba-lba-flexible-schedules",
+    "location": "United States",
+    "posted": 1789471639,
+    "description": "Horizon Blue ABA is committed to bringing compassionate, high-quality care to Medicaid families across New York City. We serve communities that are too often overlooked and rely on our dedicated BCBAs and RBTs in homes and our new clinic in Brooklyn to help change that reality every day. We\u2019re hiring BCBAs for primarily remote roles or our new clinic opening in Brooklyn. Our leadership team, made up of practicing clinicians, prioritizes your time, flexibility, and well-being so you can do your best work and still have room to rest and recharge. BCBA Qualifications & Requirements: Master\u2019s Degree in Applied Behavior Analysis or related field Board Certified Behavior Analyst (BCBA) required NY Licensed Behavior Analyst required 1+ years of experience in ABA Medicaid ID from New York State Preference for Bilingual BCBAs in English & Spanish Develop and oversee individualized ABA treatment plans. Supervise RBTs and provide ongoing training and support. Conduct assessments and adjust treatment goals as needed. Collaborate with families and multidisciplinary teams to ensure client success. Maintain compliance with ethical and regulatory standards. BCBA Benefits & Schedule: Flexible Scheduling and Case Assignment 100% Remote Competitive W2 or 1099 Compensation $60k base for 15 hours per week in billables, then $80-$90/hour for hours above 15 hours per week in billables. Offers BOE Originally posted on Himalayas",
+    "salary": "$60k",
+    "source": "himalayas",
+    "postedISO": "2026-09-15T11:27:19+00:00",
+    "score": 0,
+    "category": "Other",
+    "why": [],
+    "is_fresh": true,
+    "age_hours": 0.9504519349999999,
+    "flags": [
+      "location-restricted",
+      "country-locked location"
+    ],
+    "company_website": "https://www.horizonblueaba.com",
+    "email": "",
+    "tier": "REVIEW",
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 90,
+        "reason": "Requires Arabic-English translation and ESL teaching"
+      },
+      "experience_match": {
+        "score": 90,
+        "reason": "Direct experience in translation and teaching"
+      },
+      "behavioral_fit": {
+        "score": 90,
+        "reason": "Remote, flexible, and academic environment match"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, or compatible"
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Builds toward translation and teaching career"
+      },
+      "overall_score": 90,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Direct experience in translation and teaching",
+        "Remote, flexible, and academic environment match"
+      ],
+      "gaps": [
+        "No specific visa sponsorship required"
+      ],
+      "recommendation": "Waleed Ballag has strong technical skills and experience in the required areas, making this a strong fit for the role.",
+      "interview_prep": [
+        "Q1: Can you describe a time when you had to adapt your teaching methods to accommodate a diverse group of students? A1: I have successfully adapted my teaching methods to accommodate students with varying language and cultural backgrounds.",
+        "Q2: How do you ensure the accuracy and quality of your translations and teaching materials? A2: I use rigorous review processes and seek feedback from colleagues and students to ensure accuracy and quality.",
+        "Q3: Can you provide an example of a challenging project you worked on in your previous role and how you overcame it? A3: I led a team in developing a new curriculum for a remote learning platform, which required overcoming technical challenges and adapting to new software platforms."
+      ],
+      "one_line_summary": "Strong fit for a remote, flexible, and academically oriented role in translation and teaching."
+    },
+    "ai_insight": "Strong fit for a remote, flexible, and academically oriented role in translation and teaching.",
+    "ai_overall_score": 90,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Direct experience in translation and teaching",
+      "Remote, flexible, and academic environment match"
+    ],
+    "ai_gaps": [
+      "No specific visa sponsorship required"
+    ],
+    "ai_recommendation": "Waleed Ballag has strong technical skills and experience in the required areas, making this a strong fit for the role.",
+    "ai_interview_prep": [
+      "Q1: Can you describe a time when you had to adapt your teaching methods to accommodate a diverse group of students? A1: I have successfully adapted my teaching methods to accommodate students with varying language and cultural backgrounds.",
+      "Q2: How do you ensure the accuracy and quality of your translations and teaching materials? A2: I use rigorous review processes and seek feedback from colleagues and students to ensure accuracy and quality.",
+      "Q3: Can you provide an example of a challenging project you worked on in your previous role and how you overcame it? A3: I led a team in developing a new curriculum for a remote learning platform, which required overcoming technical challenges and adapting to new software platforms."
+    ],
+    "ai_technical_skills": 90,
+    "ai_experience_match": 90,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 0,
+    "company_research": {
+      "name": "Horizon Blue ABA",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-15T12:27:13.706110+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Horizon Blue ABA_BCBA, LBA - Flexible Schedules_20260915.pdf",
+    "cover_letter_type": "proofreading",
+    "cover_letter_ai": false,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
+  },
+  {
+    "title": "Keeper Security: Bilingual Channel Account Manager, Arabic (MEA) - UK",
+    "company": "Keeper Security",
+    "url": "https://weworkremotely.com/remote-jobs/keeper-security-bilingual-channel-account-manager-arabic-mea-uk",
+    "location": "Remote",
+    "posted": "Tue, 15 Sep 2026 07:30:54 +0000",
+    "description": "<p> <strong>Headquarters:</strong> Remote, UK </p> <p><strong>Description</strong></p> <p>Keeper is hiring a driven, Arabic speaking Channel Account Manager to join the Keeper Global Channel Sales team. Qualified candidates must permanently reside in the UK (London). This is a fully remote position for those residing in London.</p> <p>Keeper's cybersecurity software is trusted by millions of people and thousands of organisations, globally. Keeper is published in 23 languages and is sold in over 150 countries. Join one of the fastest-growing cybersecurity companies and be responsible for building pipeline and channel revenue with high performance partners.</p> <p><strong>About Keeper</strong></p> <p>Keeper Security is one of the fastest-growing cybersecurity software companies that protects thousands of organisations and millions of people in over 150 countries. Keeper is a pioneer of zero-knowledge and zero-trust security built for any IT environment. Its core offering, KeeperPAM\u00ae, is an AI-enabled, cloud-native platform that protects all users, devices and infrastructure from cyber attacks. Recognised for its innovation in the Gartner Magic Quadrant for Privileged Access Management (PAM), Keeper secures passwords and passkeys, infrastructure secrets, remote connections and endpoints with role-based enforcement policies, least privilege and just-in-time access. Learn why Keeper is trusted by leading organisations to defend against modern adversaries at <a href=\"http://keepersecurity.com\">KeeperSecurity.com</a>.</p> <p><strong>About the Role</strong></p> <p>The Arabic speaking Channel Account Manager, MEA will report to our Director of Channel, EMEA carrying a primary focus on building pipeline and channel revenue with existing channel partners. There will also be a heavy focus sourcing strategic new channel relationships. This position requires the candidate to be extremely motivated, results-driven and have a good network within the channel ecosystem.</p> <p><strong>Responsibilities</strong></p> <ul> <li>Responsible for the day-to-day recruitment and relationship management of channel partners to include value added resellers, distributors, systems integrators and strategic software partners (primarily Turkey &amp; Middle East and Africa)</li> <li>Act as a liaison between Keeper and assigned channel partners and Ingram Micro MEA.</li> <li>Build, maintain, and manage relationships with current and prospective channel partners</li> <li>Establish productive, professional relationships with key sales and channel personnel in assigned partner accounts</li> <li>Coordinate the involvement of Keeper personnel, including support, service, and management resources, in order to meet partner performance objectives and partners\u2019 expectations</li> <li>Sell through partner organizations to end users in coordination with partner sales resources</li> <li>Meet assigned targets for profitable sales volume and strategic objectives in assigned partner accounts</li> <li>Manage direct/channel conflict by fostering excellent communication between the channel and direct sales teams</li> <li>Ensure partner compliance with Channel Partner programs and agreements</li> <li>Participate in a partner planning process that develops mutual performance objectives, financial targets, and critical milestones associated with a productive partner relationship</li> <li>Identify partner GTM &amp;/or services offerings; working with partner sales resources, marketing, etc. develop &amp; launch offerings to point of incremental joint revenue achievement</li> <li>Build relationships with technology vendors to identify mutual greenfield opportunities with shared partners</li> <li>Maintain channel opportunity registrations in Salesforce.com and assist the direct sales team in closing channel generated leads</li> <li>Plan and execute on Channel Marketing activities and events to support brand awareness and demand generation with the Strategic Partner group</li> <li>Ability to travel to and from customer meetings (locally and nationally) &amp; rent and/or operate a vehicle on behalf of the company</li> </ul> <p><strong>Requirements</strong></p> <ul> <li>5+ years of security SaaS channel sales experience</li> <li>Must be bilingual, English and Arabic (both verbal and written)</li> <li>Proven success driving revenue growth via channel partners</li> <li>Good understanding of Partner Incentive programs and PRM tools</li> <li>Strong interpersonal skills and ability to excel in a team oriented atmosphere</li> <li>Strong written/verbal communications skills</li> <li>Extremely motivated and goal-oriented</li> <li>Must want a career-oriented environment that is both fun and professional</li> <li>You share our values, and work in accordance with those values</li> <li>Willingness to travel up to 50%</li> </ul> <p>Keeper is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees.</p><div class=\"content-conclusion\"><p>&nbsp;</p> <p class=\"pf0\"><strong><span class=\"cf0\">Keeper Candidate Privacy Notice</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">This notice explains how Keeper Security processes your personal data during recruitment. Depending on the role and location, the Controller of personal data (the organization responsible for determining why and how personal data is processed) will be Keeper Security Inc. (US), Keeper Security EMEA Ltd. (Ireland), or Keeper Security APAC K.K (Japan).</span></p> <p class=\"pf0\"><span class=\"cf1\"> 1. </span><strong><span class=\"cf0\">Data We Collect</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">Information You provide:</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Contact details, CV/resume, cover letter</span></li> <li class=\"pf1\"><span class=\"cf1\">Employment history, qualifications, work eligibility</span></li> <li class=\"pf1\"><span class=\"cf1\">Application responses and uploaded documents</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\">Information We generate:</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Interview notes, assessments, communications</span></li> <li class=\"pf1\"><span class=\"cf1\">Scheduling information</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\">Information From Others:</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Recruiter/referral information who submit your profile</span></li> <li class=\"pf1\"><span class=\"cf1\">References (with your consent, before final offer)</span></li> <li class=\"pf1\"><span class=\"cf1\">Public professional profiles</span></li> <li class=\"pf1\"><span class=\"cf1\">Background verification (post offer)</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\"> Voluntary Diversity and Equal Opportunity Information</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">We may ask you to voluntarily provide diversity information including race/ethnicity, gender, disability status and veteran status (US). Providing this information is optional and Keeper collects this data in order to comply with EEOC and similar requirements</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\"> 2. </span><strong><span class=\"cf0\">How We Use Your Data</span></strong></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Assess your application and suitability</span></li> <li class=\"pf1\"><span class=\"cf1\">Manage interviews and recruitment workflow</span></li> <li class=\"pf1\"><span class=\"cf1\">Consider you for other/future roles (we may seek your consent to keep your information on our systems beyond the retention period specified)</span></li> <li class=\"pf1\"><span class=\"cf1\">Comply with employment law obligations</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\"> 3. </span><strong><span class=\"cf0\">Legal Basis</span></strong></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Legitimate Interests (recruitment management, security and integrity of the hiring process)</span></li> <li class=\"pf1\"><span class=\"cf1\">Contracting steps (for progressed candidates)</span></li> <li class=\"pf1\"><span class=\"cf1\">Legal and regulatory compliance obligations; explicit consent where required</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\"> 4. </span><strong><span class=\"cf0\">Who We Share Information With</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">Internal: </span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">HR, hiring managers, interviewers*, IT support for system administration</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\">*Note - diversity and equal opportunity data is not shared with hiring managers.</span></p> <p class=\"pf0\"><span class=\"cf1\">Third Parties:</span></p> <p class=\"pf0\"><span class=\"cf1\">Service providers who assist with:</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Applicant tracking, recruitment systems and assessment providers</span></li> <li class=\"pf1\"><span class=\"cf1\">Background verification vendors (post offer)</span></li> <li class=\"pf1\"><span class=\"cf1\">Recruitment agencies (where applicable)</span></li> <li class=\"pf1\"><span class=\"cf1\">Tools to support communication, collaboration and to securely store your data</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\">Keeper ensures that all our third parties are contractually bound to protect your personal data with adequate safeguards in place.</span></p> <p class=\"pf0\"><span class=\"cf1\"> 5. </span><strong><span class=\"cf0\">International Transfers</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">Your data may be accessed by Keeper entities globally as needed for the purposes of hiring and decision making. We protect any such data transfer between Keeper entities using appropriate safeguards under applicable data protection laws. </span></p> <p class=\"pf0\"><span class=\"cf1\">6. </span><strong><span class=\"cf0\">Security</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">We implement appropriate technical and organizational measures to protect your data, consistent with our industry leading security standards.</span></p> <p class=\"pf0\"><span class=\"cf1\">7. </span><strong><span class=\"cf0\">Retention</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">We keep your data for 24 months from your last application activity, then delete or anonymize it. </span></p> <p class=\"pf0\"><span class=\"cf1\">Exceptions:</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">You opt into our talent database for further retention by providing consent (extended retention)</span></li> <li class=\"pf1\"><span class=\"cf1\">You're hired (transfers to employee records)</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\"> 8. </span><strong><span class=\"cf0\">Your Rights</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">You have the following rights and can contact us at the email below to exercise them:</span></p> <ul> <li class=\"pf1\"><span class=\"cf1\">Access, correct, or delete your data, subject to applicable law and retention requirements</span></li> <li class=\"pf1\"><span class=\"cf1\">Object to or restrict processing</span></li> <li class=\"pf1\"><span class=\"cf1\">Withdraw consent (where applicable)</span></li> <li class=\"pf1\"><span class=\"cf1\">Request data portability</span></li> <li class=\"pf1\"><span class=\"cf1\">Lodge a complaint with your data protection authority</span></li> </ul> <p class=\"pf0\"><span class=\"cf1\">If you become an employee, your rights regarding your employee record are governed by our internal Employee Privacy Notice and certain data will be retained as required under relevant laws such as employment or tax law.&nbsp;</span></p> <p class=\"pf0\"><span class=\"cf1\">When you request access to your personal data, some information may be redacted if it includes the personal data of other individuals or information that we must protect in order to preserve their privacy rights.</span></p> <p class=\"pf0\"><span class=\"cf1\"> 9. </span><strong><span class=\"cf0\">Automated Decisions</span></strong></p> <p class=\"pf0\"><span class=\"cf1\">Keeper does not make hiring decisions using solely automated processing.</span></p> <p class=\"pf0\"><span class=\"cf1\">10. </span><strong><span class=\"cf0\">Contact</span></strong><span class=\"cf1\"> - Candidates can send privacy questions to: privacy@keepersecurity.com</span></p> <p>&nbsp;</p></div> <p><strong>To apply:</strong> <a href=\"https://weworkremotely.com/remote-jobs/keeper-security-bilingual-channel-account-manager-arabic-mea-uk\">https://weworkremotely.com/remote-jobs/keeper-security-bilingual-channel-account-manager-arabic-mea-uk</a></p>",
+    "salary": "",
+    "source": "weworkremotely",
+    "postedISO": "2026-09-15T07:30:54+00:00",
+    "score": 0,
+    "category": "Other",
+    "why": [
+      "hard drop: non-target role keyword in title"
+    ],
+    "is_fresh": true,
+    "age_hours": 4.890713441666667,
+    "flags": [
+      "negative-keyword title",
+      "country-locked location"
+    ],
+    "company_website": "https://www.keepersecurity.com",
+    "email": "privacy@keepersecurity.com",
+    "tier": "REVIEW",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Expanding to MENA, needs native Arabic",
+    "email_guessed": false,
+    "hiring_email": "privacy@keepersecurity.com",
+    "email_verified": false,
+    "all_emails": [
+      "privacy@keepersecurity.com"
+    ],
+    "opportunity_score": 0,
+    "company_research": {
+      "name": "Keeper Security",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-15T12:27:13.707096+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Keeper Security_Keeper Security- Bilingual Channel Account Manager_20260915.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "scan_date": "2026-09-15T12:27:13.971877+00:00"
   }
 ]

@@ -1,21 +1,12 @@
 {
-  "total_scans": 98,
-  "total_matches": 219,
+  "total_scans": 99,
+  "total_matches": 221,
   "streak_days": 11,
   "last_scan_date": "2026-09-15",
-  "total_jobs_scanned": 268361,
+  "total_jobs_scanned": 268694,
   "best_day_matches": 16,
   "best_day_date": "2026-09-15",
   "daily_history": [
-    {
-      "date": "2026-09-06",
-      "total_fetched": 4422,
-      "matches": 6,
-      "old_verified": 1,
-      "near_misses": 2,
-      "sources": 16,
-      "fresh_count": 2292
-    },
     {
       "date": "2026-09-06",
       "total_fetched": 4310,
@@ -816,11 +807,20 @@
       "near_misses": 0,
       "sources": 11,
       "fresh_count": 5
+    },
+    {
+      "date": "2026-09-15",
+      "total_fetched": 333,
+      "matches": 2,
+      "old_verified": 2,
+      "near_misses": 0,
+      "sources": 11,
+      "fresh_count": 5
     }
   ],
   "category_trends": {
     "Arabic Translation": {
-      "count": 54,
+      "count": 56,
       "last_seen": "2026-09-15"
     },
     "Editing": {
@@ -902,7 +902,7 @@
       "last_seen": "2026-09-14"
     },
     "linkedin_playwright": {
-      "matches": 16,
+      "matches": 18,
       "last_seen": "2026-09-15"
     },
     "weworkremotely": {

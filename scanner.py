@@ -5436,11 +5436,18 @@ async def run_scan():
         OLLAMA_ANALYZE_CAP = 3
         verified = await analyze_jobs_with_ollama(verified[:OLLAMA_ANALYZE_CAP]) + verified[OLLAMA_ANALYZE_CAP:]
         
-        # Old jobs: keyword score >= 85 means it's relevant, no Ollama needed
-        old_verified = [j for j in old_but_verified if j.get("score", 0) >= 85]
-        for job in old_verified:
-            job["is_old_verified"] = True
-        print(f"  Old jobs keyword-verified: {len(old_verified)}")
+        # Old jobs: RE-SCORE with current rules, then filter.
+        # Must pass the same final gate as fresh jobs: Arabic/translation/ESL signal required.
+        old_verified = []
+        for job in old_but_verified:
+            # Re-score with current rules (the final gate requires Arabic/translation/ESL)
+            rescored = get_match_score(job.get("title", ""), job.get("description", ""))
+            if rescored["score"] >= 75:
+                job["score"] = rescored["score"]
+                job["category"] = rescored["category"]
+                job["is_old_verified"] = True
+                old_verified.append(job)
+        print(f"  Old jobs re-scored & verified: {len(old_verified)} (from {len(old_but_verified)} old)")
         
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified

@@ -8834,7 +8834,17 @@
       "seen": "2026-09-15T00:48:49.195668+00:00",
       "title": "Customer Service Associate",
       "company": "Fiserv"
+    },
+    "searchdiscovered|candidatesstageidleadnewamppip|remote": {
+      "seen": "2026-09-15T01:01:47.414930+00:00",
+      "title": "Candidates?Stageid=Lead New&Amp;Pipeline=Lead",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|apply|remote": {
+      "seen": "2026-09-15T01:01:47.415398+00:00",
+      "title": "Apply",
+      "company": "Search Discovered"
     }
   },
-  "updated": "2026-09-15T00:58:17.372623+00:00"
+  "updated": "2026-09-15T01:01:50.687319+00:00"
 }

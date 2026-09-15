@@ -2486,5 +2486,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-15T20:28:14.658714+00:00",
+    "matched_count": 2,
+    "all_count": 333,
+    "jobs": [
+      {
+        "title": "Medical Translator, Patient Services (Bilingual)",
+        "company": "The University of Texas Medical Branch",
+        "url": "https://www.linkedin.com/jobs/view/medical-translator-patient-services-bilingual-at-the-university-of-texas-medical-branch-4465907584",
+        "score": 99.0,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      },
+      {
+        "title": "Medical Translator, Patient Services (Bilingual)",
+        "company": "The University of Texas Medical Branch",
+        "url": "https://www.linkedin.com/jobs/view/medical-translator-patient-services-bilingual-at-the-university-of-texas-medical-branch-4465907584",
+        "score": 99.0,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
+      }
+    ]
   }
 ]

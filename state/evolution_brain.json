@@ -1,21 +1,12 @@
 {
-  "total_scans": 100,
+  "total_scans": 101,
   "total_matches": 222,
   "streak_days": 11,
   "last_scan_date": "2026-09-15",
-  "total_jobs_scanned": 268900,
+  "total_jobs_scanned": 269234,
   "best_day_matches": 16,
   "best_day_date": "2026-09-15",
   "daily_history": [
-    {
-      "date": "2026-09-06",
-      "total_fetched": 4422,
-      "matches": 1,
-      "old_verified": 0,
-      "near_misses": 0,
-      "sources": 16,
-      "fresh_count": 1702
-    },
     {
       "date": "2026-09-06",
       "total_fetched": 4420,
@@ -816,6 +807,15 @@
       "near_misses": 0,
       "sources": 10,
       "fresh_count": 0
+    },
+    {
+      "date": "2026-09-15",
+      "total_fetched": 334,
+      "matches": 0,
+      "old_verified": 0,
+      "near_misses": 0,
+      "sources": 11,
+      "fresh_count": 3
     }
   ],
   "category_trends": {

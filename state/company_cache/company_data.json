@@ -1096,5 +1096,35 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-14T22:49:47.662445+00:00"
+  },
+  "American Red Cross": {
+    "name": "American Red Cross",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T00:53:01.795600+00:00"
+  },
+  "Rootstock Software": {
+    "name": "Rootstock Software",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T00:53:01.796856+00:00"
+  },
+  "Fiserv": {
+    "name": "Fiserv",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T00:53:01.798222+00:00"
   }
 }

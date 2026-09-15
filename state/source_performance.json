@@ -1712,10 +1712,10 @@
     },
     "himalayas": {
       "first_seen": "2026-09-05",
-      "total_fetched": 1593,
-      "total_matches": 101,
+      "total_fetched": 1594,
+      "total_matches": 104,
       "last_active": "2026-09-15",
-      "consecutive_empty": 3,
+      "consecutive_empty": 0,
       "status": "active",
       "daily_stats": [
         {
@@ -1865,8 +1865,8 @@
         },
         {
           "date": "2026-09-15",
-          "fetched": 2,
-          "matches": 0
+          "fetched": 3,
+          "matches": 3
         }
       ]
     },
@@ -3852,11 +3852,11 @@
     },
     "linkedin_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 840,
+      "total_fetched": 780,
       "total_matches": 0,
       "last_active": "2026-09-15",
-      "consecutive_empty": 14,
-      "status": "inactive",
+      "consecutive_empty": 13,
+      "status": "weak",
       "daily_stats": [
         {
           "date": "2026-09-14",
@@ -3875,11 +3875,6 @@
         },
         {
           "date": "2026-09-14",
-          "fetched": 60,
-          "matches": 0
-        },
-        {
-          "date": "2026-09-15",
           "fetched": 60,
           "matches": 0
         },
@@ -4032,5 +4027,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-15T20:28:14.131413+00:00"
+  "last_cleanup": "2026-09-15T20:32:44.387254+00:00"
 }

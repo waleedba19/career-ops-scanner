@@ -289,6 +289,18 @@ MATCH_BUCKETS = [
             (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 90),
             (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 85),
             (re.compile(r"mena.*arabic|arabic.*mena", re.I), 85),
+            (re.compile(r"\barabic\b.{0,50}\b(remote|worldwide|freelance|work from home)\b", re.I), 90),
+            (re.compile(r"\b(mena|middle east|north africa)\b.{0,50}\b(translat|locali|languag|content|edit)", re.I), 85),
+            (re.compile(r"\b(right[- ]to[- ]left|rtl)\b.{0,50}\barabic", re.I), 85),
+            (re.compile(r"\bmultilingual\b.{0,50}\barabic", re.I), 85),
+            (re.compile(r"\barabic\b.{0,50}\b(multilingual|polyglot)", re.I), 85),
+            (re.compile(r"\b(darija|fusha|msa|modern standard arabic|colloquial arabic)\b", re.I), 80),
+            (re.compile(r"\b(nlp|natural language processing)\b.{0,50}\barabic", re.I), 80),
+            (re.compile(r"\barabic.{0,50}\b(nlp|natural language processing)\b", re.I), 80),
+            (re.compile(r"\barabic\b.{0,50}\b(data|annotation|labeling|moderation)\b", re.I), 80),
+            (re.compile(r"\barabic\b.{0,50}\b(content|review|qa|quality)\b", re.I), 80),
+            (re.compile(r"\barabic.{0,50}\bAI\b", re.I), 80),
+            (re.compile(r"\barabic\b.{0,50}\b(prompt|evaluation|training data)\b", re.I), 80),
         ],
     },
     {
@@ -298,6 +310,10 @@ MATCH_BUCKETS = [
             (re.compile(r"english (teacher|tutor|instructor|language|training|teaching)", re.I), 80),
             (re.compile(r"(online|remote|language) (teacher|tutor|instructor)", re.I), 75),
             (re.compile(r"\b(esl|english) tutoring\b", re.I), 75),
+            (re.compile(r"\b(online|virtual|remote)\s+(english|language)\s+(teacher|tutor|instructor|school|academy)\b", re.I), 80),
+            (re.compile(r"\b(english|language)\s+(teaching|tutoring|instruction)\s+(online|remote|virtual)\b", re.I), 80),
+            (re.compile(r"\b(online|virtual)\s+(class|course|lesson|session)\b.{0,40}\b(english|language|teach)\b", re.I), 75),
+            (re.compile(r"\b(middle.?east|mena|arab)\b.{0,50}\b(esl|english|teacher|tutor)\b", re.I), 80),
         ],
     },
     {
@@ -307,6 +323,8 @@ MATCH_BUCKETS = [
             (re.compile(r"academic (editor|editing)|copy editor", re.I), 80),
             (re.compile(r"\b(content writer|copywriter|copywriting|blog writer|article writer|content editor|content creator)\b", re.I), 80),
             (re.compile(r"\bcontent creation\b", re.I), 75),
+            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(content|blog|article|copy)\b.{0,50}\b(writer|writing|creator)\b", re.I), 85),
+            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(proofread|editor|editing)\b", re.I), 85),
         ],
     },
     {
@@ -317,6 +335,9 @@ MATCH_BUCKETS = [
             (re.compile(r"virtual assistant|administrative assistant|admin assistant|executive assistant", re.I), 80),
             (re.compile(r"data annotation|data labeling|data labeler|data entry (specialist|clerk|operator|agent)", re.I), 75),
             (re.compile(r"\boffice assistant\b", re.I), 75),
+            (re.compile(r"\barabic\b.{0,50}\b(data entry|data input|data processing)\b", re.I), 80),
+            (re.compile(r"\barabic\b.{0,50}\b(virtual assistant|va|administrative)\b", re.I), 80),
+            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(transcription|transcriber|typist)\b", re.I), 80),
         ],
     },
 ]
@@ -372,6 +393,27 @@ NEGATIVE_KEYWORDS = [
     # Leadership / management (not individual contributor)
     "content manager", "social media manager", "brand manager",
     "product marketing", "demand generation", "growth manager",
+    # Dev / IT / non-target professional roles
+    "web developer", "mobile developer", "ios developer", "android developer",
+    "cloud engineer", "infrastructure engineer", "platform engineer",
+    "game developer", "game designer", "unity developer", "unreal",
+    "database administrator", "dba", "sysadmin", "it support",
+    # Healthcare / non-remote fields
+    "nurse", "doctor", "pharmacist", "healthcare",
+    # Finance / accounting
+    "accountant", "financial analyst", "finance manager",
+    # Hospitality / manual
+    "chef", "cook", "bartender", "waiter",
+    # Trades / manual labor
+    "mechanic", "plumber", "carpenter", "welder",
+    # Logistics / on-site
+    "driver", "delivery", "warehouse", "logistics",
+    # Security / government
+    "security guard", "police", "firefighter",
+    # Real estate / insurance
+    "real estate", "property manager", "insurance agent",
+    # Legal / compliance
+    "paralegal", "legal assistant", "compliance officer",
 ]
 
 NON_TARGET_ROLE = re.compile(
@@ -5035,6 +5077,13 @@ async def run_scan():
             fetchers.append(fetch_himalayas_api(session))
         if _should_run("nodesk"):
             fetchers.append(fetch_nodesk(session))
+        # Additional general boards with arabic filter
+        if _should_run("remote1stjobs"):
+            fetchers.append(fetch_remote1stjobs(session))
+        if _should_run("realworkfromanywhere"):
+            fetchers.append(fetch_realworkfromanywhere(session))
+        if _should_run("workbeam"):
+            fetchers.append(fetch_workbeam(session))
 
         # ── TRANSLATION & ESL ONLY — no general remote boards ──
         # Every source here is specifically for translation, ESL, bilingual, or language jobs

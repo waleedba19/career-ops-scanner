@@ -19,6 +19,28 @@ HEADERS = {
 
 TIMEOUT = aiohttp.ClientTimeout(total=20)
 
+# ── WIDE SEARCH QUERIES — used by worldwide Arabic job search ──
+SEARCH_QUERIES = [
+    "arabic translator remote jobs",
+    "arabic english translator remote",
+    "arabic localization remote jobs hiring",
+    "ESL teacher arabic speaking remote",
+    "bilingual arabic english remote jobs hiring",
+    "arabic content writer remote jobs",
+    "arabic data annotation remote jobs",
+    "arabic language expert remote",
+    "MENA translation remote jobs",
+    "arabic nlp data remote",
+    "arabic transcription remote jobs",
+    "arabic virtual assistant remote",
+    "remote arabic interpreter jobs",
+    "arabic proofreader remote hiring",
+    "arabic remote work from home jobs",
+    "mena language services remote",
+    "arabic ai data labeling remote",
+    "right to left arabic localization remote",
+]
+
 
 def _clean_html(text: str) -> str:
     """Remove HTML tags, decode entities."""
@@ -182,6 +204,15 @@ async def fetch_linkedin_arabic(session: aiohttp.ClientSession) -> list[dict]:
         "bilingual+arabic+english",
         "arabic+localization",
         "arabic+interpreter",
+        "arabic+content+writer",
+        "arabic+data+annotation",
+        "arabic+nlp",
+        "arabic+language+expert",
+        "arabic+virtual+assistant",
+        "arabic+proofreader",
+        "arabic+transcription",
+        "MENA+translation",
+        "arabic+remote",
     ]
 
     for query in queries:

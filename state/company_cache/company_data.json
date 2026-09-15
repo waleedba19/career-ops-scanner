@@ -1202,5 +1202,17 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-15T18:15:47.800173+00:00"
+  },
+  "TalkEnglishClass": {
+    "name": "TalkEnglishClass",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-15T19:25:30.479629+00:00"
   }
 }

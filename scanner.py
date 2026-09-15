@@ -639,10 +639,17 @@ def get_match_score(title: str, desc: str) -> dict:
         return {"score": 0, "category": "Other", "why": ["hard drop: wrong language, no Arabic"]}
 
     total = max(0, min(100, total))
-    # HARD RULE: if no Arabic/translation/ESL/content keywords matched at all,
-    # the job cannot score above 0 — it's irrelevant to this profile.
-    if best == 0:
+    # HARD RULE: The job MUST have an Arabic/translation signal to score.
+    # Generic "content creation" or "data entry" alone are NOT enough.
+    # The Arabic Translation bucket must match, OR "arabic" must appear in text,
+    # OR the ESL bucket must match (ESL jobs are always relevant).
+    arabic_bucket_matched = best_cat == "Arabic Translation"
+    has_arabic_keyword = bool(HAS_ARABIC.search(text))
+    esl_bucket_matched = best_cat == "ESL"
+    if not (arabic_bucket_matched or has_arabic_keyword or esl_bucket_matched):
         total = 0
+        best_cat = "Other"
+        best_why = ["hard drop: no Arabic/translation/ESL signal in job"]
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final[:8]}
 

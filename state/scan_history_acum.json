@@ -2297,5 +2297,44 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-15T00:53:02.379070+00:00",
+    "matched_count": 4,
+    "all_count": 334,
+    "jobs": [
+      {
+        "title": "Senior Manager, Digital Content Strategy & Operations * Work from home",
+        "company": "American Red Cross",
+        "url": "https://himalayas.app/companies/american-red-cross/jobs/senior-manager-digital-content-strategy-operations-work-from-home",
+        "score": 80,
+        "category": "Editing",
+        "source": "himalayas"
+      },
+      {
+        "title": "Account Executive, North America",
+        "company": "Rootstock Software",
+        "url": "https://himalayas.app/companies/rootstock-software/jobs/account-executive-north-america",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Law Assessment Expert - Fully Remote | Upto $105/hr",
+        "company": "mercor",
+        "url": "https://himalayas.app/companies/mercor/jobs/law-assessment-expert-fully-remote-upto-105-hr-4259978371",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Customer Service Associate",
+        "company": "Fiserv",
+        "url": "https://himalayas.app/companies/fiserv/jobs/customer-service-associate-1960215981",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      }
+    ]
   }
 ]

@@ -22,8 +22,8 @@ on:
     paths-ignore: ['README.md', 'ARCHITECTURE.md', 'dashboard/**']
 
 concurrency:
-  group: careerops-scan
-  cancel-in-progress: false
+  group: careerops-scan-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   scan:

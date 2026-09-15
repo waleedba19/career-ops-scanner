@@ -1215,6 +1215,26 @@
     ],
     "last_updated": "2026-09-15T19:25:30.479629+00:00"
   },
+  "Invisible Technologies": {
+    "name": "Invisible Technologies",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T20:32:43.523293+00:00"
+  },
+  "BPM LLP": {
+    "name": "BPM LLP",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-15T20:32:43.524785+00:00"
+  },
   "The University of Texas Medical Branch": {
     "name": "The University of Texas Medical Branch",
     "legitimacy_score": 60,
@@ -1225,6 +1245,6 @@
     "positive_signals": [
       "Listed on major job board"
     ],
-    "last_updated": "2026-09-15T20:28:13.078225+00:00"
+    "last_updated": "2026-09-15T20:32:43.525960+00:00"
   }
 }

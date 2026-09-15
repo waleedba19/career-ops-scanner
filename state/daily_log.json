@@ -972,11 +972,11 @@
   {
     "date": "2026-09-15",
     "slot": "Night (8 PM)",
-    "scanned": 333,
-    "matches": 2,
-    "old_verified": 2,
+    "scanned": 274,
+    "matches": 3,
+    "old_verified": 1,
     "near_misses": 0,
-    "sources": 11,
-    "time": "10:28 PM"
+    "sources": 10,
+    "time": "10:32 PM"
   }
 ]

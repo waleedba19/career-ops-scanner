@@ -2348,5 +2348,68 @@
     "matched_count": 0,
     "all_count": 334,
     "jobs": []
+  },
+  {
+    "date": "2026-09-15T12:27:14.195738+00:00",
+    "matched_count": 7,
+    "all_count": 329,
+    "jobs": [
+      {
+        "title": "Japanese Transcription Expert - Remote | Upto $33/hr",
+        "company": "mercor",
+        "url": "https://himalayas.app/companies/mercor/jobs/japanese-transcription-expert-remote-upto-33-hr-3039334221",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "BCBA, LBA - Flexible Schedules",
+        "company": "Horizon Blue ABA",
+        "url": "https://himalayas.app/companies/horizon-blue-aba/jobs/bcba-lba-flexible-schedules",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Keeper Security: Bilingual Channel Account Manager, Arabic (MEA) - UK",
+        "company": "Keeper Security",
+        "url": "https://weworkremotely.com/remote-jobs/keeper-security-bilingual-channel-account-manager-arabic-mea-uk",
+        "score": 0,
+        "category": "Other",
+        "source": "weworkremotely"
+      },
+      {
+        "title": "General English Instructor",
+        "company": "4level1",
+        "url": "https://eg.linkedin.com/jobs/view/general-english-instructor-at-4level1-4467707934",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Online English Teachers (Telugu)",
+        "company": "instrucko",
+        "url": "https://in.linkedin.com/jobs/view/online-english-teachers-telugu-at-instrucko-4466507288",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "PTE English Teacher",
+        "company": "PTE MAGIC",
+        "url": "https://th.linkedin.com/jobs/view/pte-english-teacher-at-pte-magic-4466162314",
+        "score": 100,
+        "category": "ESL",
+        "source": "linkedin"
+      },
+      {
+        "title": "Lead Content Editor - Bangalore Candidates only",
+        "company": "Simplilearn",
+        "url": "https://in.linkedin.com/jobs/view/lead-content-editor-bangalore-candidates-only-at-simplilearn-4466199660",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

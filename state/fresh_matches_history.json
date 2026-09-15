@@ -1403,6 +1403,98 @@
     "scan_date": "2026-09-14T22:11:37.181512+00:00"
   },
   {
+    "title": "Medical Translator, Patient Services (Bilingual)",
+    "company": "The University of Texas Medical Branch",
+    "url": "https://www.linkedin.com/jobs/view/medical-translator-patient-services-bilingual-at-the-university-of-texas-medical-branch-4465907584",
+    "location": "Galveston, TX",
+    "posted": "",
+    "description": "",
+    "salary": "$17",
+    "source": "linkedin_playwright",
+    "postedISO": "2026-09-15T20:28:12.276587+00:00",
+    "score": 99.0,
+    "category": "Arabic Translation",
+    "why": [
+      "translator translation specialist staff translator freelance translator (title)",
+      "matches Arabic Translation profile"
+    ],
+    "is_fresh": false,
+    "age_hours": Infinity,
+    "flags": [
+      "country-locked location"
+    ],
+    "company_website": "https://www.theuniversityoftexasmedicalbranch.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Translation backlog / scaling",
+    "email_guessed": true,
+    "hiring_email": "careers@linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@linkedin.com",
+      "hr@linkedin.com",
+      "jobs@linkedin.com"
+    ],
+    "opportunity_score": 29,
+    "company_research": {
+      "name": "The University of Texas Medical Branch",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-15T20:28:13.078225+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "deep_read": {
+      "url": "https://www.linkedin.com/jobs/view/medical-translator-patient-services-bilingual-at-the-university-of-texas-medical-branch-4465907584",
+      "title": "Medical Translator, Patient Services (Bilingual)",
+      "description": "REQUIRED EDUCATION / EXPERIENCE: Bachelor's degree or equivalent in Spanish, Health Care, or related field and three (3) years related experience. Must be able to speak, read, and write in English and Spanish fluently. Experience in conducting training courses preferred. Industry-recognized certification preferred. PREFERRED EXPERIENCE: Possess Certified Medical Interpreter (CMI) from NBCMI or CCHI or obtain certification within 2 years of hire date. Experience in conducting training courses preferred. Industry recognized certification preferred. JOB SUMMARY: Provides administration and coordination of all translation-related functions for UTMB and delivers medical Spanish curriculum. ESSENTIAL DUTIES: Coordinates translation services for the institution. Accurately translates letters, forms, medical reports, research papers, legal documents, contracts, transcripts, diplomas, certificates, video, and audio tapes from English to Spanish and Spanish to English as required. Coordinates and conducts medical terminology training courses. Recommends training programs to meet departmental needs. Develops training objectives, develops lesson plans, and prepares presentations and visual aids for training programs. Provides directions to assigned personnel, including training and orienting as required. Solves work-related problems and maintains productivity. Presents training courses. Adheres to internal controls established for the department Performs related duties as required. EQUIPMENT: Standard classroom equipment. WORKING ENVIRONMENT: Standard classroom environment. May be required to teach in a clinical environment. SALARY: Commensurate with experience. Equal Employment Opportunity UTMB Health strives to provide equal opportunity employment without regard to race, color, religion, age, national origin, sex, gender, sexual orientation, gender identity/expression, genetic information, disability, veteran status, or any other basis protected by institutional policy or by federal, state or local laws unless such distinction is required by law. As a Federal Contractor, UTMB Health takes affirmative action to hire and advance protected veterans and individuals with disabilities. Primary Location United States-Texas-Galveston Work Locations 0894 - Jennie Sealy Hospital Job Select the Job FieldRegular Employee Status Non-Manager Job Level Day Shift Job Posting Sep 15, 2026, 9:20:39 AM Show more Show less Seniority level Mid-Senior level Employment type Full-time Job function Marketing, Public Relations, and Writing/Editing Industries Hospitals and Health Care",
+      "eligibility": [
+        "be able to speak, read, and write in English and Spanish fluently",
+        "teach in a clinical environment. SALARY: Commensurate with experience"
+      ],
+      "requirements": [
+        "Bachelor's degree or equivalent in Spanish, Health Care, or related field and three (3) years related experience",
+        "in conducting training courses preferred. Industry",
+        "recognized certification preferred",
+        "Possess Certified Medical Interpreter (CMI) from NBCMI or CCHI or obtain certification within 2 years of hire date",
+        "in conducting training courses preferred. Industry recognized certification preferred"
+      ],
+      "contact": {},
+      "deadline": null,
+      "salary": "$17",
+      "location": "The University",
+      "is_remote": false
+    },
+    "eligibility": [
+      "be able to speak, read, and write in English and Spanish fluently",
+      "teach in a clinical environment. SALARY: Commensurate with experience"
+    ],
+    "requirements": [
+      "Bachelor's degree or equivalent in Spanish, Health Care, or related field and three (3) years related experience",
+      "in conducting training courses preferred. Industry",
+      "recognized certification preferred",
+      "Possess Certified Medical Interpreter (CMI) from NBCMI or CCHI or obtain certification within 2 years of hire date",
+      "in conducting training courses preferred. Industry recognized certification preferred"
+    ],
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/The University of Texas Medica_Medical Translator, Patient Services (Bilingual)_20260915.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/The University of Texas Medica_Medical Translator, Patient Services (Bilingual)_20260915.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-15T20:28:14.136177+00:00"
+  },
+  {
     "title": "Kurdish (Sorani) / Arabic Translators",
     "company": "Leidos",
     "url": "https://www.linkedin.com/jobs/view/kurdish-sorani-arabic-translators-at-leidos-4399032908",

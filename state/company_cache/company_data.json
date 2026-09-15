@@ -1214,5 +1214,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-15T19:25:30.479629+00:00"
+  },
+  "The University of Texas Medical Branch": {
+    "name": "The University of Texas Medical Branch",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-15T20:28:13.078225+00:00"
   }
 }

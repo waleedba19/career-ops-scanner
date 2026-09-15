@@ -31,9 +31,9 @@ REGISTRY: dict[str, dict] = {
     "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
     "esl_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_esl_jobs"},
     "arabic_companies": {"tier": 1, "module": "fetchers.arabic_translation", "class": "fetch"},
+    "nodesk": {"tier": 1, "module": "fetchers.verified", "class": "fetch_nodesk"},
     
     # Tier 2 — balanced (good volume) - Asian/South Asian & MENA Focus
-    "nodesk": {"tier": 2, "module": "fetchers.verified", "class": "fetch_nodesk"},
     "yayremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_yayremote"},
     "remote1stjobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remote1stjobs"},
     "realworkfromanywhere": {"tier": 2, "module": "fetchers.verified", "class": "fetch_realworkfromanywhere"},

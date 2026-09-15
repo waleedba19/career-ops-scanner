@@ -20,6 +20,14 @@ _run_metrics = {
     "timings": {},
 }
 
+# Fetcher-level errors reported by scanner (not tied to one source)
+_external_errors = 0
+
+def record_external_errors(count: int):
+    """Add fetcher-level failures (e.g. crashed fetchers) to health totals."""
+    global _external_errors
+    _external_errors = max(0, int(count))
+
 def record_fetch(source: str, fetched: int, matches: int = 0, latency_ms: float = 0, error: str = None):
     s = _run_metrics["sources"][source]
     s["fetched"] += fetched
@@ -41,7 +49,7 @@ def get_health() -> dict:
     sources = _run_metrics["sources"]
     total_fetched = sum(v["fetched"] for v in sources.values())
     total_matches = sum(v["matches"] for v in sources.values())
-    total_errors = sum(v["errors"] for v in sources.values())
+    total_errors = sum(v["errors"] for v in sources.values()) + _external_errors
     avg_latency = 0
     latencies = [x for v in sources.values() for x in v["latency_ms"]]
     if latencies:

@@ -5089,6 +5089,13 @@ async def run_scan():
         if fetcher_errors > fetcher_successes:
             print(f"  WARNING: More fetcher errors ({fetcher_errors}) than successes ({fetcher_successes})")
 
+        # Feed fetcher errors into health metrics so the CI alert sees them
+        try:
+            if _metrics and fetcher_errors > 0:
+                _metrics.record_external_errors(fetcher_errors)
+        except Exception:
+            pass
+
         # ---- Free Forever Search: DuckDuckGo + sitemap (no API key) ----
         try:
             if discover_via_search is not None:

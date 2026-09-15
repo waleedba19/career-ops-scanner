@@ -2411,5 +2411,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-15T18:04:09.776372+00:00",
+    "matched_count": 2,
+    "all_count": 274,
+    "jobs": [
+      {
+        "title": "Creative Translator & Copywriter (Arabic)",
+        "company": "Salt",
+        "url": "https://eg.linkedin.com/jobs/view/creative-translator-copywriter-arabic-at-salt-4465524922",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor",
+        "company": "Newsweek",
+        "url": "https://uk.linkedin.com/jobs/view/copy-editor-at-newsweek-4457110355",
+        "score": 100,
+        "category": "Editing",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

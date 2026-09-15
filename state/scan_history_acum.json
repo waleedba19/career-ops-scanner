@@ -2434,5 +2434,28 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-15T18:15:48.343948+00:00",
+    "matched_count": 2,
+    "all_count": 314,
+    "jobs": [
+      {
+        "title": "GTM Enablement & Training Lead",
+        "company": "Doxel",
+        "url": "https://himalayas.app/companies/doxel/jobs/gtm-enablement-training-lead-7143040570",
+        "score": 75,
+        "category": "Editing",
+        "source": "himalayas"
+      },
+      {
+        "title": "Principal IT Trainer - eLearning Creation and Development",
+        "company": "Vanderbilt University Medical Center",
+        "url": "https://himalayas.app/companies/vanderbilt-university-medical-center/jobs/principal-it-trainer-elearning-creation-and-development",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      }
+    ]
   }
 ]

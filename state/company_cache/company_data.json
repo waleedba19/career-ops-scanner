@@ -1158,5 +1158,29 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-15T12:27:13.708078+00:00"
+  },
+  "Salt": {
+    "name": "Salt",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-15T18:04:06.963010+00:00"
+  },
+  "Newsweek": {
+    "name": "Newsweek",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-15T18:04:06.964203+00:00"
   }
 }

@@ -8,6 +8,7 @@ import html as html_mod
 import os
 import re
 import asyncio
+import time
 from datetime import datetime, timedelta, timezone
 
 import aiohttp
@@ -33,6 +34,9 @@ TG_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TG_CHAT = os.getenv("TELEGRAM_CHAT_ID", "")
 BREVO_KEY = os.getenv("BREVO_API_KEY", "")
 TO_EMAIL = os.getenv("TO_EMAIL", "")
+# Gmail SMTP delivery (preferred — no IP restrictions, free)
+GMAIL_USER = os.getenv("GMAIL_USER", "")
+GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
 
 
 # ---------------------------------------------------------------------------
@@ -704,9 +708,72 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     return {"html": html, "text": text}
 
 
+def send_email_via_gmail(subject: str, text_body: str, html_body: str, excel_path: str | None = None, pdf_paths: list[str] | None = None) -> bool:
+    """Send via Gmail SMTP (smtplib) — no IP restrictions, free, 500/day limit."""
+    import smtplib
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    from email.mime.application import MIMEApplication
+    from email.utils import formataddr
+
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = formataddr(("Waleed Zedco", GMAIL_USER))
+    msg["To"] = TO_EMAIL
+    msg.attach(MIMEText(text_body, "plain", "utf-8"))
+    msg.attach(MIMEText(html_body, "html", "utf-8"))
+
+    def _attach(path, max_size):
+        if path and os.path.exists(path) and os.path.getsize(path) < max_size:
+            with open(path, "rb") as f:
+                part = MIMEApplication(f.read(), _subtype="octet-stream")
+            part.add_header("Content-Disposition", "attachment", filename=os.path.basename(path))
+            msg.attach(part)
+            return True
+        return False
+
+    attached = 0
+    if excel_path and _attach(excel_path, 5_000_000):
+        attached += 1
+    if pdf_paths:
+        for p in pdf_paths[:10]:
+            if _attach(p, 1_000_000):
+                attached += 1
+    print(f"Gmail attachments: {attached}")
+
+    for attempt in range(3):
+        try:
+            with smtplib.SMTP("smtp.gmail.com", 587, timeout=30) as server:
+                server.starttls()
+                server.login(GMAIL_USER, GMAIL_APP_PASSWORD)
+                server.sendmail(GMAIL_USER, [TO_EMAIL], msg.as_string())
+            print("Gmail email sent")
+            return True
+        except Exception as e:
+            print(f"Gmail attempt {attempt+1} error: {e}")
+            if attempt < 2:
+                time.sleep(2)
+    return False
+
+
 async def send_email(subject: str, text_body: str, html_body: str, excel_path: str | None = None, pdf_paths: list[str] | None = None) -> bool:
-    if not BREVO_KEY or not TO_EMAIL:
-        print("Email skipped: no BREVO_API_KEY or TO_EMAIL configured")
+    if not TO_EMAIL:
+        print("Email skipped: no TO_EMAIL configured")
+        return False
+
+    # Preferred: Gmail SMTP (no IP restrictions, works from any runner IP)
+    if GMAIL_USER and GMAIL_APP_PASSWORD:
+        try:
+            ok = await asyncio.to_thread(send_email_via_gmail, subject, text_body, html_body, excel_path, pdf_paths)
+            if ok:
+                return True
+            print("Gmail failed — falling back to Brevo")
+        except Exception as e:
+            print(f"Gmail path error: {e} — falling back to Brevo")
+
+    # Fallback: Brevo API
+    if not BREVO_KEY:
+        print("Email skipped: no Gmail or Brevo configured")
         return False
 
     payload = {

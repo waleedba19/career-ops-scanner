@@ -4,9 +4,10 @@
 This is an autonomous job search system that runs 3x daily on GitHub Actions. It finds remote jobs matching the user's profile, generates PDF cover letters, and delivers results via Telegram + Email + Excel.
 
 ## Secrets & Credentials (READ THIS FIRST)
-- **Local secrets file**: `D:\Openwork for now\career-ops-scanner\.env` — gitignored, holds all known credentials (Telegram, Brevo, GitHub tokens, emails). Read it whenever credentials are needed.
-- **GitHub Secrets** (write-only, source of truth for CI): `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `BREVO_API_KEY`, `TO_EMAIL`, `GH_TOKEN_WEMEKENTERPRISELY` on repo `waleedba19/career-ops-scanner`.
-- **Missing from local .env** (only in GitHub Secrets, cannot be read back via API): `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, full `BREVO_API_KEY`. If needed locally, ask the user to paste them.
+- **Local secrets file**: `D:\Openwork for now\career-ops-scanner\.env` — gitignored, holds all known credentials (Telegram, Brevo, Gmail, GitHub tokens, emails). Read it whenever credentials are needed.
+- **Email delivery**: Gmail SMTP is PREFERRED (`GMAIL_USER` + `GMAIL_APP_PASSWORD` — no IP restrictions). Brevo is automatic fallback (`BREVO_API_KEY` — has IP whitelist that blocks GitHub runner IPs).
+- **GitHub Secrets** (write-only, source of truth for CI): `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `BREVO_API_KEY`, `TO_EMAIL`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `GH_TOKEN_WEMEKENTERPRISELY` on repo `waleedba19/career-ops-scanner`.
+- **Missing from local .env** (only in GitHub Secrets, cannot be read back via API): `TELEGRAM_BOT_TOKEN`, `GMAIL_APP_PASSWORD`. If needed locally, ask the user to paste them.
 - **GitHub access**: token for `waleedba19` is in `.env` (flagged for rotation — still valid). Use `gh` with `GH_TOKEN` to trigger runs / check status.
 - **Never** put secret values in this AGENTS.md or any committed file — only references.
 

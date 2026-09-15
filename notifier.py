@@ -720,6 +720,9 @@ def send_email_via_gmail(subject: str, text_body: str, html_body: str, excel_pat
     msg["Subject"] = subject
     msg["From"] = formataddr(("Waleed Zedco", GMAIL_USER))
     msg["To"] = TO_EMAIL
+    # Sanitize lone surrogates (mangled emoji) so UTF-8 encoding never fails
+    text_body = text_body.encode("utf-8", errors="replace").decode("utf-8")
+    html_body = html_body.encode("utf-8", errors="replace").decode("utf-8")
     msg.attach(MIMEText(text_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 

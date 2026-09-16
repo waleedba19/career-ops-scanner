@@ -160,8 +160,28 @@ jobs:
         run: python company_board_probe.py
         continue-on-error: true
 
+      - name: Install Cloudflare WARP VPN
+        run: |
+          curl -fsSL https://pkg.cloudflareclient.com/install.sh | sudo bash 2>/dev/null || echo "WARP install failed — using direct IP"
+          sudo warp-cli registration new 2>/dev/null || true
+          sudo warp-cli mode proxy 2>/dev/null || true
+          sudo warp-cli connect 2>/dev/null || echo "WARP connect failed — using direct IP"
+          sleep 3
+          # Test if proxy works
+          if curl -s --proxy socks5://127.0.0.1:40000 --max-time 5 https://api.ipify.org 2>/dev/null; then
+            echo "WARP proxy active"
+            echo "WARP_PROXY=socks5://127.0.0.1:40000" >> "$GITHUB_ENV"
+          else
+            echo "WARP proxy not available — using direct IP"
+            echo "WARP_PROXY=" >> "$GITHUB_ENV"
+          fi
+
       - name: Run job scanner (adaptive mode)
         run: python scanner.py --mode ${{ env.SCAN_MODE }}
+        env:
+          HTTPS_PROXY: ${{ env.WARP_PROXY }}
+          HTTP_PROXY: ${{ env.WARP_PROXY }}
+          ALL_PROXY: ${{ env.WARP_PROXY }}
 
       - name: Export metrics & health
         if: always()

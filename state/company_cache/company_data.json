@@ -1292,5 +1292,35 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-16T12:26:38.511215+00:00"
+  },
+  "Central Health": {
+    "name": "Central Health",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T19:20:39.574748+00:00"
+  },
+  "YipitData": {
+    "name": "YipitData",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T19:20:39.576530+00:00"
+  },
+  "micro1": {
+    "name": "micro1",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T19:20:39.577824+00:00"
   }
 }

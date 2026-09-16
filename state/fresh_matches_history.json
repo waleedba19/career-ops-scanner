@@ -1833,7 +1833,7 @@
       "matches Arabic Translation profile"
     ],
     "is_fresh": true,
-    "age_hours": 0.8649668755555555,
+    "age_hours": 0.8687384075,
     "flags": [],
     "company_website": "https://www.humana.com",
     "email": "",
@@ -1883,7 +1883,7 @@
     "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Humana_Bilingual RN Field Care Manager (Arabic or Chaldea_20260916.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
-    "scan_date": "2026-09-16T20:52:37.544603+00:00"
+    "scan_date": "2026-09-16T20:52:51.244412+00:00"
   },
   {
     "title": "Bilingual Kurdish/Arabic Linguist - Travel Only",
@@ -2753,7 +2753,7 @@
     "category": "Other",
     "why": [],
     "is_fresh": true,
-    "age_hours": 0.8649949044444444,
+    "age_hours": 0.8687655086111111,
     "flags": [],
     "company_website": "https://www.humana.com",
     "email": "",
@@ -2800,7 +2800,7 @@
     "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Humana_RN Field Care Manager - Medicaid HCBS-LTSS_20260916.pdf",
     "cover_letter_type": "general",
     "cover_letter_ai": false,
-    "scan_date": "2026-09-16T20:52:37.544603+00:00"
+    "scan_date": "2026-09-16T20:52:51.244412+00:00"
   },
   {
     "title": "Escrow Processor - US Based Remote",
@@ -2874,7 +2874,7 @@
     "category": "Other",
     "why": [],
     "is_fresh": true,
-    "age_hours": 0.8743655991666667,
+    "age_hours": 0.8781363027777778,
     "flags": [],
     "company_website": "https://www.belmontlavan.com",
     "email": "",
@@ -2901,7 +2901,7 @@
       "positive_signals": [
         "Appears to be registered business"
       ],
-      "last_updated": "2026-09-16T20:52:36.762356+00:00"
+      "last_updated": "2026-09-16T20:52:50.423455+00:00"
     },
     "company_legitimacy": 55,
     "company_summary": "1 positive signals",
@@ -2921,7 +2921,7 @@
     "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Belmont Lavan Ltd_AI Application Engineer - LangGraph & Agentic AI_20260916.pdf",
     "cover_letter_type": "virtual_assistant",
     "cover_letter_ai": false,
-    "scan_date": "2026-09-16T20:52:37.544603+00:00"
+    "scan_date": "2026-09-16T20:52:51.244412+00:00"
   },
   {
     "title": "Solution Architect - LangGraph & Agentic AI",
@@ -2937,7 +2937,7 @@
     "category": "Other",
     "why": [],
     "is_fresh": true,
-    "age_hours": 0.8743898761111112,
+    "age_hours": 0.8781606361111112,
     "flags": [
       "non-target role title"
     ],
@@ -2966,7 +2966,7 @@
       "positive_signals": [
         "Appears to be registered business"
       ],
-      "last_updated": "2026-09-16T20:52:36.762356+00:00"
+      "last_updated": "2026-09-16T20:52:50.423455+00:00"
     },
     "company_legitimacy": 55,
     "company_summary": "1 positive signals",
@@ -2974,7 +2974,7 @@
     "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Belmont Lavan Ltd_Solution Architect - LangGraph & Agentic AI_20260916.pdf",
     "cover_letter_type": "virtual_assistant",
     "cover_letter_ai": false,
-    "scan_date": "2026-09-16T20:52:37.544603+00:00"
+    "scan_date": "2026-09-16T20:52:51.244412+00:00"
   },
   {
     "title": "Account Executive, North America",
@@ -4552,7 +4552,7 @@
     "category": "Other",
     "why": [],
     "is_fresh": true,
-    "age_hours": 0.8744728930555555,
+    "age_hours": 0.8782437363888889,
     "flags": [],
     "company_website": "https://www.kevinkehr.com",
     "email": "",
@@ -4577,14 +4577,14 @@
       "industry": "unknown",
       "red_flags": [],
       "positive_signals": [],
-      "last_updated": "2026-09-16T20:52:36.763882+00:00"
+      "last_updated": "2026-09-16T20:52:50.425290+00:00"
     },
     "company_legitimacy": 50,
     "company_summary": "",
     "cover_letter_path": "",
     "cover_letter_type": "error",
     "cover_letter_ai": false,
-    "scan_date": "2026-09-16T20:52:37.544603+00:00"
+    "scan_date": "2026-09-16T20:52:51.244412+00:00"
   },
   {
     "title": "Sr. Sustainability Consultant - Fokus PCF/LCA @ Climate Tech Start-up (m/w/d) - 100% Remote m\u00f6glich",
@@ -4600,11 +4600,11 @@
     "category": "Other",
     "why": [],
     "is_fresh": true,
-    "age_hours": 0.8746773136111111,
+    "age_hours": 0.8784482441666666,
     "flags": [],
     "company_website": "https://www.globalchanger.com",
     "email": "",
     "tier": "REVIEW",
-    "scan_date": "2026-09-16T20:52:37.544603+00:00"
+    "scan_date": "2026-09-16T20:52:51.244412+00:00"
   }
 ]

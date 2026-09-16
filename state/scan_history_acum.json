@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-06T16:21:48.050017+00:00",
-    "matched_count": 1,
-    "all_count": 4310,
-    "jobs": [
-      {
-        "title": "Pashto: US-based Interpreter",
-        "company": "himalayas_app",
-        "url": "https://himalayas.app/companies/one-world-global-services/jobs/pashto-us-based-interpreter",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "himalayas_app"
-      }
-    ]
-  },
-  {
     "date": "2026-09-06T16:33:13.233637+00:00",
     "matched_count": 1,
     "all_count": 4422,
@@ -2328,6 +2313,53 @@
         "score": 0,
         "category": "Other",
         "source": "remote1stjobs"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-16T21:05:43.594012+00:00",
+    "matched_count": 5,
+    "all_count": 433,
+    "jobs": [
+      {
+        "title": "Senior Platform Engineer, GitLab Orbit",
+        "company": "GitLab",
+        "url": "https://himalayas.app/companies/gitlab-com/jobs/senior-platform-engineer-gitlab-orbit",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "(0070) Product Owner Sr",
+        "company": "ALTEN",
+        "url": "https://himalayas.app/companies/alten/jobs/0070-product-owner-sr-3505313596",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Technical Ad Producer - (US Remote)",
+        "company": "Yelp, Inc",
+        "url": "https://himalayas.app/companies/yelp-inc/jobs/technical-ad-producer-us-remote",
+        "score": 2,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Implementation Mgr",
+        "company": "HealthEquity",
+        "url": "https://himalayas.app/companies/healthequity/jobs/implementation-mgr-8545353706",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Medical Interpreter, Arabic Global Services Full-Time Days",
+        "company": "Northwestern Memorial Hospital",
+        "url": "https://www.linkedin.com/jobs/view/medical-interpreter-arabic-global-services-full-time-days-at-northwestern-memorial-hospital-4462368821",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin_playwright"
       }
     ]
   }

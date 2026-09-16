@@ -46,9 +46,9 @@ jobs:
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
       OLLAMA_MODEL:       qwen2.5:7b-instruct-q3_K_M
-      CAREEROPS_TIER_CAP: "1"   # lean & fast — only verified sources
+      CAREEROPS_TIER_CAP: "2"   # balanced — verified + secondary sources
       CAREEROPS_BATCH_SIZE: "12"
-      CAREEROPS_MIN_SCORE: "75" # lethal threshold — only 75%+ matches pass (per AGENTS.md)
+      CAREEROPS_MIN_SCORE: "50" # balanced threshold — 50-74 GOOD, 75+ STRONG
       SCAN_MODE:          ${{ github.event.inputs.mode || 'adaptive' }}
 
     steps:

@@ -66,6 +66,46 @@ async def fetch_with_playwright(session=None) -> list[dict]:
         except Exception as e:
             print(f"  Playwright Mostaql failed: {e}")
 
+        await asyncio.sleep(2)
+
+        # ── 5. Bayt.com (biggest MENA job board) ──
+        try:
+            bayt_jobs = await _scrape_bayt(browser)
+            all_jobs.extend(bayt_jobs)
+            print(f"  Playwright Bayt: {len(bayt_jobs)} jobs")
+        except Exception as e:
+            print(f"  Playwright Bayt failed: {e}")
+
+        await asyncio.sleep(2)
+
+        # ── 6. GulfTalent ──
+        try:
+            gulf_jobs = await _scrape_gulftalent(browser)
+            all_jobs.extend(gulf_jobs)
+            print(f"  Playwright GulfTalent: {len(gulf_jobs)} jobs")
+        except Exception as e:
+            print(f"  Playwright GulfTalent failed: {e}")
+
+        await asyncio.sleep(2)
+
+        # ── 7. Wuzzuf (Egyptian jobs) ──
+        try:
+            wuzzuf_jobs = await _scrape_wuzzuf(browser)
+            all_jobs.extend(wuzzuf_jobs)
+            print(f"  Playwright Wuzzuf: {len(wuzzuf_jobs)} jobs")
+        except Exception as e:
+            print(f"  Playwright Wuzzuf failed: {e}")
+
+        await asyncio.sleep(2)
+
+        # ── 8. Ureed (Arabic remote jobs) ──
+        try:
+            ureed_jobs = await _scrape_ureed(browser)
+            all_jobs.extend(ureed_jobs)
+            print(f"  Playwright Ureed: {len(ureed_jobs)} jobs")
+        except Exception as e:
+            print(f"  Playwright Ureed failed: {e}")
+
     except Exception as e:
         print(f"  Playwright overall error: {e}")
     finally:
@@ -327,3 +367,166 @@ async def _scrape_mostaql(browser) -> list[dict]:
         return jobs
     finally:
         await page.close()
+
+
+async def _scrape_bayt(browser) -> list[dict]:
+    """Scrape Arabic translation jobs from Bayt.com using real browser."""
+    urls = [
+        "https://www.bayt.com/en/remote-jobs/jobs/?keyword=arabic+translator",
+        "https://www.bayt.com/en/remote-jobs/jobs/?keyword=translation+remote",
+        "https://www.bayt.com/en/remote-jobs/jobs/?keyword=bilingual+english+arabic",
+    ]
+    all_jobs = []
+    page = await browser.new_page()
+    try:
+        for url in urls:
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=25000)
+                await page.wait_for_load_state("networkidle", timeout=15000)
+                await asyncio.sleep(2)
+                jobs = await page.evaluate("""() => {
+                    const results = [];
+                    const selectors = ['li[data-job-id]', '.card', 'div[class*="job"]', 'article', 'section li'];
+                    let cards = [];
+                    for (const sel of selectors) { cards = document.querySelectorAll(sel); if (cards.length > 0) break; }
+                    cards.forEach(card => {
+                        const link = card.querySelector('a[href*="/job/"], h2 a, h3 a');
+                        if (!link) return;
+                        const title = (link.textContent || '').trim();
+                        if (!title || title.length < 3) return;
+                        let href = link.getAttribute('href') || '';
+                        if (href && !href.startsWith('http')) href = 'https://www.bayt.com' + href;
+                        const company = card.querySelector('.company, [class*="company"]');
+                        results.push({ title: title.substring(0,150), company: company ? company.textContent.trim() : 'Bayt employer', url: href, location: 'Remote (MENA)', posted: '', description: '', salary: '', source: 'bayt_playwright' });
+                    });
+                    return results;
+                }""")
+                all_jobs.extend(jobs)
+                await asyncio.sleep(1)
+            except Exception:
+                pass
+    finally:
+        await page.close()
+    return all_jobs
+
+
+async def _scrape_gulftalent(browser) -> list[dict]:
+    """Scrape jobs from GulfTalent.com."""
+    urls = [
+        "https://www.gulftalent.com/jobs/search?keyword=arabic+translator",
+        "https://www.gulftalent.com/jobs/search?keyword=translation+remote",
+        "https://www.gulftalent.com/jobs/search?keyword=localization+remote",
+    ]
+    all_jobs = []
+    page = await browser.new_page()
+    try:
+        for url in urls:
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=25000)
+                await page.wait_for_load_state("networkidle", timeout=15000)
+                await asyncio.sleep(2)
+                jobs = await page.evaluate("""() => {
+                    const results = [];
+                    const selectors = ['.job-item', '.card', 'div[class*="job"]', 'article', '.search-result'];
+                    let cards = [];
+                    for (const sel of selectors) { cards = document.querySelectorAll(sel); if (cards.length > 0) break; }
+                    cards.forEach(card => {
+                        const link = card.querySelector('a[href*="/job"], h2 a, h3 a');
+                        if (!link) return;
+                        const title = (link.textContent || '').trim();
+                        if (!title || title.length < 3) return;
+                        let href = link.getAttribute('href') || '';
+                        if (href && !href.startsWith('http')) href = 'https://www.gulftalent.com' + href;
+                        const company = card.querySelector('.company, [class*="company"]');
+                        results.push({ title: title.substring(0,150), company: company ? company.textContent.trim() : 'GulfTalent employer', url: href, location: 'Gulf / MENA', posted: '', description: '', salary: '', source: 'gulftalent_playwright' });
+                    });
+                    return results;
+                }""")
+                all_jobs.extend(jobs)
+                await asyncio.sleep(1)
+            except Exception:
+                pass
+    finally:
+        await page.close()
+    return all_jobs
+
+
+async def _scrape_wuzzuf(browser) -> list[dict]:
+    """Scrape jobs from Wuzzuf.net."""
+    urls = [
+        "https://www.wuzzuf.net/search/jobs/?q=arabic+translator",
+        "https://www.wuzzuf.net/search/jobs/?q=translation+remote",
+        "https://www.wuzzuf.net/search/jobs/?q=bilingual+english+arabic",
+    ]
+    all_jobs = []
+    page = await browser.new_page()
+    try:
+        for url in urls:
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=25000)
+                await page.wait_for_load_state("networkidle", timeout=15000)
+                await asyncio.sleep(2)
+                jobs = await page.evaluate("""() => {
+                    const results = [];
+                    const selectors = ['div[class*="job"]', '.card', 'article', '.css-pkv5j'];
+                    let cards = [];
+                    for (const sel of selectors) { cards = document.querySelectorAll(sel); if (cards.length > 0) break; }
+                    cards.forEach(card => {
+                        const link = card.querySelector('a[href*="/job/"], h2 a');
+                        if (!link) return;
+                        const title = (link.textContent || '').trim();
+                        if (!title || title.length < 3) return;
+                        let href = link.getAttribute('href') || '';
+                        if (href && !href.startsWith('http')) href = 'https://www.wuzzuf.net' + href;
+                        const company = card.querySelector('[class*="company"]');
+                        results.push({ title: title.substring(0,150), company: company ? company.textContent.trim() : 'Wuzzuf employer', url: href, location: 'Egypt / Remote', posted: '', description: '', salary: '', source: 'wuzzuf_playwright' });
+                    });
+                    return results;
+                }""")
+                all_jobs.extend(jobs)
+                await asyncio.sleep(1)
+            except Exception:
+                pass
+    finally:
+        await page.close()
+    return all_jobs
+
+
+async def _scrape_ureed(browser) -> list[dict]:
+    """Scrape jobs from Ureed.com."""
+    urls = [
+        "https://ureed.com/en/jobs?search=translator",
+        "https://ureed.com/en/jobs?search=translation",
+        "https://ureed.com/en/jobs?search=bilingual",
+    ]
+    all_jobs = []
+    page = await browser.new_page()
+    try:
+        for url in urls:
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=25000)
+                await page.wait_for_load_state("networkidle", timeout=15000)
+                await asyncio.sleep(2)
+                jobs = await page.evaluate("""() => {
+                    const results = [];
+                    const selectors = ['.job-card', '.card', 'div[class*="job"]', 'article'];
+                    let cards = [];
+                    for (const sel of selectors) { cards = document.querySelectorAll(sel); if (cards.length > 0) break; }
+                    cards.forEach(card => {
+                        const link = card.querySelector('a[href*="/jobs/"], a[href*="/job/"]');
+                        if (!link) return;
+                        const title = (link.textContent || '').trim();
+                        if (!title || title.length < 3) return;
+                        let href = link.getAttribute('href') || '';
+                        if (href && !href.startsWith('http')) href = 'https://ureed.com' + href;
+                        results.push({ title: title.substring(0,150), company: 'Ureed employer', url: href, location: 'Remote (MENA)', posted: '', description: '', salary: '', source: 'ureed_playwright' });
+                    });
+                    return results;
+                }""")
+                all_jobs.extend(jobs)
+                await asyncio.sleep(1)
+            except Exception:
+                pass
+    finally:
+        await page.close()
+    return all_jobs

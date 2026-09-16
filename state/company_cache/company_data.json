@@ -1436,5 +1436,51 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-16T21:07:39.626205+00:00"
+  },
+  "ICC - International Criminal Court": {
+    "name": "ICC - International Criminal Court",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T21:22:53.339797+00:00"
+  },
+  "GRANIT PARTS Iberia": {
+    "name": "GRANIT PARTS Iberia",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-16T21:22:53.341152+00:00"
+  },
+  "KBRA": {
+    "name": "KBRA",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-16T21:22:53.342401+00:00"
+  },
+  "Trilogy Writing & Consulting, An Indegene Company": {
+    "name": "Trilogy Writing & Consulting, An Indegene Company",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-16T21:22:53.343590+00:00"
   }
 }

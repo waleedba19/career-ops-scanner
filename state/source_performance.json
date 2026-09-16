@@ -802,7 +802,7 @@
     },
     "jobicy": {
       "first_seen": "2026-09-05",
-      "total_fetched": 22490,
+      "total_fetched": 22491,
       "total_matches": 35,
       "last_active": "2026-09-16",
       "consecutive_empty": 1,
@@ -955,7 +955,7 @@
         },
         {
           "date": "2026-09-16",
-          "fetched": 70,
+          "fetched": 71,
           "matches": 0
         }
       ]
@@ -2867,7 +2867,7 @@
     },
     "linkedin": {
       "first_seen": "2026-09-06",
-      "total_fetched": 3079,
+      "total_fetched": 3069,
       "total_matches": 1,
       "last_active": "2026-09-16",
       "consecutive_empty": 18,
@@ -3020,7 +3020,7 @@
         },
         {
           "date": "2026-09-16",
-          "fetched": 33,
+          "fetched": 23,
           "matches": 0
         }
       ]
@@ -3962,10 +3962,10 @@
     },
     "for9a_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 48,
+      "total_fetched": 50,
       "total_matches": 0,
       "last_active": "2026-09-16",
-      "consecutive_empty": 24,
+      "consecutive_empty": 25,
       "status": "inactive",
       "daily_stats": [
         {
@@ -4087,10 +4087,15 @@
           "date": "2026-09-16",
           "fetched": 2,
           "matches": 0
+        },
+        {
+          "date": "2026-09-16",
+          "fetched": 2,
+          "matches": 0
         }
       ]
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-16T20:30:10.305383+00:00"
+  "last_cleanup": "2026-09-16T20:30:24.969054+00:00"
 }

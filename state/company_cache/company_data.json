@@ -1322,5 +1322,35 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-16T19:20:39.577824+00:00"
+  },
+  "Unit8 SA": {
+    "name": "Unit8 SA",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T19:42:47.725218+00:00"
+  },
+  "Tutor Me Education": {
+    "name": "Tutor Me Education",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T19:42:47.726628+00:00"
+  },
+  "Paired": {
+    "name": "Paired",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T19:42:47.727939+00:00"
   }
 }

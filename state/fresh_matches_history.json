@@ -1252,6 +1252,209 @@
     "scan_date": "2026-09-15T20:32:44.392368+00:00"
   },
   {
+    "title": "Translator - Abu Dhabi Government entity",
+    "company": "Confidential",
+    "url": "https://ae.linkedin.com/jobs/view/translator-abu-dhabi-government-entity-at-confidential-4465964741",
+    "location": "Remote \u2014 Abu Dhabi Emirate, United Arab Emirates",
+    "posted": "2026-09-16",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "arabic translator",
+    "postedISO": "2026-09-16T00:00:00",
+    "score": 100,
+    "category": "Arabic Translation",
+    "why": [
+      "translator translation specialist staff translator freelance translator (title)",
+      "remote/worldwide (bonus)",
+      "matches Arabic Translation profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.374202418055557,
+    "flags": [],
+    "company_website": "https://www.confidential.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Translation backlog / scaling",
+    "email_guessed": true,
+    "hiring_email": "careers@ae.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@ae.linkedin.com",
+      "hr@ae.linkedin.com",
+      "jobs@ae.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "Confidential",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-16T12:26:38.510023+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Confidential_Translator - Abu Dhabi Government entity_20260916.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Confidential_Translator - Abu Dhabi Government entity_20260916.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
+    "title": "English Tutor",
+    "company": "SkillAnthem",
+    "url": "https://uk.linkedin.com/jobs/view/english-tutor-at-skillanthem-4465976741",
+    "location": "Remote \u2014 United Kingdom",
+    "posted": "2026-09-16",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-16T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.374204215555556,
+    "flags": [
+      "country-locked location"
+    ],
+    "company_website": "https://www.skillanthem.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "Needs ESL teacher, likely understaffed",
+    "email_guessed": true,
+    "hiring_email": "careers@uk.linkedin.com",
+    "email_verified": false,
+    "all_emails": [
+      "careers@uk.linkedin.com",
+      "hr@uk.linkedin.com",
+      "jobs@uk.linkedin.com"
+    ],
+    "opportunity_score": 30,
+    "company_research": {
+      "name": "SkillAnthem",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-16T12:26:38.511215+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/SkillAnthem_English Tutor_20260916.pdf",
+    "cover_letter_type": "general",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/SkillAnthem_English Tutor_20260916.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
+    "title": "English Tutor WFH",
+    "company": "GALAXINO EDUCATION TECHNOLOGY- FZCO",
+    "url": "https://in.linkedin.com/jobs/view/english-tutor-wfh-at-galaxino-education-technology-fzco-4465968414",
+    "location": "Remote \u2014 Kolkata, West Bengal, India",
+    "posted": "2026-09-16",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-16T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.374204579444445,
+    "flags": [],
+    "company_website": "https://www.galaxinoeducationtechnology-fzco.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
+    "title": "SAT English Tutor \u2013 Early Morning U.S. Shift",
+    "company": "AP Guru",
+    "url": "https://in.linkedin.com/jobs/view/sat-english-tutor-%E2%80%93-early-morning-u-s-shift-at-ap-guru-4465962512",
+    "location": "Remote \u2014 India",
+    "posted": "2026-09-16",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-16T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.374204798611112,
+    "flags": [],
+    "company_website": "https://www.apguru.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
+    "title": "Global Online English Tutor",
+    "company": "The Faculty Online Learning Group",
+    "url": "https://za.linkedin.com/jobs/view/global-online-english-tutor-at-the-faculty-online-learning-group-4465994475",
+    "location": "Remote \u2014 Umhlanga, KwaZulu-Natal, South Africa",
+    "posted": "2026-09-16",
+    "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
+    "salary": "",
+    "source": "linkedin",
+    "matched_query": "esl teacher online",
+    "postedISO": "2026-09-16T00:00:00",
+    "score": 100,
+    "category": "ESL",
+    "why": [
+      "english teacher tutor instructor language training teaching (title)",
+      "remote/worldwide (bonus)",
+      "matches ESL profile"
+    ],
+    "is_fresh": false,
+    "age_hours": 12.374205036666666,
+    "flags": [],
+    "company_website": "https://www.thefacultyonlinelearninggroup.com",
+    "email": "",
+    "tier": "STRONG",
+    "is_old_verified": true,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
     "title": "Kurdish/Arabic Translators",
     "company": "Leidos",
     "url": "https://www.linkedin.com/jobs/view/kurdish-arabic-translators-at-leidos-4399045497",
@@ -2351,6 +2554,64 @@
     "scan_date": "2026-09-15T00:46:14.037996+00:00"
   },
   {
+    "title": "Escrow Processor - US Based Remote",
+    "company": "Anywhere Real Estate Inc.",
+    "url": "https://himalayas.app/companies/anywhere-real-estate-inc/jobs/escrow-processor-us-based-remote-956169065",
+    "location": "United States",
+    "posted": 1789549462,
+    "description": "Responsibilities Communicate with all parties involved in settlement throughout the closing process Data entry of all transaction details into proprietary system Collect documentation to clear title conditions Coordinate the scheduling of the Closing and collect all documentation and information to meet the closing Accurately prepare the CD in accordance with the closing instructions; Title Commitment and Invoices provided Print and prepare all documents needed for closing Truly Remarkable Service We are looking for a friendly, outgoing, well organized person with a strong work ethic Must create a positive image of the company through a professional appearance, actions, and conduct to fellow employees and customers Establish a professional working rapport with our clients and any new relationships that are established Maintain high quality and productivity standards Meet team metrics Minimum Requirements Minimum of two years\u2019 experience with processing real estate transactions or one-year closing experience strongly preferred. Microsoft Suite proficient (Excel, Word, Outlook, Teams) Must demonstrate an ability to handle multiple tasks while managing a full pipeline of files in a fast paced, high volume work environment Excellent verbal and written communication skills Must be detail oriented with a proficiency in alpha-numeric data entry Must be willing to work hours: 8:30 am \u2013 5:00 pm/9:30 am - 6:00 pm, Monday \u2013 Friday, mandatory overtime if required and Saturdays if needed. May need to be flexible with shifts as client dictates. Originally posted on Himalayas",
+    "salary": "",
+    "source": "himalayas",
+    "postedISO": "2026-09-16T09:04:22+00:00",
+    "score": 2,
+    "category": "Other",
+    "why": [
+      "data entry (description)",
+      "remote/worldwide (bonus)",
+      "matches Admin profile"
+    ],
+    "is_fresh": true,
+    "age_hours": 3.301422318888889,
+    "flags": [
+      "location-restricted",
+      "country-locked location"
+    ],
+    "company_website": "https://www.anywhererealestate..com",
+    "email": "",
+    "tier": "REVIEW",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 0,
+    "company_research": {
+      "name": "Anywhere Real Estate Inc.",
+      "legitimacy_score": 55,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Appears to be registered business"
+      ],
+      "last_updated": "2026-09-16T12:26:38.508827+00:00"
+    },
+    "company_legitimacy": 55,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Anywhere Real Estate Inc._Escrow Processor - US Based Remote_20260916.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
     "title": "Account Executive, North America",
     "company": "Rootstock Software",
     "url": "https://himalayas.app/companies/rootstock-software/jobs/account-executive-north-america",
@@ -3179,5 +3440,166 @@
     "cover_letter_type": "virtual_assistant",
     "cover_letter_ai": false,
     "scan_date": "2026-09-15T20:32:44.392368+00:00"
+  },
+  {
+    "title": "Virtual Assistant",
+    "company": "Assist World",
+    "url": "https://himalayas.app/companies/assist-world/jobs/virtual-assistant",
+    "location": "Philippines, South Africa",
+    "posted": 1789554269,
+    "description": "About the Client The client runs two businesses: a business coaching and consulting practice, and a tax planning practice. He currently splits his time roughly evenly between the two, but his focus is shifting toward growing the tax planning business over the next six to nine months, with an eventual wind-down of the coaching business. The VA will support administrative work across both sides of the business during this transition. Role Overview The client is looking for his first Virtual Assistant to take administrative tasks off his plate and help him stay on track day to day. Beyond task support, a key part of this role is accountability: regularly checking in with Rich to review what needs to get done, following up on progress, and helping him plan next steps when things slip. This is a part-time role starting at 10 hours/week, with room to grow as trust and workload build. Key Responsibilities Manage calendar and schedule meetings across both businesses Keep his inbox organized and reply to routine emails on his behalf Hold regular check-ins with Rich to review daily/weekly to-dos and follow up on outstanding items Provide general administrative support for both the business coaching and tax planning practices Handle light calling or follow-up as needed (minimal volume expected) Support ad hoc admin tasks as the tax planning business scales Skills & Tools Strong organizational skills and comfort managing calendars and inboxes independently Proactive communicator who can hold someone accountable in a professional, friendly way Experience with standard scheduling and email tools (e.g. Google Workspace/Microsoft 365, Calendly) Tax, accounting, or bookkeeping experience is a plus but not required Comfortable working independently with minimal day-to-day supervision Contract & Logistics This is an ongoing role, not a fixed-term contract \u2014 candidates should expect long-term placement Starts at 10 hrs/week with potential to grow to 20 hrs/week based on fit and workload Must be available for regular overlap with Central Time business hours Why Join Assist World ? 100% REMOTE $50 birthday bonus $200 testimonial bonus NO TRACKER. NO PROBLEM Originally posted on Himalayas",
+    "salary": "$50",
+    "source": "himalayas",
+    "postedISO": "2026-09-16T10:24:29+00:00",
+    "score": 0,
+    "category": "Other",
+    "why": [
+      "virtual assistant administrative assistant admin assistant executive assistant (title+description)",
+      "remote/worldwide (bonus)",
+      "matches Admin profile"
+    ],
+    "is_fresh": true,
+    "age_hours": 1.966139081111111,
+    "flags": [],
+    "company_website": "https://www.assistworld.com",
+    "email": "",
+    "tier": "REVIEW",
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 40,
+        "reason": "Job title does not require Arabic-English translation, ESL teaching, or academic supervision"
+      },
+      "experience_match": {
+        "score": 20,
+        "reason": "No direct experience in translation, ESL teaching, or academic supervision"
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote, flexible, and compatible with academic environment"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Remote, worldwide, and compatible"
+      },
+      "career_alignment": {
+        "score": 40,
+        "reason": "Builds toward translation/teaching/academic career but not as a Virtual Assistant"
+      },
+      "overall_score": 40,
+      "verdict": "Moderate Fit",
+      "strengths": [
+        "Remote, flexible, and compatible with academic environment"
+      ],
+      "gaps": [
+        "No direct experience in translation, ESL teaching, or academic supervision"
+      ],
+      "recommendation": "Waleed Ballag may find this role suitable for a Virtual Assistant role, but with the caveat that it does not align with his career goals as a translator, ESL instructor, or academic supervisor.",
+      "interview_prep": [
+        "Q1: How do you handle administrative tasks and ensure accountability in a remote setting? A1: I have experience managing calendars and scheduling meetings, and I am proactive in checking in with clients to ensure tasks are completed on time.",
+        "Q2: Can you describe a situation where you had to adapt to a new client's workflow and what steps did you take? A2: I am flexible and adaptable, and I have experience working with clients from various backgrounds. I would assess the client's needs and adjust my approach accordingly.",
+        "Q3: How do you stay organized and manage your workload in a virtual assistant role? A3: I use tools like calendars and project management software to keep track of tasks and deadlines."
+      ],
+      "one_line_summary": "Virtual Assistant role is not a strong fit for Waleed Ballag's career goals."
+    },
+    "ai_insight": "Virtual Assistant role is not a strong fit for Waleed Ballag's career goals.",
+    "ai_overall_score": 40,
+    "ai_verdict": "Moderate Fit",
+    "ai_strengths": [
+      "Remote, flexible, and compatible with academic environment"
+    ],
+    "ai_gaps": [
+      "No direct experience in translation, ESL teaching, or academic supervision"
+    ],
+    "ai_recommendation": "Waleed Ballag may find this role suitable for a Virtual Assistant role, but with the caveat that it does not align with his career goals as a translator, ESL instructor, or academic supervisor.",
+    "ai_interview_prep": [
+      "Q1: How do you handle administrative tasks and ensure accountability in a remote setting? A1: I have experience managing calendars and scheduling meetings, and I am proactive in checking in with clients to ensure tasks are completed on time.",
+      "Q2: Can you describe a situation where you had to adapt to a new client's workflow and what steps did you take? A2: I am flexible and adaptable, and I have experience working with clients from various backgrounds. I would assess the client's needs and adjust my approach accordingly.",
+      "Q3: How do you stay organized and manage your workload in a virtual assistant role? A3: I use tools like calendars and project management software to keep track of tasks and deadlines."
+    ],
+    "ai_technical_skills": 40,
+    "ai_experience_match": 20,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 40,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 0,
+    "company_research": {
+      "name": "Assist World",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-16T12:26:38.507245+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Assist World_Virtual Assistant_20260916.pdf",
+    "cover_letter_type": "data_entry",
+    "cover_letter_ai": false,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
+  },
+  {
+    "title": "Odia Transcription Expert - Fully Remote | Upto $12/hr",
+    "company": "mercor",
+    "url": "https://himalayas.app/companies/mercor/jobs/odia-transcription-expert-fully-remote-upto-12-hr-3875437313",
+    "location": "Belgium",
+    "posted": 1789551233,
+    "description": "About the job Mercor connects elite creative and technical talent with leading AI research labs. Headquartered in San Francisco, our investors include Benchmark , General Catalyst , Peter Thiel , Adam D'Angelo , Larry Summers , and Jack Dorsey . Position: PDF Annotation & Transcription Experts \u2013 Odia Type: Contract Compensation: $13/hour Location: Remote Role Responsibilities Source documents: Find a publicly accessible Odia PDF in an assigned document type with multimodal elements. Record the source. Annotate structure: Identify and bound every meaningful region of the page. Assign each a component type and a reading-order index. Record relationships: Link each region to its parent component, such as a figure or table. Transcribe faithfully: Reproduce all text exactly as it appears in Odia script , including handwritten content. Flag any illegible regions. Capture page metadata: Document language, type, source, page dimensions, and flags for tables, formulas, and handwriting. Review a colleague's work: Conduct end-to-end reviews of tasks by a second Odia expert . Qualifications Must-Have Native Odia speaker with full command of the script. Experience in annotation, transcription, translation, localization, subtitling, proofreading, journalism, or regional-language data review. Exact character-level accuracy. Systematic application of taxonomy across pages. Comfort with unfamiliar layouts like multi-column newspapers and handwritten forms. Preferred Experience with regional-language AI data annotation, labeling, grading, or bilingual evaluation. Skills in transcription and localization: MTPE , subtitling, bilingual QA, OCR correction, or post-editing. Document production skills: typesetting, copy-editing, proofreading, or digitization of Odia-language material. Knowledge of script and encoding: Unicode normalization , Odia input methods , numeral-form, and character-form accuracy. Application Process (Takes 20\u201330 mins to complete) Upload resume AI interview based on your resume Submit form Resources & Support For details about the interview process and platform information, please check: For any help or support, reach out to: PS: Our team reviews applications daily. Please complete your AI interview and application steps to be considered for this opportunity. Originally posted on Himalayas",
+    "salary": "$13/hour",
+    "source": "himalayas",
+    "postedISO": "2026-09-16T09:33:53+00:00",
+    "score": 0,
+    "category": "Other",
+    "why": [
+      "typist transcription transcribing transcriber (title+description)",
+      "remote/worldwide (bonus)",
+      "matches Admin profile"
+    ],
+    "is_fresh": true,
+    "age_hours": 2.80947648,
+    "flags": [],
+    "company_website": "https://www.mercor.com",
+    "email": "",
+    "tier": "REVIEW",
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": true,
+    "hiring_email": "careers@himalayas.app",
+    "email_verified": false,
+    "all_emails": [
+      "careers@himalayas.app",
+      "hr@himalayas.app",
+      "jobs@himalayas.app"
+    ],
+    "opportunity_score": 0,
+    "company_research": {
+      "name": "mercor",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-13T23:19:05.768912+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/mercor_Odia Transcription Expert - Fully Remote - Upto $1_20260916.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "scan_date": "2026-09-16T12:26:38.856116+00:00"
   }
 ]

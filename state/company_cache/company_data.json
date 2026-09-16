@@ -1246,5 +1246,51 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-15T20:32:43.525960+00:00"
+  },
+  "Assist World": {
+    "name": "Assist World",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T12:26:38.507245+00:00"
+  },
+  "Anywhere Real Estate Inc.": {
+    "name": "Anywhere Real Estate Inc.",
+    "legitimacy_score": 55,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-16T12:26:38.508827+00:00"
+  },
+  "Confidential": {
+    "name": "Confidential",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-16T12:26:38.510023+00:00"
+  },
+  "SkillAnthem": {
+    "name": "SkillAnthem",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-16T12:26:38.511215+00:00"
   }
 }

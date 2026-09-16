@@ -278,53 +278,91 @@ MATCH_BUCKETS = [
     {
         "name": "Arabic Translation",
         "phrases": [
-            (re.compile(r"arabic (translator|translation|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 90),
-            (re.compile(r"(translator|translation|interpreter|linguist|editor|proofreader|locali[sz]ation specialist).{0,40}arabic", re.I), 90),
-            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 90),
-            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 80),
-            (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator)\b", re.I), 85),
-            (re.compile(r"\b(locali[sz]ation specialist|l10n specialist|i18n linguist)\b.{0,40}(arabic|english|bilingual|translation)", re.I), 85),
-            (re.compile(r"(arabic|english|bilingual|translation).{0,40}\b(locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 85),
-            (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 90),
-            (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 90),
-            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 85),
-            (re.compile(r"mena.*arabic|arabic.*mena", re.I), 85),
+            # Direct Arabic translation roles (highest priority)
+            (re.compile(r"arabic (translator|translation|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 95),
+            (re.compile(r"(translator|translation|interpreter|linguist|editor|proofreader|locali[sz]ation specialist).{0,40}arabic", re.I), 95),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b.{0,40}(translator|editor|content|locali[sz]|translation|localization)", re.I), 95),
+            # Arabic alone with remote/freelance/global — strong signal
             (re.compile(r"\barabic\b.{0,50}\b(remote|worldwide|freelance|work from home)\b", re.I), 90),
-            (re.compile(r"\b(mena|middle east|north africa)\b.{0,50}\b(translat|locali|languag|content|edit)", re.I), 85),
-            (re.compile(r"\b(right[- ]to[- ]left|rtl)\b.{0,50}\barabic", re.I), 85),
+            (re.compile(r"\barabic (speaker|native|fluent|bilingual)\b", re.I), 85),
+            # Bilingual/multilingual + Arabic
+            (re.compile(r"bilingual.*arabic|arabic.*bilingual", re.I), 90),
             (re.compile(r"\bmultilingual\b.{0,50}\barabic", re.I), 85),
             (re.compile(r"\barabic\b.{0,50}\b(multilingual|polyglot)", re.I), 85),
+            # MENA region roles
+            (re.compile(r"mena.*arabic|arabic.*mena", re.I), 85),
+            (re.compile(r"\b(mena|middle east|north africa)\b.{0,50}\b(translat|locali|languag|content|edit)", re.I), 85),
+            # RTL / dialect signals
+            (re.compile(r"\b(right[- ]to[- ]left|rtl)\b.{0,50}\barabic", re.I), 85),
             (re.compile(r"\b(darija|fusha|msa|modern standard arabic|colloquial arabic)\b", re.I), 80),
+            # Arabic + AI/NLP/data roles
             (re.compile(r"\b(nlp|natural language processing)\b.{0,50}\barabic", re.I), 80),
             (re.compile(r"\barabic.{0,50}\b(nlp|natural language processing)\b", re.I), 80),
             (re.compile(r"\barabic\b.{0,50}\b(data|annotation|labeling|moderation)\b", re.I), 80),
             (re.compile(r"\barabic\b.{0,50}\b(content|review|qa|quality)\b", re.I), 80),
             (re.compile(r"\barabic.{0,50}\bAI\b", re.I), 80),
             (re.compile(r"\barabic\b.{0,50}\b(prompt|evaluation|training data)\b", re.I), 80),
+            # Language expert/specialist roles
+            (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 90),
+            (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 90),
         ],
     },
     {
-        "name": "Editing",
+        "name": "Translation (any pair)",
+        "phrases": [
+            # Generic translation roles — if you can translate ANY pair, it's relevant
+            (re.compile(r"\b(translator|translation specialist|staff translator|freelance translator|senior translator)\b", re.I), 85),
+            (re.compile(r"\b(locali[sz]ation specialist|l10n specialist|i18n linguist)\b", re.I), 85),
+            (re.compile(r"\b(translat|locali[sz]).{0,30}(remote|worldwide|freelance|home|global)\b", re.I), 85),
+            (re.compile(r"\b(remote|worldwide|freelance).{0,30}(translat|locali[sz])\b", re.I), 85),
+            # CAT tools / translation memory
+            (re.compile(r"\b(cat tools?|trados|memoq|memsource|smartcat|wordfast|omegat|phrase|lokalise|crowdin)\b", re.I), 80),
+            # Translation-specific terms
+            (re.compile(r"\b(translation memory|terminology management|glossary|style guide|locale|localization kit)\b", re.I), 80),
+            (re.compile(r"\b(semtich|segment|tmx|xliff|po file|gettext)\b", re.I), 75),
+            # Subtitling / captioning (translation-adjacent)
+            (re.compile(r"\b(subtitl|caption|closed caption|subtitle translation|audio description)\b", re.I), 80),
+            # Document translation
+            (re.compile(r"\b(document (translat|locali[sz])|certified (translat|locali[sz])|legal (translat|locali[sz]))\b", re.I), 85),
+            (re.compile(r"\b(birth certificate|court document|contract|diploma|academic transcript).{0,30}translat", re.I), 85),
+            # Any "X to Y translator" or "Y-X translator" pattern
+            (re.compile(r"\b\w+ to \w+ translator\b", re.I), 80),
+            (re.compile(r"\btranslat(or|ion|ing|e|ed)\b.{0,30}\b(english|spanish|french|german|chinese|japanese|korean|portuguese|italian|russian|arabic)\b", re.I), 80),
+            # Language pair patterns
+            (re.compile(r"\b(english|en).{0,10}(arabic|ar).{0,10}(translat|locali|interpret|linguist)\b", re.I), 95),
+            (re.compile(r"\b(arabic|ar).{0,10}(english|en).{0,10}(translat|locali|interpret|linguist)\b", re.I), 95),
+            (re.compile(r"\b(en|ar)[\s/\-]+(ar|en)\b.{0,30}(translat|locali|interpret)", re.I), 95),
+        ],
+    },
+    {
+        "name": "Editing & Proofreading",
         "phrases": [
             (re.compile(r"\b(proofreader|proofreading|proofread)\b", re.I), 80),
+            (re.compile(r"\b(editor|editing|copy editor|copyeditor)\b.{0,30}(remote|worldwide|freelance)", re.I), 80),
             (re.compile(r"academic (editor|editing)|copy editor", re.I), 80),
             (re.compile(r"\b(content writer|copywriter|copywriting|blog writer|article writer|content editor|content creator)\b", re.I), 80),
             (re.compile(r"\bcontent creation\b", re.I), 75),
-            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(content|blog|article|copy)\b.{0,50}\b(writer|writing|creator)\b", re.I), 85),
-            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(proofread|editor|editing)\b", re.I), 85),
+            # Bilingual/multilingual editing
+            (re.compile(r"\b(arabic|bilingual|multilingual)\b.{0,50}\b(content|blog|article|copy)\b.{0,50}\b(writer|writing|creator)\b", re.I), 85),
+            (re.compile(r"\b(arabic|bilingual|multilingual)\b.{0,50}\b(proofread|editor|editing)\b", re.I), 85),
+            # Language-specific editing
+            (re.compile(r"\b(english|spanish|french|german).{0,10}(editor|editing)\b.{0,30}(remote|freelance)\b", re.I), 80),
         ],
     },
     {
-        "name": "Admin",
+        "name": "AI Data & Annotation",
         "phrases": [
-            (re.compile(r"\bdata entry\b", re.I), 80),
-            (re.compile(r"\b(typist|transcription|transcribing|transcriber)\b", re.I), 80),
-            (re.compile(r"virtual assistant|administrative assistant|admin assistant|executive assistant", re.I), 80),
-            (re.compile(r"data annotation|data labeling|data labeler|data entry (specialist|clerk|operator|agent)", re.I), 75),
-            (re.compile(r"\boffice assistant\b", re.I), 75),
-            (re.compile(r"\barabic\b.{0,50}\b(data entry|data input|data processing)\b", re.I), 80),
-            (re.compile(r"\barabic\b.{0,50}\b(virtual assistant|va|administrative)\b", re.I), 80),
-            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(transcription|transcriber|typist)\b", re.I), 80),
+            (re.compile(r"\b(data (entry|annotation|labeling|labeler|moderation|curation))\b.{0,30}(remote|worldwide|freelance)", re.I), 80),
+            (re.compile(r"\b(prompt (writer|engineer|evaluation|rating))\b.{0,30}(remote|worldwide)", re.I), 80),
+            (re.compile(r"\b(ai (trainer|training|annotation|labeling|rater|data))\b.{0,30}(remote|worldwide)", re.I), 80),
+            (re.compile(r"\b(language (data|annotation|model training|quality))\b.{0,30}(remote|worldwide)", re.I), 80),
+            (re.compile(r"\b(content (moderator|moderation|reviewer|review|quality))\b.{0,30}(remote|worldwide)", re.I), 75),
+            (re.compile(r"\b(search (quality|rater|evaluator|annotator))\b.{0,30}(remote|worldwide)", re.I), 75),
+            (re.compile(r"\b(linguist|language specialist)\b.{0,30}(remote|worldwide|ai|data|training)", re.I), 85),
+            (re.compile(r"\b(virtual assistant|va|administrative assistant|executive assistant)\b.{0,30}(remote|worldwide|bilingual)", re.I), 80),
+            (re.compile(r"\b(transcription|transcriber|typist)\b.{0,30}(remote|worldwide|bilingual)", re.I), 80),
+            (re.compile(r"\barabic\b.{0,50}\b(data entry|data input|data processing|virtual assistant|va|administrative|transcription|transcriber|typist)\b", re.I), 85),
+            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(data entry|annotation|labeling|transcription)\b", re.I), 85),
         ],
     },
 ]
@@ -579,8 +617,9 @@ def phrase_label(re_obj) -> str:
 # Bucket weight multipliers — Arabic translation is the candidate's prime skill.
 _BUCKET_WEIGHT = {
     "Arabic Translation": 1.0,
-    "Editing": 1.0,
-    "Admin": 1.0,
+    "Translation (any pair)": 0.95,
+    "Editing & Proofreading": 0.90,
+    "AI Data & Annotation": 0.85,
 }
 
 # Trusted companies that are strongly Arabic-translation / language-service relevant.
@@ -667,15 +706,13 @@ def get_match_score(title: str, desc: str) -> dict:
         return {"score": 0, "category": "Other", "why": ["hard drop: wrong language, no Arabic"]}
 
     total = max(0, min(100, total))
-    # HARD RULE: The job MUST have an Arabic/translation signal to score.
-    # Generic "content creation" or "data entry" alone are NOT enough.
-    # The Arabic Translation bucket must match, OR "arabic" must appear in text.
-    arabic_bucket_matched = best_cat == "Arabic Translation"
-    has_arabic_keyword = bool(HAS_ARABIC.search(text))
-    if not (arabic_bucket_matched or has_arabic_keyword):
+    # HARD RULE: The job must match at least ONE of our target buckets.
+    # If no bucket matched at all → not a translation/language/content role.
+    # But ANY bucket match is enough — including Translation (any pair), Editing, AI Data.
+    if best <= 0:
         total = 0
         best_cat = "Other"
-        best_why = ["hard drop: no Arabic translation signal in job"]
+        best_why = ["hard drop: no translation/language/content signal in job"]
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final[:8]}
 
@@ -1010,7 +1047,7 @@ async def fetch_remotive(session: aiohttp.ClientSession) -> list[dict]:
         except Exception as e:
             print(f"  Remotive: {e}")
             break
-    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
     return jobs
 
 
@@ -1044,7 +1081,7 @@ async def fetch_remoteok(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": j.get("salary", ""),
                     "source": "remoteok",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
             return jobs
     except Exception as e:
         print(f"  RemoteOK: {e}")
@@ -1074,7 +1111,7 @@ async def fetch_wwr(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": "",
                     "source": "weworkremotely",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
             return jobs
     except Exception as e:
         print(f"  WWR: {e}")
@@ -1152,7 +1189,7 @@ async def fetch_nodesk(session: aiohttp.ClientSession) -> list[dict]:
                     pass
                 if len(jobs) >= 40:
                     break
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
             return jobs
     except Exception as e:
         print(f"  Nodesk: {e}")
@@ -1184,7 +1221,7 @@ async def fetch_arbeitnow(session: aiohttp.ClientSession) -> list[dict]:
                     })
         except Exception as e:
             print(f"  Arbeitnow {base}: {e}")
-    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
     return jobs
 
 
@@ -2512,7 +2549,7 @@ async def fetch_himalayas_api(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": f"{j.get('salaryMin', '')} - {j.get('salaryMax', '')} {j.get('currency', '')}".strip(" - ") if j.get("salaryMin") or j.get("salaryMax") else "",
                     "source": "himalayas",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
             return jobs[:200]
     except Exception as e:
         print(f"  Himalayas API: {e}")
@@ -2549,7 +2586,7 @@ async def fetch_jobicy_api(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": salary,
                     "source": "jobicy",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'linguist', 'language', 'editor', 'proofreader', 'content writer', 'copywriter', 'data entry', 'virtual assistant', 'transcription', 'subtitl', 'caption', 'annotation', 'multilingual', 'cat tools', 'trados', 'memoq', 'smartcat', 'prompt writer', 'ai trainer', 'data label', 'moderation'])]
             return jobs[:200]
     except Exception as e:
         print(f"  Jobicy API: {e}")

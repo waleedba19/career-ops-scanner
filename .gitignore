@@ -1,8 +1,17 @@
 output/
 output*/
+check_output/
+last_run_output/
+scheduled_output/
+verify_output/
 __pycache__/
 *.pyc
 *.pyo
 .env
 dashboard/static/*
 !dashboard/static/.gitkeep
+check_runs.py
+check_schedule.py
+check_today.py
+run_id.txt
+probe_greenhouse.py

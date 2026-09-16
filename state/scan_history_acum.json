@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-06T16:33:13.233637+00:00",
-    "matched_count": 1,
-    "all_count": 4422,
-    "jobs": [
-      {
-        "title": "Executive Assistant at a Global Business (Remote, SEA Based)",
-        "company": "himalayas_app",
-        "url": "https://himalayas.app/companies/paired-so/jobs/executive-assistant-at-a-global-business-remote-sea-based",
-        "score": 100,
-        "category": "Admin",
-        "source": "himalayas_app"
-      }
-    ]
-  },
-  {
     "date": "2026-09-06T18:23:35.894736+00:00",
     "matched_count": 1,
     "all_count": 4420,
@@ -2328,6 +2313,101 @@
         "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin_playwright"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-16T21:22:57.495905+00:00",
+    "matched_count": 11,
+    "all_count": 375,
+    "jobs": [
+      {
+        "title": "Interpreter \u2013 Arabic/Sudanese Arabic",
+        "company": "IRC - International Rescue Committee",
+        "url": "https://www.impactpool.org/jobs/1221265",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      },
+      {
+        "title": "Freelance Translator",
+        "company": "ICC - International Criminal Court",
+        "url": "https://www.impactpool.org/jobs/811886",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "impactpool"
+      },
+      {
+        "title": "Localization Specialist (Traductor/a) Alem\u00e1n - Espa\u00f1ol \"on site\"",
+        "company": "GRANIT PARTS Iberia",
+        "url": "https://es.linkedin.com/jobs/view/localization-specialist-traductor-a-alem%C3%A1n-espa%C3%B1ol-on-site-at-granit-parts-iberia-4465978259",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor / Senior Copy Editor (NY)",
+        "company": "KBRA",
+        "url": "https://www.linkedin.com/jobs/view/copy-editor-senior-copy-editor-ny-at-kbra-4448607719",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "Indegene: Copy Editor (US; fully remote)",
+        "company": "Trilogy Writing & Consulting, An Indegene Company",
+        "url": "https://www.linkedin.com/jobs/view/indegene-copy-editor-us-fully-remote-at-trilogy-writing-consulting-an-indegene-company-4468289689",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor",
+        "company": "Mars United Commerce",
+        "url": "https://www.linkedin.com/jobs/view/copy-editor-at-mars-united-commerce-4448573919",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "Senior Copy Editor (Financial Content)",
+        "company": "Wizeline",
+        "url": "https://mx.linkedin.com/jobs/view/senior-copy-editor-financial-content-at-wizeline-4466598068",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "We're hiring: AI Content Editor",
+        "company": "Pexnet",
+        "url": "https://bd.linkedin.com/jobs/view/we-re-hiring-ai-content-editor-at-pexnet-4466884148",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "Copy Editor",
+        "company": "Flexiple",
+        "url": "https://in.linkedin.com/jobs/view/copy-editor-at-flexiple-4467905664",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "Quality Content Editor",
+        "company": "The Reynolds and Reynolds Company",
+        "url": "https://www.linkedin.com/jobs/view/quality-content-editor-at-the-reynolds-and-reynolds-company-4457476648",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "linkedin"
+      },
+      {
+        "title": "Surveyor I",
+        "company": "American Bureau of Shipping (ABS)",
+        "url": "https://remoteOK.com/remote-jobs/remote-surveyor-i-american-bureau-of-shipping-abs-1136592",
+        "score": 80,
+        "category": "Arabic Translation",
+        "source": "remoteok"
       }
     ]
   }

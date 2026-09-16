@@ -1352,5 +1352,55 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-16T19:42:47.727939+00:00"
+  },
+  "Tinuiti": {
+    "name": "Tinuiti",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T20:13:50.409414+00:00"
+  },
+  "Workiva": {
+    "name": "Workiva",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T20:13:50.410676+00:00"
+  },
+  "wex": {
+    "name": "wex",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T20:13:50.411662+00:00"
+  },
+  "Syneos Health India Private Limited": {
+    "name": "Syneos Health India Private Limited",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T20:13:50.412579+00:00"
+  },
+  "Supabase": {
+    "name": "Supabase",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-16T20:13:50.413506+00:00"
   }
 }

@@ -56,6 +56,14 @@ except ImportError:
     WIDE_SEARCH_AVAILABLE = False
     print("Warning: Wide search not available.")
 
+# ── Search Proxy — bypass blocked sites via search engines ──
+try:
+    from fetchers.search_proxy import fetch_blocked_sites_via_search
+    SEARCH_PROXY_AVAILABLE = True
+except ImportError:
+    SEARCH_PROXY_AVAILABLE = False
+    print("Warning: Search proxy not available.")
+
 # ── Playwright search (real browser, bypasses 403s) ──
 try:
     from fetchers.playwright_search import fetch_with_playwright
@@ -5134,6 +5142,10 @@ async def run_scan():
         # ── Worldwide Arabic search: DDG + verified feeds ──
         if WIDE_SEARCH_AVAILABLE:
             fetchers.append(fetch_worldwide_arabic_jobs(session))
+
+        # ── Search Proxy: Google/DuckDuckGo bypass for blocked sites ──
+        if SEARCH_PROXY_AVAILABLE:
+            fetchers.append(fetch_blocked_sites_via_search(session))
 
         # ── Playwright search (real browser, bypasses 403s) ──
         if PLAYWRIGHT_AVAILABLE:

@@ -36,10 +36,10 @@ from fetchers.verified import (
     fetch_linkedin_guest, fetch_jobicy_tags, fetch_impactpool,
     fetch_themuse, fetch_ashby_board, fetch_workable_board, fetch_smartrecruiters_board,
     fetch_jsearch, fetch_reliefweb, fetch_workingnomads_json,
-    fetch_remowork, fetch_eslbase, fetch_recruitee_board, fetch_teamtailor_board,
+    fetch_remowork, fetch_recruitee_board, fetch_teamtailor_board,
     fetch_euremotejobs, fetch_remotejobleads, fetch_dailyremote, fetch_dynamitejobs, fetch_europeremotely,
     fetch_bamboohr_board, fetch_jobvite_board, fetch_personio_board,
-    fetch_translation_jobs, fetch_esl_jobs,
+    fetch_translation_jobs,
     # keyed variants — imported under distinct names because scanner.py still defines
     # legacy fetch_adzuna/fetch_jooble stubs (hard-coded fake credentials, always 401)
     fetch_adzuna as fetch_adzuna_keyed, fetch_jooble as fetch_jooble_keyed,
@@ -304,19 +304,6 @@ MATCH_BUCKETS = [
         ],
     },
     {
-        "name": "ESL",
-        "phrases": [
-            (re.compile(r"\b(esl|efl|tesol|tefl)\b", re.I), 85),
-            (re.compile(r"english (teacher|tutor|instructor|language|training|teaching)", re.I), 80),
-            (re.compile(r"(online|remote|language) (teacher|tutor|instructor)", re.I), 75),
-            (re.compile(r"\b(esl|english) tutoring\b", re.I), 75),
-            (re.compile(r"\b(online|virtual|remote)\s+(english|language)\s+(teacher|tutor|instructor|school|academy)\b", re.I), 80),
-            (re.compile(r"\b(english|language)\s+(teaching|tutoring|instruction)\s+(online|remote|virtual)\b", re.I), 80),
-            (re.compile(r"\b(online|virtual)\s+(class|course|lesson|session)\b.{0,40}\b(english|language|teach)\b", re.I), 75),
-            (re.compile(r"\b(middle.?east|mena|arab)\b.{0,50}\b(esl|english|teacher|tutor)\b", re.I), 80),
-        ],
-    },
-    {
         "name": "Editing",
         "phrases": [
             (re.compile(r"\b(proofreader|proofreading|proofread)\b", re.I), 80),
@@ -443,7 +430,7 @@ NON_TARGET_ROLE = re.compile(
 # Keywords in NON_TARGET_ROLE that are OK when combined with target keywords
 # e.g., "Language Expert" is fine, "Data Analyst" is not
 NON_TARGET_ALLOWLIST = re.compile(
-    r"(language|translation|translator|content|copy|creative|english|esl|teaching|tutor|freelance|online|educational|legal|academic)",
+    r"(language|translation|translator|content|copy|creative|english|teaching|tutor|freelance|online|educational|legal|academic)",
     re.I,
 )
 
@@ -592,7 +579,6 @@ def phrase_label(re_obj) -> str:
 # Bucket weight multipliers — Arabic translation is the candidate's prime skill.
 _BUCKET_WEIGHT = {
     "Arabic Translation": 1.0,
-    "ESL": 1.0,
     "Editing": 1.0,
     "Admin": 1.0,
 }
@@ -683,15 +669,13 @@ def get_match_score(title: str, desc: str) -> dict:
     total = max(0, min(100, total))
     # HARD RULE: The job MUST have an Arabic/translation signal to score.
     # Generic "content creation" or "data entry" alone are NOT enough.
-    # The Arabic Translation bucket must match, OR "arabic" must appear in text,
-    # OR the ESL bucket must match (ESL jobs are always relevant).
+    # The Arabic Translation bucket must match, OR "arabic" must appear in text.
     arabic_bucket_matched = best_cat == "Arabic Translation"
     has_arabic_keyword = bool(HAS_ARABIC.search(text))
-    esl_bucket_matched = best_cat == "ESL"
-    if not (arabic_bucket_matched or has_arabic_keyword or esl_bucket_matched):
+    if not (arabic_bucket_matched or has_arabic_keyword):
         total = 0
         best_cat = "Other"
-        best_why = ["hard drop: no Arabic/translation/ESL signal in job"]
+        best_why = ["hard drop: no Arabic translation signal in job"]
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final[:8]}
 
@@ -1026,7 +1010,7 @@ async def fetch_remotive(session: aiohttp.ClientSession) -> list[dict]:
         except Exception as e:
             print(f"  Remotive: {e}")
             break
-    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
     return jobs
 
 
@@ -1060,7 +1044,7 @@ async def fetch_remoteok(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": j.get("salary", ""),
                     "source": "remoteok",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs
     except Exception as e:
         print(f"  RemoteOK: {e}")
@@ -1090,7 +1074,7 @@ async def fetch_wwr(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": "",
                     "source": "weworkremotely",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs
     except Exception as e:
         print(f"  WWR: {e}")
@@ -1168,7 +1152,7 @@ async def fetch_nodesk(session: aiohttp.ClientSession) -> list[dict]:
                     pass
                 if len(jobs) >= 40:
                     break
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs
     except Exception as e:
         print(f"  Nodesk: {e}")
@@ -1200,7 +1184,7 @@ async def fetch_arbeitnow(session: aiohttp.ClientSession) -> list[dict]:
                     })
         except Exception as e:
             print(f"  Arbeitnow {base}: {e}")
-    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+    jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
     return jobs
 
 
@@ -2528,7 +2512,7 @@ async def fetch_himalayas_api(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": f"{j.get('salaryMin', '')} - {j.get('salaryMax', '')} {j.get('currency', '')}".strip(" - ") if j.get("salaryMin") or j.get("salaryMax") else "",
                     "source": "himalayas",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs[:200]
     except Exception as e:
         print(f"  Himalayas API: {e}")
@@ -2565,7 +2549,7 @@ async def fetch_jobicy_api(session: aiohttp.ClientSession) -> list[dict]:
                     "salary": salary,
                     "source": "jobicy",
                 })
-            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'esl', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
+            jobs = [j for j in jobs if any(kw in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower() for kw in ['arabic', 'translator', 'translation', 'interpreter', 'bilingual', 'locali', 'teaching', 'tutor', 'proofreader', 'editor', 'content writer', 'data entry', 'virtual assistant'])]
             return jobs[:200]
     except Exception as e:
         print(f"  Jobicy API: {e}")
@@ -5085,16 +5069,10 @@ async def run_scan():
         if _should_run("workbeam"):
             fetchers.append(fetch_workbeam(session))
 
-        # ── TRANSLATION & ESL ONLY — no general remote boards ──
-        # Every source here is specifically for translation, ESL, bilingual, or language jobs
+        # ── TRANSLATION & BILINGUAL ONLY — focused on Arabic-English ──
+        # Every source here is specifically for translation, bilingual, or language jobs
         if _should_run("translation_jobs"):
             fetchers.append(fetch_translation_jobs(session))
-        if _should_run("esl_jobs"):
-            fetchers.append(fetch_esl_jobs(session))
-        if _should_run("eslbase"):
-            fetchers.append(fetch_eslbase(session))
-        if _should_run("eslgorilla"):
-            fetchers.append(fetch_eslgorilla(session))
         if _should_run("tes"):
             fetchers.append(fetch_tes(session))
         if _should_run("smartcat"):
@@ -5440,7 +5418,7 @@ async def run_scan():
         # Must pass the same final gate as fresh jobs: Arabic/translation/ESL signal required.
         old_verified = []
         for job in old_but_verified:
-            # Re-score with current rules (the final gate requires Arabic/translation/ESL)
+            # Re-score with current rules (the final gate requires Arabic/translation)
             rescored = get_match_score(job.get("title", ""), job.get("description", ""))
             if rescored["score"] >= 75:
                 job["score"] = rescored["score"]

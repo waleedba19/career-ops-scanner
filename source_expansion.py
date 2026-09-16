@@ -150,16 +150,9 @@ ADDITIONAL_RSS_SOURCES = {
         "type": "html",
         "parser": "gulftalent",
     },
-    "naukrigulf_jobs": {
+    "teaching_jobs": {
         "tier": 2,
-        "url": "https://www.naukrigulf.com/jobs",
-        "type": "html",
-        "parser": "naukrigulf",
-    },
-    "mostaql_jobs": {
-        "tier": 3,
-        "url": "https://www.mostaql.com/jobs/feed",
-        "type": "rss",
+        "url": "https://www.tes.com/jobs/feed",
         "parser": "generic_rss",
     },
     "for9a_jobs": {

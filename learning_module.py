@@ -163,7 +163,7 @@ def adjust_scoring_based_on_learning(job: dict) -> float:
     applied_titles = [j.get("title", "").lower() for j in data["applied_jobs"]]
     for applied_title in applied_titles:
         # Check for common keywords
-        keywords = ["translator", "esl", "teacher", "tutor", "writer", "editor", "proofreader", "academic"]
+        keywords = ["translator", "translation", "localization", "writer", "editor", "proofreader", "bilingual"]
         for kw in keywords:
             if kw in applied_title and kw in title:
                 adjustment += 2  # Small boost for matching title keywords

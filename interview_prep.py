@@ -38,8 +38,8 @@ def detect_job_type(title: str, description: str) -> str:
 
     if any(w in text for w in ["translator", "translation", "localization", "interpreter"]):
         return "translation"
-    if any(w in text for w in ["esl", "english teacher", "language teacher", "teach"]):
-        return "teaching"
+    if any(w in text for w in ["bilingual", "multilingual", "language"]):
+        return "translation"
     if any(w in text for w in ["copywriter", "content writer", "content creator", "writing"]):
         return "writing"
     if any(w in text for w in ["data entry", "data input", "admin"]):

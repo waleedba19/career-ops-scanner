@@ -45,7 +45,7 @@ jobs:
       ADZUNA_APP_KEY:     ${{ secrets.ADZUNA_APP_KEY }}
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
-      OLLAMA_MODEL:       qwen2.5:3b
+      OLLAMA_MODEL:       qwen2.5:7b-instruct-q3_K_M
       CAREEROPS_TIER_CAP: "1"   # lean & fast — only verified sources
       CAREEROPS_BATCH_SIZE: "12"
       CAREEROPS_MIN_SCORE: "75" # lethal threshold — only 75%+ matches pass (per AGENTS.md)
@@ -77,16 +77,52 @@ jobs:
             ~/.cache/ms-playwright
           key: careerops-deps-v1-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
 
-      - name: Cache Ollama model
+      - name: Cache Ollama binary
         uses: actions/cache@v4
         with:
-          path: ~/.ollama
-          key: ollama-qwen2.5-3b
+          path: /usr/local/bin/ollama
+          key: ollama-binary-v1
 
-      - name: Install Ollama
+      - name: Install Ollama (skip if cached)
         run: |
           if ! command -v ollama >/dev/null 2>&1; then
             curl -fsSL https://ollama.com/install.sh | sh
+          else
+            echo "Ollama binary cached"
+            ollama --version
+          fi
+
+      - name: Download model from Release (permanent, no expiry)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          MODEL_DIR="$HOME/.ollama/models"
+          mkdir -p "$MODEL_DIR"
+
+          # Check if model already exists locally
+          if [ -d "$MODEL_DIR/manifests" ] && [ "$(ls -A $MODEL_DIR/manifests 2>/dev/null)" ]; then
+            echo "Model already present locally"
+            ollama list || true
+            exit 0
+          fi
+
+          # Try downloading from GitHub Release (permanent storage)
+          RELEASE_TAG="models-v1"
+          ASSET_NAME="ollama-qwen2.5-7b.tar.gz"
+          RELEASE_URL="https://github.com/${{ github.repository }}/releases/download/${RELEASE_TAG}/${ASSET_NAME}"
+
+          echo "Trying to download from release: ${RELEASE_URL}"
+          if curl -fsSL -o /tmp/model.tar.gz "${RELEASE_URL}" 2>/dev/null; then
+            echo "Downloaded from release — extracting..."
+            tar -xzf /tmp/model.tar.gz -C "$HOME/.ollama/"
+            rm -f /tmp/model.tar.gz
+            echo "Model restored from release"
+            ollama list || true
+          else
+            echo "Release not found — falling back to ollama pull (first-time setup)"
+            echo "TIP: Run setup_model_release.sh locally to upload the model to a release"
+            ollama pull qwen2.5:7b-instruct-q3_K_M || echo "model pull failed, continuing"
+            ollama list || true
           fi
 
       - name: Start Ollama server
@@ -111,15 +147,6 @@ jobs:
           else
             echo "WARNING: Ollama failed — scanner will run in template fallback mode"
             cat /tmp/ollama.log | tail -50 || true
-          fi
-
-      - name: Pull Ollama model (unified)
-        run: |
-          if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
-            ollama pull qwen2.5:3b || echo "model pull failed, continuing"
-            ollama list
-          else
-            echo "Skipping model pull — Ollama not available"
           fi
 
       - name: Lint — compile check (fail fast)

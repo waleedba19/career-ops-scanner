@@ -5,7 +5,7 @@ from .base import BaseFetcher, FetchResult
 
 # Registry mapping: name -> (tier, module_path, class_name)
 # Lazy loading: fetcher modules are only imported when needed
-# FOCUSED ON: Arabic Translator, ESL Teacher, Translation Jobs
+# FOCUSED ON: Arabic-English Translation, Localization, Bilingual Content
 REGISTRY: dict[str, dict] = {
     # Tier 1 — primary, high signal (always on) - Translation & Language Focus
     "greenhouse": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_batch"},
@@ -29,7 +29,6 @@ REGISTRY: dict[str, dict] = {
     "hackernews": {"tier": 1, "module": "fetchers.verified", "class": "fetch_hackernews"},
     "indeed": {"tier": 1, "module": "fetchers.verified", "class": "fetch_indeed"},
     "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
-    "esl_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_esl_jobs"},
     "arabic_companies": {"tier": 1, "module": "fetchers.arabic_translation", "class": "fetch"},
     "nodesk": {"tier": 1, "module": "fetchers.verified", "class": "fetch_nodesk"},
     
@@ -42,7 +41,6 @@ REGISTRY: dict[str, dict] = {
     "justremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_justremote"},
     "hirelatam": {"tier": 2, "module": "fetchers.verified", "class": "fetch_hirelatam"},
     "reddit_social": {"tier": 2, "module": "fetchers.social", "class": "fetch_reddit_social"},
-    "eslgorilla": {"tier": 2, "module": "fetchers.verified", "class": "fetch_eslgorilla"},
     "tes": {"tier": 2, "module": "fetchers.verified", "class": "fetch_tes"},
     "ashby": {"tier": 2, "module": "fetchers.verified", "class": "fetch_ashby_boards"},
     "workable": {"tier": 2, "module": "fetchers.verified", "class": "fetch_workable_boards"},
@@ -50,7 +48,6 @@ REGISTRY: dict[str, dict] = {
     "themuse": {"tier": 2, "module": "fetchers.verified", "class": "fetch_themuse"},
     "jooble": {"tier": 2, "module": "fetchers.verified", "class": "fetch_jooble"},
     "remowork": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remowork"},
-    "eslbase": {"tier": 2, "module": "fetchers.verified", "class": "fetch_eslbase"},
     "recruitee": {"tier": 2, "module": "fetchers.verified", "class": "fetch_recruitee_boards"},
     "teamtailor": {"tier": 2, "module": "fetchers.verified", "class": "fetch_teamtailor_boards"},
     "euremotejobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_euremotejobs"},
@@ -64,9 +61,6 @@ REGISTRY: dict[str, dict] = {
     "toptal": {"tier": 2, "module": "fetchers.verified", "class": "fetch_toptal"},
     "wellfound": {"tier": 2, "module": "fetchers.verified", "class": "fetch_wellfound"},
     "edtech_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_edtech_jobs"},
-    "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
-    "esl_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_esl_jobs"},
-    "teaching_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_teaching_jobs"},
     "writing_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_writing_jobs"},
     
     # Tier 3 — niche / MENA / freelance (noisy, use sparingly)

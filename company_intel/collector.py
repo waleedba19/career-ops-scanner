@@ -166,9 +166,7 @@ def pain_points(job: dict) -> str:
             points.append("No native QA, backlog of Arabic content")
         if not points:
             points.append("Needs native Arabic speaker (rare)")
-    if "esl" in title or "english teacher" in title or "tutor" in title:
-        points.append("Needs ESL teacher, likely understaffed")
-    if "translation" in title or "translator" in title:
+    if "translation" in title or "translator" in title or "localization" in title:
         points.append("Translation backlog / scaling")
     if "content" in title and "writer" in title:
         points.append("Content needs, scaling blog/docs")

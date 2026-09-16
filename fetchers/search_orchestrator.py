@@ -21,7 +21,7 @@ HEADERS = {
 QUERIES = [
     "arabic translator remote site:greenhouse.io",
     "arabic linguist remote site:lever.co",
-    "esl teacher remote worldwide",
+    "arabic english translator remote worldwide",
     "translation localization remote worldwide",
 ]
 

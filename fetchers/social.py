@@ -25,13 +25,10 @@ TIMEOUT = aiohttp.ClientTimeout(total=10)
 # (subreddit, search query) — the candidate's three niches where people
 # actually post openings and gigs.
 REDDIT_TARGETS = [
-    ("forhire", "ESL teacher remote"),
-    ("forhire", "Arabic translator"),
-    ("RemoteJobs", "ESL"),
+    ("forhire", "Arabic translator remote"),
     ("RemoteJobs", "Arabic translator"),
-    ("esl", "remote teacher hire"),
     ("Translation", "Arabic English remote"),
-    ("languagelearning", "ESL remote"),
+    ("forhire", "bilingual translator"),
 ]
 PER_TARGET_LIMIT = 15
 

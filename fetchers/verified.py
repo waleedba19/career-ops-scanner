@@ -40,12 +40,12 @@ TIMEOUT = aiohttp.ClientTimeout(total=15)
 PROFILE_QUERIES = [
     "arabic translator",
     "arabic linguist",
-    "esl teacher online",
+    "bilingual translator",
     "proofreader editor",
 ]
 FREELANCE_QUERIES = [
     "arabic translation",
-    "english teacher",
+    "arabic english localization",
     "proofreading editing",
 ]
 
@@ -556,7 +556,7 @@ async def fetch_jsearch(session: aiohttp.ClientSession) -> list[dict]:
     jobs: list[dict] = []
     seen: set[str] = set()
     # Free plan has a small monthly cap: 2 queries × 3 runs/day ≈ 180 calls/month.
-    for q in ("arabic translator", "esl teacher online"):
+    for q in ("arabic translator", "bilingual translator"):
         url = ("https://jsearch.p.rapidapi.com/search?query={q}&page=1&num_pages=1"
                "&remote_jobs_only=true&date_posted=today").format(q=q.replace(" ", "%20"))
         status, data = await _get_json(session, url, headers=hdrs)
@@ -605,7 +605,7 @@ async def fetch_adzuna(session: aiohttp.ClientSession) -> list[dict]:
     # 1,000 free calls/month → 2 countries × 3 runs/day ≈ 180 calls/month.
     for country in ("gb", "us"):
         url = (f"https://api.adzuna.com/v1/api/jobs/{country}/search/1?app_id={app_id}&app_key={app_key}"
-               "&results_per_page=50&what_or=arabic%20translator%20esl%20proofreader%20localization%20linguist"
+               "&results_per_page=50&what_or=arabic%20translator%20bilingual%20proofreader%20localization%20linguist"
                "&sort_by=date&content-type=application/json")
         status, data = await _get_json(session, url)
         if status != 200:
@@ -646,7 +646,7 @@ async def fetch_jooble(session: aiohttp.ClientSession) -> list[dict]:
         return []
     jobs: list[dict] = []
     seen: set[str] = set()
-    for q in ("arabic translator", "esl teacher", "proofreader"):
+    for q in ("arabic translator", "bilingual translator", "proofreader"):
         try:
             async with session.post(f"https://jooble.org/api/{key}", json={"keywords": q, "location": "remote"},
                                     headers={**HEADERS, "Content-Type": "application/json"}, timeout=TIMEOUT) as r:

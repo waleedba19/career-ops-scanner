@@ -335,7 +335,7 @@ def render_md(results: list[dict], meta: dict) -> str:
     for r in results:
         groups[r["group"]].append(r)
     order = ["baseline", "precision-queries", "aggregator-keyed", "linkedin", "freelance", "ats-language-ai", "ats-lsp",
-             "ats-edtech", "ats-mena", "remote-boards", "translation-boards", "esl-boards", "un-ngo", "mena-boards",
+             "ats-edtech", "ats-mena", "remote-boards", "translation-boards", "un-ngo", "mena-boards",
              "academic-editing-watchers", "major-platforms-blocked"]
     for g in order + [g for g in groups if g not in order]:
         if g not in groups:

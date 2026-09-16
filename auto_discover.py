@@ -24,8 +24,7 @@ TIMEOUT = aiohttp.ClientTimeout(total=20)
 PROFILE_QUERIES = [
     "arabic translator",
     "arabic linguist",
-    "esl teacher",
-    "english teacher online",
+    "english to arabic translator",
     "proofreader editor",
     "localization",
     "translation",
@@ -225,8 +224,8 @@ async def discover_remote_boards(session: aiohttp.ClientSession) -> list[dict]:
         "remote job board api",
         "remote work job listings",
         "freelance translation jobs",
-        "esl teaching jobs online",
-        "arabic translator jobs",
+        "arabic english translator jobs online",
+        "localization jobs remote",
     ]
 
     for query in search_queries:

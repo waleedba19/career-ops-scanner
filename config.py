@@ -34,13 +34,13 @@ FETCH_CONCURRENCY = int(os.getenv("CAREEROPS_CONCURRENCY", "25"))
 TIER_1_SOURCES = [
     "greenhouse", "lever", "remotive", "remoteok", "weworkremotely",
     "jobicy", "arbeitnow", "himalayas", "jobicy_api",
-    "translation_jobs", "esl_jobs", "linkedin",
+    "translation_jobs", "linkedin",
 ]
-# Secondary tier — good volume — Asian/South Asian & MENA Focus
+# Secondary tier — good volume — MENA Focus
 TIER_2_SOURCES = [
     "nodesk", "yayremote", "remote1stjobs", "realworkfromanywhere",
     "workingnomads", "jobspresso", "justremote", "hirelatam",
-    "teaching_jobs", "writing_jobs", "edtech_jobs",
+    "writing_jobs", "edtech_jobs",
 ]
 # Tertiary — niche / MENA (noisy, use sparingly)
 TIER_3_SOURCES = [
@@ -67,8 +67,8 @@ RELIEFWEB_APPNAME = os.getenv("RELIEFWEB_APPNAME", "")
 
 # ── Ollama ───────────────────────────────────────────────────────────────
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b")  # unified model
-OLLAMA_FALLBACK_MODEL = "qwen2.5:0.5b"
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")  # unified model
+OLLAMA_FALLBACK_MODEL = "qwen2.5:3b"
 
 # ── Notifications ────────────────────────────────────────────────────────
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -239,28 +239,28 @@ SMARTRECRUITERS_COMPANIES = [
     ("Sitel", "sitel"),                              # BPO, multilingual
 ]
 RECRUITEE_COMPANIES = [
-    ("Lingoda", "lingoda"),                          # ESL, online teaching
-    ("Preply", "preply"),                            # Language tutoring
-    ("Cambly", "cambly"),                            # ESL, online teaching
-    ("italki", "italki"),                            # Language tutoring
-    ("Verbling", "verbling"),                        # Language tutoring
-    ("FluentU", "fluentu"),                          # Language learning
-    ("Rosetta Stone", "rosettastone"),               # Language learning
-    ("Babbel", "babbel"),                            # Language learning
-    ("Busuu", "busuu"),                              # Language learning
-    ("Memrise", "memrise"),                          # Language learning
+    ("Smartling", "smartling"),                      # Localization, translation
+    ("Lokalise", "lokalise"),                        # Localization platform
+    ("Phrase", "phrase"),                            # Translation management
+    ("Unbabel", "unbabel"),                          # AI translation
+    ("Lilt", "lilt"),                                # Translation tech
+    ("Gengo", "gengo"),                              # Translation marketplace
+    ("Translated", "translated"),                    # Translation services
+    ("Smartcat", "smartcat"),                        # Translation platform
+    ("TransPerfect", "TransPerfect"),                # LSP
+    ("Lionbridge", "lionbridge"),                    # Language services
 ]
 TEAMTAILOR_COMPANIES = [
-    ("Novakid", "novakid"),                          # ESL, online teaching
-    ("Open English", "openenglish"),                 # ESL, Latin America
-    ("VIPKid", "vipkid"),                            # ESL, China
-    ("Qkids", "qkids"),                              # ESL, China
-    ("Magic Ears", "magicears"),                     # ESL, China
-    ("GoGoKid", "gogokid"),                          # ESL, China
-    ("Native Camp", "nativecamp"),                   # ESL, Japan
-    ("TutorABC", "tutorabc"),                        # ESL, Taiwan
-    ("Engoo", "engoo"),                              # ESL, Japan
-    ("DMM Eikaiwa", "dmmeikaiwa"),                   # ESL, Japan
+    ("Tarjama", "tarjama"),                          # Arabic translation, UAE
+    ("Saudisoft", "saudisoft"),                      # Localization, Saudi
+    ("Tamatem Games", "tamatem"),                    # Arabic game localization
+    ("Welocalize", "welocalize"),                    # Localization
+    ("Keywords Studios", "keywordsstudios"),         # Game localization
+    ("TransPerfect", "transperfect"),                # LSP
+    ("Lionbridge", "lionbridge"),                    # Language services
+    ("RWS", "rws"),                                  # Language services
+    ("Appen", "appen"),                              # AI data, linguists
+    ("TELUS International", "telusinternational"),   # AI training, linguists
 ]
 
 # ── Additional ATS boards ──
@@ -283,7 +283,6 @@ PERSONIO_COMPANIES = [
 # ── Scoring ──────────────────────────────────────────────────────────────
 SCORING_WEIGHTS = {
     "arabic_translation": 1.0,
-    "esl": 0.85,
     "editing": 0.80,
     "admin": 0.75,
 }

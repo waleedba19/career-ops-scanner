@@ -13,8 +13,6 @@ AUTO_SOURCES_FILE = STATE_DIR / "auto_sources.json"
 
 KNOWN_TRANSLATION_FEEDS = [
     {"name": "ProZ", "url": "https://www.proz.com/jobs/feed", "type": "rss"},
-    {"name": "ESL Cafe", "url": "https://www.eslcafe.com/jobs/feed", "type": "rss"},
-    {"name": "TES", "url": "https://www.tes.com/jobs/feed", "type": "rss"},
     {"name": "Smartcat", "url": "https://www.smartcat.com/marketplace/rss", "type": "rss"},
     {"name": "GoTranscript", "url": "https://www.gotranscript.com/rss", "type": "rss"},
     {"name": "RemoteOK Translation", "url": "https://remoteok.com/remote-translation-jobs.json", "type": "json"},

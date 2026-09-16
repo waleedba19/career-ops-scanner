@@ -59,11 +59,10 @@ def _is_arabic_text(text: str) -> bool:
     # Check for English Arabic-related keywords
     keywords = [
         "arabic", "translator", "translation", "interpreter", "linguist",
-        "locali", "esl", "efl", "tesol", "tefl",
-        "bilingual", "multilingual", "language expert",
+        "locali", "bilingual", "multilingual", "language expert",
         "proofreader", "editor", "content writer",
-        "data entry", "virtual assistant", "teaching", "tutor",
-        "عربي", "ترجم", "لغة", "تعليم",
+        "data entry", "virtual assistant",
+        "عربي", "ترجم", "لغة",
     ]
     text_lower = text.lower()
     return any(kw in text_lower for kw in keywords)
@@ -293,7 +292,7 @@ async def fetch_remoteok_arabic(session: aiohttp.ClientSession) -> list[dict]:
                 desc = _clean_html(item.get("description", "")).lower()
                 combined = f"{tags} {title} {desc}"
 
-                if "arabic" in combined or "translator" in combined or "translation" in combined or "esl" in combined or "bilingual" in combined:
+                if "arabic" in combined or "translator" in combined or "translation" in combined or "bilingual" in combined:
                     posted = ""
                     if item.get("date"):
                         try:

@@ -13,7 +13,7 @@ from pathlib import Path
 import aiohttp
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
+MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
 
 # Load real CV profile
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
@@ -36,41 +36,41 @@ CV = _load_cv_profile()
 USER_PROFILE = {
     "name": "Waleed Ballag",
     "background": (
-        "ESL Instructor and Academic Secondary Supervisor with MA in Applied Linguistics. "
-        "Supervised 15 graduate-level research studies. Experienced in Arabic-English translation "
-        "(legal, academic, technical). Awarded English Language Trainer of the Year (2024). "
+        "Arabic-English Translator and Localization Specialist with MA in Applied Linguistics. "
+        "5+ years of experience in legal, academic, and document translation. "
+        "Supervised 15 graduate-level research studies. Awarded English Language Trainer of the Year (2024). "
         "Native Arabic speaker with C1 Advanced English proficiency."
     ),
     "primary_skills": [
-        "ESL/EFL Instruction (secondary & university levels)",
-        "Academic Supervision & Research Guidance (15 graduate studies)",
         "Arabic-English Bidirectional Translation",
-        "Academic Editing & Thesis Review (APA/MLA/Harvard)",
+        "Legal Translation (contracts, court docs, certificates)",
+        "Academic Translation & Thesis Review (APA/MLA/Harvard)",
+        "Localization & Terminology Management",
+        "CAT Tools & Translation Memory",
+        "Academic Supervision & Research Guidance (15 graduate studies)",
         "Data Analysis (SPSS, thematic coding)",
-        "Curriculum Development",
-        "Legal Translation",
     ],
     "secondary_skills": [
         "Academic Writing & Proposal Development",
+        "Proofreading & Editing",
         "Survey & Instrument Design",
-        "Plagiarism Checking & Originality",
-        "Viva Preparation & Defense Coaching",
+        "Curriculum Development",
         "Microsoft Office Suite (Expert)",
         "Adobe Photoshop",
         "AI Tools & Advanced Programs",
     ],
     "experience_domains": [
-        "ESL Teaching (2023-Present)",
-        "Academic Supervision (2024-Present)",
-        "Legal Translation (2019-2022)",
+        "Arabic-English Legal Translation (2019-2022)",
+        "Academic Supervision & Research Guidance (2024-Present)",
+        "Language Training (2023-Present)",
         "Procurement & Logistics (2017-2019)",
         "Banking Operations (2020)",
     ],
     "career_goals": [
-        "Secure stable remote work in translation or ESL teaching",
-        "Build long-term client relationships in academic services",
-        "Grow into senior translator or academic coordinator role",
-        "Contribute to graduate-level research supervision",
+        "Secure stable remote work in Arabic-English translation or localization",
+        "Build long-term client relationships in translation services",
+        "Grow into senior translator or localization coordinator role",
+        "Contribute to multilingual content and academic services",
     ],
     "education": [
         "MA in Applied Linguistics - University of Zawia (2025)",
@@ -128,7 +128,7 @@ Description: {description}
 CRITICAL EVALUATION RULES:
 1. If the job title contains "Engineer", "Developer", "Programmer", "DevOps", "Data Scientist", "ML/AI" → score MUST be below 40
 2. If the job requires specific programming languages (Python, Java, JavaScript, etc.) → score MUST be below 40
-3. If the job is clearly NOT translation/teaching/writing/academic → score MUST be below 40
+3. If the job is clearly NOT translation/localization/writing/bilingual content → score MUST be below 40
 4. If the job requires US/EU citizenship or specific visa → location_logistics MUST be FAIL
 5. If the job mentions "commission only", "quota", or "sales target" → score MUST be below 50
 6. If the job title contains "Head of", "Director", "VP", "C-Suite" → score MUST be below 50
@@ -136,14 +136,14 @@ CRITICAL EVALUATION RULES:
 SCORE EACH DIMENSION (0-100):
 
 1. TECHNICAL SKILLS MATCH (weight: 30%)
-   - 90-100: Job requires exactly Arabic-English translation, ESL teaching, or academic supervision
-   - 70-89: Requires language skills, writing, or academic work
+   - 90-100: Job requires exactly Arabic-English translation, localization, or bilingual content
+   - 70-89: Requires language skills, translation-adjacent writing, or academic work
    - 50-69: Partial match, some transferable skills
    - 0-49: Requires engineering, development, or unrelated technical skills
 
 2. EXPERIENCE MATCH (weight: 25%)
-   - 90-100: Direct experience in translation, ESL teaching, or academic supervision
-   - 70-89: Related experience in language services or education
+   - 90-100: Direct experience in translation, localization, or bilingual content
+   - 70-89: Related experience in language services
    - 50-69: Adjacent experience
    - 0-49: Unrelated experience
 
@@ -159,7 +159,7 @@ SCORE EACH DIMENSION (0-100):
    - FLAG: Hybrid or occasional travel
 
 5. CAREER ALIGNMENT (weight: 30%)
-   - 90-100: Builds toward translation/teaching/academic career
+   - 90-100: Builds toward translation/localization career
    - 70-89: Good role, mostly aligned
    - 50-69: Decent but doesn't build toward goals
    - 0-49: Dead end or backwards step
@@ -187,7 +187,7 @@ RULES:
 - Keep reasons concise (under 15 words each)
 - Calculate overall_score as weighted average: (technical*0.30 + experience*0.25 + behavioral*0.15 + career*0.30)
 - If location is FAIL, overall_score must be below 50
-- If job is NOT translation/teaching/writing/academic, overall_score MUST be below 40"""
+- If job is NOT translation/localization/writing/bilingual content, overall_score MUST be below 40"""
 
 
 def _build_scoring_prompt(job: dict) -> str:
@@ -216,7 +216,7 @@ def _build_scoring_prompt(job: dict) -> str:
 # Enhanced Simple Prompt (fallback)
 # ---------------------------------------------------------------------------
 
-SIMPLE_PROMPT = """You are a career advisor for Waleed Ballag, an ESL Instructor and Academic Supervisor with MA in Applied Linguistics.
+SIMPLE_PROMPT = """You are a career advisor for Waleed Ballag, an Arabic-English Translator and Localization Specialist with MA in Applied Linguistics.
 
 Given this job listing, explain in 1-2 sentences why this job might be a good fit for Waleed specifically.
 
@@ -228,9 +228,9 @@ Match reasons: {why}
 Job description: {description}
 
 Focus on:
-1. How Waleed's ESL teaching experience applies
-2. How Waleed's translation skills apply
-3. How Waleed's academic supervision experience applies
+1. How Waleed's translation skills apply
+2. How Waleed's bilingual Arabic-English expertise applies
+3. How Waleed's localization experience applies
 
 Be specific about Waleed's actual qualifications. Do not fabricate skills."""
 
@@ -260,9 +260,9 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
                 "model": MODEL,
                 "system": (
                     "You are a strict job-matching evaluator. The candidate is an Arabic-English "
-                    "translator and ESL teacher from Libya. ONLY score jobs HIGH if they require "
-                    "Arabic translation, ESL teaching, bilingual content, or localization. "
-                    "Engineering, sales, data science, electrician, bookkeeping, or any non-language "
+                    "translator and localization specialist from Libya. ONLY score jobs HIGH if they require "
+                    "Arabic translation, bilingual content, localization, or language services. "
+                    "Engineering, sales, data science, ESL teaching, or any non-translation "
                     "role MUST score below 30. Be harsh. Do NOT give high scores to irrelevant jobs."
                 ),
                 "prompt": prompt,

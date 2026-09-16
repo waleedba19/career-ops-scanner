@@ -3952,10 +3952,10 @@
     },
     "for9a_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 50,
+      "total_fetched": 48,
       "total_matches": 0,
       "last_active": "2026-09-16",
-      "consecutive_empty": 25,
+      "consecutive_empty": 24,
       "status": "inactive",
       "daily_stats": [
         {
@@ -4077,15 +4077,10 @@
           "date": "2026-09-16",
           "fetched": 2,
           "matches": 0
-        },
-        {
-          "date": "2026-09-16",
-          "fetched": 2,
-          "matches": 0
         }
       ]
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-16T19:56:53.303716+00:00"
+  "last_cleanup": "2026-09-16T19:57:10.088909+00:00"
 }

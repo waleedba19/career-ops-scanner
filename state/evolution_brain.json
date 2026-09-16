@@ -1,21 +1,12 @@
 {
-  "total_scans": 110,
-  "total_matches": 249,
+  "total_scans": 111,
+  "total_matches": 260,
   "streak_days": 12,
   "last_scan_date": "2026-09-16",
-  "total_jobs_scanned": 272399,
+  "total_jobs_scanned": 272774,
   "best_day_matches": 16,
   "best_day_date": "2026-09-15",
   "daily_history": [
-    {
-      "date": "2026-09-08",
-      "total_fetched": 4718,
-      "matches": 5,
-      "old_verified": 2,
-      "near_misses": 1,
-      "sources": 21,
-      "fresh_count": 1262
-    },
     {
       "date": "2026-09-09",
       "total_fetched": 4726,
@@ -816,11 +807,20 @@
       "near_misses": 0,
       "sources": 11,
       "fresh_count": 1
+    },
+    {
+      "date": "2026-09-16",
+      "total_fetched": 375,
+      "matches": 11,
+      "old_verified": 11,
+      "near_misses": 0,
+      "sources": 10,
+      "fresh_count": 198
     }
   ],
   "category_trends": {
     "Arabic Translation": {
-      "count": 59,
+      "count": 61,
       "last_seen": "2026-09-16"
     },
     "Editing": {
@@ -837,6 +837,14 @@
     },
     "Other": {
       "count": 37,
+      "last_seen": "2026-09-16"
+    },
+    "Translation (any pair)": {
+      "count": 2,
+      "last_seen": "2026-09-16"
+    },
+    "Editing & Proofreading": {
+      "count": 7,
       "last_seen": "2026-09-16"
     }
   },
@@ -890,12 +898,12 @@
       "last_seen": "2026-09-13"
     },
     "linkedin": {
-      "matches": 80,
+      "matches": 88,
       "last_seen": "2026-09-16"
     },
     "impactpool": {
-      "matches": 2,
-      "last_seen": "2026-09-13"
+      "matches": 4,
+      "last_seen": "2026-09-16"
     },
     "greenhouse": {
       "matches": 6,
@@ -908,6 +916,10 @@
     "weworkremotely": {
       "matches": 1,
       "last_seen": "2026-09-15"
+    },
+    "remoteok": {
+      "matches": 1,
+      "last_seen": "2026-09-16"
     }
   },
   "user_applied": [],

@@ -1,100 +1,5 @@
 [
   {
-    "date": "2026-09-05T21:53:08.184555+00:00",
-    "matched_count": 11,
-    "all_count": 5216,
-    "jobs": [
-      {
-        "title": "<![CDATA[Intensive Online Arabic Speaking Tutor]]>",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/language-tutoring/Intensive-Online-Arabic-Speaking-Tutor.html",
-        "score": 97,
-        "category": "Arabic Translation",
-        "source": "freelancer"
-      },
-      {
-        "title": "<![CDATA[SEO Blog Posts: YouTube & Instagram]]>",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/blog-writing/SEO-Blog-Posts-YouTube-Instagram.html",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "<![CDATA[Online French Fluency Tutor Needed]]>",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/Online-French-Fluency-Tutor-Needed.html",
-        "score": 97,
-        "category": "ESL",
-        "source": "freelancer"
-      },
-      {
-        "title": "<![CDATA[Non-Fiction Book Proofreading]]>",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/content-writing/Non-Fiction-Book-Proofreading.html",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "<![CDATA[Mental Health Article Writing]]>",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/seo-writing/Mental-Health-Article-Writing.html",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "Translator - Book a Meeting",
-        "company": "GoTranscript",
-        "url": "https://gotranscript.com/request-quote?previous=https%3A%2F%2Fgotranscript.com%2Ftranslation-jobs",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "gotranscript"
-      },
-      {
-        "title": "Translator - Join us as a translator",
-        "company": "GoTranscript",
-        "url": "https://gotranscript.com/translation-jobs",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "gotranscript"
-      },
-      {
-        "title": "Online Language Tutor (Arabic/English)",
-        "company": "iTalki",
-        "url": "https://www.italki.com/en/teachers",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "italki"
-      },
-      {
-        "title": "Online English Teacher (Kids 4-15)",
-        "company": "LingoAce",
-        "url": "https://www.lingoace.com/teach/",
-        "score": 100,
-        "category": "ESL",
-        "source": "lingoace"
-      },
-      {
-        "title": "Online English Teacher",
-        "company": "TutorABC",
-        "url": "https://join.tutorabcglobal.com.hk/english/",
-        "score": 100,
-        "category": "ESL",
-        "source": "tutorabc"
-      },
-      {
-        "title": "Online ESL Jobs",
-        "company": "Eslgorilla",
-        "url": "https://eslgorilla.com/jobs/online",
-        "score": 100,
-        "category": "ESL",
-        "source": "eslgorilla"
-      }
-    ]
-  },
-  {
     "date": "2026-09-05T22:11:29.232318+00:00",
     "matched_count": 0,
     "all_count": 4307,
@@ -2457,6 +2362,37 @@
         "score": 100,
         "category": "ESL",
         "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-16T19:42:48.380480+00:00",
+    "matched_count": 3,
+    "all_count": 307,
+    "jobs": [
+      {
+        "title": "Palantir Implementation Strategist (USA)",
+        "company": "Unit8 SA",
+        "url": "https://himalayas.app/companies/unit8-sa/jobs/palantir-implementation-strategist-usa",
+        "score": 70,
+        "category": "Arabic Translation",
+        "source": "himalayas"
+      },
+      {
+        "title": "Virtual Computer Science Tutor",
+        "company": "Tutor Me Education",
+        "url": "https://himalayas.app/companies/tutor-me-education/jobs/virtual-computer-science-tutor-94297731",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
+      },
+      {
+        "title": "Social Media & Community Management Virtual Assistant (US/Remote)",
+        "company": "Paired",
+        "url": "https://himalayas.app/companies/paired-so/jobs/social-media-community-management-virtual-assistant-us-remote",
+        "score": 0,
+        "category": "Other",
+        "source": "himalayas"
       }
     ]
   }

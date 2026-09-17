@@ -1594,7 +1594,482 @@
       "seen": "2026-09-17T07:37:49.118046+00:00",
       "title": "Chuy\u00ean vi\u00ean Bi\u00ean Phi\u00ean d\u1ecbch Ti\u1ebfng Anh",
       "company": "THACO INDUSTRIES"
+    },
+    "prolific|forwarddeployedresearcher|remoteus": {
+      "seen": "2026-09-17T12:24:45.425318+00:00",
+      "title": "Forward Deployed Researcher",
+      "company": "Prolific"
+    },
+    "twikey|twikeyjavadeveloper|remote": {
+      "seen": "2026-09-17T12:24:45.602115+00:00",
+      "title": "Twikey: Java Developer",
+      "company": "Twikey"
+    },
+    "softgic|atlassianadministrator1726|anywhere": {
+      "seen": "2026-09-17T12:24:45.666107+00:00",
+      "title": "Atlassian Administrator 1726",
+      "company": "Softgic"
+    },
+    "fueled|seniorfrontendengineer|anywhere": {
+      "seen": "2026-09-17T12:24:45.681270+00:00",
+      "title": "Contract Senior Front End Engineer",
+      "company": "Fueled"
+    },
+    "nebius|seniorembeddedsoftwareengineer|unitedstates": {
+      "seen": "2026-09-17T12:24:45.767338+00:00",
+      "title": "Senior Embedded Software Engineer",
+      "company": "Nebius"
+    },
+    "assistworld|marketingecommercevirtualassis|philippinessouthafri": {
+      "seen": "2026-09-17T12:24:45.775410+00:00",
+      "title": "Marketing & E-commerce Virtual Assistant",
+      "company": "Assist World"
+    },
+    "assistworld|executivevirtualassistantaccou|philippinessouthafri": {
+      "seen": "2026-09-17T12:24:45.784667+00:00",
+      "title": "Executive Virtual Assistant / Accounting Real Estate Support",
+      "company": "Assist World"
+    },
+    "tiberiusaerospaceinc|revopsmanager|unitedstates": {
+      "seen": "2026-09-17T12:24:45.802731+00:00",
+      "title": "RevOps Manager",
+      "company": "Tiberius Aerospace Inc."
+    },
+    "geico|seniorengineersoftwareswegiapl|unitedstates": {
+      "seen": "2026-09-17T12:24:45.818551+00:00",
+      "title": "Senior Engineer, Software (SWE) \u2013 GIA Platform",
+      "company": "GEICO"
+    },
+    "micro1|statistician|remote": {
+      "seen": "2026-09-17T12:24:45.825440+00:00",
+      "title": "Statistician",
+      "company": "micro1"
+    },
+    "alimentiv|intermediatefullstacksoftwared|canada": {
+      "seen": "2026-09-17T12:24:45.834721+00:00",
+      "title": "Intermediate Full-Stack Software Developer",
+      "company": "Alimentiv"
+    },
+    "micro1|supplychainmanager|remote": {
+      "seen": "2026-09-17T12:24:45.841112+00:00",
+      "title": "Supply Chain Manager",
+      "company": "micro1"
+    },
+    "rithum|seniorimplementationconsultant|spain": {
+      "seen": "2026-09-17T12:24:45.864207+00:00",
+      "title": "Senior Implementation Consultant",
+      "company": "Rithum"
+    },
+    "typeform|senioraccountexecutive|unitedkingdomremote": {
+      "seen": "2026-09-17T12:24:45.865660+00:00",
+      "title": "Senior Account Executive",
+      "company": "Typeform"
+    },
+    "n8n|salesdataanalyst|germanybosnianorwaye": {
+      "seen": "2026-09-17T12:24:45.867852+00:00",
+      "title": "Sales Data Analyst",
+      "company": "n8n"
+    },
+    "calendly|seniormanagersecurityopsprodse|remoteus": {
+      "seen": "2026-09-17T12:24:45.869266+00:00",
+      "title": "Senior Manager, Security Ops & Prod Security",
+      "company": "Calendly"
+    },
+    "alan|juniorbusinessdeveloperbelgian|anywhereinbelgium": {
+      "seen": "2026-09-17T12:24:45.871187+00:00",
+      "title": "Junior Business Developer - Belgian Market",
+      "company": "Alan"
+    },
+    "alan|peopleadminops|parisfranceremote": {
+      "seen": "2026-09-17T12:24:45.873063+00:00",
+      "title": "People & Admin Ops.",
+      "company": "Alan"
+    },
+    "alan|customersupportspecialist|anywhereinbelgium": {
+      "seen": "2026-09-17T12:24:45.874942+00:00",
+      "title": "Customer Support Specialist \ud83c\udde7\ud83c\uddea",
+      "company": "Alan"
+    },
+    "grafanalabs|stafffrontendengineergrafanada|unitedstatesremote": {
+      "seen": "2026-09-17T12:24:45.876152+00:00",
+      "title": "Staff Frontend Engineer - Grafana DataViz | US | Remote",
+      "company": "Grafana Labs"
+    },
+    "grafanalabs|seniorenterpriseaccountexecuti|unitedstatesremote": {
+      "seen": "2026-09-17T12:24:45.877313+00:00",
+      "title": "Senior Enterprise Account Executive, Acquisition | West | Remote",
+      "company": "Grafana Labs"
+    },
+    "gitlab|solutionsarchitectpublicsector|remoteunitedstates": {
+      "seen": "2026-09-17T12:24:45.878463+00:00",
+      "title": "Solutions Architect, Public Sector - West",
+      "company": "GitLab"
+    },
+    "gitlab|principalengineerduoagentplatf|remotecanadaremotepo": {
+      "seen": "2026-09-17T12:24:45.879475+00:00",
+      "title": "Principal Engineer, Duo Agent Platform",
+      "company": "GitLab"
+    },
+    "gitlab|engineeringmanagerdevops|remotecanadaremoteun": {
+      "seen": "2026-09-17T12:24:45.880464+00:00",
+      "title": "Engineering Manager, DevOps",
+      "company": "GitLab"
+    },
+    "gitlab|associaterevenueoperationsanal|remoteunitedstates": {
+      "seen": "2026-09-17T12:24:45.881548+00:00",
+      "title": "Associate Revenue Operations Analyst, Policy & Rules of Engagement",
+      "company": "GitLab"
+    },
+    "docker|salesenablementspecialist|canadaunitedstatesre": {
+      "seen": "2026-09-17T12:24:45.882929+00:00",
+      "title": "Sales Enablement Specialist",
+      "company": "Docker"
+    },
+    "docker|seniorsoftwareengineerdatainfr|seattlewaremote": {
+      "seen": "2026-09-17T12:24:45.884208+00:00",
+      "title": "Senior Software Engineer, Data Infrastructure",
+      "company": "Docker"
+    },
+    "1password|directorstrategicfinance|remoteunitedstatesca": {
+      "seen": "2026-09-17T12:24:45.885482+00:00",
+      "title": "Director, Strategic Finance",
+      "company": "1Password"
+    },
+    "osce|seniorinterpreterpoliticalassi|remotetiraspoltransn": {
+      "seen": "2026-09-17T12:24:45.895767+00:00",
+      "title": "Senior Interpreter/Political Assistant (G6)",
+      "company": "OSCE"
+    },
+    "globaljoboffice|localizationspecialist|remotetokyojapan": {
+      "seen": "2026-09-17T12:24:45.896518+00:00",
+      "title": "Localization Specialist",
+      "company": "\u30d1\u30fc\u30bd\u30eb\u30c6\u30f3\u30d7\u30b9\u30bf\u30c3\u30d5\u682a\u5f0f\u4f1a\u793e Global Job Office"
+    },
+    "boozallenhamilton|japaneseculturalanalystlinguis|remoteokinawajapan": {
+      "seen": "2026-09-17T12:24:45.897611+00:00",
+      "title": "Japanese Cultural Analyst & Linguist",
+      "company": "Booz Allen Hamilton"
+    },
+    "generaldynamicsinformationtechnology|mexicanlinguist|remotetampafl": {
+      "seen": "2026-09-17T12:24:45.898449+00:00",
+      "title": "Mexican Linguist",
+      "company": "General Dynamics Information Technology"
+    },
+    "expresspublishing|editor|remoteathensattikigr": {
+      "seen": "2026-09-17T12:24:45.899706+00:00",
+      "title": "Editor",
+      "company": "Express Publishing"
+    },
+    "jahvmcgregorsas|editoratcnicoa|remotebogotdcmetropo": {
+      "seen": "2026-09-17T12:24:45.900310+00:00",
+      "title": "EDITOR/A T\u00c9CNICO/A",
+      "company": "JAHV McGregor SAS"
+    },
+    "primetrace|qualitycontrol|remotebengalurukarna": {
+      "seen": "2026-09-17T12:24:45.900869+00:00",
+      "title": "Quality Control",
+      "company": "Primetrace"
+    },
+    "wolterskluwer|contenteditingassociate|remotewalthamma": {
+      "seen": "2026-09-17T12:24:45.901343+00:00",
+      "title": "Content Editing Associate",
+      "company": "Wolters Kluwer"
+    },
+    "jtginc|primaryleveltranslatorsmultipl|restonva": {
+      "seen": "2026-09-17T12:24:45.905536+00:00",
+      "title": "Primary Level Translators - Multiple Languages",
+      "company": "JTG, inc."
+    },
+    "valiantintegratedservices|arabichassaniyamauritianlingui|fortgeorgegmeademd": {
+      "seen": "2026-09-17T12:24:45.905929+00:00",
+      "title": "Arabic Hassaniya (Mauritian) Linguist CAT III",
+      "company": "Valiant Integrated Services"
+    },
+    "tlallc|linguistsarabickurdishsoraniku|chantillyva": {
+      "seen": "2026-09-17T12:24:45.906480+00:00",
+      "title": "Linguists -Arabic Kurdish-Sorani Kurdish-Kurmanji",
+      "company": "TLA-LLC"
+    },
+    "jtginc|expertleveltranslators|restonva": {
+      "seen": "2026-09-17T12:24:45.907110+00:00",
+      "title": "Expert Level Translators",
+      "company": "JTG, inc."
+    },
+    "leidos|kurdishsoraniarabictranslators|restonva": {
+      "seen": "2026-09-17T12:24:45.907466+00:00",
+      "title": "Kurdish (Sorani) / Arabic Translators",
+      "company": "Leidos"
+    },
+    "valiantintegratedservices|arabichassaniyamauritianlingui|augustaga": {
+      "seen": "2026-09-17T12:24:45.908188+00:00",
+      "title": "Arabic Hassaniya (Mauritian) Linguist CAT III",
+      "company": "Valiant Integrated Services"
+    },
+    "bitget|arabictranslator|baltimoremd": {
+      "seen": "2026-09-17T12:24:45.908482+00:00",
+      "title": "Arabic Translator",
+      "company": "Bitget"
+    },
+    "leidos|kurdisharabictranslators|restonva": {
+      "seen": "2026-09-17T12:24:45.909179+00:00",
+      "title": "Kurdish/Arabic Translators",
+      "company": "Leidos"
+    },
+    "caciinternationalinc|bilingualkurdisharabiclinguist|fairfaxva": {
+      "seen": "2026-09-17T12:24:45.909904+00:00",
+      "title": "Bilingual Kurdish/Arabic Linguist - Travel Only",
+      "company": "CACI International Inc"
+    },
+    "caciinternationalinc|bilingualkurdishsoraniarabicli|fairfaxva": {
+      "seen": "2026-09-17T12:24:45.910726+00:00",
+      "title": "Bilingual Kurdish (Sorani)/Arabic Linguist - Travel Only",
+      "company": "CACI International Inc"
+    },
+    "smithsonianinstitution|editor|washingtondc": {
+      "seen": "2026-09-17T12:24:45.911361+00:00",
+      "title": "Editor.",
+      "company": "Smithsonian Institution"
+    },
+    "coreone|linguistalbanianbengalifinnish|mcleanva": {
+      "seen": "2026-09-17T12:24:45.911814+00:00",
+      "title": "Linguist (Albanian, Bengali, Finnish, Greek, Hindi, Turkish, and more.)",
+      "company": "Core One"
+    },
+    "lacarehealthplan|translationservicesspecialisti|losangelesca": {
+      "seen": "2026-09-17T12:24:45.912177+00:00",
+      "title": "Translation Services Specialist III",
+      "company": "L.A. Care Health Plan"
+    },
+    "acclaimtechnicalservices|arabicfrenchlinguist20260190|restonva": {
+      "seen": "2026-09-17T12:24:45.912550+00:00",
+      "title": "Arabic / French Linguist (2026-0190)",
+      "company": "Acclaim Technical Services"
+    },
+    "acclaimtechnicalservices|arabiclinguisttravel20260001|restonva": {
+      "seen": "2026-09-17T12:24:45.913365+00:00",
+      "title": "Arabic Linguist - Travel (2026-0001)",
+      "company": "Acclaim Technical Services"
+    },
+    "tordenllc|clearedlinguistsmultiplelangua|tivertonri": {
+      "seen": "2026-09-17T12:24:45.914348+00:00",
+      "title": "Cleared Linguists \u2013 Multiple Languages | Secret \u2013 TS/SCI | CONUS & OCONUS Opportunities",
+      "company": "Torden LLC"
+    },
+    "cityofnewyork|managerforlanguageservices|manhattanny": {
+      "seen": "2026-09-17T12:24:45.914679+00:00",
+      "title": "Manager for Language Services",
+      "company": "City of New York"
+    },
+    "careoregon|spanishtranslator|portlandor": {
+      "seen": "2026-09-17T12:24:45.914966+00:00",
+      "title": "Spanish Translator",
+      "company": "CareOregon"
+    },
+    "worldwideprofessionalsolutions|translatorprojectcoordinator|peoriaaz": {
+      "seen": "2026-09-17T12:24:45.915336+00:00",
+      "title": "Translator & Project Coordinator",
+      "company": "World Wide Professional Solutions"
+    },
+    "asrcfederal|spanishlinguisttranslator|tucsonaz": {
+      "seen": "2026-09-17T12:24:45.916110+00:00",
+      "title": "Spanish Linguist/Translator",
+      "company": "ASRC Federal"
+    },
+    "advocatehealthcare|medicalinterpreterarabic|oaklawnil": {
+      "seen": "2026-09-17T12:24:45.916454+00:00",
+      "title": "Medical Interpreter Arabic",
+      "company": "Advocate Health Care"
+    },
+    "intelliswiftanlttscompany|translator|fletchernc": {
+      "seen": "2026-09-17T12:24:45.917179+00:00",
+      "title": "Translator",
+      "company": "Intelliswift - An LTTS Company"
+    },
+    "cgi|supportassociatelevelivarabics|washingtondc": {
+      "seen": "2026-09-17T12:24:45.918031+00:00",
+      "title": "Support Associate Level IV - Arabic Speaking",
+      "company": "CGI"
+    },
+    "darkstarintelligence|arabiccryptologiclanguageanaly|sanangelotx": {
+      "seen": "2026-09-17T12:24:45.918466+00:00",
+      "title": "Arabic Cryptologic Language Analyst (CLA) Training Developer",
+      "company": "DarkStar Intelligence"
+    },
+    "lanbridgegroup|gametranslation|unitedstates": {
+      "seen": "2026-09-17T12:24:45.918772+00:00",
+      "title": "Game Translation",
+      "company": "Lan-bridge Group - \u8bed\u8a00\u6865"
+    },
+    "welocalize|englishtospanishlatamforlifesc|unitedstates": {
+      "seen": "2026-09-17T12:24:45.919203+00:00",
+      "title": "English to Spanish (LatAm) for Life Sciences Linguist",
+      "company": "Welocalize"
+    },
+    "urbanhealthplaninc|medicalassistantcertifiedphleb|bronxny": {
+      "seen": "2026-09-17T12:24:45.920189+00:00",
+      "title": "Medical Assistant/Certified Phlebotomy Technician (Bilingual English/Arabic))",
+      "company": "URBAN HEALTH PLAN, INC."
+    },
+    "hyosunghicoltd|translatorspanishenglish1stshi|memphistn": {
+      "seen": "2026-09-17T12:24:45.921081+00:00",
+      "title": "Translator (Spanish/English) - 1st Shift",
+      "company": "Hyosung HICO LTD."
+    },
+    "internationalcenterforlanguagestudiesicls|languageproficiencyassessments|washingtondc": {
+      "seen": "2026-09-17T12:24:45.921477+00:00",
+      "title": "Language Proficiency Assessment Specialist",
+      "company": "International Center for Language Studies\u2013ICLS"
+    },
+    "1stopasiarecruiting|englishtovietnamesetranslatora|losangelesca": {
+      "seen": "2026-09-17T12:24:45.921965+00:00",
+      "title": "English to Vietnamese Translator at a Leading Translation Service Company",
+      "company": "1-Stop Asia Recruiting"
+    },
+    "holyokepublicschools|englishspanishseniortranslator|holyokema": {
+      "seen": "2026-09-17T12:24:45.922365+00:00",
+      "title": "English?Spanish Senior Translator / Lang",
+      "company": "Holyoke Public Schools"
+    },
+    "focusinterpreting|translationsenglishmixteco|californiaunitedstat": {
+      "seen": "2026-09-17T12:24:45.922771+00:00",
+      "title": "Translations English- Mixteco",
+      "company": "Focus Interpreting"
+    },
+    "hyosunghicoltd|translatorenglishspanish1stshi|memphistn": {
+      "seen": "2026-09-17T12:24:45.923182+00:00",
+      "title": "Translator (English/Spanish) - 1st shift",
+      "company": "Hyosung HICO LTD."
+    },
+    "columbiacareservicesinc|deijlanguageaccesscoordinator4|portlandor": {
+      "seen": "2026-09-17T12:24:45.923568+00:00",
+      "title": "DEIJ & Language Access Coordinator - 4529",
+      "company": "ColumbiaCare Services, Inc."
+    },
+    "theuniversityoftexasmedicalbranch|medicaltranslatorpatientservic|galvestontx": {
+      "seen": "2026-09-17T12:24:45.923978+00:00",
+      "title": "Medical Translator, Patient Services (Bilingual)",
+      "company": "The University of Texas Medical Branch"
+    },
+    "internationalcenterforlanguagestudiesicls|foreignlanguageinstructorsatdo|arlingtonva": {
+      "seen": "2026-09-17T12:24:45.925123+00:00",
+      "title": "Foreign Language Instructors at DOS, National Foreign Affairs Training Center \"NFATC\" (former FSI)",
+      "company": "International Center for Language Studies\u2013ICLS"
+    },
+    "awtechnicalcenterusa|japanesetranslator|marionil": {
+      "seen": "2026-09-17T12:24:45.925444+00:00",
+      "title": "Japanese Translator",
+      "company": "AW Technical Center USA"
+    },
+    "americorps|abclcbilingualcontentspecialis|fortworthtx": {
+      "seen": "2026-09-17T12:24:45.925818+00:00",
+      "title": "ABCLC Bilingual Content Specialist VISTA",
+      "company": "AmeriCorps"
+    },
+    "wiserimagery|toponymistgeospatiallinguistmi|springfieldva": {
+      "seen": "2026-09-17T12:24:45.926318+00:00",
+      "title": "Toponymist & Geospatial Linguist (Mid-Level) - All Languages - TS/SCI",
+      "company": "Wiser Imagery"
+    },
+    "thepokmoncompanyinternational|localizationeditoriibrazilianp|bellevuewa": {
+      "seen": "2026-09-17T12:24:45.926798+00:00",
+      "title": "Localization Editor II \u2013 Brazilian Portuguese (Non-Video Games)",
+      "company": "The Pok\u00e9mon Company International"
+    },
+    "harpercollinschristianpublishing|seniormarketingassociatebiling|unitedstates": {
+      "seen": "2026-09-17T12:24:45.927286+00:00",
+      "title": "Senior Marketing Associate, Bilingual - Spanish Publishing (Remote US)",
+      "company": "HarperCollins Christian Publishing"
+    },
+    "northwesternmedicine|medicalinterpreterarabicglobal|chicagoil": {
+      "seen": "2026-09-17T12:24:45.927737+00:00",
+      "title": "Medical Interpreter, Arabic Global Services Full-Time Days",
+      "company": "Northwestern Medicine"
+    },
+    "worldteam|philippinesproducingandtransla|warringtonpa": {
+      "seen": "2026-09-17T12:24:45.928785+00:00",
+      "title": "Philippines-Producing and Translating Discipleship and Training Materials",
+      "company": "World Team"
+    },
+    "1stopasiarecruiting|englishintotagalogtranslatorfo|losangelesca": {
+      "seen": "2026-09-17T12:24:45.929311+00:00",
+      "title": "English into Tagalog Translator for a Leading Translation Service Company",
+      "company": "1-Stop Asia Recruiting"
+    },
+    "framinghampublicschools|translationqualityassurancespe|framinghamma": {
+      "seen": "2026-09-17T12:24:45.929752+00:00",
+      "title": "Translation Quality Assurance Specialist (Bilingual Portuguese)",
+      "company": "Framingham Public Schools"
+    },
+    "globaldimensionsllc|spanishlinguist|keywestfl": {
+      "seen": "2026-09-17T12:24:45.930063+00:00",
+      "title": "Spanish Linguist",
+      "company": "Global Dimensions, LLC"
+    },
+    "lompocunifiedschooldistrict|districttranslator|lompocca": {
+      "seen": "2026-09-17T12:24:45.930377+00:00",
+      "title": "District Translator",
+      "company": "Lompoc Unified School District"
+    },
+    "threattecllc|modernstandardarabicassociatel|fortthomasky": {
+      "seen": "2026-09-17T12:24:45.931382+00:00",
+      "title": "Modern Standard Arabic Associate Language Instructor",
+      "company": "Threat Tec, LLC"
+    },
+    "burneshomeaccents|arabicinterpreterflexiblesched|ranchocordovaca": {
+      "seen": "2026-09-17T12:24:45.932350+00:00",
+      "title": "Arabic Interpreter - Flexible Schedule",
+      "company": "Burnes Home Accents"
+    },
+    "urc|bilingualfrenchenglishcopyedit|unitedstates": {
+      "seen": "2026-09-17T12:24:45.933418+00:00",
+      "title": "Bi-Lingual French-English Copy Editor- Consultancy",
+      "company": "URC"
+    },
+    "harriscomputer|rdacteurtechniquebilingue|stegenevievemo": {
+      "seen": "2026-09-17T12:24:45.933773+00:00",
+      "title": "R\u00e9dacteur technique bilingue",
+      "company": "Harris Computer"
+    },
+    "tokatinstitute|tokatfellowshipinthehistoryofp|fellowshipfl": {
+      "seen": "2026-09-17T12:24:45.934275+00:00",
+      "title": "Tokat Fellowship in the History of Philosophy in the Islamic World",
+      "company": "Tokat Institute"
+    },
+    "universallanguageserviceinc|bilingualcustomerservicelangua|bellevuewa": {
+      "seen": "2026-09-17T12:24:45.934750+00:00",
+      "title": "Bilingual Customer Service & Language Specialist (W-2 Employee)",
+      "company": "Universal Language Service, Inc."
+    },
+    "spacexai|aitutorarabic|unitedstates": {
+      "seen": "2026-09-17T12:24:45.935098+00:00",
+      "title": "AI Tutor - Arabic",
+      "company": "SpaceXAI"
+    },
+    "kraftsportsentertainment|internationalcontentspecialist|foxboroughfoxboroma": {
+      "seen": "2026-09-17T12:24:45.935462+00:00",
+      "title": "International Content Specialist",
+      "company": "Kraft Sports + Entertainment"
+    },
+    "fremontunifiedschooldistrict|interpretercommunityedrepresen|fremontmo": {
+      "seen": "2026-09-17T12:24:45.935842+00:00",
+      "title": "Interpreter - Community Ed. Representative",
+      "company": "Fremont Unified School District"
+    },
+    "wiserimagery|toponymistgeospatiallinguistmi|stlouismo": {
+      "seen": "2026-09-17T12:24:45.936358+00:00",
+      "title": "Toponymist & Geospatial Linguist (Mid-Level) - All Languages - TS/SCI",
+      "company": "Wiser Imagery"
+    },
+    "metlang|spanishanalyticlinguist|louisvilleky": {
+      "seen": "2026-09-17T12:24:45.936677+00:00",
+      "title": "Spanish Analytic Linguist",
+      "company": "Metlang"
+    },
+    "northwesternmemorialhospital|medicalinterpreterarabicglobal|chicagoil": {
+      "seen": "2026-09-17T12:24:45.937170+00:00",
+      "title": "Medical Interpreter, Arabic Global Services Full-Time Days",
+      "company": "Northwestern Memorial Hospital"
     }
   },
-  "updated": "2026-09-17T07:37:53.853612+00:00"
+  "updated": "2026-09-17T12:24:51.941617+00:00"
 }

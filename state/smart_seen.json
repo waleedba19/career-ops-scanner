@@ -5554,8 +5554,28 @@
       "seen": "2026-09-17T22:33:38.669162+00:00",
       "title": "Spanish Analytic Linguist",
       "company": "Metlang"
+    },
+    "turing|forwarddeployedaiengineer|newyorknewyorkunited": {
+      "seen": "2026-09-17T22:50:05.980065+00:00",
+      "title": "Forward Deployed AI Engineer",
+      "company": "Turing"
+    },
+    "turing|forwarddeployedaiengineerintra|newyorknewyorkunited": {
+      "seen": "2026-09-17T22:50:06.001569+00:00",
+      "title": "Forward Deployed AI Engineer (In Training)",
+      "company": "Turing"
+    },
+    "mercor|chiefofstaffgtm|sanfrancisco": {
+      "seen": "2026-09-17T22:50:06.068810+00:00",
+      "title": "Chief of Staff: GTM",
+      "company": "Mercor"
+    },
+    "primetrace|qualitycontrol|remotebengalurukarna": {
+      "seen": "2026-09-17T22:50:06.225129+00:00",
+      "title": "Quality Control",
+      "company": "Primetrace"
     }
   },
-  "updated": "2026-09-17T22:33:50.033997+00:00",
+  "updated": "2026-09-17T22:50:12.917239+00:00",
   "reset_reason": "Cleared to allow fresh job evaluation after Groq migration and source cleanup"
 }

@@ -276,6 +276,9 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
                 # 7B model occasionally prefixes prose or cuts off mid-object,
                 # and _parse_scoring_response then returns None (silent no-op).
                 "format": "json",
+                # Keep the model resident. Ollama unloads after 5 min idle and
+                # reloading a 3.8GB q3 model costs minutes.
+                "keep_alive": "30m",
                 "options": {
                     "temperature": 0.3,
                     "num_predict": 900,
@@ -295,11 +298,41 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
                 data = await resp.json(content_type=None)
                 return data.get("response", "").strip()
         except Exception as e:
-            print(f"  Ollama call attempt {attempt + 1} failed: {e}")
+            # TimeoutError/ConnectionResetError stringify to "" — without the
+            # type name the log is just "attempt N failed:" and undebuggable.
+            print(f"  Ollama call attempt {attempt + 1} failed: "
+                  f"{type(e).__name__}: {e or '(no message)'}")
             if attempt < max_retries:
                 continue
             return None
     return None
+
+
+async def _warm_up(session: aiohttp.ClientSession) -> bool:
+    """Load the model into memory before the scoring loop.
+
+    Ollama loads weights lazily on the first /api/generate, so that call paid
+    the full cold-load and blew the 120s per-call timeout — every run logged an
+    "attempt 1 failed" and only succeeded on retry. /api/tags (the readiness
+    probe the workflow uses) does not trigger a load, so this is the first real
+    inference. Give the load its own generous budget.
+    """
+    try:
+        timeout = aiohttp.ClientTimeout(total=600)
+        async with session.post(
+            f"{OLLAMA_URL}/api/generate",
+            json={"model": MODEL, "prompt": "hi", "stream": False,
+                  "options": {"num_predict": 1}, "keep_alive": "30m"},
+            timeout=timeout,
+        ) as resp:
+            if resp.status != 200:
+                print(f"  Ollama warm-up HTTP {resp.status}")
+                return False
+            await resp.json(content_type=None)
+            return True
+    except Exception as e:
+        print(f"  Ollama warm-up failed: {type(e).__name__}: {e or '(no message)'}")
+        return False
 
 
 async def _list_local_models(session: aiohttp.ClientSession) -> set[str]:
@@ -397,6 +430,11 @@ async def analyze_jobs_with_ollama(jobs: list[dict]) -> list[dict]:
 
         print(f"Ollama available — analyzing {len(jobs)} jobs with {MODEL}")
         installed = await _list_local_models(session)
+        # Load weights up front so the first scored job isn't charged the
+        # cold-load (and doesn't time out). Advisory only — scoring proceeds
+        # even if warm-up fails.
+        if await _warm_up(session):
+            print("  Model loaded and resident")
 
         for i, job in enumerate(jobs):
             # Try 5-dimension scoring first

@@ -313,12 +313,19 @@ def test_ollama_pipeline():
     async def gen(request):
         body = await request.json()
         seen.append(body)
+        # Warm-up only asks for a single token; let it succeed quietly.
+        if body.get("prompt") == "hi":
+            return web.json_response({"response": "hi"})
         # Primary model returns prose; the fallback must rescue the parse.
         if body["model"] == OA.MODEL:
             return web.json_response({"response": "Here is my assessment: definitely not JSON"})
         return web.json_response({"response": json.dumps({
             "overall_score": 91, "verdict": "Strong Fit", "one_line_summary": "ok",
         })})
+
+    def scored(calls):
+        """Scoring calls only — excludes the warm-up."""
+        return [b for b in calls if b.get("prompt") != "hi"]
 
     orig_url, orig_fallback = OA.OLLAMA_URL, OA.FALLBACK_MODEL
     OA.FALLBACK_MODEL = "test-fallback"
@@ -346,9 +353,16 @@ def test_ollama_pipeline():
 
     check("analyzer records the AI verdict", job.get("ai_verdict") == "Strong Fit", str(job.get("ai_verdict")))
     check("analyzer records the AI score", job.get("ai_overall_score") == 91)
-    check("every request asks for JSON output", all(b.get("format") == "json" for b in seen))
+    check("warm-up runs before scoring to avoid cold-load timeouts",
+          seen and seen[0].get("prompt") == "hi" and seen[0].get("keep_alive") == "30m",
+          str(seen[0] if seen else None))
+    check("every scoring request asks for JSON output",
+          all(b.get("format") == "json" for b in scored(seen)))
+    check("scoring requests pin keep_alive so the model stays resident",
+          all(b.get("keep_alive") == "30m" for b in scored(seen)))
     check("falls back to the smaller model on parse failure",
-          [b["model"] for b in seen] == [OA.MODEL, "test-fallback"], str([b["model"] for b in seen]))
+          [b["model"] for b in scored(seen)] == [OA.MODEL, "test-fallback"],
+          str([b["model"] for b in scored(seen)]))
 
     # When the fallback tag is not installed, retry must stay on the primary
     # model instead of 404-ing on a tag CI never pulled.
@@ -376,7 +390,51 @@ def test_ollama_pipeline():
     finally:
         OA.OLLAMA_URL, OA.FALLBACK_MODEL = orig_url, orig_fallback
     check("missing fallback tag falls back to the primary model",
-          [b["model"] for b in seen] == [OA.MODEL, OA.MODEL], str([b["model"] for b in seen]))
+          [b["model"] for b in scored(seen)] == [OA.MODEL, OA.MODEL],
+          str([b["model"] for b in scored(seen)]))
+
+    # Regression: the first /api/generate pays Ollama's cold model load. That
+    # used to blow the per-call timeout on job 1 ("attempt 1 failed" with an
+    # empty message), so scoring started from a wasted 120s timeout. The
+    # warm-up must absorb the load and let scoring run clean on attempt 1.
+    seen.clear()
+    OA.OLLAMA_URL = "http://127.0.0.1:11439"
+    calls = {"n": 0}
+
+    async def slow_gen(request):
+        body = await request.json()
+        seen.append(body)
+        calls["n"] += 1
+        if calls["n"] == 1:
+            await asyncio.sleep(2)  # the cold load
+        return web.json_response({"response": json.dumps({
+            "overall_score": 88, "verdict": "Strong Fit", "one_line_summary": "ok",
+        })})
+
+    async def run3():
+        app = web.Application()
+        app.router.add_get("/api/tags", tags)
+        app.router.add_post("/api/generate", slow_gen)
+        runner = web.AppRunner(app)
+        await runner.setup()
+        await web.TCPSite(runner, "127.0.0.1", 11439).start()
+        try:
+            out = await OA.analyze_jobs_with_ollama([
+                {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+            ])
+            return out[0]
+        finally:
+            await runner.cleanup()
+
+    try:
+        cold = asyncio.run(run3())
+    finally:
+        OA.OLLAMA_URL = orig_url
+    check("cold model load is absorbed by warm-up, not charged to scoring",
+          [b["model"] for b in scored(seen)] == [OA.MODEL],
+          str([b["model"] for b in scored(seen)]))
+    check("job still scored after a slow cold start",
+          cold.get("ai_overall_score") == 88, str(cold.get("ai_overall_score")))
 
 
 def main():

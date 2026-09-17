@@ -1129,11 +1129,86 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         return True
 
     # Non-remote: bare location field with a country name = country-locked.
+    # BUT: translation companies (TransPerfect, Lionbridge, etc.) list jobs with
+    # country/city locations even when they're remote-friendly. If the company is
+    # in our translation tier list, allow through — the company boost already
+    # signals this is a relevant employer.
     if COUNTRY_RE.search(body) or BLOCKED_COUNTRY_RE.search(body) or _is_us_locked(body):
         return False
 
     # Leftover is a city with no country ("Remote | Athens", "Remote — Baltimore").
     return True
+
+
+def is_open_worldwide_for_company(location: str, desc: str, company: str) -> bool:
+    """Location filter with translation company bypass.
+
+    Translation companies list jobs with country/city locations even when
+    they're remote-friendly. If the company is in our tier list, skip the
+    country-name check — the company boost already handles relevance.
+    """
+    company_lower = str(company or "").lower().strip()
+    # Check if company is in any translation tier
+    is_translation_company = False
+    for companies in TRANSLATION_COMPANY_TIERS.values():
+        if any(key in company_lower or company_lower in key for key in companies):
+            is_translation_company = True
+            break
+
+    if is_translation_company:
+        # For translation companies, only block on HARD blockers
+        # (US/CA/AU/UK residency, visa sponsorship, etc.)
+        # Skip the COUNTRY_RE check that blocks "Berlin, Germany" etc.
+        loc = (location or "").lower()
+        text = (desc or "").lower() + " " + loc
+        if COUNTRY_LOCKED_LOC.search(loc) or COUNTRY_LOCKED_LOC.search(text):
+            return False
+        if _is_us_locked(location):
+            return False
+        # Check description for location restriction warnings
+        RESTRICTION_PATTERNS = [
+            re.compile(r"location\s+restriction", re.I),
+            re.compile(r"only\s+available\s+in\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+            re.compile(r"position\s+is\s+(only|restricted)\s+(to|for)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+            re.compile(r"eligible\s+(for\s+only|only\s+for|if\s+you\s+are\s+in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+            re.compile(r"must\s+be\s+(located\s+in|based\s+in|in)\s+the\s+(u\.?\s*|)*s\.?\s*|united\s+states", re.I),
+            re.compile(r"applicants\s+must\s+be\s+(located|based)\s+in", re.I),
+            re.compile(r"this\s+position\s+requires\s+(you\s+to\s+be|residence)\s+in", re.I),
+            re.compile(r"candidates\s+must\s+(be|remain)\s+(located|based)\s+in", re.I),
+        ]
+        for pattern in RESTRICTION_PATTERNS:
+            if pattern.search(text):
+                return False
+        # Hard blockers — visa, citizenship, sponsorship
+        HARD_BLOCKERS = [
+            re.compile(r"residents? only", re.I),
+            re.compile(r"must be (a |an )?(u\.?s|united states|uk|eu|canadian|australian|german|french|british|european) (citizen|resident|national)", re.I),
+            re.compile(r"(u\.?s|us|uk|eu|canadian|australian) (citizen|permanent resident|national)\b", re.I),
+            re.compile(r"authorized to work in (the |)(u\.?s|us|united states|uk|canada|australia|eu)", re.I),
+            re.compile(r"(no sponsoring|no sponsorship)", re.I),
+            re.compile(r"(cannot|can't|unable to|do not|does not|will not|won't|no|without|not (available|provided|offered)).{0,20}(visa )?sponsorship", re.I),
+            re.compile(r"visa sponsorship (is )?not (available|provided|offered)", re.I),
+            re.compile(r"must already (have|hold|possess).{0,40}(work permit|residence permit|visa|residency)", re.I),
+            re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within) (the |)(u\.?s|us|united states|uk|canada|australia)", re.I),
+            re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
+        ]
+        for blocker in HARD_BLOCKERS:
+            if blocker.search(text):
+                return False
+        # Soft blockers — onsite/hybrid in location field
+        SOFT_LOCATION_BLOCKERS = [
+            re.compile(r"onsite only|on-site only|on site only", re.I),
+            re.compile(r"\bhybrid\b", re.I),
+            re.compile(r"in.?office|office.first|office based|on.?site\b", re.I),
+        ]
+        for blocker in SOFT_LOCATION_BLOCKERS:
+            if blocker.search(loc):
+                return False
+        # Translation company + no hard blockers = ALLOW
+        return True
+
+    # Non-translation company: use standard filter
+    return is_open_worldwide(location, desc)
 
 
 def matches_positive(title: str, desc: str) -> bool:
@@ -5418,7 +5493,7 @@ async def run_scan():
                 flags.append("negative-keyword title")
 
             # Country-locked location wording -> tag, not drop
-            if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
+            if not is_open_worldwide_for_company(job.get("location", ""), job.get("description", ""), job.get("company", "")):
                 filter_debug["not_worldwide"] += 1
                 flags.append("country-locked location")
 

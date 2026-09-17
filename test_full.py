@@ -1,5 +1,5 @@
 """
-Full test of enhanced scanner with Ollama AI analysis
+Full test of enhanced scanner with Groq AI analysis
 """
 
 import asyncio
@@ -27,7 +27,7 @@ from scanner import (
     _libya_today,
 )
 
-from ollama_analyzer import analyze_jobs_with_ollama
+from groq_analyzer import analyze_jobs_with_ollama
 
 async def test_full():
     """Full test with multiple sources and AI analysis."""
@@ -109,9 +109,9 @@ async def test_full():
             print(f"   Location: {job.get('location', 'Remote')}")
             print(f"   Source: {job.get('source', 'unknown')}")
         
-        # Test Ollama AI analysis on top 3 jobs
+        # Test AI analysis on top 3 jobs
         print("\n" + "=" * 60)
-        print("TESTING OLLAMA AI ANALYSIS")
+        print("TESTING GROQ AI ANALYSIS")
         print("=" * 60)
         
         top_jobs = scored_jobs[:3]

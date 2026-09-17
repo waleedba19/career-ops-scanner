@@ -20,8 +20,6 @@ RUN pip install --no-cache-dir -r /app/requirements.txt \
 COPY . /app
 
 ENV PYTHONUNBUFFERED=1
-ENV OLLAMA_URL=http://localhost:11434
-ENV OLLAMA_MODEL=qwen2.5:1.5b
 ENV SCAN_MODE=adaptive
 ENV CAREEROPS_TIER_CAP=3
 

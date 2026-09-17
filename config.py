@@ -65,10 +65,9 @@ ADZUNA_APP_KEY = os.getenv("ADZUNA_APP_KEY", "")
 JOOBLE_API_KEY = os.getenv("JOOBLE_API_KEY", "")
 RELIEFWEB_APPNAME = os.getenv("RELIEFWEB_APPNAME", "")
 
-# ── Ollama ───────────────────────────────────────────────────────────────
-OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")  # unified model
-OLLAMA_FALLBACK_MODEL = "qwen2.5:3b"
+# ── Groq (cloud AI — replaces local Ollama) ─────────────────────────────
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # ── Notifications ────────────────────────────────────────────────────────
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -81,7 +80,7 @@ USER_TIMEZONE = timezone.utc  # scanner runs in UTC; display converts to Libya U
 LIBYA_UTC_OFFSET = 2
 
 # ── Feature Flags ───────────────────────────────────────────────────────
-ENABLE_OLLAMA = os.getenv("CAREEROPS_ENABLE_OLLAMA", "1") == "1"
+ENABLE_AI = os.getenv("CAREEROPS_ENABLE_AI", "1") == "1"
 ENABLE_COMPANY_RESEARCH = os.getenv("CAREEROPS_ENABLE_RESEARCH", "1") == "1"
 ENABLE_COVER_LETTERS = os.getenv("CAREEROPS_ENABLE_LETTERS", "1") == "1"
 ENABLE_INTERVIEW_PREP = os.getenv("CAREEROPS_ENABLE_PREP", "1") == "1"

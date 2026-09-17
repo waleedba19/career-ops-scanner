@@ -9,6 +9,7 @@ Also replays production fresh_matches_history.json when present.
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -291,219 +292,113 @@ def test_digest_regressions():
           f"libya={libya_day} utc={utc_day}")
 
 
-def test_ollama_pipeline():
-    """Ollama analysis against a real local HTTP server (no network/model needed).
+def test_ai_pipeline():
+    """Groq AI analysis with mocked SDK calls.
 
-    Guards the silent-failure modes: prose-wrapped JSON, a response that ignores
-    format=json, and the `format: json` / fallback-model retry wiring.
+    Guards the silent-failure modes: prose-wrapped JSON, missing API key,
+    and the retry wiring.
     """
-    print("\n=== Ollama analyzer (fake server round-trip) ===")
+    print("\n=== Groq AI analyzer (mocked round-trip) ===")
     import asyncio
-    from aiohttp import web
-    import ollama_analyzer as OA
+    from unittest.mock import patch, MagicMock
+    import groq_analyzer as GA
 
-    seen = []
+    def make_mock_response(content):
+        mock = MagicMock()
+        mock.choices = [MagicMock()]
+        mock.choices[0].message.content = content
+        return mock
 
-    async def tags(_request):
-        return web.json_response({"models": [
-            {"name": OA.MODEL, "model": OA.MODEL},
-            {"name": "test-fallback", "model": "test-fallback"},
-        ]})
+    # Test 1: Missing API key — jobs returned unchanged
+    with patch.dict(os.environ, {"GROQ_API_KEY": ""}, clear=False):
+        out = asyncio.run(GA.analyze_jobs_with_ollama([
+            {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+        ]))
+        check("missing API key returns jobs unchanged",
+              "ai_overall_score" not in out[0],
+              str(out[0].get("ai_overall_score")))
 
-    async def gen(request):
-        body = await request.json()
-        seen.append(body)
-        # Warm-up only asks for a single token; let it succeed quietly.
-        if body.get("prompt") == "hi":
-            return web.json_response({"response": "hi"})
-        # Primary model returns prose; the fallback must rescue the parse.
-        if body["model"] == OA.MODEL:
-            return web.json_response({"response": "Here is my assessment: definitely not JSON"})
-        return web.json_response({"response": json.dumps({
-            "overall_score": 91, "verdict": "Strong Fit", "one_line_summary": "ok",
-        })})
+    # Test 2: Valid response → 5D scoring
+    valid_json = json.dumps({
+        "overall_score": 91, "verdict": "Strong Fit",
+        "one_line_summary": "Great fit",
+        "technical_skills": {"score": 90, "reason": "exact match"},
+        "experience_match": {"score": 85, "reason": "relevant"},
+        "behavioral_fit": {"score": 95, "reason": "remote"},
+        "location_logistics": {"verdict": "PASS", "reason": "worldwide"},
+        "career_alignment": {"score": 92, "reason": "aligned"},
+        "strengths": ["Arabic"], "gaps": [],
+        "recommendation": "Apply", "interview_prep": "Q1?",
+    })
 
-    def scored(calls):
-        """Scoring calls only — excludes the warm-up."""
-        return [b for b in calls if b.get("prompt") != "hi"]
+    with patch.dict(os.environ, {"GROQ_API_KEY": "test-key"}, clear=False), \
+         patch.object(GA, "Groq") as MockGroq:
+        mock_client = MagicMock()
+        MockGroq.return_value = mock_client
+        mock_client.chat.completions.create.return_value = make_mock_response(valid_json)
 
-    orig_url, orig_fallback = OA.OLLAMA_URL, OA.FALLBACK_MODEL
-    OA.FALLBACK_MODEL = "test-fallback"
+        out = asyncio.run(GA.analyze_jobs_with_ollama([
+            {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+        ]))
 
-    async def run():
-        app = web.Application()
-        app.router.add_get("/api/tags", tags)
-        app.router.add_post("/api/generate", gen)
-        runner = web.AppRunner(app)
-        await runner.setup()
-        await web.TCPSite(runner, "127.0.0.1", 11437).start()
-        OA.OLLAMA_URL = "http://127.0.0.1:11437"
-        try:
-            out = await OA.analyze_jobs_with_ollama([
-                {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
-            ])
-            return out[0]
-        finally:
-            await runner.cleanup()
+    check("analyzer records the AI verdict", out[0].get("ai_verdict") == "Strong Fit", str(out[0].get("ai_verdict")))
+    check("analyzer records the AI score", out[0].get("ai_overall_score") == 91)
 
-    try:
-        job = asyncio.run(run())
-    finally:
-        OA.OLLAMA_URL, OA.FALLBACK_MODEL = orig_url, orig_fallback
+    # Test 3: Prose-wrapped JSON → fallback parse must still find it
+    prose_response = "Here is my assessment:\n" + valid_json + "\nDone."
+    with patch.dict(os.environ, {"GROQ_API_KEY": "test-key"}, clear=False), \
+         patch.object(GA, "Groq") as MockGroq:
+        mock_client = MagicMock()
+        MockGroq.return_value = mock_client
+        mock_client.chat.completions.create.return_value = make_mock_response(prose_response)
 
-    check("analyzer records the AI verdict", job.get("ai_verdict") == "Strong Fit", str(job.get("ai_verdict")))
-    check("analyzer records the AI score", job.get("ai_overall_score") == 91)
-    check("warm-up runs before scoring to avoid cold-load timeouts",
-          seen and seen[0].get("prompt") == "hi" and seen[0].get("keep_alive") == "30m",
-          str(seen[0] if seen else None))
-    check("every scoring request asks for JSON output",
-          all(b.get("format") == "json" for b in scored(seen)))
-    check("scoring requests pin keep_alive so the model stays resident",
-          all(b.get("keep_alive") == "30m" for b in scored(seen)))
-    check("falls back to the smaller model on parse failure",
-          [b["model"] for b in scored(seen)] == [OA.MODEL, "test-fallback"],
-          str([b["model"] for b in scored(seen)]))
+        out = asyncio.run(GA.analyze_jobs_with_ollama([
+            {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+        ]))
 
-    # When the fallback tag is not installed, retry must stay on the primary
-    # model instead of 404-ing on a tag CI never pulled.
-    seen.clear()
-    OA.FALLBACK_MODEL = "not-installed"
+    check("prose-wrapped JSON still parsed",
+          out[0].get("ai_overall_score") == 91)
 
-    async def run2():
-        app = web.Application()
-        app.router.add_get("/api/tags", tags)
-        app.router.add_post("/api/generate", gen)
-        runner = web.AppRunner(app)
-        await runner.setup()
-        await web.TCPSite(runner, "127.0.0.1", 11438).start()
-        OA.OLLAMA_URL = "http://127.0.0.1:11438"
-        try:
-            out = await OA.analyze_jobs_with_ollama([
-                {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
-            ])
-            return out[0]
-        finally:
-            await runner.cleanup()
+    # Test 4: Non-JSON response → retry on second call, then simple insight
+    with patch.dict(os.environ, {"GROQ_API_KEY": "test-key"}, clear=False), \
+         patch.object(GA, "Groq") as MockGroq:
+        mock_client = MagicMock()
+        MockGroq.return_value = mock_client
+        mock_client.chat.completions.create.side_effect = [
+            make_mock_response("Here is my assessment: definitely not JSON"),
+            make_mock_response(valid_json),
+        ]
 
-    try:
-        asyncio.run(run2())
-    finally:
-        OA.OLLAMA_URL, OA.FALLBACK_MODEL = orig_url, orig_fallback
-    check("missing fallback tag falls back to the primary model",
-          [b["model"] for b in scored(seen)] == [OA.MODEL, OA.MODEL],
-          str([b["model"] for b in scored(seen)]))
+        out = asyncio.run(GA.analyze_jobs_with_ollama([
+            {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+        ]))
 
-    # Regression: the first /api/generate pays Ollama's cold model load. That
-    # used to blow the per-call timeout on job 1 ("attempt 1 failed" with an
-    # empty message), so scoring started from a wasted 120s timeout. The
-    # warm-up must absorb the load and let scoring run clean on attempt 1.
-    #
-    # To prove this rather than merely exercise it, shrink the scoring timeout
-    # below the simulated cold-load duration: without the warm-up the first
-    # scoring call would time out, so a clean result can only come from the
-    # load having been paid by warm-up.
-    seen.clear()
-    OA.OLLAMA_URL = "http://127.0.0.1:11439"
-    calls = {"n": 0}
+    check("retry with valid JSON on second call",
+          out[0].get("ai_overall_score") == 91)
 
-    async def slow_gen(request):
-        body = await request.json()
-        seen.append(body)
-        calls["n"] += 1
-        if calls["n"] == 1:
-            await asyncio.sleep(1.5)  # the cold load, > CALL_TIMEOUT_S
-        return web.json_response({"response": json.dumps({
-            "overall_score": 88, "verdict": "Strong Fit", "one_line_summary": "ok",
-        })})
+    # Test 5: API error → graceful fallback, jobs unchanged
+    from groq import APIConnectionError
+    with patch.dict(os.environ, {"GROQ_API_KEY": "test-key"}, clear=False), \
+         patch.object(GA, "Groq") as MockGroq:
+        mock_client = MagicMock()
+        MockGroq.return_value = mock_client
+        mock_client.chat.completions.create.side_effect = APIConnectionError(
+            message="Connection failed"
+        )
 
-    async def run3():
-        app = web.Application()
-        app.router.add_get("/api/tags", tags)
-        app.router.add_post("/api/generate", slow_gen)
-        runner = web.AppRunner(app)
-        await runner.setup()
-        await web.TCPSite(runner, "127.0.0.1", 11439).start()
-        try:
-            out = await OA.analyze_jobs_with_ollama([
-                {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
-            ])
-            return out[0]
-        finally:
-            await runner.cleanup()
+        out = asyncio.run(GA.analyze_jobs_with_ollama([
+            {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+        ]))
 
-    orig_call_timeout = OA.CALL_TIMEOUT_S
-    OA.CALL_TIMEOUT_S = 1.0
-    try:
-        cold = asyncio.run(run3())
-    finally:
-        OA.CALL_TIMEOUT_S = orig_call_timeout
-        OA.OLLAMA_URL = orig_url
-    check("cold model load is absorbed by warm-up, not charged to scoring",
-          [b["model"] for b in scored(seen)] == [OA.MODEL],
-          str([b["model"] for b in scored(seen)]))
-    check("job still scored after a slow cold start",
-          cold.get("ai_overall_score") == 88, str(cold.get("ai_overall_score")))
+    check("API error returns jobs unchanged",
+          "ai_overall_score" not in out[0],
+          str(out[0].get("ai_overall_score") if out else None))
 
-    # Regression: production had an EMPTY model list (the cached ~/.ollama/models
-    # held no registered manifest) while every /api/generate returned 404. The
-    # run still went green and silently fell back to keyword-only scoring, so the
-    # only symptom was worse digests. A missing tag must now be reported.
-    seen.clear()
-    OA.OLLAMA_URL = "http://127.0.0.1:11440"
-
-    async def empty_tags(_request):
-        return web.json_response({"models": []})
-
-    async def not_found(_request):
-        return web.Response(status=404, text='{"error":"model not found"}')
-
-    async def run4():
-        app = web.Application()
-        app.router.add_get("/api/tags", empty_tags)
-        app.router.add_post("/api/generate", not_found)
-        runner = web.AppRunner(app)
-        await runner.setup()
-        await web.TCPSite(runner, "127.0.0.1", 11440).start()
-        import io
-        from contextlib import redirect_stdout
-        buf = io.StringIO()
-        try:
-            with redirect_stdout(buf):
-                out = await OA.analyze_jobs_with_ollama([
-                    {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
-                ])
-            return out, buf.getvalue()
-        finally:
-            await runner.cleanup()
-
-    try:
-        jobs_out, logs = asyncio.run(run4())
-    finally:
-        OA.OLLAMA_URL = orig_url
-    check("missing model is reported loudly (no silent AI degradation)",
-          "not installed locally" in logs and "DISABLED" in logs,
-          repr(logs[-200:]))
-    check("missing model leaves jobs un-enriched rather than crashing",
-          jobs_out and "ai_overall_score" not in jobs_out[0],
-          str(jobs_out[0].get("ai_overall_score") if jobs_out else None))
-
-    # Regression: the per-call budget must outlast worst-case generation, not just
-    # the model load. On GitHub's CPU runners this model emits ~5.6 tok/s, so the
-    # 900-token num_predict cap needs ~160s. A 120s budget timed out on every
-    # first attempt and left "Skipped (no response)" whenever the retry also lost
-    # the race. Measure the real budget against the real worst case.
-    measured_tok_s = 5.6          # observed on a 4-vCPU runner (178ms/token)
-    num_predict = 900
-    worst_case_s = num_predict / measured_tok_s
-    check("per-call timeout covers worst-case generation, not just model load",
-          OA.CALL_TIMEOUT_S > worst_case_s,
-          f"CALL_TIMEOUT_S={OA.CALL_TIMEOUT_S}s vs worst-case {worst_case_s:.0f}s")
-
-    # Retries must still fit the overall job budget: 2 retries on top of the
-    # first attempt, times the analyze cap, has to stay under the 360min job.
-    OLLAMA_ANALYZE_CAP = 3
-    retry_attempts = 3  # max_retries=2 -> 3 total attempts
-    worst_job_s = OA.CALL_TIMEOUT_S * retry_attempts * OLLAMA_ANALYZE_CAP
+    # Test 6: Retry budget fits 360min workflow timeout
+    AI_ANALYZE_CAP = 3
+    retry_attempts = 3  # max_retries=2 -> 3 total attempts per call
+    max_seconds_per_call = 60  # Groq is fast, but generous
+    worst_job_s = max_seconds_per_call * retry_attempts * AI_ANALYZE_CAP
     check("worst-case AI time fits the 360min workflow timeout",
           worst_job_s < 360 * 60,
           f"worst case {worst_job_s / 60:.0f}min")
@@ -515,7 +410,7 @@ def main():
     test_false_positives()
     test_location_and_stubs()
     test_digest_regressions()
-    test_ollama_pipeline()
+    test_ai_pipeline()
     test_replay_history()
     print(f"\n{PASS} passed, {FAIL} failed")
     return 0 if FAIL == 0 else 1

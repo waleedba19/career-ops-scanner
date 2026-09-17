@@ -2,7 +2,7 @@
 Cover Letter Generator for CareerOps
 Generates personalized PDF cover letters based on job descriptions.
 Each letter is unique, filled with CV details and company info.
-Uses Ollama for AI-powered customization when available.
+Uses Groq (cloud AI) for customization when available.
 """
 
 import json
@@ -15,11 +15,7 @@ from fpdf import FPDF
 OUTPUT_DIR = Path(__file__).parent / "output" / "cover_letters"
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
 
-# Must track the model the workflow actually installs (scan.yml OLLAMA_MODEL) —
-# the old hardcoded qwen2.5:1.5b was never pulled, so every AI letter silently
-# fell back to the stiff template text.
-OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
 # Letter date lines and file names follow the user's local day, not UTC.
@@ -43,12 +39,16 @@ def load_cv_profile() -> dict:
 
 async def generate_ai_cover_letter_content(job: dict, profile: dict) -> dict:
     """
-    Use Ollama to generate personalized cover letter content.
+    Use Groq cloud AI to generate personalized cover letter content.
     Returns dict with custom paragraphs for each section.
     """
     try:
-        import httpx
+        from groq import Groq
         
+        api_key = os.getenv("GROQ_API_KEY", "")
+        if not api_key:
+            return None
+
         title = job.get("title", "Position")
         company = job.get("company", "Your Company")
         description = job.get("description", "")[:1000]  # Limit description length
@@ -98,31 +98,26 @@ Generate exactly 4 paragraphs:
 Keep each paragraph 2-3 sentences. Be specific to this job. No generic statements.
 Output as JSON with keys: opening, experience, skills, closing"""
 
-        async with httpx.AsyncClient(timeout=120.0) as client:
-            resp = await client.post(
-                f"{OLLAMA_URL}/api/generate",
-                json={
-                    "model": OLLAMA_MODEL,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {"temperature": 0.7}
-                }
-            )
-            
-            if resp.status_code == 200:
-                data = resp.json()
-                response_text = data.get("response", "")
-                
-                # Try to parse JSON from response
-                try:
-                    # Find JSON in response
-                    start = response_text.find("{")
-                    end = response_text.rfind("}") + 1
-                    if start >= 0 and end > start:
-                        ai_content = json.loads(response_text[start:end])
-                        return ai_content
-                except json.JSONDecodeError:
-                    pass
+        client = Groq(api_key=api_key)
+        response = client.chat.completions.create(
+            model=GROQ_MODEL,
+            messages=[
+                {"role": "system", "content": "You are a professional cover letter writer."},
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.7,
+            max_tokens=900,
+        )
+        response_text = response.choices[0].message.content.strip()
+        
+        try:
+            start = response_text.find("{")
+            end = response_text.rfind("}") + 1
+            if start >= 0 and end > start:
+                ai_content = json.loads(response_text[start:end])
+                return ai_content
+        except json.JSONDecodeError:
+            pass
                     
     except Exception as e:
         print(f"AI cover letter generation failed: {e}")

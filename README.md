@@ -17,7 +17,7 @@
 |---|---|---|
 | **Fetcher Registry** | 30+ sources deduped, tier-aware (1=lean 15, 2=balanced 30, 3=full sweep), circuit-breaker, rate-limited, retry+backoff | `config.py` + `fetchers/registry.py` |
 | **Scoring Engine** | 4 buckets (Arabic Translation 40-70pts, ESL, Editing, Admin) + `REMOTE_MARKER` + seniority/negative filters + worldwide residency gating | `scanner.py` |
-| **AI Analysis** | Local **Ollama `qwen2.5:7b-instruct-q3_K_M`** (no API costs) 5-dimension scoring: Technical 30% / Experience 25% / Behavioral 15% / Location PASS-FAIL / Career 30% | `ollama_analyzer.py` |
+| **AI Analysis** | Cloud **Groq `llama-3.3-70b-versatile`** (no local server needed) 5-dimension scoring: Technical 30% / Experience 25% / Behavioral 15% / Location PASS-FAIL / Career 30% | `groq_analyzer.py` |
 | **Learning Loop** | Application feedback → scoring boost; company research → legitimacy + red-flags; evolution brain 90-day trends | `learning_module.py` `company_research.py` `evolution_tracker.py` |
 | **Delivery** | Telegram cards, Brevo HTML email (Excel `.xls` 5 sheets + up to 10 PDF cover letters), **red=unapplied** | `notifier.py` `excel_generator.py` |
 | **Observability** | Structured logs (`output/logs/*.jsonl`), Prometheus `health.json`/`metrics.json`, source performance report | `careerops_logger.py` `metrics.py` |
@@ -35,13 +35,13 @@ GitHub Actions (cron 05:00 / 13:00 / 20:00 UTC)
   ├─ state_sync.py download  (state/ → output/)
   ├─ Ollama (qwen2.5:7b-instruct-q3_K_M)    ← cached, fallback to templates
   ├─ scanner.py               ← registry-driven fetchers (tier_cap=2), batch=8
-  ├─ ollama_analyzer, company_research, cover_letters, interview_prep
+  ├─ groq_analyzer, company_research, cover_letters, interview_prep
   ├─ notifier (Telegram + Brevo) + excel_generator (5 sheets)
   └─ state_sync.py upload    (output/ → state/) + health/metrics
 
 Local / Docker
   ├─ make dev  → dashboard :8000 + api :8001 + scanner
-  └─ docker-compose up → careerops + ollama
+  └─ docker-compose up → careerops (cloud AI via Groq)
 ```
 
 See **[ARCHITECTURE.md](ARCHITECTURE.md)** for deep dive, data flow, and scoring formulas.
@@ -57,6 +57,7 @@ See **[ARCHITECTURE.md](ARCHITECTURE.md)** for deep dive, data flow, and scoring
 
 | Secret | Where to get |
 |---|---|
+| `GROQ_API_KEY` | https://console.groq.com/keys |
 | `TELEGRAM_BOT_TOKEN` | @BotFather on Telegram |
 | `TELEGRAM_CHAT_ID` | @userinfobot |
 | `BREVO_API_KEY` | https://app.brevo.com/settings/keys/api |
@@ -77,7 +78,7 @@ make api        # http://localhost:8001  (health, jobs, stats)
 make dev        # all three in parallel
 ```
 
-### 3) Docker (recommended for dashboard + Ollama)
+### 3) Docker (recommended for dashboard)
 
 ```bash
 docker-compose up --build -d
@@ -93,12 +94,12 @@ docker logs -f careerops-scanner
 All tuning via env (see `.env.example`):
 
 ```bash
-OLLAMA_MODEL=qwen2.5:7b-instruct-q3_K_M
+GROQ_API_KEY=gsk_...
 CAREEROPS_TIER_CAP=2          # 1 lean, 2 balanced, 3 full (default 2)
 CAREEROPS_MIN_SCORE=65
 CAREEROPS_FRESH_H=0.5         # 30 min fresh window
 CAREEROPS_BATCH_SIZE=8
-CAREEROPS_ENABLE_OLLAMA=1
+CAREEROPS_ENABLE_AI=1
 ```
 
 Fetcher tiers: Tier 1 (Greenhouse 34, Lever, Remotive, RemoteOK, WWR, Jobicy API, Arbeitnow, Himalayas API) always on; Tier 2 (+ Nodesk, YayRemote etc); Tier 3 (+ MENA/freelance). Controlled by `CAREEROPS_TIER_CAP`.
@@ -166,14 +167,14 @@ pytest -q
 ├── metrics.py              — health.json + prometheus text
 ├── dashboard/app.py        — live UI :8000
 ├── api_server.py           — REST API :8001 (FastAPI or stdlib fallback)
-├── ollama_analyzer.py      — 5-dimension AI scoring
+├── groq_analyzer.py       — 5-dimension AI scoring
 ├── notifier.py             — Telegram + Brevo (fixed nested f-string bug)
 ├── excel_generator.py      — 5-sheet Excel
 ├── source_manager.py / evolution_tracker.py / learning_module.py
 ├── state/                  — persistent memory
 ├── output/                 — generated artifacts (gitignored)
 ├── Dockerfile / docker-compose.yml / Makefile / .env.example
-└── .github/workflows/scan.yml  — cached Ollama, pip cache, tier Cap, artifacts
+└── .github/workflows/scan.yml  — Groq cloud AI, pip cache, tier Cap, artifacts
 ```
 
 ---

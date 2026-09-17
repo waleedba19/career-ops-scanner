@@ -1,8 +1,8 @@
 """
-Ollama AI Job Analyzer — Enhanced with 5-Dimension Fit Evaluation
-Connects to local Ollama API (localhost:11434) to generate personalized
+Groq AI Job Analyzer — Enhanced with 5-Dimension Fit Evaluation
+Connects to Groq cloud API to generate personalized
 "why this fits" explanations AND detailed 5-dimension scoring for matched jobs.
-Falls back gracefully if Ollama is unavailable.
+Falls back gracefully if GROQ_API_KEY is not set.
 """
 
 import json
@@ -10,22 +10,9 @@ import os
 import re
 from pathlib import Path
 
-import aiohttp
+from groq import Groq, APIConnectionError, APIStatusError
 
-OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
-# Smaller model used only when the primary returns unparseable JSON. Empty
-# string disables the retry (e.g. if the fallback tag is not pulled locally).
-FALLBACK_MODEL = os.getenv("OLLAMA_FALLBACK_MODEL", "qwen2.5:3b")
-
-# Per-call budgets. The scoring call must outlast actual generation. Measured on
-# GitHub's CPU runners this model emits ~5.6 tok/s, so the 900-token cap needs
-# ~160s; the old 120s budget timed out on EVERY first attempt and survived only
-# on retry, and anything failing that retry surfaced as "Skipped (no response)".
-# 300s covers a full generation with headroom. Warm-up does not help here — the
-# model is already resident, the time goes to generating, not loading.
-CALL_TIMEOUT_S = float(os.getenv("OLLAMA_CALL_TIMEOUT_S", "300"))
-WARMUP_TIMEOUT_S = float(os.getenv("OLLAMA_WARMUP_TIMEOUT_S", "600"))
+MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 # Load real CV profile
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
@@ -263,110 +250,46 @@ def _build_simple_prompt(job: dict) -> str:
 # API Calls
 # ---------------------------------------------------------------------------
 
+SYSTEM_MESSAGE = (
+    "You are a strict job-matching evaluator. The candidate is an Arabic-English "
+    "translator and localization specialist from Libya. ONLY score jobs HIGH if they require "
+    "Arabic translation, bilingual content, localization, or language services. "
+    "Engineering, sales, data science, ESL teaching, or any non-translation "
+    "role MUST score below 30. Be harsh. Do NOT give high scores to irrelevant jobs."
+)
 
-async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries: int = 2,
-                       model: str | None = None) -> str | None:
-    """Call Ollama API and return the response text, or None on failure."""
-    model = model or MODEL
+
+def _call_groq(prompt: str, max_retries: int = 2) -> str | None:
+    """Call Groq API and return the response text, or None on failure."""
+    api_key = os.getenv("GROQ_API_KEY", "")
+    if not api_key:
+        return None
+    client = Groq(api_key=api_key)
     for attempt in range(max_retries + 1):
         try:
-            payload = {
-                "model": model,
-                "system": (
-                    "You are a strict job-matching evaluator. The candidate is an Arabic-English "
-                    "translator and localization specialist from Libya. ONLY score jobs HIGH if they require "
-                    "Arabic translation, bilingual content, localization, or language services. "
-                    "Engineering, sales, data science, ESL teaching, or any non-translation "
-                    "role MUST score below 30. Be harsh. Do NOT give high scores to irrelevant jobs."
-                ),
-                "prompt": prompt,
-                "stream": False,
-                # Constrain the small model to emit valid JSON. Without this a
-                # 7B model occasionally prefixes prose or cuts off mid-object,
-                # and _parse_scoring_response then returns None (silent no-op).
-                "format": "json",
-                # Keep the model resident. Ollama unloads after 5 min idle and
-                # reloading a 3.8GB q3 model costs minutes.
-                "keep_alive": "30m",
-                "options": {
-                    "temperature": 0.3,
-                    "num_predict": 900,
-                },
-            }
-            timeout = aiohttp.ClientTimeout(total=CALL_TIMEOUT_S)
-            async with session.post(
-                f"{OLLAMA_URL}/api/generate",
-                json=payload,
-                timeout=timeout,
-            ) as resp:
-                if resp.status != 200:
-                    print(f"  Ollama HTTP {resp.status}")
-                    if attempt < max_retries:
-                        continue
-                    return None
-                data = await resp.json(content_type=None)
-                return data.get("response", "").strip()
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_MESSAGE},
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=0.3,
+                max_tokens=900,
+            )
+            return response.choices[0].message.content.strip()
+        except (APIConnectionError, APIStatusError) as e:
+            print(f"  Groq call attempt {attempt + 1} failed: "
+                  f"{type(e).__name__}: {e or '(no message)'}")
+            if attempt < max_retries:
+                continue
+            return None
         except Exception as e:
-            # TimeoutError/ConnectionResetError stringify to "" — without the
-            # type name the log is just "attempt N failed:" and undebuggable.
-            print(f"  Ollama call attempt {attempt + 1} failed: "
+            print(f"  Groq call attempt {attempt + 1} failed: "
                   f"{type(e).__name__}: {e or '(no message)'}")
             if attempt < max_retries:
                 continue
             return None
     return None
-
-
-async def _warm_up(session: aiohttp.ClientSession) -> bool:
-    """Load the model into memory before the scoring loop.
-
-    Ollama loads weights lazily on the first /api/generate, so that call paid
-    the full cold-load and blew the 120s per-call timeout — every run logged an
-    "attempt 1 failed" and only succeeded on retry. /api/tags (the readiness
-    probe the workflow uses) does not trigger a load, so this is the first real
-    inference. Give the load its own generous budget.
-    """
-    try:
-        timeout = aiohttp.ClientTimeout(total=WARMUP_TIMEOUT_S)
-        async with session.post(
-            f"{OLLAMA_URL}/api/generate",
-            json={"model": MODEL, "prompt": "hi", "stream": False,
-                  "options": {"num_predict": 1}, "keep_alive": "30m"},
-            timeout=timeout,
-        ) as resp:
-            if resp.status != 200:
-                print(f"  Ollama warm-up HTTP {resp.status}")
-                return False
-            await resp.json(content_type=None)
-            return True
-    except Exception as e:
-        print(f"  Ollama warm-up failed: {type(e).__name__}: {e or '(no message)'}")
-        return False
-
-
-async def _list_local_models(session: aiohttp.ClientSession) -> set[str]:
-    """Names of models installed locally — [] if the call fails."""
-    try:
-        timeout = aiohttp.ClientTimeout(total=5)
-        async with session.get(f"{OLLAMA_URL}/api/tags", timeout=timeout) as resp:
-            if resp.status != 200:
-                return set()
-            data = await resp.json(content_type=None)
-        return {m.get("name", "") for m in data.get("models", [])} | {
-            m.get("model", "") for m in data.get("models", [])
-        }
-    except Exception:
-        return set()
-
-
-async def _check_ollama_available(session: aiohttp.ClientSession) -> bool:
-    """Quick health check — does Ollama respond at all?"""
-    try:
-        timeout = aiohttp.ClientTimeout(total=5)
-        async with session.get(f"{OLLAMA_URL}/api/tags", timeout=timeout) as resp:
-            return resp.status == 200
-    except Exception:
-        return False
 
 
 def _iter_json_objects(text: str):
@@ -399,7 +322,7 @@ def _iter_json_objects(text: str):
 
 
 def _parse_scoring_response(response: str) -> dict | None:
-    """Parse the JSON scoring response from Ollama."""
+    """Parse the JSON scoring response from Groq."""
     if not response:
         return None
     required = ["overall_score", "verdict", "one_line_summary"]
@@ -407,7 +330,6 @@ def _parse_scoring_response(response: str) -> dict | None:
         try:
             data = json.loads(candidate)
         except json.JSONDecodeError:
-            # A small model sometimes emits a trailing comma before the brace.
             try:
                 data = json.loads(re.sub(r",\s*([}\]])", r"\1", candidate))
             except json.JSONDecodeError:
@@ -426,79 +348,59 @@ async def analyze_jobs_with_ollama(jobs: list[dict]) -> list[dict]:
     """
     Enrich each matched job with AI-generated analysis.
     Uses 5-dimension scoring for detailed evaluation.
-    Falls back gracefully if Ollama is unavailable — returns jobs unchanged.
+    Falls back gracefully if GROQ_API_KEY is not set — returns jobs unchanged.
     """
     if not jobs:
         return jobs
 
-    async with aiohttp.ClientSession() as session:
-        available = await _check_ollama_available(session)
-        if not available:
-            print("Ollama not available — skipping AI analysis")
-            return jobs
+    api_key = os.getenv("GROQ_API_KEY", "")
+    if not api_key:
+        print("GROQ_API_KEY not set — skipping AI analysis")
+        return jobs
 
-        print(f"Ollama available — analyzing {len(jobs)} jobs with {MODEL}")
-        installed = await _list_local_models(session)
-        # A 404 from /api/generate on every call means the tag is not installed;
-        # that used to look identical to a healthy-but-unhelpful model and the
-        # run still reported success. Fail loudly so a broken cache/pull is
-        # visible instead of silently downgrading the digest to keywords only.
-        if MODEL not in installed:
-            print(f"  WARNING: model '{MODEL}' is not installed locally "
-                  f"(have: {sorted(installed) or 'none'}) — every AI call will "
-                  f"404. AI scoring is DISABLED for this run.")
-        # Load weights up front so the first scored job isn't charged the
-        # cold-load (and doesn't time out). Advisory only — scoring proceeds
-        # even if warm-up fails.
-        if await _warm_up(session):
-            print("  Model loaded and resident")
+    print(f"Groq available — analyzing {len(jobs)} jobs with {MODEL}")
 
-        for i, job in enumerate(jobs):
-            # Try 5-dimension scoring first
-            prompt = _build_scoring_prompt(job)
-            ai_text = await _call_ollama(session, prompt)
+    for i, job in enumerate(jobs):
+        prompt = _build_scoring_prompt(job)
+        ai_text = _call_groq(prompt)
 
-            if ai_text:
-                scoring = _parse_scoring_response(ai_text)
-                if not scoring:
-                    # The model replied but not with parseable JSON (prose, or an
-                    # object truncated at num_predict). Re-sample once; use the
-                    # smaller fallback tag only when it is actually installed,
-                    # otherwise a missing tag would just 404.
-                    retry_model = FALLBACK_MODEL if FALLBACK_MODEL in installed else MODEL
-                    alt = await _call_ollama(session, prompt, model=retry_model)
-                    scoring = _parse_scoring_response(alt or "") if alt else None
-                if scoring:
-                    # Success — store structured scoring
-                    job["ai_scoring"] = scoring
-                    job["ai_insight"] = scoring.get("one_line_summary", ai_text[:200])
-                    job["ai_overall_score"] = scoring.get("overall_score", 0)
-                    job["ai_verdict"] = scoring.get("verdict", "")
-                    job["ai_strengths"] = scoring.get("strengths", [])
-                    job["ai_gaps"] = scoring.get("gaps", [])
-                    job["ai_recommendation"] = scoring.get("recommendation", "")
-                    job["ai_interview_prep"] = scoring.get("interview_prep", "")
-                    # Store dimension scores
-                    job["ai_technical_skills"] = scoring.get("technical_skills", {}).get("score", 0)
-                    job["ai_experience_match"] = scoring.get("experience_match", {}).get("score", 0)
-                    job["ai_behavioral_fit"] = scoring.get("behavioral_fit", {}).get("score", 0)
-                    job["ai_location_verdict"] = scoring.get("location_logistics", {}).get("verdict", "")
-                    job["ai_career_alignment"] = scoring.get("career_alignment", {}).get("score", 0)
-                    print(f"  [{i+1}/{len(jobs)}] 5D Scored: {job.get('title', '')[:50]} → {scoring.get('overall_score', 0)}/100 ({scoring.get('verdict', '')})")
-                else:
-                    # JSON parsing failed, use as simple insight
-                    job["ai_insight"] = ai_text[:300]
-                    print(f"  [{i+1}/{len(jobs)}] Simple insight: {job.get('title', '')[:50]}")
+        if ai_text:
+            scoring = _parse_scoring_response(ai_text)
+            if not scoring:
+                alt = _call_groq(prompt)
+                scoring = _parse_scoring_response(alt or "") if alt else None
+            if scoring:
+                job["ai_scoring"] = scoring
+                job["ai_insight"] = scoring.get("one_line_summary", ai_text[:200])
+                job["ai_overall_score"] = scoring.get("overall_score", 0)
+                job["ai_verdict"] = scoring.get("verdict", "")
+                job["ai_strengths"] = scoring.get("strengths", [])
+                job["ai_gaps"] = scoring.get("gaps", [])
+                job["ai_recommendation"] = scoring.get("recommendation", "")
+                job["ai_interview_prep"] = scoring.get("interview_prep", "")
+                job["ai_technical_skills"] = scoring.get("technical_skills", {}).get("score", 0)
+                job["ai_experience_match"] = scoring.get("experience_match", {}).get("score", 0)
+                job["ai_behavioral_fit"] = scoring.get("behavioral_fit", {}).get("score", 0)
+                job["ai_location_verdict"] = scoring.get("location_logistics", {}).get("verdict", "")
+                job["ai_career_alignment"] = scoring.get("career_alignment", {}).get("score", 0)
+                print(f"  [{i+1}/{len(jobs)}] 5D Scored: {job.get('title', '')[:50]} → {scoring.get('overall_score', 0)}/100 ({scoring.get('verdict', '')})")
             else:
-                print(f"  [{i+1}/{len(jobs)}] Skipped (no response): {job.get('title', '')[:50]}")
+                job["ai_insight"] = ai_text[:300]
+                print(f"  [{i+1}/{len(jobs)}] Simple insight: {job.get('title', '')[:50]}")
+        else:
+            print(f"  [{i+1}/{len(jobs)}] Skipped (no response): {job.get('title', '')[:50]}")
 
     return jobs
 
 
-async def quick_analyze_job(session: aiohttp.ClientSession, job: dict) -> dict:
+# Backward-compat alias
+analyze_jobs = analyze_jobs_with_ollama
+
+
+async def quick_analyze_job(session, job: dict) -> dict:
     """Quick analysis for a single job — used for real-time checks."""
     prompt = _build_simple_prompt(job)
-    ai_text = await _call_ollama(session, prompt)
+    ai_text = _call_groq(prompt)
     if ai_text:
         job["ai_insight"] = ai_text[:300]
     return job

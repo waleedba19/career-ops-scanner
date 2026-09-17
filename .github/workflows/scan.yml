@@ -39,16 +39,13 @@ jobs:
       TO_EMAIL:           ${{ secrets.TO_EMAIL }}
       GMAIL_USER:         ${{ secrets.GMAIL_USER }}
       GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+      GROQ_API_KEY:       ${{ secrets.GROQ_API_KEY }}
       # Optional keyed aggregators (each fetcher is a no-op while its secret is unset).
       RAPIDAPI_KEY:       ${{ secrets.RAPIDAPI_KEY }}
       ADZUNA_APP_ID:      ${{ secrets.ADZUNA_APP_ID }}
       ADZUNA_APP_KEY:     ${{ secrets.ADZUNA_APP_KEY }}
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
-      OLLAMA_MODEL:       qwen2.5:7b-instruct-q3_K_M
-      # Pin the model store so the server, the CLI and the actions/cache path can
-      # never diverge (a mismatch makes `ollama list` empty and 404s every call).
-      OLLAMA_MODELS:      /home/runner/.ollama/models
       CAREEROPS_TIER_CAP: "2"   # balanced — verified + secondary sources
       CAREEROPS_BATCH_SIZE: "12"
       CAREEROPS_MIN_SCORE: "50" # balanced threshold — 50-74 GOOD, 75+ STRONG
@@ -79,139 +76,6 @@ jobs:
             ~/.cache/pip
             ~/.cache/ms-playwright
           key: careerops-deps-v1-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
-
-      # Cache the WHOLE install, not just the CLI. ollama needs its sibling
-      # llama-server runner in /usr/local/lib/ollama; caching only the CLI left
-      # every /api/generate returning HTTP 500 ("llama-server binary not found").
-      - name: Cache Ollama install
-        uses: actions/cache@v4
-        with:
-          path: |
-            /usr/local/bin/ollama
-            /usr/local/lib/ollama
-          key: ollama-install-v2
-
-      # Cache the pulled model too. Without this every scheduled run re-downloaded
-      # ~3.8GB via `ollama pull` (no GitHub Release is published for this repo),
-      # which is the single biggest cost/latency item in the scan.
-      #
-      # Key is versioned: actions/cache is immutable, so a snapshot taken while
-      # the model was missing would be restored forever and silently disable AI.
-      # The step below now verifies with `ollama list` and pulls on a miss.
-      - name: Cache Ollama models
-        uses: actions/cache@v4
-        with:
-          path: ~/.ollama/models
-          key: ollama-models-v3
-
-      - name: Install Ollama (skip if fully cached)
-        run: |
-          if command -v ollama >/dev/null 2>&1 && [ -x /usr/local/lib/ollama/llama-server ]; then
-            echo "Ollama install cached"
-            ollama --version
-          else
-            curl -fsSL https://ollama.com/install.sh | sh
-          fi
-          test -x /usr/local/lib/ollama/llama-server \
-            || { echo "ERROR: llama-server missing — AI scoring would 500"; exit 1; }
-
-      # install.sh registers a systemd unit that runs as `ollama` with
-      # HOME=/usr/share/ollama, so it reads models from /usr/share/ollama/...
-      # That unit auto-starts and binds 11434 first, making our own
-      # `ollama serve` die with "address already in use". The result was a
-      # split-brain: the server read /usr/share/ollama/.ollama/models while the
-      # cache and CLI used ~/.ollama/models, so a restored cache showed an EMPTY
-      # `ollama list` and every /api/generate 404'd. Keep one server, one path.
-      - name: Stop bundled Ollama service (avoid split model dirs)
-        run: |
-          sudo systemctl stop ollama 2>/dev/null || true
-          sudo systemctl disable ollama 2>/dev/null || true
-          # Only the root-owned systemd instance; our own server is started later
-          # as the runner user, so it is untouched here.
-          sudo pkill -u ollama -f "ollama serve" 2>/dev/null || true
-          sleep 2
-          if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
-            echo "WARNING: something still holds 11434 — model dir may be split"
-          else
-            echo "Port 11434 is free — our runner-owned server will own the model dir"
-          fi
-
-      - name: Start Ollama server
-        run: |
-          nohup ollama serve > /tmp/ollama.log 2>&1 &
-          echo "OLLAMA_PID=$!" >> "$GITHUB_ENV"
-
-      - name: Wait for Ollama to be ready
-        run: |
-          echo "Waiting for Ollama on localhost:11434..."
-          for i in $(seq 1 30); do
-            if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
-              echo "Ollama is ready"
-              break
-            fi
-            echo "Attempt $i/30..."
-            sleep 2
-          done
-          if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
-            echo "Ollama verified"
-            cat /tmp/ollama.log | tail -20 || true
-          else
-            echo "WARNING: Ollama failed — scanner will run in template fallback mode"
-            cat /tmp/ollama.log | tail -50 || true
-          fi
-
-      - name: Download model from Release (permanent, no expiry)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          MODEL_DIR="$HOME/.ollama/models"
-          mkdir -p "$MODEL_DIR"
-
-          # Presence must be checked against `ollama list`, never the filesystem.
-          # A restored cache can leave ~/.ollama/models/manifests non-empty while
-          # no usable model is registered. The old directory check then reported
-          # "Model already present locally" and skipped the download entirely, so
-          # every /api/generate returned HTTP 404 and ALL AI scoring silently
-          # degraded to keyword-only mode — with the run still showing green.
-          model_installed() {
-            ollama list 2>/dev/null | awk 'NR>1 {print $1}' | grep -qx "$OLLAMA_MODEL"
-          }
-
-          if model_installed; then
-            echo "Model $OLLAMA_MODEL is present"
-            ollama list || true
-            exit 0
-          fi
-
-          # Try downloading from GitHub Release (permanent storage)
-          RELEASE_TAG="models-v1"
-          ASSET_NAME="ollama-qwen2.5-7b.tar.gz"
-          RELEASE_URL="https://github.com/${{ github.repository }}/releases/download/${RELEASE_TAG}/${ASSET_NAME}"
-
-          echo "Trying to download from release: ${RELEASE_URL}"
-          if curl -fsSL -o /tmp/model.tar.gz "${RELEASE_URL}" 2>/dev/null; then
-            echo "Downloaded from release — extracting..."
-            tar -xzf /tmp/model.tar.gz -C "$HOME/.ollama/"
-            rm -f /tmp/model.tar.gz
-            echo "Model restored from release"
-          fi
-
-          # Verify the restore actually registered the model; pull if it did not.
-          if ! model_installed; then
-            echo "Model $OLLAMA_MODEL not registered — pulling (up to 3 attempts)"
-            for i in 1 2 3; do
-              ollama pull "$OLLAMA_MODEL" && break
-              echo "pull attempt $i failed; retrying in 10s"
-              sleep 10
-            done
-          fi
-
-          ollama list || true
-          if ! model_installed; then
-            echo "::warning::Model $OLLAMA_MODEL is NOT installed — every AI call will return HTTP 404 and this run falls back to keyword-only scoring."
-          else
-            echo "Verified: $OLLAMA_MODEL is installed"
-          fi
 
       - name: Lint — compile check (fail fast)
         run: python -m compileall -q .

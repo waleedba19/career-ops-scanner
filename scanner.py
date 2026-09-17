@@ -22,7 +22,7 @@ from typing import Any
 
 import aiohttp
 
-from ollama_analyzer import analyze_jobs_with_ollama
+from groq_analyzer import analyze_jobs_with_ollama
 from notifier import send_telegram, send_email
 from excel_generator import generate_excel
 from source_manager import record_source_run, cleanup_dead_sources, get_source_report
@@ -5262,11 +5262,11 @@ async def run_scan():
         print(f"Scored: {len(scored)}, Old but verified: {len(old_but_verified)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
         print(f"Filter funnel: {filter_debug}")
 
-        # ---- Ollama AI analysis (lightweight — only top 3 for personal notes) ----
-        # Keyword scoring is the primary gate. Ollama only writes a brief
+        # ---- AI analysis (lightweight — only top 3 for personal notes) ----
+        # Keyword scoring is the primary gate. Groq AI only writes a brief
         # "why this fits Waleed" note for the top few matches.
-        OLLAMA_ANALYZE_CAP = 3
-        verified = await analyze_jobs_with_ollama(verified[:OLLAMA_ANALYZE_CAP]) + verified[OLLAMA_ANALYZE_CAP:]
+        AI_ANALYZE_CAP = 3
+        verified = await analyze_jobs_with_ollama(verified[:AI_ANALYZE_CAP]) + verified[AI_ANALYZE_CAP:]
         
         # Old jobs: RE-SCORE with current rules, then filter.
         # Must pass the same final gate as fresh jobs: Arabic/translation/ESL signal required.

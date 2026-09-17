@@ -1,36 +1,5 @@
 [
   {
-    "date": "2026-09-07T18:07:58.187257+00:00",
-    "matched_count": 3,
-    "all_count": 4606,
-    "jobs": [
-      {
-        "title": "Excel Photo, labeling, transcribing audio into short text for input, proof reading",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/administrative-support/Excel-Photo-labeling-transcribing-audio",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      },
-      {
-        "title": "English Teacher - Full remote",
-        "company": "Tusclasesparticulares",
-        "url": "https://es.linkedin.com/jobs/view/english-teacher-full-remote-at-tusclasesparticulares-4463194779",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "Copy Editor",
-        "company": "WPP Production",
-        "url": "https://uy.linkedin.com/jobs/view/copy-editor-at-wpp-production-4456382474",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-07T22:29:59.788651+00:00",
     "matched_count": 3,
     "all_count": 4769,
@@ -2292,6 +2261,12 @@
   },
   {
     "date": "2026-09-17T12:24:49.122648+00:00",
+    "matched_count": 0,
+    "all_count": 1551,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-17T14:03:56.159467+00:00",
     "matched_count": 0,
     "all_count": 1551,
     "jobs": []

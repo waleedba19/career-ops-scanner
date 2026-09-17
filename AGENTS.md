@@ -69,10 +69,12 @@ This is an autonomous job search system that runs twice daily on GitHub Actions.
 - Mostaql, For9a, Khamsat, Ureed, Wuzzuf, Daleel, Aqar, Tajer
 
 ## Ollama AI Scoring
-- **Model**: qwen2.5:1.5b
+- **Model**: `qwen2.5:7b-instruct-q3_K_M` (via `OLLAMA_MODEL`); `OLLAMA_FALLBACK_MODEL` (default `qwen2.5:3b`) is used only when the primary returns unparseable JSON
 - **Dimensions**: Technical (30%), Experience (25%), Behavioral (15%), Location (Pass/Fail), Career (30%)
 - **Minimum Score**: 70/100 for AI verification
 - **Purpose**: Verify job relevance beyond keyword matching
+- **Cold start**: Ollama loads weights lazily on the first `/api/generate`. The workflow readiness probe only hits `/api/tags`, which does not trigger a load, so `analyze_jobs_with_ollama` calls `_warm_up()` first to absorb the ~3.8GB load on its own 600s budget. A cold load inside the scoring loop blew the 120s per-call timeout and made every run log a wasted "attempt 1 failed". Every call also pins `keep_alive=30m` so the model is not unloaded mid-scan.
+- **Debugging**: `TimeoutError`/`ConnectionResetError` stringify to `""`, so failure logs include `type(e).__name__` explicitly — otherwise a timeout prints as a blank `attempt N failed:`.
 
 ## Delivery
 ### Telegram

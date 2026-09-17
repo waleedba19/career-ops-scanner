@@ -3781,6 +3781,17 @@ def classify_lifecycle(jobs: list[dict], scan_info: dict) -> dict:
             "expires_date": m.get("expires_date", ""),
             "lifecycle_status": "old",
         })
+        # Also save to updated_matches so they persist across scans
+        updated_matches.append({
+            "url": url,
+            "title": m.get("title", ""),
+            "company": m.get("company", ""),
+            "score": m.get("score", 0),
+            "category": m.get("category", ""),
+            "found_date": found_str,
+            "expires_date": m.get("expires_date", ""),
+            "lifecycle_status": "old",
+        })
 
     # Save updated lifecycle
     save_job_lifecycle({"matches": updated_matches, "updated": now.isoformat()})

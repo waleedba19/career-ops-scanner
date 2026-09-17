@@ -12,7 +12,7 @@ from pathlib import Path
 
 from groq import Groq, APIConnectionError, APIStatusError
 
-MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 # Load real CV profile
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"

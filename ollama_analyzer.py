@@ -18,9 +18,13 @@ MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
 # string disables the retry (e.g. if the fallback tag is not pulled locally).
 FALLBACK_MODEL = os.getenv("OLLAMA_FALLBACK_MODEL", "qwen2.5:3b")
 
-# Per-call budgets. The scoring call must stay well under the workflow timeout,
-# so a slow/hung model fails fast; warm-up is allowed the full cold-load.
-CALL_TIMEOUT_S = float(os.getenv("OLLAMA_CALL_TIMEOUT_S", "120"))
+# Per-call budgets. The scoring call must outlast actual generation. Measured on
+# GitHub's CPU runners this model emits ~5.6 tok/s, so the 900-token cap needs
+# ~160s; the old 120s budget timed out on EVERY first attempt and survived only
+# on retry, and anything failing that retry surfaced as "Skipped (no response)".
+# 300s covers a full generation with headroom. Warm-up does not help here — the
+# model is already resident, the time goes to generating, not loading.
+CALL_TIMEOUT_S = float(os.getenv("OLLAMA_CALL_TIMEOUT_S", "300"))
 WARMUP_TIMEOUT_S = float(os.getenv("OLLAMA_WARMUP_TIMEOUT_S", "600"))
 
 # Load real CV profile

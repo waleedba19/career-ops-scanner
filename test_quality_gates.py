@@ -487,6 +487,27 @@ def test_ollama_pipeline():
           jobs_out and "ai_overall_score" not in jobs_out[0],
           str(jobs_out[0].get("ai_overall_score") if jobs_out else None))
 
+    # Regression: the per-call budget must outlast worst-case generation, not just
+    # the model load. On GitHub's CPU runners this model emits ~5.6 tok/s, so the
+    # 900-token num_predict cap needs ~160s. A 120s budget timed out on every
+    # first attempt and left "Skipped (no response)" whenever the retry also lost
+    # the race. Measure the real budget against the real worst case.
+    measured_tok_s = 5.6          # observed on a 4-vCPU runner (178ms/token)
+    num_predict = 900
+    worst_case_s = num_predict / measured_tok_s
+    check("per-call timeout covers worst-case generation, not just model load",
+          OA.CALL_TIMEOUT_S > worst_case_s,
+          f"CALL_TIMEOUT_S={OA.CALL_TIMEOUT_S}s vs worst-case {worst_case_s:.0f}s")
+
+    # Retries must still fit the overall job budget: 2 retries on top of the
+    # first attempt, times the analyze cap, has to stay under the 360min job.
+    OLLAMA_ANALYZE_CAP = 3
+    retry_attempts = 3  # max_retries=2 -> 3 total attempts
+    worst_job_s = OA.CALL_TIMEOUT_S * retry_attempts * OLLAMA_ANALYZE_CAP
+    check("worst-case AI time fits the 360min workflow timeout",
+          worst_job_s < 360 * 60,
+          f"worst case {worst_job_s / 60:.0f}min")
+
 
 def main():
     print("QUALITY GATES — deep offline verification")

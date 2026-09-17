@@ -2,8 +2,8 @@ name: CareerOps Job Scan
 
 on:
   schedule:
-    - cron: '0 7 * * *'    # 07:00 UTC = 09:00 Libya — Morning Delivery
-    - cron: '0 16 * * *'   # 16:00 UTC = 18:00 Libya — Evening Delivery
+    - cron: '0 4 * * *'    # 04:00 UTC = 06:00 Libya — fires early, finishes by ~09:00
+    - cron: '0 13 * * *'   # 13:00 UTC = 15:00 Libya — fires early, finishes by ~18:00
   workflow_dispatch:
     inputs:
       mode:

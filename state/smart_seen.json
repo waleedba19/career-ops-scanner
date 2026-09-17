@@ -5579,23 +5579,8 @@
       "seen": "2026-09-17T23:34:34.886229+00:00",
       "title": "\u534e\u661f-\u7ffb\u8bd1\u7c7b\uff08\u672c\u7855\uff09",
       "company": "TCL.Online Services Incorporated"
-    },
-    "syneoshealthindiaprivatelimited|scrai|australia": {
-      "seen": "2026-09-17T23:49:19.909738+00:00",
-      "title": "SCRA I",
-      "company": "Syneos Health India Private Limited"
-    },
-    "micro1|bilingualmentalhealthexpert|remote": {
-      "seen": "2026-09-17T23:49:19.918524+00:00",
-      "title": "Bilingual Mental Health Expert",
-      "company": "micro1"
-    },
-    "micro1|policedispatcheremergencycommu|unitedstates": {
-      "seen": "2026-09-17T23:49:19.926680+00:00",
-      "title": "Police Dispatcher - Emergency Communications Specialist",
-      "company": "micro1"
     }
   },
-  "updated": "2026-09-17T23:49:24.744582+00:00",
+  "updated": "2026-09-17T23:49:39.105502+00:00",
   "reset_reason": "Cleared to allow fresh job evaluation after Groq migration and source cleanup"
 }

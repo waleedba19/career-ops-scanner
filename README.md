@@ -17,7 +17,7 @@
 |---|---|---|
 | **Fetcher Registry** | 30+ sources deduped, tier-aware (1=lean 15, 2=balanced 30, 3=full sweep), circuit-breaker, rate-limited, retry+backoff | `config.py` + `fetchers/registry.py` |
 | **Scoring Engine** | 4 buckets (Arabic Translation 40-70pts, ESL, Editing, Admin) + `REMOTE_MARKER` + seniority/negative filters + worldwide residency gating | `scanner.py` |
-| **AI Analysis** | Local **Ollama `qwen2.5:1.5b`** (no API costs) 5-dimension scoring: Technical 30% / Experience 25% / Behavioral 15% / Location PASS-FAIL / Career 30% | `ollama_analyzer.py` |
+| **AI Analysis** | Local **Ollama `qwen2.5:7b-instruct-q3_K_M`** (no API costs) 5-dimension scoring: Technical 30% / Experience 25% / Behavioral 15% / Location PASS-FAIL / Career 30% | `ollama_analyzer.py` |
 | **Learning Loop** | Application feedback → scoring boost; company research → legitimacy + red-flags; evolution brain 90-day trends | `learning_module.py` `company_research.py` `evolution_tracker.py` |
 | **Delivery** | Telegram cards, Brevo HTML email (Excel `.xls` 5 sheets + up to 10 PDF cover letters), **red=unapplied** | `notifier.py` `excel_generator.py` |
 | **Observability** | Structured logs (`output/logs/*.jsonl`), Prometheus `health.json`/`metrics.json`, source performance report | `careerops_logger.py` `metrics.py` |
@@ -33,7 +33,7 @@
 ```
 GitHub Actions (cron 05:00 / 13:00 / 20:00 UTC)
   ├─ state_sync.py download  (state/ → output/)
-  ├─ Ollama (qwen2.5:1.5b)    ← cached, fallback to templates
+  ├─ Ollama (qwen2.5:7b-instruct-q3_K_M)    ← cached, fallback to templates
   ├─ scanner.py               ← registry-driven fetchers (tier_cap=2), batch=8
   ├─ ollama_analyzer, company_research, cover_letters, interview_prep
   ├─ notifier (Telegram + Brevo) + excel_generator (5 sheets)
@@ -93,7 +93,7 @@ docker logs -f careerops-scanner
 All tuning via env (see `.env.example`):
 
 ```bash
-OLLAMA_MODEL=qwen2.5:1.5b
+OLLAMA_MODEL=qwen2.5:7b-instruct-q3_K_M
 CAREEROPS_TIER_CAP=2          # 1 lean, 2 balanced, 3 full (default 2)
 CAREEROPS_MIN_SCORE=65
 CAREEROPS_FRESH_H=0.5         # 30 min fresh window

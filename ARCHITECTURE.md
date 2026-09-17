@@ -49,7 +49,7 @@ Fresh = `posted is None or age <=0.5h`. Near-miss = 50-64, capped 6.
 
 ## 4. AI Layer (Ollama)
 
-- **Model:** `qwen2.5:1.5b` (local, unified via `OLLAMA_MODEL` env; workflow caches `~/.ollama`)
+- **Model:** `qwen2.5:7b-instruct-q3_K_M` (local, unified via `OLLAMA_MODEL` env; workflow caches `~/.ollama`)
 - **Prompt:** 5-dimension rubric with hard rules (engineer→<40, visa fail→overall<50)
 - **Fallback:** template cover letters + no AI insight if Ollama unreachable
 - **Dims:** technical_skills, experience_match, behavioral_fit, location_logistics (PASS/FAIL/FLAG), career_alignment → weighted overall; verdict Strong/Good/Moderate/Weak/Poor
@@ -96,7 +96,7 @@ Legacy 40+ duplicates (himalayas_rss/worldwide, jobicy_rss/worldwide, remoteok_a
 
 ## 10. Deployment
 
-- **GitHub Actions:** checkout, state restore, Python 3.12 + pip cache, Ollama install+cache, qwen2.5:1.5b pull, lint, source_discovery, scanner, metrics export, state upload, failure Telegram, artifacts
+- **GitHub Actions:** checkout, state restore, Python 3.12 + pip cache, Ollama install+cache, qwen2.5:7b-instruct-q3_K_M pull, lint, source_discovery, scanner, metrics export, state upload, failure Telegram, artifacts
 - **Docker:** `python:3.12-slim` + `ollama/ollama` sidecar, healthcheck, volumes for state/output
 - **Make:** `install, scan, dashboard, api, dev, test, lint, docker, clean`
 

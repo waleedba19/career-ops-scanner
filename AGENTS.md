@@ -75,6 +75,11 @@ This is an autonomous job search system that runs twice daily on GitHub Actions.
 - **Purpose**: Verify job relevance beyond keyword matching
 - **Cold start**: Ollama loads weights lazily on the first `/api/generate`. The workflow readiness probe only hits `/api/tags`, which does not trigger a load, so `analyze_jobs_with_ollama` calls `_warm_up()` first to absorb the ~3.8GB load on its own 600s budget. A cold load inside the scoring loop blew the 120s per-call timeout and made every run log a wasted "attempt 1 failed". Every call also pins `keep_alive=30m` so the model is not unloaded mid-scan.
 - **Debugging**: `TimeoutError`/`ConnectionResetError` stringify to `""`, so failure logs include `type(e).__name__` explicitly — otherwise a timeout prints as a blank `attempt N failed:`.
+- **HTTP 404 on every call = model not installed** (2026-09-17 incident). `ollama list` returning an EMPTY table while the step still printed "Model already present locally" meant every `/api/generate` returned 404 and every job was "Skipped (no response)". The run stayed green, so the only symptom was a silently weaker digest. Two causes, both fixed:
+  1. The workflow tested `~/.ollama/models/manifests` on the filesystem instead of asking `ollama list`. A restored cache can satisfy that directory check with no usable manifest, and actions/cache keys are immutable, so a broken snapshot was restored forever. Presence is now checked with `ollama list` + a verified pull, and the key is versioned (`v3`).
+  2. `install.sh` registers a systemd unit (`User=ollama`, HOME=/usr/share/ollama) that binds 11434 first, so `nohup ollama serve` died with "address already in use". Server read `/usr/share/ollama/.ollama/models` while the CLI/cache used `~/.ollama/models` — a split brain. The unit is now stopped before our server starts and `OLLAMA_MODELS` is pinned, so server, CLI and cache agree.
+  - **Check the cache size after a run**: an empty model dir saves as ~196 B instead of ~3.5 GiB — a fast tell that the server and the cache are pointed at different directories.
+  - `analyze_jobs_with_ollama` now warns loudly when the configured tag is absent instead of silently degrading to keyword-only scoring.
 
 ## Delivery
 ### Telegram

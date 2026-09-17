@@ -2867,7 +2867,7 @@
     },
     "linkedin": {
       "first_seen": "2026-09-06",
-      "total_fetched": 3673,
+      "total_fetched": 3672,
       "total_matches": 2,
       "last_active": "2026-09-17",
       "consecutive_empty": 14,
@@ -3020,7 +3020,7 @@
         },
         {
           "date": "2026-09-17",
-          "fetched": 33,
+          "fetched": 32,
           "matches": 0
         }
       ]
@@ -3852,10 +3852,10 @@
     },
     "linkedin_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 1620,
+      "total_fetched": 1560,
       "total_matches": 0,
       "last_active": "2026-09-17",
-      "consecutive_empty": 27,
+      "consecutive_empty": 26,
       "status": "inactive",
       "daily_stats": [
         {
@@ -3960,11 +3960,6 @@
         },
         {
           "date": "2026-09-16",
-          "fetched": 60,
-          "matches": 0
-        },
-        {
-          "date": "2026-09-17",
           "fetched": 60,
           "matches": 0
         },
@@ -4157,5 +4152,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-17T21:00:35.221436+00:00"
+  "last_cleanup": "2026-09-17T21:00:46.603259+00:00"
 }

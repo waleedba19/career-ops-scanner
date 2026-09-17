@@ -46,6 +46,9 @@ jobs:
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
       OLLAMA_MODEL:       qwen2.5:7b-instruct-q3_K_M
+      # Pin the model store so the server, the CLI and the actions/cache path can
+      # never diverge (a mismatch makes `ollama list` empty and 404s every call).
+      OLLAMA_MODELS:      /home/runner/.ollama/models
       CAREEROPS_TIER_CAP: "2"   # balanced — verified + secondary sources
       CAREEROPS_BATCH_SIZE: "12"
       CAREEROPS_MIN_SCORE: "50" # balanced threshold — 50-74 GOOD, 75+ STRONG
@@ -99,7 +102,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.ollama/models
-          key: ollama-models-v2
+          key: ollama-models-v3
 
       - name: Install Ollama (skip if fully cached)
         run: |
@@ -111,6 +114,27 @@ jobs:
           fi
           test -x /usr/local/lib/ollama/llama-server \
             || { echo "ERROR: llama-server missing — AI scoring would 500"; exit 1; }
+
+      # install.sh registers a systemd unit that runs as `ollama` with
+      # HOME=/usr/share/ollama, so it reads models from /usr/share/ollama/...
+      # That unit auto-starts and binds 11434 first, making our own
+      # `ollama serve` die with "address already in use". The result was a
+      # split-brain: the server read /usr/share/ollama/.ollama/models while the
+      # cache and CLI used ~/.ollama/models, so a restored cache showed an EMPTY
+      # `ollama list` and every /api/generate 404'd. Keep one server, one path.
+      - name: Stop bundled Ollama service (avoid split model dirs)
+        run: |
+          sudo systemctl stop ollama 2>/dev/null || true
+          sudo systemctl disable ollama 2>/dev/null || true
+          # Only the root-owned systemd instance; our own server is started later
+          # as the runner user, so it is untouched here.
+          sudo pkill -u ollama -f "ollama serve" 2>/dev/null || true
+          sleep 2
+          if curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
+            echo "WARNING: something still holds 11434 — model dir may be split"
+          else
+            echo "Port 11434 is free — our runner-owned server will own the model dir"
+          fi
 
       - name: Start Ollama server
         run: |

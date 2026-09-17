@@ -34,6 +34,9 @@ STATE_FILES = [
     "seen_urls.json",
     "smart_seen.json",
     "company_cache/company_data.json",
+    # Written by company_board_probe.py; read by scanner._load_valid_slugs().
+    # Without this the probe result is discarded every run.
+    "valid_company_slugs.json",
 ]
 
 _HEADERS = {

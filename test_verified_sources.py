@@ -150,14 +150,6 @@ def test_parsers():
     check("remowork: 2 jobs parsed, nav ignored", len(rw_jobs) == 2 and shaped(rw_jobs))
     check("remowork: title/company/location", rw_jobs[0]["title"] == "Arabic Translator" and rw_jobs[0]["company"] == "Remote Co")
 
-    eslbase_html = """
-    <a href="https://www.eslbase.com/teaching-jobs/esl-teacher-japan-123"><div>ESL Teacher</div><div>Japan Language School</div><div>Tokyo, Japan</div></a>
-    <a href="https://www.eslbase.com/teaching-jobs/online-tutor-456"><div>Online English Tutor</div><div>EduCorp</div><div>Remote</div></a>
-    """
-    esl = V.parse_eslbase(eslbase_html)
-    check("eslbase: 2 jobs parsed", len(esl) == 2 and shaped(esl))
-    check("eslbase: title/company", esl[0]["title"] == "ESL Teacher" and esl[0]["company"] == "Japan Language School")
-
     recruitee = V.parse_recruitee({"offers": [{"title": "Arabic Content Moderator", "location": "Remote", "remote": True,
                                                 "careers_url": "https://lingoda.recruitee.com/o/arabic-content-moderator",
                                                 "created_at": "2026-09-01", "description": "<p>Moderate content</p>"}]}, "Lingoda")
@@ -282,16 +274,30 @@ def test_wiring():
     print("\n[5] registry / config / scanner wiring")
     import config
     import scanner
-    from fetchers.registry import FETCHERS, TIER_MAP
-    names = {n for n, _, _, _ in FETCHERS}
-    for n in ("linkedin", "freelancer_api", "jobicy_tags", "impactpool", "greenhouse_profile", "ashby", "workable",
-              "smartrecruiters", "themuse", "jsearch", "adzuna", "jooble", "reliefweb", "freelancer",
-              "remowork", "eslbase", "recruitee", "teamtailor"):
+    from fetchers.registry import REGISTRY, TIER_MAP
+    names = set(REGISTRY)
+    for n in ("linkedin", "jobicy_tags", "impactpool", "ashby", "workable",
+              "smartrecruiters", "themuse", "jsearch", "adzuna", "jooble", "reliefweb",
+              "remowork", "recruitee", "teamtailor", "smartcat", "gotranscript",
+              "translation_jobs", "workbeam", "proz"):
         check(f"registry has {n}", n in names)
-    check("freelancer promoted to tier 1", TIER_MAP.get("freelancer") == 1)
     check("linkedin is tier 1", TIER_MAP.get("linkedin") == 1)
     check("remowork is tier 2", TIER_MAP.get("remowork") == 2)
-    check("eslbase is tier 2", TIER_MAP.get("eslbase") == 2)
+    check("smartcat is tier 1 (translation board)", TIER_MAP.get("smartcat") == 1)
+    check("teaching-only boards removed (TES)", "tes" not in names)
+    # Every registry entry must resolve to a real callable — a wrong module path
+    # makes fetch_source() silently return [] and mark the source as failing.
+    import importlib
+    unresolved = []
+    for nm, info in REGISTRY.items():
+        try:
+            mod = importlib.import_module(info["module"])
+        except Exception as e:
+            unresolved.append(f"{nm} (module {info['module']}: {e})")
+            continue
+        if not callable(getattr(mod, info["class"], None)):
+            unresolved.append(f"{nm} ({info['module']}.{info['class']} missing)")
+    check("every registry entry resolves to a callable", not unresolved, unresolved)
     for var in ("GREENHOUSE_PROFILE_BOARDS", "ASHBY_COMPANIES", "WORKABLE_COMPANIES", "SMARTRECRUITERS_COMPANIES",
                 "RECRUITEE_COMPANIES", "TEAMTAILOR_COMPANIES"):
         lst = getattr(config, var)
@@ -301,8 +307,9 @@ def test_wiring():
           and scanner.PROBE_BLOCKED_SOURCES == config.PROBE_BLOCKED_SOURCES)
     for fn in ("fetch_linkedin_guest", "fetch_freelancer_api", "fetch_jobicy_tags", "fetch_impactpool", "fetch_themuse",
                "fetch_ashby_board", "fetch_workable_board", "fetch_smartrecruiters_board", "fetch_jsearch", "fetch_adzuna_keyed",
-               "fetch_jooble_keyed", "fetch_reliefweb", "fetch_remowork", "fetch_eslbase", "fetch_recruitee_board", "fetch_teamtailor_board"):
-        check(f"scanner imports {fn}", callable(getattr(scanner, fn, None)))
+               "fetch_jooble_keyed", "fetch_reliefweb", "fetch_remowork", "fetch_recruitee_board", "fetch_teamtailor_board"):
+        owner = scanner if callable(getattr(scanner, fn, None)) else V
+        check(f"fetcher {fn} is importable", callable(getattr(owner, fn, None)))
     src = Path("scanner.py").read_text(encoding="utf-8")
     for nm in ("mostaql", "wuzzuf", "bayt", "gulftalent", "proz"):
         check(f"{nm} is guarded by _blocked()", f'_blocked("{nm}")' in src or f'("{nm}", fetch_{nm})' in src)

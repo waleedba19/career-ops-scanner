@@ -8,7 +8,7 @@ Design rules (same as fetchers/social.py):
   silently return [] when their secret is missing — they light up the moment
   the secret is added to the repo).
 - Every fetcher is *precision-first*: it asks the source for the candidate's
-  own profile terms (arabic translator / esl / proofreader ...) instead of
+  own profile terms (arabic translator / proofreader / localization ...) instead of
   pulling a firehose and filtering afterwards.
 - Never raise. Blocked (403/429/999), timeouts and parse errors return [].
 - Pure parsers are separated from I/O so they can be unit-tested offline.
@@ -231,7 +231,7 @@ async def fetch_freelancer_api(session: aiohttp.ClientSession) -> list[dict]:
 # ───────────────────────────────────────────────────────────────────────────
 
 JOBICY_TAG_URL = "https://jobicy.com/api/v2/remote-jobs?count=50&tag={tag}"
-JOBICY_TAGS = ["translation", "teaching", "writing"]
+JOBICY_TAGS = ["translation", "writing", "localization"]
 
 
 def parse_jobicy(payload, source: str = "jobicy") -> list[dict]:
@@ -748,51 +748,6 @@ async def fetch_remowork(session: aiohttp.ClientSession) -> list[dict]:
     print(f"  Remowork: {len(jobs)} Arabic remote jobs")
     return jobs
 
-
-# ───────────────────────────────────────────────────────────────────────────
-# 10. ESLbase — ESL teaching jobs (probe: 44 items)
-# ───────────────────────────────────────────────────────────────────────────
-
-ESLBASE_URL = "https://www.eslbase.com/teaching-jobs"
-_ESLBASE_CARD = re.compile(r'<a[^>]+href="(https?://www\.eslbase\.com/teaching-jobs/[^"]+)"[^>]*>([\s\S]*?)</a>', re.I)
-
-
-def parse_eslbase(html: str) -> list[dict]:
-    out: list[dict] = []
-    seen: set[str] = set()
-    for href, inner in _ESLBASE_CARD.findall(html or ""):
-        url = href if href.startswith("http") else "https://www.eslbase.com" + href
-        if url in seen:
-            continue
-        parts = [p for p in (_clean(x) for x in re.split(r"<(?:br|/p|/div|/span|/h\d)[^>]*>", inner, flags=re.I)) if p]
-        if not parts:
-            continue
-        title = parts[0]
-        if len(title) < 5:
-            continue
-        company = parts[1] if len(parts) > 1 else "ESL School"
-        loc = parts[2] if len(parts) > 2 else "See posting"
-        seen.add(url)
-        out.append({
-            "title": title[:160],
-            "company": company[:120],
-            "url": url,
-            "location": loc or "See posting",
-            "posted": "",
-            "description": " · ".join(parts[1:])[:500],
-            "salary": "",
-            "source": "eslbase",
-        })
-    return out
-
-
-async def fetch_eslbase(session: aiohttp.ClientSession) -> list[dict]:
-    status, body = await _get_text(session, ESLBASE_URL)
-    jobs = parse_eslbase(body) if status == 200 else []
-    # Only keep jobs mentioning arabic
-    jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
-    print(f"  ESLbase: {len(jobs)} ESL jobs (arabic-only)")
-    return jobs
 
 
 # ───────────────────────────────────────────────────────────────────────────
@@ -1520,61 +1475,6 @@ async def fetch_translation_jobs(session: aiohttp.ClientSession) -> list[dict]:
     return arabic_jobs[:50]
 
 
-async def fetch_esl_jobs(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from ESL Cafe RSS."""
-    url = "https://www.eslcafe.com/jobs/feed"
-    status, body = await _get_text(session, url)
-    if status != 200:
-        return []
-    
-    jobs = []
-    items = re.findall(r"<item>[\s\S]*?</item>", body)
-    for item in items[:30]:
-        title = _extract_tag(item, "title")
-        link = _extract_tag(item, "link")
-        desc = _extract_tag(item, "description")
-        if title and link:
-            jobs.append({
-                "title": _clean(title)[:160],
-                "company": "ESL School",
-                "url": link,
-                "location": "Remote",
-                "posted": _extract_tag(item, "pubDate") or "",
-                "description": _clean(desc)[:500] if desc else "",
-                "salary": "",
-                "source": "esl_jobs",
-            })
-    arabic_jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','')).lower()]
-    return arabic_jobs[:50]
-
-
-async def fetch_teaching_jobs(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from TES RSS."""
-    url = "https://www.tes.com/jobs/feed"
-    status, body = await _get_text(session, url)
-    if status != 200:
-        return []
-    
-    jobs = []
-    items = re.findall(r"<item>[\s\S]*?</item>", body)
-    for item in items[:30]:
-        title = _extract_tag(item, "title")
-        link = _extract_tag(item, "link")
-        desc = _extract_tag(item, "description")
-        if title and link:
-            jobs.append({
-                "title": _clean(title)[:160],
-                "company": "TES School",
-                "url": link,
-                "location": "Remote",
-                "posted": _extract_tag(item, "pubDate") or "",
-                "description": _clean(desc)[:500] if desc else "",
-                "salary": "",
-                "source": "teaching_jobs",
-            })
-    return jobs
-
-
 async def fetch_writing_jobs(session: aiohttp.ClientSession) -> list[dict]:
     """Fetch from Writing Jobs RSS."""
     url = "https://www.writingjobs.com/feed"
@@ -1752,7 +1652,7 @@ async def fetch_for9a(session: aiohttp.ClientSession) -> list[dict]:
 
 async def fetch_greenhouse_batch(session: aiohttp.ClientSession) -> list[dict]:
     """Fetch from all Greenhouse boards."""
-    from .greenhouse import GREENHOUSE_BOARDS
+    from .greenhouse import GREENHOUSE_BOARDS, fetch_greenhouse_board
     tasks = [fetch_greenhouse_board(session, name, slug) for name, slug in GREENHOUSE_BOARDS]
     results = await asyncio.gather(*tasks, return_exceptions=True)
     return [j for r in results if isinstance(r, list) for j in r]
@@ -1760,7 +1660,7 @@ async def fetch_greenhouse_batch(session: aiohttp.ClientSession) -> list[dict]:
 
 async def fetch_lever_batch(session: aiohttp.ClientSession) -> list[dict]:
     """Fetch from all Lever boards."""
-    from .lever import LEVER_BOARDS
+    from .lever import LEVER_BOARDS, fetch_lever_board
     tasks = [fetch_lever_board(session, name, slug) for name, slug in LEVER_BOARDS]
     results = await asyncio.gather(*tasks, return_exceptions=True)
     return [j for r in results if isinstance(r, list) for j in r]

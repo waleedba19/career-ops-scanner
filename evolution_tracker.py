@@ -23,13 +23,16 @@ def now_libya() -> datetime:
 
 
 def libya_phase(hour: int) -> str:
-    """Short market phase label for a Libya local hour."""
-    if 5 <= hour < 11:
+    """Short market phase label for a Libya local hour.
+
+    Deliveries land at 09:00 and 18:00 Libya, so the bands are centred on those.
+    """
+    if 6 <= hour < 13:
         return "morning market"
     if hour < 18:
         return "mid-day European wave"
     if hour < 23:
-        return "night shift"
+        return "evening market"
     return "late-night watch"
 
 

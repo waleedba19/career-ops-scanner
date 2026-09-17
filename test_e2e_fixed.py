@@ -190,13 +190,13 @@ async def verify_pipeline():
     
     # STEP 9: Verify interview prep
     print("\n[9] Interview preparation...")
-    from interview_prep import generate_interview_questions as generate_interview_prep
+    from interview_prep import generate_interview_questions, load_cv_profile
     
     try:
         top = [j for j in scored if j.get("score", 0) >= 85]
         if top:
-            questions = generate_interview_prep(top[0])
-            total_q = sum(len(v) for v in questions.values())
+            questions = generate_interview_questions(top[0], load_cv_profile())
+            total_q = sum(len(v) for v in questions.values() if isinstance(v, (list, tuple, dict)))
             print(f"  Generated: {total_q} questions for {top[0]['title'][:40]}")
         else:
             print(f"  Skipped (no jobs >= 85%)")
@@ -236,4 +236,5 @@ async def verify_pipeline():
     print(f"  State persistence: dedup works")
     print("=" * 70)
 
-asyncio.run(verify_pipeline())
+if __name__ == "__main__":
+    asyncio.run(verify_pipeline())

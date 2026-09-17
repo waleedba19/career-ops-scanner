@@ -71,11 +71,11 @@ def test_true_positives():
         ("Arabic Translator (Remote Worldwide)",
          "Legal Arabic-English translation. Fully remote, work from anywhere.",
          "Remote"),
-        ("ESL Instructor",
-         "TESOL certified English teacher for Arabic speakers. Remote worldwide.",
+        ("Arabic-English Translator",
+         "Legal Arabic-English translation for MENA clients. Fully remote worldwide.",
          "Remote worldwide"),
-        ("English Teacher Online",
-         "Teach English as a second language TESOL. Remote worldwide.",
+        ("Freelance Translator (Arabic)",
+         "Arabic to English translation and proofreading. Work from anywhere.",
          "Remote"),
         ("Virtual Assistant",
          "Data entry and administrative support. Remote worldwide.",
@@ -219,11 +219,173 @@ def test_replay_history():
         check(f"history no longer keeps {needle!r}", needle.lower() not in kept_blob.lower())
 
 
+def test_digest_regressions():
+    """Regressions from the 2026-09-16 digest that shipped broken cards."""
+    print("\n=== Digest regressions (2026-09-16) ===")
+    from scanner import _libya_today, get_company_website
+
+    # Country-locked remotes must not reach the notify list. Every one of these
+    # arrived as a 100% STRONG MATCH on 2026-09-16 despite being untakeable.
+    country_locked = [
+        ("Localization Specialist (Traductor/a)", "Remote — Valladolid, Spain"),
+        ("Copy Editor / Senior Copy Editor (NY)", "Remote — New York, NY"),
+        ("Copy Editor", "Remote — Princeton, NJ"),
+        ("Copy Editor", "Remote — Rogers, AR"),
+        ("Senior Copy Editor (Financial Content)", "Remote — Mexico City, Mexico"),
+        ("Copy Editor", "Remote — Celina, OH"),
+    ]
+    survivors = drop_unqualified_matches([
+        {"title": t, "description": "localization copy editor remote freelance",
+         "location": l, "url": f"https://example.com/{i}"}
+        for i, (t, l) in enumerate(country_locked)
+    ])
+    check("country-locked remotes hard-dropped", survivors == [],
+          f"leaked {[j['location'] for j in survivors]}")
+
+    check("Dubai remote still accepted (MENA-friendly)",
+          is_open_worldwide("Remote — Dubai, United Arab Emirates", ""))
+    check("plain worldwide remote still accepted", is_open_worldwide("Remote", ""))
+
+    # The 2026-09-16 leak came from substring matching: "remote" was in
+    # ALLOWED_LOCATIONS, so "Remote — <anywhere>" short-circuited to True.
+    for trap in ("Remote — Valladolid, Spain", "Remote — Berlin, Germany",
+                 "Remote — Kuala Lumpur, Malaysia", "Remote — Dublin, Ireland"):
+        check(f"{trap} is country-locked", not is_open_worldwide(trap, ""))
+
+    # Word boundaries: these must not be matched by neighbouring substrings.
+    for trap in ("Remote — Oman", "Remote — Morocco", "Remote — Cairo, Egypt"):
+        check(f"MENA kept: {trap}", is_open_worldwide(trap, ""))
+    check("'any' does not match inside Germany", not is_open_worldwide("Remote — Germany", ""))
+    check("'asia' does not match inside Malaysia", not is_open_worldwide("Remote — Malaysia", ""))
+    check("'us' does not match inside Russia", not is_open_worldwide("Remote — Russia", ""))
+
+    # Fabricated URLs: "IRC - International Rescue Committee" mangled to
+    # "irc-internationalrescuemmittee.com" by mid-word ' co' stripping.
+    check("unknown company gets no guessed website",
+          get_company_website("IRC - International Rescue Committee") == "")
+    check("mangled website no longer generated",
+          "mmittee" not in get_company_website("International Criminal Court"))
+    check("known company still resolves", get_company_website("TransPerfect") != "")
+
+    # "msa" is an acronym, not always Modern Standard Arabic.
+    check("bare 'MSA' no longer scores a marine surveyor",
+          get_match_score(
+              "Surveyor I",
+              "conventional surveying practices, vessels and marine structures, MSA safety training",
+          )["score"] == 0)
+    check("MSA with Arabic context still matches",
+          get_match_score("Arabic Translator", "Modern Standard Arabic (MSA) required")["score"] >= 75)
+
+    # "Why this fits" must not leak raw regex quantifiers.
+    why = " ".join(get_match_score(
+        "Freelance Translator", "ICC freelance translation")["why"])
+    check("no '.{0,40}' artifact in why text", ".{" not in why, why)
+
+    # Digest date is Libya local (UTC+2), never raw UTC. Compare against the
+    # UTC calendar day so a run between 22:00-24:00 UTC proves the offset.
+    from datetime import datetime, timezone, timedelta
+    libya_day = _libya_today()
+    utc_day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    check("digest date is a valid ISO day", len(libya_day) == 10 and libya_day[4] == "-")
+    check("digest date is Libya (>=) UTC day", libya_day >= utc_day,
+          f"libya={libya_day} utc={utc_day}")
+
+
+def test_ollama_pipeline():
+    """Ollama analysis against a real local HTTP server (no network/model needed).
+
+    Guards the silent-failure modes: prose-wrapped JSON, a response that ignores
+    format=json, and the `format: json` / fallback-model retry wiring.
+    """
+    print("\n=== Ollama analyzer (fake server round-trip) ===")
+    import asyncio
+    from aiohttp import web
+    import ollama_analyzer as OA
+
+    seen = []
+
+    async def tags(_request):
+        return web.json_response({"models": [
+            {"name": OA.MODEL, "model": OA.MODEL},
+            {"name": "test-fallback", "model": "test-fallback"},
+        ]})
+
+    async def gen(request):
+        body = await request.json()
+        seen.append(body)
+        # Primary model returns prose; the fallback must rescue the parse.
+        if body["model"] == OA.MODEL:
+            return web.json_response({"response": "Here is my assessment: definitely not JSON"})
+        return web.json_response({"response": json.dumps({
+            "overall_score": 91, "verdict": "Strong Fit", "one_line_summary": "ok",
+        })})
+
+    orig_url, orig_fallback = OA.OLLAMA_URL, OA.FALLBACK_MODEL
+    OA.FALLBACK_MODEL = "test-fallback"
+
+    async def run():
+        app = web.Application()
+        app.router.add_get("/api/tags", tags)
+        app.router.add_post("/api/generate", gen)
+        runner = web.AppRunner(app)
+        await runner.setup()
+        await web.TCPSite(runner, "127.0.0.1", 11437).start()
+        OA.OLLAMA_URL = "http://127.0.0.1:11437"
+        try:
+            out = await OA.analyze_jobs_with_ollama([
+                {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+            ])
+            return out[0]
+        finally:
+            await runner.cleanup()
+
+    try:
+        job = asyncio.run(run())
+    finally:
+        OA.OLLAMA_URL, OA.FALLBACK_MODEL = orig_url, orig_fallback
+
+    check("analyzer records the AI verdict", job.get("ai_verdict") == "Strong Fit", str(job.get("ai_verdict")))
+    check("analyzer records the AI score", job.get("ai_overall_score") == 91)
+    check("every request asks for JSON output", all(b.get("format") == "json" for b in seen))
+    check("falls back to the smaller model on parse failure",
+          [b["model"] for b in seen] == [OA.MODEL, "test-fallback"], str([b["model"] for b in seen]))
+
+    # When the fallback tag is not installed, retry must stay on the primary
+    # model instead of 404-ing on a tag CI never pulled.
+    seen.clear()
+    OA.FALLBACK_MODEL = "not-installed"
+
+    async def run2():
+        app = web.Application()
+        app.router.add_get("/api/tags", tags)
+        app.router.add_post("/api/generate", gen)
+        runner = web.AppRunner(app)
+        await runner.setup()
+        await web.TCPSite(runner, "127.0.0.1", 11438).start()
+        OA.OLLAMA_URL = "http://127.0.0.1:11438"
+        try:
+            out = await OA.analyze_jobs_with_ollama([
+                {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+            ])
+            return out[0]
+        finally:
+            await runner.cleanup()
+
+    try:
+        asyncio.run(run2())
+    finally:
+        OA.OLLAMA_URL, OA.FALLBACK_MODEL = orig_url, orig_fallback
+    check("missing fallback tag falls back to the primary model",
+          [b["model"] for b in seen] == [OA.MODEL, OA.MODEL], str([b["model"] for b in seen]))
+
+
 def main():
     print("QUALITY GATES — deep offline verification")
     test_true_positives()
     test_false_positives()
     test_location_and_stubs()
+    test_digest_regressions()
+    test_ollama_pipeline()
     test_replay_history()
     print(f"\n{PASS} passed, {FAIL} failed")
     return 0 if FAIL == 0 else 1

@@ -1,6 +1,6 @@
 
 """Reddit social-signal fetcher — job & gig posts from communities in the
-candidate's niche (ESL teaching, Arabic-English translation, academic editing).
+candidate's niche (Arabic-English translation, localization, academic editing).
 
 Design notes:
 - Uses Reddit's public JSON search endpoints (no API key, no CLI chain).

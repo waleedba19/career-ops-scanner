@@ -24,12 +24,7 @@ ARABIC_TRANSLATION_COMPANIES = [
     {"name": "CETRA", "url": "https://www.cetra.com/careers"},
     {"name": "Propio LS", "url": "https://www.propio.com/careers"},
     
-    # ESL & Language Teaching (Remote)
-    {"name": "LanguageBird", "url": "https://www.languagebird.com/teach"},
-    {"name": "VIPKid", "url": "https://www.vipkid.com/careers"},
-    {"name": "Cambly", "url": "https://www.cambly.com/careers"},
-    {"name": "Preply", "url": "https://preply.com/careers"},
-    {"name": "italki", "url": "https://www.italki.com/careers"},
+    # Interpreting & Language Services (Remote)
     {"name": "LanguageLine Solutions", "url": "https://www.languageline.com/careers"},
     
     # MENA Region Companies

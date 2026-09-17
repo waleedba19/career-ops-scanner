@@ -47,6 +47,37 @@ DESPERATION_PATTERNS = [
 
 COMMON_EMAIL_PREFIXES = ["careers", "hr", "jobs", "hiring", "info", "contact", "talent", "recruitment", "apply", "join"]
 
+# Job boards and ATS hosts. A job's URL usually points here, not at the employer,
+# so guessing "<prefix>@<job-board>" produced addresses like careers@linkedin.com
+# and careers@impactpool.org — the board's own inbox, never the hiring team's.
+# Never pattern-guess on these; only surface addresses actually harvested.
+JOB_BOARD_DOMAINS = {
+    "linkedin.com", "impactpool.org", "indeed.com", "glassdoor.com", "remoteok.com",
+    "remotive.com", "weworkremotely.com", "jobicy.com", "himalayas.app",
+    "greenhouse.io", "boards.greenhouse.io", "boards-api.greenhouse.io",
+    "lever.co", "jobs.lever.co", "api.lever.co",
+    "workable.com", "apply.workable.com", "smartrecruiters.com",
+    "recruitee.com", "teamtailor.com", "ashbyhq.com", "jobs.ashbyhq.com",
+    "workday.com", "myworkdayjobs.com", "bamboohr.com", "jobvite.com",
+    "freelancer.com", "mostaql.com", "for9a.com", "khamsat.com", "ureed.com",
+    "wuzzuf.net", "bayt.com", "gulftalent.com", "naukrigulf.com", "upwork.com",
+    "fiverr.com", "toptal.com", "proz.com", "smartcat.com", "gotranscript.com",
+    "nodesk.co", "justremote.co", "workingnomads.com", "jobspresso.co",
+    "hirelatam.com", "yayremote.com", "remote1stjobs.com", "realworkfromanywhere.com",
+    "arbeitnow.com", "adzuna.com", "jsearch.p.rapidapi.com", "eslcafe.com",
+}
+
+
+def is_job_board_domain(domain: str) -> bool:
+    """True when the domain belongs to a job board / ATS rather than an employer."""
+    d = (domain or "").lower().strip()
+    if not d:
+        return False
+    d = d.split("/")[0].split(":")[0]
+    if d.startswith("www."):
+        d = d[4:]
+    return any(d == b or d.endswith("." + b) for b in JOB_BOARD_DOMAINS)
+
 def urgency_score(title: str, desc: str) -> int:
     text = f"{title or ''} {desc or ''}"
     score = 0
@@ -206,15 +237,16 @@ async def enrich_one(job: dict, session, seen_history: dict | None) -> dict:
                             if emails:
                                 break
                 except: pass
-        # if still no email, guess (free forever — even for greenhouse infer domain from company)
-        # try company-inferred domain if ATS
+        # if still no email, guess — but only on a plausible EMPLOYER domain.
+        # Guessing on the job board's own domain (linkedin.com, impactpool.org)
+        # fabricated the board's inbox and labelled it a hiring email.
         if not domain or not should_fetch:
             inferred = domain_from_company_website(job.get("company",""), url)
             if inferred and inferred != domain:
                 domain = inferred
                 should_fetch = True
         guessed = []
-        if not emails and domain:
+        if not emails and domain and not is_job_board_domain(domain):
             guessed = guess_emails_for_domain(domain)
             # verify first guessed domain resolves
             verified_guessed = []

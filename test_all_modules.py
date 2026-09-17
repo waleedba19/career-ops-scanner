@@ -315,7 +315,7 @@ def test_reddit_social():
 
     # Parser: valid payload
     payload = {"data": {"children": [
-        {"data": {"title": "Hiring: Remote ESL teacher (evenings)",
+        {"data": {"title": "Hiring: Remote Arabic translator (evenings)",
                   "permalink": "/r/forhire/comments/abc123/hiring_esl/",
                   "subreddit": "forhire", "selftext": "Looking for a native-level instructor...",
                   "created_utc": 1757100000}},
@@ -333,7 +333,7 @@ def test_reddit_social():
     assert jobs[0]["url"].startswith("https://www.reddit.com/r/forhire/")
     assert jobs[0]["posted"].startswith("2025-09-05"), jobs[0]["posted"]
     assert jobs[1]["url"].startswith("https://www.reddit.com/r/Translation/")
-    assert jobs[0]["title"] == "Hiring: Remote ESL teacher (evenings)"
+    assert jobs[0]["title"] == "Hiring: Remote Arabic translator (evenings)"
     print(f"[OK] Parser: 2/2 valid posts parsed, 1 malformed skipped")
 
     # Parser: hostile inputs
@@ -347,75 +347,48 @@ def test_reddit_social():
 
 
 def test_new_boards():
-    """Test the two newly added niche boards (offline parsers + wiring)."""
+    """Test translation-agency fetchers, ATS batch wiring, and tier gating."""
     print("=" * 60)
-    print("TEST 8: New Niche Boards (ESL Gorilla + TES)")
+    print("TEST 8: Translation Agencies + ATS Batch Wiring")
     print("=" * 60)
 
-    from scanner import parse_eslgorilla_html, parse_tes_html
+    import inspect
     from fetchers.registry import TIER_MAP, list_fetchers
+    import fetchers.verified as V
 
-    # Wiring: both registered + active under the current tier cap
-    for name in ("eslgorilla", "tes"):
+    # Translation sources must be registered and active under the current cap
+    for name in ("smartcat", "gotranscript", "translation_jobs", "workbeam"):
         assert name in list_fetchers(2), f"{name} missing from tier<=2 fleet"
-        assert TIER_MAP.get(name) == 2, f"{name} should be tier 2"
-    print("[OK] Fleet wiring: eslgorilla + tes registered, tier 2")
+    assert TIER_MAP.get("smartcat") == 1
+    print("[OK] Fleet wiring: translation sources registered, tier<=2")
 
-    # --- ESL Gorilla parser: mixed card + bullet markup, dedup, non-remote filter ---
-    esl_html = (
-        '<a href="https://eslgorilla.com/jobs/online-english-teacher-remote-meridian">'
-        '<h3>Online English Teacher &ndash; Remote | Up to $17/50-min Class</h3>'
-        '<p>fully online classes. Flexible schedule, worldwide candidates welcome.</p></a>'
-        '<a href="https://eslgorilla.com/jobs/kids-esl-teacher-blinc">'
-        '<strong>Kids ESL Teacher - BlingABC</strong><span>Remote</span></a>'
-        '<li><a href="https://eslgorilla.com/jobs/online-esl-teacher-novacat">Online ESL Teacher — Remote</a></li>'
-        '<li><a href="https://eslgorilla.com/jobs/adult-conversation-jobs">Adult Conversation Practice — Worldwide</a></li>'
-        '<li><a href="https://eslgorilla.com/jobs/offline-campus-lagos">In-person Campus Teacher — Lagos, Nigeria</a></li>'
-        # duplicate slug should be dropped
-        '<li><a href="https://eslgorilla.com/jobs/online-esl-teacher-novacat">Online ESL Teacher — Remote</a></li>'
-    )
-    jobs = parse_eslgorilla_html(esl_html)
-    assert len(jobs) == 4, f"expected 4 unique ESL jobs (dup + non-remote filtered), got {len(jobs)}"
-    assert all("Lagos" not in j["title"] + j["location"] for j in jobs), "non-remote job must be filtered"
-    assert all(j["source"] == "eslgorilla" for j in jobs)
-    assert all("&ndash;" not in j["title"] for j in jobs), "entities must be unescaped"
-    bullet = next(j for j in jobs if j["url"].endswith("/online-esl-teacher-novacat"))
-    assert bullet["title"] == "Online ESL Teacher" and bullet["location"] == "Remote", bullet
-    assert jobs[0]["salary"] == "$17", jobs[0]["salary"]
-    print(f"[OK] ESL Gorilla parser: {len(jobs)} jobs, dedup + non-remote filter + entity unescape")
+    # ATS batch fetchers must exist and be callable with just a session
+    for name in ("fetch_greenhouse_batch", "fetch_lever_batch",
+                 "fetch_ashby_boards", "fetch_workable_boards",
+                 "fetch_smartrecruiters_boards"):
+        fn = getattr(V, name, None)
+        assert fn is not None, f"{name} missing from fetchers.verified"
+        params = list(inspect.signature(fn).parameters)
+        assert params == ["session"], f"{name} must take only a session, got {params}"
+    print("[OK] ATS batch fetchers present and session-only")
 
-    # --- TES parser: keeps remote/online only, drops in-person UK, dedups Apply link ---
-    tes_html = (
-        '<a href="https://www.tes.com/jobs/vacancy/remote-online-english-teacher-2341001">Remote Online English Teacher</a>'
-        '<span>£25 - £30 per hour</span><span>New</span>'
-        '<img alt="Lingua Online Academy logo" src="x.jpg"><span>Remote (Worldwide)</span>'
-        '<p>We are seeking a passionate online English teacher to work fully remotely from anywhere.</p><span>Today</span>'
-        '<a href="https://www.tes.com/jobs/vacancy/remote-online-english-teacher-2341001">Apply</a>'
-        '<a href="https://www.tes.com/jobs/vacancy/ks2-teacher-wandsworth-2341763">KS2 Teacher - Maternity Cover</a>'
-        '<img alt="Dolphin School logo" src="y.jpg"><span>Wandsworth</span>'
-        '<p>We are seeking a committed Key Stage 2 Teacher for a full-time maternity cover role.</p><span>Today</span>'
-        '<a href="https://www.tes.com/jobs/vacancy/online-ell-tutor-global-2341770"><strong>Online ELL Tutor</strong></a>'
-        '<img alt="Global Edu logo" src="z.jpg"><span>Remote</span>'
-        '<p>Looking for an experienced ELL tutor to deliver online lessons. Work remotely worldwide.</p><span>2 days ago</span>'
-    )
-    tjobs = parse_tes_html(tes_html)
-    assert len(tjobs) == 2, f"expected 2 TES remote jobs (in-person UK dropped), got {len(tjobs)}"
-    assert all(j["source"] == "tes" for j in tjobs)
-    assert any(j["title"] == "Remote Online English Teacher" and j["company"] == "Lingua Online Academy" for j in tjobs)
-    assert any(j["title"] == "Online ELL Tutor" and j["company"] == "Global Edu" for j in tjobs)
-    assert not any("Wandsworth" in (j["title"] + j["company"] + j["location"]) for j in tjobs), "in-person UK must be filtered"
-    print(f"[OK] TES parser: {len(tjobs)} remote jobs, in-person UK filtered, Apply-link dedup")
+    # Regression: the batch fetchers called fetch_greenhouse_board /
+    # fetch_lever_board without importing them from their own modules.
+    for mod, helper, board_list in (
+        ("greenhouse", "fetch_greenhouse_board", "GREENHOUSE_BOARDS"),
+        ("lever", "fetch_lever_board", "LEVER_BOARDS"),
+    ):
+        m = __import__(f"fetchers.{mod}", fromlist=[helper, board_list])
+        assert hasattr(m, helper), f"fetchers.{mod}.{helper} missing"
+        assert hasattr(m, board_list), f"fetchers.{mod}.{board_list} missing"
+        batch_src = inspect.getsource(getattr(V, f"fetch_{mod}_batch"))
+        assert helper in batch_src, (
+            f"fetch_{mod}_batch must import {helper}; otherwise it raises NameError"
+        )
+    print("[OK] Board helper + board list symbols resolve in batch fetchers")
 
-    # Hostile / empty inputs
-    assert parse_eslgorilla_html("") == []
-    assert parse_eslgorilla_html("no job links here") == []
-    assert parse_tes_html("") == []
-    assert parse_tes_html("<p>nothing</p>") == []
-    print("[OK] Hostile/empty inputs handled")
-
-    print("[PASS] New Niche Boards (ESL Gorilla + TES): ALL TESTS PASSED\n")
+    print("[PASS] Translation Agencies + ATS Batch Wiring: ALL TESTS PASSED\n")
     return True
-
 
 def main():
     """Run all tests."""
@@ -450,7 +423,7 @@ def main():
         results.append(("Excel Integration", test_excel_integration()))
         results.append(("Scanner Integration", test_scanner_integration()))
         results.append(("Reddit Social Signals", test_reddit_social()))
-        results.append(("New Niche Boards", test_new_boards()))
+        results.append(("Translation + ATS Wiring", test_new_boards()))
 
         # Run async test
         results.append(("AI Cover Letter", asyncio.run(test_cover_letter_ai())))

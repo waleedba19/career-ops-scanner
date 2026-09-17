@@ -82,7 +82,7 @@ def generate_interview_questions(job: dict, profile: dict) -> dict:
     questions["opening"] = [
         {
             "question": f"Tell me about yourself and why you're interested in the {title} position at {company}.",
-            "suggested_answer": f"I'm {personal.get('full_name', 'Waleed Ballag')}, a language professional with a Master's degree in Applied Linguistics from University of Zawia. I have extensive experience in {job_type}, including work as an ESL Instructor and Legal Translator. I'm excited about this position because it aligns perfectly with my skills in {', '.join(skills.get('translation', skills.get('academic', ['language services']))[:3])}.",
+            "suggested_answer": f"I'm {personal.get('full_name', 'Waleed Ballag')}, a language professional with a Master's degree in Applied Linguistics from University of Zawia. I have extensive experience in {job_type}, including professional Arabic-English translation and legal translation. I'm excited about this position because it aligns perfectly with my skills in {', '.join(skills.get('translation', skills.get('academic', ['language services']))[:3])}.",
             "tips": "Keep it under 2 minutes. Focus on relevant experience."
         },
         {
@@ -98,7 +98,7 @@ def generate_interview_questions(job: dict, profile: dict) -> dict:
         questions["experience"] = [
             {
                 "question": f"Describe your experience as {exp.get('title', 'a professional')} at {exp.get('company', 'your previous company')}.",
-                "suggested_answer": f"In my role as {exp.get('title', 'ESL Instructor')} at {exp.get('company', 'educational institutions')}, I {exp.get('bullets', ['developed and delivered curriculum'])[0].lower()} This experience taught me the importance of clear communication and adapting to diverse learner needs.",
+                "suggested_answer": f"In my role as {exp.get('title', 'Translator')} at {exp.get('company', 'language services providers')}, I {exp.get('bullets', ['delivered accurate translations'])[0].lower()} This experience taught me the importance of clear communication and adapting to diverse audience needs.",
                 "tips": "Use the STAR method: Situation, Task, Action, Result."
             },
             {

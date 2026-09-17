@@ -111,15 +111,7 @@ GREENHOUSE_COMPANIES = [
     ("Cactus", "cactus"), ("Editage", "editage"), ("Enago", "enago"),
     ("Wordvice", "wordvice"), ("Scribbr", "scribbr"), ("Scribendi", "scribendi"),
     ("PaperTrue", "papertrue"), ("ProofreadNow", "proofreadnow"),
-    # EdTech / ESL
-    ("Duolingo", "duolingo"), ("Outschool", "outschool"), ("Khan Academy", "khanacademy"),
-    ("Coursera", "coursera"), ("Preply", "preply"), ("Babbel", "babbel"),
-    ("Busuu", "busuu"), ("Lingoda", "lingoda"), ("Engoo", "engoo"),
-    ("Novakid", "novakid"), ("Open English", "openenglish"),
-    ("VIPKid", "vipkid"), ("Qkids", "qkids"), ("Magic Ears", "magicears"),
-    ("GoGoKid", "gogokid"), ("Ziyou Da", "ziyouda"),
-    ("italki", "italki"), ("Cambly", "cambly"), ("Native Camp", "nativecamp"),
-    ("TutorABC", "tutorabc"), ("Lingostar", "lingostar"),
+    # EdTech — Arabic/MENA language & content platforms only
     ("Nagwa", "nagwa"), ("Abwaab", "abwaab"), ("Noon Academy", "noonacademy"),
     ("Edraak", "edraak"), ("Almentor", "almentor"), ("Baims", "baims"),
     # MENA / Arabic Content

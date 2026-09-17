@@ -1,7 +1,7 @@
 # CareerOps Scanner — Project Instructions
 
 ## Overview
-This is an autonomous job search system that runs 3x daily on GitHub Actions. It finds remote jobs matching the user's profile, generates PDF cover letters, and delivers results via Telegram + Email + Excel.
+This is an autonomous job search system that runs twice daily on GitHub Actions. It finds remote jobs matching the user's profile, generates PDF cover letters, and delivers results via Telegram + Email + Excel.
 
 ## Secrets & Credentials (READ THIS FIRST)
 - **Local secrets file**: `D:\Openwork for now\career-ops-scanner\.env` — gitignored, holds all known credentials (Telegram, Brevo, Gmail, GitHub tokens, emails). Read it whenever credentials are needed.
@@ -20,9 +20,8 @@ This is an autonomous job search system that runs 3x daily on GitHub Actions. It
 - **Requirements**: Remote only, worldwide, no visa/residency restrictions
 
 ## Schedule
-- **07:00 AM Libya** (05:00 UTC) — Morning Intel
-- **03:00 PM Libya** (13:00 UTC) — Afternoon Briefing  
-- **10:00 PM Libya** (20:00 UTC) — Night Digest
+- **09:00 AM Libya** (07:00 UTC) — Morning Delivery
+- **06:00 PM Libya** (16:00 UTC) — Evening Delivery
 
 ## Matching Rules
 1. **75%+ match score** required for Fresh Matches

@@ -110,11 +110,6 @@ def get_company_website(company_name: str) -> str:
         "proz": "https://www.proz.com",
         "tarjama": "https://www.tarjama.com",
         "careem": "https://www.careem.com",
-        "languagebird": "https://www.languagebird.com",
-        "vipkid": "https://www.vipkid.com",
-        "cambly": "https://www.cambly.com",
-        "preply": "https://preply.com",
-        "italki": "https://www.italki.com",
         "remote.com": "https://remote.com",
         "deel": "https://www.deel.com",
         "oyster": "https://www.oysterhr.com",
@@ -128,11 +123,10 @@ def get_company_website(company_name: str) -> str:
     for key, website in company_websites.items():
         if key in company_lower or company_lower in key:
             return website
-    if company_name:
-        name = company_name.lower().strip()
-        for suffix in [' inc', ' llc', ' ltd', ' corp', ' corporation', ' company', ' co']:
-            name = name.replace(suffix, '')
-        return f"https://www.{name.replace(' ', '')}.com"
+    # No confident match — return nothing so the digest omits the field.
+    # The old fallback slugged the raw name into "<name>.com", which produced
+    # URLs like "irc-internationalrescuemmittee.com" (the " co" suffix was
+    # stripped mid-word) and 404s the user could not tell apart from real links.
     return ""
 
 
@@ -300,9 +294,14 @@ MATCH_BUCKETS = [
             # MENA region roles
             (re.compile(r"mena.*arabic|arabic.*mena", re.I), 85),
             (re.compile(r"\b(mena|middle east|north africa)\b.{0,50}\b(translat|locali|languag|content|edit)", re.I), 85),
-            # RTL / dialect signals
+            # RTL / dialect signals. "msa" is deliberately excluded here: it is a
+            # common acronym (MSA Safety, MSA = any "…Safety Administration"),
+            # so a bare hit scored a marine "Surveyor I" posting at 80%. It is
+            # added back below, gated on Arabic/localization context.
             (re.compile(r"\b(right[- ]to[- ]left|rtl)\b.{0,50}\barabic", re.I), 85),
-            (re.compile(r"\b(darija|fusha|msa|modern standard arabic|colloquial arabic)\b", re.I), 80),
+            (re.compile(r"\b(darija|fusha|modern standard arabic|colloquial arabic)\b", re.I), 80),
+            (re.compile(r"\bmsa\b.{0,40}\b(arabic|translat|locali[sz]|linguist)\b", re.I), 80),
+            (re.compile(r"\b(arabic|translat|locali[sz]|linguist)\b.{0,40}\bmsa\b", re.I), 80),
             # Arabic + AI/NLP/data roles
             (re.compile(r"\b(nlp|natural language processing)\b.{0,50}\barabic", re.I), 80),
             (re.compile(r"\barabic.{0,50}\b(nlp|natural language processing)\b", re.I), 80),
@@ -324,7 +323,14 @@ MATCH_BUCKETS = [
             (re.compile(r"\b(translat|locali[sz]).{0,30}(remote|worldwide|freelance|home|global)\b", re.I), 85),
             (re.compile(r"\b(remote|worldwide|freelance).{0,30}(translat|locali[sz])\b", re.I), 85),
             # CAT tools / translation memory
-            (re.compile(r"\b(cat tools?|trados|memoq|memsource|smartcat|wordfast|omegat|phrase|lokalise|crowdin)\b", re.I), 80),
+            # Distinctive tool names — only appear in translation tooling.
+            (re.compile(r"\b(cat tools?|trados|memoq|memsource|wordfast|omegat|crowdin)\b", re.I), 80),
+            # Brand names that are also employer names ("Lokalise", "Phrase",
+            # "Smartcat"). A bare hit matched those companies' non-translation
+            # postings (e.g. "Junior IT Operations Specialist — Lokalise"), so
+            # require translation context nearby.
+            (re.compile(r"\b(smartcat|phrase|lokalise)\b.{0,60}\b(translat|locali[sz]|linguist|subtitle|caption|language)\b", re.I), 80),
+            (re.compile(r"\b(translat|locali[sz]|linguist|subtitle|caption|language)\b.{0,60}\b(smartcat|phrase|lokalise)\b", re.I), 80),
             # Translation-specific terms
             (re.compile(r"\b(translation memory|terminology management|glossary|style guide|locale|localization kit)\b", re.I), 80),
             (re.compile(r"\b(semtich|segment|tmx|xliff|po file|gettext)\b", re.I), 75),
@@ -377,8 +383,15 @@ MATCH_BUCKETS = [
 
 # Languages that are NOT the user's pair
 WRONG_LANGUAGE = re.compile(
-    r"\b(hindi|spanish|castilian|french|german|chinese|mandarin|japanese|korean|"
-    r"portuguese|italian|russian|turkish|urdu|bengali|tamil|dutch|polish|thai)\b",
+    r"\b(hindi|spanish|castilian|french|german|chinese|mandarin|cantonese|japanese|korean|"
+    r"portuguese|italian|russian|turkish|urdu|bengali|tamil|telugu|kannada|malayalam|marathi|"
+    r"gujarati|punjabi|sinhala|nepali|pashto|dari|persian|farsi|kurdish|hebrew|"
+    r"dutch|polish|thai|vietnamese|indonesian|malay|tagalog|filipino|swahili|amharic|somali|hausa|"
+    r"yoruba|igbo|zulu|afrikaans|"
+    r"slovak|slovene|slovenian|ukrainian|czech|romanian|hungarian|greek|bulgarian|croatian|"
+    r"serbian|bosnian|macedonian|albanian|estonian|latvian|lithuanian|finnish|norwegian|"
+    r"swedish|danish|icelandic|irish|welsh|basque|catalan|galician|armenian|georgian|"
+    r"azerbaijani|kazakh|uzbek|mongolian|burmese|khmer)\b",
     re.I,
 )
 HAS_ARABIC = re.compile(r"\barabic\b", re.I)
@@ -403,11 +416,40 @@ NON_ROLE_ADMIN = re.compile(
     re.I,
 )
 COUNTRY_LOCKED_LOC = re.compile(
-    r"(remote\s*[-–—,]\s*(us|usa|u\.s\.a?|united states|canada|uk|united kingdom|australia|eu)"
+    # \b after the group so "Remote — Europe" (region, allowed) does not match "eu".
+    r"(remote\s*[-–—,]\s*(us|usa|u\.s\.a?|united states|canada|uk|united kingdom|australia|eu)\b"
     r"|(united states|canada|uk|australia)\s+only"
     r"|us only|canada only)",
     re.I,
 )
+
+# "Remote — <City>, <ST>" is just as country-locked as "Remote — US", but the
+# country-only pattern above missed it, so US-metro roles leaked into Fresh
+# Matches. States are matched case-sensitively (the 2-letter codes collide with
+# ordinary words like "in", "or", "me", "hi", "ok", "de").
+US_STATE_CODES = (
+    "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS "
+    "MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC"
+).split()
+_US_STATE_NAMES = (
+    "alabama alaska arizona arkansas california colorado connecticut delaware florida "
+    "hawaii idaho illinois indiana iowa kansas kentucky louisiana maine maryland "
+    "massachusetts michigan minnesota mississippi missouri montana nebraska nevada "
+    "new hampshire new jersey new mexico new york north carolina north dakota ohio "
+    "oklahoma oregon pennsylvania rhode island south carolina south dakota tennessee "
+    "texas utah vermont virginia washington west virginia wisconsin wyoming"
+).split()
+# Sentence-initial capitalisation makes ", Il"/", In" ambiguous, so 2-letter codes
+# are only trusted when fully uppercase. "georgia" is left out of the names list
+# (it is also a country); ", GA" still catches the US state.
+_US_STATE_CODE_RE = re.compile(r",\s*(?:" + "|".join(US_STATE_CODES) + r")\b")
+_US_STATE_NAME_RE = re.compile(r"\b(?:" + "|".join(_US_STATE_NAMES) + r")\b", re.I)
+
+
+def _is_us_locked(location: str) -> bool:
+    """True when the location names a US state — i.e. not worldwide-remote."""
+    loc = location or ""
+    return bool(_US_STATE_CODE_RE.search(loc) or _US_STATE_NAME_RE.search(loc))
 
 NEGATIVE_KEYWORDS = [
     "software engineer", "backend engineer", "frontend engineer", "full stack engineer",
@@ -489,17 +531,112 @@ REMOTE_MARKER = re.compile(
     r"(remote|work from home|wfh|worldwide|anywhere|global|freelance|contract|couchsurfing|virtual)", re.I
 )
 
+def _place_regex(places: "list[str]") -> re.Pattern:
+    """Word-boundary alternation so 'oman' cannot match inside 'Romania'.
+
+    Longest alternatives first, otherwise 'saudi' would shadow 'saudi arabia'.
+    Used for every location list, because plain substring matching let "any"
+    fire inside "Germany" and "asia" inside "Malaysia".
+    """
+    ordered = sorted(places, key=len, reverse=True)
+    return re.compile(r"\b(?:" + "|".join(re.escape(p) for p in ordered) + r")\b", re.I)
+
+
+# Region/worldwide wording the user accepts (work from anywhere).
 ALLOWED_LOCATIONS = [
-    # Worldwide / Remote-first (always accept)
-    "remote", "worldwide", "anywhere", "global", "virtual", "online",
+    "worldwide", "anywhere", "global", "virtual", "online",
     "work from home", "wfh", "freelance", "contract",
-    # Region-level (OK — user can work from anywhere in these regions)
-    "middle east", "north africa", "mena",
-    "europe", "eu", "apac", "americas", "latin america", "latam",
+    "remote", "remote first", "fully remote",
+    # Regions — user can work from anywhere in these.
+    "middle east", "north africa", "mena", "emea",
+    "europe", "european union", "eu",
+    "apac", "americas", "latin america", "latam",
     "asia", "africa", "north america", "south america",
-    # Specific countries only if explicitly marked as remote/flexible
-    # (rejected if location is just the city name without "remote")
 ]
+
+# Countries the user targets as an Arabic/English freelancer. A "Remote — Dubai"
+# posting is worth surfacing even though it names a country, because the work is
+# Arabic-market and frequently open to MENA-based freelancers.
+MENA_LOCATIONS = [
+    "united arab emirates", "uae", "dubai", "abu dhabi", "sharjah",
+    "saudi arabia", "saudi", "ksa", "riyadh", "jeddah", "dammam",
+    "qatar", "doha", "kuwait", "bahrain", "oman", "muscat", "gcc",
+    "jordan", "amman", "egypt", "cairo", "alexandria",
+    "morocco", "casablanca", "rabat", "tunisia", "tunis", "algeria", "algiers",
+    "lebanon", "beirut", "iraq", "baghdad", "palestine", "libya", "tripoli",
+    "yemen", "syria", "damascus", "turkey", "istanbul",
+]
+
+# Residency-blocked markets — the user cannot apply from Libya.
+BLOCKED_COUNTRY_LOCATIONS = [
+    "united states", "usa", "canada", "australia", "united kingdom",
+    "new zealand", "india", "philippines", "pakistan", "nigeria", "kenya",
+]
+
+ALLOWED_LOCATION_RE = _place_regex(ALLOWED_LOCATIONS)
+MENA_RE = _place_regex(MENA_LOCATIONS)
+BLOCKED_COUNTRY_RE = _place_regex(BLOCKED_COUNTRY_LOCATIONS)
+
+# Non-geographic location wording that still means "work from anywhere".
+GENERIC_LOCATION_MARKERS = [
+    "multiple locations", "various", "flexible", "unspecified",
+    "not specified", "remote-first", "fully remote",
+]
+GENERIC_LOCATION_RE = _place_regex(GENERIC_LOCATION_MARKERS)
+
+# ISO 3166-1 English short names. Needed because a bare location like "Remote —
+# Germany" is a hard country lock, while "Remote | Athens" (a city with no
+# country) is a hub/nice-to-have that Arabic-translation employers use often —
+# treating both as locks cost real matches (e.g. IOM interpreter roles).
+COUNTRY_NAMES = [
+    "afghanistan", "albania", "algeria", "andorra", "angola", "argentina",
+    "armenia", "australia", "austria", "azerbaijan", "bahamas", "bahrain",
+    "bangladesh", "barbados", "belarus", "belgium", "belize", "benin",
+    "bhutan", "bolivia", "bosnia and herzegovina", "botswana", "brazil",
+    "brunei", "bulgaria", "burkina faso", "burundi", "cambodia", "cameroon",
+    "canada", "chad", "chile", "china", "colombia", "comoros", "congo",
+    "costa rica", "croatia", "cuba", "cyprus", "czechia", "denmark",
+    "djibouti", "dominica", "dominican republic", "ecuador", "egypt",
+    "el salvador", "eritrea", "estonia", "eswatini", "ethiopia", "fiji",
+    "finland", "france", "gabon", "gambia", "georgia", "germany", "ghana",
+    "greece", "guatemala", "guinea", "guyana", "haiti", "honduras", "hungary",
+    "iceland", "india", "indonesia", "iran", "iraq", "ireland", "israel",
+    "italy", "jamaica", "japan", "jordan", "kazakhstan", "kenya", "kuwait",
+    "kyrgyzstan", "laos", "latvia", "lebanon", "lesotho", "liberia", "libya",
+    "liechtenstein", "lithuania", "luxembourg", "madagascar", "malawi",
+    "malaysia", "maldives", "mali", "malta", "mauritania", "mauritius",
+    "mexico", "moldova", "monaco", "mongolia", "montenegro", "morocco",
+    "mozambique", "myanmar", "namibia", "nepal", "netherlands",
+    "new zealand", "nicaragua", "niger", "nigeria", "north korea",
+    "north macedonia", "norway", "oman", "pakistan", "palau", "palestine",
+    "panama", "papua new guinea", "paraguay", "peru", "philippines", "poland",
+    "portugal", "qatar", "romania", "russia", "rwanda", "saudi arabia",
+    "senegal", "serbia", "seychelles", "sierra leone", "singapore",
+    "slovakia", "slovenia", "somalia", "south africa", "south korea",
+    "south sudan", "spain", "sri lanka", "sudan", "suriname", "sweden",
+    "switzerland", "syria", "taiwan", "tajikistan", "tanzania", "thailand",
+    "togo", "tunisia", "turkey", "turkmenistan", "uganda", "ukraine",
+    "united arab emirates", "united kingdom", "united states", "uruguay",
+    "uzbekistan", "vanuatu", "venezuela", "vietnam", "yemen", "zambia",
+    "zimbabwe",
+]
+COUNTRY_RE = _place_regex(COUNTRY_NAMES)
+
+# "Remote — <place>" carries the real location in `<place>`. "Worldwide remote"
+# is granted by the marker only when no country/city is named after it, so a
+# Spain/Ohio/India-only posting cannot short-circuit on the word "remote".
+_REMOTE_PREFIX_RE = re.compile(r"^\s*remote\b[\s\-–—,|:/]*", re.I)
+
+
+def _location_body(loc: str) -> str:
+    """Strip a leading 'remote' marker so the place after it can be judged.
+
+    Returns "" when the location is just a remote marker (plain "Remote"),
+    which is treated as worldwide. Otherwise the leftover country/city text.
+    """
+    return _REMOTE_PREFIX_RE.sub("", loc or "").strip(" ,-–—|/:")
+
+
 
 RESIDENCY_BLOCKERS = [
     re.compile(r"residents? only", re.I),
@@ -514,9 +651,6 @@ RESIDENCY_BLOCKERS = [
     re.compile(r"must already (have|hold|possess).{0,40}(work permit|residence permit|visa|residency)", re.I),
     re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within)", re.I),
     re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
-    re.compile(r"onsite only|on-site only|on site only", re.I),
-    re.compile(r"in office|office.first|hybrid|office based|on.?site\b", re.I),
-    re.compile(r"office.{0,25}(only|required)\.?( no remote)?", re.I),
 ]
 
 # ---------------------------------------------------------------------------
@@ -579,6 +713,12 @@ def normalize_date(v) -> datetime | None:
     return None
 
 
+def _libya_today() -> str:
+    """Today's date in Libya (UTC+2) — the day the user actually reads."""
+    from notifier import now_libya
+    return now_libya().strftime("%Y-%m-%d")
+
+
 def age_hours(dt: datetime | None) -> float:
     if dt is None:
         return float("inf")
@@ -613,13 +753,32 @@ def is_paid_platform(source: str) -> bool:
     return any(platform in source_lower for platform in PAID_PLATFORMS)
 
 
-def phrase_label(re_obj) -> str:
+def phrase_label(re_obj, text: str = "") -> str:
+    """Readable name for a matched pattern — the actual term that matched.
+
+    Bucket phrases are alternations of 10-20 synonyms ("arabic translator
+    translation interpreter linguist editor proofreader ..."), so returning the
+    raw pattern dumped the whole list into user-facing messages. Prefer the
+    concrete substring that hit; fall back to a trimmed pattern.
+    """
+    if text:
+        m = re_obj.search(text)
+        if m:
+            hit = (m.group(0) or "").strip()
+            if 2 <= len(hit) <= 60:
+                return re.sub(r"\s+", " ", hit)
     src = re_obj.pattern
     src = re.sub(r"\[sz\]", "s", src)
     src = re.sub(r"\\b|\\B|^|\$", "", src)
     src = src.replace("\\s", " ")
-    src = re.sub(r"[()|]", " ", src)
-    return re.sub(r"\s+", " ", src).strip()
+    # Drop bounded-gap quantifiers (".{0,40}", ".{0,30}") entirely BEFORE the
+    # punctuation sweep below. That sweep removed "{}" but left the leading dot
+    # and digits, so user-facing text read "specialist .{0,40}arabic (title)".
+    src = re.sub(r"\.\{\d+(,\d+)?\}", " ", src)
+    src = re.sub(r"\{\d+(,\d+)?\}", " ", src)
+    src = re.sub(r"[()|?*+{}\[\]]", " ", src)
+    parts = [p.strip() for p in src.split() if p.strip()]
+    return " ".join(parts[:4])
 
 
 # Bucket weight multipliers — Arabic translation is the candidate's prime skill.
@@ -661,7 +820,7 @@ def _bucket_best(bucket: dict, t: str, d: str) -> tuple[float, list[str]]:
         if val > best:
             best = val
             where = "title+description" if (in_title and in_desc) else ("title" if in_title else "description")
-            why = [f"{phrase_label(pattern)} ({where})"]
+            why = [f"{phrase_label(pattern, t if in_title else d)} ({where})"]
     return min(best, 95.0), why
 
 
@@ -671,7 +830,12 @@ def get_match_score(title: str, desc: str) -> dict:
     75-100 = STRONG CV match, 50-74 = GOOD, below 50 = REVIEW (still shown).
     """
     t = (title or "").lower()
-    d = (desc or "").lower()
+    # Descriptions arrive as raw HTML from most feeds. Tag and attribute text
+    # ("<div class=\"editor-listitem\">") matched keyword patterns and scored
+    # unrelated roles (e.g. an Engineering Manager hitting "translator"), so
+    # match against readable text only.
+    d = (desc or "")
+    d = strip_html(d).lower() if ("<" in d or "&" in d) else d.lower()
     text = t + " " + d
 
     # 1) Baseline — NO free points for "remote" alone.
@@ -710,7 +874,7 @@ def get_match_score(title: str, desc: str) -> dict:
         return {"score": 0, "category": "Other", "why": ["hard drop: senior/leadership title"]}
     if NON_ROLE_ADMIN.search(t):
         return {"score": 0, "category": "Other", "why": ["hard drop: admin/platform role"]}
-    if WRONG_LANGUAGE.search(t) and not HAS_ARABIC.search(text):
+    if WRONG_LANGUAGE.search(text) and not HAS_ARABIC.search(text):
         return {"score": 0, "category": "Other", "why": ["hard drop: wrong language, no Arabic"]}
 
     total = max(0, min(100, total))
@@ -720,7 +884,7 @@ def get_match_score(title: str, desc: str) -> dict:
     if best <= 0:
         total = 0
         best_cat = "Other"
-        best_why = ["hard drop: no translation/language/content signal in job"]
+        why_final = ["hard drop: no translation/language/content signal in job"]
     total = round(total / 5) * 5
     return {"score": total, "category": best_cat, "why": why_final[:8]}
 
@@ -750,6 +914,8 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     loc = (location or "").lower()
     text = (desc or "").lower() + " " + loc
     if COUNTRY_LOCKED_LOC.search(loc) or COUNTRY_LOCKED_LOC.search(text):
+        return False
+    if _is_us_locked(location):
         return False
     
     # Check description for location restriction warnings FIRST
@@ -804,29 +970,32 @@ def is_open_worldwide(location: str, desc: str) -> bool:
             return False
     if not loc:
         return True
-    # Check if location matches allowed regions/worldwide terms
-    if any(a in loc for a in ALLOWED_LOCATIONS):
+
+    # Region/worldwide wording ("worldwide", "europe", "anywhere", "remote").
+    # Matched against the body so the bare word "remote" no longer grants a pass
+    # to "Remote — Spain".
+    body = _location_body(loc)
+    if ALLOWED_LOCATION_RE.search(body):
         return True
-    # BLOCKED_LOCATIONS must be checked BEFORE REMOTE_MARKER —
-    # otherwise "Remote — United States" matches "remote" and short-circuits.
-    BLOCKED_LOCATIONS = [
-        "united states", "us", "usa", "u.s.", "u.s.a.",
-        "canada", "australia", "united kingdom", "uk",
-    ]
-    if any(b in loc for b in BLOCKED_LOCATIONS):
+
+    # MENA-country remotes are intentionally surfaced (Arabic-market demand).
+    if MENA_RE.search(body):
+        return True
+
+    # Non-geographic wording ("Multiple locations", "Fully remote").
+    if GENERIC_LOCATION_RE.search(body):
+        return True
+
+    # Residency-blocked markets, or any outright country lock. BLOCKED_COUNTRY_RE
+    # also catches the abbreviations ("USA", "UK") that COUNTRY_RE's full names
+    # miss; _is_us_locked covers "…, OH" style US-state postings.
+    if BLOCKED_COUNTRY_RE.search(body) or COUNTRY_RE.search(body) or _is_us_locked(body):
         return False
-    if REMOTE_MARKER.search(loc):
-        return True
-    # Check if location is a specific country — accept most countries
-    # unless they are in a hard-blocked country list
-    # If location is just a country name (not a specific city), accept it
-    # unless it's in the blocked list
-    if loc and not any(city in loc for city in [",", "city", "town", "street", "avenue", "road", "district"]):
-        # Location is likely just a country/region name — accept unless blocked
-        if not any(b in loc for b in BLOCKED_LOCATIONS):
-            return True
-    # Location has content but doesn't match any allowed term
-    return False
+
+    # Leftover is a city with no country ("Remote | Athens", "Remote — Baltimore").
+    # Employers use these as preferred hubs for Arabic/translation work, so keep
+    # them; the residency blockers above already rejected the hard nos.
+    return True
 
 
 def matches_positive(title: str, desc: str) -> bool:
@@ -879,12 +1048,28 @@ def location_ai_fail(job: dict) -> bool:
     return False
 
 
+def has_residency_blocker(job: dict) -> bool:
+    """True when the posting itself demands citizenship/residency/work permit.
+
+    Such roles are unappliable from Libya without sponsorship, so they are a hard
+    drop — not a flag. Country-locked *locations* stay flags; this is about
+    explicit eligibility wording in the posting text.
+    """
+    text = f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
+    return any(p.search(text) for p in RESIDENCY_BLOCKERS)
+
+
 def drop_unqualified_matches(jobs: list[dict], reason_counts: dict | None = None) -> list[dict]:
     """Final quality gate before notify / cover letters.
 
-    Hard drops only (stub listings, AI-confirmed location/visa blockers).
-    in-person and country-locked wording are kept but re-tagged as flags so the
-    user sees every job and decides.
+    Hard drops: stub listings, AI-confirmed location failures, postings that
+    require citizenship/residency/work authorisation (unappliable from Libya),
+    and country-locked locations.
+
+    Country-locked postings used to be kept with a "country-locked location"
+    flag, so a role pinned to Spain/Ohio/Mexico still arrived as a 100% STRONG
+    MATCH the user could never take. They are dropped here; the Excel "All Jobs"
+    sheet still lists every scanned posting.
     """
     kept = []
     counts = reason_counts if reason_counts is not None else {}
@@ -895,13 +1080,16 @@ def drop_unqualified_matches(jobs: list[dict], reason_counts: dict | None = None
         if location_ai_fail(job):
             counts["ai_location_fail"] = counts.get("ai_location_fail", 0) + 1
             continue
+        if has_residency_blocker(job):
+            counts["residency_blocker"] = counts.get("residency_blocker", 0) + 1
+            continue
+        if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
+            counts["country_locked"] = counts.get("country_locked", 0) + 1
+            continue
         flags = list(job.get("flags") or [])
         if is_in_person_gig(job):
             if "in-person/onsite" not in flags:
                 flags.append("in-person/onsite")
-        if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
-            if "country-locked location" not in flags:
-                flags.append("country-locked location")
         if flags:
             job["flags"] = flags
         kept.append(job)
@@ -3478,191 +3666,12 @@ async def fetch_proz(session: aiohttp.ClientSession) -> list[dict]:
         return []
 
 
-# ---------------------------------------------------------------------------
-# 146. ESL Gorilla — online ESL jobs board (300+ live listings, SSR HTML)
-# ---------------------------------------------------------------------------
-ESLGORILLA_REMOTE_OK = re.compile(
-    r"\b(remote|worldwide|anywhere|online|virtual|global|freelance)\b", re.I
-)
-
-
-def parse_eslgorilla_html(html: str) -> list[dict]:
-    """Pure parse: extract jobs from ESL Gorilla's SSR listing HTML.
-
-    Every job links to https://eslgorilla.com/jobs/<slug> — either as a
-    "Current Openings" card anchor or as a "Live jobs — direct links"
-    bullet ("Title — Location"). The anchor-level regex captures the href
-    plus the text immediately after it (empty when the card starts with a
-    tag), so a bounded window is only used for metadata and the title
-    fallback.
-    """
-    seen: set[str] = set()
-    jobs: list[dict] = []
-    for m in re.finditer(
-        r'<a[^>]*href="https://eslgorilla\.com/jobs/([a-z0-9-]+)"[^>]*>([^<]{0,160})',
-        html or "", re.I,
-    ):
-        slug = m.group(1)
-        if slug in seen:
-            continue
-        seen.add(slug)
-        url = f"https://eslgorilla.com/jobs/{slug}"
-        chunk = html[m.end(): m.end() + 2500]
-        nxt = chunk.find("/jobs/")
-        if nxt > 0:
-            chunk = chunk[:nxt]
-        text = html_mod.unescape(re.sub(r"<[^>]+>", " ", chunk))
-        text = re.sub(r"\s+", " ", text).strip()
-        atext = html_mod.unescape(re.sub(r"\s+", " ", m.group(2) or "").strip())
-        hay = (atext + " " + text).strip()
-        if not hay or len(hay) < 8:
-            continue
-        if not ESLGORILLA_REMOTE_OK.search(hay):
-            continue
-        title, location = atext, "Remote"
-        if " — " in atext and len(atext) < 120:  # "Title — Location" bullet
-            title, location = [p.strip() for p in atext.split(" — ", 1)]
-            title, location = title or atext, (location or "Remote")
-        if not title:
-            t = re.search(r"<(?:h3|strong|b)[^>]*>(.*?)</(?:h3|strong|b)>", chunk, re.I | re.S)
-            title = html_mod.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t.group(1)))).strip() if t else text[:120]
-        salary_m = re.search(r"\$[\d,.]+(?:\s*/?\s*(?:hr|hour|min|month|usd|USD))?", hay)
-        jobs.append({
-            "title": (title or slug) [:120],
-            "company": "ESL Gorilla employer",
-            "url": url,
-            "location": location[:80] or "Remote",
-            "posted": "",
-            "description": "Online ESL teaching role listed on ESL Gorilla (remote, open worldwide).",
-            "salary": salary_m.group(0).strip() if salary_m else "",
-            "source": "eslgorilla",
-        })
-        if len(jobs) >= 30:
-            break
-    return jobs
-
-
-async def fetch_eslgorilla(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch live online ESL jobs from the ESL Gorilla board."""
-    jobs: list[dict] = []
-    known: set[str] = set()
-    for page in ("https://eslgorilla.com/jobs/remote", "https://eslgorilla.com/jobs/online"):
-        try:
-            async with session.get(
-                page, headers=HEADERS, timeout=aiohttp.ClientTimeout(total=20)
-            ) as resp:
-                if resp.status != 200:
-                    continue
-                page_html = await resp.text()
-            for j in parse_eslgorilla_html(page_html):
-                if j["url"] not in known:
-                    known.add(j["url"])
-                    jobs.append(j)
-        except Exception as e:
-            print(f"  ESL Gorilla ({page}): {e}")
-    if jobs:
-        print(f"  ESL Gorilla: {len(jobs)} online ESL jobs")
-    # Only keep jobs mentioning arabic
-    jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
-    return jobs[:30]
 
 
 # ---------------------------------------------------------------------------
-# 147. TES (tes.com) — 2,700+ teaching jobs, keep remote/online only
+# (removed) TES educator board — teaching-only source, dropped with the
+# ESL focus; the scanner now targets Arabic<->English translation only.
 # ---------------------------------------------------------------------------
-TES_REMOTE_OK = re.compile(
-    r"\b(remote|worldwide|anywhere|online|virtual|global)\b", re.I
-)
-
-
-def parse_tes_html(html: str) -> list[dict]:
-    """Pure parse: extract remote/online teaching jobs from TES search HTML.
-
-    TES is mostly in-person UK school roles, so a card is only kept when its
-    text carries an explicit remote/online signal. We split on each vacancy
-    href and parse a bounded window so nested anchors can't truncate cards.
-    """
-    now = datetime.now(timezone.utc)
-    seen: set[str] = set()
-    jobs: list[dict] = []
-    for m in re.finditer(
-        r'<a[^>]*href="https://www\.tes\.com/jobs/vacancy/([a-z0-9-]+)"[^>]*>([^<]{0,160})',
-        html or "", re.I,
-    ):
-        slug = m.group(1)
-        if slug in seen:
-            continue
-        seen.add(slug)
-        chunk = html[m.end(): m.end() + 4000]
-        nxt = chunk.find("/jobs/vacancy/")
-        if nxt > 0:
-            chunk = chunk[:nxt]
-        text = html_mod.unescape(re.sub(r"<[^>]+>", " ", chunk))
-        text = re.sub(r"\s+", " ", text).strip()
-        atext = html_mod.unescape(re.sub(r"\s+", " ", m.group(2) or "").strip())
-        hay = (atext + " " + text).strip()
-        if not hay or len(hay) < 10:
-            continue
-        if not TES_REMOTE_OK.search(hay):
-            continue  # TES is mostly in-person UK — keep remote/online only
-        title = atext
-        if not title:
-            t = re.search(r"<(?:h3|strong|b)[^>]*>(.*?)</(?:h3|strong|b)>", chunk, re.I | re.S)
-            title = html_mod.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t.group(1)))).strip() if t else text[:120]
-        logo = re.search(r'<img[^>]*alt="([^"]+?)\s+logo"', chunk, re.I)
-        company = logo.group(1).strip() if logo else "TES employer"
-        posted = ""
-        dm = re.search(r"\b(\d+)\s*(hours?|days?)\s*ago\b", text, re.I)
-        if dm:
-            n = int(dm.group(1))
-            posted = (now - timedelta(hours=n if dm.group(2).lower().startswith("h") else n * 24)).isoformat()
-        elif re.search(r"\bToday\b", text):
-            posted = now.isoformat()
-        elif re.search(r"\bYesterday\b", text):
-            posted = (now - timedelta(days=1)).isoformat()
-        salary_m = re.search(r"£[\d,]+(?:\s*[-–—]\s*£?\s*[\d,]+)?\s*(?:per\s+(?:year|hour|month))?", hay)
-        desc_m = re.search(r"(?:We are|Are you|Seeking|Looking|Join|The role|Position)[^;]{40,400}", text)
-        jobs.append({
-            "title": title[:120],
-            "company": company[:80],
-            "url": f"https://www.tes.com/jobs/vacancy/{slug}",
-            "location": "Remote (see listing)",
-            "posted": posted,
-            "description": (desc_m.group(0)[:400] if desc_m else "Teaching role on TES with remote/online signal on the listing."),
-            "salary": salary_m.group(0).strip() if salary_m else "",
-            "source": "tes",
-        })
-        if len(jobs) >= 20:
-            break
-    return jobs
-
-
-async def fetch_tes(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch remote/online teaching jobs from TES (newest-first board)."""
-    jobs: list[dict] = []
-    for page in (
-        "https://www.tes.com/jobs/search?sort=date&page=1",
-        "https://www.tes.com/jobs/search?sort=date&page=2",
-    ):
-        try:
-            async with session.get(
-                page, headers=HEADERS, timeout=aiohttp.ClientTimeout(total=20)
-            ) as resp:
-                if resp.status != 200:
-                    continue
-                page_html = await resp.text()
-            known_urls = {x["url"] for x in jobs}
-            for j in parse_tes_html(page_html):
-                if j["url"] not in known_urls:
-                    jobs.append(j)
-        except Exception as e:
-            print(f"  TES ({page}): {e}")
-    if jobs:
-        print(f"  TES: {len(jobs)} remote/online teaching jobs")
-    # Only keep jobs mentioning arabic
-    jobs = [j for j in jobs if 'arabic' in (j.get('title','') + ' ' + j.get('description','') + ' ' + j.get('location','')).lower()]
-    return jobs[:20]
-
 
 # ---------------------------------------------------------------------------
 # 50. Smartling — Translation platform
@@ -3826,172 +3835,6 @@ async def fetch_carmel(session: aiohttp.ClientSession) -> list[dict]:
 
 # ---------------------------------------------------------------------------
 # 54. Preply — Online tutoring platform
-# ---------------------------------------------------------------------------
-
-async def fetch_preply(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from Preply tutoring jobs."""
-    try:
-        async with session.get(
-            "https://preply.com/en/jobs",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            html = await resp.text()
-            jobs = []
-            # Look for tutor positions
-            patterns = [
-                r'<a[^>]*href="(/en/jobs/[^"]*)"[^>]*>([^<]+)</a>',
-                r'"title":"([^"]*(?:tutor|teacher|instructor|language)[^"]*)"',
-            ]
-            for pattern in patterns:
-                matches = re.findall(pattern, html, re.I)
-                for url, *title_match in matches[:50]:
-                    title = title_match[0].strip() if title_match else url.split("/")[-1].replace("-", " ").title()
-                    if not title or len(title) < 5:
-                        continue
-                    if not url.startswith("http"):
-                        url = f"https://preply.com{url}"
-                    jobs.append({
-                        "title": title,
-                        "company": "Preply",
-                        "url": url,
-                        "location": "Remote (Worldwide)",
-                        "posted": "",
-                        "description": "Online language tutoring platform",
-                        "salary": "",
-                        "source": "preply",
-                    })
-            return jobs[:50]
-    except Exception as e:
-        print(f"  Preply: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 55. Cambly — English tutoring platform
-# ---------------------------------------------------------------------------
-
-async def fetch_cambly(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from Cambly tutoring jobs."""
-    try:
-        async with session.get(
-            "https://www.cambly.com/en/tutors",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            html = await resp.text()
-            jobs = []
-            # Look for tutor positions
-            pattern = r'<a[^>]*href="([^"]*tutor[^"]*)"[^>]*>([^<]+)</a>'
-            matches = re.findall(pattern, html, re.I)
-            for url, title in matches[:50]:
-                title = title.strip()
-                if not title or len(title) < 5:
-                    continue
-                if not url.startswith("http"):
-                    url = f"https://www.cambly.com{url}"
-                jobs.append({
-                    "title": title,
-                    "company": "Cambly",
-                    "url": url,
-                    "location": "Remote (Worldwide)",
-                    "posted": "",
-                    "description": "English tutoring platform for native speakers",
-                    "salary": "",
-                    "source": "cambly",
-                })
-            return jobs[:50]
-    except Exception as e:
-        print(f"  Cambly: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 56. VIPKid — English teaching platform
-# ---------------------------------------------------------------------------
-
-async def fetch_vipkid(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from VIPKid teaching jobs."""
-    try:
-        async with session.get(
-            "https://www.vipkid.com/en/teacher/",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            html = await resp.text()
-            jobs = []
-            pattern = r'<a[^>]*href="([^"]*teach[^"]*)"[^>]*>([^<]+)</a>'
-            matches = re.findall(pattern, html, re.I)
-            for url, title in matches[:50]:
-                title = title.strip()
-                if not title or len(title) < 5:
-                    continue
-                if not url.startswith("http"):
-                    url = f"https://www.vipkid.com{url}"
-                jobs.append({
-                    "title": title,
-                    "company": "VIPKid",
-                    "url": url,
-                    "location": "Remote (Worldwide)",
-                    "posted": "",
-                    "description": "English teaching platform for children",
-                    "salary": "",
-                    "source": "vipkid",
-                })
-            return jobs[:50]
-    except Exception as e:
-        print(f"  VIPKid: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 57. Qkids — English teaching platform
-# ---------------------------------------------------------------------------
-
-async def fetch_qkids(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from Qkids teaching jobs."""
-    try:
-        async with session.get(
-            "https://www.qkids.com/en/teacher",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            html = await resp.text()
-            jobs = []
-            pattern = r'<a[^>]*href="([^"]*teacher[^"]*)"[^>]*>([^<]+)</a>'
-            matches = re.findall(pattern, html, re.I)
-            for url, title in matches[:50]:
-                title = title.strip()
-                if not title or len(title) < 5:
-                    continue
-                if not url.startswith("http"):
-                    url = f"https://www.qkids.com{url}"
-                jobs.append({
-                    "title": title,
-                    "company": "Qkids",
-                    "url": url,
-                    "location": "Remote (Worldwide)",
-                    "posted": "",
-                    "description": "English teaching platform",
-                    "salary": "",
-                    "source": "qkids",
-                })
-            return jobs[:50]
-    except Exception as e:
-        print(f"  Qkids: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 58. Magic Ears — English teaching platform
 # ---------------------------------------------------------------------------
 
 async def fetch_magic_ears(session: aiohttp.ClientSession) -> list[dict]:
@@ -4327,46 +4170,6 @@ async def fetch_smartcat(session: aiohttp.ClientSession) -> list[dict]:
 # 68. iTalki — Language tutoring platform
 # ---------------------------------------------------------------------------
 
-async def fetch_italki(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from iTalki language tutoring."""
-    try:
-        async with session.get(
-            "https://www.italki.com/en/teachers",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            return []  # no invented listing
-    except Exception as e:
-        print(f"  iTalki: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 69. Lingoda — Online language school
-# ---------------------------------------------------------------------------
-
-async def fetch_lingoda(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from Lingoda teaching positions."""
-    try:
-        async with session.get(
-            "https://www.lingoda.com/en/teach-english-online/",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            return []  # no invented listing
-    except Exception as e:
-        print(f"  Lingoda: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 70. AmazingTalker — Language tutoring marketplace
-# ---------------------------------------------------------------------------
-
 async def fetch_amazingtalker(session: aiohttp.ClientSession) -> list[dict]:
     """Fetch from AmazingTalker tutoring platform."""
     try:
@@ -4465,33 +4268,6 @@ async def fetch_nativecamp(session: aiohttp.ClientSession) -> list[dict]:
 
 # ---------------------------------------------------------------------------
 # 75. TutorABC — ESL teaching platform
-# ---------------------------------------------------------------------------
-
-async def fetch_tutorabc(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from TutorABC ESL platform."""
-    try:
-        async with session.get(
-            "https://join.tutorabcglobal.com.hk/english/",
-            headers=HEADERS,
-            timeout=aiohttp.ClientTimeout(total=15),
-        ) as resp:
-            if resp.status != 200:
-                return []
-            return []  # no invented listing
-    except Exception as e:
-        print(f"  TutorABC: {e}")
-        return []
-
-
-# ---------------------------------------------------------------------------
-# 76. ESLGorilla — superseded by the dedicated fetch_eslgorilla (section 146),
-# which parses the SSR cards + "Live jobs" bullets directly and keeps only
-# remote listings. The old generic-scrape stub was removed 2026-09-06.
-# ---------------------------------------------------------------------------
-
-
-# ---------------------------------------------------------------------------
-# 77. TEFL.com — Teaching job board
 # ---------------------------------------------------------------------------
 
 async def fetch_tefl_com(session: aiohttp.ClientSession) -> list[dict]:
@@ -5091,6 +4867,24 @@ async def run_scan():
                 return False
             return name in PROBE_BLOCKED_SOURCES
 
+        # ── ATS company boards (Greenhouse / Lever / Ashby / Workable / SmartRecruiters) ──
+        # These were imported but never dispatched, so the company lists in config
+        # (and the probe-validated slugs) were dead config. Tier-gated via the registry.
+        from fetchers.verified import (
+            fetch_greenhouse_batch, fetch_lever_batch,
+            fetch_ashby_boards, fetch_workable_boards, fetch_smartrecruiters_boards,
+        )
+        if _should_run("greenhouse"):
+            fetchers.append(fetch_greenhouse_batch(session))
+        if _should_run("lever"):
+            fetchers.append(fetch_lever_batch(session))
+        if _should_run("ashby"):
+            fetchers.append(fetch_ashby_boards(session))
+        if _should_run("workable"):
+            fetchers.append(fetch_workable_boards(session))
+        if _should_run("smartrecruiters"):
+            fetchers.append(fetch_smartrecruiters_boards(session))
+
         # ── General remote boards (have Arabic jobs buried in them) ──
         if _should_run("remotive"):
             fetchers.append(fetch_remotive(session))
@@ -5118,8 +4912,6 @@ async def run_scan():
         # Every source here is specifically for translation, bilingual, or language jobs
         if _should_run("translation_jobs"):
             fetchers.append(fetch_translation_jobs(session))
-        if _should_run("tes"):
-            fetchers.append(fetch_tes(session))
         if _should_run("smartcat"):
             fetchers.append(fetch_smartcat(session))
         if _should_run("gotranscript"):
@@ -5137,6 +4929,12 @@ async def run_scan():
             fetchers.append(fetch_for9a(session))
         if not _blocked("wuzzuf"):
             fetchers.append(fetch_wuzzuf(session))
+        if not _blocked("bayt"):
+            fetchers.append(fetch_bayt(session))
+        if not _blocked("gulftalent"):
+            fetchers.append(fetch_gulftalent(session))
+        if not _blocked("naukrigulf"):
+            fetchers.append(fetch_naukrigulf(session))
         if _should_run("jsearch"):
             fetchers.append(fetch_jsearch(session))
         # ── Worldwide Arabic search: DDG + verified feeds ──
@@ -5227,7 +5025,7 @@ async def run_scan():
         old_but_verified = []
         filter_debug = {"no_url": 0, "paid": 0, "too_old": 0, "no_positive": 0,
                         "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0, "duplicate": 0,
-                        "stub": 0, "in_person": 0}
+                        "stub": 0, "in_person": 0, "no_signal": 0}
         
         # Load smart deduplication data
         smart_seen = load_smart_seen()
@@ -5357,8 +5155,15 @@ async def run_scan():
                 except Exception:
                     pass
 
-            # Separate fresh jobs from older jobs
+            # Separate fresh jobs from older jobs.
+            # A job with no scoring signal (0 points or category "Other") is not a
+            # match — keep it out of the digest/Fresh Matches entirely. It still
+            # appears in the Excel "All Jobs" sheet via all_jobs.
+            no_signal = scored_job["score"] <= 0 or scored_job.get("category") == "Other"
             if is_fresh:
+                if no_signal:
+                    filter_debug["no_signal"] = filter_debug.get("no_signal", 0) + 1
+                    continue
                 scored.append(job_data)
                 src = job.get("source", "unknown")
                 source_match_counts[src] = source_match_counts.get(src, 0) + 1
@@ -5479,14 +5284,14 @@ async def run_scan():
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
 
-        # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74),
-        # then a small REVIEW preview. Excel "All Jobs" sheet still contains every
-        # fetched job, so nothing is lost — this only bounds AI/time on what we act on.
+        # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74).
+        # Anything under the configured threshold is dropped here — it must not
+        # reach Fresh Matches or the digest. Excel "All Jobs" still has everything.
         final_verified.sort(key=lambda j: -int(j.get("score") or 0))
         strong = [j for j in final_verified if int(j.get("score") or 0) >= 75][:30]
-        good = [j for j in final_verified if 50 <= int(j.get("score") or 0) < 75][:20]
-        review_keep = [j for j in final_verified if int(j.get("score") or 0) < 50][:5]
-        final_verified = strong + good + review_keep
+        good = [j for j in final_verified
+                if MIN_MATCH_SCORE <= int(j.get("score") or 0) < 75][:20]
+        final_verified = strong + good
         final_verified.sort(key=lambda j: (-j.get("is_fresh", False), -int(j.get("score") or 0)))
 
         quality_drops: dict = {}
@@ -5589,7 +5394,7 @@ async def run_scan():
         stats = history["scan_stats"]
         stats["total_scans"] += 1
         stats["total_matches"] += len(final_verified)
-        stats["last_scan_date"] = datetime.now(timezone.utc).isoformat()[:10]
+        stats["last_scan_date"] = _libya_today()
 
         scan_info = {
             "elapsed": elapsed,

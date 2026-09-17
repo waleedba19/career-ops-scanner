@@ -1,21 +1,27 @@
 """
 CareerOps Excel Generator
-Produces XML-based Excel (.xls) with 5 sheets — now with deep free-forever intel (email, urgency, desperation, opportunity, pain):
+Produces XML-based Excel (.xls) with 6 sheets — now with deep free-forever intel (email, urgency, desperation, opportunity, pain):
   1. All Jobs — full dump of everything scanned
-  2. Fresh Matches — accumulated 75-100% matches across all scans
+  2. Fresh Matches — accumulated matches at or above the configured threshold
   3. Applications — track which jobs you've applied to
   4. Cover Letters — generated cover letters for each match
-  5. Daily Log — all scan runs
+  5. Learning — intelligence dashboard
+  6. Daily Log — all scan runs
 Same format and styling as the Cloudflare Worker.
 """
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any
 
 HISTORY_FILE = Path(__file__).parent / "output" / "fresh_matches_history.json"
 APPLICATIONS_FILE = Path(__file__).parent / "output" / "applications.json"
+
+# The user reads these sheets in Libya (UTC+2). Stamping them in UTC dated a
+# delayed 20:00 UTC run a day early, so the digest showed e.g. 5 Sept while the
+# user's local day was already the 6th.
+LIBYA_TZ = timezone(timedelta(hours=2))
 
 
 def _esc(s) -> str:
@@ -28,7 +34,7 @@ def min_score_label() -> str:
         from config import MIN_MATCH_SCORE
         return f"{MIN_MATCH_SCORE}-100%"
     except Exception:
-        return "65-100%"
+        return "50-100%"
 
 
 def get_recommendation(score: int) -> str:
@@ -117,13 +123,34 @@ def get_application_status(url: str) -> str:
     return apps.get(url, {}).get("status", "Not Applied")
 
 
+def _still_qualifies(match: dict) -> bool:
+    """Re-run today's gates over an accumulated match.
+
+    The history only ever grew, so entries that were acceptable under older rules
+    (teaching/ESL roles, residency-blocked postings, wrong-language leaks) stayed
+    in every digest forever. Re-validating on merge retires them.
+    """
+    from scanner import drop_unqualified_matches, get_match_score, is_open_worldwide
+
+    title = match.get("title", "")
+    desc = match.get("description", "")
+    if int(match.get("score") or 0) <= 0:
+        return False
+    scored = get_match_score(title, desc)
+    if scored.get("score", 0) <= 0 or scored.get("category") == "Other":
+        return False
+    if not is_open_worldwide(match.get("location", ""), desc):
+        return False
+    return len(drop_unqualified_matches([dict(match)])) == 1
+
+
 def merge_fresh_matches(current: list[dict], history: list[dict]) -> list[dict]:
     """Merge current matches with history, deduplicate by URL, keep latest scan date."""
     seen = {}
-    # Load history first
+    # Load history first, dropping entries that no longer pass the gates
     for m in history:
         url = m.get("url", "")
-        if url:
+        if url and _still_qualifies(m):
             seen[url] = m
     # Overlay current matches (they are newer)
     for m in current:
@@ -153,20 +180,18 @@ def generate_excel(
     """Generate the full XML-based Excel spreadsheet with accumulating Fresh Matches."""
     from scanner import get_freshness, get_match_score
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(LIBYA_TZ)
     date_str = now.strftime("%Y-%m-%d")
     time_str = scan_time or now.strftime("%I:%M %p")
     scan_date = now.isoformat()
     total_scanned = len(all_jobs) or scan_info.get("all_count", 0)
 
-    # Hour-based scan slot (UTC runs at 05:00, 13:00, 20:00)
+    # Hour-based scan slot in Libya local time (crons run 09:00/18:00 Libya)
     hour = now.hour
-    if hour < 9:
-        scan_slot = "Morning (5 AM)"
-    elif hour < 17:
-        scan_slot = "Afternoon (1 PM)"
+    if hour < 13:
+        scan_slot = "Morning (9 AM)"
     else:
-        scan_slot = "Night (8 PM)"
+        scan_slot = "Evening (6 PM)"
 
     # ---- Tag current matches with scan_date ----
     for j in jobs:

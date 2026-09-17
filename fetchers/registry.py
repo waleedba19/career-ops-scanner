@@ -10,16 +10,15 @@ REGISTRY: dict[str, dict] = {
     # Tier 1 — primary, high signal (always on) - Translation & Language Focus
     "greenhouse": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_batch"},
     "lever": {"tier": 1, "module": "fetchers.verified", "class": "fetch_lever_batch"},
-    "remotive": {"tier": 1, "module": "fetchers.verified", "class": "fetch_remotive"},
-    "remoteok": {"tier": 1, "module": "fetchers.verified", "class": "fetch_remoteok"},
-    "weworkremotely": {"tier": 1, "module": "fetchers.verified", "class": "fetch_wwr"},
-    "jobicy": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jobicy_api"},
-    "arbeitnow": {"tier": 1, "module": "fetchers.verified", "class": "fetch_arbeitnow"},
-    "himalayas": {"tier": 1, "module": "fetchers.verified", "class": "fetch_himalayas_api"},
+    "remotive": {"tier": 1, "module": "scanner", "class": "fetch_remotive"},
+    "remoteok": {"tier": 1, "module": "scanner", "class": "fetch_remoteok"},
+    "weworkremotely": {"tier": 1, "module": "scanner", "class": "fetch_wwr"},
+    "jobicy": {"tier": 1, "module": "scanner", "class": "fetch_jobicy_api"},
+    "arbeitnow": {"tier": 1, "module": "scanner", "class": "fetch_arbeitnow"},
+    "himalayas": {"tier": 1, "module": "scanner", "class": "fetch_himalayas_api"},
     "linkedin": {"tier": 1, "module": "fetchers.verified", "class": "fetch_linkedin_guest"},
     "jobicy_tags": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jobicy_tags"},
     "impactpool": {"tier": 1, "module": "fetchers.verified", "class": "fetch_impactpool"},
-    "greenhouse_profile": {"tier": 1, "module": "fetchers.verified", "class": "fetch_greenhouse_profile"},
     "jsearch": {"tier": 1, "module": "fetchers.verified", "class": "fetch_jsearch"},
     "adzuna": {"tier": 1, "module": "fetchers.verified", "class": "fetch_adzuna"},
     "reliefweb": {"tier": 1, "module": "fetchers.verified", "class": "fetch_reliefweb"},
@@ -29,19 +28,25 @@ REGISTRY: dict[str, dict] = {
     "hackernews": {"tier": 1, "module": "fetchers.verified", "class": "fetch_hackernews"},
     "indeed": {"tier": 1, "module": "fetchers.verified", "class": "fetch_indeed"},
     "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
+    # Dedicated translation/localization boards. These were missing from the
+    # registry, so _should_run() fell back to tier 3 and the tier cap silently
+    # disabled them.
+    "smartcat": {"tier": 1, "module": "scanner", "class": "fetch_smartcat"},
+    "gotranscript": {"tier": 1, "module": "scanner", "class": "fetch_gotranscript"},
+    "workbeam": {"tier": 2, "module": "scanner", "class": "fetch_workbeam"},
+    "proz": {"tier": 2, "module": "scanner", "class": "fetch_proz"},
     "arabic_companies": {"tier": 1, "module": "fetchers.arabic_translation", "class": "fetch"},
-    "nodesk": {"tier": 1, "module": "fetchers.verified", "class": "fetch_nodesk"},
+    "nodesk": {"tier": 1, "module": "scanner", "class": "fetch_nodesk"},
     
     # Tier 2 — balanced (good volume) - Asian/South Asian & MENA Focus
-    "yayremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_yayremote"},
-    "remote1stjobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_remote1stjobs"},
-    "realworkfromanywhere": {"tier": 2, "module": "fetchers.verified", "class": "fetch_realworkfromanywhere"},
+    "yayremote": {"tier": 2, "module": "scanner", "class": "fetch_yayremote"},
+    "remote1stjobs": {"tier": 2, "module": "scanner", "class": "fetch_remote1stjobs"},
+    "realworkfromanywhere": {"tier": 2, "module": "scanner", "class": "fetch_realworkfromanywhere"},
     "workingnomads": {"tier": 2, "module": "fetchers.verified", "class": "fetch_workingnomads_json"},
-    "jobspresso": {"tier": 2, "module": "fetchers.verified", "class": "fetch_jobspresso"},
-    "justremote": {"tier": 2, "module": "fetchers.verified", "class": "fetch_justremote"},
-    "hirelatam": {"tier": 2, "module": "fetchers.verified", "class": "fetch_hirelatam"},
+    "jobspresso": {"tier": 2, "module": "scanner", "class": "fetch_jobspresso"},
+    "justremote": {"tier": 2, "module": "scanner", "class": "fetch_justremote"},
+    "hirelatam": {"tier": 2, "module": "scanner", "class": "fetch_hirelatam"},
     "reddit_social": {"tier": 2, "module": "fetchers.social", "class": "fetch_reddit_social"},
-    "tes": {"tier": 2, "module": "fetchers.verified", "class": "fetch_tes"},
     "ashby": {"tier": 2, "module": "fetchers.verified", "class": "fetch_ashby_boards"},
     "workable": {"tier": 2, "module": "fetchers.verified", "class": "fetch_workable_boards"},
     "smartrecruiters": {"tier": 2, "module": "fetchers.verified", "class": "fetch_smartrecruiters_boards"},
@@ -64,8 +69,8 @@ REGISTRY: dict[str, dict] = {
     "writing_jobs": {"tier": 2, "module": "fetchers.verified", "class": "fetch_writing_jobs"},
     
     # Tier 3 — niche / MENA / freelance (noisy, use sparingly)
-    "peopleperhour": {"tier": 3, "module": "fetchers.verified", "class": "fetch_peopleperhour"},
-    "guru": {"tier": 3, "module": "fetchers.verified", "class": "fetch_guru"},
+    "peopleperhour": {"tier": 3, "module": "scanner", "class": "fetch_peopleperhour"},
+    "guru": {"tier": 3, "module": "scanner", "class": "fetch_guru"},
     "dailyremote": {"tier": 3, "module": "fetchers.verified", "class": "fetch_dailyremote"},
     "dynamitejobs": {"tier": 3, "module": "fetchers.verified", "class": "fetch_dynamitejobs"},
     "europeremotely": {"tier": 3, "module": "fetchers.verified", "class": "fetch_europeremotely"},
@@ -78,6 +83,9 @@ REGISTRY: dict[str, dict] = {
 
 # Blocked sources (from probe testing)
 PROBE_BLOCKED_SOURCES = ["mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz"]
+
+# Derived convenience view: name -> tier. Kept because callers/tests import it.
+TIER_MAP: dict[str, int] = {name: info["tier"] for name, info in REGISTRY.items()}
 FORCE_BLOCKED_SOURCES = os.getenv("CAREEROPS_FORCE_BLOCKED", "0") == "1"
 
 # Circuit breaker state

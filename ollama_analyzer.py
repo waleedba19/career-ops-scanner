@@ -14,6 +14,9 @@ import aiohttp
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
+# Smaller model used only when the primary returns unparseable JSON. Empty
+# string disables the retry (e.g. if the fallback tag is not pulled locally).
+FALLBACK_MODEL = os.getenv("OLLAMA_FALLBACK_MODEL", "qwen2.5:3b")
 
 # Load real CV profile
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
@@ -252,12 +255,14 @@ def _build_simple_prompt(job: dict) -> str:
 # ---------------------------------------------------------------------------
 
 
-async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries: int = 2) -> str | None:
+async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries: int = 2,
+                       model: str | None = None) -> str | None:
     """Call Ollama API and return the response text, or None on failure."""
+    model = model or MODEL
     for attempt in range(max_retries + 1):
         try:
             payload = {
-                "model": MODEL,
+                "model": model,
                 "system": (
                     "You are a strict job-matching evaluator. The candidate is an Arabic-English "
                     "translator and localization specialist from Libya. ONLY score jobs HIGH if they require "
@@ -267,9 +272,13 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
                 ),
                 "prompt": prompt,
                 "stream": False,
+                # Constrain the small model to emit valid JSON. Without this a
+                # 7B model occasionally prefixes prose or cuts off mid-object,
+                # and _parse_scoring_response then returns None (silent no-op).
+                "format": "json",
                 "options": {
                     "temperature": 0.3,
-                    "num_predict": 500,
+                    "num_predict": 900,
                 },
             }
             timeout = aiohttp.ClientTimeout(total=120)
@@ -293,6 +302,21 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
     return None
 
 
+async def _list_local_models(session: aiohttp.ClientSession) -> set[str]:
+    """Names of models installed locally — [] if the call fails."""
+    try:
+        timeout = aiohttp.ClientTimeout(total=5)
+        async with session.get(f"{OLLAMA_URL}/api/tags", timeout=timeout) as resp:
+            if resp.status != 200:
+                return set()
+            data = await resp.json(content_type=None)
+        return {m.get("name", "") for m in data.get("models", [])} | {
+            m.get("model", "") for m in data.get("models", [])
+        }
+    except Exception:
+        return set()
+
+
 async def _check_ollama_available(session: aiohttp.ClientSession) -> bool:
     """Quick health check — does Ollama respond at all?"""
     try:
@@ -303,19 +327,51 @@ async def _check_ollama_available(session: aiohttp.ClientSession) -> bool:
         return False
 
 
+def _iter_json_objects(text: str):
+    """Yield substrings that look like balanced top-level {...} objects."""
+    depth = 0
+    start = -1
+    in_str = False
+    esc = False
+    for i, ch in enumerate(text):
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch == "{":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "}":
+            if depth > 0:
+                depth -= 1
+                if depth == 0 and start >= 0:
+                    yield text[start:i + 1]
+                    start = -1
+
+
 def _parse_scoring_response(response: str) -> dict | None:
     """Parse the JSON scoring response from Ollama."""
-    try:
-        # Try to extract JSON from the response
-        json_match = re.search(r'\{[\s\S]*\}', response)
-        if json_match:
-            data = json.loads(json_match.group())
-            # Validate required fields
-            required = ["overall_score", "verdict", "one_line_summary"]
-            if all(k in data for k in required):
-                return data
-    except json.JSONDecodeError:
-        pass
+    if not response:
+        return None
+    required = ["overall_score", "verdict", "one_line_summary"]
+    for candidate in _iter_json_objects(response):
+        try:
+            data = json.loads(candidate)
+        except json.JSONDecodeError:
+            # A small model sometimes emits a trailing comma before the brace.
+            try:
+                data = json.loads(re.sub(r",\s*([}\]])", r"\1", candidate))
+            except json.JSONDecodeError:
+                continue
+        if isinstance(data, dict) and all(k in data for k in required):
+            return data
     return None
 
 
@@ -340,6 +396,7 @@ async def analyze_jobs_with_ollama(jobs: list[dict]) -> list[dict]:
             return jobs
 
         print(f"Ollama available — analyzing {len(jobs)} jobs with {MODEL}")
+        installed = await _list_local_models(session)
 
         for i, job in enumerate(jobs):
             # Try 5-dimension scoring first
@@ -348,6 +405,14 @@ async def analyze_jobs_with_ollama(jobs: list[dict]) -> list[dict]:
 
             if ai_text:
                 scoring = _parse_scoring_response(ai_text)
+                if not scoring:
+                    # The model replied but not with parseable JSON (prose, or an
+                    # object truncated at num_predict). Re-sample once; use the
+                    # smaller fallback tag only when it is actually installed,
+                    # otherwise a missing tag would just 404.
+                    retry_model = FALLBACK_MODEL if FALLBACK_MODEL in installed else MODEL
+                    alt = await _call_ollama(session, prompt, model=retry_model)
+                    scoring = _parse_scoring_response(alt or "") if alt else None
                 if scoring:
                     # Success — store structured scoring
                     job["ai_scoring"] = scoring

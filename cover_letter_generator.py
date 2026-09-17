@@ -6,6 +6,7 @@ Uses Ollama for AI-powered customization when available.
 """
 
 import json
+import os
 import re
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -13,6 +14,12 @@ from fpdf import FPDF
 
 OUTPUT_DIR = Path(__file__).parent / "output" / "cover_letters"
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
+
+# Must track the model the workflow actually installs (scan.yml OLLAMA_MODEL) —
+# the old hardcoded qwen2.5:1.5b was never pulled, so every AI letter silently
+# fell back to the stiff template text.
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
 
 # Libya live time (Africa/Tripoli, UTC+2 — no DST since 2013).
 # Letter date lines and file names follow the user's local day, not UTC.
@@ -91,11 +98,11 @@ Generate exactly 4 paragraphs:
 Keep each paragraph 2-3 sentences. Be specific to this job. No generic statements.
 Output as JSON with keys: opening, experience, skills, closing"""
 
-        async with httpx.AsyncClient(timeout=15.0) as client:
+        async with httpx.AsyncClient(timeout=120.0) as client:
             resp = await client.post(
-                "http://localhost:11434/api/generate",
+                f"{OLLAMA_URL}/api/generate",
                 json={
-                    "model": "qwen2.5:1.5b",
+                    "model": OLLAMA_MODEL,
                     "prompt": prompt,
                     "stream": False,
                     "options": {"temperature": 0.7}
@@ -216,7 +223,7 @@ def _generate_translation_letter(pdf: FPDF, job: dict, profile: dict) -> None:
         f"Dear Hiring Manager,{req_text}\n\n"
         f"I am writing to express my strong interest in the {title} position at {company}. "
         f"As a native Arabic speaker with C1 Advanced English proficiency and extensive experience "
-        f"in translation, ESL instruction, and academic supervision, I believe I am an excellent fit."
+        f"in Arabic-English translation, localization, and academic supervision, I believe I am an excellent fit."
     )
     pdf.multi_cell(0, 5, opening)
     pdf.ln(5)
@@ -236,7 +243,7 @@ def _generate_translation_letter(pdf: FPDF, job: dict, profile: dict) -> None:
         if not exp_text:
             latest = experience[0]
             exp_text = (
-                f"In my recent role as {latest.get('title', 'ESL Instructor')} at {latest.get('company', 'educational institutions')}, "
+                f"In my recent role as {latest.get('title', 'Translator')} at {latest.get('company', 'language services providers')}, "
                 f"I {latest.get('bullets', ['developed language skills using innovative approaches'])[0].lower()} "
                 f"This experience has prepared me to deliver exceptional results for {company}."
             )
@@ -292,84 +299,6 @@ def _generate_translation_letter(pdf: FPDF, job: dict, profile: dict) -> None:
         f"I am available for a trial task at any time and can start immediately. "
         f"I would welcome the opportunity to discuss how I can contribute to {company}'s success.\n\n"
         f"Thank you for your consideration.\n\n"
-        f"Best regards,\n"
-        f"{personal.get('full_name', personal.get('name', 'Your Name'))}"
-    )
-    pdf.multi_cell(0, 5, closing)
-
-
-def _generate_teaching_letter(pdf: FPDF, job: dict, profile: dict) -> None:
-    """Generate teaching-specific cover letter."""
-    company = job.get("company", "Your Company")
-    title = job.get("title", "Position")
-    personal = profile.get("personal", {})
-    experience = profile.get("experience", [])
-    education = profile.get("education", [])
-    awards = profile.get("awards", [])
-    supervision = profile.get("supervision", {})
-
-    # Header
-    pdf.set_font("Helvetica", "B", 16)
-    pdf.cell(0, 10, personal.get("full_name", personal.get("name", "Your Name")), ln=True)
-    pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, personal.get("email", ""), ln=True)
-    pdf.cell(0, 6, f"{personal.get('phone', '')} ({personal.get('country_code', '')})", ln=True)
-    pdf.cell(0, 6, personal.get("location", ""), ln=True)
-    pdf.cell(0, 6, personal.get("linkedin", ""), ln=True)
-    pdf.ln(10)
-
-    pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, now_libya().strftime("%B %d, %Y"), ln=True)
-    pdf.ln(5)
-
-    pdf.set_font("Helvetica", "B", 10)
-    pdf.cell(0, 6, "Hiring Manager", ln=True)
-    pdf.set_font("Helvetica", "", 10)
-    pdf.cell(0, 6, company, ln=True)
-    pdf.ln(10)
-
-    pdf.set_font("Helvetica", "B", 11)
-    pdf.cell(0, 8, f"Re: {title} Position", ln=True)
-    pdf.ln(5)
-
-    pdf.set_font("Helvetica", "", 10)
-
-    opening = (
-        f"Dear Hiring Manager,\n\n"
-        f"I am excited to apply for the {title} position at {company}. "
-        f"As a dedicated ESL Instructor with extensive experience teaching English to students "
-        f"of all levels and supervising graduate-level research, I am confident in my ability "
-        f"to create engaging and effective learning experiences."
-    )
-    pdf.multi_cell(0, 5, opening)
-    pdf.ln(5)
-
-    teaching_para = (
-        f"My teaching experience includes:\n"
-        f"- ESL instruction at secondary and university levels (2023-Present)\n"
-        f"- Training professionals at National Oil Corporation\n"
-        f"- Online and in-person instruction across diverse learner backgrounds\n"
-        f"- Curriculum development and innovative pedagogical approaches\n"
-        f"- Supervising {supervision.get('total_studies', 15)} graduate-level research studies"
-    )
-    pdf.multi_cell(0, 5, teaching_para)
-    pdf.ln(5)
-
-    bilingual_para = (
-        f"As a native Arabic speaker with C1 Advanced English proficiency, I bring a unique "
-        f"perspective to language education. I understand the challenges learners face and can "
-        f"relate to their experience. My MA in Applied Linguistics from University of Zawia "
-        f"has deepened my expertise in corpus linguistics and discourse analysis."
-    )
-    pdf.multi_cell(0, 5, bilingual_para)
-    pdf.ln(5)
-
-    award_text = ""
-    if awards:
-        award_text = f"\n\nI am honored to have received {awards[0]}, recognizing my commitment to excellence in teaching."
-
-    closing = (
-        f"I am available to start immediately and can adapt to your scheduling needs across time zones.{award_text}\n\n"
         f"Best regards,\n"
         f"{personal.get('full_name', personal.get('name', 'Your Name'))}"
     )
@@ -498,7 +427,7 @@ def _generate_general_letter(pdf: FPDF, job: dict, profile: dict) -> None:
     skills_para = (
         f"My key strengths include:\n"
         f"- Native Arabic speaker with C1 Advanced English proficiency\n"
-        f"- Extensive experience in ESL instruction and academic supervision\n"
+        f"- Extensive experience in Arabic-English translation and localization\n"
         f"- Professional Arabic-English translation (legal, academic, technical)\n"
         f"- Strong attention to detail and academic integrity compliance\n"
         f"- Experience working remotely across time zones"
@@ -528,7 +457,6 @@ def _generate_general_letter(pdf: FPDF, job: dict, profile: dict) -> None:
 
 GENERATORS = {
     "translation": _generate_translation_letter,
-    "teaching": _generate_teaching_letter,
     "writing": _generate_writing_letter,
     "data_entry": _generate_general_letter,
     "virtual_assistant": _generate_general_letter,

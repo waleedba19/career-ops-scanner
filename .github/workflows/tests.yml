@@ -28,6 +28,12 @@ jobs:
           python -c "import dashboard.app; print('dashboard ok')"
           python -c "import api_server; print('api ok')"
           python -c "from fetchers.registry import TIER_CAP, list_fetchers; print('fetchers', list_fetchers(TIER_CAP))"
+      - name: Quality gates (offline scorer + history replay)
+        run: python test_quality_gates.py
+      - name: Module suite (learning, excel, scanner, fetchers)
+        run: python test_all_modules.py
+      - name: Verified sources (parsers, gates, registry wiring)
+        run: python test_verified_sources.py
       - name: Excel generator smoke
         run: python -c "from excel_generator import generate_excel; print(generate_excel([], '12:00 PM', [], [], {'all_count':0,'source_count':0,'fresh_count':0,'near_misses':[]}, {'total_scans':0})[:200])"
 

@@ -24,7 +24,6 @@ SEARCH_QUERIES = [
     "arabic translator remote jobs",
     "arabic english translator remote",
     "arabic localization remote jobs hiring",
-    "ESL teacher arabic speaking remote",
     "bilingual arabic english remote jobs hiring",
     "arabic content writer remote jobs",
     "arabic data annotation remote jobs",
@@ -199,7 +198,6 @@ async def fetch_linkedin_arabic(session: aiohttp.ClientSession) -> list[dict]:
     queries = [
         "arabic+translator",
         "arabic+translation",
-        "ESL+teacher+arabic",
         "bilingual+arabic+english",
         "arabic+localization",
         "arabic+interpreter",

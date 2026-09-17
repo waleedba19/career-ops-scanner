@@ -2,8 +2,8 @@ name: CareerOps Job Scan
 
 on:
   schedule:
-    - cron: '0 7 * * *'   # 07:00 UTC = 09:00 Libya — Morning Scan
-    - cron: '0 16 * * *'  # 16:00 UTC = 18:00 Libya — Evening Scan
+    - cron: '0 7 * * *'    # 07:00 UTC = 09:00 Libya — Morning Delivery
+    - cron: '0 16 * * *'   # 16:00 UTC = 18:00 Libya — Evening Delivery
   workflow_dispatch:
     inputs:
       mode:
@@ -77,20 +77,36 @@ jobs:
             ~/.cache/ms-playwright
           key: careerops-deps-v1-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
 
-      - name: Cache Ollama binary
+      # Cache the WHOLE install, not just the CLI. ollama needs its sibling
+      # llama-server runner in /usr/local/lib/ollama; caching only the CLI left
+      # every /api/generate returning HTTP 500 ("llama-server binary not found").
+      - name: Cache Ollama install
         uses: actions/cache@v4
         with:
-          path: /usr/local/bin/ollama
-          key: ollama-binary-v1
+          path: |
+            /usr/local/bin/ollama
+            /usr/local/lib/ollama
+          key: ollama-install-v2
 
-      - name: Install Ollama (skip if cached)
+      # Cache the pulled model too. Without this every scheduled run re-downloaded
+      # ~3.8GB via `ollama pull` (no GitHub Release is published for this repo),
+      # which is the single biggest cost/latency item in the scan.
+      - name: Cache Ollama models
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama/models
+          key: ollama-models-v1
+
+      - name: Install Ollama (skip if fully cached)
         run: |
-          if ! command -v ollama >/dev/null 2>&1; then
-            curl -fsSL https://ollama.com/install.sh | sh
-          else
-            echo "Ollama binary cached"
+          if command -v ollama >/dev/null 2>&1 && [ -x /usr/local/lib/ollama/llama-server ]; then
+            echo "Ollama install cached"
             ollama --version
+          else
+            curl -fsSL https://ollama.com/install.sh | sh
           fi
+          test -x /usr/local/lib/ollama/llama-server \
+            || { echo "ERROR: llama-server missing — AI scoring would 500"; exit 1; }
 
       - name: Start Ollama server
         run: |

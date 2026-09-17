@@ -24,6 +24,7 @@ from scanner import (
     strip_html,
     GREENHOUSE_COMPANIES,
     fetch_greenhouse,
+    _libya_today,
 )
 
 from ollama_analyzer import analyze_jobs_with_ollama
@@ -148,7 +149,7 @@ async def test_full():
         stats = {
             "total_scans": 1,
             "total_matches": len(scored_jobs),
-            "last_scan_date": "2026-09-04",
+            "last_scan_date": _libya_today(),
         }
         
         telegram_msg = build_telegram(scored_jobs[:5], scan_info, stats)

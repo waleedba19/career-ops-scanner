@@ -2,16 +2,16 @@
 from .base import BaseFetcher, FetchResult
 
 RECRUITEE_BOARDS = [
-    ("Lingoda", "lingoda"),
-    ("Preply", "preply"),
-    ("Cambly", "cambly"),
-    ("italki", "italki"),
-    ("Verbling", "verbling"),
-    ("FluentU", "fluentu"),
-    ("Rosetta Stone", "rosettastone"),
-    ("Babbel", "babbel"),
-    ("Busuu", "busuu"),
-    ("Memrise", "memrise"),
+    ("Smartling", "smartling"),
+    ("Lokalise", "lokalise"),
+    ("Phrase", "phrase"),
+    ("Unbabel", "unbabel"),
+    ("Lilt", "lilt"),
+    ("Gengo", "gengo"),
+    ("Translated", "translated"),
+    ("Smartcat", "smartcat"),
+    ("TransPerfect", "transperfect"),
+    ("Lionbridge", "lionbridge"),
 ]
 
 

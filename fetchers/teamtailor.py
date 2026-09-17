@@ -2,16 +2,16 @@
 from .base import BaseFetcher, FetchResult
 
 TEAMTAILOR_BOARDS = [
-    ("Novakid", "novakid"),
-    ("Open English", "openenglish"),
-    ("VIPKid", "vipkid"),
-    ("Qkids", "qkids"),
-    ("Magic Ears", "magicears"),
-    ("GoGoKid", "gogokid"),
-    ("Native Camp", "nativecamp"),
-    ("TutorABC", "tutorabc"),
-    ("Engoo", "engoo"),
-    ("DMM Eikaiwa", "dmmeikaiwa"),
+    ("Tarjama", "tarjama"),
+    ("Saudisoft", "saudisoft"),
+    ("Tamatem Games", "tamatem"),
+    ("Welocalize", "welocalize"),
+    ("Keywords Studios", "keywordsstudios"),
+    ("TransPerfect", "transperfect"),
+    ("Lionbridge", "lionbridge"),
+    ("RWS", "rws"),
+    ("Appen", "appen"),
+    ("TELUS International", "telusinternational"),
 ]
 
 

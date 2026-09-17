@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-10T22:09:45.211767+00:00",
-    "matched_count": 1,
-    "all_count": 2431,
-    "jobs": [
-      {
-        "title": "Automotive Content Proofreader & Post-Editor (M/F/D)",
-        "company": "Infopro Digital Automotive",
-        "url": "https://it.linkedin.com/jobs/view/automotive-content-proofreader-post-editor-m-f-d-at-infopro-digital-automotive-4463910831",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-10T22:12:27.103684+00:00",
     "matched_count": 0,
     "all_count": 2431,
@@ -1957,5 +1942,36 @@
     "matched_count": 0,
     "all_count": 1544,
     "jobs": []
+  },
+  {
+    "date": "2026-09-17T22:33:21.699522+00:00",
+    "matched_count": 3,
+    "all_count": 1544,
+    "jobs": [
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://ro.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4467592020",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Localization Specialist",
+        "company": "\u30d1\u30fc\u30bd\u30eb\u30c6\u30f3\u30d7\u30b9\u30bf\u30c3\u30d5\u682a\u5f0f\u4f1a\u793e Global Job Office",
+        "url": "https://jp.linkedin.com/jobs/view/localization-specialist-at-%E3%83%91%E3%83%BC%E3%82%BD%E3%83%AB%E3%83%86%E3%83%B3%E3%83%97%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-global-job-office-4468602018",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic/English speaking Content Moderator",
+        "company": "Savior Artigos Texteis Lda",
+        "url": "https://bg.linkedin.com/jobs/view/arabic-english-speaking-content-moderator-at-savior-artigos-texteis-lda-4467556608",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

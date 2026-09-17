@@ -992,11 +992,11 @@
   {
     "date": "2026-09-17",
     "slot": "Evening (6 PM)",
-    "scanned": 1479,
-    "matches": 1,
-    "old_verified": 2,
+    "scanned": 1489,
+    "matches": 0,
+    "old_verified": 6,
     "near_misses": 0,
     "sources": 15,
-    "time": "09:34 PM"
+    "time": "09:35 PM"
   }
 ]

@@ -1,21 +1,12 @@
 {
-  "total_scans": 122,
-  "total_matches": 264,
+  "total_scans": 123,
+  "total_matches": 265,
   "streak_days": 13,
   "last_scan_date": "2026-09-17",
-  "total_jobs_scanned": 288342,
+  "total_jobs_scanned": 289821,
   "best_day_matches": 16,
   "best_day_date": "2026-09-15",
   "daily_history": [
-    {
-      "date": "2026-09-11",
-      "total_fetched": 3235,
-      "matches": 0,
-      "old_verified": 0,
-      "near_misses": 0,
-      "sources": 21,
-      "fresh_count": 1388
-    },
     {
       "date": "2026-09-11",
       "total_fetched": 3235,
@@ -816,6 +807,15 @@
       "near_misses": 0,
       "sources": 16,
       "fresh_count": 4
+    },
+    {
+      "date": "2026-09-17",
+      "total_fetched": 1479,
+      "matches": 1,
+      "old_verified": 2,
+      "near_misses": 0,
+      "sources": 15,
+      "fresh_count": 27
     }
   ],
   "category_trends": {
@@ -836,8 +836,8 @@
       "last_seen": "2026-09-16"
     },
     "Translation (any pair)": {
-      "count": 2,
-      "last_seen": "2026-09-16"
+      "count": 3,
+      "last_seen": "2026-09-17"
     },
     "Editing & Proofreading": {
       "count": 7,
@@ -882,8 +882,8 @@
       "last_seen": "2026-09-16"
     },
     "remote1stjobs": {
-      "matches": 8,
-      "last_seen": "2026-09-16"
+      "matches": 9,
+      "last_seen": "2026-09-17"
     },
     "remotive": {
       "matches": 2,

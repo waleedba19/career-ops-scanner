@@ -889,13 +889,86 @@ def get_match_score(title: str, desc: str) -> dict:
     return {"score": total, "category": best_cat, "why": why_final[:8]}
 
 
+# Company-aware scoring tiers — jobs at translation/language companies get
+# base boosts even without keyword hits, because these companies hire
+# Arabic speakers for PM, QA, account, data-annotation, and support roles
+# that the keyword scanner can't see.
+#
+# TIER 1 (+50): Core LSPs that LIVE on Arabic translation — every role here
+#   likely needs Arabic speakers (project managers, QA, terminologists, etc.)
+# TIER 2 (+35): Language AI / data annotation — hire Arabic for training data
+# TIER 3 (+25): MENA content / EdTech — Arabic is the product language
+# TIER 4 (+15): Remote-first that periodically hire translators
+TRANSLATION_COMPANY_TIERS = {
+    # TIER 1 — Core LSPs (+50)
+    50: frozenset({
+        "transperfect", "lionbridge", "rws", "welocalize",
+        "keywords studios", "smartling", "lokalise", "phrase",
+        "unbabel", "lilt", "acclaro", "andovar", "straker",
+        "gengo", "translated", "smartcat", "alconost", "blend",
+        "cactus", "editage", "enago", "wordvice", "scribbr",
+        "scribendi", "papertrue", "proofreadnow",
+        "one hour translation", "textmaster", "flitto",
+    }),
+    # TIER 2 — AI Data / Linguist Marketplaces (+35)
+    35: frozenset({
+        "scale ai", "outlier", "surge ai", "micro1", "prolific",
+        "telus international", "toloka", "appen", "centific",
+        "labelbox", "invisible", "turing", "mercor",
+    }),
+    # TIER 3 — MENA Content / EdTech (+25)
+    25: frozenset({
+        "nagwa", "abwaab", "noon academy", "edraak", "almentor",
+        "baims", "tamatem", "tamatem games", "mawdoo3", "tarjama",
+        "saudisoft", "future group", "anghami",
+    }),
+    # TIER 4 — Remote-first that hire translators (+15)
+    15: frozenset({
+        "deel", "toptal",
+    }),
+}
+
+# Roles that are HIGH relevance at translation companies — even if the
+# title doesn't contain "arabic" or "translator", these roles at an LSP
+# almost always involve Arabic work.
+HIGH_RELEVANCE_ROLES = re.compile(
+    r"(project\s+manager|locali[sz]ation|terminolog|qa\s+(reviewer|lead|manager)"
+    r"|linguist|bilingual|multilingual|content|editor|proofread|copywriter"
+    r"|interpreter|transcri|subtitl|caption|voice|speech|nlp|ml\s+data"
+    r"|data\s+(annotation|labeling|labeler|entry|collector|validator)"
+    r"|ai\s+(trainer|training|evaluation|quality)|prompt\s+(engineer|evaluator)"
+    r"|language\s+(specialist|expert|consultant|coordinator|lead)"
+    r"|academic|thesis|research|translation|localization|interpret"
+    r"|virtual\s+assistant|administrative|desk|support|customer\s+success"
+    r"|account\s+(manager|executive|coordinator))",
+    re.I,
+)
+
+
 def apply_company_bonus(job: dict) -> int:
-    """+10 for trusted translation/language employers; returns adjusted score."""
+    """Strong company-aware scoring boost for translation/language employers.
+
+    Tier-based: +50 for core LSPs, +35 for AI data, +25 for MENA, +15 for remote-first.
+    Additional +15 if the role title is high-relevance at a translation company.
+    Total boost can be up to +65 (50 tier + 15 role).
+    """
     company = str(job.get("company") or "").lower().strip()
+    title = str(job.get("title") or "").lower().strip()
     cur = int(job.get("score") or 0)
-    if any(key in company or company in key for key in TRUSTED_COMPANIES):
-        return min(100, cur + 10)
-    return cur
+
+    tier_boost = 0
+    for boost, companies in TRANSLATION_COMPANY_TIERS.items():
+        if any(key in company or company in key for key in companies):
+            tier_boost = boost
+            break
+
+    if tier_boost == 0:
+        return cur
+
+    # Additional boost if the role itself is high-relevance at a translation company
+    role_boost = 15 if HIGH_RELEVANCE_ROLES.search(title) else 0
+
+    return min(100, cur + tier_boost + role_boost)
 
 
 def extract_salary(text: str) -> str:

@@ -1713,9 +1713,9 @@
     "himalayas": {
       "first_seen": "2026-09-05",
       "total_fetched": 1761,
-      "total_matches": 138,
+      "total_matches": 137,
       "last_active": "2026-09-17",
-      "consecutive_empty": 0,
+      "consecutive_empty": 3,
       "status": "active",
       "daily_stats": [
         {
@@ -1866,7 +1866,7 @@
         {
           "date": "2026-09-17",
           "fetched": 3,
-          "matches": 1
+          "matches": 0
         }
       ]
     },
@@ -4172,5 +4172,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-17T23:49:22.769795+00:00"
+  "last_cleanup": "2026-09-17T23:49:37.035222+00:00"
 }

@@ -242,34 +242,34 @@ ARABIC_PLATFORMS = [
 ]
 
 # ---------------------------------------------------------------------------
-# Job sources — Greenhouse companies (profile-optimized, expanded)
+# Job sources — Greenhouse companies (translation/language/AI-data only)
 # ---------------------------------------------------------------------------
 
 GREENHOUSE_COMPANIES = [
-    # ── Verified live (HTTP 200, has jobs) — probed 2026-09-14 ──
-    # Language & Translation (priority)
+    # Translation & Localization LSPs
     ("Smartling", "smartling"), ("Lokalise", "lokalise"),
-    # AI Data / Language AI (hire Arabic speakers for data labeling, prompt eval)
-    ("xAI", "xai"), ("Scale AI", "scaleai"), ("Prolific", "prolific"),
-    ("Toloka", "tolatola"), ("Snorkel AI", "snorkelai"),
-    ("Anthropic", "anthropic"), ("Invisible", "agency"),
-    ("Labelbox", "labelbox"), ("Turing", "turing"),
-    # EdTech / Education (hire language tutors, content reviewers)
-    ("Duolingo", "duolingo"), ("Outschool", "outschool"),
-    ("Khan Academy", "khanacademy"), ("Coursera", "coursera"),
-    ("Udemy", "udemy"), ("Masterclass", "masterclass"),
-    # MENA / Arabic-market companies
-    ("OKX", "okx"), ("Careem", "careem"), ("Blend", "blend"),
-    # Remote-first Tech (large boards, filter post-fetch)
-    ("WPP Media", "wppmedia"), ("Cloudflare", "cloudflare"),
-    ("GitLab", "gitlab"), ("Figma", "figma"),
-    ("Contentful", "contentful"), ("Remote.com", "remote"),
-    ("Calm", "calm"), ("KAYAK", "kayak"),
+    ("TransPerfect", "transperfect"), ("Lionbridge", "lionbridge"),
+    ("RWS", "rws"), ("Welocalize", "welocalize"),
+    ("Keywords Studios", "keywordsstudios"),
+    ("Phrase", "phrase"), ("Unbabel", "unbabel"), ("Lilt", "lilt"),
+    ("Gengo", "gengo"), ("Translated", "translated"), ("Smartcat", "smartcat"),
+    # AI Data Annotation / Linguist Marketplaces
+    ("Scale AI", "scaleai"), ("Prolific", "prolific"),
+    ("Invisible", "agency"), ("Labelbox", "labelbox"), ("Turing", "turing"),
+    ("TELUS International", "telusinternational"), ("Toloka", "toloka"),
+    ("Appen", "appen"), ("Centific", "centific"),
+    ("Surge AI", "surgeai"), ("Micro1", "micro1"),
+    # MENA / Arabic Content & EdTech
+    ("Nagwa", "nagwa"), ("Abwaab", "abwaab"), ("Tamatem", "tamatem"),
+    ("Tarjama", "tarjama"), ("Anghami", "anghami"),
+    # Remote-first (hire translators)
+    ("Deel", "deel"), ("Toptal", "toptal"),
 ]
 
 LEVER_COMPANIES = [
-    # ── Verified live (HTTP 200) — probed 2026-09-14 ──
-    ("Appen", "appen"),
+    ("Unbabel", "unbabel"),
+    ("Lilt", "lilt"),
+    ("Anghami", "anghami"),
 ]
 
 # ---------------------------------------------------------------------------

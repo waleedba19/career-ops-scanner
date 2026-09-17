@@ -94,181 +94,126 @@ HEADERS = {
 }
 
 # ── Greenhouse ───────────────────────────────────────────────────────────
-# Profile-optimized: AI-data, language, EdTech, translation-focused companies
+# ── Translation-only companies ────────────────────────────────────────────
+# Only companies that ACTUALLY hire translators, interpreters, ESL teachers,
+# localization specialists, and AI data annotators. Every non-translation
+# company has been removed — the scanner is for Arabic↔English jobs ONLY.
 GREENHOUSE_COMPANIES = [
-    # AI Data / Linguist Marketplaces (highest relevance)
-    ("xAI", "xai"), ("Scale AI", "scaleai"), ("Outlier", "outlier"),
-    ("Surge AI", "surgeai"), ("Micro1", "micro1"), ("Prolific", "prolific"),
-    ("Telus International", "telusinternational"), ("Toloka", "toloka"),
-    ("Appen", "appen"), ("Centific", "centific"),
-    # Language & Translation
+    # Translation & Localization LSPs (core)
+    ("TransPerfect", "transperfect"), ("Lionbridge", "lionbridge"),
+    ("RWS", "rws"), ("Welocalize", "welocalize"),
+    ("Keywords Studios", "keywordsstudios"),
     ("Smartling", "smartling"), ("Lokalise", "lokalise"), ("Phrase", "phrase"),
     ("Unbabel", "unbabel"), ("Lilt", "lilt"), ("Acclaro", "acclaro"),
-    ("Andovar", "andovar"), ("Straker", "straker"), ("RWS", "rws"),
-    ("Lionbridge", "lionbridge"), ("TransPerfect", "transperfect"),
-    ("Keywords Studios", "keywordsstudios"), ("Welocalize", "welocalize"),
+    ("Andovar", "andovar"), ("Straker", "straker"),
     ("Cactus", "cactus"), ("Editage", "editage"), ("Enago", "enago"),
     ("Wordvice", "wordvice"), ("Scribbr", "scribbr"), ("Scribendi", "scribendi"),
     ("PaperTrue", "papertrue"), ("ProofreadNow", "proofreadnow"),
-    # EdTech — Arabic/MENA language & content platforms only
-    ("Nagwa", "nagwa"), ("Abwaab", "abwaab"), ("Noon Academy", "noonacademy"),
-    ("Edraak", "edraak"), ("Almentor", "almentor"), ("Baims", "baims"),
-    # MENA / Arabic Content
-    ("OKX", "okx"), ("WPP Media", "wppmedia"), ("Anghami", "anghami"),
-    ("Tamatem", "tamatem"), ("Mawdoo3", "mawdoo3"), ("Sarwa", "sarwa"),
-    ("Careem", "careem"), ("Noon", "noon"), ("Tarjama", "tarjama"),
-    ("Saudisoft", "saudisoft"), ("Future Group", "futuregroup"),
-    ("Blend", "blend"), ("Alconost", "alconost"), ("Andovar", "andovar"),
-    # Remote-first Tech (relevant ones)
-    ("KAYAK", "kayak"), ("Mozilla", "mozilla"), ("GitLab", "gitlab"),
-    ("Cloudflare", "cloudflare"), ("Automattic", "automattic"),
-    ("Buffer", "buffer"), ("Zapier", "zapier"), ("Toptal", "toptal"),
-    ("Remote.com", "remote"), ("Deel", "deel"), ("Oyster", "oyster"),
-    ("Papaya Global", "papayaglobal"), ("Rippling", "rippling"),
-    # Content & Writing
-    ("Contentful", "contentful"), ("Notion", "notion"), ("Figma", "figma"),
-    ("Canva", "canva"), ("Visme", "visme"), ("Prezi", "prezi"),
-    # Publishing & Media
-    ("Headspace", "headspace"), ("Calm", "calm"), ("Headspace", "headspace"),
-    ("Masterclass", "masterclass"), ("Skillshare", "skillshare"),
-    ("Udemy", "udemy"), ("LinkedIn Learning", "linkedinlearning"),
-    # More AI/Data Companies
-    ("Labelbox", "labelbox"), ("Invisible", "agency"), ("Turing", "turing"),
-    ("Handshake", "joinhandshake"), ("Scale AI", "scaleai"),
-    ("Snorkel AI", "snorkelai"), ("Weights & Biases", "wandb"),
-    ("LangChain", "langchain"), ("Pinecone", "pinecone"),
-    ("Cohere", "cohere"), ("Mistral", "mistral"),
-    ("Anthropic", "anthropic"), ("OpenAI", "openai"),
-    # Gaming (localization)
-    ("Riot Games", "riotgames"), ("Electronic Arts", "ea"),
-    ("Ubisoft", "ubisoft"), ("Take-Two", "take2"),
-    ("Playrix", "playrix"), ("Supercell", "supercell"),
-    # More Translation/Language
     ("Gengo", "gengo"), ("One Hour Translation", "onehourtranslation"),
     ("TextMaster", "textmaster"), ("Flitto", "flitto"),
     ("Translated", "translated"), ("Smartcat", "smartcat"),
+    ("Alconost", "alconost"), ("Blend", "blend"),
+    # AI Data Annotation / Linguist Marketplaces
+    ("Scale AI", "scaleai"), ("Outlier", "outlier"),
+    ("Surge AI", "surgeai"), ("Micro1", "micro1"), ("Prolific", "prolific"),
+    ("Telus International", "telusinternational"), ("Toloka", "toloka"),
+    ("Appen", "appen"), ("Centific", "centific"),
+    ("Labelbox", "labelbox"), ("Invisible", "agency"), ("Turing", "turing"),
+    # Arabic/MENA Content & EdTech (hiring Arabic speakers)
+    ("Nagwa", "nagwa"), ("Abwaab", "abwaab"), ("Noon Academy", "noonacademy"),
+    ("Edraak", "edraak"), ("Almentor", "almentor"), ("Baims", "baims"),
+    ("Tamatem", "tamatem"), ("Mawdoo3", "mawdoo3"), ("Tarjama", "tarjama"),
+    ("Saudisoft", "saudisoft"), ("Future Group", "futuregroup"),
+    ("Anghami", "anghami"),
+    # Remote-first that hire translators/language specialists
+    ("Toptal", "toptal"), ("Deel", "deel"),
 ]
 LEVER_COMPANIES = [
-    ("Appen", "appen"),
-    ("Unbabel", "unbabel"),
-    ("Lilt", "lilt"),
-    ("Anghami", "anghami"),
-    ("Noon Academy", "noonacademy"),
-    ("Vice Media", "vice"),
-    ("Figma", "figma"),
-    ("Notion", "notion"),
-    ("Coinbase", "coinbase"),
-    ("Square", "square"),
-    ("DoorDash", "doordash"),
-    ("Flexport", "flexport"),
-    ("GitLab", "gitlab"),
-    ("Postmates", "postmates"),
-    ("WeWork", "wework"),
-    ("N26", "n26"),
-    ("Revolut", "revolut"),
-    ("Monzo", "monzo"),
-    ("Nubank", "nubank"),
-    ("Klarna", "klarna"),
+    ("Unbabel", "unbabel"), ("Lilt", "lilt"),
+    ("Anghami", "anghami"), ("Noon Academy", "noonacademy"),
 ]
 
-# ── Profile-specific ATS boards (live-verified by the Probe Sources workflow,
-#    state/source_probe.md, 2026-09-06). Same shape as GREENHOUSE_COMPANIES.
-#    Add a slug here only after the probe reports it `ok`.
+# ── Profile-specific ATS boards (translation/language/AI-data only) ──────
 GREENHOUSE_PROFILE_BOARDS = [
-    ("Invisible (AI Trainer projects)", "agency"),   # 829 jobs incl. Arabic Language Specialist, worldwide remote
-    ("Labelbox / Alignerr", "labelbox"),             # 10 jobs — Arabic language expert roles appear here
-    ("Turing", "turing"),                            # 26 jobs — LLM training linguists
-    ("Prolific", "prolific"),                        # AI data annotation, research
-    ("Deel", "deel"),                                # Global hiring, remote roles
-    ("Handshake", "joinhandshake"),                  # AI/ML jobs
-    ("Toloka", "toloka"),                            # Data annotation, Arabic
-    ("TELUS International", "telusinternational"),   # AI training, linguists
-    ("Welocalize", "welocalize"),                    # Localization, translation
-    ("RWS", "rws"),                                  # Language services
-    ("Keywords Studios", "KeywordsStudios"),          # Game localization
-    ("TransPerfect", "TransPerfect"),                # LSP
-    ("Lionbridge", "lionbridge"),                    # Language services
-    ("Appen", "appen"),                              # AI data
-    ("Centific", "centific"),                        # Formerly OneForma
-    ("Surge AI", "surgeai"),                         # AI linguists
-    ("Micro1", "micro1"),                            # AI expert marketplace
+    ("Invisible (AI Trainer projects)", "agency"),
+    ("Labelbox / Alignerr", "labelbox"),
+    ("Turing", "turing"),
+    ("Prolific", "prolific"),
+    ("Deel", "deel"),
+    ("Toloka", "toloka"),
+    ("TELUS International", "telusinternational"),
+    ("Welocalize", "welocalize"),
+    ("RWS", "rws"),
+    ("Keywords Studios", "KeywordsStudios"),
+    ("TransPerfect", "TransPerfect"),
+    ("Lionbridge", "lionbridge"),
+    ("Appen", "appen"),
+    ("Centific", "centific"),
+    ("Surge AI", "surgeai"),
+    ("Micro1", "micro1"),
 ]
 ASHBY_COMPANIES = [
-    ("Mercor", "mercor"),                            # 96 jobs — AI expert marketplace
-    ("Deel", "deel"),                                # Global hiring
-    ("Scale AI", "scaleai"),                         # AI data
-    ("Papaya Global", "papayaglobal"),               # Global payroll
-    ("Remote.com", "remote"),                        # Global HR
-    ("Oyster", "oyster"),                            # Global employment
-    ("Lano", "lano"),                                # Global payments
-    ("Velocity Global", "velocityglobal"),           # Global HR
-    ("Multiplier", "multiplier"),                    # Global employment
-    ("Globalization Partners", "globalizationpartners"),
+    ("Mercor", "mercor"),
+    ("Scale AI", "scaleai"),
+    ("Deel", "deel"),
 ]
 WORKABLE_COMPANIES = [
-    ("Tamatem Games", "tamatem"),                    # 18 jobs — Arabic game localization (Jordan, remote-friendly)
-    ("Abwaab", "abwaab"),                            # EdTech, MENA
-    ("Nagwa", "nagwa"),                              # EdTech, Egypt (Arabic content)
-    ("Noon Academy", "noonacademy"),                 # EdTech, Saudi
-    ("Edraak", "edraak"),                            # EdTech, Egypt
-    ("Almentor", "almentor"),                        # EdTech, MENA
-    ("Baims", "baims"),                              # EdTech, Kuwait
-    ("Careem", "careem"),                            # Tech, UAE
-    ("Tarjama", "tarjama"),                          # Translation, UAE
-    ("Saudisoft", "saudisoft"),                      # Tech, Saudi
+    ("Tamatem Games", "tamatem"),
+    ("Abwaab", "abwaab"),
+    ("Nagwa", "nagwa"),
+    ("Noon Academy", "noonacademy"),
+    ("Edraak", "edraak"),
+    ("Almentor", "almentor"),
+    ("Baims", "baims"),
+    ("Tarjama", "tarjama"),
+    ("Saudisoft", "saudisoft"),
 ]
 SMARTRECRUITERS_COMPANIES = [
-    ("Keywords Studios", "KeywordsStudios"),         # game localization / Arabic LQA
-    ("TransPerfect", "TransPerfect"),                # LSP — linguists, project managers
-    ("Lionbridge", "lionbridge"),                    # Language services
-    ("RWS", "rws"),                                  # Language services
-    ("Appen", "appen"),                              # AI data
-    ("TELUS International", "telusinternational"),   # AI training
-    ("Concentrix", "concentrix"),                    # BPO, language services
-    ("Teleperformance", "teleperformance"),          # BPO, multilingual
-    ("Alorica", "alorica"),                          # BPO, customer service
-    ("Sitel", "sitel"),                              # BPO, multilingual
+    ("Keywords Studios", "KeywordsStudios"),
+    ("TransPerfect", "TransPerfect"),
+    ("Lionbridge", "lionbridge"),
+    ("RWS", "rws"),
+    ("Appen", "appen"),
+    ("TELUS International", "telusinternational"),
 ]
 RECRUITEE_COMPANIES = [
-    ("Smartling", "smartling"),                      # Localization, translation
-    ("Lokalise", "lokalise"),                        # Localization platform
-    ("Phrase", "phrase"),                            # Translation management
-    ("Unbabel", "unbabel"),                          # AI translation
-    ("Lilt", "lilt"),                                # Translation tech
-    ("Gengo", "gengo"),                              # Translation marketplace
-    ("Translated", "translated"),                    # Translation services
-    ("Smartcat", "smartcat"),                        # Translation platform
-    ("TransPerfect", "TransPerfect"),                # LSP
-    ("Lionbridge", "lionbridge"),                    # Language services
+    ("Smartling", "smartling"),
+    ("Lokalise", "lokalise"),
+    ("Phrase", "phrase"),
+    ("Unbabel", "unbabel"),
+    ("Lilt", "lilt"),
+    ("Gengo", "gengo"),
+    ("Translated", "translated"),
+    ("Smartcat", "smartcat"),
+    ("TransPerfect", "TransPerfect"),
+    ("Lionbridge", "lionbridge"),
 ]
 TEAMTAILOR_COMPANIES = [
-    ("Tarjama", "tarjama"),                          # Arabic translation, UAE
-    ("Saudisoft", "saudisoft"),                      # Localization, Saudi
-    ("Tamatem Games", "tamatem"),                    # Arabic game localization
-    ("Welocalize", "welocalize"),                    # Localization
-    ("Keywords Studios", "keywordsstudios"),         # Game localization
-    ("TransPerfect", "transperfect"),                # LSP
-    ("Lionbridge", "lionbridge"),                    # Language services
-    ("RWS", "rws"),                                  # Language services
-    ("Appen", "appen"),                              # AI data, linguists
-    ("TELUS International", "telusinternational"),   # AI training, linguists
+    ("Tarjama", "tarjama"),
+    ("Saudisoft", "saudisoft"),
+    ("Tamatem Games", "tamatem"),
+    ("Welocalize", "welocalize"),
+    ("Keywords Studios", "keywordsstudios"),
+    ("TransPerfect", "transperfect"),
+    ("Lionbridge", "lionbridge"),
+    ("RWS", "rws"),
+    ("Appen", "appen"),
+    ("TELUS International", "telusinternational"),
 ]
 
 # ── Additional ATS boards ──
 BAMBOOHR_COMPANIES = [
-    ("Nagwa", "nagwa"),                              # EdTech, Egypt
-    ("Abwaab", "abwaab"),                            # EdTech, MENA
-    ("Noon Academy", "noonacademy"),                 # EdTech, Saudi
+    ("Nagwa", "nagwa"),
+    ("Abwaab", "abwaab"),
+    ("Noon Academy", "noonacademy"),
 ]
 JOBVITE_COMPANIES = [
-    ("TELUS International", "telusinternational"),   # AI training, linguists
-    ("Concentrix", "concentrix"),                    # BPO, language services
-    ("Teleperformance", "teleperformance"),          # BPO, multilingual
+    ("TELUS International", "telusinternational"),
 ]
 PERSONIO_COMPANIES = [
-    ("Appen", "appen"),                              # AI data
-    ("Centific", "centific"),                        # Formerly OneForma
-    ("Surge AI", "surgeai"),                         # AI linguists
+    ("Appen", "appen"),
+    ("Centific", "centific"),
+    ("Surge AI", "surgeai"),
 ]
 
 # ── Scoring ──────────────────────────────────────────────────────────────

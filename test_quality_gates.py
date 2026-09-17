@@ -444,6 +444,49 @@ def test_ollama_pipeline():
     check("job still scored after a slow cold start",
           cold.get("ai_overall_score") == 88, str(cold.get("ai_overall_score")))
 
+    # Regression: production had an EMPTY model list (the cached ~/.ollama/models
+    # held no registered manifest) while every /api/generate returned 404. The
+    # run still went green and silently fell back to keyword-only scoring, so the
+    # only symptom was worse digests. A missing tag must now be reported.
+    seen.clear()
+    OA.OLLAMA_URL = "http://127.0.0.1:11440"
+
+    async def empty_tags(_request):
+        return web.json_response({"models": []})
+
+    async def not_found(_request):
+        return web.Response(status=404, text='{"error":"model not found"}')
+
+    async def run4():
+        app = web.Application()
+        app.router.add_get("/api/tags", empty_tags)
+        app.router.add_post("/api/generate", not_found)
+        runner = web.AppRunner(app)
+        await runner.setup()
+        await web.TCPSite(runner, "127.0.0.1", 11440).start()
+        import io
+        from contextlib import redirect_stdout
+        buf = io.StringIO()
+        try:
+            with redirect_stdout(buf):
+                out = await OA.analyze_jobs_with_ollama([
+                    {"title": "Arabic Translator", "company": "X", "description": "d", "location": "Remote"},
+                ])
+            return out, buf.getvalue()
+        finally:
+            await runner.cleanup()
+
+    try:
+        jobs_out, logs = asyncio.run(run4())
+    finally:
+        OA.OLLAMA_URL = orig_url
+    check("missing model is reported loudly (no silent AI degradation)",
+          "not installed locally" in logs and "DISABLED" in logs,
+          repr(logs[-200:]))
+    check("missing model leaves jobs un-enriched rather than crashing",
+          jobs_out and "ai_overall_score" not in jobs_out[0],
+          str(jobs_out[0].get("ai_overall_score") if jobs_out else None))
+
 
 def main():
     print("QUALITY GATES — deep offline verification")

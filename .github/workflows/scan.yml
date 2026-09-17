@@ -91,11 +91,15 @@ jobs:
       # Cache the pulled model too. Without this every scheduled run re-downloaded
       # ~3.8GB via `ollama pull` (no GitHub Release is published for this repo),
       # which is the single biggest cost/latency item in the scan.
+      #
+      # Key is versioned: actions/cache is immutable, so a snapshot taken while
+      # the model was missing would be restored forever and silently disable AI.
+      # The step below now verifies with `ollama list` and pulls on a miss.
       - name: Cache Ollama models
         uses: actions/cache@v4
         with:
           path: ~/.ollama/models
-          key: ollama-models-v1
+          key: ollama-models-v2
 
       - name: Install Ollama (skip if fully cached)
         run: |
@@ -139,9 +143,18 @@ jobs:
           MODEL_DIR="$HOME/.ollama/models"
           mkdir -p "$MODEL_DIR"
 
-          # Check if model already exists locally
-          if [ -d "$MODEL_DIR/manifests" ] && [ "$(ls -A $MODEL_DIR/manifests 2>/dev/null)" ]; then
-            echo "Model already present locally"
+          # Presence must be checked against `ollama list`, never the filesystem.
+          # A restored cache can leave ~/.ollama/models/manifests non-empty while
+          # no usable model is registered. The old directory check then reported
+          # "Model already present locally" and skipped the download entirely, so
+          # every /api/generate returned HTTP 404 and ALL AI scoring silently
+          # degraded to keyword-only mode — with the run still showing green.
+          model_installed() {
+            ollama list 2>/dev/null | awk 'NR>1 {print $1}' | grep -qx "$OLLAMA_MODEL"
+          }
+
+          if model_installed; then
+            echo "Model $OLLAMA_MODEL is present"
             ollama list || true
             exit 0
           fi
@@ -157,12 +170,23 @@ jobs:
             tar -xzf /tmp/model.tar.gz -C "$HOME/.ollama/"
             rm -f /tmp/model.tar.gz
             echo "Model restored from release"
-            ollama list || true
+          fi
+
+          # Verify the restore actually registered the model; pull if it did not.
+          if ! model_installed; then
+            echo "Model $OLLAMA_MODEL not registered — pulling (up to 3 attempts)"
+            for i in 1 2 3; do
+              ollama pull "$OLLAMA_MODEL" && break
+              echo "pull attempt $i failed; retrying in 10s"
+              sleep 10
+            done
+          fi
+
+          ollama list || true
+          if ! model_installed; then
+            echo "::warning::Model $OLLAMA_MODEL is NOT installed — every AI call will return HTTP 404 and this run falls back to keyword-only scoring."
           else
-            echo "Release not found — falling back to ollama pull (first-time setup)"
-            echo "TIP: Run setup_model_release.sh locally to upload the model to a release"
-            ollama pull qwen2.5:7b-instruct-q3_K_M || echo "model pull failed, continuing"
-            ollama list || true
+            echo "Verified: $OLLAMA_MODEL is installed"
           fi
 
       - name: Lint — compile check (fail fast)

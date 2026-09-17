@@ -435,6 +435,14 @@ async def analyze_jobs_with_ollama(jobs: list[dict]) -> list[dict]:
 
         print(f"Ollama available — analyzing {len(jobs)} jobs with {MODEL}")
         installed = await _list_local_models(session)
+        # A 404 from /api/generate on every call means the tag is not installed;
+        # that used to look identical to a healthy-but-unhelpful model and the
+        # run still reported success. Fail loudly so a broken cache/pull is
+        # visible instead of silently downgrading the digest to keywords only.
+        if MODEL not in installed:
+            print(f"  WARNING: model '{MODEL}' is not installed locally "
+                  f"(have: {sorted(installed) or 'none'}) — every AI call will "
+                  f"404. AI scoring is DISABLED for this run.")
         # Load weights up front so the first scored job isn't charged the
         # cold-load (and doesn't time out). Advisory only — scoring proceeds
         # even if warm-up fails.

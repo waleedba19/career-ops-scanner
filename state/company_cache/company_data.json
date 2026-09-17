@@ -1536,5 +1536,41 @@
       "Uses professional ATS"
     ],
     "last_updated": "2026-09-17T20:11:00.790842+00:00"
+  },
+  "Revolut": {
+    "name": "Revolut",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-17T22:33:17.431088+00:00"
+  },
+  "\u30d1\u30fc\u30bd\u30eb\u30c6\u30f3\u30d7\u30b9\u30bf\u30c3\u30d5\u682a\u5f0f\u4f1a\u793e Global Job Office": {
+    "name": "\u30d1\u30fc\u30bd\u30eb\u30c6\u30f3\u30d7\u30b9\u30bf\u30c3\u30d5\u682a\u5f0f\u4f1a\u793e Global Job Office",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-17T22:33:17.432536+00:00"
+  },
+  "Savior Artigos Texteis Lda": {
+    "name": "Savior Artigos Texteis Lda",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-17T22:33:17.433870+00:00"
   }
 }

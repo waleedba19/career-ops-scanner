@@ -1,60 +1,5 @@
 [
   {
-    "date": "2026-09-09T22:17:25.237659+00:00",
-    "matched_count": 6,
-    "all_count": 4740,
-    "jobs": [
-      {
-        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
-        "company": "Jobgether",
-        "url": "https://in.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-jobgether-4463829008",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      },
-      {
-        "title": "Arabic Speaker",
-        "company": "VFS Global",
-        "url": "https://az.linkedin.com/jobs/view/arabic-speaker-at-vfs-global-4465034452",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      },
-      {
-        "title": "Hostess (Arabic Speaker) l DoubleTree by Hilton Sharjah Waterfront Hotel & Residences",
-        "company": "Hilton",
-        "url": "https://ae.linkedin.com/jobs/view/hostess-arabic-speaker-l-doubletree-by-hilton-sharjah-waterfront-hotel-residences-at-hilton-4437840207",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      },
-      {
-        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
-        "company": "Jobgether",
-        "url": "https://ee.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-jobgether-4463821551",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      },
-      {
-        "title": "Arabic Language Teacher",
-        "company": "Qur'\u0101n Academy for Young Scholars",
-        "url": "https://www.linkedin.com/jobs/view/arabic-language-teacher-at-qur-%C4%81n-academy-for-young-scholars-4463083269",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "English Teacher",
-        "company": "BrainLight Learning Center (BLC)",
-        "url": "https://ph.linkedin.com/jobs/view/english-teacher-at-brainlight-learning-center-blc-4463583575",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-10T09:39:25.694066+00:00",
     "matched_count": 9,
     "all_count": 4594,
@@ -2024,5 +1969,132 @@
     "matched_count": 0,
     "all_count": 1489,
     "jobs": []
+  },
+  {
+    "date": "2026-09-17T20:10:41.632984+00:00",
+    "matched_count": 15,
+    "all_count": 1534,
+    "jobs": [
+      {
+        "title": "Arabic (Egyptian) Language Expert - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655030101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Gulf) Language Expert - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655026101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Gulf) Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655891101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Iraqi) Language Expert - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655031101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Iraqi) Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655894101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Levantine) Language Expert - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655029101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Levantine) Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655892101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic Voice Actor - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4788688101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Coding Specialist (Fluent in Arabic) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4606938101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Mathematics Specialist (Fluent in Arabic) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4606936101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Medical Specialist (Fluent in Arabic) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4699862101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Science Specialist (Fluent in Arabic) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4607773101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "STEM Specialist (Fluent in Arabic) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4606937101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Asturian Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4660178101",
+        "score": 95,
+        "category": "AI Data & Annotation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "English Language Specialist (US Only) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4738026101",
+        "score": 95,
+        "category": "AI Data & Annotation",
+        "source": "greenhouse"
+      }
+    ]
   }
 ]

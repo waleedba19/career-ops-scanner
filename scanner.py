@@ -3752,6 +3752,36 @@ def classify_lifecycle(jobs: list[dict], scan_info: dict) -> dict:
             "lifecycle_status": "new",
         })
 
+    # CRITICAL: Add OLD jobs from history that aren't in the current scan.
+    # Even when the current scan finds 0 matches, previous matches should
+    # still show as "Still Available" in Telegram/email until they expire.
+    for m in existing:
+        url = m.get("url", "")
+        if url in current_urls:
+            continue  # Already handled above
+        found_str = m.get("found_date", "")
+        if not found_str:
+            continue
+        try:
+            found_dt = datetime.fromisoformat(found_str.replace("Z", "+00:00"))
+            age_days = (now - found_dt).total_seconds() / 86400
+        except Exception:
+            age_days = expiry_days + 1
+        if age_days > expiry_days:
+            # Expired — don't add to notification, but keep in history
+            continue
+        # Still within expiry — add as OLD (not in current scan but still available)
+        old_jobs.append({
+            "url": url,
+            "title": m.get("title", ""),
+            "company": m.get("company", ""),
+            "score": m.get("score", 0),
+            "category": m.get("category", ""),
+            "found_date": found_str,
+            "expires_date": m.get("expires_date", ""),
+            "lifecycle_status": "old",
+        })
+
     # Save updated lifecycle
     save_job_lifecycle({"matches": updated_matches, "updated": now.isoformat()})
 

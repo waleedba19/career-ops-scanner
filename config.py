@@ -35,12 +35,14 @@ TIER_1_SOURCES = [
     "greenhouse", "lever", "remotive", "remoteok", "weworkremotely",
     "jobicy", "arbeitnow", "himalayas", "jobicy_api",
     "translation_jobs", "linkedin",
+    "preply", "toloka", "gengo",  # NEW
 ]
 # Secondary tier — good volume — MENA Focus
 TIER_2_SOURCES = [
     "nodesk", "yayremote", "remote1stjobs", "realworkfromanywhere",
     "workingnomads", "jobspresso", "justremote", "hirelatam",
     "writing_jobs", "edtech_jobs",
+    "clickworker",  # NEW
 ]
 # Tertiary — niche / MENA (noisy, use sparingly)
 TIER_3_SOURCES = [

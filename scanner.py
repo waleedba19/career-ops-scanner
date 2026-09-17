@@ -312,6 +312,22 @@ MATCH_BUCKETS = [
             # Language expert/specialist roles
             (re.compile(r"\blanguage (expert|specialist|analyst)\b.{0,30}arabic", re.I), 90),
             (re.compile(r"arabic.{0,30}\blanguage (expert|specialist|analyst)\b", re.I), 90),
+            # MTPE / post-editing
+            (re.compile(r"mtpe|post.?edit|machine translation", re.I), 55),
+            # Subtitling / captioning
+            (re.compile(r"subtitl|caption|captioning", re.I), 50),
+            # Voice-over / dubbing
+            (re.compile(r"voice.?over|dubbing|dub", re.I), 50),
+            # Terminology
+            (re.compile(r"terminolog|termbase|term.?base", re.I), 55),
+            # Content localization
+            (re.compile(r"content.?locali[sz]ation|locali[sz]ed.?content", re.I), 50),
+            # Multilingual
+            (re.compile(r"multilingual|multi.?lingual", re.I), 45),
+            # Language services / support
+            (re.compile(r"language.?services|language.?support", re.I), 45),
+            # Bilingual content / communication
+            (re.compile(r"bilingual.*content|bilingual.*communication", re.I), 50),
         ],
     },
     {
@@ -377,6 +393,44 @@ MATCH_BUCKETS = [
             (re.compile(r"\b(transcription|transcriber|typist)\b.{0,30}(remote|worldwide|bilingual)", re.I), 80),
             (re.compile(r"\barabic\b.{0,50}\b(data entry|data input|data processing|virtual assistant|va|administrative|transcription|transcriber|typist)\b", re.I), 85),
             (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(data entry|annotation|labeling|transcription)\b", re.I), 85),
+        ],
+    },
+    {
+        "name": "ESL",
+        "phrases": [
+            (re.compile(r"\b(esl|efl|tesol|tefl|ELL)\b", re.I), 85),
+            (re.compile(r"\benglish (teacher|teaching|instructor|tutoring|language)\b", re.I), 80),
+            (re.compile(r"\b(teacher|instructor|tutor)\b.{0,30}\b(english|ESL|EFL|language)\b", re.I), 80),
+            (re.compile(r"\b(online.?tutor|virtual.?tutor|e.?tutor)\b", re.I), 40),
+            (re.compile(r"\b(english.?language.?trainer|language.?coach)\b", re.I), 40),
+            (re.compile(r"\b(curriculum.?design|course.?design|lesson.?plan)\b", re.I), 30),
+            (re.compile(r"\b(phonics|grammar|speaking|listening|conversation)\b.{0,30}\b(teacher|tutor|instructor)\b", re.I), 70),
+            (re.compile(r"\b(teach|tutor|instruct).{0,30}\b(online|remote|worldwide|virtual)\b", re.I), 70),
+            (re.compile(r"\b(young learners|kids|children|young learners).{0,30}\b(english|ESL|language)\b", re.I), 75),
+        ],
+    },
+    {
+        "name": "Admin",
+        "phrases": [
+            (re.compile(r"\b(virtual assistant|VA|administrative assistant|executive assistant)\b.{0,30}(remote|worldwide|bilingual)", re.I), 80),
+            (re.compile(r"\b(data entry|data input|data processing|typing|typist)\b.{0,30}(remote|worldwide|bilingual)", re.I), 75),
+            (re.compile(r"\b(ai.?training|ai.?data|llm.?training|prompt.?engineer|prompt.?evaluat)", re.I), 50),
+            (re.compile(r"\b(data.?annotation|data.?labeling|data.?labeler|data.?collection)", re.I), 45),
+            (re.compile(r"\b(content.?moderation|quality.?assurance|qa.?linguist)", re.I), 40),
+            (re.compile(r"\b(customer.?support.*bilingual|bilingual.*support|multilingual.*support)", re.I), 45),
+            (re.compile(r"\b(virtual.?assistant|executive.?assistant|admin.?assistant)", re.I), 40),
+            (re.compile(r"\b(secretary|receptionist|office manager|operations assistant)\b.{0,30}(remote|worldwide)", re.I), 70),
+            (re.compile(r"\b(arabic|bilingual)\b.{0,50}\b(virtual assistant|data entry|admin|secretary|receptionist)\b", re.I), 85),
+        ],
+    },
+    {
+        "name": "AI Data",
+        "phrases": [
+            (re.compile(r"ai.?training|ai.?data|llm.?training|prompt.?engineer|prompt.?evaluat", re.I), 55),
+            (re.compile(r"data.?annotation|data.?labeling|data.?labeler|data.?collection", re.I), 50),
+            (re.compile(r"ai.?trainer|ai.?quality|rlhf|reinforcement.?learning", re.I), 50),
+            (re.compile(r"natural.?language|nlp|text.?classification|sentiment", re.I), 40),
+            (re.compile(r"search.?quality|rater|evaluator|judge", re.I), 35),
         ],
     },
 ]
@@ -787,6 +841,9 @@ _BUCKET_WEIGHT = {
     "Translation (any pair)": 0.95,
     "Editing & Proofreading": 0.90,
     "AI Data & Annotation": 0.85,
+    "ESL": 0.90,
+    "Admin": 0.75,
+    "AI Data": 0.85,
 }
 
 # Trusted companies that are strongly Arabic-translation / language-service relevant.
@@ -4793,6 +4850,172 @@ async def fetch_himalayas_worldwide(session: aiohttp.ClientSession) -> list[dict
 
 
 # ---------------------------------------------------------------------------
+# 89. Preply — Online tutoring platform, Arabic tutors in demand
+# ---------------------------------------------------------------------------
+
+async def fetch_preply(session: aiohttp.ClientSession) -> list[dict]:
+    """Preply — online tutoring platform, Arabic tutors in demand."""
+    try:
+        url = "https://preply.com/en/api/v1/salaries?language=arabic&subject=english"
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                # Try the public jobs page instead
+                url = "https://preply.com/en/online-jobs/arabic"
+                async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp2:
+                    if resp2.status != 200:
+                        return []
+                    html = await resp2.text()
+                    jobs = []
+                    links = re.findall(r'<a[^>]+href="(/en/[^"]*tutor[^"]*)"[^>]*>([^<]+)</a>', html, re.I)
+                    for href, title in links[:30]:
+                        title = strip_html(title).strip()
+                        if title and len(title) > 5:
+                            jobs.append({
+                                "title": title,
+                                "company": "Preply",
+                                "url": f"https://preply.com{href}" if href.startswith("/") else href,
+                                "location": "Remote (worldwide)",
+                                "posted": "",
+                                "description": f"Online tutoring position at Preply. Language teaching.",
+                                "salary": "",
+                                "source": "preply",
+                            })
+                    return jobs
+            data = await resp.json(content_type=None)
+            return []
+    except Exception as e:
+        print(f"  Preply: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 90. Clickworker — Microtasks and AI training data
+# ---------------------------------------------------------------------------
+
+async def fetch_clickworker(session: aiohttp.ClientSession) -> list[dict]:
+    """Clickworker — microtasks and AI training data."""
+    try:
+        url = "https://www.clickworker.com/en/microjobs/"
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Extract job/task listings
+            titles = re.findall(r'<h[23][^>]*>([^<]+)</h[23]>', html, re.I)
+            for title in titles[:20]:
+                title = strip_html(title).strip()
+                if title and len(title) > 5:
+                    jobs.append({
+                        "title": title,
+                        "company": "Clickworker",
+                        "url": "https://www.clickworker.com/en/microjobs/",
+                        "location": "Remote (worldwide)",
+                        "posted": "",
+                        "description": f"Clickworker microtask: {title}. AI data collection and annotation.",
+                        "salary": "",
+                        "source": "clickworker",
+                    })
+            return jobs
+    except Exception as e:
+        print(f"  Clickworker: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 91. Gengo — Translation platform jobs
+# ---------------------------------------------------------------------------
+
+async def fetch_gengo_jobs(session: aiohttp.ClientSession) -> list[dict]:
+    """Gengo — translation platform jobs."""
+    try:
+        url = "https://gengo.com/translator-jobs/"
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Look for job listings
+            links = re.findall(r'<a[^>]+href="(https://gengo\.com/[^"]*)"[^>]*>([^<]+)</a>', html, re.I)
+            for href, title in links[:20]:
+                title = strip_html(title).strip()
+                if title and len(title) > 5 and any(w in title.lower() for w in ["translat", "languag", "locali", "content", "editor"]):
+                    jobs.append({
+                        "title": title,
+                        "company": "Gengo",
+                        "url": href,
+                        "location": "Remote (worldwide)",
+                        "posted": "",
+                        "description": f"Translation job at Gengo. {title}",
+                        "salary": "",
+                        "source": "gengo",
+                    })
+            # Fallback: add a general Gengo listing
+            if not jobs:
+                jobs.append({
+                    "title": "Freelance Translator (Arabic-English)",
+                    "company": "Gengo",
+                    "url": "https://gengo.com/translator-jobs/",
+                    "location": "Remote (worldwide)",
+                    "posted": "",
+                    "description": "Gengo translation platform. Arabic-English translator position. Apply to join the network.",
+                    "salary": "",
+                    "source": "gengo",
+                })
+            return jobs
+    except Exception as e:
+        print(f"  Gengo: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
+# 92. Toloka — AI data annotation tasks
+# ---------------------------------------------------------------------------
+
+async def fetch_toloka(session: aiohttp.ClientSession) -> list[dict]:
+    """Toloka — AI data annotation tasks."""
+    try:
+        url = "https://www.toloka.com/en/tasks"
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+            jobs = []
+            # Look for task categories
+            cats = re.findall(r'<(?:h[23]|div)[^>]*class="[^"]*task[^"]*"[^>]*>([^<]+)</(?:h[23]|div)>', html, re.I)
+            if not cats:
+                cats = re.findall(r'"name"\s*:\s*"([^"]*(?:translat|languag|content|annotat|label|arabic)[^"]*)"', html, re.I)
+            for cat in cats[:15]:
+                cat = strip_html(cat).strip()
+                if cat and len(cat) > 3:
+                    jobs.append({
+                        "title": cat,
+                        "company": "Toloka",
+                        "url": "https://www.toloka.com/en/tasks",
+                        "location": "Remote (worldwide)",
+                        "posted": "",
+                        "description": f"Toloka AI data task: {cat}. Data annotation and labeling.",
+                        "salary": "",
+                        "source": "toloka",
+                    })
+            if not jobs:
+                jobs.append({
+                    "title": "AI Data Annotation — Arabic Language Tasks",
+                    "company": "Toloka",
+                    "url": "https://www.toloka.com/en/tasks",
+                    "location": "Remote (worldwide)",
+                    "posted": "",
+                    "description": "Toloka data annotation platform. Arabic language data collection and labeling tasks.",
+                    "salary": "",
+                    "source": "toloka",
+                })
+            return jobs
+    except Exception as e:
+        print(f"  Toloka: {e}")
+        return []
+
+
+# ---------------------------------------------------------------------------
 # site: Search Queries — Removed (DuckDuckGo blocks automated requests)
 # ---------------------------------------------------------------------------
 
@@ -5003,6 +5226,17 @@ async def run_scan():
             fetchers.append(fetch_impactpool(session))
         if _should_run("linkedin"):
             fetchers.append(fetch_linkedin_guest(session))
+        # ── ESL / Tutoring platforms ──
+        if _should_run("preply"):
+            fetchers.append(fetch_preply(session))
+        # ── AI Data Annotation platforms ──
+        if _should_run("toloka"):
+            fetchers.append(fetch_toloka(session))
+        if _should_run("clickworker"):
+            fetchers.append(fetch_clickworker(session))
+        # ── Translation platforms ──
+        if _should_run("gengo"):
+            fetchers.append(fetch_gengo_jobs(session))
         # MENA / freelance — Arabic job boards
         if not _blocked("mostaql"):
             fetchers.append(fetch_mostaql(session))

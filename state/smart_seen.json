@@ -5554,8 +5554,38 @@
       "seen": "2026-09-17T22:33:38.669162+00:00",
       "title": "Spanish Analytic Linguist",
       "company": "Metlang"
+    },
+    "turing|forwarddeployedaiengineer|newyorknewyorkunited": {
+      "seen": "2026-09-17T22:49:54.758730+00:00",
+      "title": "Forward Deployed AI Engineer",
+      "company": "Turing"
+    },
+    "turing|forwarddeployedaiengineerintra|newyorknewyorkunited": {
+      "seen": "2026-09-17T22:49:54.766266+00:00",
+      "title": "Forward Deployed AI Engineer (In Training)",
+      "company": "Turing"
+    },
+    "mercor|chiefofstaffgtm|sanfrancisco": {
+      "seen": "2026-09-17T22:49:54.862968+00:00",
+      "title": "Chief of Staff: GTM",
+      "company": "Mercor"
+    },
+    "syneoshealthindiaprivatelimited|scrai|australia": {
+      "seen": "2026-09-17T22:49:55.098219+00:00",
+      "title": "SCRA I",
+      "company": "Syneos Health India Private Limited"
+    },
+    "micro1|bilingualmentalhealthexpert|remote": {
+      "seen": "2026-09-17T22:49:55.107312+00:00",
+      "title": "Bilingual Mental Health Expert",
+      "company": "micro1"
+    },
+    "micro1|policedispatcheremergencycommu|unitedstates": {
+      "seen": "2026-09-17T22:49:55.115273+00:00",
+      "title": "Police Dispatcher - Emergency Communications Specialist",
+      "company": "micro1"
     }
   },
-  "updated": "2026-09-17T22:33:50.033997+00:00",
+  "updated": "2026-09-17T22:50:03.949308+00:00",
   "reset_reason": "Cleared to allow fresh job evaluation after Groq migration and source cleanup"
 }

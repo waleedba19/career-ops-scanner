@@ -986,15 +986,23 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     if GENERIC_LOCATION_RE.search(body):
         return True
 
-    # Residency-blocked markets, or any outright country lock. BLOCKED_COUNTRY_RE
-    # also catches the abbreviations ("USA", "UK") that COUNTRY_RE's full names
-    # miss; _is_us_locked covers "…, OH" style US-state postings.
-    if BLOCKED_COUNTRY_RE.search(body) or COUNTRY_RE.search(body) or _is_us_locked(body):
+    # If "Remote" is in the ORIGINAL location field (before body stripping),
+    # the job IS remote — the country/city after it is just a timezone hint
+    # ("Remote — Berlin, Germany" = work from anywhere, employer prefers CET).
+    # Only block truly residency-locked countries (US, CA, AU, UK, etc.) and
+    # hard blockers already caught above. Country names like "Germany", "Spain",
+    # "India" after "Remote" are NOT residency requirements.
+    if REMOTE_PREFIX_RE.search(loc):
+        # Remote job with a country hint — only block if it's in the hard-blocked list
+        if BLOCKED_COUNTRY_RE.search(body) or _is_us_locked(body):
+            return False
+        return True
+
+    # Non-remote: bare location field with a country name = country-locked.
+    if COUNTRY_RE.search(body) or BLOCKED_COUNTRY_RE.search(body) or _is_us_locked(body):
         return False
 
     # Leftover is a city with no country ("Remote | Athens", "Remote — Baltimore").
-    # Employers use these as preferred hubs for Arabic/translation work, so keep
-    # them; the residency blockers above already rejected the hard nos.
     return True
 
 

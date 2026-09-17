@@ -397,6 +397,11 @@ def test_ollama_pipeline():
     # used to blow the per-call timeout on job 1 ("attempt 1 failed" with an
     # empty message), so scoring started from a wasted 120s timeout. The
     # warm-up must absorb the load and let scoring run clean on attempt 1.
+    #
+    # To prove this rather than merely exercise it, shrink the scoring timeout
+    # below the simulated cold-load duration: without the warm-up the first
+    # scoring call would time out, so a clean result can only come from the
+    # load having been paid by warm-up.
     seen.clear()
     OA.OLLAMA_URL = "http://127.0.0.1:11439"
     calls = {"n": 0}
@@ -406,7 +411,7 @@ def test_ollama_pipeline():
         seen.append(body)
         calls["n"] += 1
         if calls["n"] == 1:
-            await asyncio.sleep(2)  # the cold load
+            await asyncio.sleep(1.5)  # the cold load, > CALL_TIMEOUT_S
         return web.json_response({"response": json.dumps({
             "overall_score": 88, "verdict": "Strong Fit", "one_line_summary": "ok",
         })})
@@ -426,9 +431,12 @@ def test_ollama_pipeline():
         finally:
             await runner.cleanup()
 
+    orig_call_timeout = OA.CALL_TIMEOUT_S
+    OA.CALL_TIMEOUT_S = 1.0
     try:
         cold = asyncio.run(run3())
     finally:
+        OA.CALL_TIMEOUT_S = orig_call_timeout
         OA.OLLAMA_URL = orig_url
     check("cold model load is absorbed by warm-up, not charged to scoring",
           [b["model"] for b in scored(seen)] == [OA.MODEL],

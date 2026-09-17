@@ -18,6 +18,11 @@ MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b-instruct-q3_K_M")
 # string disables the retry (e.g. if the fallback tag is not pulled locally).
 FALLBACK_MODEL = os.getenv("OLLAMA_FALLBACK_MODEL", "qwen2.5:3b")
 
+# Per-call budgets. The scoring call must stay well under the workflow timeout,
+# so a slow/hung model fails fast; warm-up is allowed the full cold-load.
+CALL_TIMEOUT_S = float(os.getenv("OLLAMA_CALL_TIMEOUT_S", "120"))
+WARMUP_TIMEOUT_S = float(os.getenv("OLLAMA_WARMUP_TIMEOUT_S", "600"))
+
 # Load real CV profile
 CV_PROFILE_PATH = Path(__file__).parent / "cv_profile.json"
 
@@ -284,7 +289,7 @@ async def _call_ollama(session: aiohttp.ClientSession, prompt: str, max_retries:
                     "num_predict": 900,
                 },
             }
-            timeout = aiohttp.ClientTimeout(total=120)
+            timeout = aiohttp.ClientTimeout(total=CALL_TIMEOUT_S)
             async with session.post(
                 f"{OLLAMA_URL}/api/generate",
                 json=payload,
@@ -318,7 +323,7 @@ async def _warm_up(session: aiohttp.ClientSession) -> bool:
     inference. Give the load its own generous budget.
     """
     try:
-        timeout = aiohttp.ClientTimeout(total=600)
+        timeout = aiohttp.ClientTimeout(total=WARMUP_TIMEOUT_S)
         async with session.post(
             f"{OLLAMA_URL}/api/generate",
             json={"model": MODEL, "prompt": "hi", "stream": False,

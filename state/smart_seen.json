@@ -2071,45 +2071,60 @@
       "company": "Northwestern Memorial Hospital"
     },
     "micro1|subjectmatterexpertdatastatist|remote": {
-      "seen": "2026-09-17T14:03:52.915259+00:00",
+      "seen": "2026-09-17T14:04:23.598692+00:00",
       "title": "Subject Matter Expert \u2013 Data & Statistical Chart Analysis",
       "company": "micro1"
     },
     "micro1|subjectmatterexpertchartdatavi|remote": {
-      "seen": "2026-09-17T14:03:52.923929+00:00",
+      "seen": "2026-09-17T14:04:23.607445+00:00",
       "title": "Subject Matter Expert \u2013 Chart & Data Visualization Analysis",
       "company": "micro1"
     },
     "nvidia|solutionsarchitectdeepneuralne|france": {
-      "seen": "2026-09-17T14:03:52.937347+00:00",
+      "seen": "2026-09-17T14:04:23.620938+00:00",
       "title": "Solutions Architect - Deep Neural Network Evaluation",
       "company": "NVIDIA"
     },
+    "coinbase|seniorthreatintelligenceengine|remoteusa": {
+      "seen": "2026-09-17T14:04:23.627005+00:00",
+      "title": "Senior Threat Intelligence Engineer",
+      "company": "Coinbase"
+    },
+    "coinbase|seniordatascientistproduct|remoteuk": {
+      "seen": "2026-09-17T14:04:23.628000+00:00",
+      "title": "Senior Data Scientist, Product",
+      "company": "Coinbase"
+    },
+    "coinbase|managerwfmcomplianceoperations|remoteusa": {
+      "seen": "2026-09-17T14:04:23.629146+00:00",
+      "title": "Manager, WFM Compliance Operations",
+      "company": "Coinbase"
+    },
     "techtactixcloudtechsolutionspvtltd|hiringtranslationlocalizationp|remoteindia": {
-      "seen": "2026-09-17T14:03:52.954743+00:00",
+      "seen": "2026-09-17T14:04:23.640572+00:00",
       "title": "Hiring: Translation / Localization Professionals",
       "company": "TechTacTix Cloud Tech Solutions Pvt Ltd"
     },
     "acclaro|creativemarketingtranslatorstr|remotegreatersopaulo": {
-      "seen": "2026-09-17T14:03:52.955722+00:00",
+      "seen": "2026-09-17T14:04:23.641507+00:00",
       "title": "Creative Marketing Translators & Transcreators | Portuguese (Brazil)",
       "company": "Acclaro"
     },
     "worldwidelanguageresourcesllc|catiiihassaniyadialectlinguist|fayettevillenc": {
-      "seen": "2026-09-17T14:03:52.963277+00:00",
+      "seen": "2026-09-17T14:04:23.648963+00:00",
       "title": "CAT III Hassaniya Dialect Linguist with Security Clearance",
       "company": "WorldWide Language Resources, LLC"
     },
     "tordenllc|catiiispanishlinguistwithsecur|fortblisstx": {
-      "seen": "2026-09-17T14:03:52.964003+00:00",
+      "seen": "2026-09-17T14:04:23.649699+00:00",
       "title": "CAT III Spanish Linguist with Security Clearance",
       "company": "Torden LLC"
     },
     "ctcgroup|kurdishkurmanjiarabictravellin|restonva": {
-      "seen": "2026-09-17T14:03:52.964515+00:00",
+      "seen": "2026-09-17T14:04:23.650205+00:00",
       "title": "Kurdish: Kurmanji & Arabic Travel Linguist with Security Clearance",
       "company": "CTC Group"
     }
   },
-  "updated": "2026-09-17T14:03:59.765668+00:00"
+  "updated": "2026-09-17T14:04:29.593984+00:00"
 }

@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-10T23:45:03.555647+00:00",
-    "matched_count": 1,
-    "all_count": 3235,
-    "jobs": [
-      {
-        "title": "WordPress & GHL Virtual Assistant",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/elementor/WordPress-GHL-Virtual-Assistant.html",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      }
-    ]
-  },
-  {
     "date": "2026-09-10T23:48:42.268369+00:00",
     "matched_count": 0,
     "all_count": 3232,
@@ -1947,6 +1932,12 @@
     "date": "2026-09-17T23:34:35.562774+00:00",
     "matched_count": 0,
     "all_count": 1485,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-17T23:49:22.778480+00:00",
+    "matched_count": 0,
+    "all_count": 1545,
     "jobs": []
   }
 ]

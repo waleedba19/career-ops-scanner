@@ -992,7 +992,7 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     # Only block truly residency-locked countries (US, CA, AU, UK, etc.) and
     # hard blockers already caught above. Country names like "Germany", "Spain",
     # "India" after "Remote" are NOT residency requirements.
-    if REMOTE_PREFIX_RE.search(loc):
+    if _REMOTE_PREFIX_RE.search(loc):
         # Remote job with a country hint — only block if it's in the hard-blocked list
         if BLOCKED_COUNTRY_RE.search(body) or _is_us_locked(body):
             return False

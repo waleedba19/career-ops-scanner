@@ -377,13 +377,12 @@ def test_ai_pipeline():
           out[0].get("ai_overall_score") == 91)
 
     # Test 5: API error → graceful fallback, jobs unchanged
-    from groq import APIConnectionError
     with patch.dict(os.environ, {"GROQ_API_KEY": "test-key"}, clear=False), \
          patch.object(GA, "Groq") as MockGroq:
         mock_client = MagicMock()
         MockGroq.return_value = mock_client
-        mock_client.chat.completions.create.side_effect = APIConnectionError(
-            message="Connection failed"
+        mock_client.chat.completions.create.side_effect = Exception(
+            "Connection failed"
         )
 
         out = asyncio.run(GA.analyze_jobs_with_ollama([

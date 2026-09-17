@@ -204,6 +204,7 @@ def generate_excel(
 
     # ---- Fresh Matches rows (Sheet 2) — accumulated across all scans — DEEP INTEL (free forever) ----
     fresh_rows = []
+    expiry_days = int(os.getenv("CAREEROPS_JOB_EXPIRY_DAYS", "3"))
     for i, j in enumerate(all_fresh):
         fresh = get_freshness(j.get("posted"))
         rec = get_recommendation(j.get("score", 0))
@@ -213,16 +214,28 @@ def generate_excel(
         cover_path = j.get("cover_letter_path", "")
         # Deep intel (free forever) — may be missing on old history rows
         hiring_email = j.get("hiring_email", "")
-        email_verified = "✓" if j.get("email_verified") else ("guess" if hiring_email and j.get("email_guessed") else "")
+        email_verified = "\u2713" if j.get("email_verified") else ("guess" if hiring_email and j.get("email_guessed") else "")
         urgency = j.get("urgency_score", 0)
         desperation = j.get("desperation_index", 0)
         opportunity = j.get("opportunity_score", j.get("score",0))
         pain = j.get("pain_points", "")
         # urgency label
-        urgency_label = f"{urgency} 🔥" if urgency >= 30 else str(urgency) if urgency else ""
-        desp_label = f"{desperation} 💥" if desperation >= 50 else str(desperation) if desperation else ""
+        urgency_label = f"{urgency} \U0001f525" if urgency >= 30 else str(urgency) if urgency else ""
+        desp_label = f"{desperation} \U0001f4a5" if desperation >= 50 else str(desperation) if desperation else ""
         # Red rows = not applied yet; green rows = applied/tracked
         row_style = "applied" if applied_status != "Not Applied" else "unapplied"
+        # Lifecycle status
+        lifecycle_status = j.get("lifecycle_status", "")
+        found_date = j.get("found_date", "")[:10]
+        expires_date = j.get("expires_date", "")[:10]
+        if lifecycle_status == "new":
+            status_label = "NEW"
+        elif lifecycle_status == "old" and expires_date:
+            status_label = f"OLD (expires {expires_date})"
+        elif lifecycle_status == "expired":
+            status_label = "EXPIRED"
+        else:
+            status_label = ""
         fresh_rows.append(f'''
     <Row ss:StyleID="{row_style}">
       <Cell><Data ss:Type="Number">{i + 1}</Data></Cell>
@@ -243,6 +256,7 @@ def generate_excel(
       <Cell><Data ss:Type="String">{opportunity}%</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(pain)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(cover_path)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(status_label)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(scan_dt)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(url)}</Data></Cell>
     </Row>''')
@@ -475,9 +489,9 @@ def generate_excel(
     <Table>
       <Column ss:Width="40"/><Column ss:Width="150"/><Column ss:Width="280"/><Column ss:Width="100"/>
       <Column ss:Width="140"/><Column ss:Width="60"/><Column ss:Width="100"/><Column ss:Width="120"/>
-      <Column ss:Width="100"/><Column ss:Width="180"/><Column ss:Width="70"/><Column ss:Width="70"/>
+      <Column ss:Width="100"/><Column ss:Width="180"/>      <Column ss:Width="70"/><Column ss:Width="70"/>
       <Column ss:Width="70"/><Column ss:Width="70"/><Column ss:Width="220"/><Column ss:Width="200"/>
-      <Column ss:Width="100"/><Column ss:Width="420"/>
+      <Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="420"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated, deep intel — free forever)</Data></Cell></Row>
       <Row><Cell><Data ss:Type="String">All {min_score_label()} matches. RED=not applied — apply now! GREEN=applied. Includes Hiring Email, Company Website, Contact Email, Urgency, Desperation, Opportunity, Pain Points. No paid API.</Data></Cell></Row>
       <Row ss:StyleID="header">
@@ -490,6 +504,7 @@ def generate_excel(
         <Cell><Data ss:Type="String">Urgency</Data></Cell>
         <Cell><Data ss:Type="String">Desperation</Data></Cell><Cell><Data ss:Type="String">Opportunity</Data></Cell>
         <Cell><Data ss:Type="String">Pain Points / Why They Need You</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
+        <Cell><Data ss:Type="String">Status</Data></Cell>
         <Cell><Data ss:Type="String">Found On</Data></Cell><Cell><Data ss:Type="String">Apply URL</Data></Cell>
       </Row>
       {fresh_rows_str}

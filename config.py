@@ -25,6 +25,7 @@ NEAR_MISS_MAX = 49
 NEAR_MISS_LIMIT = int(os.getenv("CAREEROPS_NEAR_MISS_LIMIT", "6"))
 TOP_LIVENESS_CHECK = int(os.getenv("CAREEROPS_LIVENESS_TOP", "6"))
 HISTORY_MAX = 5000
+JOB_EXPIRY_DAYS = int(os.getenv("CAREEROPS_JOB_EXPIRY_DAYS", "3"))  # days before a match expires from notifications
 FETCH_TIMEOUT = int(os.getenv("CAREEROPS_FETCH_TIMEOUT", "12"))
 FETCH_BATCH_SIZE = int(os.getenv("CAREEROPS_BATCH_SIZE", "8"))
 FETCH_CONCURRENCY = int(os.getenv("CAREEROPS_CONCURRENCY", "25"))

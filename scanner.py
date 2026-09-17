@@ -3598,6 +3598,179 @@ def append_to_scan_history(matched_jobs: list[dict], scan_info: dict):
 
 
 # ---------------------------------------------------------------------------
+# Job Lifecycle Tracking — NEW / OLD / EXPIRED
+# ---------------------------------------------------------------------------
+
+LIFECYCLE_FILE = OUTPUT_DIR / "fresh_matches_history.json"
+_LIFECYCLE_EXPIRY_DAYS = int(os.getenv("CAREEROPS_JOB_EXPIRY_DAYS", "3"))
+
+
+def load_job_lifecycle() -> dict:
+    """Load the lifecycle-tracked history. Returns dict with 'matches' list."""
+    for cand in [LIFECYCLE_FILE, Path(__file__).parent / "state" / "fresh_matches_history.json"]:
+        if cand.exists():
+            try:
+                data = json.loads(cand.read_text(encoding="utf-8"))
+                # Support both old flat-list format and new dict format
+                if isinstance(data, list):
+                    return {"matches": data, "updated": ""}
+                if isinstance(data, dict) and "matches" in data:
+                    return data
+            except Exception:
+                pass
+    return {"matches": [], "updated": ""}
+
+
+def save_job_lifecycle(data: dict):
+    """Save lifecycle-tracked history."""
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    data["updated"] = datetime.now(timezone.utc).isoformat()
+    LIFECYCLE_FILE.write_text(json.dumps(data["matches"], indent=2, default=str), encoding="utf-8")
+    # Also save state copy
+    state_file = Path(__file__).parent / "state" / "fresh_matches_history.json"
+    state_file.parent.mkdir(parents=True, exist_ok=True)
+    state_file.write_text(json.dumps(data["matches"], indent=2, default=str), encoding="utf-8")
+
+
+def classify_lifecycle(jobs: list[dict], scan_info: dict) -> dict:
+    """Classify jobs into NEW / OLD / EXPIRED based on fresh_matches_history.
+
+    Returns dict with 'new_jobs', 'old_jobs', 'expired_jobs', and updated scan_info.
+    """
+    now = datetime.now(timezone.utc)
+    expiry_days = _LIFECYCLE_EXPIRY_DAYS
+
+    lifecycle = load_job_lifecycle()
+    existing = lifecycle.get("matches", [])
+    existing_by_url = {}
+    for m in existing:
+        url = m.get("url", "")
+        if url:
+            existing_by_url[url] = m
+
+    new_jobs = []
+    old_jobs = []
+    expired_jobs = []
+    current_urls = set()
+
+    for job in jobs:
+        url = job.get("url", "")
+        current_urls.add(url)
+        found_str = existing_by_url.get(url, {}).get("found_date", "")
+
+        if found_str:
+            # Job was seen before — check age
+            try:
+                found_dt = datetime.fromisoformat(found_str.replace("Z", "+00:00"))
+                age_days = (now - found_dt).total_seconds() / 86400
+            except Exception:
+                found_dt = now
+                age_days = 0
+
+            expires_str = existing_by_url[url].get("expires_date", "")
+            if not expires_str:
+                try:
+                    expires_dt = found_dt + timedelta(days=expiry_days)
+                    expires_str = expires_dt.isoformat()
+                except Exception:
+                    expires_str = ""
+
+            if age_days > expiry_days:
+                job["lifecycle_status"] = "expired"
+                job["found_date"] = found_str
+                job["expires_date"] = expires_str
+                expired_jobs.append(job)
+            else:
+                job["lifecycle_status"] = "old"
+                job["found_date"] = found_str
+                job["expires_date"] = expires_str
+                old_jobs.append(job)
+        else:
+            # New job — first time seeing it
+            found_now = now.isoformat()
+            try:
+                expires_dt = now + timedelta(days=expiry_days)
+                expires_str = expires_dt.isoformat()
+            except Exception:
+                expires_str = ""
+            job["lifecycle_status"] = "new"
+            job["found_date"] = found_now
+            job["expires_date"] = expires_str
+            new_jobs.append(job)
+
+    # Update history: keep non-expired from old + add new
+    updated_matches = []
+    for m in existing:
+        url = m.get("url", "")
+        found_str = m.get("found_date", "")
+        if url in current_urls:
+            # Still in current scan — keep it with updated data
+            for job in jobs:
+                if job.get("url") == url:
+                    updated_matches.append({
+                        "url": url,
+                        "title": job.get("title", m.get("title", "")),
+                        "company": job.get("company", m.get("company", "")),
+                        "score": job.get("score", m.get("score", 0)),
+                        "category": job.get("category", m.get("category", "")),
+                        "found_date": m.get("found_date", ""),
+                        "expires_date": m.get("expires_date", ""),
+                        "lifecycle_status": job.get("lifecycle_status", "old"),
+                    })
+                    break
+        else:
+            # Not in current scan — check if expired
+            if found_str:
+                try:
+                    found_dt = datetime.fromisoformat(found_str.replace("Z", "+00:00"))
+                    age_days = (now - found_dt).total_seconds() / 86400
+                except Exception:
+                    age_days = expiry_days + 1
+                if age_days <= expiry_days:
+                    # Still within expiry — keep as expired-from-notification but in history
+                    updated_matches.append({
+                        "url": url,
+                        "title": m.get("title", ""),
+                        "company": m.get("company", ""),
+                        "score": m.get("score", 0),
+                        "category": m.get("category", ""),
+                        "found_date": m.get("found_date", ""),
+                        "expires_date": m.get("expires_date", ""),
+                        "lifecycle_status": "expired",
+                    })
+
+    # Add new jobs
+    for job in new_jobs:
+        updated_matches.append({
+            "url": job.get("url", ""),
+            "title": job.get("title", ""),
+            "company": job.get("company", ""),
+            "score": job.get("score", 0),
+            "category": job.get("category", ""),
+            "found_date": job.get("found_date", ""),
+            "expires_date": job.get("expires_date", ""),
+            "lifecycle_status": "new",
+        })
+
+    # Save updated lifecycle
+    save_job_lifecycle({"matches": updated_matches, "updated": now.isoformat()})
+
+    # Add lifecycle counts to scan_info
+    scan_info["lifecycle_new"] = len(new_jobs)
+    scan_info["lifecycle_old"] = len(old_jobs)
+    scan_info["lifecycle_expired"] = len(expired_jobs)
+
+    print(f"  Lifecycle: {len(new_jobs)} NEW, {len(old_jobs)} OLD, {len(expired_jobs)} EXPIRED")
+
+    return {
+        "new_jobs": new_jobs,
+        "old_jobs": old_jobs,
+        "expired_jobs": expired_jobs,
+        "scan_info": scan_info,
+    }
+
+
+# ---------------------------------------------------------------------------
 # 42. PeoplePerHour — UK/EU freelance platform
 # ---------------------------------------------------------------------------
 
@@ -5843,6 +6016,19 @@ async def run_scan():
         except Exception as e:
             print(f"Company cache cleanup failed: {e}")
 
+        # ---- Classify job lifecycle (NEW / OLD / EXPIRED) ----
+        try:
+            lifecycle = classify_lifecycle(final_verified, scan_info)
+            new_jobs_lc = lifecycle["new_jobs"]
+            old_jobs_lc = lifecycle["old_jobs"]
+            expired_jobs_lc = lifecycle["expired_jobs"]
+            scan_info = lifecycle["scan_info"]
+        except Exception as e:
+            print(f"Lifecycle classification failed: {e}")
+            new_jobs_lc = final_verified
+            old_jobs_lc = []
+            expired_jobs_lc = []
+
         # ---- Generate Excel ----
         # User-facing date/time in Libya (Africa/Tripoli, UTC+2), never raw UTC
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -5889,7 +6075,10 @@ async def run_scan():
         telegram_sent = False
         try:
             from notifier import build_telegram
-            tg_msg = build_telegram(final_verified, scan_info, stats)
+            tg_msg = build_telegram(final_verified, scan_info, stats,
+                                    lifecycle_new=new_jobs_lc,
+                                    lifecycle_old=old_jobs_lc,
+                                    lifecycle_expired=expired_jobs_lc)
             telegram_sent = await send_telegram(tg_msg)
         except Exception as e:
             print(f"Telegram error: {e}")
@@ -5898,15 +6087,23 @@ async def run_scan():
         email_sent = False
         try:
             from notifier import build_email, now_libya
-            email_result = build_email(final_verified, scan_info, stats)
+            email_result = build_email(final_verified, scan_info, stats,
+                                      lifecycle_new=new_jobs_lc,
+                                      lifecycle_old=old_jobs_lc,
+                                      lifecycle_expired=expired_jobs_lc)
             libya_now = now_libya()
             subj_time = libya_now.strftime("%I:%M %p")
             subj_date = libya_now.strftime("%Y-%m-%d")
-            if final_verified:
-                n = len(final_verified)
-                email_subject = f"CareerOps — {subj_date} {subj_time} Libya \u00b7 {n} New Match{'es' if n != 1 else ''}"
+            n_new = len(new_jobs_lc)
+            n_old = len(old_jobs_lc)
+            if n_new > 0 and n_old > 0:
+                email_subject = f"CareerOps \u2014 {n_new} New + {n_old} Still Available \u00b7 {subj_date}"
+            elif n_new > 0:
+                email_subject = f"CareerOps \u2014 {n_new} New Match{'es' if n_new != 1 else ''} \u00b7 {subj_date} {subj_time} Libya"
+            elif n_old > 0:
+                email_subject = f"CareerOps \u2014 {n_old} Still Available \u00b7 {subj_date} {subj_time} Libya"
             else:
-                email_subject = f"CareerOps — {subj_date} {subj_time} Libya \u00b7 0 New Matches"
+                email_subject = f"CareerOps \u2014 0 New Matches \u00b7 {subj_date} {subj_time} Libya"
             # Collect PDF cover letter paths
             pdf_paths = [j.get("cover_letter_path", "") for j in final_verified if j.get("cover_letter_path")]
             email_sent = await send_email(

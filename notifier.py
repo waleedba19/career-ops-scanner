@@ -320,28 +320,34 @@ def match_range_label() -> str:
 # ---------------------------------------------------------------------------
 
 
-def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
-    """Build a clean, professional Telegram message with evolution intelligence."""
+def build_telegram(jobs: list, scan_info: dict, stats: dict,
+                   lifecycle_new: list | None = None,
+                   lifecycle_old: list | None = None,
+                   lifecycle_expired: list | None = None) -> str:
+    """Build a clean, professional Telegram message with job lifecycle (NEW / OLD / EXPIRED)."""
     from evolution_tracker import get_evolution_summary
     from source_manager import get_source_report
     from excel_generator import load_applications, load_fresh_history
     from learning_module import get_learning_insights
     
     label = get_scan_label()
-    # User-facing stamps are Libya local time, never raw UTC — a run that
-    # GitHub Actions delays past 22:00 UTC would otherwise be dated a day early.
     libya_now = now_libya()
     date = libya_now.strftime("%Y-%m-%d")
     time_str = libya_now.strftime("%H:%M Libya")
     scan_num = stats.get("total_scans", 0)
     all_count = scan_info.get("all_count", 0)
     source_count = scan_info.get("source_count", 0)
-    fresh_count = scan_info.get("fresh_count", 0)
     near_all = scan_info.get("near_misses", [])
+
+    # Lifecycle defaults — if not provided, all jobs are "new"
+    new_jobs = lifecycle_new if lifecycle_new is not None else jobs
+    old_jobs = lifecycle_old if lifecycle_old is not None else []
+    expired_jobs = lifecycle_expired if lifecycle_expired is not None else []
+    total_matches = len(new_jobs) + len(old_jobs)
     
     msg = ""
     
-    # Professional header with evolution
+    # Professional header
     msg += f"{label['emoji']} {label['label']} \u2014 {date}\n"
     msg += f"{pick_greeting(label)}\n"
     msg += "\n"
@@ -350,14 +356,14 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     msg += "\u2500" * 28 + "\n"
     msg += "\n"
     
-    # Evolution summary (the "brain" learns)
+    # Evolution summary
     evolution = get_evolution_summary()
-    if evolution and evolution != "🧠 First scan — building memory...":
+    if evolution and evolution != "\U0001f9e0 First scan \u2014 building memory...":
         msg += f"{evolution}\n"
         msg += "\u2500" * 28 + "\n"
         msg += "\n"
     
-    # Learning insights (application feedback)
+    # Learning insights
     learning = get_learning_insights()
     if learning.get("total_applied", 0) > 0:
         msg += "\U0001f4a1 LEARNING INSIGHTS\n"
@@ -370,62 +376,90 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         msg += "\n"
     
     # Summary line
-    msg += f"Scan #{scan_num} \xB7 {time_str}\n"
-    msg += f"Reviewed {all_count:,} jobs across {source_count} sources\n"
+    msg += f"Scan #{scan_num} | {all_count:,} fetched | {total_matches} total matches\n"
     msg += "\n"
     
-    # ---- Check for unapplied jobs reminder (marked red) ----
-    try:
-        apps = load_applications()
-        all_fresh = load_fresh_history()
-        unapplied = [j for j in all_fresh if j.get("url") and j["url"] not in apps]
-        if unapplied:
-            msg += f"\U0001f534 UNAPPLIED JOBS: {len(unapplied)} pending — apply before they expire!\n"
-            for j in unapplied[:5]:
-                title = j.get('title', 'Unknown')
-                company = j.get('company', '')
-                score = j.get('score', 0)
-                msg += f"\U0001f534 [{score}%] {title} — {company}\n"
-                msg += f"   {j.get('url', '')}\n"
-            if len(unapplied) > 5:
-                msg += f"... and {len(unapplied) - 5} more — check your Excel (red rows)\n"
-            msg += "\u2500" * 28 + "\n"
-            msg += "\n"
-    except Exception:
-        pass
-    
-    if len(jobs) == 0:
-        # No matches — but show what we learned
+    # ── No matches at all ──────────────────────────────────────────────────
+    if total_matches == 0 and not old_jobs:
         msg += "\u2705 0 New Matches Found\n"
         msg += "\n"
-        msg += "No Arabic translation jobs found this scan.\n"
-        msg += "\n"
-        msg += pick_no_match_note(scan_num, all_count, fresh_count) + "\n"
-        msg += "\n"
-        msg += f"Gates: {gates_line()}\n"
+        msg += "No matches found this scan. The system is scanning "
+        msg += f"{all_count:,} jobs from {source_count}+ sources.\n"
+        msg += f"Next scan: {next_scan_time()}.\n"
+        msg += "\u2500" * 28 + "\n"
+        msg += f"{pick_closing()}\n"
+        msg += "CareerOps Services \u2014 AI Job Search Intelligence\n"
+        return msg
+
+    # ── NEW matches ────────────────────────────────────────────────────────
+    if new_jobs:
+        msg += f"\U0001f195 NEW MATCHES ({len(new_jobs)})\n"
+        msg += "\u2500" * 28 + "\n"
+        for i, j in enumerate(new_jobs):
+            msg += format_lifecycle_card(j, i) + "\n\n"
     else:
-        # Matches found
-        msg += f"\u2705 {len(jobs)} New Match{'es' if len(jobs) != 1 else ''} Found\n"
+        msg += "\U0001f195 NEW MATCHES (0)\n"
+        msg += "No new matches this scan.\n\n"
+
+    # ── OLD matches (still available) ──────────────────────────────────────
+    if old_jobs:
+        # Compute min days remaining
+        try:
+            from config import JOB_EXPIRY_DAYS
+            expiry_days = JOB_EXPIRY_DAYS
+        except Exception:
+            expiry_days = 3
+        msg += f"\U0001f4cb STILL AVAILABLE ({len(old_jobs)} old match{'es' if len(old_jobs) != 1 else ''}"
+        if old_jobs:
+            # Find soonest expiry
+            soonest = None
+            for j in old_jobs:
+                exp = j.get("expires_date", "")
+                if exp:
+                    try:
+                        exp_dt = datetime.fromisoformat(exp.replace("Z", "+00:00"))
+                        days_left = (exp_dt - datetime.now(timezone.utc)).total_seconds() / 86400
+                        if soonest is None or days_left < soonest:
+                            soonest = days_left
+                    except Exception:
+                        pass
+            if soonest is not None and soonest >= 0:
+                msg += f", expiring in {max(0, int(soonest))} day{'s' if int(soonest) != 1 else ''}"
+        msg += ")\n"
         msg += "\u2500" * 28 + "\n"
-        msg += "\n"
-        
-        # Job cards
-        for i, j in enumerate(jobs):
-            msg += format_job_card(j, i) + "\n\n"
-        
-        msg += "\u2500" * 28 + "\n"
-        msg += "\n"
-        
-        # Near misses section
-        if near_all:
-            msg += f"\U0001f4a1 Additional Close Matches ({near_miss_label()})\n"
-            msg += "Below your match threshold \u2014 review at your discretion:\n"
+        for i, j in enumerate(old_jobs):
+            idx = len(new_jobs) + i + 1
+            found = j.get("found_date", "")[:10]
+            expires = j.get("expires_date", "")[:10]
+            title = j.get("title", "Unknown")
+            company = j.get("company", "")
+            location = j.get("location", "Remote")
+            score = j.get("score", 0)
+            why = j.get("why", [])
+            why_text = why[0] if why else ""
+            msg += f"{idx}. {title} \u2014 {company}\n"
+            msg += f"   \U0001f4cd {location} | \U0001f3af {score}%"
+            if found:
+                msg += f" | found {found}"
+            if expires:
+                msg += f", expires {expires}"
             msg += "\n"
-            for j in near_all[:5]:
-                msg += format_near_miss_card(j, 0) + "\n"
-            msg += "\n"
-        
-        msg += "Full details in email + Excel attachment.\n"
+            if why_text:
+                msg += f"   \U0001f4a1 {why_text[:80]}\n"
+            msg += f"   \U0001f517 {j.get('url', '')}\n\n"
+
+    msg += "\u2500" * 28 + "\n"
+
+    # Near misses
+    if near_all:
+        msg += f"\U0001f4a1 Additional Close Matches ({near_miss_label()})\n"
+        msg += "Below your match threshold \u2014 review at your discretion:\n"
+        msg += "\n"
+        for j in near_all[:5]:
+            msg += format_near_miss_card(j, 0) + "\n"
+        msg += "\n"
+    
+    msg += "Full details in email + Excel attachment.\n"
     
     # Source intelligence
     source_report = get_source_report()
@@ -434,21 +468,10 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
         msg += "\u2500" * 28 + "\n"
         msg += source_report + "\n"
 
-    # Learning summary line
-    try:
-        total_applied = learning.get("total_applied", 0)
-        total_matches_count = stats.get("total_matches", 0)
-        top_cat = ""
-        if learning.get("top_skills"):
-            top_cat = learning["top_skills"][0][0]
-        if total_applied > 0 or total_matches_count > 0:
-            msg += "\n"
-            msg += f"Scan #{scan_num} | {total_matches_count} matches total"
-            if top_cat:
-                msg += f" | Top: {top_cat}"
-            msg += "\n"
-    except Exception:
-        pass
+    # Tip about old jobs
+    if old_jobs and not new_jobs:
+        msg += f"\n\U0001f4a1 TIP: {len(old_jobs)} job{'s' if len(old_jobs) != 1 else ''} from previous scans "
+        msg += f"{'are' if len(old_jobs) != 1 else 'is'} still open. Apply before they expire!\n"
 
     # Professional sign-off
     msg += "\n"
@@ -459,6 +482,23 @@ def build_telegram(jobs: list, scan_info: dict, stats: dict) -> str:
     msg += "CareerOps Services \u2014 AI Job Search Intelligence\n"
 
     return msg
+
+
+def format_lifecycle_card(job: dict, index: int) -> str:
+    """Format a job for lifecycle display — compact NEW card for Telegram."""
+    from scanner import get_freshness
+    salary = job.get("salary") or "Not specified"
+    rec = get_recommendation(job.get("score", 0))
+    
+    lines = []
+    lines.append(f"{index + 1}. {job.get('title', 'Unknown')} \u2014 {job.get('company', 'Unknown')}")
+    lines.append(f"   \U0001f4cd {job.get('location', 'Remote')}")
+    lines.append(f"   \U0001f3af Score: {job.get('score', 0)}/100 \u2014 {rec.replace('\u2b50 ', '').replace('\u2705 ', '').replace('\U0001f50d ', '')}")
+    why = job.get("why", [])
+    if why:
+        lines.append(f"   \U0001f4a1 Why: {why[0][:80]}")
+    lines.append(f"   \U0001f517 Apply: {job.get('url', '')}")
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
@@ -512,8 +552,11 @@ async def send_telegram(text: str) -> bool:
 # ---------------------------------------------------------------------------
 
 
-def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
-    """Build professional email with evolution intelligence."""
+def build_email(jobs: list, scan_info: dict, stats: dict,
+                lifecycle_new: list | None = None,
+                lifecycle_old: list | None = None,
+                lifecycle_expired: list | None = None) -> dict:
+    """Build professional email with job lifecycle (NEW / OLD / EXPIRED)."""
     from evolution_tracker import get_evolution_summary
     from source_manager import get_source_report
     
@@ -524,8 +567,13 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     scan_num = stats.get("total_scans", 0)
     all_count = scan_info.get("all_count", 0)
     source_count = scan_info.get("source_count", 0)
-    fresh_count = scan_info.get("fresh_count", 0)
     near_all = scan_info.get("near_misses", [])
+
+    # Lifecycle defaults
+    new_jobs = lifecycle_new if lifecycle_new is not None else jobs
+    old_jobs = lifecycle_old if lifecycle_old is not None else []
+    expired_jobs = lifecycle_expired if lifecycle_expired is not None else []
+    total_matches = len(new_jobs) + len(old_jobs)
     
     # Get evolution data
     evolution = get_evolution_summary()
@@ -628,14 +676,53 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
         </td></tr>
       </table>'''
 
-    # Build jobs HTML
-    if not jobs:
-        jobs_html = f'''<p style="margin:14px 0;font-size:13px;color:#333;line-height:1.6">
-        \u2705 <b>0 New Matches Found</b> \u2014 No new position passed every filter. Gates: {_esc(gates_line())}.
-        For full transparency: of {all_count:,} job listings reviewed across {source_count} sources, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate.
-        We will keep watching the market for you; the next scan runs automatically at the next scheduled slot and any qualifying role reaches you within hours of being posted.</p>'''
+    # Build jobs HTML — NEW section
+    if new_jobs:
+        new_jobs_html = "".join(job_card_html(j, i) for i, j in enumerate(new_jobs))
     else:
-        jobs_html = "".join(job_card_html(j, i) for i, j in enumerate(jobs))
+        new_jobs_html = f'''<p style="margin:14px 0;font-size:13px;color:#666;line-height:1.6">
+        \U0001f195 <b>No new matches this scan.</b> All {total_matches} matches shown below are from previous scans.</p>'''
+
+    # OLD section — still available
+    old_html = ""
+    if old_jobs:
+        old_cards = []
+        for i, j in enumerate(old_jobs):
+            idx = len(new_jobs) + i + 1
+            found = j.get("found_date", "")[:10]
+            expires = j.get("expires_date", "")[:10]
+            score = j.get("score", 0)
+            rec = get_recommendation(score)
+            why = j.get("why", [])
+            why_text = ", ".join(why[:2]) if why else ""
+            location = j.get("location", "Remote")
+            salary = j.get("salary") or "Not specified"
+            old_cards.append(f'''
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#fffbeb;border:1px solid #f59e0b;border-radius:6px;margin:10px 0;font-family:Arial,Helvetica,sans-serif">
+        <tr><td style="padding:12px 16px 8px;border-bottom:1px solid #fef3c7">
+          <span style="font-size:14px;font-weight:bold;color:#92400e">{_esc(j.get("title", ""))}</span>
+          <span style="font-weight:normal;color:#b45309;font-size:12px;margin-left:8px">{_esc(j.get("company", ""))} \u00b7 {score}%</span>
+        </td></tr>
+        <tr><td style="padding:8px 16px">
+          <table width="100%" cellpadding="3" cellspacing="0" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#78350f">
+            <tr><td width="90" style="font-weight:bold">Location</td><td>{_esc(location)}</td></tr>
+            <tr><td style="font-weight:bold">Pay</td><td>{_esc(salary)}</td></tr>
+            <tr><td style="font-weight:bold">Found</td><td>{_esc(found)}</td></tr>
+            <tr><td style="font-weight:bold">Expires</td><td>{_esc(expires)}</td></tr>
+            {f'<tr><td style="font-weight:bold">Why</td><td>{_esc(why_text[:100])}</td></tr>' if why_text else ''}
+          </table>
+        </td></tr>
+        <tr><td style="padding:0 16px 10px">
+          <a href="{_esc(j.get('url', ''))}" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#b45309;text-decoration:underline;font-weight:bold">Apply before expiry \u2192</a>
+        </td></tr>
+      </table>''')
+        old_html = (
+            '<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;'
+            'color:#92400e;border-bottom:2px solid #f59e0b;padding:16px 0 6px;margin-top:18px">'
+            f'\U0001f4cb STILL AVAILABLE ({len(old_jobs)} old match{"es" if len(old_jobs) != 1 else ""})</p>'
+        )
+        old_html += '<p style="margin:6px 0 12px;font-size:12px;color:#92400e">These jobs from previous scans are still open. Apply before they expire!</p>'
+        old_html += "".join(old_cards)
 
     near_html = ""
     if near_all:
@@ -715,6 +802,18 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     except Exception:
         pass
 
+    # Build summary paragraph for lifecycle
+    lifecycle_summary = ""
+    if new_jobs:
+        lifecycle_summary += f"<b>{len(new_jobs)} new match{'es' if len(new_jobs) != 1 else ''}</b>"
+    if old_jobs:
+        if lifecycle_summary:
+            lifecycle_summary += f", plus <b>{len(old_jobs)} still available</b>"
+        else:
+            lifecycle_summary += f"<b>{len(old_jobs)} still available</b>"
+    if not lifecycle_summary:
+        lifecycle_summary = "0 matches"
+
     html = f'''<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
@@ -731,11 +830,13 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;margin:10px 0 0;line-height:1.6">{_esc(greeting)}</p>
           <p style="font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#111;margin:14px 0 0;line-height:1.6">
             This cycle we reviewed <b>{all_count:,} job listings</b> across {source_count} sources.
-            <b>{len(jobs)} new match{'es' if len(jobs) != 1 else ''}{suffix}</b>.
+            {lifecycle_summary}{suffix}.
           </p>
         </td></tr>
         <tr><td style="padding:6px 28px 20px">
-          {jobs_html}
+          <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#111;border-bottom:2px solid #2563eb;padding:16px 0 6px;margin-top:4px">\U0001f195 NEW MATCHES ({len(new_jobs)})</p>
+          {new_jobs_html}
+          {old_html}
           {near_html}
           {unapplied_html}
         </td></tr>
@@ -764,14 +865,33 @@ def build_email(jobs: list, scan_info: dict, stats: dict) -> dict:
     text = f"{greeting}\n\n"
     text += "CAREEROPS SERVICES \u2014 Personal Job Search Assistant\n"
     text += f"{date_str} \xB7 {time_str} \xB7 Scan #{scan_num}\n\n"
-    text += f"This cycle we reviewed {all_count:,} job listings across {source_count} sources and found {len(jobs)} new match{'es' if len(jobs) != 1 else ''}{suffix}.\n\n"
+    text += f"This cycle we reviewed {all_count:,} job listings across {source_count} sources.\n"
+    text += f"{len(new_jobs)} new match{'es' if len(new_jobs) != 1 else ''}, plus {len(old_jobs)} still available.\n\n"
 
-    if not jobs:
-        text += "\u2705 0 New Matches Found\n"
-        text += f"No new position passed every filter. Gates: {gates_line()}. Of those reviewed, only {fresh_count} were posted within {fresh_window_phrase()} \u2014 and none met every gate. We will keep watching.\n\n"
+    if not new_jobs:
+        text += "\U0001f195 NEW MATCHES (0)\n"
+        text += "No new matches this scan.\n\n"
     else:
-        for i, j in enumerate(jobs):
+        text += f"\U0001f195 NEW MATCHES ({len(new_jobs)})\n"
+        text += "\u2500" * 30 + "\n"
+        for i, j in enumerate(new_jobs):
             text += format_job_card(j, i) + "\n\n"
+
+    if old_jobs:
+        text += f"\U0001f4cb STILL AVAILABLE ({len(old_jobs)} old match{'es' if len(old_jobs) != 1 else ''})\n"
+        text += "\u2500" * 30 + "\n"
+        for i, j in enumerate(old_jobs):
+            idx = len(new_jobs) + i + 1
+            found = j.get("found_date", "")[:10]
+            expires = j.get("expires_date", "")[:10]
+            text += f"{idx}. {j.get('title', '')} \u2014 {j.get('company', '')}\n"
+            text += f"   {j.get('location', 'Remote')} | {j.get('score', 0)}%"
+            if found:
+                text += f" | found {found}"
+            if expires:
+                text += f", expires {expires}"
+            text += "\n"
+            text += f"   {j.get('url', '')}\n\n"
 
     if near_all:
         text += f"\nADDITIONAL CLOSE MATCHES ({near_miss_label()})\n"

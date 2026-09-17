@@ -5574,8 +5574,13 @@
       "seen": "2026-09-17T22:50:06.225129+00:00",
       "title": "Quality Control",
       "company": "Primetrace"
+    },
+    "tclonlineservicesincorporated||remoteguangzhoufosha": {
+      "seen": "2026-09-17T23:34:34.886229+00:00",
+      "title": "\u534e\u661f-\u7ffb\u8bd1\u7c7b\uff08\u672c\u7855\uff09",
+      "company": "TCL.Online Services Incorporated"
     }
   },
-  "updated": "2026-09-17T23:03:34.801026+00:00",
+  "updated": "2026-09-17T23:34:39.343366+00:00",
   "reset_reason": "Cleared to allow fresh job evaluation after Groq migration and source cleanup"
 }

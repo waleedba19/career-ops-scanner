@@ -2867,7 +2867,7 @@
     },
     "linkedin": {
       "first_seen": "2026-09-06",
-      "total_fetched": 4197,
+      "total_fetched": 4196,
       "total_matches": 19,
       "last_active": "2026-09-18",
       "consecutive_empty": 2,
@@ -3020,7 +3020,7 @@
         },
         {
           "date": "2026-09-18",
-          "fetched": 34,
+          "fetched": 33,
           "matches": 0
         }
       ]
@@ -4722,5 +4722,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-18T16:25:23.589347+00:00"
+  "last_cleanup": "2026-09-18T16:25:55.994289+00:00"
 }

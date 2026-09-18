@@ -1,36 +1,5 @@
 [
   {
-    "date": "2026-09-11T22:14:13.204215+00:00",
-    "matched_count": 3,
-    "all_count": 3224,
-    "jobs": [
-      {
-        "title": "Master British Accent & Etiquette",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/public-speaking/Master-British-Accent-Etiquette.html",
-        "score": 97,
-        "category": "ESL",
-        "source": "freelancer"
-      },
-      {
-        "title": "Meesho Earrings Listing & Copywriting",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/content-writing/Meesho-Earrings-Listing-Copywriting",
-        "score": 87,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "Maghrebi Arabic Linguistic Projects (On-site London)",
-        "company": "Sigma AI",
-        "url": "https://uk.linkedin.com/jobs/view/maghrebi-arabic-linguistic-projects-on-site-london-at-sigma-ai-4465128678",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-12T09:10:33.065780+00:00",
     "matched_count": 2,
     "all_count": 3218,
@@ -2129,6 +2098,12 @@
     "date": "2026-09-18T02:45:45.678934+00:00",
     "matched_count": 0,
     "all_count": 6224,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-18T02:53:53.758528+00:00",
+    "matched_count": 0,
+    "all_count": 6407,
     "jobs": []
   }
 ]

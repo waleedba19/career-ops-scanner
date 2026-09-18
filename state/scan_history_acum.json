@@ -1935,26 +1935,9 @@
     "jobs": []
   },
   {
-    "date": "2026-09-18T00:00:02.221223+00:00",
-    "matched_count": 2,
-    "all_count": 1548,
-    "jobs": [
-      {
-        "title": "Virtual Assistant",
-        "company": "micro1",
-        "url": "https://himalayas.app/companies/micro1/jobs/virtual-assistant",
-        "score": 100,
-        "category": "Admin",
-        "source": "himalayas"
-      },
-      {
-        "title": "Data Entry Keyer",
-        "company": "micro1",
-        "url": "https://himalayas.app/companies/micro1/jobs/data-entry-keyer-5913700982",
-        "score": 92.0,
-        "category": "Admin",
-        "source": "himalayas"
-      }
-    ]
+    "date": "2026-09-18T00:00:55.175257+00:00",
+    "matched_count": 0,
+    "all_count": 1543,
+    "jobs": []
   }
 ]

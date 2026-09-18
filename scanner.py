@@ -6419,6 +6419,19 @@ async def run_scan():
             old_jobs_lc = []
             expired_jobs_lc = []
 
+        # ---- Employer email discovery for OLD "Still Available" matches ----
+        # The digest shows these every run until they expire, so they deserve the
+        # same real-inbox enrichment as new matches.
+        if EMAIL_FINDER_ENABLED and old_jobs_lc:
+            try:
+                old_email_targets = [j for j in old_jobs_lc if not j.get("hiring_email")][:EMAIL_FIND_TARGETS]
+                if old_email_targets:
+                    await enrich_jobs_with_emails(session, old_email_targets)
+                    resolved = sum(1 for j in old_email_targets if j.get("hiring_email"))
+                    print(f"  Email discovery (old): {resolved}/{len(old_email_targets)} inboxes resolved")
+            except Exception as e:
+                print(f"  Email discovery (old) skipped: {e}")
+
         # ---- Generate Excel ----
         # User-facing date/time in Libya (Africa/Tripoli, UTC+2), never raw UTC
         OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

@@ -60,6 +60,17 @@ EMAIL_STOP_TOKENS = (
     "bounce", "mailer", "notifications", "webmaster", "hostmaster",
 )
 
+# Placeholder / dummy addresses that appear on template sites.
+PLACEHOLDER_DOMAINS = {
+    "email.com", "example.com", "example.org", "domain.com", "yourdomain.com",
+    "company.com", "test.com", "mail.com", "site.com", "website.com",
+}
+PLACEHOLDER_LOCALS = (
+    "janedoe", "johndoe", "jane.doe", "john.doe", "yourname", "your.name",
+    "youremail", "your.email", "firstname", "lastname", "someone", "username",
+    "sample", "user", "test", "name", "email",
+)
+
 PREFERRED_PREFIXES = [
     "careers", "jobs", "hiring", "recruitment", "recruit", "talent", "hr",
     "people", "apply", "join", "work", "contact", "info", "hello", "office",
@@ -111,8 +122,14 @@ def _is_stop_email(e: str) -> bool:
         return True
     if "sentry" in e or "wixpress" in e:
         return True
-    prefix = e.split("@")[0]
-    return any(tok in prefix for tok in EMAIL_STOP_TOKENS)
+    local, _, dom = e.partition("@")
+    if any(tok in local for tok in EMAIL_STOP_TOKENS):
+        return True
+    if dom in PLACEHOLDER_DOMAINS or local in PLACEHOLDER_LOCALS:
+        return True
+    if local.replace(".", "").replace("_", "") in ("janedoe", "johndoe", "yourname", "youremail"):
+        return True
+    return False
 
 
 def _best_email(emails: list[str]) -> str:

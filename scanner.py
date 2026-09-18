@@ -6267,6 +6267,12 @@ async def run_scan():
                     guessed = sum(1 for j in email_targets
                                   if j.get("hiring_email") and j.get("email_guessed"))
                     print(f"  Email discovery: {harvested} employer, {guessed} guessed")
+                    sample = "; ".join(
+                        f"{j.get('company','?')}={j['hiring_email']}"
+                        for j in email_targets if j.get("hiring_email")
+                    )
+                    if sample:
+                        print(f"  Email discovery sample: {sample[:500]}")
             except Exception as e:
                 print(f"  Email discovery skipped: {e}")
         
@@ -6429,6 +6435,12 @@ async def run_scan():
                     await enrich_jobs_with_emails(session, old_email_targets)
                     resolved = sum(1 for j in old_email_targets if j.get("hiring_email"))
                     print(f"  Email discovery (old): {resolved}/{len(old_email_targets)} inboxes resolved")
+                    sample = "; ".join(
+                        f"{j.get('company','?')}={j['hiring_email']}"
+                        for j in old_email_targets if j.get("hiring_email")
+                    )
+                    if sample:
+                        print(f"  Email discovery (old) sample: {sample[:500]}")
             except Exception as e:
                 print(f"  Email discovery (old) skipped: {e}")
 

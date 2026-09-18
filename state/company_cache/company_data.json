@@ -1597,5 +1597,15 @@
       "Uses professional ATS"
     ],
     "last_updated": "2026-09-18T02:36:22.000856+00:00"
+  },
+  "TransPerfect": {
+    "name": "TransPerfect",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-18T15:42:45.306625+00:00"
   }
 }

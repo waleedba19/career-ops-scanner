@@ -1,76 +1,5 @@
 [
   {
-    "date": "2026-09-11T09:34:12.682310+00:00",
-    "matched_count": 8,
-    "all_count": 3213,
-    "jobs": [
-      {
-        "title": "Online ESL Teacher for Young Child",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/english-tutoring/Online-ESL-Teacher-for-Young",
-        "score": 97,
-        "category": "ESL",
-        "source": "freelancer"
-      },
-      {
-        "title": "Proofread Danish Website Content",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/website-localization/Proofread-Danish-Website-Content",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "Virtual Assistant for Job Applications & Operations (5\u201310 hrs/wk, PST Afternoons)",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/google-docs/Virtual-Assistant-for-Job-Applications",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      },
-      {
-        "title": "Personal Quran Interpretation Counseling",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/personal-development/Personal-Quran-Interpretation-Counseling",
-        "score": 62,
-        "category": "Arabic Translation",
-        "source": "freelancer"
-      },
-      {
-        "title": "Arabic Translator",
-        "company": "Bitget",
-        "url": "https://www.linkedin.com/jobs/view/arabic-translator-at-bitget-4466036614",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      },
-      {
-        "title": "IB English Tutor",
-        "company": "AP Guru",
-        "url": "https://in.linkedin.com/jobs/view/ib-english-tutor-at-ap-guru-4463949986",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "ESL TEACHER",
-        "company": "Lawrence Public Schools",
-        "url": "https://www.linkedin.com/jobs/view/esl-teacher-at-lawrence-public-schools-4463958373",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "English Teacher",
-        "company": "I CAN READ Indonesia",
-        "url": "https://id.linkedin.com/jobs/view/english-teacher-at-i-can-read-indonesia-4464506994",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-11T16:54:42.060949+00:00",
     "matched_count": 2,
     "all_count": 3224,
@@ -1939,5 +1868,284 @@
     "matched_count": 0,
     "all_count": 1543,
     "jobs": []
+  },
+  {
+    "date": "2026-09-18T02:36:33.231650+00:00",
+    "matched_count": 34,
+    "all_count": 6341,
+    "jobs": [
+      {
+        "title": "Construction Translator / Interpreter",
+        "company": "SISK Group",
+        "url": "https://de.linkedin.com/jobs/view/construction-translator-interpreter-at-sisk-group-4467831619",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
+      {
+        "title": "Virtual Assistant",
+        "company": "micro1",
+        "url": "https://himalayas.app/companies/micro1/jobs/virtual-assistant",
+        "score": 100,
+        "category": "Admin",
+        "source": "himalayas"
+      },
+      {
+        "title": "WPP Media: Manager, Influencer Campaign, Dubai- Freelance",
+        "company": "WPP Media",
+        "url": "https://job-boards.greenhouse.io/wppmedia/jobs/5426858008",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://ro.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4467592020",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Localization Specialist",
+        "company": "\u30d1\u30fc\u30bd\u30eb\u30c6\u30f3\u30d7\u30b9\u30bf\u30c3\u30d5\u682a\u5f0f\u4f1a\u793e Global Job Office",
+        "url": "https://jp.linkedin.com/jobs/view/localization-specialist-at-%E3%83%91%E3%83%BC%E3%82%BD%E3%83%AB%E3%83%86%E3%83%B3%E3%83%97%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-global-job-office-4468602018",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic/English speaking Content Moderator",
+        "company": "Savior Artigos Texteis Lda",
+        "url": "https://bg.linkedin.com/jobs/view/arabic-english-speaking-content-moderator-at-savior-artigos-texteis-lda-4467556608",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "3D Modeling & Python Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4857878101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Agentic Audio Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4856900101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "AI-Assisted Developer Workflows (Trace) AI Task Auditor - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4969250101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Alentejano Dialect Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4809672101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Alexandrian Dialect Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4809660101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "American Sign Language (ASL) - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4605284101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Analytical Chemistry Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4631544101",
+        "score": 100,
+        "category": "AI Data",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Egyptian) Language Expert - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655030101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Emirati) Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4681603101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Gulf) Language Expert - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655026101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Arabic (Gulf) Language Specialist - Freelance AI Trainer Project",
+        "company": "Invisible",
+        "url": "https://job-boards.eu.greenhouse.io/agency/jobs/4655891101",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "greenhouse"
+      },
+      {
+        "title": "Player Support Agent - German Speaker (Remote position)",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/player-support-agent-german-speaker-remote-position",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Account Manager",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/account-manager-67",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Sales Account Executive",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/sales-account-executive-2",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Player Support Agent (Spanish) - Remote",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/player-support-agent-spanish-remote-4",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "\u3010\u65b0\u5352\u6b53\u8fce\u3011 Account Manager/\u30a2\u30ab\u30a6\u30f3\u30c8\u30de\u30cd\u30b8\u30e3\u30fc \uff0d \u82f1\u8a9e\u529b\u751f\u304b\u305b\u307e\u3059\uff01",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/account-manager-63",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Service Desk Quality Analyst | Pune",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/service-desk-quality-analyst-pune-1",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Client Support Representative - Legal field (Buenos Aires)",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/client-support-representative-legal-field-buenos-aires",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Player Support Agent (German) - Remote",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/player-support-agent-german-remote-3",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Account Executive",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/account-executive-42",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Player Support Lead",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/player-support-lead",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Account Manager (Regulatory Solutions)",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/account-manager-regulatory-solutions",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Player Support Agent - English (Remote)",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/player-support-agent-english-remote",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Freelancer | Simplified Chinese into Portuguese (Brazil) for MTPE and Proofreading in Legal | contact via email only",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/freelancer-simplified-chinese-into-portuguese-brazil-for-mtpe-and-proofreading-in-legal-contact-via-email-only",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Managed Review Support Analyst | Noida",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/managed-review-support-analyst-noida",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Chinese to Thai/Malay/Indonesian Automotive Translation",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/chinese-to-thaimalayindonesian-automotive-translation",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Freelancer | Simplified Chinese into Malay for MTPE and Proofreading in Automotive",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/freelancer-simplified-chinese-into-malay-for-mtpe-and-proofreading-in-automotive",
+        "score": 73,
+        "category": "Language Services (company)",
+        "source": "recruitee"
+      },
+      {
+        "title": "Strategic Project Manager",
+        "company": "Tamatem Games",
+        "url": "https://apply.workable.com/j/60E667150A",
+        "score": 48,
+        "category": "Language Services (company)",
+        "source": "workable"
+      }
+    ]
   }
 ]

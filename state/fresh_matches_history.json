@@ -198,64 +198,64 @@
     ],
     "company_boost": 0,
     "is_fresh": true,
-    "age_hours": 0.11929812361111111,
+    "age_hours": 0.12834062083333334,
     "flags": [],
     "company_website": "",
     "email": "",
     "tier": "GOOD",
     "ai_scoring": {
       "technical_skills": {
-        "score": 10,
-        "reason": "No Arabic\u2011English translation required"
+        "score": 20,
+        "reason": "Job requires sales/VA tasks, no translation needed"
       },
       "experience_match": {
         "score": 15,
-        "reason": "Candidate lacks sales/VA experience"
+        "reason": "Candidate lacks sales or virtual assistant experience"
       },
       "behavioral_fit": {
-        "score": 60,
-        "reason": "Remote work compatible but sales culture mismatch"
+        "score": 40,
+        "reason": "Remote work okay, but sales culture mismatched"
       },
       "location_logistics": {
         "verdict": "PASS",
-        "reason": "Fully remote, no visa/citizenship constraints"
+        "reason": "Fully remote, no citizenship/visa constraints"
       },
       "career_alignment": {
-        "score": 20,
-        "reason": "Does not advance translation/localization goals"
+        "score": 10,
+        "reason": "Does not advance translation/localization career"
       },
-      "overall_score": 22,
+      "overall_score": 19,
       "verdict": "Poor Fit",
       "strengths": [
-        "Native Arabic speaker",
-        "Proven remote collaboration"
+        "Remote work experience",
+        "Excellent bilingual communication"
       ],
       "gaps": [
         "No sales or lead\u2011generation experience",
-        "No interest in commission\u2011driven targets"
+        "Lacks relevant VA tools and quotas handling"
       ],
-      "recommendation": "Skip this role; focus on translation or localization positions that match career goals.",
-      "interview_prep": "1. Why apply for a sales VA role? \u2013 Emphasize transferable communication skills but note limited sales experience. 2. How would you handle commission\u2011only targets? \u2013 Explain preference for stable translation work. 3. Can you manage luxury\u2011brand client communications in Arabic? \u2013 Highlight language ability but clarify lack of sales background.",
-      "one_line_summary": "Sales VA role misaligned; focus on Arabic\u2011English translation jobs."
+      "recommendation": "Skip this role; focus on pure translation or localization positions.",
+      "interview_prep": "1. Why are you interested in a sales VA role? \u2013 Emphasize remote work interest, but note limited sales background. 2. How would you handle a sales quota? \u2013 Acknowledge lack of experience, stress willingness to learn. 3. Can you translate client communications? \u2013 Highlight strong Arabic\u2011English skills as added value.",
+      "one_line_summary": "Remote sales VA role \u2013 poor fit for Arabic\u2011English translator."
     },
-    "ai_insight": "Sales VA role misaligned; focus on Arabic\u2011English translation jobs.",
-    "ai_overall_score": 22,
+    "ai_insight": "Remote sales VA role \u2013 poor fit for Arabic\u2011English translator.",
+    "ai_overall_score": 19,
     "ai_verdict": "Poor Fit",
     "ai_strengths": [
-      "Native Arabic speaker",
-      "Proven remote collaboration"
+      "Remote work experience",
+      "Excellent bilingual communication"
     ],
     "ai_gaps": [
       "No sales or lead\u2011generation experience",
-      "No interest in commission\u2011driven targets"
+      "Lacks relevant VA tools and quotas handling"
     ],
-    "ai_recommendation": "Skip this role; focus on translation or localization positions that match career goals.",
-    "ai_interview_prep": "1. Why apply for a sales VA role? \u2013 Emphasize transferable communication skills but note limited sales experience. 2. How would you handle commission\u2011only targets? \u2013 Explain preference for stable translation work. 3. Can you manage luxury\u2011brand client communications in Arabic? \u2013 Highlight language ability but clarify lack of sales background.",
-    "ai_technical_skills": 10,
+    "ai_recommendation": "Skip this role; focus on pure translation or localization positions.",
+    "ai_interview_prep": "1. Why are you interested in a sales VA role? \u2013 Emphasize remote work interest, but note limited sales background. 2. How would you handle a sales quota? \u2013 Acknowledge lack of experience, stress willingness to learn. 3. Can you translate client communications? \u2013 Highlight strong Arabic\u2011English skills as added value.",
+    "ai_technical_skills": 20,
     "ai_experience_match": 15,
-    "ai_behavioral_fit": 60,
+    "ai_behavioral_fit": 40,
     "ai_location_verdict": "PASS",
-    "ai_career_alignment": 20,
+    "ai_career_alignment": 10,
     "urgency_score": 0,
     "desperation_index": 0,
     "pain_points": "General hiring need",
@@ -272,7 +272,7 @@
       "industry": "unknown",
       "red_flags": [],
       "positive_signals": [],
-      "last_updated": "2026-09-18T16:25:23.333776+00:00"
+      "last_updated": "2026-09-18T16:25:55.753508+00:00"
     },
     "company_legitimacy": 50,
     "company_summary": "",
@@ -280,8 +280,8 @@
     "cover_letter_type": "virtual_assistant",
     "cover_letter_ai": false,
     "lifecycle_status": "new",
-    "found_date": "2026-09-18T16:25:23.595007+00:00",
-    "expires_date": "2026-09-21T16:25:23.595007+00:00",
-    "scan_date": "2026-09-18T18:25:27.307274+02:00"
+    "found_date": "2026-09-18T16:25:56.000109+00:00",
+    "expires_date": "2026-09-21T16:25:56.000109+00:00",
+    "scan_date": "2026-09-18T18:26:01.206879+02:00"
   }
 ]

@@ -1,21 +1,12 @@
 {
-  "total_scans": 135,
-  "total_matches": 282,
+  "total_scans": 136,
+  "total_matches": 316,
   "streak_days": 14,
   "last_scan_date": "2026-09-18",
-  "total_jobs_scanned": 308001,
-  "best_day_matches": 16,
-  "best_day_date": "2026-09-15",
+  "total_jobs_scanned": 314342,
+  "best_day_matches": 34,
+  "best_day_date": "2026-09-18",
   "daily_history": [
-    {
-      "date": "2026-09-13",
-      "total_fetched": 3074,
-      "matches": 0,
-      "old_verified": 0,
-      "near_misses": 0,
-      "sources": 21,
-      "fresh_count": 1420
-    },
     {
       "date": "2026-09-13",
       "total_fetched": 3230,
@@ -816,11 +807,20 @@
       "near_misses": 0,
       "sources": 15,
       "fresh_count": 3
+    },
+    {
+      "date": "2026-09-18",
+      "total_fetched": 6341,
+      "matches": 34,
+      "old_verified": 1033,
+      "near_misses": 0,
+      "sources": 28,
+      "fresh_count": 4198
     }
   ],
   "category_trends": {
     "Arabic Translation": {
-      "count": 76,
+      "count": 83,
       "last_seen": "2026-09-18"
     },
     "Editing": {
@@ -828,15 +828,15 @@
       "last_seen": "2026-09-15"
     },
     "Admin": {
-      "count": 42,
-      "last_seen": "2026-09-15"
+      "count": 43,
+      "last_seen": "2026-09-18"
     },
     "Other": {
       "count": 41,
       "last_seen": "2026-09-16"
     },
     "Translation (any pair)": {
-      "count": 3,
+      "count": 5,
       "last_seen": "2026-09-18"
     },
     "Editing & Proofreading": {
@@ -846,6 +846,14 @@
     "AI Data & Annotation": {
       "count": 2,
       "last_seen": "2026-09-17"
+    },
+    "AI Data": {
+      "count": 7,
+      "last_seen": "2026-09-18"
+    },
+    "Language Services (company)": {
+      "count": 17,
+      "last_seen": "2026-09-18"
     }
   },
   "source_trends": {
@@ -870,8 +878,8 @@
       "last_seen": "2026-09-05"
     },
     "himalayas": {
-      "matches": 44,
-      "last_seen": "2026-09-16"
+      "matches": 45,
+      "last_seen": "2026-09-18"
     },
     "search_discovered": {
       "matches": 2,
@@ -894,7 +902,7 @@
       "last_seen": "2026-09-13"
     },
     "linkedin": {
-      "matches": 91,
+      "matches": 95,
       "last_seen": "2026-09-18"
     },
     "impactpool": {
@@ -902,8 +910,8 @@
       "last_seen": "2026-09-16"
     },
     "greenhouse": {
-      "matches": 21,
-      "last_seen": "2026-09-17"
+      "matches": 33,
+      "last_seen": "2026-09-18"
     },
     "linkedin_playwright": {
       "matches": 17,
@@ -916,6 +924,14 @@
     "remoteok": {
       "matches": 1,
       "last_seen": "2026-09-16"
+    },
+    "recruitee": {
+      "matches": 16,
+      "last_seen": "2026-09-18"
+    },
+    "workable": {
+      "matches": 1,
+      "last_seen": "2026-09-18"
     }
   },
   "user_applied": [],

@@ -65,6 +65,27 @@ PREFERRED_PREFIXES = [
     "people", "apply", "join", "work", "contact", "info", "hello", "office",
 ]
 
+# Legal/descriptive suffixes stripped before inferring a company domain.
+_COMPANY_SUFFIX_RE = re.compile(
+    r"\b(inc|llc|ltd|limited|corp|corporation|co|company|gmbh|s\.?a|sarl|bv|nv|"
+    r"ag|pty|plc|group|holdings?|solutions?|technolog(?:y|ies)|services?|agency|"
+    r"studios?|media|labs?|global|international|systems?|software|consulting)\b",
+    re.I,
+)
+
+
+def _company_slug(company: str) -> str:
+    name = _COMPANY_SUFFIX_RE.sub(" ", company or "")
+    return re.sub(r"[^a-z0-9]", "", name.lower())
+
+
+def infer_domains(company: str) -> list[str]:
+    """Candidate employer domains guessed from the company name (no search)."""
+    slug = _company_slug(company)
+    if len(slug) < 3:
+        return []
+    return [slug + tld for tld in (".com", ".io", ".co", ".net", ".org")]
+
 
 def _domain_of(url: str) -> str:
     return domain_from_url(url or "")
@@ -207,6 +228,13 @@ async def discover_company_domain(session, job: dict, cache: dict) -> tuple[str,
                         break
                 if result[0]:
                     break
+            # Search can be blocked (datacenter IPs). Fall back to a DNS-verified
+            # guess of the company's own domain so harvesting still runs.
+            if not result[0]:
+                for cand in infer_domains(job.get("company", "")):
+                    if mx_verified(cand):
+                        result = (cand, f"https://{cand}", "dns")
+                        break
 
     if company:
         cache[company] = result

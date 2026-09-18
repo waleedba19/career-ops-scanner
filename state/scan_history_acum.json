@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-12T22:17:33.470889+00:00",
-    "matched_count": 0,
-    "all_count": 3222,
-    "jobs": []
-  },
-  {
     "date": "2026-09-12T22:33:01.177554+00:00",
     "matched_count": 0,
     "all_count": 3205,
@@ -2056,5 +2050,20 @@
     "matched_count": 0,
     "all_count": 6389,
     "jobs": []
+  },
+  {
+    "date": "2026-09-18T16:25:39.819303+00:00",
+    "matched_count": 1,
+    "all_count": 6399,
+    "jobs": [
+      {
+        "title": "Sales Virtual Assistant (VA) | US Luxury Agency",
+        "company": "himalayas_rss",
+        "url": "https://himalayas.app/companies/scalejet/jobs/sales-virtual-assistant-va-us-luxury-agency-1331518906",
+        "score": 65,
+        "category": "Admin",
+        "source": "himalayas_rss"
+      }
+    ]
   }
 ]

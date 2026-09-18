@@ -178,5 +178,110 @@
     "found_date": "2026-09-18T08:40:28.143108+00:00",
     "expires_date": "2026-09-21T08:40:28.143108+00:00",
     "lifecycle_status": "old"
+  },
+  {
+    "title": "Sales Virtual Assistant (VA) | US Luxury Agency",
+    "company": "himalayas_rss",
+    "url": "https://himalayas.app/companies/scalejet/jobs/sales-virtual-assistant-va-us-luxury-agency-1331518906",
+    "location": "Remote",
+    "posted": "Fri, 18 Sep 2026 16:18:06 GMT",
+    "description": "Our client, Veicolo Agency, is a growth partner for luxury and fashion eCommerce brands.",
+    "salary": "",
+    "source": "himalayas_rss",
+    "postedISO": "2026-09-18T16:18:06+00:00",
+    "score": 65,
+    "category": "Admin",
+    "why": [
+      "virtual assistant (title)",
+      "remote/worldwide (bonus)",
+      "matches Admin profile"
+    ],
+    "company_boost": 0,
+    "is_fresh": true,
+    "age_hours": 0.11929812361111111,
+    "flags": [],
+    "company_website": "",
+    "email": "",
+    "tier": "GOOD",
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 10,
+        "reason": "No Arabic\u2011English translation required"
+      },
+      "experience_match": {
+        "score": 15,
+        "reason": "Candidate lacks sales/VA experience"
+      },
+      "behavioral_fit": {
+        "score": 60,
+        "reason": "Remote work compatible but sales culture mismatch"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "Fully remote, no visa/citizenship constraints"
+      },
+      "career_alignment": {
+        "score": 20,
+        "reason": "Does not advance translation/localization goals"
+      },
+      "overall_score": 22,
+      "verdict": "Poor Fit",
+      "strengths": [
+        "Native Arabic speaker",
+        "Proven remote collaboration"
+      ],
+      "gaps": [
+        "No sales or lead\u2011generation experience",
+        "No interest in commission\u2011driven targets"
+      ],
+      "recommendation": "Skip this role; focus on translation or localization positions that match career goals.",
+      "interview_prep": "1. Why apply for a sales VA role? \u2013 Emphasize transferable communication skills but note limited sales experience. 2. How would you handle commission\u2011only targets? \u2013 Explain preference for stable translation work. 3. Can you manage luxury\u2011brand client communications in Arabic? \u2013 Highlight language ability but clarify lack of sales background.",
+      "one_line_summary": "Sales VA role misaligned; focus on Arabic\u2011English translation jobs."
+    },
+    "ai_insight": "Sales VA role misaligned; focus on Arabic\u2011English translation jobs.",
+    "ai_overall_score": 22,
+    "ai_verdict": "Poor Fit",
+    "ai_strengths": [
+      "Native Arabic speaker",
+      "Proven remote collaboration"
+    ],
+    "ai_gaps": [
+      "No sales or lead\u2011generation experience",
+      "No interest in commission\u2011driven targets"
+    ],
+    "ai_recommendation": "Skip this role; focus on translation or localization positions that match career goals.",
+    "ai_interview_prep": "1. Why apply for a sales VA role? \u2013 Emphasize transferable communication skills but note limited sales experience. 2. How would you handle commission\u2011only targets? \u2013 Explain preference for stable translation work. 3. Can you manage luxury\u2011brand client communications in Arabic? \u2013 Highlight language ability but clarify lack of sales background.",
+    "ai_technical_skills": 10,
+    "ai_experience_match": 15,
+    "ai_behavioral_fit": 60,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 20,
+    "urgency_score": 0,
+    "desperation_index": 0,
+    "pain_points": "General hiring need",
+    "email_guessed": false,
+    "hiring_email": "",
+    "email_verified": false,
+    "all_emails": [],
+    "opportunity_score": 20,
+    "company_research": {
+      "name": "himalayas_rss",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-09-18T16:25:23.333776+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/himalayas_rss_Sales Virtual Assistant (VA) - US Luxury Agency_20260918.pdf",
+    "cover_letter_type": "virtual_assistant",
+    "cover_letter_ai": false,
+    "lifecycle_status": "new",
+    "found_date": "2026-09-18T16:25:23.595007+00:00",
+    "expires_date": "2026-09-21T16:25:23.595007+00:00",
+    "scan_date": "2026-09-18T18:25:27.307274+02:00"
   }
 ]

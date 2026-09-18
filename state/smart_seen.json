@@ -21369,8 +21369,43 @@
       "seen": "2026-09-18T02:45:35.841832+00:00",
       "title": "Medical School Admissions Coach",
       "company": "himalayas_rss"
+    },
+    "himalayasrss|personalfinancecoach|remote": {
+      "seen": "2026-09-18T02:53:32.883746+00:00",
+      "title": "Personal Finance Coach",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|wealthmanagementcareerscoach|remote": {
+      "seen": "2026-09-18T02:53:32.884435+00:00",
+      "title": "Wealth Management Careers Coach",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|frmexamtutor|remote": {
+      "seen": "2026-09-18T02:53:32.884975+00:00",
+      "title": "FRM Exam Tutor",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|appliedaiengineeraifinanceagen|remote": {
+      "seen": "2026-09-18T02:53:32.885775+00:00",
+      "title": "Applied AI Engineer - AI Finance Agent",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|realestatecoach|remote": {
+      "seen": "2026-09-18T02:53:32.886306+00:00",
+      "title": "Real Estate Coach",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|senioreconomydesigner|remote": {
+      "seen": "2026-09-18T02:53:32.886923+00:00",
+      "title": "Senior Economy Designer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|ecommercedtccoach|remote": {
+      "seen": "2026-09-18T02:53:32.887514+00:00",
+      "title": "E-Commerce & DTC Coach",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-18T02:45:50.039304+00:00",
+  "updated": "2026-09-18T02:53:59.152422+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

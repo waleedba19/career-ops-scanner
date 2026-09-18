@@ -1,52 +1,5 @@
 [
   {
-    "date": "2026-09-12T16:04:20.852288+00:00",
-    "matched_count": 5,
-    "all_count": 3212,
-    "jobs": [
-      {
-        "title": "Skilled Content Writer Required - 12/09/2026 09:06 EDT",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/article-writing/Skilled-Content-Writer-Required-EDT",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "Scanned Document Text Data Entry",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/optical-character-recognition/Scanned-Document-Text-Data-Entry",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      },
-      {
-        "title": "Website & Marketing Content Writer",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/blog-writing/Website-Marketing-Content-Writer",
-        "score": 87,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "Hangzhou English Teacher",
-        "company": "Echo Education",
-        "url": "https://cn.linkedin.com/jobs/view/hangzhou-english-teacher-at-echo-education-4464250714",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "ELA/ESL Teacher",
-        "company": "Harris County",
-        "url": "https://www.linkedin.com/jobs/view/ela-esl-teacher-at-harris-county-4466351626",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-12T21:50:34.550745+00:00",
     "matched_count": 2,
     "all_count": 3183,
@@ -2088,5 +2041,20 @@
     "matched_count": 0,
     "all_count": 6408,
     "jobs": []
+  },
+  {
+    "date": "2026-09-18T08:40:42.965364+00:00",
+    "matched_count": 1,
+    "all_count": 6306,
+    "jobs": [
+      {
+        "title": "Multilingual Roles in Bulgaria (Up to \u20ac2,200/mo + \u20ac1.5k Bonus + Relocation)",
+        "company": "Savior Artigos Texteis Lda",
+        "url": "https://bg.linkedin.com/jobs/view/multilingual-roles-in-bulgaria-up-to-%E2%82%AC2-200-mo-%2B-%E2%82%AC1-5k-bonus-%2B-relocation-at-savior-artigos-texteis-lda-4467854038",
+        "score": 87,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

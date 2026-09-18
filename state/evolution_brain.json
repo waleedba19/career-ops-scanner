@@ -3,7 +3,7 @@
   "total_matches": 320,
   "streak_days": 14,
   "last_scan_date": "2026-09-18",
-  "total_jobs_scanned": 358805,
+  "total_jobs_scanned": 358804,
   "best_day_matches": 34,
   "best_day_date": "2026-09-18",
   "daily_history": [
@@ -810,12 +810,12 @@
     },
     {
       "date": "2026-09-18",
-      "total_fetched": 6399,
+      "total_fetched": 6398,
       "matches": 1,
       "old_verified": 0,
       "near_misses": 0,
       "sources": 30,
-      "fresh_count": 37
+      "fresh_count": 35
     }
   ],
   "category_trends": {

@@ -1572,5 +1572,30 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-17T22:33:41.907976+00:00"
+  },
+  "SISK Group": {
+    "name": "SISK Group",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-09-18T02:36:21.998985+00:00"
+  },
+  "WPP Media": {
+    "name": "WPP Media",
+    "legitimacy_score": 70,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Uses professional ATS"
+    ],
+    "last_updated": "2026-09-18T02:36:22.000856+00:00"
   }
 }

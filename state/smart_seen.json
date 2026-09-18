@@ -23684,8 +23684,123 @@
       "seen": "2026-09-18T15:41:08.632248+00:00",
       "title": "Business Change Support Officer",
       "company": "jobgether"
+    },
+    "lompocunifiedschooldistrict|districttranslator|lompocca": {
+      "seen": "2026-09-18T15:51:48.596289+00:00",
+      "title": "District Translator",
+      "company": "Lompoc Unified School District"
+    },
+    "tokatinstitute|tokatfellowshipinthehistoryofp|fellowshipfl": {
+      "seen": "2026-09-18T15:51:48.597396+00:00",
+      "title": "Tokat Fellowship in the History of Philosophy in the Islamic World",
+      "company": "Tokat Institute"
+    },
+    "intelligenesisllc|operationallanguageanalystleve|annapolisjunctionmd": {
+      "seen": "2026-09-18T15:51:48.598267+00:00",
+      "title": "Operational Language Analyst Level 3",
+      "company": "IntelliGenesis LLC\u00ae"
+    },
+    "himalayasrss|srsecurityengineerpenetrationt|remote": {
+      "seen": "2026-09-18T15:51:49.266997+00:00",
+      "title": "Sr. Security Engineer (Penetration Testing)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|bidadministratormexico|remote": {
+      "seen": "2026-09-18T15:51:49.268306+00:00",
+      "title": "Bid Administrator (Mexico Remote)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|teamleadandroidcoreproduct|remote": {
+      "seen": "2026-09-18T15:51:49.269090+00:00",
+      "title": "Team Lead, Android Core Product",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|technicalaccountmanager|remote": {
+      "seen": "2026-09-18T15:51:49.269907+00:00",
+      "title": "Technical Account Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|createyourown|remote": {
+      "seen": "2026-09-18T15:51:49.270826+00:00",
+      "title": "Create Your Own",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalcommercialdataenginee|remote": {
+      "seen": "2026-09-18T15:51:49.271805+00:00",
+      "title": "Principal Commercial Data Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|frontenddeveloper|remote": {
+      "seen": "2026-09-18T15:51:49.272490+00:00",
+      "title": "Frontend Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|generalapplication|remote": {
+      "seen": "2026-09-18T15:51:49.273282+00:00",
+      "title": "General Application",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|softwareengineerbackendintegra|remote": {
+      "seen": "2026-09-18T15:51:49.274032+00:00",
+      "title": "Software Engineer, Backend & Integrations",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|executivesystemsintegrationspe|remote": {
+      "seen": "2026-09-18T15:51:49.274738+00:00",
+      "title": "Executive Systems Integration Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorsecurityservicesconsulta|remote": {
+      "seen": "2026-09-18T15:51:49.275595+00:00",
+      "title": "Senior Security Services Consultant",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|mdrplatformengineeritaly|remote": {
+      "seen": "2026-09-18T15:51:49.276616+00:00",
+      "title": "MDR Platform Engineer - Italy",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|palliativecaremedicalcoder|remote": {
+      "seen": "2026-09-18T15:51:49.277696+00:00",
+      "title": "Palliative Care Medical Coder",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|staffsoftwareengineer|remote": {
+      "seen": "2026-09-18T15:51:49.278296+00:00",
+      "title": "Staff Software Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|senioraccountexecutive|remote": {
+      "seen": "2026-09-18T15:51:49.279184+00:00",
+      "title": "Senior Account Executive",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|aiengineergenaiplatformmidleve|remote": {
+      "seen": "2026-09-18T15:51:49.280177+00:00",
+      "title": "AI Engineer (GenAI Platform) - Mid Level (Brazil Based only)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|coupafunctionalleadmanager|remote": {
+      "seen": "2026-09-18T15:51:49.281214+00:00",
+      "title": "Coupa Functional Lead, Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|consultanthealthcarecompliance|remote": {
+      "seen": "2026-09-18T15:51:49.282166+00:00",
+      "title": "Consultant - Healthcare Compliance Auditor - HTS",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|avpenterpriseprogramportfoliom|remote": {
+      "seen": "2026-09-18T15:51:49.283240+00:00",
+      "title": "AVP, Enterprise Program Portfolio Management - REMOTE",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|healthcoach|remote": {
+      "seen": "2026-09-18T15:51:49.283927+00:00",
+      "title": "Health Coach",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-18T15:43:16.025104+00:00",
+  "updated": "2026-09-18T15:52:17.515238+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

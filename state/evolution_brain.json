@@ -1,21 +1,12 @@
 {
-  "total_scans": 140,
-  "total_matches": 317,
+  "total_scans": 141,
+  "total_matches": 319,
   "streak_days": 14,
   "last_scan_date": "2026-09-18",
-  "total_jobs_scanned": 339687,
+  "total_jobs_scanned": 346017,
   "best_day_matches": 34,
   "best_day_date": "2026-09-18",
   "daily_history": [
-    {
-      "date": "2026-09-13",
-      "total_fetched": 3226,
-      "matches": 1,
-      "old_verified": 0,
-      "near_misses": 0,
-      "sources": 21,
-      "fresh_count": 1420
-    },
     {
       "date": "2026-09-13",
       "total_fetched": 3206,
@@ -816,6 +807,15 @@
       "near_misses": 0,
       "sources": 29,
       "fresh_count": 203
+    },
+    {
+      "date": "2026-09-18",
+      "total_fetched": 6330,
+      "matches": 2,
+      "old_verified": 2,
+      "near_misses": 0,
+      "sources": 29,
+      "fresh_count": 248
     }
   ],
   "category_trends": {
@@ -828,7 +828,7 @@
       "last_seen": "2026-09-15"
     },
     "Admin": {
-      "count": 43,
+      "count": 44,
       "last_seen": "2026-09-18"
     },
     "Other": {
@@ -852,7 +852,7 @@
       "last_seen": "2026-09-18"
     },
     "Language Services (company)": {
-      "count": 17,
+      "count": 18,
       "last_seen": "2026-09-18"
     }
   },
@@ -902,7 +902,7 @@
       "last_seen": "2026-09-13"
     },
     "linkedin": {
-      "matches": 96,
+      "matches": 97,
       "last_seen": "2026-09-18"
     },
     "impactpool": {
@@ -926,7 +926,7 @@
       "last_seen": "2026-09-16"
     },
     "recruitee": {
-      "matches": 16,
+      "matches": 17,
       "last_seen": "2026-09-18"
     },
     "workable": {

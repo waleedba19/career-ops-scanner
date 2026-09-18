@@ -1,18 +1,9 @@
 """TeamTailor job boards."""
 from .base import BaseFetcher, FetchResult
 
-TEAMTAILOR_BOARDS = [
-    ("Tarjama", "tarjama"),
-    ("Saudisoft", "saudisoft"),
-    ("Tamatem Games", "tamatem"),
-    ("Welocalize", "welocalize"),
-    ("Keywords Studios", "keywordsstudios"),
-    ("TransPerfect", "transperfect"),
-    ("Lionbridge", "lionbridge"),
-    ("RWS", "rws"),
-    ("Appen", "appen"),
-    ("TELUS International", "telusinternational"),
-]
+# Probe run 2026-09-18: every configured slug returned 404 on
+# <slug>.teamtailor.com/jobs, so the list is empty until new slugs are verified.
+TEAMTAILOR_BOARDS = []
 
 
 async def fetch_teamtailor_board(session, company: str, slug: str) -> list[dict]:

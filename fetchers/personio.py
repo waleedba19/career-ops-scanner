@@ -1,11 +1,8 @@
 """Personio job boards."""
 from .base import BaseFetcher, FetchResult
 
-PERSONIO_BOARDS = [
-    ("Appen", "appen"),
-    ("Centific", "centific"),
-    ("Surge AI", "surgeai"),
-]
+# Probe run 2026-09-18: configured slugs did not resolve on *.jobs.personio.com.
+PERSONIO_BOARDS = []
 
 
 async def fetch_personio_board(session, company: str, slug: str) -> list[dict]:

@@ -46,9 +46,15 @@ jobs:
       ADZUNA_APP_KEY:     ${{ secrets.ADZUNA_APP_KEY }}
       JOOBLE_API_KEY:     ${{ secrets.JOOBLE_API_KEY }}
       RELIEFWEB_APPNAME:  ${{ secrets.RELIEFWEB_APPNAME }}
-      CAREEROPS_TIER_CAP: "2"   # balanced — verified + secondary sources
+      CAREEROPS_TIER_CAP: "3"   # full worldwide sweep (all registry tiers)
       CAREEROPS_BATCH_SIZE: "12"
       CAREEROPS_MIN_SCORE: "50" # balanced threshold — 50-74 GOOD, 75+ STRONG
+      CAREEROPS_COMPANY_MIN_SCORE: "40"  # trusted translation/AI companies
+      CAREEROPS_FRESH_H: "48"   # jobs posted within 2 days count as fresh
+      CAREEROPS_AI_CAP: "10"    # top N jobs get Groq analysis
+      CAREEROPS_DEDUP_TTL_DAYS: "14"  # re-evaluate seen jobs after 14 days
+      CAREEROPS_EMAIL_FINDER: "1"      # resolve employer inboxes (not board relay)
+      CAREEROPS_EMAIL_TARGETS: "10"    # top N matches to enrich
       SCAN_MODE:          ${{ github.event.inputs.mode || 'adaptive' }}
 
     steps:

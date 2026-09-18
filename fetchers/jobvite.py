@@ -1,11 +1,8 @@
 """Jobvite job boards."""
 from .base import BaseFetcher, FetchResult
 
-JOBVITE_BOARDS = [
-    ("TELUS International", "telusinternational"),
-    ("Concentrix", "concentrix"),
-    ("Teleperformance", "teleperformance"),
-]
+# Probe run 2026-09-18: configured slugs did not resolve on <slug>.jobvite.com.
+JOBVITE_BOARDS = []
 
 
 async def fetch_jobvite_board(session, company: str, slug: str) -> list[dict]:

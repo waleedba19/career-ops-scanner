@@ -175,15 +175,26 @@ def domain_from_company_website(company: str, job_url: str) -> str:
     return d
 
 def mx_verified(domain: str) -> bool:
-    """Free DNS MX check — no API, just socket DNS lookup."""
+    """Free DNS check — no API, just a socket lookup.
+
+    NOTE: this verifies the domain RESOLVES (A record), not that an MX record
+    exists — a true MX check needs dnspython. It is a cheap "domain is real"
+    signal. socket.getaddrinfo takes no timeout kwarg, so set it globally.
+    """
+    if not domain:
+        return False
+    domain = domain.split("/")[0].split(":")[0].strip()
     if not domain:
         return False
     try:
-        # getaddrinfo will do A lookup; MX is better but requires dnspython.
-        # We use getaddrinfo as free forever lightweight check — if domain resolves, likely has MX
-        socket.getaddrinfo(domain, None, timeout=3)
-        return True
-    except:
+        old = socket.getdefaulttimeout()
+        socket.setdefaulttimeout(3)
+        try:
+            socket.gethostbyname(domain)
+            return True
+        finally:
+            socket.setdefaulttimeout(old)
+    except Exception:
         return False
 
 def pain_points(job: dict) -> str:

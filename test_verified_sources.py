@@ -302,7 +302,10 @@ def test_wiring():
                 "RECRUITEE_COMPANIES", "TEAMTAILOR_COMPANIES"):
         lst = getattr(config, var)
         check(f"config.{var} well-formed", all(isinstance(t, tuple) and len(t) == 2 and all(isinstance(x, str) and x for x in t) for t in lst) and lst)
-    check("blocked list = probe-confirmed set", set(config.PROBE_BLOCKED_SOURCES) == {"mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz"})
+    check("blocked list = probe-confirmed set", set(config.PROBE_BLOCKED_SOURCES) == {
+        "mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz",
+        "guru", "dailyremote", "europeremotely", "euremotejobs", "remotejobleads",
+    })
     check("scanner picked up config lists", scanner.GREENHOUSE_PROFILE_BOARDS == config.GREENHOUSE_PROFILE_BOARDS
           and scanner.PROBE_BLOCKED_SOURCES == config.PROBE_BLOCKED_SOURCES)
     for fn in ("fetch_linkedin_guest", "fetch_freelancer_api", "fetch_jobicy_tags", "fetch_impactpool", "fetch_themuse",

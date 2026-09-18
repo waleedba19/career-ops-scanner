@@ -47,6 +47,7 @@ from fetchers.verified import (
 from interview_prep import generate_interview_prep_for_top_matches, get_interview_prep_summary
 from scheduler import SmartScheduler, create_scheduler
 from deep_reader import enrich_jobs_with_deep_read
+from email_finder import enrich_jobs_with_emails
 
 # Worldwide Arabic job search engine
 try:
@@ -142,6 +143,16 @@ TOP_LIVENESS_CHECK = _cfg.TOP_LIVENESS_CHECK
 HISTORY_MAX = _cfg.HISTORY_MAX
 FETCH_TIMEOUT = _cfg.FETCH_TIMEOUT
 FETCH_BATCH_SIZE = _cfg.FETCH_BATCH_SIZE
+DEDUP_TTL_DAYS = getattr(_cfg, "DEDUP_TTL_DAYS", 14)
+DEDUP_ENABLED = getattr(_cfg, "DEDUP_ENABLED", True)
+AI_ANALYZE_CAP = getattr(_cfg, "AI_ANALYZE_CAP", 10)
+COMPANY_MIN_SCORE = getattr(_cfg, "COMPANY_MIN_SCORE", 40)
+WORLDWIDE_FEEDS = getattr(_cfg, "WORLDWIDE_FEEDS", [])
+MAX_WORLDWIDE_FEEDS = getattr(_cfg, "MAX_WORLDWIDE_FEEDS", 40)
+WORLDWIDE_HTML = getattr(_cfg, "WORLDWIDE_HTML", [])
+MAX_WORLDWIDE_HTML = getattr(_cfg, "MAX_WORLDWIDE_HTML", 30)
+EMAIL_FINDER_ENABLED = getattr(_cfg, "EMAIL_FINDER_ENABLED", True)
+EMAIL_FIND_TARGETS = getattr(_cfg, "EMAIL_FIND_TARGETS", 10)
 HEADERS = _cfg.HEADERS
 GREENHOUSE_COMPANIES = _cfg.GREENHOUSE_COMPANIES
 LEVER_COMPANIES = _cfg.LEVER_COMPANIES
@@ -527,6 +538,14 @@ NEGATIVE_KEYWORDS = [
     "cloud engineer", "infrastructure engineer", "platform engineer",
     "game developer", "game designer", "unity developer", "unreal",
     "database administrator", "dba", "sysadmin", "it support",
+    # Developer/engineering titles (never the candidate's target)
+    "full stack developer", "full-stack developer", "software developer",
+    "backend developer", "frontend developer", "full stack engineer",
+    "java developer", "python developer", "php developer", "ruby developer",
+    ".net developer", "dotnet developer", "c# developer", "react developer",
+    "node developer", "golang developer", "rust developer",
+    "data engineer", "machine learning engineer", "ai engineer", "mlops",
+    "open source contributor",
     # Healthcare / non-remote fields
     "nurse", "doctor", "pharmacist", "healthcare",
     # Finance / accounting
@@ -1002,16 +1021,24 @@ HIGH_RELEVANCE_ROLES = re.compile(
 )
 
 
-def apply_company_bonus(job: dict) -> int:
-    """Strong company-aware scoring boost for translation/language employers.
+def apply_company_bonus(job: dict, base_score: int | None = None,
+                        has_signal: bool | None = None) -> dict:
+    """Company-aware scoring boost for translation/language employers.
 
-    Tier-based: +50 for core LSPs, +35 for AI data, +25 for MENA, +15 for remote-first.
-    Additional +15 if the role title is high-relevance at a translation company.
-    Total boost can be up to +65 (50 tier + 15 role).
+    Tier-based: +50 core LSPs, +35 AI data, +25 MENA, +15 remote-first, plus
+    +15 when the role title is high-relevance (PM, linguist, QA, content...).
+
+    Returns {"score", "company_boost", "company_tier", "high_relevance"} so the
+    caller can carry the boost into later gates. A company-only match (no
+    keyword signal) is allowed only when the title is high-relevance — otherwise
+    every unrelated role at a tier company would be treated as a match.
     """
     company = str(job.get("company") or "").lower().strip()
     title = str(job.get("title") or "").lower().strip()
-    cur = int(job.get("score") or 0)
+    cur = int(job.get("score") or 0) if base_score is None else int(base_score)
+    if has_signal is None:
+        has_signal = cur > 0
+    high_rel = bool(HIGH_RELEVANCE_ROLES.search(title))
 
     tier_boost = 0
     for boost, companies in TRANSLATION_COMPANY_TIERS.items():
@@ -1019,13 +1046,70 @@ def apply_company_bonus(job: dict) -> int:
             tier_boost = boost
             break
 
+    info = {"score": cur, "company_boost": 0, "company_tier": tier_boost,
+            "high_relevance": high_rel}
     if tier_boost == 0:
-        return cur
+        return info
+    # Company-only match (no keyword signal) requires a high-relevance title.
+    if not has_signal and not high_rel:
+        return info
+    role_boost = 15 if high_rel else 0
+    info["company_boost"] = tier_boost + role_boost
+    info["score"] = min(100, cur + tier_boost + role_boost)
+    return info
 
-    # Additional boost if the role itself is high-relevance at a translation company
-    role_boost = 15 if HIGH_RELEVANCE_ROLES.search(title) else 0
 
-    return min(100, cur + tier_boost + role_boost)
+def score_job(job: dict) -> dict:
+    """Single scoring path shared by the fresh and old-but-verified branches.
+
+    Runs keyword scoring, learning adjustment, company bonus and company
+    pattern priority, and returns the final score/category/why plus the
+    company-boost metadata used by the no-signal and quality gates. Using one
+    helper keeps the two branches from diverging (the old branch used to
+    re-score without the company bonus, silently dropping every boosted job).
+    """
+    base = get_match_score(job.get("title", ""), job.get("description", ""))
+    score = base.get("score", 0)
+    category = base.get("category", "Other")
+    why = list(base.get("why", []))
+    # A real keyword signal is a bucket hit — not merely a nonzero score, since
+    # the learning adjustment below can lift an unrelated job above zero.
+    has_signal = base.get("score", 0) > 0 and base.get("category") != "Other"
+
+    try:
+        adjusted = adjust_scoring_based_on_learning({
+            **job,
+            "score": score,
+            "category": category,
+            "ai_overall_score": score,
+        })
+        if adjusted and adjusted != score:
+            score = adjusted
+    except Exception:
+        pass
+
+    bonus = apply_company_bonus({**job, "score": score}, base_score=score,
+                                has_signal=has_signal)
+    score = bonus["score"]
+    if bonus["company_boost"] > 0:
+        why.append("trusted translation/language employer (company boost)")
+        if category == "Other":
+            category = "Language Services (company)"
+
+    try:
+        company_priority = get_company_priority(job.get("company", ""))
+        if company_priority:
+            score = max(0, min(100, score + company_priority))
+    except Exception:
+        pass
+
+    return {
+        "score": int(max(0, min(100, score))),
+        "category": category,
+        "why": why,
+        "company_boost": bonus["company_boost"],
+        "high_relevance": bonus["high_relevance"],
+    }
 
 
 def extract_salary(text: str) -> str:
@@ -1296,7 +1380,9 @@ def drop_unqualified_matches(jobs: list[dict], reason_counts: dict | None = None
         if has_residency_blocker(job):
             counts["residency_blocker"] = counts.get("residency_blocker", 0) + 1
             continue
-        if not is_open_worldwide(job.get("location", ""), job.get("description", "")):
+        if not is_open_worldwide_for_company(
+            job.get("location", ""), job.get("description", ""), job.get("company", "")
+        ):
             counts["country_locked"] = counts.get("country_locked", 0) + 1
             continue
         flags = list(job.get("flags") or [])
@@ -3466,24 +3552,71 @@ def save_history(history: dict):
 # ---------------------------------------------------------------------------
 
 
-def load_seen_urls() -> set:
-    """Load the persistent seen URLs from disk — checks output/ then state/."""
+def _load_seen_url_entries() -> dict:
+    """Return {url: iso_timestamp} from the persistent seen-URLs file.
+
+    Supports the legacy list format (no timestamps): those entries are returned
+    with an empty timestamp so the TTL filter treats them as expired and lets
+    still-open listings be re-evaluated.
+    """
     for cand in [SEEN_URLS_FILE, Path(__file__).parent / "state" / "seen_urls.json"]:
         if cand.exists():
             try:
                 data = json.loads(cand.read_text())
-                return set(data.get("urls", []))
             except Exception:
-                pass
-    return set()
+                continue
+            urls = data.get("urls", {})
+            if isinstance(urls, dict):
+                return {str(u): ts for u, ts in urls.items()}
+            # Legacy list format — no timestamps available.
+            return {str(u): "" for u in urls}
+    return {}
 
 
-def save_seen_urls(urls: set):
-    """Save the persistent seen URLs to disk."""
+def load_seen_urls() -> set:
+    """Load seen URLs still within the dedup TTL (legacy entries are expired)."""
+    entries = _load_seen_url_entries()
+    if not DEDUP_ENABLED:
+        return set(entries.keys())
+    now = datetime.now(timezone.utc)
+    ttl_secs = DEDUP_TTL_DAYS * 86400
+    fresh = set()
+    for url, ts in entries.items():
+        seen_dt = _parse_seen_ts(ts)
+        if seen_dt is None:
+            continue
+        if (now - seen_dt).total_seconds() < ttl_secs:
+            fresh.add(url)
+    return fresh
+
+
+def save_seen_urls(urls) -> None:
+    """Persist seen URLs with timestamps, purging entries past the TTL.
+
+    Accepts a set/list of URLs or a {url: timestamp} mapping. Existing
+    timestamps are preserved so a URL is not kept forever.
+    """
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    existing = _load_seen_url_entries()
+    now = datetime.now(timezone.utc)
+    ttl_secs = DEDUP_TTL_DAYS * 86400
+    incoming = urls.keys() if isinstance(urls, dict) else urls
+    merged: dict = {}
+    for url in incoming:
+        url = str(url)
+        ts = existing.get(url, "")
+        seen_dt = _parse_seen_ts(ts)
+        if seen_dt is None:
+            ts = now.isoformat()
+            seen_dt = now
+        if (now - seen_dt).total_seconds() < ttl_secs:
+            merged[url] = ts
     # Keep only the most recent HISTORY_MAX urls
-    url_list = list(urls)[-HISTORY_MAX:]
-    SEEN_URLS_FILE.write_text(json.dumps({"urls": url_list, "updated": datetime.now(timezone.utc).isoformat()}, indent=2))
+    if len(merged) > HISTORY_MAX:
+        merged = dict(sorted(merged.items(), key=lambda kv: kv[1], reverse=True)[:HISTORY_MAX])
+    SEEN_URLS_FILE.write_text(
+        json.dumps({"urls": merged, "updated": now.isoformat()}, indent=2)
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -3504,17 +3637,47 @@ def load_smart_seen() -> dict:
     return {"fingerprints": {}, "updated": ""}
 
 
+def _parse_seen_ts(value) -> datetime | None:
+    """Parse a stored 'seen' timestamp (dict entry or raw ISO string).
+
+    Returns None for legacy/missing/unparseable values so callers can treat
+    them as expired rather than as a permanent block.
+    """
+    if isinstance(value, dict):
+        value = value.get("seen", "")
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    except Exception:
+        return None
+
+
 def save_smart_seen(data: dict):
-    """Save smart deduplication fingerprints. Keep last 10000."""
+    """Save smart deduplication fingerprints, dropping any past the TTL."""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    # Keep only the most recent 10000 entries
+    now = datetime.now(timezone.utc)
+    ttl_secs = DEDUP_TTL_DAYS * 86400
     fps = data.get("fingerprints", {})
-    if len(fps) > 10000:
-        # Sort by timestamp, keep newest
-        sorted_fps = sorted(fps.items(), key=lambda x: x[1].get("seen", ""), reverse=True)
-        fps = dict(sorted_fps[:10000])
-        data["fingerprints"] = fps
-    data["updated"] = datetime.now(timezone.utc).isoformat()
+    fresh = {}
+    for fp, entry in fps.items():
+        seen_dt = _parse_seen_ts(entry)
+        if seen_dt is not None and (now - seen_dt).total_seconds() >= ttl_secs:
+            continue
+        fresh[fp] = entry
+    # Keep only the most recent 10000 (by seen time)
+    if len(fresh) > 10000:
+        sorted_fps = sorted(
+            fresh.items(),
+            key=lambda x: (_parse_seen_ts(x[1]) or now),
+            reverse=True,
+        )
+        fresh = dict(sorted_fps[:10000])
+    data["fingerprints"] = fresh
+    data["updated"] = now.isoformat()
     SMART_SEEN_FILE.write_text(json.dumps(data, indent=2))
 
 
@@ -3533,12 +3696,24 @@ def make_fingerprint(job: dict) -> str:
 
 
 def is_duplicate(job: dict, smart_seen: dict) -> bool:
-    """Check if job is a duplicate using smart fingerprinting."""
+    """Check if job is a duplicate using smart fingerprinting.
+
+    Fingerprints expire after DEDUP_TTL_DAYS so a still-open listing seen on an
+    earlier scan is re-evaluated instead of being suppressed forever. Legacy
+    entries with no timestamp are treated as expired.
+    """
+    if not DEDUP_ENABLED:
+        return False
     fp = make_fingerprint(job)
     fps = smart_seen.get("fingerprints", {})
-    if fp in fps:
-        return True
-    return False
+    entry = fps.get(fp)
+    if entry is None:
+        return False
+    seen_dt = _parse_seen_ts(entry)
+    if seen_dt is None:
+        return False
+    age_secs = (datetime.now(timezone.utc) - seen_dt).total_seconds()
+    return age_secs < DEDUP_TTL_DAYS * 86400
 
 
 def mark_seen(job: dict, smart_seen: dict):
@@ -5385,6 +5560,99 @@ async def fetch_generic_json(session: aiohttp.ClientSession, url: str, source_na
         return []
 
 
+async def fetch_generic_html(session: aiohttp.ClientSession, url: str,
+                             source_name: str = "discovered",
+                             base_url: str = "") -> list[dict]:
+    """Fetch jobs from a static HTML board via JSON-LD JobPosting, else job links.
+
+    Covers verified boards that expose no feed (UNTalent, Idealist, Jobgether,
+    Tarjama, Akhtaboot, Torjoman, TranslationDirectory, Cactus). Titles only —
+    the scoring and quality gates decide relevance.
+    """
+    from urllib.parse import urljoin, urlparse
+    try:
+        async with session.get(url, headers=HEADERS, timeout=TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            html = await resp.text()
+    except Exception as e:
+        print(f"  {source_name}: {e}")
+        return []
+
+    base = base_url or f"{urlparse(url).scheme}://{urlparse(url).netloc}"
+    jobs: list[dict] = []
+
+    # 1) JSON-LD JobPosting blocks (most durable signal)
+    for block in re.findall(r'<script[^>]+application/ld\+json[^>]*>([\s\S]*?)</script>', html, re.I):
+        try:
+            data = json.loads(block.strip())
+        except Exception:
+            continue
+        stack = data if isinstance(data, list) else [data]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, list):
+                stack.extend(node)
+                continue
+            if not isinstance(node, dict):
+                continue
+            if isinstance(node.get("@graph"), list):
+                stack.extend(node["@graph"])
+            types = node.get("@type")
+            types = types if isinstance(types, list) else [types]
+            if "JobPosting" not in types:
+                continue
+            title = strip_html(str(node.get("title") or "")).strip()
+            if not title:
+                continue
+            org = node.get("hiringOrganization") or {}
+            company = org.get("name") if isinstance(org, dict) else ""
+            location = "Remote"
+            loc = node.get("jobLocation")
+            if isinstance(loc, dict):
+                addr = loc.get("address") or {}
+                if isinstance(addr, dict):
+                    location = ", ".join(
+                        x for x in [addr.get("addressLocality"), addr.get("addressCountry")] if x
+                    ) or "Remote"
+            link = str(node.get("url") or node.get("sameAs") or "")
+            if link and not link.startswith("http"):
+                link = urljoin(base + "/", link)
+            jobs.append({
+                "title": title,
+                "company": str(company or source_name),
+                "url": link,
+                "location": location,
+                "posted": str(node.get("datePosted") or ""),
+                "description": strip_html(str(node.get("description") or ""))[:500],
+                "salary": "",
+                "source": source_name,
+            })
+    if jobs:
+        return jobs
+
+    # 2) Fallback: job-ish <a> links
+    seen: set = set()
+    for href, inner in re.findall(r'<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)</a>', html, re.I):
+        if not re.search(r"/job|/jobs/|/careers/|/position|/vacan|/opening|/offers?/|/projects?/", href, re.I):
+            continue
+        title = re.sub(r"\s+", " ", strip_html(inner)).strip()
+        if not (4 <= len(title) <= 120):
+            continue
+        link = href.split("#")[0]
+        if not link.startswith("http"):
+            link = urljoin(base + "/", link)
+        if link in seen:
+            continue
+        seen.add(link)
+        jobs.append({
+            "title": title, "company": source_name, "url": link,
+            "location": "Remote", "posted": "", "description": "",
+            "salary": "", "source": source_name,
+        })
+    return jobs
+
+
 # ---------------------------------------------------------------------------
 # Liveness check — same as JS
 # ---------------------------------------------------------------------------
@@ -5426,8 +5694,10 @@ async def run_scan():
 
     history = load_history()
     seen_urls = set(history["seen_urls"])
-    persistent_seen = load_seen_urls()
-    all_seen = seen_urls | persistent_seen
+    # Gate on the timestamped, TTL-filtered URL store only. The long-lived
+    # history["seen_urls"] list has no timestamps and used to suppress
+    # still-open listings forever, so it no longer gates re-evaluation.
+    all_seen = load_seen_urls()
 
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
         # ---- Fetch all sources in parallel batches ----
@@ -5553,6 +5823,72 @@ async def run_scan():
         if PLAYWRIGHT_AVAILABLE:
             fetchers.append(fetch_with_playwright(session))
 
+        # ── Full registry sweep ──────────────────────────────────────────
+        # The registry is the source list. Several registered fetchers were
+        # never dispatched from here, so they existed as dead config. Run every
+        # registry source that is not already dispatched and is within the tier
+        # cap; per-source failures are isolated.
+        try:
+            from fetchers.registry import REGISTRY as _REGISTRY
+            from fetchers.registry import PROBE_BLOCKED_SOURCES as _REG_BLOCKED
+        except Exception:
+            _REGISTRY, _REG_BLOCKED = {}, []
+        import importlib as _importlib
+        _explicit = {
+            "greenhouse", "lever", "ashby", "workable", "smartrecruiters",
+            "remotive", "remoteok", "weworkremotely", "jobicy", "arbeitnow",
+            "himalayas", "nodesk", "remote1stjobs", "realworkfromanywhere",
+            "workbeam", "translation_jobs", "smartcat", "gotranscript", "proz",
+            "impactpool", "linkedin", "preply", "toloka", "clickworker", "gengo",
+            "mostaql", "for9a", "wuzzuf", "bayt", "gulftalent", "naukrigulf",
+            "jsearch", "arabic_companies",
+        }
+        _paid = set(getattr(_cfg, "PAID_PLATFORMS", []))
+        _skip_blocked = set() if FORCE_BLOCKED_SOURCES else (
+            set(PROBE_BLOCKED_SOURCES) | set(_REG_BLOCKED)
+        )
+        sweep_added = 0
+        for _name, _info in _REGISTRY.items():
+            if _name in _explicit or _name in _paid:
+                continue
+            if _info.get("tier", 3) > tier_cap:
+                continue
+            if _name in _skip_blocked:
+                continue
+            try:
+                _fn = getattr(_importlib.import_module(_info["module"]), _info["class"])
+                _coro = _fn(session)
+                if asyncio.iscoroutine(_coro):
+                    fetchers.append(_coro)
+                    sweep_added += 1
+            except Exception as e:
+                print(f"  [registry] skip {_name}: {e}")
+        print(f"  [registry] full sweep added {sweep_added} sources (tier cap {tier_cap})")
+
+        # ── Worldwide feed sweep (verified RSS/JSON feeds) ───────────────
+        _seen_feed_urls: set = set()
+        feed_added = 0
+        for _feed in list(WORLDWIDE_FEEDS)[:MAX_WORLDWIDE_FEEDS]:
+            _url = _feed.get("url", "")
+            if not _url or _url in _seen_feed_urls:
+                continue
+            _seen_feed_urls.add(_url)
+            fetchers.append(fetch_generic_rss(session, _url, _feed.get("name", "worldwide")))
+            feed_added += 1
+        print(f"  [feeds] worldwide feeds added: {feed_added}")
+
+        # ── Worldwide HTML board sweep (verified static boards) ──────────
+        html_added = 0
+        for _board in list(WORLDWIDE_HTML)[:MAX_WORLDWIDE_HTML]:
+            _url = _board.get("url", "")
+            if not _url:
+                continue
+            fetchers.append(fetch_generic_html(
+                session, _url, _board.get("name", "worldwide_html"), _board.get("base", "")
+            ))
+            html_added += 1
+        print(f"  [html] worldwide HTML boards added: {html_added}")
+
         BATCH = getattr(__import__('config', fromlist=['FETCH_BATCH_SIZE']), 'FETCH_BATCH_SIZE', 8) if 'config' in globals() else 8
         # Fallback to 5 if config missing
         BATCH = max(4, min(12, BATCH))  # clamp
@@ -5629,7 +5965,7 @@ async def run_scan():
         old_but_verified = []
         filter_debug = {"no_url": 0, "paid": 0, "too_old": 0, "no_positive": 0,
                         "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0, "duplicate": 0,
-                        "stub": 0, "in_person": 0, "no_signal": 0}
+                        "stub": 0, "in_person": 0, "no_signal": 0, "company_boost": 0}
         
         # Load smart deduplication data
         smart_seen = load_smart_seen()
@@ -5711,22 +6047,10 @@ async def run_scan():
                 filter_debug["not_worldwide"] += 1
                 flags.append("country-locked location")
 
-            scored_job = get_match_score(job.get("title", ""), job.get("description", ""))
-            # Apply learning adjustments based on application history
-            adjusted_score = adjust_scoring_based_on_learning({
-                **job,
-                "score": scored_job["score"],
-                "category": scored_job.get("category", "Other"),
-                "ai_overall_score": scored_job.get("score", 0),
-            })
-            if adjusted_score != scored_job["score"]:
-                scored_job["score"] = adjusted_score
-            # +10 for trusted translation/language employers
-            scored_job["score"] = apply_company_bonus({**job, "score": scored_job["score"]})
-            # Company pattern learning: boost/demote based on past matches
-            company_priority = get_company_priority(job.get("company", ""))
-            if company_priority != 0:
-                scored_job["score"] = max(0, min(100, scored_job["score"] + company_priority))
+            # Single scoring path (keyword + learning + company bonus + priority)
+            scored_job = score_job(job)
+            if scored_job.get("company_boost"):
+                filter_debug["company_boost"] = filter_debug.get("company_boost", 0) + 1
 
             salary = job.get("salary") or extract_salary(job.get("description", ""))
             job_data = {
@@ -5735,6 +6059,7 @@ async def run_scan():
                 "score": scored_job["score"],
                 "category": scored_job["category"],
                 "why": scored_job.get("why", []),
+                "company_boost": scored_job.get("company_boost", 0),
                 "salary": salary,
                 "is_fresh": is_fresh,
                 "age_hours": age,
@@ -5760,10 +6085,13 @@ async def run_scan():
                     pass
 
             # Separate fresh jobs from older jobs.
-            # A job with no scoring signal (0 points or category "Other") is not a
-            # match — keep it out of the digest/Fresh Matches entirely. It still
-            # appears in the Excel "All Jobs" sheet via all_jobs.
-            no_signal = scored_job["score"] <= 0 or scored_job.get("category") == "Other"
+            # A job with no scoring signal (0 points, or category "Other" with no
+            # company boost) is not a match. Company-boosted roles carry a real
+            # category now, so they survive instead of being discarded here.
+            no_signal = (
+                scored_job["score"] <= 0
+                or (scored_job.get("category") == "Other" and not scored_job.get("company_boost"))
+            )
             if is_fresh:
                 if no_signal:
                     filter_debug["no_signal"] = filter_debug.get("no_signal", 0) + 1
@@ -5866,21 +6194,23 @@ async def run_scan():
         print(f"Scored: {len(scored)}, Old but verified: {len(old_but_verified)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
         print(f"Filter funnel: {filter_debug}")
 
-        # ---- AI analysis (lightweight — only top 3 for personal notes) ----
-        # Keyword scoring is the primary gate. Groq AI only writes a brief
-        # "why this fits Waleed" note for the top few matches.
-        AI_ANALYZE_CAP = 3
-        verified = await analyze_jobs_with_ollama(verified[:AI_ANALYZE_CAP]) + verified[AI_ANALYZE_CAP:]
+        # ---- AI analysis (top N for personal notes; keyword scoring is primary) ----
+        ai_cap = max(0, AI_ANALYZE_CAP)
+        verified = await analyze_jobs_with_ollama(verified[:ai_cap]) + verified[ai_cap:]
         
-        # Old jobs: RE-SCORE with current rules, then filter.
-        # Must pass the same final gate as fresh jobs: Arabic/translation/ESL signal required.
+        # Old jobs: RE-SCORE with the same path as fresh jobs, then filter.
+        # A job passes if it clears the normal threshold, or reaches the (lower)
+        # company floor while carrying a company boost.
         old_verified = []
         for job in old_but_verified:
-            # Re-score with current rules (the final gate requires Arabic/translation)
-            rescored = get_match_score(job.get("title", ""), job.get("description", ""))
-            if rescored["score"] >= 75:
+            rescored = score_job(job)
+            passes = rescored["score"] >= MIN_MATCH_SCORE or (
+                rescored.get("company_boost") and rescored["score"] >= COMPANY_MIN_SCORE
+            )
+            if passes:
                 job["score"] = rescored["score"]
                 job["category"] = rescored["category"]
+                job["company_boost"] = rescored.get("company_boost", 0)
                 job["is_old_verified"] = True
                 old_verified.append(job)
         print(f"  Old jobs re-scored & verified: {len(old_verified)} (from {len(old_but_verified)} old)")
@@ -5888,14 +6218,18 @@ async def run_scan():
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
 
-        # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74).
-        # Anything under the configured threshold is dropped here — it must not
-        # reach Fresh Matches or the digest. Excel "All Jobs" still has everything.
+        # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74),
+        # then company-boosted roles at the lower company floor (40-49). Anything
+        # below that must not reach Fresh Matches or the digest; Excel "All Jobs"
+        # still carries every scanned posting.
         final_verified.sort(key=lambda j: -int(j.get("score") or 0))
         strong = [j for j in final_verified if int(j.get("score") or 0) >= 75][:30]
         good = [j for j in final_verified
                 if MIN_MATCH_SCORE <= int(j.get("score") or 0) < 75][:20]
-        final_verified = strong + good
+        company_floor = [j for j in final_verified
+                         if COMPANY_MIN_SCORE <= int(j.get("score") or 0) < MIN_MATCH_SCORE
+                         and j.get("company_boost")][:15]
+        final_verified = strong + good + company_floor
         final_verified.sort(key=lambda j: (-j.get("is_fresh", False), -int(j.get("score") or 0)))
 
         quality_drops: dict = {}
@@ -5920,6 +6254,21 @@ async def run_scan():
                 print(f"  Intel done: {with_email} with email")
         except Exception as e:
             print(f"  Intel enrichment skipped: {e}")
+
+        # ---- Employer email discovery: real inbox, not the board relay ----
+        if EMAIL_FINDER_ENABLED:
+            try:
+                email_targets = final_verified[:EMAIL_FIND_TARGETS]
+                if email_targets:
+                    print(f"  Email discovery: resolving {len(email_targets)} employer inboxes...")
+                    await enrich_jobs_with_emails(session, email_targets)
+                    harvested = sum(1 for j in email_targets
+                                    if j.get("hiring_email") and not j.get("email_guessed"))
+                    guessed = sum(1 for j in email_targets
+                                  if j.get("hiring_email") and j.get("email_guessed"))
+                    print(f"  Email discovery: {harvested} employer, {guessed} guessed")
+            except Exception as e:
+                print(f"  Email discovery skipped: {e}")
         
         # ---- Research companies for top 5 only ----
         try:
@@ -6171,9 +6520,10 @@ async def run_scan():
         history["scan_stats"] = stats
         save_history(history)
 
-        # ---- Also persist to the cross-session seen URLs file ----
+        # ---- Also persist to the cross-session seen URLs file (timestamped) ----
         all_seen |= set(j["url"] for j in scored)
         all_seen |= set(j["url"] for j in near_misses)
+        all_seen |= set(j["url"] for j in final_verified)
         save_seen_urls(all_seen)
         
         # ---- Save smart deduplication data ----

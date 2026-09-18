@@ -1,17 +1,11 @@
 """Ashby job boards."""
 from .base import BaseFetcher, FetchResult
 
+# Probe-verified working boards (2026-09-18); non-working slugs dropped.
 ASHBY_BOARDS = [
     ("Mercor", "mercor"),
     ("Deel", "deel"),
-    ("Scale AI", "scaleai"),
-    ("Papaya Global", "papayaglobal"),
-    ("Remote.com", "remote"),
     ("Oyster", "oyster"),
-    ("Lano", "lano"),
-    ("Velocity Global", "velocityglobal"),
-    ("Multiplier", "multiplier"),
-    ("Globalization Partners", "globalizationpartners"),
 ]
 
 

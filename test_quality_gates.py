@@ -225,15 +225,16 @@ def test_digest_regressions():
     print("\n=== Digest regressions (2026-09-16) ===")
     from scanner import _libya_today, get_company_website
 
-    # Country-locked remotes must not reach the notify list. Every one of these
-    # arrived as a 100% STRONG MATCH on 2026-09-16 despite being untakeable.
+    # Country-locked remotes must not reach the notify list. The 2026-09-16
+    # leak was US/UK/Canada-market roles; those stay hard-dropped.
     country_locked = [
-        ("Localization Specialist (Traductor/a)", "Remote — Valladolid, Spain"),
         ("Copy Editor / Senior Copy Editor (NY)", "Remote — New York, NY"),
         ("Copy Editor", "Remote — Princeton, NJ"),
         ("Copy Editor", "Remote — Rogers, AR"),
-        ("Senior Copy Editor (Financial Content)", "Remote — Mexico City, Mexico"),
         ("Copy Editor", "Remote — Celina, OH"),
+        ("Copy Editor", "Remote — US"),
+        ("Copy Editor", "Remote — Canada"),
+        ("Copy Editor", "Remote — United Kingdom"),
     ]
     survivors = drop_unqualified_matches([
         {"title": t, "description": "localization copy editor remote freelance",
@@ -247,18 +248,23 @@ def test_digest_regressions():
           is_open_worldwide("Remote — Dubai, United Arab Emirates", ""))
     check("plain worldwide remote still accepted", is_open_worldwide("Remote", ""))
 
-    # The 2026-09-16 leak came from substring matching: "remote" was in
-    # ALLOWED_LOCATIONS, so "Remote — <anywhere>" short-circuited to True.
-    for trap in ("Remote — Valladolid, Spain", "Remote — Berlin, Germany",
-                 "Remote — Kuala Lumpur, Malaysia", "Remote — Dublin, Ireland"):
-        check(f"{trap} is country-locked", not is_open_worldwide(trap, ""))
+    # Policy (Fix 3, 2026-09-17): a bare country after "Remote" is a timezone
+    # hint, not a residency lock, so these are accepted. Explicit residency /
+    # work-authorisation wording in the description is still hard-blocked.
+    for allowed in ("Remote — Valladolid, Spain", "Remote — Berlin, Germany",
+                    "Remote — Kuala Lumpur, Malaysia", "Remote — Dublin, Ireland"):
+        check(f"{allowed} accepted as remote", is_open_worldwide(allowed, ""))
 
-    # Word boundaries: these must not be matched by neighbouring substrings.
+    # Word boundaries: place names must not be matched by neighbouring
+    # substrings ("any" in Germany, "asia" in Malaysia, "us" in Russia).
+    from scanner import ALLOWED_LOCATION_RE, BLOCKED_COUNTRY_RE
+    check("'any' does not match inside Germany", not ALLOWED_LOCATION_RE.search("germany"))
+    check("'asia' does not match inside Malaysia", not ALLOWED_LOCATION_RE.search("malaysia"))
+    check("'us' does not match inside Russia", not BLOCKED_COUNTRY_RE.search("russia"))
+
+    # MENA remotes stay accepted.
     for trap in ("Remote — Oman", "Remote — Morocco", "Remote — Cairo, Egypt"):
         check(f"MENA kept: {trap}", is_open_worldwide(trap, ""))
-    check("'any' does not match inside Germany", not is_open_worldwide("Remote — Germany", ""))
-    check("'asia' does not match inside Malaysia", not is_open_worldwide("Remote — Malaysia", ""))
-    check("'us' does not match inside Russia", not is_open_worldwide("Remote — Russia", ""))
 
     # Fabricated URLs: "IRC - International Rescue Committee" mangled to
     # "irc-internationalrescuemmittee.com" by mid-word ' co' stripping.

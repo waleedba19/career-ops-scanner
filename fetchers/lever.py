@@ -1,27 +1,9 @@
 """Lever job boards."""
 from .base import BaseFetcher, FetchResult
 
+# Probe-verified working boards (state/working_lever_slugs.json, 2026-09-18).
 LEVER_BOARDS = [
     ("Appen", "appen"),
-    ("Unbabel", "unbabel"),
-    ("Lilt", "lilt"),
-    ("Anghami", "anghami"),
-    ("Noon Academy", "noonacademy"),
-    ("Vice Media", "vice"),
-    ("Figma", "figma"),
-    ("Notion", "notion"),
-    ("Coinbase", "coinbase"),
-    ("Square", "square"),
-    ("DoorDash", "doordash"),
-    ("Flexport", "flexport"),
-    ("GitLab", "gitlab"),
-    ("Postmates", "postmates"),
-    ("WeWork", "wework"),
-    ("N26", "n26"),
-    ("Revolut", "revolut"),
-    ("Monzo", "monzo"),
-    ("Nubank", "nubank"),
-    ("Klarna", "klarna"),
 ]
 
 

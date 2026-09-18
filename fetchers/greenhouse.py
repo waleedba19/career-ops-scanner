@@ -2,24 +2,49 @@
 import re
 from .base import BaseFetcher, FetchResult
 
+# Probe-verified working boards (state/working_greenhouse_slugs.json, 2026-09-18).
+# The classic LSP boards (TransPerfect/Lionbridge/RWS/Appen/Welocalize...) no
+# longer publish on Greenhouse — they moved to other ATS — so they were dropped
+# to stop burning requests on 404s.
 GREENHOUSE_BOARDS = [
+    ("WPP Media", "wppmedia"),
     ("Invisible", "agency"),
-    ("Labelbox", "labelbox"),
-    ("Turing", "turing"),
+    ("Anthropic", "anthropic"),
+    ("Cloudflare", "cloudflare"),
+    ("OKX", "okx"),
+    ("xAI", "xai"),
+    ("GitLab", "gitlab"),
+    ("Scale AI", "scaleai"),
+    ("Figma", "figma"),
+    ("Riot Games", "riotgames"),
+    ("Duolingo", "duolingo"),
+    ("Mozilla", "mozilla"),
+    ("Snorkel AI", "snorkelai"),
     ("Prolific", "prolific"),
-    ("Deel", "deel"),
-    ("Handshake", "joinhandshake"),
+    ("Coursera", "coursera"),
+    ("Careem", "careem"),
+    ("Turing", "turing"),
     ("Toloka", "toloka"),
-    ("TELUS International", "telusinternational"),
-    ("Welocalize", "welocalize"),
-    ("RWS", "rws"),
-    ("Keywords Studios", "KeywordsStudios"),
-    ("TransPerfect", "TransPerfect"),
-    ("Lionbridge", "lionbridge"),
-    ("Appen", "appen"),
-    ("Centific", "centific"),
-    ("Surge AI", "surgeai"),
-    ("Micro1", "micro1"),
+    ("Khan Academy", "khanacademy"),
+    ("Udemy", "udemy"),
+    ("Blend", "blend"),
+    ("Labelbox", "labelbox"),
+    ("Smartling", "smartling"),
+    ("Masterclass", "masterclass"),
+    ("Contentful", "contentful"),
+    ("Lokalise", "lokalise"),
+    ("Outschool", "outschool"),
+    ("Remote.com", "remote"),
+    ("KAYAK", "kayak"),
+    ("Calm", "calm"),
+]
+
+# Additional translation/AI/EdTech boards to probe on the next probe run.
+GREENHOUSE_PROSPECTS = [
+    ("Akorbi", "akorbi"),
+    ("Trusted Translations", "trustedtranslations"),
+    ("Multilingual", "multilingual"),
+    ("Bureau Works", "bureauworks"),
 ]
 
 

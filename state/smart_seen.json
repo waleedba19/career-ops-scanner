@@ -5580,22 +5580,22 @@
       "title": "\u534e\u661f-\u7ffb\u8bd1\u7c7b\uff08\u672c\u7855\uff09",
       "company": "TCL.Online Services Incorporated"
     },
-    "micro1|virtualassistant|remote": {
-      "seen": "2026-09-17T23:59:57.114920+00:00",
-      "title": "Virtual Assistant",
+    "syneoshealthindiaprivatelimited|scrai|australia": {
+      "seen": "2026-09-18T00:00:52.443143+00:00",
+      "title": "SCRA I",
+      "company": "Syneos Health India Private Limited"
+    },
+    "micro1|bilingualmentalhealthexpert|remote": {
+      "seen": "2026-09-18T00:00:52.452099+00:00",
+      "title": "Bilingual Mental Health Expert",
       "company": "micro1"
     },
-    "micro1|dataentrykeyer|remote": {
-      "seen": "2026-09-17T23:59:57.126275+00:00",
-      "title": "Data Entry Keyer",
-      "company": "micro1"
-    },
-    "micro1|vpofroboticsresearch|unitedstates": {
-      "seen": "2026-09-17T23:59:57.140543+00:00",
-      "title": "VP of Robotics Research",
+    "micro1|policedispatcheremergencycommu|unitedstates": {
+      "seen": "2026-09-18T00:00:52.460075+00:00",
+      "title": "Police Dispatcher - Emergency Communications Specialist",
       "company": "micro1"
     }
   },
-  "updated": "2026-09-18T00:00:04.302524+00:00",
+  "updated": "2026-09-18T00:00:57.018396+00:00",
   "reset_reason": "Cleared to allow fresh job evaluation after Groq migration and source cleanup"
 }

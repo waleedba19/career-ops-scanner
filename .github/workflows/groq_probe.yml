@@ -1,0 +1,46 @@
+name: Groq Key Probe
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet groq requests
+      - name: Prove model + read real Groq rate-limit headers
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL:  ${{ secrets.GROQ_MODEL }}
+        run: |
+          python - <<'EOF'
+          import os, json, requests
+          c = __import__("groq").Groq(api_key=os.getenv("GROQ_API_KEY"))
+          model = os.getenv("GROQ_MODEL") or "openai/gpt-oss-120b"
+          try:
+              r = c.chat.completions.create(
+                  model=model,
+                  messages=[{"role": "user", "content": "Reply with exactly: 12345"}],
+                  max_tokens=8,
+              )
+              print("MODEL", model)
+              print("REPLY", r.choices[0].message.content.strip())
+          except Exception as e:
+              print("MODEL_CALL_ERROR", type(e).__name__, str(e))
+          headers = {"Authorization": "Bearer " + os.getenv("GROQ_API_KEY")}
+          resp = requests.post(
+              "https://api.groq.com/openai/v1/chat/completions",
+              headers=headers,
+              json={"model": model,
+                    "messages": [{"role": "user", "content": "hi"}],
+                    "max_tokens": 2},
+          )
+          print("HTTP_STATUS", resp.status_code)
+          for h in ("x-ratelimit-limit-requests", "x-ratelimit-remaining-requests",
+                     "x-ratelimit-limit-tokens", "x-ratelimit-remaining-tokens",
+                     "x-ratelimit-used-tokens"):
+              print(h, "=", resp.headers.get(h))
+          EOF

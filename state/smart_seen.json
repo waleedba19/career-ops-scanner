@@ -21404,8 +21404,33 @@
       "seen": "2026-09-18T02:53:32.887514+00:00",
       "title": "E-Commerce & DTC Coach",
       "company": "himalayas_rss"
+    },
+    "chiaphuacomponentsltd||remoteshenzhenguangd": {
+      "seen": "2026-09-18T03:03:41.920502+00:00",
+      "title": "\u897f\u73ed\u7259\u8bed\u7ffb\u8bd1\uff08\u4e2d\u3001\u82f1\u3001\u897f\u4e92\u8bd1\uff09",
+      "company": "Chiaphua Components Ltd"
+    },
+    "himalayasrss|socialmediaassistant|remote": {
+      "seen": "2026-09-18T03:03:42.272346+00:00",
+      "title": "Social Media Assistant",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|quantumcomputingcoach|remote": {
+      "seen": "2026-09-18T03:03:42.272638+00:00",
+      "title": "Quantum Computing Coach",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|projectmanagementcoach|remote": {
+      "seen": "2026-09-18T03:03:42.272924+00:00",
+      "title": "Project Management Coach",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|startupcareerscoach|remote": {
+      "seen": "2026-09-18T03:03:42.273191+00:00",
+      "title": "Startup Careers Coach",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-18T02:53:59.152422+00:00",
+  "updated": "2026-09-18T03:03:59.404510+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

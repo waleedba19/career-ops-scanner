@@ -1,21 +1,12 @@
 {
-  "total_scans": 145,
-  "total_matches": 324,
+  "total_scans": 146,
+  "total_matches": 329,
   "streak_days": 15,
   "last_scan_date": "2026-09-19",
-  "total_jobs_scanned": 371521,
+  "total_jobs_scanned": 377848,
   "best_day_matches": 34,
   "best_day_date": "2026-09-18",
   "daily_history": [
-    {
-      "date": "2026-09-13",
-      "total_fetched": 3202,
-      "matches": 1,
-      "old_verified": 1,
-      "near_misses": 0,
-      "sources": 21,
-      "fresh_count": 1398
-    },
     {
       "date": "2026-09-13",
       "total_fetched": 3202,
@@ -816,6 +807,15 @@
       "near_misses": 0,
       "sources": 29,
       "fresh_count": 235
+    },
+    {
+      "date": "2026-09-19",
+      "total_fetched": 6327,
+      "matches": 5,
+      "old_verified": 1,
+      "near_misses": 0,
+      "sources": 29,
+      "fresh_count": 203
     }
   ],
   "category_trends": {
@@ -836,11 +836,11 @@
       "last_seen": "2026-09-16"
     },
     "Translation (any pair)": {
-      "count": 6,
+      "count": 9,
       "last_seen": "2026-09-19"
     },
     "Editing & Proofreading": {
-      "count": 8,
+      "count": 9,
       "last_seen": "2026-09-19"
     },
     "AI Data & Annotation": {
@@ -854,6 +854,10 @@
     "Language Services (company)": {
       "count": 18,
       "last_seen": "2026-09-18"
+    },
+    "ESL": {
+      "count": 1,
+      "last_seen": "2026-09-19"
     }
   },
   "source_trends": {
@@ -894,16 +898,16 @@
       "last_seen": "2026-09-19"
     },
     "remote1stjobs": {
-      "matches": 8,
-      "last_seen": "2026-09-16"
+      "matches": 11,
+      "last_seen": "2026-09-19"
     },
     "remotive": {
       "matches": 2,
       "last_seen": "2026-09-13"
     },
     "linkedin": {
-      "matches": 97,
-      "last_seen": "2026-09-18"
+      "matches": 98,
+      "last_seen": "2026-09-19"
     },
     "impactpool": {
       "matches": 5,
@@ -942,6 +946,10 @@
       "last_seen": "2026-09-19"
     },
     "remotive_rss": {
+      "matches": 1,
+      "last_seen": "2026-09-19"
+    },
+    "untalent_arabic": {
       "matches": 1,
       "last_seen": "2026-09-19"
     }

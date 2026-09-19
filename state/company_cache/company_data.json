@@ -1657,5 +1657,47 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-19T00:49:04.342068+00:00"
+  },
+  "A&O Shearman": {
+    "name": "A&O Shearman",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-19T08:27:49.573075+00:00"
+  },
+  "Stride": {
+    "name": "Stride",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T08:27:49.575264+00:00"
+  },
+  "Ashby": {
+    "name": "Ashby",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T08:27:49.577022+00:00"
+  },
+  "untalent_arabic": {
+    "name": "untalent_arabic",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T08:27:49.578748+00:00"
   }
 }

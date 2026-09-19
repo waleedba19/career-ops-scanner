@@ -1699,5 +1699,17 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-19T08:27:49.578748+00:00"
+  },
+  "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930": {
+    "name": "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-19T16:01:23.283499+00:00"
   }
 }

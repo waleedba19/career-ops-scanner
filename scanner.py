@@ -559,6 +559,7 @@ NEGATIVE_KEYWORDS = [
     "revenue", "pipeline", "account manager",
     # Leadership / management (not individual contributor)
     "content manager", "social media manager", "brand manager",
+    "marketing manager", "marketing director", "operations manager",
     "product marketing", "demand generation", "growth manager",
     # Dev / IT / non-target professional roles
     "web developer", "mobile developer", "ios developer", "android developer",

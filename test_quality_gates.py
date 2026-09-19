@@ -198,6 +198,9 @@ def test_false_positives():
         ("Mystery shopping CDMX",
          "pedir una cotización de manera presencial. Virtual Assistant, Local Job",
          "Remote (Worldwide)"),
+        ("Marketing Manager, Arabic Speaker - Freelancer, 12 month contract",
+         "Drive marketing campaigns for the Arabic market. Native Arabic speaker preferred.", 
+         "Remote (Worldwide)"),
     ]
     for title, desc, loc in cases:
         ok = not would_notify(title, desc, loc)

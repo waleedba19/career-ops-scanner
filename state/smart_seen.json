@@ -27339,8 +27339,103 @@
       "seen": "2026-09-19T16:53:29.854283+00:00",
       "title": "Romanian US-Based Interpreter",
       "company": "himalayas_rss"
+    },
+    "himalayasrss|headofclinicalstrategyandprogr|remote": {
+      "seen": "2026-09-19T17:04:59.661291+00:00",
+      "title": "Head of Clinical Strategy and Program Operations",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|businessanalyst|remote": {
+      "seen": "2026-09-19T17:04:59.662822+00:00",
+      "title": "Business Analyst",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorlearningexperiencedesign|remote": {
+      "seen": "2026-09-19T17:04:59.663823+00:00",
+      "title": "Senior Learning Experience Designer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalsolutionsengineerarti|remote": {
+      "seen": "2026-09-19T17:04:59.664775+00:00",
+      "title": "Principal Solutions Engineer \u2013 Artificial Intelligence",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|technicianii|remote": {
+      "seen": "2026-09-19T17:04:59.675875+00:00",
+      "title": "Technician II",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|intelligentedgeengineer|remote": {
+      "seen": "2026-09-19T17:04:59.676580+00:00",
+      "title": "Intelligent Edge Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniortaxanalyst|remote": {
+      "seen": "2026-09-19T17:04:59.677604+00:00",
+      "title": "Senior Tax Analyst",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|datascientistpharmacypartdstar|remote": {
+      "seen": "2026-09-19T17:04:59.678398+00:00",
+      "title": "Data Scientist, Pharmacy (Part D Stars)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalspecialistclinicaldat|remote": {
+      "seen": "2026-09-19T17:04:59.679165+00:00",
+      "title": "Principal Specialist, Clinical Data Mgmt",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|payrollspecialisteuropemfd|remote": {
+      "seen": "2026-09-19T17:04:59.680792+00:00",
+      "title": "Payroll Specialist, Europe (m/f/d)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|membersupportcoordinator|remote": {
+      "seen": "2026-09-19T17:04:59.681693+00:00",
+      "title": "Member Support Coordinator",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorleadreleasetrainengineer|remote": {
+      "seen": "2026-09-19T17:04:59.682650+00:00",
+      "title": "Senior Lead Release Train Engineer (Remote, US)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|apachesparkdeveloper|remote": {
+      "seen": "2026-09-19T17:04:59.683823+00:00",
+      "title": "Apache Spark Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|territorymanagereasternwamonta|remote": {
+      "seen": "2026-09-19T17:04:59.685132+00:00",
+      "title": "Territory Manager | Eastern WA & Montana",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|implementationspecialist|remote": {
+      "seen": "2026-09-19T17:04:59.686285+00:00",
+      "title": "Implementation Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|effectsengineeringspecialistfu|remote": {
+      "seen": "2026-09-19T17:04:59.687097+00:00",
+      "title": "Effects Engineering Specialist - Fully Remote | Upto $75/task Task based",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|assessmentcontentproductmanage|remote": {
+      "seen": "2026-09-19T17:04:59.689339+00:00",
+      "title": "Assessment Content Product Manager, Reach",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorsolutionsengineerus|remote": {
+      "seen": "2026-09-19T17:04:59.690013+00:00",
+      "title": "Senior Solutions Engineer - US",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|iotdataengineer|remote": {
+      "seen": "2026-09-19T17:04:59.690638+00:00",
+      "title": "IoT Data Engineer",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-19T16:54:49.187976+00:00",
+  "updated": "2026-09-19T17:05:31.069500+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

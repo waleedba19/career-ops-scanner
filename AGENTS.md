@@ -4,12 +4,14 @@
 This is an autonomous job search system that runs twice daily on GitHub Actions. It finds remote jobs matching the user's profile, generates PDF cover letters, and delivers results via Telegram + Email + Excel.
 
 ## Secrets & Credentials (READ THIS FIRST)
-- **Local secrets file**: `D:\Openwork for now\career-ops-scanner\.env` — gitignored, holds all known credentials (Telegram, Brevo, Gmail, GitHub tokens, emails). Read it whenever credentials are needed.
-- **Email delivery**: Gmail SMTP is PREFERRED (`GMAIL_USER` + `GMAIL_APP_PASSWORD` — no IP restrictions). Brevo is automatic fallback (`BREVO_API_KEY` — has IP whitelist that blocks GitHub runner IPs).
-- **GitHub Secrets** (write-only, source of truth for CI): `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `BREVO_API_KEY`, `TO_EMAIL`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `GH_TOKEN_WEMEKENTERPRISELY` on repo `waleedba19/career-ops-scanner`.
-- **Missing from local .env** (only in GitHub Secrets, cannot be read back via API): `TELEGRAM_BOT_TOKEN`, `GMAIL_APP_PASSWORD`. If needed locally, ask the user to paste them.
-- **GitHub access**: token for `waleedba19` is in `.env` (flagged for rotation — still valid). Use `gh` with `GH_TOKEN` to trigger runs / check status.
-- **Never** put secret values in this AGENTS.md or any committed file — only references.
+- **NEVER ask the user to paste tokens.** All credentials already live in TWO permanent places and are verified working:
+  - **Local**: `D:\Openwork for now\career-ops-scanner\.env` (gitignored) — fully populated: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `GROQ_API_KEY`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `TO_EMAIL`, `BREVO_API_KEY`, `GITHUB_TOKEN_WALEEDBA19_1`.
+  - **CI**: GitHub Actions Secrets on `waleedba19/career-ops-scanner` (same names) — synced from `.env`.
+- **Verify / resync anytime**: run `python tools/manage_secrets.py` (verifies Telegram bot + Groq + Gmail SMTP login live, then mirrors to GitHub Secrets). `check` mode verifies without writing.
+- **Active Telegram bot**: `@Djobops_bot` (token owner id 8963892485). Do NOT reference `@ScholarSpaceShip_bot` — that is a stale/wrong bot for this repo.
+- **Email delivery**: Gmail SMTP is PREFERRED (`GMAIL_USER` + `GMAIL_APP_PASSWORD`). Brevo is automatic fallback.
+- **GitHub access**: use `gh` with `GITHUB_TOKEN_WALEEDBA19_1` from `.env` (or the token embedded in `git remote get-url origin`, which is the proven-working one).
+- **Never** put secret values in this AGENTS.md or any committed file — only references to `.env` / GitHub Secrets.
 
 ## User Profile
 - **Name**: Waleed

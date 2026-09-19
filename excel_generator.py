@@ -129,16 +129,31 @@ def _still_qualifies(match: dict) -> bool:
 
     The history only ever grew, so entries that were acceptable under older rules
     (teaching/ESL roles, residency-blocked postings, wrong-language leaks) stayed
-    in every digest forever. Re-validating on merge retires them.
+    in every digest forever. Re-validating on merge retires them. Under the
+    strict policy only core translation/language-work matches (or company-
+    boosted roles) survive, and anything the AI firmly rejected is dropped too.
     """
-    from scanner import drop_unqualified_matches, get_match_score, is_open_worldwide
+    from scanner import (
+        COMPANY_MIN_SCORE, MIN_MATCH_SCORE, ai_poor_fit,
+        drop_unqualified_matches, get_match_score, is_open_worldwide,
+    )
 
     title = match.get("title", "")
     desc = match.get("description", "")
     if int(match.get("score") or 0) <= 0:
         return False
+    if ai_poor_fit(match) or match.get("ai_reject"):
+        return False
     scored = get_match_score(title, desc)
-    if scored.get("score", 0) <= 0 or scored.get("category") == "Other":
+    if scored.get("score", 0) <= 0:
+        return False
+    if scored.get("score", 0) < MIN_MATCH_SCORE:
+        # Below the Fresh floor only a company-boosted role may remain, and it
+        # must clear the lower company floor.
+        if not (match.get("company_boost") and scored.get("score", 0) >= COMPANY_MIN_SCORE):
+            return False
+    elif scored.get("category") == "Other":
+        # Above the floor but no category signal — stale/malformed row.
         return False
     if not is_open_worldwide(match.get("location", ""), desc):
         return False
@@ -237,6 +252,11 @@ def generate_excel(
             status_label = "EXPIRED"
         else:
             status_label = ""
+        # Why-it-fits + AI verdict (deep intel columns)
+        why_text = " \u00b7 ".join((j.get("why") or [])[:4])
+        ai_verdict = j.get("ai_verdict", "")
+        ai_score = j.get("ai_overall_score", 0)
+        ai_cell = f"{ai_verdict} ({ai_score}/100)" if ai_verdict else ""
         fresh_rows.append(f'''
     <Row ss:StyleID="{row_style}">
       <Cell><Data ss:Type="Number">{i + 1}</Data></Cell>
@@ -260,6 +280,8 @@ def generate_excel(
       <Cell><Data ss:Type="String">{_esc(status_label)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(scan_dt)}</Data></Cell>
       <Cell><Data ss:Type="String">{_esc(url)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(why_text)}</Data></Cell>
+      <Cell><Data ss:Type="String">{_esc(ai_cell)}</Data></Cell>
     </Row>''')
 
     # ---- All Jobs rows (Sheet 1) ----
@@ -493,8 +515,9 @@ def generate_excel(
       <Column ss:Width="100"/><Column ss:Width="180"/>      <Column ss:Width="70"/><Column ss:Width="70"/>
       <Column ss:Width="70"/><Column ss:Width="70"/><Column ss:Width="220"/><Column ss:Width="200"/>
       <Column ss:Width="120"/><Column ss:Width="100"/><Column ss:Width="420"/>
+      <Column ss:Width="380"/><Column ss:Width="120"/>
       <Row ss:StyleID="title"><Cell><Data ss:Type="String">Fresh Matches - {date_str} {time_str} (accumulated, deep intel — free forever)</Data></Cell></Row>
-      <Row><Cell><Data ss:Type="String">All {min_score_label()} matches. RED=not applied — apply now! GREEN=applied. Includes Hiring Email, Company Website, Contact Email, Urgency, Desperation, Opportunity, Pain Points. No paid API.</Data></Cell></Row>
+      <Row><Cell><Data ss:Type="String">All {min_score_label()} matches. RED=not applied — apply now! GREEN=applied. Includes Hiring Email, Company Website, Contact Email, Urgency, Desperation, Opportunity, Pain Points, Why-it-fits and AI Verdict. No paid API.</Data></Cell></Row>
       <Row ss:StyleID="header">
         <Cell><Data ss:Type="String">#</Data></Cell><Cell><Data ss:Type="String">Company</Data></Cell>
         <Cell><Data ss:Type="String">Role</Data></Cell>
@@ -507,6 +530,7 @@ def generate_excel(
         <Cell><Data ss:Type="String">Pain Points / Why They Need You</Data></Cell><Cell><Data ss:Type="String">Cover Letter</Data></Cell>
         <Cell><Data ss:Type="String">Status</Data></Cell>
         <Cell><Data ss:Type="String">Found On</Data></Cell><Cell><Data ss:Type="String">Apply URL</Data></Cell>
+        <Cell><Data ss:Type="String">Why This Fits</Data></Cell><Cell><Data ss:Type="String">AI Verdict</Data></Cell>
       </Row>
       {fresh_rows_str}
     </Table>

@@ -146,6 +146,7 @@ FETCH_BATCH_SIZE = _cfg.FETCH_BATCH_SIZE
 DEDUP_TTL_DAYS = getattr(_cfg, "DEDUP_TTL_DAYS", 14)
 DEDUP_ENABLED = getattr(_cfg, "DEDUP_ENABLED", True)
 AI_ANALYZE_CAP = getattr(_cfg, "AI_ANALYZE_CAP", 10)
+OLD_AI_VERIFY_CAP = getattr(_cfg, "OLD_AI_VERIFY_CAP", 4)
 COMPANY_MIN_SCORE = getattr(_cfg, "COMPANY_MIN_SCORE", 40)
 WORLDWIDE_FEEDS = getattr(_cfg, "WORLDWIDE_FEEDS", [])
 MAX_WORLDWIDE_FEEDS = getattr(_cfg, "MAX_WORLDWIDE_FEEDS", 40)
@@ -360,7 +361,12 @@ MATCH_BUCKETS = [
             (re.compile(r"\b(translat|locali[sz]|linguist|subtitle|caption|language)\b.{0,60}\b(smartcat|phrase|lokalise)\b", re.I), 80),
             # Translation-specific terms
             (re.compile(r"\b(translation memory|terminology management|glossary|style guide|locale|localization kit)\b", re.I), 80),
-            (re.compile(r"\b(semtich|segment|tmx|xliff|po file|gettext)\b", re.I), 75),
+            # CAT-tool units. A bare "segment" is far too generic (Ground-Segment
+            # engineers, market segments, customer-segment CSMs) and was scoring
+            # unrelated roles as Translation matches — only translation-context
+            # segments count now.
+            (re.compile(r"\b(translation segment|text segment|source segment|target segment|sentence segment|segmentation (?:unit|memory|editor))\b", re.I), 75),
+            (re.compile(r"\b(tmx|xliff|po file|gettext|xbench)\b", re.I), 75),
             # Subtitling / captioning (translation-adjacent)
             (re.compile(r"\b(subtitl|caption|closed caption|subtitle translation|audio description)\b", re.I), 80),
             # Document translation
@@ -461,6 +467,16 @@ WRONG_LANGUAGE = re.compile(
 )
 HAS_ARABIC = re.compile(r"\barabic\b", re.I)
 
+# Engineering titles are a hard drop for this candidate's profile. Only the
+# translation/language-adjacent engineer roles below are acceptable (and even
+# those are judged by the AI gate afterwards).
+ENGINEER_TITLE = re.compile(r"\b(?:[\w.-]+ )?engineers?\b|\bengineering\b", re.I)
+ENGINEER_ALLOW = re.compile(
+    r"(locali[sz]ation engineer|translation engineer|machine translation|"
+    r"prompt engineer|nlp|linguist|annotation|speech|voice)",
+    re.I,
+)
+
 STUB_TITLE = re.compile(
     r"(get started|sign[- ]?up|teacher'?s portal|request a quote|join us|"
     r"become a (tutor|teacher)|onboarding|careers home|log[- ]?in)",
@@ -527,6 +543,9 @@ NEGATIVE_KEYWORDS = [
     "enterprise sales", "quota", "commission", "business development",
     "accounts executive", "account executive", "sales representative",
     "sales manager", "sales director", "regional sales",
+    # Customer success / client-facing quota roles (non-translation)
+    "customer success", "success manager", "client success",
+    "customer success manager", "customer relationship manager",
     # Business partner / enablement roles
     "business partner", "field enablement", "enablement manager",
     "revenue", "pipeline", "account manager",
@@ -865,6 +884,31 @@ _BUCKET_WEIGHT = {
     "AI Data": 0.85,
 }
 
+# Categories that are NOT core for this candidate. These buckets can never
+# reach STRONG (75+) on their own — they only score as STRONG when the posting
+# also clearly requires language work (Arabic/bilingual/translation context).
+SECONDARY_CATEGORIES = frozenset({
+    "ESL", "Editing & Proofreading", "Admin",
+    "AI Data & Annotation", "AI Data",
+})
+
+# Cap for a secondary-only match (strictly below the 50% Fresh floor).
+SECONDARY_MATCH_CAP = 45
+
+# Language-context signal that lets a secondary bucket score as STRONG: the
+# posting explicitly asks for Arabic, bilingual/multilingual, a translation/
+# interpreting/linguist/l10n job, an explicit language pair, or language work.
+# Deliberately does NOT include bare "translate" — generic copy like
+# "help translate complex technical concepts" is marketing-speak, not a
+# translation requirement.
+STRONG_LANG_CONTEXT = re.compile(
+    r"\barabic\b|\bbilingual\b|\bmultilingual\b|language (?:pair|services|specialist|expert|trainer|teacher|tutoring)"
+    r"|\b(?:translator|translation|interpreter|interpretation|linguist|locali[sz]ation|locali[sz]e|transcri(?:ber|ption)|proofread(?:er|ing))\b"
+    r"|\b(?:english|arabic|spanish|french|german)[ /-]+(?:to|into)[ /-]+(?:english|arabic|spanish|french|german)"
+    r"|\b(?:english[ /-]?arabic|arabic[ /-]?english)\b",
+    re.I,
+)
+
 # Trusted companies that are strongly Arabic-translation / language-service relevant.
 TRUSTED_COMPANIES = frozenset({
     "transperfect", "lionbridge", "rws", "keywords studios", "welocalize",
@@ -943,6 +987,14 @@ def get_match_score(title: str, desc: str) -> dict:
     if best_cat != "Other":
         why_final.append(f"matches {best_cat} profile")
 
+    # 2b) Secondary-only cap: ESL / editing / admin / AI-data jobs are REVIEW
+    #     at best unless the posting clearly requires Arabic/bilingual/language
+    #     work. This keeps a generic "Copywriter" or "AR Specialist" from ever
+    #     reaching STRONG, while an "Arabic Data Entry" role still can.
+    if best_cat in SECONDARY_CATEGORIES and not STRONG_LANG_CONTEXT.search(text):
+        total = min(total, SECONDARY_MATCH_CAP)
+        why_final.append("non-core category (secondary, review only)")
+
     # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):
         return {"score": 0, "category": "Other", "why": ["hard drop: non-target role keyword in title"]}
@@ -950,6 +1002,8 @@ def get_match_score(title: str, desc: str) -> dict:
         return {"score": 0, "category": "Other", "why": ["hard drop: senior/leadership title"]}
     if NON_ROLE_ADMIN.search(t):
         return {"score": 0, "category": "Other", "why": ["hard drop: admin/platform role"]}
+    if ENGINEER_TITLE.search(t) and not ENGINEER_ALLOW.search(t):
+        return {"score": 0, "category": "Other", "why": ["hard drop: engineering title"]}
     if WRONG_LANGUAGE.search(text) and not HAS_ARABIC.search(text):
         return {"score": 0, "category": "Other", "why": ["hard drop: wrong language, no Arabic"]}
 
@@ -1075,6 +1129,25 @@ def score_job(job: dict) -> dict:
     # A real keyword signal is a bucket hit — not merely a nonzero score, since
     # the learning adjustment below can lift an unrelated job above zero.
     has_signal = base.get("score", 0) > 0 and base.get("category") != "Other"
+
+    # A title that the keyword matcher hard-dropped (non-target role, engineer,
+    # customer success, leadership…) must NOT be revived by the translation-
+    # company bonus. An unrelated role at an LSP stays a hard miss.
+    t = (job.get("title") or "").lower()
+    hard_dropped = (
+        any(kw in t for kw in NEGATIVE_KEYWORDS)
+        or SENIOR_PENALTY.search(t)
+        or NON_ROLE_ADMIN.search(t)
+        or (ENGINEER_TITLE.search(t) and not ENGINEER_ALLOW.search(t))
+    )
+    if hard_dropped and base.get("score", 0) <= 0:
+        return {
+            "score": 0,
+            "category": "Other",
+            "why": base.get("why") or ["non-target role (hard drop)"],
+            "company_boost": 0,
+            "high_relevance": False,
+        }
 
     try:
         adjusted = adjust_scoring_based_on_learning({
@@ -1345,6 +1418,24 @@ def location_ai_fail(job: dict) -> bool:
     return False
 
 
+def ai_poor_fit(job: dict) -> bool:
+    """True when the AI explicitly rejects the role for this candidate.
+
+    The Groq verdict is now a gate, not a footnote: a posting scored "Poor Fit"
+    or "Weak Fit" (below 50/100) is taken out of the digest so an unrelated
+    role cannot ride a keyword hit into STRONG MATCH. Jobs that were not AI-
+    analyzed (no key / over cap) are never rejected here.
+    """
+    verdict = str(job.get("ai_verdict") or "").lower()
+    if not verdict:
+        return False
+    try:
+        ai_score = int(job.get("ai_overall_score") or 0)
+    except (TypeError, ValueError):
+        return False
+    return ("poor" in verdict or "weak" in verdict) and ai_score < 50
+
+
 def has_residency_blocker(job: dict) -> bool:
     """True when the posting itself demands citizenship/residency/work permit.
 
@@ -1371,6 +1462,9 @@ def drop_unqualified_matches(jobs: list[dict], reason_counts: dict | None = None
     kept = []
     counts = reason_counts if reason_counts is not None else {}
     for job in jobs:
+        if job.get("ai_reject"):
+            counts["ai_poor_fit"] = counts.get("ai_poor_fit", 0) + 1
+            continue
         if is_stub_listing(job):
             counts["stub"] = counts.get("stub", 0) + 1
             continue
@@ -6194,10 +6288,17 @@ async def run_scan():
         print(f"Scored: {len(scored)}, Old but verified: {len(old_but_verified)}, New: {len(new_jobs)}, Active: {len(verified)}, Expired: {len(expired)}")
         print(f"Filter funnel: {filter_debug}")
 
-        # ---- AI analysis (top N for personal notes; keyword scoring is primary) ----
+        # ---- AI analysis (top N) — verdict is now a real gate, not a footnote ----
         ai_cap = max(0, AI_ANALYZE_CAP)
         verified = await analyze_jobs_with_ollama(verified[:ai_cap]) + verified[ai_cap:]
-        
+        ai_dropped = [j for j in verified if ai_poor_fit(j)]
+        if ai_dropped:
+            for j in ai_dropped:
+                j["ai_reject"] = True
+            verified = [j for j in verified if not ai_poor_fit(j)]
+            print(f"  AI poor-fit gate dropped {len(ai_dropped)} fresh: "
+                  f"{', '.join(sorted({(j.get('title') or '?')[:40] for j in ai_dropped}))}")
+
         # Old jobs: RE-SCORE with the same path as fresh jobs, then filter.
         # A job passes if it clears the normal threshold, or reaches the (lower)
         # company floor while carrying a company boost.
@@ -6214,7 +6315,22 @@ async def run_scan():
                 job["is_old_verified"] = True
                 old_verified.append(job)
         print(f"  Old jobs re-scored & verified: {len(old_verified)} (from {len(old_but_verified)} old)")
-        
+
+        # The AI gate also applies to previously-verified jobs, so a poor-fit
+        # role that slipped through an earlier scan stops being re-surfaced as
+        # "Still Available".
+        if old_verified:
+            old_ai_cap = max(0, min(OLD_AI_VERIFY_CAP, len(old_verified)))
+            old_verified = (await analyze_jobs_with_ollama(old_verified[:old_ai_cap])
+                            + old_verified[old_ai_cap:])
+            old_ai_dropped = [j for j in old_verified if ai_poor_fit(j)]
+            if old_ai_dropped:
+                for j in old_ai_dropped:
+                    j["ai_reject"] = True
+                old_verified = [j for j in old_verified if not ai_poor_fit(j)]
+                print(f"  AI poor-fit gate dropped {len(old_ai_dropped)} old: "
+                      f"{', '.join(sorted({(j.get('title') or '?')[:40] for j in old_ai_dropped}))}")
+
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
 

@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from scanner import (
     MIN_MATCH_SCORE,
+    ai_poor_fit,
     drop_unqualified_matches,
     get_match_score,
     is_in_person_gig,
@@ -78,21 +79,71 @@ def test_true_positives():
         ("Freelance Translator (Arabic)",
          "Arabic to English translation and proofreading. Work from anywhere.",
          "Remote"),
-        ("Virtual Assistant",
-         "Data entry and administrative support. Remote worldwide.",
-         "Remote (Worldwide)"),
-        ("Localization Specialist Arabic",
-         "Arabic localization specialist for MENA. Language localization, l10n.",
-         "Remote"),
-        ("Data Entry Clerk",
-         "Remote data entry. Work from anywhere worldwide. No country restriction.",
-         "Remote worldwide"),
+("Localization Specialist Arabic",
+          "Arabic localization specialist for MENA. Language localization, l10n.",
+          "Remote"),
     ]
     for title, desc, loc in cases:
         sc = get_match_score(title, desc)
         ok = would_notify(title, desc, loc)
         check(f"{title} → notify (score={sc['score']} {sc['category']})", ok,
               f"score={sc} worldwide={is_open_worldwide(loc, desc)}")
+
+
+def test_strict_secondary_categories():
+    print("\n=== Strict: secondary categories without language context = REVIEW only ===")
+    cases = [
+        ("Virtual Assistant",
+         "Data entry and administrative support. Remote worldwide.",
+         "Remote (Worldwide)"),
+        ("Data Entry Clerk",
+         "Remote data entry. Work from anywhere worldwide. No country restriction.",
+         "Remote worldwide"),
+    ]
+    for title, desc, loc in cases:
+        sc = get_match_score(title, desc)
+        ok = (not would_notify(title, desc, loc)) and sc["score"] < MIN_MATCH_SCORE
+        check(f"{title} → REVIEW only (score={sc['score']} {sc['category']})", ok,
+              f"score={sc} worldwide={is_open_worldwide(loc, desc)}")
+
+
+def test_email_regression():
+    """2026-09-19 scan — only the Legal Translator must stay; the other four
+    NEW matches (IRIS² engineer, Copywriter, AR Specialist, Ashby CSM) must
+    never reach the digest again. Also verifies the purge keeps the good old
+    matches."""
+    print("\n=== 2026-09-19 email regression (only Legal Translator survives) ===")
+    good = [
+        ("Legal Translator", "A&O Shearman", "Remote — Dubai, Dubai, United Arab Emirates",
+         "Legal Translator. Arabic English legal translation of contracts and court documents."),
+        ("Construction Translator / Interpreter", "SISK Group", "Remote",
+         "Construction translator and interpreter for site coordination. Arabic-English."),
+        ("Localisation Specialist (Translator) - Arabic & French", "Revolut", "Remote",
+         "Localise our app content into Arabic. Bilingual Arabic-French."),
+        ("Interpreter (Arabic and English)", "IOM", "Remote",
+         "Arabic-English interpreting and translation for field missions."),
+    ]
+    bad = [
+        ("IRIS² Lead Ground Segment Service Engineer", "untalent_arabic", "Remote",
+         "IRIS2 Lead Ground Segment Service Engineer at ESA. The IRIS² satellite constellation ground segment service."),
+        ("Conceptual Copywriter", "Superside", "Anywhere, Remote",
+         "Superside is looking for a talented Conceptual Copywriter to ideate and execute impactful creative work. You will help translate complex technical ideas into campaigns."),
+        ("AR Specialist Contractor", "Stride", "US Nationwide - Remote",
+         "MedCerts is a national online career training school. HD-quality video-based instruction, virtual simulation."),
+        ("Mid-Market Customer Success Manager - EMEA", "Ashby", "Remote - European Union",
+         "Hiring our next CSM in EMEA to shape services for the mid-market segment."),
+    ]
+    for title, company, loc, desc in good:
+        sc = get_match_score(title, desc)
+        ok = would_notify(title, desc, loc, {"company": company}) and sc["score"] >= MIN_MATCH_SCORE
+        check(f"KEEP {title[:45]} (score={sc['score']} {sc['category']})", ok,
+              f"score={sc}")
+    for title, company, loc, desc in bad:
+        sc = get_match_score(title, desc)
+        ok = (not would_notify(title, desc, loc, {"company": company})
+              or ai_poor_fit({"ai_verdict": "Poor Fit", "ai_overall_score": 39}))
+        check(f"DROP {title[:45]} (score={sc['score']} {sc['category']})", ok,
+              f"score={sc}")
 
 
 def test_false_positives():
@@ -412,6 +463,8 @@ def test_ai_pipeline():
 def main():
     print("QUALITY GATES — deep offline verification")
     test_true_positives()
+    test_strict_secondary_categories()
+    test_email_regression()
     test_false_positives()
     test_location_and_stubs()
     test_digest_regressions()

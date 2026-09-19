@@ -27554,8 +27554,103 @@
       "seen": "2026-09-19T17:12:35.898639+00:00",
       "title": "Software Engineering Lead",
       "company": "himalayas_rss"
+    },
+    "himalayasrss|hmongusbasedinterpreter|remote": {
+      "seen": "2026-09-19T17:30:39.971221+00:00",
+      "title": "Hmong: US- Based Interpreter",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|aifullstackdeveloper|remote": {
+      "seen": "2026-09-19T17:30:39.971690+00:00",
+      "title": "AI & Full-Stack Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|parallelcomputingengineer|remote": {
+      "seen": "2026-09-19T17:30:39.972431+00:00",
+      "title": "Parallel Computing Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|independentmarketingenablement|remote": {
+      "seen": "2026-09-19T17:30:39.974241+00:00",
+      "title": "Independent Marketing Enablement Support Associate II",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|utilizationreviewnursern|remote": {
+      "seen": "2026-09-19T17:30:39.975418+00:00",
+      "title": "Utilization Review Nurse - RN",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorappliedscientist|remote": {
+      "seen": "2026-09-19T17:30:39.977034+00:00",
+      "title": "Senior Applied Scientist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorfieldapplicationsspecial|remote": {
+      "seen": "2026-09-19T17:30:39.978292+00:00",
+      "title": "Senior Field Applications Specialist (Territory: Central New York)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|specialtycommercialdistrictlea|remote": {
+      "seen": "2026-09-19T17:30:39.979601+00:00",
+      "title": "Specialty Commercial District Lead",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|srengineeriproductsecurity|remote": {
+      "seen": "2026-09-19T17:30:39.980716+00:00",
+      "title": "Sr Engineer I, Product Security",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|headofpartnershipsamer|remote": {
+      "seen": "2026-09-19T17:30:39.981494+00:00",
+      "title": "Head of Partnerships, AMER",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|generalinterest|remote": {
+      "seen": "2026-09-19T17:30:39.982414+00:00",
+      "title": "General Interest",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|educatorassessorwriter|remote": {
+      "seen": "2026-09-19T17:30:39.983663+00:00",
+      "title": "Educator/ Assessor Writer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorsecurityengineerincident|remote": {
+      "seen": "2026-09-19T17:30:39.984294+00:00",
+      "title": "Senior Security Engineer, Incident Response Team (Australia)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|clinicaloperationsspecialist|remote": {
+      "seen": "2026-09-19T17:30:39.985441+00:00",
+      "title": "Clinical Operations Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalproductmanagercorenet|remote": {
+      "seen": "2026-09-19T17:30:39.986567+00:00",
+      "title": "Principal Product Manager, Core Network",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|managerproductmanagement|remote": {
+      "seen": "2026-09-19T17:30:39.987701+00:00",
+      "title": "Manager, Product Management",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|experiencedteluguinterpreter|remote": {
+      "seen": "2026-09-19T17:30:39.988509+00:00",
+      "title": "Experienced Telugu Interpreter",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|v103prelitigationcasemanager|remote": {
+      "seen": "2026-09-19T17:30:39.989457+00:00",
+      "title": "V103 - Pre-Litigation Case Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|servicenowseniorsoftwareengine|remote": {
+      "seen": "2026-09-19T17:30:39.990133+00:00",
+      "title": "ServiceNow Senior Software Engineer - SAM/HAM",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-19T17:12:58.029867+00:00",
+  "updated": "2026-09-19T17:31:03.968724+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

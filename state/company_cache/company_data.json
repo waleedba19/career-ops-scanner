@@ -1617,5 +1617,45 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-18T16:25:55.753508+00:00"
+  },
+  "Superside": {
+    "name": "Superside",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T00:49:04.337992+00:00"
+  },
+  "wwr_all_other": {
+    "name": "wwr_all_other",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T00:49:04.339643+00:00"
+  },
+  "KoboToolbox": {
+    "name": "KoboToolbox",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T00:49:04.341043+00:00"
+  },
+  "IOM - International Organization for Migration": {
+    "name": "IOM - International Organization for Migration",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-19T00:49:04.342068+00:00"
   }
 }

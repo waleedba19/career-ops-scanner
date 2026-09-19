@@ -893,28 +893,41 @@ _BUCKET_WEIGHT = {
     "AI Data": 0.85,
 }
 
-# Categories that are NOT core for this candidate. These buckets can never
-# reach STRONG (75+) on their own — they only score as STRONG when the posting
-# also clearly requires language work (Arabic/bilingual/translation context).
+# Categories where an actual translation/localization/interpreting role can be
+# a STRONG match (Arabic or any language pair).
+CORE_CATEGORIES = frozenset({
+    "Arabic Translation",
+    "Translation (any pair)",
+})
+
+# Everything else is NEVER a STRONG match, even when it mentions Arabic:
+# ESL, editing/proofreading, admin/VA, AI-data/annotation and AI trainers.
 SECONDARY_CATEGORIES = frozenset({
     "ESL", "Editing & Proofreading", "Admin",
     "AI Data & Annotation", "AI Data",
 })
 
-# Cap for a secondary-only match (strictly below the 50% Fresh floor).
+# Cap for anything that is not a core translation role (strictly below the 50%
+# Fresh floor, so it can never be emailed as a STRONG match).
 SECONDARY_MATCH_CAP = 45
 
-# Language-context signal that lets a secondary bucket score as STRONG: the
-# posting explicitly asks for Arabic, bilingual/multilingual, a translation/
-# interpreting/linguist/l10n job, an explicit language pair, or language work.
-# Deliberately does NOT include bare "translate" — generic copy like
-# "help translate complex technical concepts" is marketing-speak, not a
-# translation requirement.
-STRONG_LANG_CONTEXT = re.compile(
-    r"\barabic\b|\bbilingual\b|\bmultilingual\b|language (?:pair|services|specialist|expert|trainer|teacher|tutoring)"
-    r"|\b(?:translator|translation|interpreter|interpretation|linguist|locali[sz]ation|locali[sz]e|transcri(?:ber|ption)|proofread(?:er|ing))\b"
-    r"|\b(?:english|arabic|spanish|french|german)[ /-]+(?:to|into)[ /-]+(?:english|arabic|spanish|french|german)"
-    r"|\b(?:english[ /-]?arabic|arabic[ /-]?english)\b",
+# The actual job-content signals that make a listing translation work. A posting
+# can hit the "Arabic Translation" bucket via "Arabic speaker + data entry" or
+# "Arabic AI trainer" without being a translation role — that is NOT a STRONG
+# match. Genuine translation/localization/interpreting work must appear.
+# Bare "translate" is excluded on purpose: "help translate complex technical
+# concepts" is marketing-speak, not a translation requirement. Explicit
+# English<->Arabic pair mentions are NOT enough by themselves either — a
+# "Content Moderator - Arabic/English" or "VA - Arabic/English" is bilingual
+# work but still not a translation role, so it must stay REVIEW.
+CORE_LANGUAGE_ROLES = re.compile(
+    r"\b(translator|translation specialist|staff translator|freelance translator|senior translator)\b"
+    r"|\btranslation\b|\binterpreter\b|\binterpretation\b|\binterpreting\b"
+    r"|\b(?:locali[sz]ation|locali[sz]e|locali[sz]ed|localiz(?:e|ed|ation))\b"
+    r"|\bl10n\b|\bi18n\b|\blinguist\b"
+    r"|\b(?:terminolog(?:y|ist)|translation memory|post-?edit(?:ing|or)?|mtpe|localization kit|style guide|glossary)\b"
+    r"|\bsubtitl(?:ing|e|ed|er)?\b|\bcaption(?:ing|s)?\b|\bvoice-?over\b"
+    r"|\blanguage pair\b",
     re.I,
 )
 
@@ -996,13 +1009,18 @@ def get_match_score(title: str, desc: str) -> dict:
     if best_cat != "Other":
         why_final.append(f"matches {best_cat} profile")
 
-    # 2b) Secondary-only cap: ESL / editing / admin / AI-data jobs are REVIEW
-    #     at best unless the posting clearly requires Arabic/bilingual/language
-    #     work. This keeps a generic "Copywriter" or "AR Specialist" from ever
-    #     reaching STRONG, while an "Arabic Data Entry" role still can.
-    if best_cat in SECONDARY_CATEGORIES and not STRONG_LANG_CONTEXT.search(text):
+    # 2b) STRONG-tier gate — only actual translation/localization/interpreting
+    #     work may reach STRONG. Secondary categories are REVIEW-only even when
+    #     Arabic is present ("Arabic Data Entry", "Arabic AI Trainer", ESL...).
+    #     A core category is also capped unless the role really is translation
+    #     work — "Data Entry - Arabic Speaker" scores the Arabic bucket but is
+    #     not a translation role.
+    if best_cat in SECONDARY_CATEGORIES:
         total = min(total, SECONDARY_MATCH_CAP)
         why_final.append("non-core category (secondary, review only)")
+    elif best_cat in CORE_CATEGORIES and not CORE_LANGUAGE_ROLES.search(text):
+        total = min(total, SECONDARY_MATCH_CAP)
+        why_final.append("Arabic/language signal but not a translation role (review only)")
 
     # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):
@@ -1188,6 +1206,13 @@ def score_job(job: dict) -> dict:
             score = max(0, min(100, score + company_priority))
     except Exception:
         pass
+
+    # Strictest STRONG gate is enforced on the FINAL score too, so neither the
+    # company bonus nor company-priority can push a non-translation role (e.g.
+    # "Arabic Data Entry" at an LSP, "Arabic AI Trainer") into STRONG.
+    role_text = f"{str(job.get('title') or '').lower()} {str(job.get('description') or '').lower()}"
+    if category not in CORE_CATEGORIES or not CORE_LANGUAGE_ROLES.search(role_text):
+        score = max(0, min(score, SECONDARY_MATCH_CAP))
 
     return {
         "score": int(max(0, min(100, score))),

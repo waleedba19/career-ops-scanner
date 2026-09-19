@@ -79,12 +79,6 @@ def test_true_positives():
         ("Freelance Translator (Arabic)",
          "Arabic to English translation and proofreading. Work from anywhere.",
          "Remote"),
-        ("Arabic (Egyptian) Language Expert - Freelance AI Trainer Project",
-         "Egyptian Arabic linguistic data for AI training. Native Arabic required. Remote.",
-         "Remote (Worldwide)"),
-        ("Arabic Voice Actor - Freelance AI Trainer Project",
-         "Arabic voice recording for AI training data. Native Arabic speaker. Remote.",
-         "Remote (Worldwide)"),
 ("Localization Specialist Arabic",
           "Arabic localization specialist for MENA. Language localization, l10n.",
           "Remote"),
@@ -97,7 +91,7 @@ def test_true_positives():
 
 
 def test_strict_secondary_categories():
-    print("\n=== Strict: secondary categories without language context = REVIEW only ===")
+    print("\n=== Strict: secondary / Arabic-adjacent-but-not-translation = REVIEW only ===")
     cases = [
         ("Virtual Assistant",
          "Data entry and administrative support. Remote worldwide.",
@@ -105,6 +99,27 @@ def test_strict_secondary_categories():
         ("Data Entry Clerk",
          "Remote data entry. Work from anywhere worldwide. No country restriction.",
          "Remote worldwide"),
+        ("Data Entry - Arabic Speaker",
+         "Arabic-speaking data entry clerk for document processing. Remote.",
+         "Remote (Worldwide)"),
+        ("Proofreader - Arabic",
+         "Review and proofread Arabic translations for accuracy. Remote.",
+         "Remote (Worldwide)"),
+        ("Arabic (Egyptian) Language Expert - Freelance AI Trainer Project",
+         "Egyptian Arabic linguistic data for AI training. Native Arabic required. Remote.",
+         "Remote (Worldwide)"),
+        ("Arabic Voice Actor - Freelance AI Trainer Project",
+         "Arabic voice recording for AI training data. Native Arabic speaker. Remote.",
+         "Remote (Worldwide)"),
+        ("English Language Specialist - Freelance AI Trainer Project",
+         "English linguistic data for AI training. Remote worldwide.",
+         "Remote (Worldwide)"),
+        ("Arabic/English speaking Content Moderator",
+         "Moderate user-generated content. Arabic and English fluent required. Remote.",
+         "Remote (Worldwide)"),
+        ("Virtual Assistant - Arabic/English",
+         "Bilingual VA: scheduling, email, data entry in Arabic and English. Remote.",
+         "Remote (Worldwide)"),
     ]
     for title, desc, loc in cases:
         sc = get_match_score(title, desc)

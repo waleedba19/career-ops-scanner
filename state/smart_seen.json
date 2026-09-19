@@ -27239,8 +27239,108 @@
       "seen": "2026-09-19T16:13:19.676244+00:00",
       "title": "Propiolanguageservices",
       "company": "Search Discovered"
+    },
+    "himalayasrss|schedulingandpatientmanagement|remote": {
+      "seen": "2026-09-19T16:53:29.765021+00:00",
+      "title": "Scheduling and Patient Management Specialist for a Health Care Company in the US",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|fluentenglishcustomersupportco|remote": {
+      "seen": "2026-09-19T16:53:29.767028+00:00",
+      "title": "(fluent English) Customer Support Consultant, hospitality (remote, global)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|carecoordinationrepresentative|remote": {
+      "seen": "2026-09-19T16:53:29.768009+00:00",
+      "title": "Remote - Care Coordination Representative",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|taxaccountingandlegalcontentma|remote": {
+      "seen": "2026-09-19T16:53:29.768406+00:00",
+      "title": "Tax Accounting and Legal Content Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|auditsenior|remote": {
+      "seen": "2026-09-19T16:53:29.769239+00:00",
+      "title": "Audit Senior",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|personalassistantforadomesticl|remote": {
+      "seen": "2026-09-19T16:53:29.771413+00:00",
+      "title": "Personal Assistant for a Domestic Limited-Liability Company in US (Home Based Pa",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|profesoraparticulardeprimarias|remote": {
+      "seen": "2026-09-19T16:53:29.772250+00:00",
+      "title": "Profesor/a Particular de Primaria \u2013 Sin Experiencia",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|commercialeffectivenessseniora|remote": {
+      "seen": "2026-09-19T16:53:29.772884+00:00",
+      "title": "Commercial Effectiveness Senior Analyst - Cigna Global Health - Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalproductprogrammanager|remote": {
+      "seen": "2026-09-19T16:53:29.773480+00:00",
+      "title": "Principal Product Program Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|itprojectmanager|remote": {
+      "seen": "2026-09-19T16:53:29.774234+00:00",
+      "title": "IT Project Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|accountexecutiveprincipal|remote": {
+      "seen": "2026-09-19T16:53:29.774700+00:00",
+      "title": "Account Executive Principal",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|enterprisearchitectdataintegra|remote": {
+      "seen": "2026-09-19T16:53:29.775652+00:00",
+      "title": "Enterprise Architect, Data Integration and BI",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|directorofcompliance|remote": {
+      "seen": "2026-09-19T16:53:29.776251+00:00",
+      "title": "Director of Compliance",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|strategiccontentwriterseoppcux|remote": {
+      "seen": "2026-09-19T16:53:29.777039+00:00",
+      "title": "Strategic Content Writer (SEO,PPC & UX)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|fspsrcraiii|remote": {
+      "seen": "2026-09-19T16:53:29.778139+00:00",
+      "title": "FSP- Sr CRA I/ II",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|marketingintern|remote": {
+      "seen": "2026-09-19T16:53:29.779513+00:00",
+      "title": "Marketing Intern",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|itinfrastructuresupportsiterel|remote": {
+      "seen": "2026-09-19T16:53:29.852094+00:00",
+      "title": "IT Infrastructure Support Site Reliability Engineer II",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|linuxdevicessoftwareengineersn|remote": {
+      "seen": "2026-09-19T16:53:29.852622+00:00",
+      "title": "Linux devices software engineer - snapd",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|sranalyticsengineer|remote": {
+      "seen": "2026-09-19T16:53:29.853062+00:00",
+      "title": "Sr Analytics Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|romanianusbasedinterpreter|remote": {
+      "seen": "2026-09-19T16:53:29.854283+00:00",
+      "title": "Romanian US-Based Interpreter",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-19T16:15:09.832053+00:00",
+  "updated": "2026-09-19T16:54:49.187976+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

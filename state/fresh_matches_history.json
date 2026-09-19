@@ -100,10 +100,20 @@
     "lifecycle_status": "old"
   },
   {
+    "url": "https://ae.linkedin.com/jobs/view/legal-translator-at-a-o-shearman-4466974037",
     "title": "Legal Translator",
     "company": "A&O Shearman",
-    "url": "https://ae.linkedin.com/jobs/view/legal-translator-at-a-o-shearman-4466974037",
-    "location": "Remote \u2014 Dubai, Dubai, United Arab Emirates",
+    "score": 100,
+    "category": "Translation (any pair)",
+    "found_date": "2026-09-19T08:27:50.925384+00:00",
+    "expires_date": "2026-09-22T08:27:50.925384+00:00",
+    "lifecycle_status": "old"
+  },
+  {
+    "title": "Arabic Translator / Arabic-English Translator / Translation Specialist",
+    "company": "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930",
+    "url": "https://ae.linkedin.com/jobs/view/arabic-translator-arabic-english-translator-translation-specialist-at-darpan-nit-durgapur-%E0%A4%A6%E0%A4%B0%E0%A5%8D%E0%A4%AA%E0%A4%A3-%E0%A4%8F%E0%A4%A8-%E0%A4%86%E0%A4%88-%E0%A4%9F%E0%A5%80-%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%BE%E0%A4%AA%E0%A5%81%E0%A4%B0-4466985527",
+    "location": "Remote \u2014 United Arab Emirates",
     "posted": "2026-09-19",
     "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
     "salary": "",
@@ -111,15 +121,15 @@
     "matched_query": "arabic translator",
     "postedISO": "2026-09-19T00:00:00",
     "score": 100,
-    "category": "Translation (any pair)",
+    "category": "Arabic Translation",
     "why": [
-      "translator (title)",
+      "arabic translator (title)",
       "remote/worldwide (bonus)",
-      "matches Translation (any pair) profile"
+      "matches Arabic Translation profile"
     ],
     "company_boost": 0,
     "is_fresh": true,
-    "age_hours": 8.438706394722223,
+    "age_hours": 16.000016849722222,
     "flags": [],
     "company_website": "",
     "email": "",
@@ -127,51 +137,53 @@
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Exact Arabic\u2011English legal translation required"
+        "reason": "Exact Arabic-English translation focus"
       },
       "experience_match": {
         "score": 95,
-        "reason": "5+ years legal translation, academic & contract work"
+        "reason": "5+ years translation, legal, academic"
       },
       "behavioral_fit": {
         "score": 90,
-        "reason": "Remote, flexible, prefers stable remote environment"
+        "reason": "Remote, flexible, academic-friendly"
       },
       "location_logistics": {
         "verdict": "PASS",
-        "reason": "Remote role; candidate can work from anywhere"
+        "reason": "Fully remote, no visa constraints"
       },
       "career_alignment": {
         "score": 95,
-        "reason": "Directly builds senior translator/localization path"
+        "reason": "Directly advances translation/localization path"
       },
       "overall_score": 94,
       "verdict": "Strong Fit",
       "strengths": [
-        "Arabic\u2011English legal translation expertise",
-        "Proven remote work discipline"
+        "Native Arabic, C1 English",
+        "Legal & academic translation expertise",
+        "Remote work experience"
       ],
       "gaps": [
-        "Familiarity with UAE-specific legal terminology",
-        "Specific CAT tools used by firm"
+        "Limited exposure to large\u2011scale SaaS localization platforms",
+        "No proven client acquisition record"
       ],
-      "recommendation": "Apply promptly; highlight legal translation portfolio and remote collaboration success.",
-      "interview_prep": "1. Describe a complex Arabic\u2011English legal contract you translated and your process. (Show methodology, tools, quality checks.)\n2. How do you ensure confidentiality and accuracy in legal translation? (Discuss NDAs, double\u2011checking, terminology management.)\n3. How do you manage tight deadlines and time\u2011zone differences when working remotely? (Explain scheduling, communication tools, buffer time.)",
-      "one_line_summary": "Top Arabic\u2011English legal translator, ideal remote fit for A&O Shearman."
+      "recommendation": "Apply; the role aligns perfectly with your translation and localization goals.",
+      "interview_prep": "1) How do you ensure accuracy in legal document translation? \u2013 Explain source\u2011target verification, terminology checks, and QA cycles. 2) Describe your process for maintaining terminology consistency across projects. \u2013 Discuss use of translation memories, glossaries, and CAT tools. 3) Which CAT tools have you used and how do you collaborate remotely? \u2013 Mention specific tools (e.g., SDL Trados, MemoQ) and cloud\u2011based workflow.",
+      "one_line_summary": "Ideal remote Arabic\u2011English translation role."
     },
-    "ai_insight": "Top Arabic\u2011English legal translator, ideal remote fit for A&O Shearman.",
+    "ai_insight": "Ideal remote Arabic\u2011English translation role.",
     "ai_overall_score": 94,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Arabic\u2011English legal translation expertise",
-      "Proven remote work discipline"
+      "Native Arabic, C1 English",
+      "Legal & academic translation expertise",
+      "Remote work experience"
     ],
     "ai_gaps": [
-      "Familiarity with UAE-specific legal terminology",
-      "Specific CAT tools used by firm"
+      "Limited exposure to large\u2011scale SaaS localization platforms",
+      "No proven client acquisition record"
     ],
-    "ai_recommendation": "Apply promptly; highlight legal translation portfolio and remote collaboration success.",
-    "ai_interview_prep": "1. Describe a complex Arabic\u2011English legal contract you translated and your process. (Show methodology, tools, quality checks.)\n2. How do you ensure confidentiality and accuracy in legal translation? (Discuss NDAs, double\u2011checking, terminology management.)\n3. How do you manage tight deadlines and time\u2011zone differences when working remotely? (Explain scheduling, communication tools, buffer time.)",
+    "ai_recommendation": "Apply; the role aligns perfectly with your translation and localization goals.",
+    "ai_interview_prep": "1) How do you ensure accuracy in legal document translation? \u2013 Explain source\u2011target verification, terminology checks, and QA cycles. 2) Describe your process for maintaining terminology consistency across projects. \u2013 Discuss use of translation memories, glossaries, and CAT tools. 3) Which CAT tools have you used and how do you collaborate remotely? \u2013 Mention specific tools (e.g., SDL Trados, MemoQ) and cloud\u2011based workflow.",
     "ai_technical_skills": 95,
     "ai_experience_match": 95,
     "ai_behavioral_fit": 90,
@@ -179,22 +191,14 @@
     "ai_career_alignment": 95,
     "urgency_score": 0,
     "desperation_index": 0,
-    "pain_points": "Translation backlog / scaling",
+    "pain_points": "Needs native Arabic speaker (rare); Translation backlog / scaling",
     "email_guessed": false,
-    "hiring_email": "kane.hagen@allenovery.com",
-    "email_verified": true,
-    "all_emails": [
-      "kane.hagen@allenovery.com",
-      "megan.mcmellon@allenovery.com",
-      "jim.ford@aoshearman.com",
-      "megan.mcmellon@aoshearman.com",
-      "millie.fantham@aoshearman.com"
-    ],
+    "hiring_email": "",
+    "email_verified": false,
+    "all_emails": [],
     "opportunity_score": 30,
-    "company_domain": "aoshearman.com",
-    "email_source": "dns",
     "company_research": {
-      "name": "A&O Shearman",
+      "name": "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930",
       "legitimacy_score": 60,
       "remote_friendly": true,
       "size_estimate": "unknown",
@@ -203,49 +207,45 @@
       "positive_signals": [
         "Listed on major job board"
       ],
-      "last_updated": "2026-09-19T08:27:49.573075+00:00"
+      "last_updated": "2026-09-19T16:01:23.283499+00:00"
     },
     "company_legitimacy": 60,
     "company_summary": "1 positive signals",
     "score_adjustment": 2,
     "deep_read": {
-      "url": "https://ae.linkedin.com/jobs/view/legal-translator-at-a-o-shearman-4466974037",
-      "title": "Legal Translator",
-      "description": "We have an exciting opportunity for a Legal Translator / Bilingual Paralegal to join our Legal & Regulatory Operations team, based in A&O Shearman's United Arab Emirates (UAE) office. Legal & Regulatory Operations Team \u2013 Middle East Our Legal & Regulatory Operations team provides critical support to lawyers and clients across the Middle East, delivering high-quality legal operations, regulatory, and transactional support. The team works closely with fee earners on corporate transactions, regulatory matters, licensing requirements, legal document review, and multilingual client-facing documentation across the UAE and wider GCC region. What you will do The primary objective of this role is to provide high-quality legal translation and bilingual paralegal support across a range of client matters and internal legal projects. This is a business-critical position supporting fee earners and clients on chargeable work, ensuring the accurate translation and review of complex legal documentation while assisting with legal and regulatory operations activities. Translate legal documents, agreements, correspondence, and communications between Arabic and English. Translate draft laws, regulations, governmental guidance, and regulatory updates across the UAE and wider GCC region. Review, proofread, and quality assure translated materials to ensure accuracy, consistency, and legal integrity. Assist with the preparation, review, and management of bilingual legal documentation. Support lawyers on client transactions, regulatory filings, licensing matters, and legal document reviews. Conduct legal research and assist with the preparation of legal and regulatory submissions where required. Provide paralegal support across corporate, regulatory, and transactional matters. Assist with document management, matter administration, and legal operations processes. Collaborate with lawyers, clients, and internal stakeholders to deliver timely and accurate support. Support ad hoc legal and regulatory projects across the Middle East region as required. What you will have Excellent written and verbal communication skills in both Arabic and English. Strong attention to detail with a commitment to accuracy and quality. Ability to manage multiple priorities and work effectively under pressure. Strong organisational and time management skills. Ability to build positive working relationships with colleagues, lawyers, clients, and stakeholders. Proactive, adaptable, and solution-focused approach to work. Strong analytical and problem-solving abilities. A collaborative mindset with a willingness to support wider team objectives. Qualifications And Experience Experience in legal translation within the UAE and/or wider Middle East region. Demonstrated expertise in Arabic-to-English and English-to-Arabic legal translation. Experience reviewing and drafting bilingual legal documentation. Previous experience providing paralegal, legal operations, or legal support services. Strong understa",
+      "url": "https://ae.linkedin.com/jobs/view/arabic-translator-arabic-english-translator-translation-specialist-at-darpan-nit-durgapur-%E0%A4%A6%E0%A4%B0%E0%A5%8D%E0%A4%AA%E0%A4%A3-%E0%A4%8F%E0%A4%A8-%E0%A4%86%E0%A4%88-%E0%A4%9F%E0%A5%80-%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%BE%E0%A4%AA%E0%A5%81%E0%A4%B0-4466985527",
+      "title": "Arabic Translator / Arabic-English Translator / Translation Specialist",
+      "description": "\u0645\u0631\u0627\u0633\u0644\u0629 \u0646\u0627\u0634\u0631 \u0627\u0644\u0648\u0638\u064a\u0641\u0629 \u0645\u0646 \u0634\u0631\u0643\u0629 DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930 \u0628\u0634\u0643\u0644 \u0645\u0628\u0627\u0634\u0631 Nijamudeen Gouri Nijamudeen Gouri Undergraduate Student at NIT Durgapur \ud83c\udf1f We're Hiring: Arabic Translator / Arabic-English Translator / Translation Specialist \ud83d\udccd Location: United Arab Emirates (Remote) \ud83d\udd52 Employment Type: Part-Time \ud83d\udcbc Experience Level: Mid-Level to Senior \ud83c\udf10 Work Arrangement: Fully Remote About Us We are a globally connected organization supporting international communication through accurate, culturally appropriate, and high-quality language services. Our work helps businesses and professional teams communicate effectively across Arabic- and English-speaking markets through clear translation, localization, and multilingual content support. The Role We are seeking an Arabic Translator / Arabic-English Translator / Translation Specialist to support written and digital communication across Arabic and English. The role involves translating business materials, reviewing multilingual content, maintaining terminology consistency, and ensuring messages are accurate and culturally appropriate. This flexible remote opportunity is suited to a detail-oriented language professional who can manage assignments independently. Key Responsibilities Translate business, marketing, administrative, and general professional content between Arabic and English. Review translated materials for accuracy, clarity, grammar, tone, and cultural suitability. Adapt content to reflect the intended meaning and context rather than relying on literal translation. Maintain consistent terminology, style, formatting, and language quality across projects. Proofread and edit Arabic and English documents before publication or distribution. Support localization of digital content, presentations, communications, and business materials. Research terminology and subject-specific references when handling specialized content. Coordinate with internal teams, writers, managers, and other language professionals. Manage multiple translation assignments while meeting agreed deadlines. Contribute to improving translation workflows, terminology resources, and quality standards. Requirements Bachelor's degree or equivalent qualification in Translation, Languages, Linguistics, Communications, or a related field is preferred. 3+ years of professional translation or language-related experience is preferred. Strong written and spoken proficiency in both Arabic and English. Strong understanding of Arabic and English grammar, terminology, tone, and cultural context. Knowledge of professional translation, proofreading, editing, and localization practices. Familiarity with digital documents, content management, and remote collaboration tools. Excellent attention to detail and ability to identify language inconsistencies. Ability to communicate complex information clearly and naturally in both languages. Strong organizational skills with the ability to manage multiple assignments independently. Professional di",
       "eligibility": [
-        "in Law, Translation, Languages, or a related discipline is desirable"
+        "in Translation, Languages, Linguistics, Communications, or a related field is preferred",
+        "Bachelor's degree or equivalent qualification in Translation, Languages, Linguistics, Communications, or a related field is preferred"
       ],
       "requirements": [
-        "Experience in legal translation within the UAE and/or wider Middle East region",
-        "reviewing and drafting bilingual legal documentation",
-        "providing paralegal, legal operations, or legal support services",
-        "supporting corporate, regulatory, or transactional legal matters is advantageous"
+        "is preferred. Strong written and spoken proficiency in both Arabic and English"
       ],
       "contact": {},
       "deadline": null,
       "salary": null,
       "location": "Remote",
-      "is_remote": false
+      "is_remote": true
     },
     "eligibility": [
-      "in Law, Translation, Languages, or a related discipline is desirable"
+      "in Translation, Languages, Linguistics, Communications, or a related field is preferred",
+      "Bachelor's degree or equivalent qualification in Translation, Languages, Linguistics, Communications, or a related field is preferred"
     ],
     "requirements": [
-      "Experience in legal translation within the UAE and/or wider Middle East region",
-      "reviewing and drafting bilingual legal documentation",
-      "providing paralegal, legal operations, or legal support services",
-      "supporting corporate, regulatory, or transactional legal matters is advantageous"
+      "is preferred. Strong written and spoken proficiency in both Arabic and English"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/A&O Shearman_Legal Translator_20260919.pdf",
-    "cover_letter_type": "translation",
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/A&O Shearman_Legal Translator_20260919.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - _Arabic Translator - Arabic-English Translator - Tr_20260919.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "new",
-    "found_date": "2026-09-19T08:27:50.925384+00:00",
-    "expires_date": "2026-09-22T08:27:50.925384+00:00",
-    "scan_date": "2026-09-19T10:27:56.187917+02:00"
+    "found_date": "2026-09-19T16:01:24.208423+00:00",
+    "expires_date": "2026-09-22T16:01:24.208423+00:00",
+    "scan_date": "2026-09-19T18:01:30.152106+02:00"
   },
   {
     "url": "https://bg.linkedin.com/jobs/view/multilingual-roles-in-bulgaria-up-to-%E2%82%AC2-200-mo-%2B-%E2%82%AC1-5k-bonus-%2B-relocation-at-savior-artigos-texteis-lda-4467854038",

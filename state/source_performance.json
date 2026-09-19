@@ -3852,10 +3852,10 @@
     },
     "linkedin_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 2520,
+      "total_fetched": 2460,
       "total_matches": 0,
       "last_active": "2026-09-19",
-      "consecutive_empty": 42,
+      "consecutive_empty": 41,
       "status": "inactive",
       "daily_stats": [
         {
@@ -3869,6 +3869,11 @@
           "matches": 0
         },
         {
+          "date": "2026-09-15",
+          "fetched": 60,
+          "matches": 0
+        },
+        {
           "date": "2026-09-16",
           "fetched": 60,
           "matches": 0
@@ -3985,11 +3990,6 @@
         },
         {
           "date": "2026-09-18",
-          "fetched": 60,
-          "matches": 0
-        },
-        {
-          "date": "2026-09-19",
           "fetched": 60,
           "matches": 0
         },
@@ -5272,5 +5272,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-09-19T18:13:58.036137+00:00"
+  "last_cleanup": "2026-09-19T18:14:20.514459+00:00"
 }

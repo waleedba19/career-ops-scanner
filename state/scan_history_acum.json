@@ -1,76 +1,5 @@
 [
   {
-    "date": "2026-09-13T10:10:13.668143+00:00",
-    "matched_count": 8,
-    "all_count": 3230,
-    "jobs": [
-      {
-        "title": "Turkmen Academic PDF Arabic Translation",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/academic-writing/Turkmen-Academic-PDF-Arabic-Translation",
-        "score": 97,
-        "category": "Arabic Translation",
-        "source": "freelancer"
-      },
-      {
-        "title": "Handwritten Notes to Word Document",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/microsoft-word/Handwritten-Notes-Word-Document-40708445.html",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      },
-      {
-        "title": "KDP Book Formatting + Proofreading for Espionage Thriller",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/copy-editing/KDP-Book-Formatting-Proofreading-for",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "Proofread Short Creative Manuscript",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/copy-editing/Proofread-Short-Creative-Manuscript",
-        "score": 97,
-        "category": "Editing",
-        "source": "freelancer"
-      },
-      {
-        "title": "SAT English Teacher",
-        "company": "AP Guru",
-        "url": "https://in.linkedin.com/jobs/view/sat-english-teacher-at-ap-guru-4464711867",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "Senior Copy Editor",
-        "company": "Publicis Groupe",
-        "url": "https://co.linkedin.com/jobs/view/senior-copy-editor-at-publicis-groupe-4447190665",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      },
-      {
-        "title": "Creative Services Proofreader - Analyst - Markets",
-        "company": "JPMorganChase",
-        "url": "https://in.linkedin.com/jobs/view/creative-services-proofreader-analyst-markets-at-jpmorganchase-4439302040",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      },
-      {
-        "title": "Quality Assurance Proofreader",
-        "company": "Fanatics",
-        "url": "https://www.linkedin.com/jobs/view/quality-assurance-proofreader-at-fanatics-4457366495",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-13T15:38:13.378277+00:00",
     "matched_count": 1,
     "all_count": 3227,
@@ -2120,6 +2049,21 @@
         "score": 98,
         "category": "Translation (any pair)",
         "source": "untalent_arabic"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-19T16:01:40.026109+00:00",
+    "matched_count": 1,
+    "all_count": 6342,
+    "jobs": [
+      {
+        "title": "Arabic Translator / Arabic-English Translator / Translation Specialist",
+        "company": "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930",
+        "url": "https://ae.linkedin.com/jobs/view/arabic-translator-arabic-english-translator-translation-specialist-at-darpan-nit-durgapur-%E0%A4%A6%E0%A4%B0%E0%A5%8D%E0%A4%AA%E0%A4%A3-%E0%A4%8F%E0%A4%A8-%E0%A4%86%E0%A4%88-%E0%A4%9F%E0%A5%80-%E0%A4%A6%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%BE%E0%A4%AA%E0%A5%81%E0%A4%B0-4466985527",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
       }
     ]
   }

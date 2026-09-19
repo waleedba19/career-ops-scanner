@@ -1,28 +1,5 @@
 [
   {
-    "date": "2026-09-12T23:17:26.305875+00:00",
-    "matched_count": 2,
-    "all_count": 3224,
-    "jobs": [
-      {
-        "title": "Local Virtual Assistant Needed",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/administrative-support/Local-Virtual-Assistant-Needed-40707745.html",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      },
-      {
-        "title": "Middle School ESL Teacher (Anticipated Openings 2026-2027)",
-        "company": "Springfield Public Schools (Massachusetts)",
-        "url": "https://www.linkedin.com/jobs/view/middle-school-esl-teacher-anticipated-openings-2026-2027-at-springfield-public-schools-massachusetts-4464295658",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-12T23:21:24.687883+00:00",
     "matched_count": 0,
     "all_count": 3074,
@@ -2065,5 +2042,44 @@
     "matched_count": 0,
     "all_count": 6393,
     "jobs": []
+  },
+  {
+    "date": "2026-09-19T00:49:18.352419+00:00",
+    "matched_count": 4,
+    "all_count": 6324,
+    "jobs": [
+      {
+        "title": "Conceptual Copywriter",
+        "company": "Superside",
+        "url": "https://jobicy.com/jobs/153612-conceptual-copywriter",
+        "score": 100,
+        "category": "Editing & Proofreading",
+        "source": "jobicy"
+      },
+      {
+        "title": "LawnStarter: Analytics Engineering Manager, Data Platform & Governance",
+        "company": "wwr_all_other",
+        "url": "https://weworkremotely.com/remote-jobs/lawnstarter-analytics-engineering-manager-data-platform-governance-1",
+        "score": 70,
+        "category": "Translation (any pair)",
+        "source": "wwr_all_other"
+      },
+      {
+        "title": "Frontend Web Application Developer",
+        "company": "KoboToolbox",
+        "url": "https://remotive.com/remote-jobs/design/frontend-web-application-developer-2091141",
+        "score": 50,
+        "category": "AI Data",
+        "source": "remotive_rss"
+      },
+      {
+        "title": "Interpreter (Arabic and French)",
+        "company": "IOM - International Organization for Migration",
+        "url": "https://www.impactpool.org/jobs/1233160",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
   }
 ]

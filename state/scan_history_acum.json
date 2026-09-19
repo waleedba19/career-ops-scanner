@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-13T16:07:05.426513+00:00",
-    "matched_count": 1,
-    "all_count": 3226,
-    "jobs": [
-      {
-        "title": "Virtual Assistant \u2013 General Business Support",
-        "company": "Freelancer.com",
-        "url": "https://www.freelancer.com/projects/social-media-management/Virtual-Assistant-General-Business",
-        "score": 97,
-        "category": "Admin",
-        "source": "freelancer"
-      }
-    ]
-  },
-  {
     "date": "2026-09-13T16:21:01.696853+00:00",
     "matched_count": 1,
     "all_count": 3206,
@@ -2056,6 +2041,12 @@
     "date": "2026-09-19T17:05:19.898081+00:00",
     "matched_count": 0,
     "all_count": 6341,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-19T17:12:53.438202+00:00",
+    "matched_count": 0,
+    "all_count": 6402,
     "jobs": []
   }
 ]

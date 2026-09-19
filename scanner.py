@@ -462,7 +462,14 @@ WRONG_LANGUAGE = re.compile(
     r"slovak|slovene|slovenian|ukrainian|czech|romanian|hungarian|greek|bulgarian|croatian|"
     r"serbian|bosnian|macedonian|albanian|estonian|latvian|lithuanian|finnish|norwegian|"
     r"swedish|danish|icelandic|irish|welsh|basque|catalan|galician|armenian|georgian|"
-    r"azerbaijani|kazakh|uzbek|mongolian|burmese|khmer)\b",
+    r"azerbaijani|kazakh|kyrgyz|uzbek|mongolian|burmese|khmer|assamese|asturian|aymara|"
+    r"belarusian|cebuano|chechen|chichewa|corsican|dzongkha|esperanto|fulah|fulani|"
+    r"gaelic|ganda|guarani|guaraní|haitian|hmong|ilocano|javanese|kabuverdianu|kaqchikel|"
+    r"k.?iche|kinyarwanda|kirundi|konkani|lao|lingala|luo|luxembourgish|malagasy|maltese|"
+    r"maori|māori|mapudungun|nahuatl|occitan|odia|oromo|papiamento|quechua|q.?eqchi|"
+    r"sesotho|sotho|shona|sindhi|sinhalese|sinhala|soninke|sunda|sundanese|tajik|tsugaru|"
+    r"umbundu|wolof|xhosa|alentejano|alentejo|turkmen|slovenien|nynorsk|bokmal|"
+    r"frisian|scots|samoa|tongan|fijian|pidgin|creole)\b",
     re.I,
 )
 HAS_ARABIC = re.compile(r"\barabic\b", re.I)
@@ -479,7 +486,8 @@ ENGINEER_ALLOW = re.compile(
 
 STUB_TITLE = re.compile(
     r"(get started|sign[- ]?up|teacher'?s portal|request a quote|join us|"
-    r"become a (tutor|teacher)|onboarding|careers home|log[- ]?in)",
+    r"become a (tutor|teacher)|onboarding|careers home|log[- ]?in|"
+    r"\btest[ -]?test[ -]?test\b|\bdo not apply\b|\bdo not click\b)",
     re.I,
 )
 STUB_URL = re.compile(
@@ -1132,13 +1140,17 @@ def score_job(job: dict) -> dict:
 
     # A title that the keyword matcher hard-dropped (non-target role, engineer,
     # customer success, leadership…) must NOT be revived by the translation-
-    # company bonus. An unrelated role at an LSP stays a hard miss.
+    # company bonus. An unrelated role at an LSP stays a hard miss. The wrong-
+    # language rule is checked against the full text exactly like get_match_score
+    # (an Arabic posting that mentions French in passing still passes).
     t = (job.get("title") or "").lower()
+    t_text = f"{t} {str(job.get('description') or '').lower()}"
     hard_dropped = (
         any(kw in t for kw in NEGATIVE_KEYWORDS)
         or SENIOR_PENALTY.search(t)
         or NON_ROLE_ADMIN.search(t)
         or (ENGINEER_TITLE.search(t) and not ENGINEER_ALLOW.search(t))
+        or (WRONG_LANGUAGE.search(t_text) and not HAS_ARABIC.search(t_text))
     )
     if hard_dropped and base.get("score", 0) <= 0:
         return {

@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-12T23:21:24.687883+00:00",
-    "matched_count": 0,
-    "all_count": 3074,
-    "jobs": []
-  },
-  {
     "date": "2026-09-13T10:10:13.668143+00:00",
     "matched_count": 8,
     "all_count": 3230,
@@ -2079,6 +2073,53 @@
         "score": 100,
         "category": "Arabic Translation",
         "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-19T08:28:05.731040+00:00",
+    "matched_count": 5,
+    "all_count": 6327,
+    "jobs": [
+      {
+        "title": "Legal Translator",
+        "company": "A&O Shearman",
+        "url": "https://ae.linkedin.com/jobs/view/legal-translator-at-a-o-shearman-4466974037",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
+      {
+        "title": "Conceptual Copywriter",
+        "company": "Superside",
+        "url": "https://www.remote1stjobs.com/jobs/conceptual-copywriter-superside-mu7v087g?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
+        "score": 85,
+        "category": "Editing & Proofreading",
+        "source": "remote1stjobs"
+      },
+      {
+        "title": "AR Specialist Contractor",
+        "company": "Stride",
+        "url": "https://www.remote1stjobs.com/jobs/ar-specialist-contractor-stride-mu7qqcyh?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
+        "score": 65,
+        "category": "ESL",
+        "source": "remote1stjobs"
+      },
+      {
+        "title": "Mid-Market Customer Success Manager - EMEA",
+        "company": "Ashby",
+        "url": "https://www.remote1stjobs.com/jobs/mid-market-customer-success-manager-emea-ashby-mu7zagxe?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
+        "score": 55,
+        "category": "Translation (any pair)",
+        "source": "remote1stjobs"
+      },
+      {
+        "title": "IRIS\u00b2 Lead Ground Segment Service Engineer",
+        "company": "untalent_arabic",
+        "url": "https://untalent.org/jobs/iris2-lead-ground-segment-service-engineer",
+        "score": 98,
+        "category": "Translation (any pair)",
+        "source": "untalent_arabic"
       }
     ]
   }

@@ -55,7 +55,7 @@ jobs:
       CAREEROPS_DEDUP_TTL_DAYS: "14"  # re-evaluate seen jobs after 14 days
       CAREEROPS_EMAIL_FINDER: "1"      # resolve employer inboxes (not board relay)
       CAREEROPS_EMAIL_TARGETS: "10"    # top N matches to enrich
-      SCAN_MODE:          ${{ github.event.inputs.mode || 'adaptive' }}
+      SCAN_MODE:          ${{ github.event.inputs.mode || 'standard' }}
 
     steps:
       - name: Checkout repository

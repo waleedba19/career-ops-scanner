@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-13T15:38:13.378277+00:00",
-    "matched_count": 1,
-    "all_count": 3227,
-    "jobs": [
-      {
-        "title": "Remote Office Assistant",
-        "company": "Coalition Technologies ",
-        "url": "https://remotive.com/remote-jobs/marketing/remote-office-assistant-1680495",
-        "score": 100,
-        "category": "Admin",
-        "source": "remotive"
-      }
-    ]
-  },
-  {
     "date": "2026-09-13T15:41:56.081141+00:00",
     "matched_count": 0,
     "all_count": 3227,
@@ -2064,6 +2049,21 @@
         "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-19T16:15:05.202122+00:00",
+    "matched_count": 1,
+    "all_count": 6407,
+    "jobs": [
+      {
+        "title": "Propiolanguageservices",
+        "company": "Search Discovered",
+        "url": "https://job-boards.greenhouse.io/propiolanguageservices",
+        "score": 79,
+        "category": "Arabic Translation",
+        "source": "search_discovered"
       }
     ]
   }

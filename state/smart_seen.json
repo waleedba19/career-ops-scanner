@@ -27874,8 +27874,523 @@
       "seen": "2026-09-19T18:14:18.374588+00:00",
       "title": "Renewal Specialist",
       "company": "jobgether"
+    },
+    "anthropic|computeinfrastructurecounselre|sanfranciscocaseattl": {
+      "seen": "2026-09-20T01:47:52.782557+00:00",
+      "title": "Compute & Infrastructure Counsel, Real Estate",
+      "company": "Anthropic"
+    },
+    "anthropic|securitytechnologydeploymentsp|remotefriendlytravel": {
+      "seen": "2026-09-20T01:47:52.791799+00:00",
+      "title": "Security Technology Deployment Specialist",
+      "company": "Anthropic"
+    },
+    "xai|materialhandlermemphis|southavenmsmemphistn": {
+      "seen": "2026-09-20T01:47:52.815647+00:00",
+      "title": "Material Handler - Memphis",
+      "company": "xAI"
+    },
+    "jumpcloud|customersuccessmanagermexico|mexicocitymexicoremo": {
+      "seen": "2026-09-20T01:47:53.090332+00:00",
+      "title": "Customer Success Manager Mexico",
+      "company": "JumpCloud"
+    },
+    "stravito|backendengineer|netherlandssweden": {
+      "seen": "2026-09-20T01:47:53.180518+00:00",
+      "title": "Backend Engineer",
+      "company": "Stravito"
+    },
+    "nextgenhealthcare|srnetworkengineerii|india": {
+      "seen": "2026-09-20T01:47:53.188741+00:00",
+      "title": "Sr. Network Engineer II",
+      "company": "NextGen Healthcare"
+    },
+    "edfrenewablesnorthamerica|renewableenergybusinessdevelop|unitedstates": {
+      "seen": "2026-09-20T01:47:53.198552+00:00",
+      "title": "Renewable Energy - Business Development Manager [Remote]",
+      "company": "EDF Renewables North America"
+    },
+    "bluecrossblueshieldofsouthcarolina|casemanagementcoordinatormater|unitedstates": {
+      "seen": "2026-09-20T01:47:53.217548+00:00",
+      "title": "Case Management Coordinator (Maternity Focus)",
+      "company": "BlueCross BlueShield of South Carolina"
+    },
+    "chiesigroup|headofrddataelaborationeuropei|italy": {
+      "seen": "2026-09-20T01:47:53.232132+00:00",
+      "title": "Head of R&D Data Elaboration (Europe, remote, IT)",
+      "company": "Chiesi Group"
+    },
+    "assurant|bilingualassociateclaimsexamin|unitedstates": {
+      "seen": "2026-09-20T01:47:53.241785+00:00",
+      "title": "Bilingual Associate Claims Examiner (English/French)",
+      "company": "Assurant"
+    },
+    "excelya|seniorregulatorycmcprojectlead|saclayfranceremote": {
+      "seen": "2026-09-20T01:47:53.243193+00:00",
+      "title": "Senior Regulatory CMC Project lead",
+      "company": "Excelya"
+    },
+    "virtual7gmbh|seniorsystemengineermwd|homeofficeremote": {
+      "seen": "2026-09-20T01:47:53.244198+00:00",
+      "title": "Senior System Engineer (m/w/d)",
+      "company": "virtual7 GmbH"
+    },
+    "kevinkehr|werkstudentmwdfinanceberatungu|homeofficeremote": {
+      "seen": "2026-09-20T01:47:53.245790+00:00",
+      "title": "Werkstudent (m/w/d) \u2013 Finance & Beratung (unternehmerisch, leistungsbasiert)",
+      "company": "Kevin Kehr"
+    },
+    "alemizurich|senioroperationsmanagerfmd|storemnchenremote": {
+      "seen": "2026-09-20T01:47:53.246894+00:00",
+      "title": "Senior Operations Manager (f/m/d)",
+      "company": "Alemi Zurich"
+    },
+    "partspace|aidevelopermfd|nrnbergremote": {
+      "seen": "2026-09-20T01:47:53.248417+00:00",
+      "title": "AI Developer (m/f/d)",
+      "company": "Partspace"
+    },
+    "33usainc|bilingualmarketingassistantjap|remotewesthollywoodc": {
+      "seen": "2026-09-20T01:47:53.253844+00:00",
+      "title": "Bilingual Marketing Assistant (Japanese and English)",
+      "company": "33 USA Inc."
+    },
+    "actionsinterculturelles|agentdeprojet|remotesherbrookequeb": {
+      "seen": "2026-09-20T01:47:53.254288+00:00",
+      "title": "Agent de projet",
+      "company": "Actions Interculturelles"
+    },
+    "theaitrainingcompany|frenchexpert36hr|remotefrance": {
+      "seen": "2026-09-20T01:47:53.254640+00:00",
+      "title": "French Expert | $36/hr | Remote",
+      "company": "The Ai Training Company"
+    },
+    "americanheartassociation|internationalproductdevelopmen|remotedallastx": {
+      "seen": "2026-09-20T01:47:53.255078+00:00",
+      "title": "International Product Development Manager, Professional Education",
+      "company": "American Heart Association"
+    },
+    "saviorartigostexteislda|arabicenglishdigitaltrustsafet|remotesofiasofiacity": {
+      "seen": "2026-09-20T01:47:53.255783+00:00",
+      "title": "Arabic & English Digital Trust & Safety Analyst \u2013 Sofia or Remote (Bulgaria)",
+      "company": "Savior Artigos Texteis Lda"
+    },
+    "choicetalentsltd|spanishlanguagespecialist|remoteportharcourtri": {
+      "seen": "2026-09-20T01:47:53.256079+00:00",
+      "title": "Spanish Language Specialist",
+      "company": "Choice Talents LTD"
+    },
+    "teleperformancesite1|languagespecialist|remotegurugramharyan": {
+      "seen": "2026-09-20T01:47:53.256475+00:00",
+      "title": "Language Specialist",
+      "company": "Teleperformance Site 1"
+    },
+    "linkedin|projectconsultantlanguageeduca|remoteunitedstates": {
+      "seen": "2026-09-20T01:47:53.256895+00:00",
+      "title": "Project Consultant: Language Educator AI Trainer (Spanish, French, German, Italian, Dutch), $65/hr",
+      "company": "LinkedIn"
+    },
+    "gmozcomrunsystemjsc|itcomtortinghnkorean|remotehanoihanoiviet": {
+      "seen": "2026-09-20T01:47:53.257234+00:00",
+      "title": "IT Comtor ti\u1ebfng H\u00e0n (Korean)",
+      "company": "GMO-Z.com RUNSYSTEM JSC."
+    },
+    "deluxe|englisheditorbangaloreindia|remotebengalurukarna": {
+      "seen": "2026-09-20T01:47:53.257848+00:00",
+      "title": "English Editor (Bangalore, India)",
+      "company": "Deluxe"
+    },
+    "colgiocatlicabraslia|analistaderevisodetextopleno|remotebrasliafederal": {
+      "seen": "2026-09-20T01:47:53.258293+00:00",
+      "title": "Analista de Revis\u00e3o de Texto Pleno",
+      "company": "Col\u00e9gio Cat\u00f3lica Bras\u00edlia"
+    },
+    "symsstrategicgroupllcssg|seniortechnicaleditor|remotemcleanva": {
+      "seen": "2026-09-20T01:47:53.258619+00:00",
+      "title": "Senior Technical Editor",
+      "company": "Syms Strategic Group, LLC (SSG)"
+    },
+    "symsstrategicgroupllcssg|seniortechnicaleditor|remotewashingtondc": {
+      "seen": "2026-09-20T01:47:53.258931+00:00",
+      "title": "Senior Technical Editor",
+      "company": "Syms Strategic Group, LLC (SSG)"
+    },
+    "ssense|rviseursedecontenuchinoissurap|remotemontrealquebec": {
+      "seen": "2026-09-20T01:47:53.259389+00:00",
+      "title": "R\u00e9viseur\u00b7se de contenu, Chinois - Sur appel // Sub-Editor, Chinese - On-call",
+      "company": "SSENSE"
+    },
+    "fwifedwritersinc|intelligencereporteditor|remotewashingtondc": {
+      "seen": "2026-09-20T01:47:53.259718+00:00",
+      "title": "Intelligence Report Editor",
+      "company": "FWI (FedWriters, Inc.)"
+    },
+    "wwrmanagementfinance|passiveincomedentistdirectorof|remote": {
+      "seen": "2026-09-20T01:47:53.533857+00:00",
+      "title": "Passive Income Dentist: Director of Operations \u2014 Full-Time | Remote (North America)",
+      "company": "wwr_management_finance"
+    },
+    "himalayasrss|strategicaccountmanager|remote": {
+      "seen": "2026-09-20T01:47:53.578985+00:00",
+      "title": "Strategic Account Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|customerservicerepresentativep|remote": {
+      "seen": "2026-09-20T01:47:53.580489+00:00",
+      "title": "Customer Service Representative (Phone Support)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorestimator|remote": {
+      "seen": "2026-09-20T01:47:53.581174+00:00",
+      "title": "Senior Estimator",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|softwareengineeropenstack|remote": {
+      "seen": "2026-09-20T01:47:53.581512+00:00",
+      "title": "Software Engineer - OpenStack",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|oraclespecialist|remote": {
+      "seen": "2026-09-20T01:47:53.582002+00:00",
+      "title": "Oracle Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|fbssenioroperationsanalystcall|remote": {
+      "seen": "2026-09-20T01:47:53.582714+00:00",
+      "title": "FBS - Senior Operations Analyst (Call Center)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|associateresourcecoordinator|remote": {
+      "seen": "2026-09-20T01:47:53.583144+00:00",
+      "title": "Associate Resource Coordinator",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|bachelormasteroderprojektarbei|remote": {
+      "seen": "2026-09-20T01:47:53.586440+00:00",
+      "title": "Bachelor-, Master- oder Projektarbeit: LLM-gest\u00fctzte adaptive Datenvisualisierun",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|bilingualmedicalbillerenglishs|remote": {
+      "seen": "2026-09-20T01:47:53.586971+00:00",
+      "title": "Bilingual Medical Biller (English & Spanish Proficiency)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|videoeditormetaadssocial|remote": {
+      "seen": "2026-09-20T01:47:53.587572+00:00",
+      "title": "Video Editor (Meta Ads + Social)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|clientexpertengagementspeciali|remote": {
+      "seen": "2026-09-20T01:47:53.588129+00:00",
+      "title": "Client & Expert Engagement Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|regionalsalesdirectorgrowthfra|remote": {
+      "seen": "2026-09-20T01:47:53.588687+00:00",
+      "title": "Regional Sales Director, Growth | France | Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|homebasedsalesanalyticsdataope|remote": {
+      "seen": "2026-09-20T01:47:53.589186+00:00",
+      "title": "Home-Based Sales Analytics & Data Operations Team Lead",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|eudigitalwealthchannelmarketin|remote": {
+      "seen": "2026-09-20T01:47:53.589663+00:00",
+      "title": "EU Digital Wealth Channel Marketing Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|clinicalanalyticsspecialistmd|remote": {
+      "seen": "2026-09-20T01:47:53.590209+00:00",
+      "title": "Clinical Analytics Specialist \u2013 MD",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|marketingoperationscoordinator|remote": {
+      "seen": "2026-09-20T01:47:53.590826+00:00",
+      "title": "Marketing Operations Coordinator - Partnerships",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|academiccoach|remote": {
+      "seen": "2026-09-20T01:47:53.591284+00:00",
+      "title": "Academic Coach",
+      "company": "himalayas_rss"
+    },
+    "untalentarabic|mealofficersrmrwamwanja|remote": {
+      "seen": "2026-09-20T01:47:53.600163+00:00",
+      "title": "MEAL Officer - SRM Rwamwanja",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|rwamwanja|remote": {
+      "seen": "2026-09-20T01:47:53.600299+00:00",
+      "title": "Rwamwanja",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|projectofficerlivelihood1|remote": {
+      "seen": "2026-09-20T01:47:53.600527+00:00",
+      "title": "Project Officer- Livelihood-1",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|sbccgenderandprotectionofficer|remote": {
+      "seen": "2026-09-20T01:47:53.600756+00:00",
+      "title": "SBCC, Gender and Protection Officer",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|projectcoordinatorselfreliance|remote": {
+      "seen": "2026-09-20T01:47:53.601039+00:00",
+      "title": "Project Coordinator- Self Reliance Module, WFP Project",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|communicationofficer|remote": {
+      "seen": "2026-09-20T01:47:53.601221+00:00",
+      "title": "Communication Officer",
+      "company": "untalent_arabic"
+    },
+    "jobgether|salesprofessionalentrepreneuri|remote": {
+      "seen": "2026-09-20T01:47:53.603091+00:00",
+      "title": "Remote Sales Professional\u2013Entrepreneurial Opportunity",
+      "company": "jobgether"
+    },
+    "jobgether|junioraccountexecutivenewmarke|remote": {
+      "seen": "2026-09-20T01:47:53.603240+00:00",
+      "title": "Junior Account Executive, New Markets",
+      "company": "jobgether"
+    },
+    "jobgether|smarthomesalestechnicianphoeni|remote": {
+      "seen": "2026-09-20T01:47:53.603479+00:00",
+      "title": "Smart Home Sales Technician- Phoenix, AZ",
+      "company": "jobgether"
+    },
+    "jobgether|lifehealthaccountexecutivesale|remote": {
+      "seen": "2026-09-20T01:47:53.603632+00:00",
+      "title": "Life & Health Account Executive (Remote Sales)",
+      "company": "jobgether"
+    },
+    "jobgether|globalaccountmanager|remote": {
+      "seen": "2026-09-20T01:47:53.603730+00:00",
+      "title": "Global Account Manager",
+      "company": "jobgether"
+    },
+    "jobgether|productsalesspecialistpatientm|remote": {
+      "seen": "2026-09-20T01:47:53.604011+00:00",
+      "title": "Product Sales Specialist - Patient Monitoring - West Virginia",
+      "company": "jobgether"
+    },
+    "jobgether|nationalaccountmanager|remote": {
+      "seen": "2026-09-20T01:47:53.604113+00:00",
+      "title": "National Account Manager",
+      "company": "jobgether"
+    },
+    "jobgether|regionalaccountmanagerahushsct|remote": {
+      "seen": "2026-09-20T01:47:53.604313+00:00",
+      "title": "Regional Account Manager, aHUS/HSCT-TMA, Grand Rapids, MI",
+      "company": "jobgether"
+    },
+    "jobgether|insidesalesaccountexecutiveedt|remote": {
+      "seen": "2026-09-20T01:47:53.604442+00:00",
+      "title": "Inside Sales Account Executive | EdTech",
+      "company": "jobgether"
+    },
+    "jobgether|residualfertilityvaluationnati|remote": {
+      "seen": "2026-09-20T01:47:53.604597+00:00",
+      "title": "Residual Fertility Valuation - National Account Manager",
+      "company": "jobgether"
+    },
+    "jobgether|codingspecialistii|remote": {
+      "seen": "2026-09-20T01:47:53.604960+00:00",
+      "title": "Coding Specialist II",
+      "company": "jobgether"
+    },
+    "jobgether|cloudfullstackengineermediaent|remote": {
+      "seen": "2026-09-20T01:47:53.605220+00:00",
+      "title": "Cloud Full-Stack Engineer \u2013 Media & Entertainment",
+      "company": "jobgether"
+    },
+    "jobgether|enterprisearchitectsap|remote": {
+      "seen": "2026-09-20T01:47:53.605450+00:00",
+      "title": "Enterprise Architect SAP",
+      "company": "jobgether"
+    },
+    "jobgether|seniorsoftwareengineerfullstac|remote": {
+      "seen": "2026-09-20T01:47:53.605617+00:00",
+      "title": "Senior Software Engineer (Full-Stack - TypeScript/Node)",
+      "company": "jobgether"
+    },
+    "jobgether|storagepresalessolutionarchite|remote": {
+      "seen": "2026-09-20T01:47:53.605821+00:00",
+      "title": "Storage Presales Solution Architect",
+      "company": "jobgether"
+    },
+    "jobgether|seniorsolutionsarchitectnetwor|remote": {
+      "seen": "2026-09-20T01:47:53.606048+00:00",
+      "title": "Senior Solutions Architect, Networking Solutions",
+      "company": "jobgether"
+    },
+    "jobgether|principalitsoftwareengineer2|remote": {
+      "seen": "2026-09-20T01:47:53.606165+00:00",
+      "title": "Principal, IT Software Engineer 2",
+      "company": "jobgether"
+    },
+    "jobgether|seniorperceptionsoftwareengine|remote": {
+      "seen": "2026-09-20T01:47:53.606483+00:00",
+      "title": "Senior Perception Software Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|javamicroservicesengineers|remote": {
+      "seen": "2026-09-20T01:47:53.606607+00:00",
+      "title": "Java Microservices Engineers",
+      "company": "jobgether"
+    },
+    "jobgether|regionalvpofsalesannuitiesohio|remote": {
+      "seen": "2026-09-20T01:47:53.606838+00:00",
+      "title": "Regional VP of Sales - Annuities (Ohio)",
+      "company": "jobgether"
+    },
+    "jobgether|digitalsalesrepresentative|remote": {
+      "seen": "2026-09-20T01:47:53.606940+00:00",
+      "title": "Digital Sales Representative",
+      "company": "jobgether"
+    },
+    "jobgether|clientmanagerassociatepremierm|remote": {
+      "seen": "2026-09-20T01:47:53.607209+00:00",
+      "title": "Client Manager Associate, Premier Market - Syracuse, NY",
+      "company": "jobgether"
+    },
+    "jobgether|membershipsalesandservicerepre|remote": {
+      "seen": "2026-09-20T01:47:53.607487+00:00",
+      "title": "Remote Membership Sales and Service Representative",
+      "company": "jobgether"
+    },
+    "jobgether|outsidesalesrepresentativecoll|remote": {
+      "seen": "2026-09-20T01:47:53.607651+00:00",
+      "title": "Outside Sales Representative - College Point, NY",
+      "company": "jobgether"
+    },
+    "jobgether|seniorconsultantprojectmanager|remote": {
+      "seen": "2026-09-20T01:47:53.608102+00:00",
+      "title": "Senior Consultant/Project Manager",
+      "company": "jobgether"
+    },
+    "jobgether|projectmanagerforusd2cpowertoo|remote": {
+      "seen": "2026-09-20T01:47:53.608391+00:00",
+      "title": "Project Manager for US D2C PowerTool Brand (Latam, Remote)",
+      "company": "jobgether"
+    },
+    "jobgether|senioritoprojectmanager|remote": {
+      "seen": "2026-09-20T01:47:53.608567+00:00",
+      "title": "Senior ITO Project Manager",
+      "company": "jobgether"
+    },
+    "jobgether|projectmanagerlonghaulcontrols|remote": {
+      "seen": "2026-09-20T01:47:53.608787+00:00",
+      "title": "Project Manager, Long Haul Controls (Contracts)",
+      "company": "jobgether"
+    },
+    "jobgether|projectleadfleetsales|remote": {
+      "seen": "2026-09-20T01:47:53.608969+00:00",
+      "title": "Project Lead - Fleet Sales",
+      "company": "jobgether"
+    },
+    "jobgether|corpitprojectmanager|remote": {
+      "seen": "2026-09-20T01:47:53.609145+00:00",
+      "title": "Corp IT Project Manager",
+      "company": "jobgether"
+    },
+    "jobgether|assistantclinicalprojectmanage|remote": {
+      "seen": "2026-09-20T01:47:53.609338+00:00",
+      "title": "Assistant Clinical Project Manager",
+      "company": "jobgether"
+    },
+    "jobgether|travelexperiencecoordinator|remote": {
+      "seen": "2026-09-20T01:47:53.609761+00:00",
+      "title": "Travel Experience Coordinator \u2013 Remote",
+      "company": "jobgether"
+    },
+    "jobgether|lifeandhealthinsuranceagent|remote": {
+      "seen": "2026-09-20T01:47:53.609907+00:00",
+      "title": "Remote Life and Health Insurance Agent",
+      "company": "jobgether"
+    },
+    "jobgether|registerednurseaitrainer|remote": {
+      "seen": "2026-09-20T01:47:53.610124+00:00",
+      "title": "Registered Nurse - AI Trainer",
+      "company": "jobgether"
+    },
+    "jobgether|forensichighwaybridgeengineer|remote": {
+      "seen": "2026-09-20T01:47:53.610268+00:00",
+      "title": "Forensic Highway/Bridge Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|legalcounselprocurement|remote": {
+      "seen": "2026-09-20T01:47:53.610475+00:00",
+      "title": "Legal Counsel Procurement",
+      "company": "jobgether"
+    },
+    "jobgether|seniororganicsearchstrategist3|remote": {
+      "seen": "2026-09-20T01:47:53.610744+00:00",
+      "title": "Senior Organic Search Strategist (Remote, \u00a338-41k)",
+      "company": "jobgether"
+    },
+    "jobgether|cybersystemstestevaluationlead|remote": {
+      "seen": "2026-09-20T01:47:53.610965+00:00",
+      "title": "Cyber Systems Test & Evaluation Lead",
+      "company": "jobgether"
+    },
+    "jobgether|areasalesmanagerindirectcincin|remote": {
+      "seen": "2026-09-20T01:47:53.611101+00:00",
+      "title": "Area Sales Manager Indirect- Cincinnati, OH",
+      "company": "jobgether"
+    },
+    "jobgether|executiveadministrativeassista|remote": {
+      "seen": "2026-09-20T01:47:53.611353+00:00",
+      "title": "Executive Administrative Assistant (ETS)| Temporary",
+      "company": "jobgether"
+    },
+    "jobgether|erpdirectorofsales|remote": {
+      "seen": "2026-09-20T01:47:53.611458+00:00",
+      "title": "ERP Director of Sales",
+      "company": "jobgether"
+    },
+    "jobgether|technicalprogramoperationsspec|remote": {
+      "seen": "2026-09-20T01:47:53.611670+00:00",
+      "title": "Technical Program Operations Specialist",
+      "company": "jobgether"
+    },
+    "jobgether|technicalproductmanagerchina|remote": {
+      "seen": "2026-09-20T01:47:53.611861+00:00",
+      "title": "Technical Product Manager, China",
+      "company": "jobgether"
+    },
+    "jobgether|specialistimplementation|remote": {
+      "seen": "2026-09-20T01:47:53.612029+00:00",
+      "title": "Specialist Implementation",
+      "company": "jobgether"
+    },
+    "jobgether|cobolcicsdeveloperpayroll|remote": {
+      "seen": "2026-09-20T01:47:53.612265+00:00",
+      "title": "COBOL/CICS Developer (Payroll) (remote)",
+      "company": "jobgether"
+    },
+    "jobgether|regionalfleetmaintenancemanage|remote": {
+      "seen": "2026-09-20T01:47:53.612498+00:00",
+      "title": "Regional Fleet Maintenance Manager (Central)",
+      "company": "jobgether"
+    },
+    "jobgether|seniormanagerproductprimaryadv|remote": {
+      "seen": "2026-09-20T01:47:53.612737+00:00",
+      "title": "Senior Manager, Product - Primary & Advanced Models",
+      "company": "jobgether"
+    },
+    "jobgether|leadtransmissionlineengineer2g|remote": {
+      "seen": "2026-09-20T01:47:53.612903+00:00",
+      "title": "Lead Transmission Line Engineer 2 - Grid",
+      "company": "jobgether"
+    },
+    "jobgether|leadepicapplicationsanalystamb|remote": {
+      "seen": "2026-09-20T01:47:53.613141+00:00",
+      "title": "Lead Epic Applications Analyst (Ambulatory)",
+      "company": "jobgether"
     }
   },
-  "updated": "2026-09-19T18:14:48.879458+00:00",
+  "updated": "2026-09-20T01:48:11.082397+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

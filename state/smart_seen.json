@@ -29384,8 +29384,233 @@
       "seen": "2026-09-20T12:08:03.114864+00:00",
       "title": "Backend Engineer (AI Agentic) 1904/1905",
       "company": "jobgether"
+    },
+    "xai|drivercdlmemphis|southavenmsmemphistn": {
+      "seen": "2026-09-20T17:02:13.444816+00:00",
+      "title": "Driver (CDL) - Memphis",
+      "company": "xAI"
+    },
+    "micro1|developmentalpsychologyphd|remote": {
+      "seen": "2026-09-20T17:02:13.836936+00:00",
+      "title": "Developmental Psychology (PhD)",
+      "company": "micro1"
+    },
+    "micro1|mergersacquisitionsmaattorneyb|remote": {
+      "seen": "2026-09-20T17:02:13.845811+00:00",
+      "title": "Mergers & Acquisitions (M&A) Attorney (BigLaw Firms)",
+      "company": "micro1"
+    },
+    "micro1|corporateattorneybiglawfirms|remote": {
+      "seen": "2026-09-20T17:02:13.856418+00:00",
+      "title": "Corporate Attorney (BigLaw Firms)",
+      "company": "micro1"
+    },
+    "koboldmetals|fieldoperationslead|canadaunitedstates": {
+      "seen": "2026-09-20T17:02:13.891480+00:00",
+      "title": "Field Operations Lead",
+      "company": "KoBold Metals"
+    },
+    "oneocean|keyaccountmanager|poland": {
+      "seen": "2026-09-20T17:02:13.908267+00:00",
+      "title": "Key Account Manager",
+      "company": "OneOcean"
+    },
+    "kobotoolbox|frontendwebapplicationdevelope|usacanadaargentiname": {
+      "seen": "2026-09-20T17:02:13.910890+00:00",
+      "title": "Frontend Web Application Developer",
+      "company": "KoboToolbox"
+    },
+    "lvra|japanesetranslator|remotedhakadhakabang": {
+      "seen": "2026-09-20T17:02:13.923385+00:00",
+      "title": "Japanese Translator",
+      "company": "Lvra"
+    },
+    "languageservicesassociates|arabicinterpreterwichitaks|remotewichitaks": {
+      "seen": "2026-09-20T17:02:13.924525+00:00",
+      "title": "Arabic Interpreter - Wichita, KS",
+      "company": "Language Services Associates"
+    },
+    "mjhlifesciences|copyeditor|remoteunitedstates": {
+      "seen": "2026-09-20T17:02:13.925832+00:00",
+      "title": "Copy Editor",
+      "company": "MJH Life Sciences\u00ae"
+    },
+    "mdpiserbia|englisheditornovisad|remotenovisadvojvodi": {
+      "seen": "2026-09-20T17:02:13.926967+00:00",
+      "title": "English Editor Novi Sad",
+      "company": "MDPI Serbia"
+    },
+    "nexonamerica|localizationcopyeditor|remoteelsegundoca": {
+      "seen": "2026-09-20T17:02:13.927732+00:00",
+      "title": "Localization Copy Editor",
+      "company": "Nexon America"
+    },
+    "collibra|professionalservicessalesexecu|australia": {
+      "seen": "2026-09-20T17:02:13.974202+00:00",
+      "title": "Professional Services Sales Executive",
+      "company": "Collibra"
+    },
+    "fastly|seniorsrenetworks|uk": {
+      "seen": "2026-09-20T17:02:13.985161+00:00",
+      "title": "Senior SRE - Networks",
+      "company": "Fastly"
+    },
+    "dropbox|customerevidencemanager|canada": {
+      "seen": "2026-09-20T17:02:13.999969+00:00",
+      "title": "Customer Evidence Manager",
+      "company": "Dropbox"
+    },
+    "natera|associatedirectorsrmanagerheal|usa": {
+      "seen": "2026-09-20T17:02:14.011231+00:00",
+      "title": "Associate Director/Sr. Manager, Health Economics & Outcomes Research-Oncology",
+      "company": "Natera"
+    },
+    "angi|seniormanagernationalaccounts|usa": {
+      "seen": "2026-09-20T17:02:14.026723+00:00",
+      "title": "Senior Manager, National Accounts",
+      "company": "ANGI"
+    },
+    "airtm|seniorsoftwareenginnerfullstac|latam": {
+      "seen": "2026-09-20T17:02:14.042478+00:00",
+      "title": "Senior Software Enginner (Full-stack Node + React)",
+      "company": "Airtm"
+    },
+    "cloudbeds|strategicaccountmanager|australianewzealand": {
+      "seen": "2026-09-20T17:02:14.051866+00:00",
+      "title": "Strategic Account Manager",
+      "company": "Cloudbeds"
+    },
+    "skyslope|securityengineeringmanager|usa": {
+      "seen": "2026-09-20T17:02:14.060995+00:00",
+      "title": "Security Engineering Manager",
+      "company": "SkySlope"
+    },
+    "wpromote|contentengineer|usa": {
+      "seen": "2026-09-20T17:02:14.071979+00:00",
+      "title": "Content Engineer",
+      "company": "Wpromote"
+    },
+    "saasgroup|staffsoftwareengineer|emea": {
+      "seen": "2026-09-20T17:02:14.083021+00:00",
+      "title": "Staff Software Engineer",
+      "company": "saas.group"
+    },
+    "saasgroup|chieftechnologyandproductoffic|europe": {
+      "seen": "2026-09-20T17:02:14.093392+00:00",
+      "title": "Chief Technology and Product Officer",
+      "company": "saas.group"
+    },
+    "saasgroup|seniorsoftwareengineerai|europe": {
+      "seen": "2026-09-20T17:02:14.104445+00:00",
+      "title": "Senior Software Engineer - AI",
+      "company": "saas.group"
+    },
+    "liveperson|seniorsoftwareengineerdataplat|germany": {
+      "seen": "2026-09-20T17:02:14.115428+00:00",
+      "title": "Senior Software Engineer, Data & Platform Services",
+      "company": "LivePerson"
+    },
+    "himalayasrss|floridabilingualtransactioncoo|remote": {
+      "seen": "2026-09-20T17:02:14.732940+00:00",
+      "title": "Florida Bilingual Transaction Coordinator (Fluency in English and Spanish requir",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|automationaiadoptionteachingex|remote": {
+      "seen": "2026-09-20T17:02:14.734115+00:00",
+      "title": "Automation & AI Adoption Teaching Expert",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|productmanagerreactors|remote": {
+      "seen": "2026-09-20T17:02:14.735310+00:00",
+      "title": "Product Manager - Reactors",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniornetdeveloper|remote": {
+      "seen": "2026-09-20T17:02:14.735999+00:00",
+      "title": "Senior .Net Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|powerbidataengineer|remote": {
+      "seen": "2026-09-20T17:02:14.736824+00:00",
+      "title": "Power BI Data Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|srdataengineer|remote": {
+      "seen": "2026-09-20T17:02:14.737572+00:00",
+      "title": "Sr Data Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|travelconsultantglobal24hourem|remote": {
+      "seen": "2026-09-20T17:02:14.738839+00:00",
+      "title": "Travel Consultant Global 24 Hour Emergency Desk",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|srsitereliabilityengineer|remote": {
+      "seen": "2026-09-20T17:02:14.740460+00:00",
+      "title": "Sr. Site Reliability Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|hroperationsspecialist|remote": {
+      "seen": "2026-09-20T17:02:14.742484+00:00",
+      "title": "HR Operations, Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|softwareengineeringintern|remote": {
+      "seen": "2026-09-20T17:02:14.743620+00:00",
+      "title": "Software Engineering Intern",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|consultantradiologistreporting|remote": {
+      "seen": "2026-09-20T17:02:14.745038+00:00",
+      "title": "Consultant Radiologist - Remote Reporting",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|sapbasisconsultantfullor|remote": {
+      "seen": "2026-09-20T17:02:14.747396+00:00",
+      "title": "SAP Basis Consultant - Full Remote (Contractor)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|insidesalesspecialist|remote": {
+      "seen": "2026-09-20T17:02:14.748618+00:00",
+      "title": "Inside Sales Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|computerscienceassignmentgrade|remote": {
+      "seen": "2026-09-20T17:02:14.749757+00:00",
+      "title": "Computer Science Assignment Grader (Contract)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|generalapplications|remote": {
+      "seen": "2026-09-20T17:02:14.750911+00:00",
+      "title": "General Applications",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalsoftwareengineer|remote": {
+      "seen": "2026-09-20T17:02:14.751691+00:00",
+      "title": "Principal Software Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniormetaadsmanager|remote": {
+      "seen": "2026-09-20T17:02:14.752794+00:00",
+      "title": "Senior Meta Ads Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorlifecyclemarketingmanage|remote": {
+      "seen": "2026-09-20T17:02:14.753529+00:00",
+      "title": "Senior Lifecycle Marketing Manager (Europe/Asia)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|leadtalentacquisitiongtm|remote": {
+      "seen": "2026-09-20T17:02:14.754239+00:00",
+      "title": "Lead Talent Acquisition (GTM)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|translationlocalizationinterne|remote": {
+      "seen": "2026-09-20T17:02:14.756014+00:00",
+      "title": "Translation & Localization Intern, English to French",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-20T12:09:38.541973+00:00",
+  "updated": "2026-09-20T17:04:10.053718+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

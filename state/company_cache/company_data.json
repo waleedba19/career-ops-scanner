@@ -1735,5 +1735,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-20T12:09:17.175499+00:00"
+  },
+  "Talent Ferry1": {
+    "name": "Talent Ferry1",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-20T18:29:27.972879+00:00"
   }
 }

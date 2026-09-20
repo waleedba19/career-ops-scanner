@@ -1,20 +1,58 @@
 version: "3.9"
+
+# Split into the services that actually run. The old single service ran only
+# `python scanner.py` (a batch job that exits) while exposing API/dashboard
+# ports nothing was listening on. Ports bind to loopback by default — set
+# CAREEROPS_API_KEY and pass it as X-API-Key to call the API.
 services:
-  careerops:
+  scanner:
     build: .
     container_name: careerops-scanner
-    ports:
-      - "8000:8000" # dashboard
-      - "8001:8001" # api
+    command: python scanner.py
     env_file: .env
     environment:
       - CAREEROPS_TIER_CAP=2
+      - SCAN_MODE=adaptive
     volumes:
       - ./state:/app/state
       - ./output:/app/output
+    restart: "no"   # batch job: run once per invocation, don't loop
+
+  api:
+    build: .
+    container_name: careerops-api
+    command: python api_server.py
+    env_file: .env
+    environment:
+      - CAREEROPS_TIER_CAP=2
+      # In-container bind must be 0.0.0.0 so the mapped port is reachable;
+      # the host port below is bound to 127.0.0.1 so only localhost can hit it.
+      - CAREEROPS_API_HOST=0.0.0.0
+      - CAREEROPS_API_PORT=8001
+      - CAREEROPS_API_KEY=${CAREEROPS_API_KEY:-}
+    volumes:
+      - ./state:/app/state:ro
+      - ./output:/app/output
+    ports:
+      - "127.0.0.1:8001:8001"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost:8001/api/health"]
+      test: ["CMD", "curl", "-sf", "-H", "X-API-Key: ${CAREEROPS_API_KEY:-}", "http://localhost:8001/api/ready"]
       interval: 30s
       timeout: 5s
       retries: 3
+
+  dashboard:
+    build: .
+    container_name: careerops-dashboard
+    command: python dashboard/app.py
+    environment:
+      - CAREEROPS_DASH_HOST=0.0.0.0
+      - CAREEROPS_DASH_PORT=8000
+    volumes:
+      - ./state:/app/state:ro
+      - ./output:/app/output:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+    restart: unless-stopped
+

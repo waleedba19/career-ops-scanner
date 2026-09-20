@@ -1,28 +1,5 @@
 [
   {
-    "date": "2026-09-13T17:31:19.082065+00:00",
-    "matched_count": 2,
-    "all_count": 3204,
-    "jobs": [
-      {
-        "title": "Transcription QA Specialist ( transcription & captioning)",
-        "company": "CAREERBLOC ~",
-        "url": "https://in.linkedin.com/jobs/view/transcription-qa-specialist-transcription-captioning-at-careerbloc-%7E-4465464413",
-        "score": 100,
-        "category": "Admin",
-        "source": "linkedin"
-      },
-      {
-        "title": "English Teacher",
-        "company": "ExcelBiz",
-        "url": "https://bd.linkedin.com/jobs/view/english-teacher-at-excelbiz-4465471883",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-13T17:33:52.956442+00:00",
     "matched_count": 0,
     "all_count": 3204,
@@ -2038,6 +2015,12 @@
     "date": "2026-09-19T18:14:38.315089+00:00",
     "matched_count": 0,
     "all_count": 6337,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-20T01:48:07.421517+00:00",
+    "matched_count": 0,
+    "all_count": 6323,
     "jobs": []
   }
 ]

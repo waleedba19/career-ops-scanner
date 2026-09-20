@@ -28604,8 +28604,93 @@
       "seen": "2026-09-20T02:25:24.732641+00:00",
       "title": "Chief Revenue Officer - Miami",
       "company": "himalayas_rss"
+    },
+    "himalayasrss|graduatehrgeneralistamer|remote": {
+      "seen": "2026-09-20T02:46:43.807687+00:00",
+      "title": "Graduate HR Generalist - AMER",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|dataarchitectazure|remote": {
+      "seen": "2026-09-20T02:46:43.808498+00:00",
+      "title": "Data Architect - Azure",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|directoritbusinesspartnerneuro|remote": {
+      "seen": "2026-09-20T02:46:43.809226+00:00",
+      "title": "Director, IT Business Partner - Neuromodulation",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|execusearchconsultant|remote": {
+      "seen": "2026-09-20T02:46:43.810055+00:00",
+      "title": "ExecuSearch Consultant",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|devopsengineerinfra|remote": {
+      "seen": "2026-09-20T02:46:43.810584+00:00",
+      "title": "DevOps Engineer, Infra",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|businessdeliveryconsultant|remote": {
+      "seen": "2026-09-20T02:46:43.811329+00:00",
+      "title": "Business Delivery Consultant",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|internpredictivesalesprospecti|remote": {
+      "seen": "2026-09-20T02:46:43.812178+00:00",
+      "title": "Intern \u2013 Predictive Sales Prospecting",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|aitrainerenglishchinesebilingu|remote": {
+      "seen": "2026-09-20T02:46:43.812807+00:00",
+      "title": "AI Trainer - English-Chinese Bilingual Voice Recording",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorpythondeveloper|remote": {
+      "seen": "2026-09-20T02:46:43.813387+00:00",
+      "title": "Senior Python Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|gastroenterologyphysicianfully|remote": {
+      "seen": "2026-09-20T02:46:43.814114+00:00",
+      "title": "Gastroenterology Physician - Fully Remote | Upto $200/hr",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|businesssystemsanalysisadvisor|remote": {
+      "seen": "2026-09-20T02:46:43.815088+00:00",
+      "title": "Business Systems Analysis, Advisor",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|technicalproductmanager|remote": {
+      "seen": "2026-09-20T02:46:43.815758+00:00",
+      "title": "Technical Product Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|softwarecertificationengineers|remote": {
+      "seen": "2026-09-20T02:46:43.816780+00:00",
+      "title": "Software Certification Engineers (Senior, Lead, or Expert) (Virtual)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|cloudengineergovernanceriskand|remote": {
+      "seen": "2026-09-20T02:46:43.817461+00:00",
+      "title": "Cloud Engineer - Governance, Risk, and Compliance (GRC)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniortechnicalimplementationp|remote": {
+      "seen": "2026-09-20T02:46:43.818074+00:00",
+      "title": "Senior Technical Implementation Partner",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|generaltalentpool|remote": {
+      "seen": "2026-09-20T02:46:43.818792+00:00",
+      "title": "General Talent Pool",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|associatedistrictsalesmanager|remote": {
+      "seen": "2026-09-20T02:46:43.819234+00:00",
+      "title": "Associate District Sales Manager",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-20T02:26:55.653144+00:00",
+  "updated": "2026-09-20T02:48:03.173232+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

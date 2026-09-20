@@ -1,5 +1,6 @@
 """CareerOps Dashboard — standalone, no heavy deps, serves UI + API"""
 import json
+import os
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -7,6 +8,23 @@ from urllib.parse import urlparse, parse_qs
 ROOT = Path(__file__).parent.parent
 STATE_DIR = ROOT / "state"
 OUTPUT_DIR = ROOT / "output"
+
+# Write endpoint auth: POST /api/apply requires CAREEROPS_API_KEY (X-API-Key
+# header or api_key in body) when set. Same policy as api_server.py.
+DASH_API_KEY = os.getenv("CAREEROPS_API_KEY", "")
+ALLOWED_STATUS = {"Applied", "Maybe", "Rejected", "Interview", "Offer"}
+
+
+def _dash_authorized(headers, payload_key: str = "") -> bool:
+    if not DASH_API_KEY:
+        return True
+    sent = (headers.get("X-API-Key") or payload_key or "").strip()
+    if len(sent) != len(DASH_API_KEY):
+        return False
+    r = 0
+    for x, y in zip(sent.encode("utf-8"), DASH_API_KEY.encode("utf-8")):
+        r |= x ^ y
+    return r == 0
 
 TEMPLATE = (Path(__file__).parent / "templates" / "index.html").read_text(encoding="utf-8")
 
@@ -121,10 +139,19 @@ class Handler(BaseHTTPRequestHandler):
                 payload = json.loads(body)
             except:
                 payload = {}
+            if not _dash_authorized(self.headers, payload.get("api_key", "")):
+                self.send_json({"error": "unauthorized — valid API key required"}, 401)
+                return
             url = payload.get("url", "")
             status = payload.get("status", "Applied")
             if not url:
                 self.send_json({"error": "url required"}, 400)
+                return
+            if not url.startswith(("http://", "https://")):
+                self.send_json({"error": "invalid url"}, 400)
+                return
+            if status not in ALLOWED_STATUS:
+                self.send_json({"error": "invalid status"}, 400)
                 return
             try:
                 from excel_generator import mark_applied

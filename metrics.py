@@ -105,6 +105,38 @@ def persist_metrics():
     except Exception as e:
         print(f"metrics persist failed: {e}")
 
+def metrics_text_from_disk() -> str:
+    """Render Prometheus text from the persisted metrics.json snapshot.
+
+    The API server runs in a separate process from the scanner, so the
+    in-memory accumulator in prometheus_text() is empty there. Reading the
+    on-disk snapshot the scanner wrote makes /api/metrics reflect the last
+    real scan regardless of which process serves it.
+    """
+    try:
+        if METRICS_FILE.exists():
+            full = json.loads(METRICS_FILE.read_text(encoding="utf-8"))
+            h = full.get("health", {})
+            lines = [
+                "# HELP careerops_fetched_total Total jobs fetched (last scan)",
+                "# TYPE careerops_fetched_total gauge",
+                f"careerops_fetched_total {h.get('total_fetched', 0)}",
+                "# HELP careerops_matches_total Matches after scoring (last scan)",
+                "# TYPE careerops_matches_total gauge",
+                f"careerops_matches_total {h.get('total_matches', 0)}",
+                "# HELP careerops_health_score 0-100 (last scan)",
+                "# TYPE careerops_health_score gauge",
+                f"careerops_health_score {h.get('health_score', 0)}",
+                "# HELP careerops_sources_up Sources that returned jobs (last scan)",
+                "# TYPE careerops_sources_up gauge",
+                f"careerops_sources_up {h.get('sources_up', 0)}",
+            ]
+            return "\n".join(lines) + "\n"
+    except Exception:
+        pass
+    return "careerops_health_score 0\n"
+
+
 def prometheus_text() -> str:
     """Return Prometheus exposition format (for /metrics endpoint)."""
     h = get_health()

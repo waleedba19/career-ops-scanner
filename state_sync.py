@@ -65,63 +65,127 @@ def _get_sha(base: str, token: str, url: str) -> str | None:
         return None
 
 
+def _is_not_found(exc: Exception) -> bool:
+    """True if the error is an HTTP 404 (file not on remote yet — first run)."""
+    return getattr(exc, "code", None) == 404
+
+
+def _fetch_content(base: str, token: str, rel: str) -> bytes:
+    """Fetch a state file's raw bytes from the repo.
+
+    The Contents API omits ``content`` for blobs over ~1 MiB (returning
+    ``"content": ""`` plus a ``download_url``), which previously made large
+    files like smart_seen.json restore as empty bytes. Handle both paths and
+    fail loudly if we genuinely cannot get content — never return empty bytes
+    for a file that exists on the remote.
+    """
+    url = f"{base}/state/{rel}"
+    req = urllib.request.Request(url, headers={**_HEADERS, "Authorization": f"Bearer {token}"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    raw = data.get("content")
+    if data.get("encoding") == "base64" and raw:
+        return base64.b64decode(raw)
+    if data.get("download_url"):
+        with urllib.request.urlopen(data["download_url"], timeout=30) as r2:
+            return r2.read()
+    raise ValueError(f"no content returned for state/{rel}")
+
+
+def _write_validated(dest: Path, content: bytes) -> None:
+    """Validate JSON then atomically replace dest — never clobber good state."""
+    json.loads(content.decode("utf-8"))  # raises if corrupt
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    tmp = dest.with_suffix(dest.suffix + ".tmp")
+    tmp.write_bytes(content)
+    tmp.replace(dest)  # atomic swap
+
+
 def download_state() -> int:
-    """Fetch state files from the repo's state/ folder into output/."""
+    """Fetch state files from the repo's state/ folder into output/.
+
+    Returns the number restored, or -1 if any file failed. A file that simply
+    does not exist yet on the remote (first run) is not a failure;
+    decode/transport/validation errors are.
+    """
     api = _api()
     if not api:
         return 0
     base, token = api
     restored = 0
+    failed = 0
     for rel in STATE_FILES:
         try:
-            url = f"{base}/state/{rel}"
-            req = urllib.request.Request(url, headers={**_HEADERS, "Authorization": f"Bearer {token}"})
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            content = base64.b64decode(data.get("content", ""))
-            dest = OUTPUT_DIR / rel
-            dest.parent.mkdir(parents=True, exist_ok=True)
-            dest.write_bytes(content)
+            content = _fetch_content(base, token, rel)
+            _write_validated(OUTPUT_DIR / rel, content)
             restored += 1
         except Exception as e:
-            print(f"  [state] download {rel}: {e}")
-    print(f"[state] restored {restored}/{len(STATE_FILES)} state files")
-    return restored
+            if _is_not_found(e):
+                print(f"  [state] download {rel}: not present on remote (first run), skipping")
+            else:
+                print(f"  [state] download {rel}: {e}")
+                failed += 1
+    print(f"[state] restored {restored}/{len(STATE_FILES)} state files ({failed} failed)")
+    return -1 if failed else restored
+
+
+def _put_file(base: str, token: str, rel: str, src: Path, message: str) -> None:
+    """Upload a single file to the repo, retrying once on a 409 SHA conflict.
+
+    A 409 means the remote file changed between our SHA lookup and the PUT
+    (e.g. an overlapping run committed first). Re-fetch the SHA and retry once;
+    the shared workflow concurrency group should make this rare.
+    """
+    url = f"{base}/state/{rel}"
+    for attempt in range(2):
+        body: dict = {
+            "message": message,
+            "content": base64.b64encode(src.read_bytes()).decode("ascii"),
+        }
+        sha = _get_sha(base, token, url)
+        if sha:
+            body["sha"] = sha
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(body).encode("utf-8"),
+            method="PUT",
+            headers={**_HEADERS, "Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                if resp.status in (200, 201):
+                    return
+        except Exception as e:
+            if getattr(e, "code", None) == 409 and attempt == 0:
+                print(f"  [state] upload {rel}: conflict, retrying with fresh SHA")
+                continue
+            raise
+    raise RuntimeError(f"upload {rel}: conflict persisted after retry")
 
 
 def upload_state() -> int:
-    """Upload local state files to the repo's state/ folder."""
+    """Upload local state files to the repo's state/ folder.
+
+    Returns the number uploaded, or -1 if any failed.
+    """
     api = _api()
     if not api:
         return 0
     base, token = api
     uploaded = 0
+    failed = 0
     for rel in STATE_FILES:
         src = OUTPUT_DIR / rel
         if not src.exists():
             continue
         try:
-            url = f"{base}/state/{rel}"
-            body: dict = {
-                "message": f"careerops: update {rel}",
-                "content": base64.b64encode(src.read_bytes()).decode("ascii"),
-            }
-            sha = _get_sha(base, token, url)
-            if sha:
-                body["sha"] = sha
-            req = urllib.request.Request(
-                url,
-                data=json.dumps(body).encode("utf-8"),
-                method="PUT",
-                headers={**_HEADERS, "Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-            )
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                if resp.status in (200, 201):
-                    uploaded += 1
+            _put_file(base, token, rel, src, f"careerops: update {rel}")
+            uploaded += 1
         except Exception as e:
             print(f"  [state] upload {rel}: {e}")
-    print(f"[state] uploaded {uploaded} state files")
-    return uploaded
+            failed += 1
+    print(f"[state] uploaded {uploaded} state files ({failed} failed)")
+    return -1 if failed else uploaded
 
 
 PROBE_FILES = ["source_probe.md", "source_probe.json"]
@@ -134,42 +198,29 @@ def upload_probe() -> int:
         return 0
     base, token = api
     uploaded = 0
+    failed = 0
     for rel in PROBE_FILES:
         src = OUTPUT_DIR / rel
         if not src.exists():
             continue
         try:
-            url = f"{base}/state/{rel}"
-            body: dict = {
-                "message": f"careerops: source probe report ({rel})",
-                "content": base64.b64encode(src.read_bytes()).decode("ascii"),
-            }
-            sha = _get_sha(base, token, url)
-            if sha:
-                body["sha"] = sha
-            req = urllib.request.Request(
-                url,
-                data=json.dumps(body).encode("utf-8"),
-                method="PUT",
-                headers={**_HEADERS, "Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-            )
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                if resp.status in (200, 201):
-                    uploaded += 1
+            _put_file(base, token, rel, src, f"careerops: source probe report ({rel})")
+            uploaded += 1
         except Exception as e:
             print(f"  [state] upload {rel}: {e}")
-    print(f"[state] uploaded {uploaded} probe report files")
-    return uploaded
+            failed += 1
+    print(f"[state] uploaded {uploaded} probe report files ({failed} failed)")
+    return -1 if failed else uploaded
 
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "download":
-        sys.exit(0 if download_state() else 0)
+        sys.exit(1 if download_state() < 0 else 0)
     elif cmd == "upload":
-        sys.exit(0 if upload_state() else 0)
+        sys.exit(1 if upload_state() < 0 else 0)
     elif cmd == "upload-probe":
-        sys.exit(0 if upload_probe() else 0)
+        sys.exit(1 if upload_probe() < 0 else 0)
     else:
         print("Usage: python state_sync.py [download|upload|upload-probe]")
         sys.exit(2)

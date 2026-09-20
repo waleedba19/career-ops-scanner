@@ -21,9 +21,12 @@ on:
     branches: [main]
     paths-ignore: ['README.md', 'ARCHITECTURE.md', 'dashboard/**']
 
+# All triggers share ONE writer group and queue (never cancel): a push, a
+# schedule, and a manual dispatch all write the same state/ files. Grouping by
+# event_name let them overlap and overwrite each other's dedup/history state.
 concurrency:
-  group: careerops-scan-${{ github.event_name }}
-  cancel-in-progress: ${{ github.event_name == 'push' }}
+  group: careerops-state-writers
+  cancel-in-progress: false
 
 jobs:
   scan:

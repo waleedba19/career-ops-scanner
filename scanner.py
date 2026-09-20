@@ -6098,6 +6098,9 @@ async def run_scan():
         filter_debug = {"no_url": 0, "paid": 0, "too_old": 0, "no_positive": 0,
                         "non_target": 0, "negative": 0, "not_worldwide": 0, "low_score": 0, "duplicate": 0,
                         "stub": 0, "in_person": 0, "no_signal": 0, "company_boost": 0}
+        # Observability only: histogram of every scored job's match score so we
+        # can tune MIN_MATCH_SCORE from data, not guesswork. No behavior change.
+        score_dist = {"0": 0, "1-39": 0, "40-49": 0, "50-74": 0, "75-100": 0}
         
         # Load smart deduplication data
         smart_seen = load_smart_seen()
@@ -6181,6 +6184,13 @@ async def run_scan():
 
             # Single scoring path (keyword + learning + company bonus + priority)
             scored_job = score_job(job)
+            # Record into the score histogram (observability for threshold tuning)
+            _s = int(scored_job.get("score") or 0)
+            if _s <= 0: score_dist["0"] += 1
+            elif _s < 40: score_dist["1-39"] += 1
+            elif _s < 50: score_dist["40-49"] += 1
+            elif _s < 75: score_dist["50-74"] += 1
+            else: score_dist["75-100"] += 1
             if scored_job.get("company_boost"):
                 filter_debug["company_boost"] = filter_debug.get("company_boost", 0) + 1
 
@@ -6301,6 +6311,13 @@ async def run_scan():
         print(f"   SCORED (passed all filters): {len(scored)}")
         print(f"   Near Misses: {len(near_misses)}")
         print(f"   Old but Verified: {len(old_but_verified)}")
+        # Score distribution across ALL fetched jobs (tuning aid). The 40-49
+        # bucket is what lowering MIN_MATCH_SCORE 50->40 would newly surface.
+        print("   Score distribution (all jobs): "
+              f"0={score_dist['0']}  1-39={score_dist['1-39']}  "
+              f"40-49={score_dist['40-49']}  50-74={score_dist['50-74']}  "
+              f"75-100={score_dist['75-100']}")
+        print(f"SCORE_DIST={json.dumps(score_dist)}")
 
         # ---- Liveness check on top fresh jobs ----
         to_check = new_jobs[:TOP_LIVENESS_CHECK]
@@ -6750,6 +6767,7 @@ async def run_scan():
             "elapsed": elapsed_final,
             "telegram_sent": telegram_sent,
             "email_sent": email_sent,
+            "score_dist": score_dist,
         }
         print(json.dumps(result, indent=2))
 

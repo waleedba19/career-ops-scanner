@@ -1747,5 +1747,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-20T18:29:27.972879+00:00"
+  },
+  "QIMA": {
+    "name": "QIMA",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-21T13:48:18.655338+00:00"
   }
 }

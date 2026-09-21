@@ -1,35 +1,5 @@
 [
   {
-    "url": "https://de.linkedin.com/jobs/view/construction-translator-interpreter-at-sisk-group-4467831619",
-    "title": "Construction Translator / Interpreter",
-    "company": "SISK Group",
-    "score": 100,
-    "category": "Translation (any pair)",
-    "found_date": "2026-09-18T02:36:23.263131+00:00",
-    "expires_date": "2026-09-21T02:36:23.263131+00:00",
-    "lifecycle_status": "old"
-  },
-  {
-    "url": "https://ro.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4467592020",
-    "title": "Localisation Specialist (Translator) - Arabic & French",
-    "company": "Revolut",
-    "score": 100,
-    "category": "Arabic Translation",
-    "found_date": "2026-09-18T02:36:23.263131+00:00",
-    "expires_date": "2026-09-21T02:36:23.263131+00:00",
-    "lifecycle_status": "old"
-  },
-  {
-    "url": "https://jp.linkedin.com/jobs/view/localization-specialist-at-%E3%83%91%E3%83%BC%E3%82%BD%E3%83%AB%E3%83%86%E3%83%B3%E3%83%97%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE-global-job-office-4468602018",
-    "title": "Localization Specialist",
-    "company": "\u30d1\u30fc\u30bd\u30eb\u30c6\u30f3\u30d7\u30b9\u30bf\u30c3\u30d5\u682a\u5f0f\u4f1a\u793e Global Job Office",
-    "score": 100,
-    "category": "Translation (any pair)",
-    "found_date": "2026-09-18T02:36:23.263131+00:00",
-    "expires_date": "2026-09-21T02:36:23.263131+00:00",
-    "lifecycle_status": "old"
-  },
-  {
     "url": "https://www.impactpool.org/jobs/1233160",
     "title": "Interpreter (Arabic and French)",
     "company": "IOM - International Organization for Migration",
@@ -80,16 +50,26 @@
     "lifecycle_status": "old"
   },
   {
+    "url": "https://ve.linkedin.com/jobs/view/translator-at-talent-ferry1-4469807534",
     "title": "Translator",
     "company": "Talent Ferry1",
-    "url": "https://ve.linkedin.com/jobs/view/translator-at-talent-ferry1-4469807534",
-    "location": "Remote \u2014 Venezuela",
-    "posted": "2026-09-20",
+    "score": 100,
+    "category": "Translation (any pair)",
+    "found_date": "2026-09-20T18:29:28.780971+00:00",
+    "expires_date": "2026-09-23T18:29:28.780971+00:00",
+    "lifecycle_status": "old"
+  },
+  {
+    "title": "Translator",
+    "company": "QIMA",
+    "url": "https://sa.linkedin.com/jobs/view/translator-at-qima-4131762517",
+    "location": "Remote \u2014 Yanbu, Al Madinah, Saudi Arabia",
+    "posted": "2026-09-21",
     "description": "Remote (LinkedIn workplace filter). Open the posting for the full description.",
     "salary": "",
     "source": "linkedin",
     "matched_query": "arabic translator",
-    "postedISO": "2026-09-20T00:00:00",
+    "postedISO": "2026-09-21T00:00:00",
     "score": 100,
     "category": "Translation (any pair)",
     "why": [
@@ -99,76 +79,80 @@
     ],
     "company_boost": 0,
     "is_fresh": true,
-    "age_hours": 18.48834206,
+    "age_hours": 13.772687811666666,
     "flags": [],
     "company_website": "",
     "email": "",
     "tier": "STRONG",
     "ai_scoring": {
       "technical_skills": {
-        "score": 80,
-        "reason": "Generic translator role matches language skills"
+        "score": 95,
+        "reason": "Exact Arabic\u2011English translation role"
       },
       "experience_match": {
         "score": 95,
-        "reason": "5+ years direct Arabic\u2011English translation"
+        "reason": "5+ years translation & localization"
       },
       "behavioral_fit": {
         "score": 90,
-        "reason": "Remote, flexible environment aligns"
+        "reason": "Remote, flexible, academic background"
       },
       "location_logistics": {
-        "verdict": "PASS",
-        "reason": "Fully remote, no citizenship/visa constraints"
+        "verdict": "FLAG",
+        "reason": "Remote but tied to Saudi Arabia location"
       },
       "career_alignment": {
         "score": 95,
-        "reason": "Directly supports translation/localization career goal"
+        "reason": "Directly advances translation career"
       },
-      "overall_score": 90,
+      "overall_score": 94,
       "verdict": "Strong Fit",
       "strengths": [
-        "Arabic\u2011English translation expertise",
-        "Legal & academic specialization",
-        "Proven remote work success"
+        "Native Arabic, C1 English",
+        "Legal & academic translation expertise"
       ],
       "gaps": [
-        "Unclear if specific language pair required",
-        "May need to demonstrate specific CAT tool proficiency"
+        "Specific domain knowledge of QIMA's industry",
+        "Potential residency preference for Saudi Arabia"
       ],
-      "recommendation": "Apply promptly and tailor your CV to highlight Arabic\u2011English legal and academic translation experience.",
-      "interview_prep": "1. Describe your most challenging Arabic\u2011English legal translation project and how you ensured accuracy. (Answer: outline project scope, tools, QA process, outcome.)\n2. Which CAT tools and terminology management systems do you use, and how do they improve consistency? (Answer: mention SDL Trados, MemoQ, TM, glossary creation.)\n3. How do you manage quality and deadlines while working remotely? (Answer: discuss communication, time\u2011tracking, peer review, and client updates.)",
-      "one_line_summary": "Arabic\u2011English translator, strong remote fit\u2014apply now."
+      "recommendation": "Proceed with application; highlight remote work success and domain\u2011transferable skills.",
+      "interview_prep": "1. How do you ensure consistency across legal translations? \u2013 Discuss terminology management and CAT tools. 2. Describe a challenging Arabic\u2011English localization project you led. \u2013 Share a legal or academic case, tools used, outcome. 3. How do you handle tight deadlines while maintaining quality? \u2013 Explain workflow, prioritization, and QA steps.",
+      "one_line_summary": "Arabic\u2011English translator with legal/academic expertise \u2013 strong remote fit for QIMA."
     },
-    "ai_insight": "Arabic\u2011English translator, strong remote fit\u2014apply now.",
-    "ai_overall_score": 90,
+    "ai_insight": "Arabic\u2011English translator with legal/academic expertise \u2013 strong remote fit for QIMA.",
+    "ai_overall_score": 94,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Arabic\u2011English translation expertise",
-      "Legal & academic specialization",
-      "Proven remote work success"
+      "Native Arabic, C1 English",
+      "Legal & academic translation expertise"
     ],
     "ai_gaps": [
-      "Unclear if specific language pair required",
-      "May need to demonstrate specific CAT tool proficiency"
+      "Specific domain knowledge of QIMA's industry",
+      "Potential residency preference for Saudi Arabia"
     ],
-    "ai_recommendation": "Apply promptly and tailor your CV to highlight Arabic\u2011English legal and academic translation experience.",
-    "ai_interview_prep": "1. Describe your most challenging Arabic\u2011English legal translation project and how you ensured accuracy. (Answer: outline project scope, tools, QA process, outcome.)\n2. Which CAT tools and terminology management systems do you use, and how do they improve consistency? (Answer: mention SDL Trados, MemoQ, TM, glossary creation.)\n3. How do you manage quality and deadlines while working remotely? (Answer: discuss communication, time\u2011tracking, peer review, and client updates.)",
-    "ai_technical_skills": 80,
+    "ai_recommendation": "Proceed with application; highlight remote work success and domain\u2011transferable skills.",
+    "ai_interview_prep": "1. How do you ensure consistency across legal translations? \u2013 Discuss terminology management and CAT tools. 2. Describe a challenging Arabic\u2011English localization project you led. \u2013 Share a legal or academic case, tools used, outcome. 3. How do you handle tight deadlines while maintaining quality? \u2013 Explain workflow, prioritization, and QA steps.",
+    "ai_technical_skills": 95,
     "ai_experience_match": 95,
     "ai_behavioral_fit": 90,
-    "ai_location_verdict": "PASS",
+    "ai_location_verdict": "FLAG",
     "ai_career_alignment": 95,
     "urgency_score": 0,
     "desperation_index": 0,
     "pain_points": "Translation backlog / scaling",
     "email_guessed": false,
-    "hiring_email": "",
-    "email_verified": false,
-    "all_emails": [],
+    "hiring_email": "support@qima.com",
+    "email_verified": true,
+    "all_emails": [
+      "support@qima.com",
+      "hotline@qima.com",
+      "compliance@qima.com"
+    ],
     "opportunity_score": 30,
+    "company_domain": "qima.com",
+    "email_source": "dns",
     "company_research": {
-      "name": "Talent Ferry1",
+      "name": "QIMA",
       "legitimacy_score": 60,
       "remote_friendly": true,
       "size_estimate": "unknown",
@@ -177,21 +161,18 @@
       "positive_signals": [
         "Listed on major job board"
       ],
-      "last_updated": "2026-09-20T18:29:27.972879+00:00"
+      "last_updated": "2026-09-21T13:48:18.655338+00:00"
     },
     "company_legitimacy": 60,
     "company_summary": "1 positive signals",
     "score_adjustment": 2,
     "deep_read": {
-      "url": "https://ve.linkedin.com/jobs/view/translator-at-talent-ferry1-4469807534",
+      "url": "https://sa.linkedin.com/jobs/view/translator-at-qima-4131762517",
       "title": "Translator",
-      "description": "Enviar mensaje directo al anunciante de Talent Ferry1 Abdulrahman Khamis Abdulrahman Khamis Investor | Board-Level Capital Partner | Technology & Consumer Growth Backer Company Description Talent Ferry1 is a growing organization focused on connecting skilled professionals with organizations that need specialized expertise. The company values accuracy, clarity, and cultural awareness in all forms of communication. Talent Ferry1 supports remote collaboration and uses modern tools to enable efficient workflows across time zones. Team members are encouraged to contribute ideas, improve processes, and develop their skills. The organization promotes an inclusive, respectful work environment where diverse perspectives are welcomed. Role Description This is a full-time remote role for a Translator. The Translator will be responsible for translating written materials between designated source and target languages while preserving meaning, tone, and style. Day-to-day tasks include reviewing and interpreting source texts, conducting terminology research, and ensuring consistent use of glossaries and style guides. The role involves collaborating with project managers and other language professionals, revising and editing translated content, and meeting project deadlines. The Translator will also be expected to perform quality checks on translations, maintain confidentiality of all materials, and use translation and productivity tools to optimize workflow. Qualifications Strong proficiency in at least two languages, including excellent reading, writing, and comprehension skills. Demonstrated experience in translation, localization, and adaptation of content for different audiences and cultures. Ability to research terminology and subject matter, and to apply style guides and glossaries consistently. Solid skills in editing, proofreading, and quality assurance for translated documents. Comfort with using translation software, productivity tools, and common office applications. Effective communication skills, attention to detail, and ability to manage multiple projects and deadlines. Bachelor\u2019s degree in Linguistics, Translation, Languages, or a related field, or equivalent practical experience. Prior experience working remotely, with strong self-organization and time management skills. Experience translating technical, legal, medical, or marketing content is a plus. Show more Show less Nivel de antig\u00fcedad Sin experiencia Tipo de empleo Jornada completa Funci\u00f3n laboral Marketing, Relaciones p\u00fablicas y Redacci\u00f3n y revisi\u00f3n Sectores Servicios de recursos humanos",
+      "description": "Company Description At QIMA, we\u2019re on a mission to help our clients make products consumers can trust. Working with over 30,000 global brands, retailers, manufacturers and food growers, we are on the ground wherever products are made. We help businesses secure every step of their supply chain with quality inspections, supplier audits, certifications, and lab testing, all powered by our intelligent digital platform. Our team of 5,000 QIMers (and counting) across 40 offices and laboratories, are united in our shared passion for innovation and integrity, and guided by our QIMA values in the decisions we make every day. We believe in the work we do, and in making a positive difference in the world. Does this sound like something you\u2019d like to be a part of? Our Consumer Goods Division is dedicated to helping brands, retailers and manufacturers worldwide deliver safe, quality and ethically made products to their consumers. Every day at work, our inspectors, auditors, and lab techs use their expertise to help safeguard the products you use every day in your home: from clothes and footwear to toys and baby products, to electronics, appliances, and furniture. Our operations department\u2019s purpose is to deliver our industry-leading services to our clients while ensuring that all the work we do is performed to the QIMA standard of quality Job Description We are seeking a skilled and professional English  Chinese Translator and Interpreter to collaborate closely with our team of Factory Auditors. In this role, you will be responsible for facilitating effective communication between auditors and factory personnel through accurate translation and interpretation of written documents and verbal exchanges. Key Responsibilities Translation of Written Documents: Translate various written materials such as audit reports, technical documents, correspondence, and policies from English to Chinese and vice versa with precision and clarity. Interpretation in Audits: Accompany auditors during factory visits and provide real-time interpretation services during meetings, interviews, and discussions between auditors and factory staff. Language Support: Assist auditors in understanding Chinese language documents, regulations, and cultural nuances relevant to the audit process. Communication Liaison: Act as a bridge between English-speaking auditors and Chinese-speaking factory personnel to ensure smooth communication and understanding on both sides. Documentation: Maintain accurate records of translated documents and interpretation sessions for reference and reporting purposes. Cultural Sensitivity: Demonstrate sensitivity to cultural differences and maintain a professional demeanor while interacting with individuals from diverse backgrounds. Qualifications Proficiency in English and Chinese languages, with exceptional written and verbal communication skills in both languages. Proven experience in translation and interpretation, preferably in a corporate or industrial setting. ",
       "eligibility": [],
       "requirements": [
-        "in translation, localization, and adaptation of content for different audiences and cultures",
-        "working remotely, with strong self",
-        "organization and time management skills",
-        "translating technical, legal, medical, or marketing content is a plus"
+        "in translation and interpretation, preferably in a corporate or industrial setting"
       ],
       "contact": {},
       "deadline": null,
@@ -200,20 +181,17 @@
       "is_remote": true
     },
     "requirements": [
-      "in translation, localization, and adaptation of content for different audiences and cultures",
-      "working remotely, with strong self",
-      "organization and time management skills",
-      "translating technical, legal, medical, or marketing content is a plus"
+      "in translation and interpretation, preferably in a corporate or industrial setting"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Talent Ferry1_Translator_20260920.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/QIMA_Translator_20260921.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Talent Ferry1_Translator_20260920.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/QIMA_Translator_20260921.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "new",
-    "found_date": "2026-09-20T18:29:28.780971+00:00",
-    "expires_date": "2026-09-23T18:29:28.780971+00:00",
-    "scan_date": "2026-09-20T20:30:33.363374+02:00"
+    "found_date": "2026-09-21T13:48:19.488544+00:00",
+    "expires_date": "2026-09-24T13:48:19.488544+00:00",
+    "scan_date": "2026-09-21T15:49:22.891838+02:00"
   }
 ]

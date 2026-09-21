@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-13T19:38:03.618507+00:00",
-    "matched_count": 0,
-    "all_count": 3119,
-    "jobs": []
-  },
-  {
     "date": "2026-09-13T20:00:59.331949+00:00",
     "matched_count": 0,
     "all_count": 3120,
@@ -2017,6 +2011,21 @@
         "title": "Translator",
         "company": "Talent Ferry1",
         "url": "https://ve.linkedin.com/jobs/view/translator-at-talent-ferry1-4469807534",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-21T13:49:32.001539+00:00",
+    "matched_count": 1,
+    "all_count": 6307,
+    "jobs": [
+      {
+        "title": "Translator",
+        "company": "QIMA",
+        "url": "https://sa.linkedin.com/jobs/view/translator-at-qima-4131762517",
         "score": 100,
         "category": "Translation (any pair)",
         "source": "linkedin"

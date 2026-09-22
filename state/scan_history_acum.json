@@ -1,28 +1,5 @@
 [
   {
-    "date": "2026-09-14T15:09:06.472404+00:00",
-    "matched_count": 2,
-    "all_count": 2254,
-    "jobs": [
-      {
-        "title": "\u2728 Online English Teacher at ILENG Academy",
-        "company": "ILENG Academy",
-        "url": "https://ma.linkedin.com/jobs/view/%E2%9C%A8-online-english-teacher-at-ileng-academy-at-ileng-academy-4400635877",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      },
-      {
-        "title": "English Teacher",
-        "company": "Private Business",
-        "url": "https://eg.linkedin.com/jobs/view/english-teacher-at-private-business-4465223375",
-        "score": 100,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T16:18:07.228496+00:00",
     "matched_count": 0,
     "all_count": 202,
@@ -1904,6 +1881,12 @@
     "date": "2026-09-22T15:09:37.775074+00:00",
     "matched_count": 0,
     "all_count": 6480,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-22T15:16:30.022756+00:00",
+    "matched_count": 0,
+    "all_count": 6401,
     "jobs": []
   }
 ]

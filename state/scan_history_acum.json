@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-13T23:20:20.003022+00:00",
-    "matched_count": 4,
-    "all_count": 2940,
-    "jobs": [
-      {
-        "title": "Laboratory Network Lead",
-        "company": "Lifelancer",
-        "url": "https://himalayas.app/companies/lifelancer/jobs/laboratory-network-lead-2158926053",
-        "score": 55,
-        "category": "ESL",
-        "source": "himalayas"
-      },
-      {
-        "title": "Medium Voltage Electrician (Construction)",
-        "company": "xAI",
-        "url": "https://job-boards.greenhouse.io/xai/jobs/5219541007",
-        "score": 37,
-        "category": "Other",
-        "source": "greenhouse"
-      },
-      {
-        "title": "AI Safety Practitioner - Fully Remote | Upto $70/hr",
-        "company": "mercor",
-        "url": "https://himalayas.app/companies/mercor/jobs/ai-safety-practitioner-fully-remote-upto-70-hr-7792589564",
-        "score": 30,
-        "category": "Other",
-        "source": "himalayas"
-      },
-      {
-        "title": "Product Assessor for Orthopaedic (Notified Body)",
-        "company": "SGS",
-        "url": "https://himalayas.app/companies/sgs/jobs/product-assessor-for-orthopaedic-notified-body-1835735281",
-        "score": 30,
-        "category": "Other",
-        "source": "himalayas"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T11:06:46.180231+00:00",
     "matched_count": 3,
     "all_count": 2939,
@@ -2013,6 +1974,12 @@
     "date": "2026-09-22T13:32:08.018306+00:00",
     "matched_count": 0,
     "all_count": 6492,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-22T13:47:23.458778+00:00",
+    "matched_count": 0,
+    "all_count": 6461,
     "jobs": []
   }
 ]

@@ -34634,8 +34634,123 @@
       "seen": "2026-09-22T13:46:04.178022+00:00",
       "title": "Technical Support Associate with English",
       "company": "jobgether"
+    },
+    "wppmedia|senioraccountexecutiveftc|barcelonaspain": {
+      "seen": "2026-09-22T14:02:41.397382+00:00",
+      "title": "Senior Account Executive (FTC)",
+      "company": "WPP Media"
+    },
+    "anthropic|externalaffairsbrussels|brusselsbelgium": {
+      "seen": "2026-09-22T14:02:41.429901+00:00",
+      "title": "External Affairs, Brussels",
+      "company": "Anthropic"
+    },
+    "mozilla|staffsoftwareengineerperforman|remotecanada": {
+      "seen": "2026-09-22T14:02:41.481842+00:00",
+      "title": "Contract Staff Software Engineer - Performance Graphics (C++,Rust, WebGL)",
+      "company": "Mozilla"
+    },
+    "californiastateuniversityfullerton|ethnicstudieslibrarian|remotefullertonca": {
+      "seen": "2026-09-22T14:02:41.649941+00:00",
+      "title": "Ethnic Studies Librarian",
+      "company": "California State University, Fullerton"
+    },
+    "himalayasrss|azurejavadeveloper|remote": {
+      "seen": "2026-09-22T14:02:41.988626+00:00",
+      "title": "Azure Java Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|middlenetfullstackengineer|remote": {
+      "seen": "2026-09-22T14:02:41.989023+00:00",
+      "title": "Middle .Net Full-Stack Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|performanceengineer|remote": {
+      "seen": "2026-09-22T14:02:41.989440+00:00",
+      "title": "Performance Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|licensedservicerepresentative|remote": {
+      "seen": "2026-09-22T14:02:41.990042+00:00",
+      "title": "Licensed Service Representative",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|sappyadvancedconsultant|remote": {
+      "seen": "2026-09-22T14:02:41.990448+00:00",
+      "title": "SAP PY Advanced Consultant",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|assistantradioproducerintern|remote": {
+      "seen": "2026-09-22T14:02:41.990983+00:00",
+      "title": "Assistant Radio Producer (Intern)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|talentacquisitionassociate|remote": {
+      "seen": "2026-09-22T14:02:41.991396+00:00",
+      "title": "Talent Acquisition Associate",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|fullstackdevleoperpl|remote": {
+      "seen": "2026-09-22T14:02:41.991780+00:00",
+      "title": "Fullstack Devleoper (PL)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|founderexecutive|remote": {
+      "seen": "2026-09-22T14:02:41.992297+00:00",
+      "title": "Remote Founder Executive",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|contentstrategist|remote": {
+      "seen": "2026-09-22T14:02:41.992741+00:00",
+      "title": "Content Strategist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|salesrepresentative|remote": {
+      "seen": "2026-09-22T14:02:41.992983+00:00",
+      "title": "Sales Representative",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|becomealuxurybrandevaluatorink|remote": {
+      "seen": "2026-09-22T14:02:41.993531+00:00",
+      "title": "Become a Luxury Brand Evaluator in Knokke, BE - Apply Now",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|principalengineer|remote": {
+      "seen": "2026-09-22T14:02:41.993974+00:00",
+      "title": "Principal Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|certifiedfinancialplannertaxsp|remote": {
+      "seen": "2026-09-22T14:02:41.994747+00:00",
+      "title": "Certified Financial Planner - Tax Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorproductdesignerui|remote": {
+      "seen": "2026-09-22T14:02:41.995667+00:00",
+      "title": "Senior Product Designer - UI",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|senioropensourcepythonengineer|remote": {
+      "seen": "2026-09-22T14:02:41.996171+00:00",
+      "title": "Senior Open-Source Python Engineer, ML Developer Tools - US Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorpenetrationtestermwd100h|remote": {
+      "seen": "2026-09-22T14:02:41.996875+00:00",
+      "title": "Senior Penetration-Tester (m/w/d) - 100 % Home-Office m\u00f6glich",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|nonqmaccountexecutive|remote": {
+      "seen": "2026-09-22T14:02:41.997553+00:00",
+      "title": "Non-QM Account Executive",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|backenddeveloperjobid2266|remote": {
+      "seen": "2026-09-22T14:02:41.998020+00:00",
+      "title": "Back-End Developer (Job ID: 2266)",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-22T13:47:28.177675+00:00",
+  "updated": "2026-09-22T14:02:59.544309+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

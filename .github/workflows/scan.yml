@@ -1,9 +1,12 @@
 name: CareerOps Job Scan
 
 on:
-  schedule:
-    - cron: '0 7 * * *'      # 07:00 UTC = 09:00 Libya — Morning Digest (comprehensive)
-    - cron: '0 16 * * *'     # 16:00 UTC = 18:00 Libya — Evening Digest (deep)
+  # NOTE: GitHub cron is intentionally REMOVED (2026-09-20). GitHub's scheduler
+  # kept firing stale cron registrations (actions/runner#4241) many hours late
+  # and multiple times per day. Delivery is now driven deterministically by the
+  # Windows Task Scheduler on the user's PC (tools/dispatch_scan.ps1), which
+  # calls workflow_dispatch at exactly 09:00 and 18:00 Libya — instant start,
+  # no queue, no ghosts. Push triggers below remain as a smoke/fail-fast path.
   workflow_dispatch:
     inputs:
       mode:

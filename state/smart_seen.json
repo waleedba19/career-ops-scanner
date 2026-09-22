@@ -34889,8 +34889,98 @@
       "seen": "2026-09-22T14:26:23.202613+00:00",
       "title": "Default Invoice Coordinator I",
       "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorpaidmediastrategistmetag|remote": {
+      "seen": "2026-09-22T14:46:43.291168+00:00",
+      "title": "Senior Paid Media Strategist (Meta + Google)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|synthesisorformalverificationd|remote": {
+      "seen": "2026-09-22T14:46:43.291885+00:00",
+      "title": "Synthesis or Formal Verification Developer at YosysHQ",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|europeanbusinessdevelopmentman|remote": {
+      "seen": "2026-09-22T14:46:43.292591+00:00",
+      "title": "European Business Development Manager (EMEA Expansion)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|insidesalesrepresentative|remote": {
+      "seen": "2026-09-22T14:46:43.293386+00:00",
+      "title": "Inside Sales Representative - REMOTE",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniororacledatabasedeveloperf|remote": {
+      "seen": "2026-09-22T14:46:43.294494+00:00",
+      "title": "Senior Oracle Database Developer - Full Remote (Contractor)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|salesforcedeveloperonlymexico|remote": {
+      "seen": "2026-09-22T14:46:43.295296+00:00",
+      "title": "Salesforce Developer - Remote - ONLY MEXICO",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|solutionarchitect|remote": {
+      "seen": "2026-09-22T14:46:43.295887+00:00",
+      "title": "Solution Architect",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|applicationsecurityengineer|remote": {
+      "seen": "2026-09-22T14:46:43.296452+00:00",
+      "title": "Application Security Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|itengineerhelpdesk|remote": {
+      "seen": "2026-09-22T14:46:43.296803+00:00",
+      "title": "IT Engineer Helpdesk",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|paidsearchmarketer|remote": {
+      "seen": "2026-09-22T14:46:43.297480+00:00",
+      "title": "Paid Search Marketer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|qlikdataconsultantqliksenseqli|remote": {
+      "seen": "2026-09-22T14:46:43.298561+00:00",
+      "title": "Qlik Data Consultant (Qlik Sense, Qlik Cloud)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorprogrammanagerfully|remote": {
+      "seen": "2026-09-22T14:46:43.299494+00:00",
+      "title": "Senior Program Manager - Fully Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|spontanesollicitatiecandidatur|remote": {
+      "seen": "2026-09-22T14:46:43.300387+00:00",
+      "title": "Spontane sollicitatie - Candidature spontan\u00e9e",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|headofoperationswmd|remote": {
+      "seen": "2026-09-22T14:46:43.301312+00:00",
+      "title": "Head of Operations (w/m/d)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|electricalengineerfullyupto70h|remote": {
+      "seen": "2026-09-22T14:46:43.301862+00:00",
+      "title": "Electrical Engineer - Fully Remote | Upto $70/hr",
+      "company": "himalayas_rss"
+    },
+    "untalentarabic|seniorexternalrelationsassista|remote": {
+      "seen": "2026-09-22T14:46:43.315371+00:00",
+      "title": "Senior External Relations Assistant",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|nouakchott|remote": {
+      "seen": "2026-09-22T14:46:43.315564+00:00",
+      "title": "Nouakchott",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|mauritania|remote": {
+      "seen": "2026-09-22T14:46:43.315744+00:00",
+      "title": "Mauritania",
+      "company": "untalent_arabic"
     }
   },
-  "updated": "2026-09-22T14:26:51.135492+00:00",
+  "updated": "2026-09-22T14:47:01.226590+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

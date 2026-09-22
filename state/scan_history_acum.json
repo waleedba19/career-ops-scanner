@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-13T20:06:12.534330+00:00",
-    "matched_count": 0,
-    "all_count": 3120,
-    "jobs": []
-  },
-  {
     "date": "2026-09-13T20:37:47.592659+00:00",
     "matched_count": 2,
     "all_count": 3121,
@@ -2031,5 +2025,20 @@
     "matched_count": 0,
     "all_count": 6410,
     "jobs": []
+  },
+  {
+    "date": "2026-09-22T11:34:18.501563+00:00",
+    "matched_count": 1,
+    "all_count": 6352,
+    "jobs": [
+      {
+        "title": "Translator",
+        "company": "Zeekr International",
+        "url": "https://my.linkedin.com/jobs/view/translator-at-zeekr-international-4458144901",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

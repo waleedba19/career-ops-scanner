@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-14T14:02:25.062323+00:00",
-    "matched_count": 1,
-    "all_count": 2159,
-    "jobs": [
-      {
-        "title": "Instructional Systems Designer",
-        "company": "Team Carney",
-        "url": "https://himalayas.app/companies/team-carney/jobs/instructional-systems-designer",
-        "score": 40,
-        "category": "Admin",
-        "source": "himalayas"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T14:17:43.444477+00:00",
     "matched_count": 1,
     "all_count": 2254,
@@ -1953,6 +1938,12 @@
   },
   {
     "date": "2026-09-22T14:02:53.761553+00:00",
+    "matched_count": 0,
+    "all_count": 6481,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-22T14:26:46.808071+00:00",
     "matched_count": 0,
     "all_count": 6481,
     "jobs": []

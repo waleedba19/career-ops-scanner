@@ -1,36 +1,5 @@
 [
   {
-    "date": "2026-09-14T11:06:46.180231+00:00",
-    "matched_count": 3,
-    "all_count": 2939,
-    "jobs": [
-      {
-        "title": "Senior Communications Specialist (1-Year Contract - Fixed Term)",
-        "company": "Careem",
-        "url": "https://boards.greenhouse.io/careem/jobs/8320185002?gh_jid=8320185002",
-        "score": 92,
-        "category": "Arabic Translation",
-        "source": "greenhouse"
-      },
-      {
-        "title": "Junior Category Executive",
-        "company": "Careem",
-        "url": "https://boards.greenhouse.io/careem/jobs/8696177002?gh_jid=8696177002",
-        "score": 47,
-        "category": "Other",
-        "source": "greenhouse"
-      },
-      {
-        "title": "ESL Teacher (Online English Instructor)",
-        "company": "InTouch",
-        "url": "https://www.linkedin.com/jobs/view/esl-teacher-online-english-instructor-at-intouch-4465493423",
-        "score": 87,
-        "category": "ESL",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T14:02:25.062323+00:00",
     "matched_count": 1,
     "all_count": 2159,
@@ -1980,6 +1949,12 @@
     "date": "2026-09-22T13:47:23.458778+00:00",
     "matched_count": 0,
     "all_count": 6461,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-22T14:02:53.761553+00:00",
+    "matched_count": 0,
+    "all_count": 6481,
     "jobs": []
   }
 ]

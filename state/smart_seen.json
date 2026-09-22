@@ -34249,8 +34249,108 @@
       "seen": "2026-09-22T13:20:24.989874+00:00",
       "title": "SAP Functional Solution Architect (m/f/d)",
       "company": "himalayas_rss"
+    },
+    "himalayasrss|accountmanagerpersonallines|remote": {
+      "seen": "2026-09-22T13:30:52.109230+00:00",
+      "title": "Account Manager, Personal Lines",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorbackendengineer|remote": {
+      "seen": "2026-09-22T13:30:52.109674+00:00",
+      "title": "Senior Backend Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniortechnicalsredwritersoftw|remote": {
+      "seen": "2026-09-22T13:30:52.111659+00:00",
+      "title": "Senior Technical SR&ED Writer (Software Focus)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|catalanlinguistitsoftwareproje|remote": {
+      "seen": "2026-09-22T13:30:52.112440+00:00",
+      "title": "Freelance Catalan Linguist - IT & Software Project",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|headofgrowth|remote": {
+      "seen": "2026-09-22T13:30:52.112947+00:00",
+      "title": "Head of Growth",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|fullstacksoftwareengineer|remote": {
+      "seen": "2026-09-22T13:30:52.113433+00:00",
+      "title": "Fullstack Software Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|directorofrevenueoperations|remote": {
+      "seen": "2026-09-22T13:30:52.114859+00:00",
+      "title": "Director of Revenue Operations- Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|supplierqualityengineer|remote": {
+      "seen": "2026-09-22T13:30:52.115439+00:00",
+      "title": "Supplier Quality Engineer",
+      "company": "himalayas_rss"
+    },
+    "searchdiscovered|agencypage11|remote": {
+      "seen": "2026-09-22T13:30:52.135238+00:00",
+      "title": "Agency?Page=11",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|4421862005ghsrcaae5c2df5us|remote": {
+      "seen": "2026-09-22T13:30:52.135790+00:00",
+      "title": "4421862005?Gh_Src=Aae5C2Df5Us",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|08f1c9a1ac144b469404719f9a7245|remote": {
+      "seen": "2026-09-22T13:30:52.136394+00:00",
+      "title": "08F1C9A1 Ac14 4B46 9404 719F9A724578",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|b69f2998574e4456a4e0485ea3dde4|remote": {
+      "seen": "2026-09-22T13:30:52.136987+00:00",
+      "title": "B69F2998 574E 4456 A4E0 485Ea3Dde4Dd",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|61e88b6c56ff46bcaf9c62375d011c|remote": {
+      "seen": "2026-09-22T13:30:52.137574+00:00",
+      "title": "61E88B6C 56Ff 46Bc Af9C 62375D011C84",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|lionbridgeworkplacetype|remote": {
+      "seen": "2026-09-22T13:30:52.138103+00:00",
+      "title": "Lionbridge?Workplacetype=Remote",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|weloglobalcommitment|remote": {
+      "seen": "2026-09-22T13:30:52.138682+00:00",
+      "title": "Weloglobal?Commitment=Freelance Remote",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|weloglobal|remote": {
+      "seen": "2026-09-22T13:30:52.139115+00:00",
+      "title": "Weloglobal",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|welogloballocationcairo2c20egy|remote": {
+      "seen": "2026-09-22T13:30:52.139687+00:00",
+      "title": "Weloglobal?Location=Cairo%2C%20Egypt",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|welogloballocation|remote": {
+      "seen": "2026-09-22T13:30:52.140204+00:00",
+      "title": "Weloglobal?Location=Remote",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|welogloballocation2c20worldwid|remote": {
+      "seen": "2026-09-22T13:30:52.140788+00:00",
+      "title": "Weloglobal?Location=Remote%2C%20Worldwide",
+      "company": "Search Discovered"
+    },
+    "searchdiscovered|location2c20worldwide|remote": {
+      "seen": "2026-09-22T13:30:52.141346+00:00",
+      "title": "?Location=Remote%2C%20Worldwide",
+      "company": "Search Discovered"
     }
   },
-  "updated": "2026-09-22T13:24:53.346662+00:00",
+  "updated": "2026-09-22T13:32:16.505345+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

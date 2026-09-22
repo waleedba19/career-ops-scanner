@@ -33399,8 +33399,53 @@
       "seen": "2026-09-22T11:31:39.028971+00:00",
       "title": "Talent Acquisition Coordinator (REMOTE - EASTERN TIMEZONE)",
       "company": "jobgether"
+    },
+    "hartgrovebehavioralhealthsystem|translatormedicalinterpretersp|chicagoil": {
+      "seen": "2026-09-22T11:39:48.891222+00:00",
+      "title": "Translator Medical Interpreter - Spanish Polish Mandarin",
+      "company": "Hartgrove Behavioral Health System"
+    },
+    "himalayasrss|managerdatasciencecranberrytow|remote": {
+      "seen": "2026-09-22T11:39:49.529417+00:00",
+      "title": "Manager - Data Science (Cranberry Township, US)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|juniorapplicationdeveloper|remote": {
+      "seen": "2026-09-22T11:39:49.530408+00:00",
+      "title": "Junior Application Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|directorinformationsecurityus|remote": {
+      "seen": "2026-09-22T11:39:49.531205+00:00",
+      "title": "Director, Information Security (Remote, US)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|gtmengineer|remote": {
+      "seen": "2026-09-22T11:39:49.531646+00:00",
+      "title": "GTM Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|lmftlcswlpccpsydmentalhealthth|remote": {
+      "seen": "2026-09-22T11:39:49.533310+00:00",
+      "title": "LMFT / LCSW / LPCC / PsyD | Remote Mental Health Therapist | Stockton",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|compilerengineermlirpytorchinf|remote": {
+      "seen": "2026-09-22T11:39:49.534382+00:00",
+      "title": "Compiler Engineer \u2013 MLIR / PyTorch Infrastructure",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|bilanzbuchhalterinmwdhomeoffic|remote": {
+      "seen": "2026-09-22T11:39:49.535734+00:00",
+      "title": "Bilanzbuchhalter/in (m/w/d) - Home Office/Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|translator100frenchenglishgerm|remote": {
+      "seen": "2026-09-22T11:39:49.536695+00:00",
+      "title": "Translator 100% Remote - French, English, German, Russian, Chinese",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-22T11:34:25.690967+00:00",
+  "updated": "2026-09-22T11:41:15.172635+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

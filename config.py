@@ -42,7 +42,7 @@ DEDUP_ENABLED = os.getenv("CAREEROPS_DEDUP_ENABLED", "1") == "1"
 AI_ANALYZE_CAP = int(os.getenv("CAREEROPS_AI_CAP", "10"))
 # Top N previously-verified (old) jobs also get AI verification each run, so a
 # poor-fit role that slipped through earlier scans is caught before the digest.
-OLD_AI_VERIFY_CAP = int(os.getenv("CAREEROPS_OLD_AI_CAP", "4"))
+OLD_AI_VERIFY_CAP = int(os.getenv("CAREEROPS_OLD_AI_CAP", "8"))
 # A job at a trusted translation/AI company with a high-relevance title is a
 # match even without a keyword hit — accepted at this (lower) floor.
 COMPANY_MIN_SCORE = int(os.getenv("CAREEROPS_COMPANY_MIN_SCORE", "40"))

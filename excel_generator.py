@@ -155,6 +155,10 @@ def _still_qualifies(match: dict) -> bool:
     elif scored.get("category") == "Other":
         # Above the floor but no category signal — stale/malformed row.
         return False
+    # Re-stamp the row with today's recomputed score/category so a stale
+    # "100%" from an earlier (looser) matcher can never be re-shown.
+    match["score"] = scored["score"]
+    match["category"] = scored["category"]
     if not is_open_worldwide(match.get("location", ""), desc):
         return False
     return len(drop_unqualified_matches([dict(match)])) == 1

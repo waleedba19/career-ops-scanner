@@ -146,7 +146,7 @@ FETCH_BATCH_SIZE = _cfg.FETCH_BATCH_SIZE
 DEDUP_TTL_DAYS = getattr(_cfg, "DEDUP_TTL_DAYS", 14)
 DEDUP_ENABLED = getattr(_cfg, "DEDUP_ENABLED", True)
 AI_ANALYZE_CAP = getattr(_cfg, "AI_ANALYZE_CAP", 10)
-OLD_AI_VERIFY_CAP = getattr(_cfg, "OLD_AI_VERIFY_CAP", 4)
+OLD_AI_VERIFY_CAP = getattr(_cfg, "OLD_AI_VERIFY_CAP", 8)
 COMPANY_MIN_SCORE = getattr(_cfg, "COMPANY_MIN_SCORE", 40)
 WORLDWIDE_FEEDS = getattr(_cfg, "WORLDWIDE_FEEDS", [])
 MAX_WORLDWIDE_FEEDS = getattr(_cfg, "MAX_WORLDWIDE_FEEDS", 40)
@@ -911,16 +911,12 @@ SECONDARY_CATEGORIES = frozenset({
 # Fresh floor, so it can never be emailed as a STRONG match).
 SECONDARY_MATCH_CAP = 45
 
-# Evidence that a translation ROLE involves a language THIS candidate can work
-# with (Arabic is his working language pair; bilingual/multilingual posts; an
-# explicit English mention). A posting whose language pair is invisible (e.g. a
-# LinkedIn fetch with a truncated description) must not be scored STRONG — a
-# bare "Translator" with no languages shown could be Chinese/Malay/Spanish.
-UNKNOWN_PAIR_CAP = 60
-CORE_ROLE_LANG_EVIDENCE = re.compile(
-    r"\barabic\b|\bbilingual\b|\bmultilingual\b|\benglish\b|\blanguage pair\b",
-    re.I,
-)
+# STRONG tier is reserved for jobs whose language is genuinely Arabic. A
+# generic "Translator" posting — English-only snippet, Chinese/Malay/other
+# pair that a truncated description hides — is NOT a match to email at 100%
+# (Zeekr Chinese/Malay role scored 100 through an English-only snippet). Any
+# core translation role WITHOUT an explicit Arabic signal is capped to REVIEW.
+NON_ARABIC_CAP = 45
 
 # The actual job-content signals that make a listing translation work. A posting
 # can hit the "Arabic Translation" bucket via "Arabic speaker + data entry" or
@@ -1032,13 +1028,13 @@ def get_match_score(title: str, desc: str) -> dict:
     elif best_cat in CORE_CATEGORIES and not CORE_LANGUAGE_ROLES.search(text):
         total = min(total, SECONDARY_MATCH_CAP)
         why_final.append("Arabic/language signal but not a translation role (review only)")
-    # 2c) Translation role whose language pair is invisible → never STRONG.
-    #     A bare "Translator" title with a truncated description can hide a
-    #     Chinese/Malay/Spanish posting (Zeekr 'Translator', 2026-09-21). Only
-    #     Arabic/bilingual/English evidence keeps it at full strength.
-    elif best_cat in CORE_CATEGORIES and not CORE_ROLE_LANG_EVIDENCE.search(text):
-        total = min(total, UNKNOWN_PAIR_CAP)
-        why_final.append("translation role, language pair unspecified (review)")
+    # 2c) STRONG = genuinely ARABIC translation work only. A core translation
+    #     role without an explicit Arabic signal (English-only snippet, hidden
+    #     Chinese/Malay pair, truncated description) is capped to REVIEW — it is
+    #     never emailed as a 100% match.
+    elif best_cat in CORE_CATEGORIES and not HAS_ARABIC.search(text):
+        total = min(total, NON_ARABIC_CAP)
+        why_final.append("translation role without Arabic (review only)")
 
     # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):

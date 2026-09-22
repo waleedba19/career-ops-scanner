@@ -22,3 +22,8 @@ playwright>=1.45,<2
 
 # Free Web Search (no API key)
 duckduckgo-search>=6.0
+
+# JobSpy — Indeed (full descriptions) + LinkedIn search, verified 2026-09-22.
+# Google/Glassdoor/ZipRecruiter are Akamai-403 from runner IPs (excluded in
+# fetchers/jobspy_fetch.py). Soft-fails to [] if the package is missing.
+python-jobspy>=1.1.82

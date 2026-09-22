@@ -27,6 +27,8 @@ REGISTRY: dict[str, dict] = {
     "github_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_github_jobs"},
     "hackernews": {"tier": 1, "module": "fetchers.verified", "class": "fetch_hackernews"},
     "indeed": {"tier": 1, "module": "fetchers.verified", "class": "fetch_indeed"},
+    # JobSpy scraper — Indeed (full descriptions) + LinkedIn bonus angle.
+    "jobspy_indeed": {"tier": 1, "module": "fetchers.jobspy_fetch", "class": "fetch_jobspy"},
     "translation_jobs": {"tier": 1, "module": "fetchers.verified", "class": "fetch_translation_jobs"},
     # Dedicated translation/localization boards. These were missing from the
     # registry, so _should_run() fell back to tier 3 and the tier cap silently

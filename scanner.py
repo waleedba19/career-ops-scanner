@@ -5925,6 +5925,13 @@ async def run_scan():
         # Every source here is specifically for translation, bilingual, or language jobs
         if _should_run("translation_jobs"):
             fetchers.append(fetch_translation_jobs(session))
+        # ── JobSpy (Indeed + LinkedIn) — full descriptions → accurate language gate ──
+        if _should_run("jobspy_indeed"):
+            try:
+                from fetchers.jobspy_fetch import fetch_jobspy
+                fetchers.append(fetch_jobspy(session))
+            except Exception as e:
+                print(f"  JobSpy fetch load failed: {e}")
         if _should_run("smartcat"):
             fetchers.append(fetch_smartcat(session))
         if _should_run("gotranscript"):

@@ -313,6 +313,14 @@ def test_wiring():
                "fetch_jooble_keyed", "fetch_reliefweb", "fetch_remowork", "fetch_recruitee_board", "fetch_teamtailor_board"):
         owner = scanner if callable(getattr(scanner, fn, None)) else V
         check(f"fetcher {fn} is importable", callable(getattr(owner, fn, None)))
+    from fetchers.jobspy_fetch import fetch_jobspy, _row_to_job
+    check("fetcher fetch_jobspy is importable", callable(fetch_jobspy))
+    js_row = _row_to_job({"title": "Arabic Translator", "company": "Acme", "job_url_direct": "https://x",
+                          "location": "Remote", "description": "Arabic-English translation.",
+                          "date_posted": None, "salary": ""}, "indeed")
+    check("jobspy row normalized into our job shape",
+          js_row["title"] == "Arabic Translator" and js_row["source"] == "jobspy_indeed"
+          and js_row["location"] == "Remote" and "%" not in js_row.get("description", ""))
     src = Path("scanner.py").read_text(encoding="utf-8")
     for nm in ("mostaql", "wuzzuf", "bayt", "gulftalent", "proz"):
         check(f"{nm} is guarded by _blocked()", f'_blocked("{nm}")' in src or f'("{nm}", fetch_{nm})' in src)

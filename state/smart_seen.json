@@ -34349,8 +34349,293 @@
       "seen": "2026-09-22T13:30:52.141346+00:00",
       "title": "?Location=Remote%2C%20Worldwide",
       "company": "Search Discovered"
+    },
+    "wppmedia|mediaoperationsvpparentalleave|londonunitedkingdom": {
+      "seen": "2026-09-22T13:46:02.929713+00:00",
+      "title": "Media Operations, VP (Parental Leave Cover)",
+      "company": "WPP Media"
+    },
+    "anthropic|financestrategygtmemea|dublinie": {
+      "seen": "2026-09-22T13:46:03.001804+00:00",
+      "title": "Finance & Strategy GTM, EMEA",
+      "company": "Anthropic"
+    },
+    "anthropic|financestrategygtmemea|londonuk": {
+      "seen": "2026-09-22T13:46:03.002242+00:00",
+      "title": "Finance & Strategy GTM, EMEA",
+      "company": "Anthropic"
+    },
+    "xai|mediumvoltageelectricianservic|southavenmsmemphistn": {
+      "seen": "2026-09-22T13:46:03.066551+00:00",
+      "title": "Medium Voltage Electrician (Service & Repair)",
+      "company": "xAI"
+    },
+    "xai|seniormediumvoltageelectrician|southavenmsmemphistn": {
+      "seen": "2026-09-22T13:46:03.070057+00:00",
+      "title": "Senior Medium-Voltage Electrician - Memphis",
+      "company": "xAI"
+    },
+    "turing|staffcorpsecengineer|unitedstates": {
+      "seen": "2026-09-22T13:46:03.121260+00:00",
+      "title": "Staff CorpSec Engineer",
+      "company": "Turing"
+    },
+    "himalayasrss|directorsrdirectorstrategy|remote": {
+      "seen": "2026-09-22T13:46:04.118164+00:00",
+      "title": "Director/Sr. Director, Strategy",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|regulatoryreportingdataanalyst|remote": {
+      "seen": "2026-09-22T13:46:04.121557+00:00",
+      "title": "Regulatory Reporting Data Analyst",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorazuredataengineerfull|remote": {
+      "seen": "2026-09-22T13:46:04.122704+00:00",
+      "title": "(Senior) Azure Data Engineer - Full Remote",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniordirectorofpartnershipsan|remote": {
+      "seen": "2026-09-22T13:46:04.123358+00:00",
+      "title": "Senior Director of Partnerships and Business Development",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|socialmediaaccountmanager|remote": {
+      "seen": "2026-09-22T13:46:04.124240+00:00",
+      "title": "Social Media Account Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|writercontentmanager|remote": {
+      "seen": "2026-09-22T13:46:04.125242+00:00",
+      "title": "Writer/Content Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|creativemarketingtranslatorstr|remote": {
+      "seen": "2026-09-22T13:46:04.126741+00:00",
+      "title": "Freelance Creative Marketing Translators & Transcreators | Spanish (Spain)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorjavadeveloperbangkok|remote": {
+      "seen": "2026-09-22T13:46:04.127661+00:00",
+      "title": "Senior Java Developer - Freelance \u2013 Bangkok",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|reactnativedeveloper|remote": {
+      "seen": "2026-09-22T13:46:04.128669+00:00",
+      "title": "React Native Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|fireprotectionengineeri|remote": {
+      "seen": "2026-09-22T13:46:04.129641+00:00",
+      "title": "Fire Protection Engineer I",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|marketingandsalesassociate|remote": {
+      "seen": "2026-09-22T13:46:04.131629+00:00",
+      "title": "Marketing and Sales Associate",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|accountingspecialist|remote": {
+      "seen": "2026-09-22T13:46:04.132540+00:00",
+      "title": "Accounting Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|marketingtouxdesigncareerchang|remote": {
+      "seen": "2026-09-22T13:46:04.133816+00:00",
+      "title": "Marketing to UX Design Career Changer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|leadconversionspecialist|remote": {
+      "seen": "2026-09-22T13:46:04.134493+00:00",
+      "title": "Lead Conversion Specialist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|senioruiuxdesigner5years|remote": {
+      "seen": "2026-09-22T13:46:04.135361+00:00",
+      "title": "Senior UI UX Designer (5+ years)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|salesexecutivehireclout|remote": {
+      "seen": "2026-09-22T13:46:04.136129+00:00",
+      "title": "Sales Executive - Hireclout",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|2027assuranceinternship|remote": {
+      "seen": "2026-09-22T13:46:04.136915+00:00",
+      "title": "2027 Assurance Internship",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|referendariatanwaltsstationode|remote": {
+      "seen": "2026-09-22T13:46:04.138671+00:00",
+      "title": "Referendariat - Anwaltsstation oder Wahlstation bei der Kanzlei Kick und im Lega",
+      "company": "himalayas_rss"
+    },
+    "untalentarabic|accountingandfinanceofficer|remote": {
+      "seen": "2026-09-22T13:46:04.155566+00:00",
+      "title": "Accounting and Finance Officer",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|jakarta|remote": {
+      "seen": "2026-09-22T13:46:04.155822+00:00",
+      "title": "Jakarta",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|indonesia|remote": {
+      "seen": "2026-09-22T13:46:04.156107+00:00",
+      "title": "Indonesia",
+      "company": "untalent_arabic"
+    },
+    "jobgether|solutionarchitectchannelandall|remote": {
+      "seen": "2026-09-22T13:46:04.160482+00:00",
+      "title": "Solution Architect - Channel and Alliances (Remote, AUS)",
+      "company": "jobgether"
+    },
+    "jobgether|juniorsoftwareengineer|remote": {
+      "seen": "2026-09-22T13:46:04.160759+00:00",
+      "title": "Junior Software Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|midseniorfullstackdeveloperrea|remote": {
+      "seen": "2026-09-22T13:46:04.161175+00:00",
+      "title": "Mid/Senior Full Stack Developer \u2013 React / .NET MAUI / AWS",
+      "company": "jobgether"
+    },
+    "jobgether|gestintcnicasaassoftwareasaser|remote": {
+      "seen": "2026-09-22T13:46:04.161681+00:00",
+      "title": "Gesti\u00f3n t\u00e9cnica SaaS (Software as a Service)",
+      "company": "jobgether"
+    },
+    "jobgether|fullstackdevelopermfnbcdi|remote": {
+      "seen": "2026-09-22T13:46:04.162153+00:00",
+      "title": "Fullstack Developer - M/F/NB (CDI)",
+      "company": "jobgether"
+    },
+    "jobgether|fullstacksoftwareengineerfmd|remote": {
+      "seen": "2026-09-22T13:46:04.162417+00:00",
+      "title": "Full Stack Software Engineer (f/m/d)",
+      "company": "jobgether"
+    },
+    "jobgether|softwareengineerrubysenior|remote": {
+      "seen": "2026-09-22T13:46:04.162675+00:00",
+      "title": "Software Engineer (Ruby) \u2013 Senior",
+      "company": "jobgether"
+    },
+    "jobgether|directorexpansionstrategicacco|remote": {
+      "seen": "2026-09-22T13:46:04.163472+00:00",
+      "title": "Director, Expansion & Strategic Accounts D&M",
+      "company": "jobgether"
+    },
+    "jobgether|accountmanagerkenyamombasaing5|remote": {
+      "seen": "2026-09-22T13:46:04.163755+00:00",
+      "title": "Account Manager KENYA (Mombasa) - ING506",
+      "company": "jobgether"
+    },
+    "jobgether|associatesurveyaccountmanager|remote": {
+      "seen": "2026-09-22T13:46:04.164016+00:00",
+      "title": "Associate Survey Account Manager",
+      "company": "jobgether"
+    },
+    "jobgether|srfrontendengineer|remote": {
+      "seen": "2026-09-22T13:46:04.165362+00:00",
+      "title": "Sr. Frontend Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|seniorbusinessdevelopmentmanag|remote": {
+      "seen": "2026-09-22T13:46:04.165738+00:00",
+      "title": "Senior Business Development Manager",
+      "company": "jobgether"
+    },
+    "jobgether|outboundsdrcopywritingspeciali|remote": {
+      "seen": "2026-09-22T13:46:04.166233+00:00",
+      "title": "Outbound SDR Copywriting Specialist (Remote)",
+      "company": "jobgether"
+    },
+    "jobgether|fieldserviceengineerl1|remote": {
+      "seen": "2026-09-22T13:46:04.167573+00:00",
+      "title": "Remote Field Service Engineer (L1)",
+      "company": "jobgether"
+    },
+    "jobgether|regionalsalesmanagerfsiaerospa|remote": {
+      "seen": "2026-09-22T13:46:04.167934+00:00",
+      "title": "Regional Sales Manager - FSI, Aerospace, Defense (Remote, DMV)",
+      "company": "jobgether"
+    },
+    "jobgether|productsuccessspecialistvirtua|remote": {
+      "seen": "2026-09-22T13:46:04.168493+00:00",
+      "title": "Product Success Specialist, Virtual Agent",
+      "company": "jobgether"
+    },
+    "jobgether|businesssupport|remote": {
+      "seen": "2026-09-22T13:46:04.169165+00:00",
+      "title": "Business Support",
+      "company": "jobgether"
+    },
+    "jobgether|sitecoordinatorcantonese|remote": {
+      "seen": "2026-09-22T13:46:04.169767+00:00",
+      "title": "Remote Site Coordinator (Cantonese)",
+      "company": "jobgether"
+    },
+    "jobgether|juniortransactionprocessingana|remote": {
+      "seen": "2026-09-22T13:46:04.170186+00:00",
+      "title": "Junior Transaction Processing Analyst (Billing, Bonus & Commission team)",
+      "company": "jobgether"
+    },
+    "jobgether|associatemedicaleducationmanag|remote": {
+      "seen": "2026-09-22T13:46:04.170828+00:00",
+      "title": "Associate Medical Education Manager, Shoulder & Enabling Technology",
+      "company": "jobgether"
+    },
+    "jobgether|srpaidsocialspecialist|remote": {
+      "seen": "2026-09-22T13:46:04.171586+00:00",
+      "title": "Sr. Paid Social Specialist",
+      "company": "jobgether"
+    },
+    "jobgether|constructionmanagementprojectm|remote": {
+      "seen": "2026-09-22T13:46:04.172548+00:00",
+      "title": "Construction Management Project Manager \u2013 Disaster Recovery - Colorado (Remote)",
+      "company": "jobgether"
+    },
+    "jobgether|seniordatascientistappliedaian|remote": {
+      "seen": "2026-09-22T13:46:04.173165+00:00",
+      "title": "Senior Data Scientist, Applied AI and Agentic Solutions Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|sapbtpintegrationsuitearchitec|remote": {
+      "seen": "2026-09-22T13:46:04.173669+00:00",
+      "title": "SAP BTP Integration Suite Architect",
+      "company": "jobgether"
+    },
+    "jobgether|gcpauditorglobalrdaudit|remote": {
+      "seen": "2026-09-22T13:46:04.174472+00:00",
+      "title": "GCP Auditor - Global R&D Audit",
+      "company": "jobgether"
+    },
+    "jobgether|staffsitereliabilityengineer|remote": {
+      "seen": "2026-09-22T13:46:04.175057+00:00",
+      "title": "Staff Site Reliability Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|governanceriskandcomplianceana|remote": {
+      "seen": "2026-09-22T13:46:04.175572+00:00",
+      "title": "Governance, Risk and Compliance Analyst",
+      "company": "jobgether"
+    },
+    "jobgether|employeesafetyprogramspecialis|remote": {
+      "seen": "2026-09-22T13:46:04.176384+00:00",
+      "title": "Employee Safety Program Specialist",
+      "company": "jobgether"
+    },
+    "jobgether|seniormanagerclinicalexperienc|remote": {
+      "seen": "2026-09-22T13:46:04.177197+00:00",
+      "title": "Senior Manager, Clinical Experience",
+      "company": "jobgether"
+    },
+    "jobgether|technicalsupportassociatewithe|remote": {
+      "seen": "2026-09-22T13:46:04.178022+00:00",
+      "title": "Technical Support Associate with English",
+      "company": "jobgether"
     }
   },
-  "updated": "2026-09-22T13:32:16.505345+00:00",
+  "updated": "2026-09-22T13:47:28.177675+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

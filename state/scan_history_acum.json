@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-14T14:17:43.444477+00:00",
-    "matched_count": 1,
-    "all_count": 2254,
-    "jobs": [
-      {
-        "title": "Arabic (Saudi Arabia) Sports Localization Specialist (Football)",
-        "company": "Welocalize",
-        "url": "https://www.linkedin.com/jobs/view/arabic-saudi-arabia-sports-localization-specialist-football-at-welocalize-4465786242",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T15:04:24.240181+00:00",
     "matched_count": 4,
     "all_count": 2252,
@@ -1946,6 +1931,12 @@
     "date": "2026-09-22T14:26:46.808071+00:00",
     "matched_count": 0,
     "all_count": 6481,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-22T14:46:56.328032+00:00",
+    "matched_count": 0,
+    "all_count": 6479,
     "jobs": []
   }
 ]

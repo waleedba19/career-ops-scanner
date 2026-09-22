@@ -911,6 +911,17 @@ SECONDARY_CATEGORIES = frozenset({
 # Fresh floor, so it can never be emailed as a STRONG match).
 SECONDARY_MATCH_CAP = 45
 
+# Evidence that a translation ROLE involves a language THIS candidate can work
+# with (Arabic is his working language pair; bilingual/multilingual posts; an
+# explicit English mention). A posting whose language pair is invisible (e.g. a
+# LinkedIn fetch with a truncated description) must not be scored STRONG — a
+# bare "Translator" with no languages shown could be Chinese/Malay/Spanish.
+UNKNOWN_PAIR_CAP = 60
+CORE_ROLE_LANG_EVIDENCE = re.compile(
+    r"\barabic\b|\bbilingual\b|\bmultilingual\b|\benglish\b|\blanguage pair\b",
+    re.I,
+)
+
 # The actual job-content signals that make a listing translation work. A posting
 # can hit the "Arabic Translation" bucket via "Arabic speaker + data entry" or
 # "Arabic AI trainer" without being a translation role — that is NOT a STRONG
@@ -1021,6 +1032,13 @@ def get_match_score(title: str, desc: str) -> dict:
     elif best_cat in CORE_CATEGORIES and not CORE_LANGUAGE_ROLES.search(text):
         total = min(total, SECONDARY_MATCH_CAP)
         why_final.append("Arabic/language signal but not a translation role (review only)")
+    # 2c) Translation role whose language pair is invisible → never STRONG.
+    #     A bare "Translator" title with a truncated description can hide a
+    #     Chinese/Malay/Spanish posting (Zeekr 'Translator', 2026-09-21). Only
+    #     Arabic/bilingual/English evidence keeps it at full strength.
+    elif best_cat in CORE_CATEGORIES and not CORE_ROLE_LANG_EVIDENCE.search(text):
+        total = min(total, UNKNOWN_PAIR_CAP)
+        why_final.append("translation role, language pair unspecified (review)")
 
     # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):

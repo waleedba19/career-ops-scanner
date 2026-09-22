@@ -147,6 +147,8 @@ def test_email_regression():
     bad = [
         ("IRIS² Lead Ground Segment Service Engineer", "untalent_arabic", "Remote",
          "IRIS2 Lead Ground Segment Service Engineer at ESA. The IRIS² satellite constellation ground segment service."),
+        ("Translator (Zeekr)", "Zeekr International", "Remote — Tanjong Malim, Perak, Malaysia",
+         "Trilingual Translation & Business Support Specialist (Chinese / Malay / English). Chinese-Malay-English written and oral translation, on-site interpretation, localized content optimization for our Malaysia operations."),
         ("Conceptual Copywriter", "Superside", "Anywhere, Remote",
          "Superside is looking for a talented Conceptual Copywriter to ideate and execute impactful creative work. You will help translate complex technical ideas into campaigns."),
         ("AR Specialist Contractor", "Stride", "US Nationwide - Remote",
@@ -165,6 +167,10 @@ def test_email_regression():
               or ai_poor_fit({"ai_verdict": "Poor Fit", "ai_overall_score": 39}))
         check(f"DROP {title[:45]} (score={sc['score']} {sc['category']})", ok,
               f"score={sc}")
+    # A "Translator" whose language pair is invisible must never be STRONG.
+    sc_bare = get_match_score("Translator", "")
+    check("Bare 'Translator' (no language info) is never STRONG",
+          sc_bare["score"] < 75, f"score={sc_bare}")
 
 
 def test_false_positives():

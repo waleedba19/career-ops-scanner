@@ -139,8 +139,8 @@ def test_email_regression():
          "Legal Translator. Arabic English legal translation of contracts and court documents."),
         ("Construction Translator / Interpreter", "SISK Group", "Remote",
          "Construction translator and interpreter for site coordination. Arabic-English."),
-        ("Localisation Specialist (Translator) - Arabic & French", "Revolut", "Remote",
-         "Localise our app content into Arabic. Bilingual Arabic-French."),
+        ("Localisation Specialist - Arabic to English", "Revolut", "Remote",
+         "Localise our app content from English to Arabic. Bilingual Arabic-English."),
         ("Interpreter (Arabic and English)", "IOM", "Remote",
          "Arabic-English interpreting and translation for field missions."),
     ]

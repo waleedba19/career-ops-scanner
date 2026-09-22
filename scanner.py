@@ -1035,6 +1035,14 @@ def get_match_score(title: str, desc: str) -> dict:
     elif best_cat in CORE_CATEGORIES and not HAS_ARABIC.search(text):
         total = min(total, NON_ARABIC_CAP)
         why_final.append("translation role without Arabic (review only)")
+    # 2d) A posting that REQUIRES a non-Arabic, non-English language
+    #     (Dari/Pashto, Chinese, French…) is not an Arabic↔English job even when
+    #     the word "Arabic" appears — "Arabic translator/interpreter tour guide,
+    #     Arabic to Dari/Pashto, drive a car" (Let's tour Afghanistan, 09-22).
+    #     Without the required English it is REVIEW, never STRONG.
+    elif best_cat in CORE_CATEGORIES and WRONG_LANGUAGE.search(text) and not re.search(r"\benglish\b", text):
+        total = min(total, SECONDARY_MATCH_CAP)
+        why_final.append("requires non-English language, no English (review only)")
 
     # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):

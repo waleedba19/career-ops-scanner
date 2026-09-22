@@ -34979,8 +34979,23 @@
       "seen": "2026-09-22T14:46:43.315744+00:00",
       "title": "Mauritania",
       "company": "untalent_arabic"
+    },
+    "mozilla|seniorsoftwareengineerwebglcol|remotecanadaremoteus": {
+      "seen": "2026-09-22T15:09:23.889208+00:00",
+      "title": "Contract Senior Software Engineer - WebGL (Color/Graphics)",
+      "company": "Mozilla"
+    },
+    "amentum|punjabilinguistcatiicentcom|remotekuwaitcityalas": {
+      "seen": "2026-09-22T15:09:24.150310+00:00",
+      "title": "Punjabi Linguist CAT II - CENTCOM",
+      "company": "Amentum"
+    },
+    "himalayasrss|customerexperienceexecutive|remote": {
+      "seen": "2026-09-22T15:09:24.676658+00:00",
+      "title": "Customer Experience Executive",
+      "company": "himalayas_rss"
     }
   },
-  "updated": "2026-09-22T14:47:01.226590+00:00",
+  "updated": "2026-09-22T15:09:42.159223+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

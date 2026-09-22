@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-14T15:04:24.240181+00:00",
-    "matched_count": 4,
-    "all_count": 2252,
-    "jobs": [
-      {
-        "title": "Inside Sales Representative - Med Tech",
-        "company": "Lifelancer",
-        "url": "https://himalayas.app/companies/lifelancer/jobs/inside-sales-representative-med-tech-1509975819",
-        "score": 0,
-        "category": "Other",
-        "source": "himalayas"
-      },
-      {
-        "title": "Freelance: grabaci\u00f3n de tareas cotidianas para proyecto de IA",
-        "company": "Toloka AI",
-        "url": "https://himalayas.app/companies/toloka-ai/jobs/freelance-grabacion-de-tareas-cotidianas-para-proyecto-de-ia-2247395338",
-        "score": 0,
-        "category": "Other",
-        "source": "himalayas"
-      },
-      {
-        "title": "AI Trainer - Freelance Data Annotator",
-        "company": "Toloka AI",
-        "url": "https://himalayas.app/companies/toloka-ai/jobs/ai-trainer-freelance-data-annotator-7640874750",
-        "score": 0,
-        "category": "Other",
-        "source": "himalayas"
-      },
-      {
-        "title": "Senior Field Specialist - Data Engineering & Streaming (Pre-Sales)",
-        "company": "Cloudera",
-        "url": "https://himalayas.app/companies/cloudera/jobs/senior-field-specialist-data-engineering-streaming-pre-sales-2841966509",
-        "score": 0,
-        "category": "Other",
-        "source": "himalayas"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T15:09:06.472404+00:00",
     "matched_count": 2,
     "all_count": 2254,
@@ -1937,6 +1898,12 @@
     "date": "2026-09-22T14:46:56.328032+00:00",
     "matched_count": 0,
     "all_count": 6479,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-22T15:09:37.775074+00:00",
+    "matched_count": 0,
+    "all_count": 6480,
     "jobs": []
   }
 ]

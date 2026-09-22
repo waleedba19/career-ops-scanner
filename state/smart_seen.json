@@ -35004,8 +35004,113 @@
       "seen": "2026-09-22T15:24:26.575734+00:00",
       "title": "Bilingual Medical Assistant-ACCESS Pilsen",
       "company": "Access Community Health Network"
+    },
+    "wppmedia|pessoaanalistademdiaplenobrand|saopaulobrazil": {
+      "seen": "2026-09-22T15:46:18.999555+00:00",
+      "title": "Pessoa Analista de M\u00eddia Pleno \u2013 Branding - M\u00eddia Digital",
+      "company": "WPP Media"
+    },
+    "wppmedia|pessoaanalistadeseoplenoseotcn|saopaulobrazil": {
+      "seen": "2026-09-22T15:46:19.000432+00:00",
+      "title": "Pessoa Analista de SEO Pleno \u2013 SEO T\u00e9cnico & On-Page",
+      "company": "WPP Media"
+    },
+    "anthropic|directorofpayrollapac|singapore": {
+      "seen": "2026-09-22T15:46:19.050704+00:00",
+      "title": "Director of Payroll, APAC",
+      "company": "Anthropic"
+    },
+    "cloudflare|customerexperiencemanagerfrenc|hybrid": {
+      "seen": "2026-09-22T15:46:19.071132+00:00",
+      "title": "Customer Experience Manager - French Speaking",
+      "company": "Cloudflare"
+    },
+    "mozilla|softwareengineerwebcompattooli|remotecanadaremotefr": {
+      "seen": "2026-09-22T15:46:19.134720+00:00",
+      "title": "Contract Software Engineer - WebCompat Tooling (Dashboards and Reporting), Firefox",
+      "company": "Mozilla"
+    },
+    "omnicomprecisionmarketing|seniormedicaleditor|remotenewyorkny": {
+      "seen": "2026-09-22T15:46:19.395735+00:00",
+      "title": "Senior Medical Editor",
+      "company": "Omnicom Precision Marketing"
+    },
+    "indistaffingservices|translatoreditorwork|remoteriodejaneirori": {
+      "seen": "2026-09-22T15:46:19.396468+00:00",
+      "title": "Translator & Editor - Remote Work",
+      "company": "INDI Staffing Services"
+    },
+    "himalayasrss|becomealuxurybrandevaluatorgra|remote": {
+      "seen": "2026-09-22T15:46:19.907919+00:00",
+      "title": "Become a Freelance Luxury Brand Evaluator - Graz",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorjuryconsultant|remote": {
+      "seen": "2026-09-22T15:46:19.909297+00:00",
+      "title": "Senior Jury Consultant",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|communityengagementleadweaverp|remote": {
+      "seen": "2026-09-22T15:46:19.910550+00:00",
+      "title": "Community Engagement Lead \u201cWeaver\u201d Position",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|directorriskstrategyfraudamlfi|remote": {
+      "seen": "2026-09-22T15:46:19.911480+00:00",
+      "title": "Director, Risk Strategy (Fraud & AML | Fiat + Crypto)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|job31795seniorspecialistdevops|remote": {
+      "seen": "2026-09-22T15:46:19.912257+00:00",
+      "title": "[Job-31795] Senior/Specialist DevOps (preferably Azure), Brazil",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|gestionnairedeprojetsscrummast|remote": {
+      "seen": "2026-09-22T15:46:19.912935+00:00",
+      "title": "Gestionnaire de projets - Scrum Master",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|solutiondesignengineerplainfie|remote": {
+      "seen": "2026-09-22T15:46:19.913786+00:00",
+      "title": "Solution Design Engineer (Plainfield. In PDC, US)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorproductmanagerenergymfd|remote": {
+      "seen": "2026-09-22T15:46:19.914588+00:00",
+      "title": "(Senior) Product Manager Energy (m/f/d)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|investoropencoreventures|remote": {
+      "seen": "2026-09-22T15:46:19.915531+00:00",
+      "title": "Investor - Open Core Ventures",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|prescriptionservicedoctor|remote": {
+      "seen": "2026-09-22T15:46:19.916603+00:00",
+      "title": "Prescription Service Doctor",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniordeveloper|remote": {
+      "seen": "2026-09-22T15:46:19.917330+00:00",
+      "title": "Senior Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniortutoractfulltest|remote": {
+      "seen": "2026-09-22T15:46:19.918712+00:00",
+      "title": "Senior Tutor - ACT Full Test",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|implementationengineerserviced|remote": {
+      "seen": "2026-09-22T15:46:19.919584+00:00",
+      "title": "Implementation Engineer - Service Delivery",
+      "company": "himalayas_rss"
+    },
+    "untalentarabic|internfinancedallastx|remote": {
+      "seen": "2026-09-22T15:46:19.932914+00:00",
+      "title": "Intern, Finance-Dallas, TX",
+      "company": "untalent_arabic"
     }
   },
-  "updated": "2026-09-22T15:24:48.521821+00:00",
+  "updated": "2026-09-22T15:46:43.626739+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

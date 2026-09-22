@@ -1,0 +1,58 @@
+{
+  "companies": {
+    "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930": [
+      {
+        "reason": "directory_email_bounced",
+        "date": "2026-09-22T15:18:36.741924+00:00"
+      }
+    ],
+    "Let's tour Afghanistan Agency": [
+      {
+        "reason": "wrong_language_onsite",
+        "date": "2026-09-22T15:18:36.758888+00:00"
+      }
+    ],
+    "Zeekr International": [
+      {
+        "reason": "wrong_language_panel",
+        "date": "2026-09-22T15:18:36.770445+00:00"
+      }
+    ],
+    "QIMA": [
+      {
+        "reason": "non_arabic_role",
+        "date": "2026-09-22T15:18:36.775249+00:00"
+      }
+    ]
+  },
+  "domains": {
+    "findglocal.com": [
+      {
+        "reason": "directory_email_bounced",
+        "date": "2026-09-22T15:18:36.741924+00:00"
+      }
+    ]
+  },
+  "categories": {
+    "Arabic Translation": 1,
+    "Translation (any pair)": 3
+  },
+  "titles": [
+    {
+      "title": "Arabic Translator / Arabic-English Translator / Translation Specialist",
+      "reason": "directory_email_bounced",
+      "date": "2026-09-22T15:18:36.741924+00:00"
+    },
+    {
+      "title": "Arabic language translator/interpreter(Tour guide)",
+      "reason": "wrong_language_onsite",
+      "date": "2026-09-22T15:18:36.758888+00:00"
+    },
+    {
+      "title": "Translator",
+      "reason": "wrong_language_panel",
+      "date": "2026-09-22T15:18:36.770445+00:00"
+    }
+  ],
+  "updated": "2026-09-22T15:18:36.775249+00:00"
+}

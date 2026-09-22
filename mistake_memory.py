@@ -17,7 +17,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-DEFAULT_PATH = Path(os.getenv("CAREEROPS_STATE_DIR", ROOT / "state")) / "mistakes.json"
+# Uses the output/ dir (gitignored working area) so state_sync uploads it to
+# repo state/mistakes.json after every run — same convention as the other
+# modules (excel_generator, evolution_tracker...).
+DEFAULT_PATH = Path(os.getenv("CAREEROPS_STATE_DIR", ROOT / "output")) / "mistakes.json"
 
 MAX_ENTRIES = 200
 MAX_COMPANIES = 60

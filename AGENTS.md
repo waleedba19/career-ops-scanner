@@ -24,6 +24,7 @@ This is an autonomous job search system that runs twice daily on GitHub Actions.
 ## Schedule
 - **09:00 AM Libya** (07:00 UTC) — Morning Delivery
 - **06:00 PM Libya** (16:00 UTC) — Evening Delivery
+- **CRITICAL RULE:** `scan.yml` → `on.schedule` crons are **STABLE — never change them**. Editing a GitHub cron causes the scheduler to keep firing stale copies of old crons for days afterwards (actions/runner#4241), which produced random-hour emails on 9/19–9/21. A cron that is never touched fires with a small constant latency daily (verified on scholar-space-ships-2027). If timing ever needs adjusting, change it exactly once and then stop touching it.
 
 ## Matching Rules
 1. **75%+ match score** required for Fresh Matches

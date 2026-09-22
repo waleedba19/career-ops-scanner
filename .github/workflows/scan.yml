@@ -1,12 +1,16 @@
 name: CareerOps Job Scan
 
 on:
-  # NOTE: GitHub cron is intentionally REMOVED (2026-09-20). GitHub's scheduler
-  # kept firing stale cron registrations (actions/runner#4241) many hours late
-  # and multiple times per day. Delivery is now driven deterministically by the
-  # Windows Task Scheduler on the user's PC (tools/dispatch_scan.ps1), which
-  # calls workflow_dispatch at exactly 09:00 and 18:00 Libya — instant start,
-  # no queue, no ghosts. Push triggers below remain as a smoke/fail-fast path.
+  # ── STABLE SCHEDULE — PROVIDED AS-IS ─────────────────────────────────────
+  # Keep these two cron values EXACTLY as they are. Do NOT add, remove, or
+  # reword them. Changing a GitHub cron re-registers the schedule and makes
+  # GitHub's scheduler keep firing STALE copies of old crons for days after
+  # (actions/runner#4241) — that is what caused the random-hour emails on
+  # 9/19-9/21 (runs landing at 10:28, 14:09, 15:50...). A cron that is never
+  # touched fires with a small, constant latency every day (Scholar-style).
+  schedule:
+    - cron: '0 7 * * *'      # 07:00 UTC = 09:00 Libya — Morning Digest
+    - cron: '0 16 * * *'     # 16:00 UTC = 18:00 Libya — Evening Digest
   workflow_dispatch:
     inputs:
       mode:

@@ -321,6 +321,13 @@ def test_wiring():
     check("jobspy row normalized into our job shape",
           js_row["title"] == "Arabic Translator" and js_row["source"] == "jobspy_indeed"
           and js_row["location"] == "Remote" and "%" not in js_row.get("description", ""))
+    from email_finder import DIRECTORY_DOMAINS, _is_usable_domain
+    check("findglocal.com is a known directory domain",
+          "findglocal.com" in DIRECTORY_DOMAINS)
+    check("directory domains are never 'usable' employer domains",
+          not _is_usable_domain("findglocal.com"))
+    check("job-board/aggregator domains are never 'usable'",
+          not _is_usable_domain("himalayas.app") and not _is_usable_domain("remotive.com"))
     src = Path("scanner.py").read_text(encoding="utf-8")
     for nm in ("mostaql", "wuzzuf", "bayt", "gulftalent", "proz"):
         check(f"{nm} is guarded by _blocked()", f'_blocked("{nm}")' in src or f'("{nm}", fetch_{nm})' in src)

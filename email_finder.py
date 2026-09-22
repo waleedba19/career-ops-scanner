@@ -54,6 +54,20 @@ NON_EMPLOYER_DOMAINS = {
     "godaddy.com", "gravatar.com", "schema.org", "w3.org", "googletagmanager.com",
 }
 
+# Business-directory / aggregator domains. A mailbox on one of these is NOT the
+# employer's inbox — careers@findglocal.com (a directory page for a fake/DARPAN
+# posting) bounced with "User unknown", 2026-09-22. These domains commonly HAVE
+# MX records, so mx_verified() alone is not enough: directory existence != a
+# working employer mailbox. Never present a guessed or harvested address on one
+# of these as a "verified" hiring email.
+DIRECTORY_DOMAINS = frozenset({
+    "findglocal.com", "cybo.com", "dancor.com", "theorg.com", "zoominfo.com",
+    "signalhire.com", "rocketreach.co", "craft.co", "f6s.com", "builtin.com",
+    "wellfound.com", "startup.jobs", "qualityportal.com", "glueup.com",
+    "yellowpages.com", "yelp.com", "brownbook.net", "tuugo.net", "pitchbook.com",
+    "dnb.com", "tracxn.com", "googleusercontent.com", "56kmod",
+})
+
 EMAIL_STOP_TOKENS = (
     "noreply", "no-reply", "donotreply", "do-not-reply", "postmaster", "abuse",
     "privacy", "legal", "dpo", "newsletter", "marketing", "unsubscribe",
@@ -108,6 +122,8 @@ def _is_usable_domain(domain: str) -> bool:
     if is_job_board_domain(domain):
         return False
     d = domain.lower()
+    if d in DIRECTORY_DOMAINS or any(d.endswith("." + b) for b in DIRECTORY_DOMAINS):
+        return False
     return not any(d == b or d.endswith("." + b) for b in NON_EMPLOYER_DOMAINS)
 
 
@@ -299,6 +315,18 @@ async def find_company_email(session, job: dict, cache: dict | None = None) -> d
         source = "posting" if emails else ""
 
         domain, contact_url, domain_source = await discover_company_domain(session, job, cache)
+
+        # A directory/aggregator domain is NOT the employer's inbox. MX records
+        # exist on them (so mx_verified passes) but careers@findglocal.com
+        # bounced "User unknown". Tag it and stop — unless the job description
+        # itself carried a real address.
+        if domain in DIRECTORY_DOMAINS and source != "posting":
+            job["email_directory"] = domain
+            job["email_verified"] = False
+            job["email_guessed"] = False
+            job.setdefault("hiring_email", "")
+            return job
+
         if not emails and domain:
             for e in await harvest_emails(session, domain, contact_url):
                 if e not in emails:

@@ -12,6 +12,8 @@ from pathlib import Path
 
 from groq import Groq, APIConnectionError, APIStatusError
 
+from mistake_memory import block_context
+
 MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
 # Load real CV profile
@@ -186,7 +188,14 @@ RULES:
 - Keep reasons concise (under 15 words each)
 - Calculate overall_score as weighted average: (technical*0.30 + experience*0.25 + behavioral*0.15 + career*0.30)
 - If location is FAIL, overall_score must be below 50
-- If job is NOT translation/localization/writing/bilingual content, overall_score MUST be below 40"""
+- If job is NOT translation/localization/writing/bilingual content, overall_score MUST be below 40
+
+MISTAKE MEMORY (the system's scar tissue — CHECK IT):
+{mistakes}
+If this company, domain, category or title appears above, it was ALREADY flagged
+as a mistake in earlier scans. Verify the language pair and the true remote/
+worldwide nature from the DESCRIPTION before scoring HIGH; when in doubt, score
+below 50 and say so in your reason."""
 
 
 def _build_scoring_prompt(job: dict) -> str:
@@ -201,13 +210,14 @@ def _build_scoring_prompt(job: dict) -> str:
         secondary_skills=", ".join(USER_PROFILE["secondary_skills"]),
         experience_domains="; ".join(USER_PROFILE["experience_domains"]),
         career_goals="; ".join(USER_PROFILE["career_goals"]),
-        languages=", ".join(f"{k}: {v}" for k, v in USER_PROFILE["languages"].items()),
+        languages="; ".join(f"{k}: {v}" for k, v in USER_PROFILE["languages"].items()),
         location=USER_PROFILE["location"],
         dealbreakers=", ".join(USER_PROFILE["dealbreakers"]),
         title=job.get("title", ""),
         company=job.get("company", ""),
         location_job=job.get("location", "Remote"),
         description=desc,
+        mistakes=block_context(),
     )
 
 

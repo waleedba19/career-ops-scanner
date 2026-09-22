@@ -328,6 +328,25 @@ def test_wiring():
           not _is_usable_domain("findglocal.com"))
     check("job-board/aggregator domains are never 'usable'",
           not _is_usable_domain("himalayas.app") and not _is_usable_domain("remotive.com"))
+    import tempfile
+    from mistake_memory import (DEFAULT_PATH, block_context, is_known_bad_company,
+                                note_mistake)
+    tmp = Path(tempfile.mkdtemp()) / "mistakes.json"
+    note_mistake({"company": "FakeCo", "category": "Translation (any pair)",
+                  "title": "Generic Translator", "email_directory": "fakeco-dir.com"},
+                 "ai_poor_fit", path=tmp)
+    data = note_mistake({"company": "FakeCo", "title": "Fake Role"}, "directory_email", path=tmp)
+    check("mistake memory persists company + domain + category",
+          "FakeCo" in data["companies"] and "fakeco-dir.com" in data["domains"]
+          and data["categories"].get("Translation (any pair)", 0) >= 1)
+    check("mistake memory flags known-bad company",
+          is_known_bad_company("FakeCo", path=tmp))
+    ctx = block_context(path=tmp)
+    check("AI prompt gets mistake context (sees past mistakes)",
+          "FakeCo" in ctx and "fakeco-dir.com" in ctx)
+    import groq_analyzer
+    check("Groq scoring prompt includes the mistake-memory field",
+          "{mistakes}" in groq_analyzer.SCORING_PROMPT)
     src = Path("scanner.py").read_text(encoding="utf-8")
     for nm in ("mostaql", "wuzzuf", "bayt", "gulftalent", "proz"):
         check(f"{nm} is guarded by _blocked()", f'_blocked("{nm}")' in src or f'("{nm}", fetch_{nm})' in src)

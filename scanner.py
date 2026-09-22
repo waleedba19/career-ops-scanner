@@ -147,6 +147,7 @@ DEDUP_TTL_DAYS = getattr(_cfg, "DEDUP_TTL_DAYS", 14)
 DEDUP_ENABLED = getattr(_cfg, "DEDUP_ENABLED", True)
 AI_ANALYZE_CAP = getattr(_cfg, "AI_ANALYZE_CAP", 10)
 OLD_AI_VERIFY_CAP = getattr(_cfg, "OLD_AI_VERIFY_CAP", 8)
+AUDIT_CAP = getattr(_cfg, "AUDIT_CAP", 8)
 COMPANY_MIN_SCORE = getattr(_cfg, "COMPANY_MIN_SCORE", 40)
 WORLDWIDE_FEEDS = getattr(_cfg, "WORLDWIDE_FEEDS", [])
 MAX_WORLDWIDE_FEEDS = getattr(_cfg, "MAX_WORLDWIDE_FEEDS", 40)
@@ -6437,6 +6438,26 @@ async def run_scan():
         final_verified = drop_unqualified_matches(final_verified, quality_drops)
         if quality_drops:
             print(f"Quality/location hard-fail dropped {before_q - len(final_verified)}: {quality_drops}")
+
+        # ‑‑ Pre-delivery AI audit + mistake memory (see it before we send it) ‑‑
+        try:
+            from groq_analyzer import analyze_jobs_with_ollama
+            from mistake_memory import load as load_mistakes
+            from mistake_memory import note_mistake
+            audit_pool = [j for j in final_verified if not j.get("ai_verdict")][:AUDIT_CAP]
+            if audit_pool:
+                print(f"  Pre-delivery AI audit: {len(audit_pool)} candidates checked "
+                      f"against {len(load_mistakes())} known mistakes")
+                await analyze_jobs_with_ollama(audit_pool)
+            audited_bad = [j for j in final_verified if ai_poor_fit(j)]
+            if audited_bad:
+                for j in audited_bad:
+                    note_mistake(j, "ai_poor_fit")
+                final_verified = [j for j in final_verified if not ai_poor_fit(j)]
+                print(f"  AI audit dropped {len(audited_bad)} before delivery: "
+                      f"{', '.join(sorted({(j.get('title') or '?')[:40] for j in audited_bad}))}")
+        except Exception as e:
+            print(f"  Pre-delivery AI audit skipped: {e}")
 
         # ---- Free Forever Intel: email/urgency for top 5 only ----
         try:

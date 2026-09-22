@@ -29,6 +29,7 @@ STATE_FILES = [
     "source_registry.json",
     "daily_log.json",
     "fresh_matches_history.json",
+    "mistakes.json",
     "scan_history_acum.json",
     "scan_history.json",
     "seen_urls.json",

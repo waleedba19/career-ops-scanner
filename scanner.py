@@ -6441,7 +6441,6 @@ async def run_scan():
 
         # ‑‑ Pre-delivery AI audit + mistake memory (see it before we send it) ‑‑
         try:
-            from groq_analyzer import analyze_jobs_with_ollama
             from mistake_memory import load as load_mistakes
             from mistake_memory import note_mistake
             audit_pool = [j for j in final_verified if not j.get("ai_verdict")][:AUDIT_CAP]

@@ -148,6 +148,10 @@ DEDUP_ENABLED = getattr(_cfg, "DEDUP_ENABLED", True)
 AI_ANALYZE_CAP = getattr(_cfg, "AI_ANALYZE_CAP", 10)
 OLD_AI_VERIFY_CAP = getattr(_cfg, "OLD_AI_VERIFY_CAP", 8)
 AUDIT_CAP = getattr(_cfg, "AUDIT_CAP", 8)
+# Previously-seen-but-still-open relevant jobs are re-surfaced in the daily
+# available pool (not announced as NEW) so a quiet day never reads "0" while
+# real translation roles are open.
+OPEN_POOL_CAP = int(os.getenv("CAREEROPS_OPEN_POOL", "15"))
 COMPANY_MIN_SCORE = getattr(_cfg, "COMPANY_MIN_SCORE", 40)
 WORLDWIDE_FEEDS = getattr(_cfg, "WORLDWIDE_FEEDS", [])
 MAX_WORLDWIDE_FEEDS = getattr(_cfg, "MAX_WORLDWIDE_FEEDS", 40)
@@ -3988,6 +3992,17 @@ def classify_lifecycle(jobs: list[dict], scan_info: dict) -> dict:
         current_urls.add(url)
         found_str = existing_by_url.get(url, {}).get("found_date", "")
 
+        if job.get("dup_pool"):
+            # Re-surfaced from the open pool: previously seen, still open.
+            job["lifecycle_status"] = "old"
+            job["found_date"] = found_str or now.isoformat()
+            try:
+                job["expires_date"] = (now + timedelta(days=expiry_days)).isoformat()
+            except Exception:
+                job["expires_date"] = ""
+            old_jobs.append(job)
+            continue
+
         if found_str:
             # Job was seen before — check age
             try:
@@ -6122,6 +6137,7 @@ async def run_scan():
 
         # ---- Score & filter ----
         scored: list[dict] = []
+        dup_open: list[dict] = []  # previously-seen but still-open relevant roles
         near_misses: list[dict] = []
         fresh_total = 0
         old_but_verified = []
@@ -6177,6 +6193,25 @@ async def run_scan():
             # Smart deduplication — skip if company+title+location already seen
             if is_duplicate(job, smart_seen):
                 filter_debug["duplicate"] += 1
+                # Previously-seen must NOT mean invisible. Dedup exists to stop
+                # re-ANNOUNCING the same job as NEW, not to hide a still-open,
+                # relevant role from the daily available pool. Re-surface it.
+                try:
+                    p_ = normalize_date(job.get("posted"))
+                    a_ = age_hours(p_) if p_ else float("inf")
+                    d_ = job.get("description") or ""
+                    if (p_ is None or a_ <= MAX_AGE_HOURS) and not is_paid_platform(job.get("source", "")) \
+                            and not matches_negative(job.get("title", ""), d_) \
+                            and is_open_worldwide_for_company(job.get("location", ""), d_, job.get("company", "")):
+                        sc_ = get_match_score(job.get("title", ""), d_)
+                        if sc_["score"] >= MIN_MATCH_SCORE and sc_["category"] != "Other" \
+                                and len(dup_open) < OPEN_POOL_CAP:
+                            dup_open.append({**job, "score": sc_["score"],
+                                             "category": sc_["category"],
+                                             "why": sc_.get("why", []),
+                                             "dup_pool": True})
+                except Exception:
+                    pass
                 continue
 
             # Filter out paid platforms
@@ -6418,6 +6453,16 @@ async def run_scan():
 
         # Combine: fresh jobs first, then old verified jobs at the end
         final_verified = verified + old_verified
+
+        # Re-surface the still-open relevant pool (previously-seen jobs) so the
+        # daily digest shows the OPEN universe of translation roles, not only
+        # brand-new postings. Dedup suppresses re-announcing them as NEW, never
+        # hides them.
+        if dup_open:
+            dup_open.sort(key=lambda j: -int(j.get("score") or 0))
+            final_verified += dup_open[:OPEN_POOL_CAP]
+            print(f"  Open pool: added {len(dup_open[:OPEN_POOL_CAP])} previously-seen open roles "
+                  f"(of {len(dup_open)} eligible duplicates)")
 
         # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74),
         # then company-boosted roles at the lower company floor (40-49). Anything

@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-14T21:59:58.894619+00:00",
-    "matched_count": 0,
-    "all_count": 205,
-    "jobs": []
-  },
-  {
     "date": "2026-09-14T22:11:37.210491+00:00",
     "matched_count": 16,
     "all_count": 267,
@@ -1861,6 +1855,21 @@
     "date": "2026-09-23T11:36:55.201209+00:00",
     "matched_count": 1,
     "all_count": 6517,
+    "jobs": [
+      {
+        "title": "Interpreter \u2013 Arabic/Sudanese Arabic",
+        "company": "IRC - International Rescue Committee",
+        "url": "https://www.impactpool.org/jobs/1221265",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-23T11:43:22.286461+00:00",
+    "matched_count": 1,
+    "all_count": 6457,
     "jobs": [
       {
         "title": "Interpreter \u2013 Arabic/Sudanese Arabic",

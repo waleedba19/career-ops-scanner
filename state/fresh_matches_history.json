@@ -19,58 +19,56 @@
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Exact Arabic-English language focus"
+        "reason": "Job demands Arabic-English interpretation, core skill"
       },
       "experience_match": {
-        "score": 80,
-        "reason": "Strong translation, limited interpreting"
+        "score": 85,
+        "reason": "5+ years translation; interpretation adjacent"
       },
       "behavioral_fit": {
         "score": 90,
-        "reason": "Remote, flexible, academic background"
+        "reason": "Remote, flexible, humanitarian focus matches"
       },
       "location_logistics": {
         "verdict": "PASS",
-        "reason": "Remote role, no citizenship/visa constraints"
+        "reason": "Remote role, no citizenship/visa stated"
       },
       "career_alignment": {
-        "score": 90,
-        "reason": "Directly builds translation/localization path"
+        "score": 80,
+        "reason": "Strengthens language\u2011service career, though not translation"
       },
-      "overall_score": 89,
+      "overall_score": 87,
       "verdict": "Strong Fit",
       "strengths": [
-        "Native Arabic speaker",
-        "C1 English proficiency",
-        "5+ years translation & localization"
+        "Native Arabic, C1 English",
+        "Extensive Arabic\u2011English translation experience"
       ],
       "gaps": [
-        "No formal interpreting experience",
-        "Sudanese Arabic dialect nuance"
+        "No formal interpretation experience",
+        "Limited Sudanese Arabic dialect exposure"
       ],
-      "recommendation": "Apply confidently; emphasize language expertise and remote work success, and be ready to discuss interpreting readiness.",
-      "interview_prep": "1. Describe your experience handling Arabic-English translation under tight deadlines \u2013 highlight legal/academic work. 2. How would you manage interpreting for Sudanese Arabic speakers? \u2013 discuss dialect research and practice. 3. What tools or methods do you use to ensure accuracy in bilingual communication? \u2013 mention CAT tools, glossaries, and active listening techniques.",
-      "one_line_summary": "Native Arabic translator with strong English, perfect remote fit for IRC interpreter role."
+      "recommendation": "Apply confidently; emphasize transferable language skills and remote work success.",
+      "interview_prep": "1. Describe your experience interpreting Arabic in high\u2011pressure settings \u2013 highlight related translation work. 2. How do you ensure accuracy when switching between Modern Standard Arabic and Sudanese dialects? \u2013 discuss research and terminology tools. 3. Explain how you manage remote collaboration with humanitarian teams \u2013 cite your remote training and supervision roles.",
+      "one_line_summary": "Arabic\u2011English interpreter role aligns well with Waleed\u2019s remote language expertise."
     },
-    "ai_insight": "Native Arabic translator with strong English, perfect remote fit for IRC interpreter role.",
-    "ai_overall_score": 89,
+    "ai_insight": "Arabic\u2011English interpreter role aligns well with Waleed\u2019s remote language expertise.",
+    "ai_overall_score": 87,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Native Arabic speaker",
-      "C1 English proficiency",
-      "5+ years translation & localization"
+      "Native Arabic, C1 English",
+      "Extensive Arabic\u2011English translation experience"
     ],
     "ai_gaps": [
-      "No formal interpreting experience",
-      "Sudanese Arabic dialect nuance"
+      "No formal interpretation experience",
+      "Limited Sudanese Arabic dialect exposure"
     ],
-    "ai_recommendation": "Apply confidently; emphasize language expertise and remote work success, and be ready to discuss interpreting readiness.",
-    "ai_interview_prep": "1. Describe your experience handling Arabic-English translation under tight deadlines \u2013 highlight legal/academic work. 2. How would you manage interpreting for Sudanese Arabic speakers? \u2013 discuss dialect research and practice. 3. What tools or methods do you use to ensure accuracy in bilingual communication? \u2013 mention CAT tools, glossaries, and active listening techniques.",
+    "ai_recommendation": "Apply confidently; emphasize transferable language skills and remote work success.",
+    "ai_interview_prep": "1. Describe your experience interpreting Arabic in high\u2011pressure settings \u2013 highlight related translation work. 2. How do you ensure accuracy when switching between Modern Standard Arabic and Sudanese dialects? \u2013 discuss research and terminology tools. 3. Explain how you manage remote collaboration with humanitarian teams \u2013 cite your remote training and supervision roles.",
     "ai_technical_skills": 95,
-    "ai_experience_match": 80,
+    "ai_experience_match": 85,
     "ai_behavioral_fit": 90,
     "ai_location_verdict": "PASS",
-    "ai_career_alignment": 90,
+    "ai_career_alignment": 80,
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -131,7 +129,7 @@
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-09-23T11:36:41.430733+00:00",
-    "expires_date": "2026-09-26T11:36:41.430733+00:00",
-    "scan_date": "2026-09-23T13:36:41.844169+02:00"
+    "expires_date": "2026-09-26T11:43:13.746383+00:00",
+    "scan_date": "2026-09-23T13:43:14.075840+02:00"
   }
 ]

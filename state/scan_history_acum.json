@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-14T21:56:43.374134+00:00",
-    "matched_count": 1,
-    "all_count": 205,
-    "jobs": [
-      {
-        "title": "Medical Interpreter, Arabic Global Services Full-Time Days",
-        "company": "Northwestern Medicine",
-        "url": "https://www.linkedin.com/jobs/view/medical-interpreter-arabic-global-services-full-time-days-at-northwestern-medicine-4465255547",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T21:59:58.894619+00:00",
     "matched_count": 0,
     "all_count": 205,
@@ -1871,5 +1856,20 @@
     "matched_count": 0,
     "all_count": 6511,
     "jobs": []
+  },
+  {
+    "date": "2026-09-23T11:36:55.201209+00:00",
+    "matched_count": 1,
+    "all_count": 6517,
+    "jobs": [
+      {
+        "title": "Interpreter \u2013 Arabic/Sudanese Arabic",
+        "company": "IRC - International Rescue Committee",
+        "url": "https://www.impactpool.org/jobs/1221265",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
   }
 ]

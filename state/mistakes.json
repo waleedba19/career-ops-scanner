@@ -23,6 +23,12 @@
         "reason": "non_arabic_role",
         "date": "2026-09-22T15:18:36.775249+00:00"
       }
+    ],
+    "TransPerfect": [
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-09-23T11:14:28.989903+00:00"
+      }
     ]
   },
   "domains": {
@@ -35,7 +41,8 @@
   },
   "categories": {
     "Arabic Translation": 1,
-    "Translation (any pair)": 3
+    "Translation (any pair)": 3,
+    "Language Services (company)": 1
   },
   "titles": [
     {
@@ -52,7 +59,12 @@
       "title": "Translator",
       "reason": "wrong_language_panel",
       "date": "2026-09-22T15:18:36.770445+00:00"
+    },
+    {
+      "title": "FRCA Linguist",
+      "reason": "ai_poor_fit",
+      "date": "2026-09-23T11:14:28.989924+00:00"
     }
   ],
-  "updated": "2026-09-22T15:18:36.775249+00:00"
+  "updated": "2026-09-23T11:14:28.989930+00:00"
 }

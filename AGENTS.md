@@ -22,9 +22,9 @@ This is an autonomous job search system that runs twice daily on GitHub Actions.
 - **Requirements**: Remote only, worldwide, no visa/residency restrictions
 
 ## Schedule
-- **09:00 AM Libya** (07:00 UTC) — Morning Delivery
-- **06:00 PM Libya** (16:00 UTC) — Evening Delivery
-- **CRITICAL RULE:** `scan.yml` → `on.schedule` crons are **STABLE — never change them**. Editing a GitHub cron causes the scheduler to keep firing stale copies of old crons for days afterwards (actions/runner#4241), which produced random-hour emails on 9/19–9/21. A cron that is never touched fires with a small constant latency daily (verified on scholar-space-ships-2027). If timing ever needs adjusting, change it exactly once and then stop touching it.
+- **09:00 AM Libya** (07:00 UTC) — ONE daily digest, Scholar-style.
+- The schedule is **stable and single** — do not add more slots, do not touch the cron. This exactly mirrors `scholar-space-ships-2027` (one unchanged cron → constant ~12-min latency, ~09:12 Libya delivery).
+- **First line of defense:** `careerops.yml` → `on.schedule` → `cron: '0 7 * * *'`. Never edit it. If timing ever needs adjusting, change it exactly once and stop. The file was renamed from `scan.yml` to `careerops.yml` on 2026-09-22 to force GitHub to drop stale schedule registrations (actions/runner#4241).
 
 ## Matching Rules
 1. **75%+ match score** required for Fresh Matches

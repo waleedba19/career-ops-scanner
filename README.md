@@ -1,7 +1,7 @@
 # 🚀 CareerOps — Enterprise Job Intelligence Platform
 
 [![Tests](https://github.com/waleedba19/career-ops-scanner/actions/workflows/tests.yml/badge.svg)](https://github.com/waleedba19/career-ops-scanner/actions/workflows/tests.yml)
-[![CareerOps Scan](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml/badge.svg)](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml)
+[![CareerOps Scan](https://github.com/waleedba19/career-ops-scanner/actions/workflows/careerops.yml/badge.svg)](https://github.com/waleedba19/career-ops-scanner/actions/workflows/scan.yml)
 [![Dashboard](https://img.shields.io/badge/dashboard-live-38bdf8)](http://localhost:8000)
 [![API](https://img.shields.io/badge/API-docs-0ea5e9)](http://localhost:8001/docs)
 
@@ -23,7 +23,7 @@
 | **Observability** | Structured logs (`output/logs/*.jsonl`), Prometheus `health.json`/`metrics.json`, source performance report | `careerops_logger.py` `metrics.py` |
 | **Dashboard** | Live dark-mode UI: KPIs, fresh matches table, evolution brain, daily log — auto-refresh 30s | `dashboard/app.py` → `:8000` |
 | **REST API** | `GET /api/health` `GET /api/metrics` `GET /api/jobs?min_score&category` `GET /api/stats` `POST /api/apply` | `api_server.py` → `:8001` |
-| **Persistence** | `state/` synced via GitHub Contents API (`state_sync.py`) — survives ephemeral runners | `.github/workflows/scan.yml` |
+| **Persistence** | `state/` synced via GitHub Contents API (`state_sync.py`) — survives ephemeral runners | `.github/workflows/careerops.yml` |
 | **Deployment** | `Dockerfile` + `docker-compose.yml` (Ollama sidecar), `Makefile`, `.env.example` |  |
 
 ---
@@ -174,7 +174,7 @@ pytest -q
 ├── state/                  — persistent memory
 ├── output/                 — generated artifacts (gitignored)
 ├── Dockerfile / docker-compose.yml / Makefile / .env.example
-└── .github/workflows/scan.yml  — Groq cloud AI, pip cache, tier Cap, artifacts
+└── .github/workflows/careerops.yml  — Groq cloud AI, pip cache, tier Cap, artifacts
 ```
 
 ---

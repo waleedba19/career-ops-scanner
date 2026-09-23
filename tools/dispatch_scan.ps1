@@ -36,7 +36,7 @@ $headers = @{
 }
 
 try {
-    Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/workflows/scan.yml/dispatches" `
+    Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/workflows/careerops.yml/dispatches" `
         -Method Post -Headers $headers -ContentType "application/json" -Body $body -TimeoutSec 30
     Write-Host "CareerOps scan dispatched at $((Get-Date).ToString('HH:mm:ss')) Libya (mode=$mode)"
 } catch {

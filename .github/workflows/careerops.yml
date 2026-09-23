@@ -1,22 +1,20 @@
-name: CareerOps Job Scan
+name: CareerOps Daily
 
 on:
-  # ── STABLE SCHEDULE — PROVIDED AS-IS ─────────────────────────────────────
-  # Keep these two cron values EXACTLY as they are. Do NOT add, remove, or
-  # reword them. Changing a GitHub cron re-registers the schedule and makes
-  # GitHub's scheduler keep firing STALE copies of old crons for days after
-  # (actions/runner#4241) — that is what caused the random-hour emails on
-  # 9/19-9/21 (runs landing at 10:28, 14:09, 15:50...). A cron that is never
-  # touched fires with a small, constant latency every day (Scholar-style).
+  # ── STABLE SINGLE SCHEDULE — Scholar-style (never touch this again) ──────
+  # ONE slot per day, mirroring scholar-space-ships-2027's proven setup: a cron
+  # that is never edited fires at a small, constant latency every day. Changing
+  # or widening these schedules re-registers old copies (actions/runner#4241)
+  # which is what caused the random-hour emails on 9/19-9/22. Keep this file
+  # and this cron EXACTLY as-is.
   schedule:
-    - cron: '0 7 * * *'      # 07:00 UTC = 09:00 Libya — Morning Digest
-    - cron: '0 16 * * *'     # 16:00 UTC = 18:00 Libya — Evening Digest
+    - cron: '0 7 * * *'      # 07:00 UTC = 09:00 Libya — daily digest
   workflow_dispatch:
     inputs:
       mode:
         description: 'Scan mode (quick/standard/deep/comprehensive/adaptive)'
         required: false
-        default: 'adaptive'
+        default: 'standard'
         type: choice
         options:
           - quick

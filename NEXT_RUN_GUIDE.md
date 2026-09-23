@@ -83,7 +83,7 @@ thousands of listings across 52 sources.
 ### If the new chat cloned `main` AFTER this work merged
 
 Nothing to do. Everything (code + patch + guides) is already in the clone.
-Just run the verification block in §4, then `gh workflow run scan.yml`.
+Just run the verification block in §4, then `gh workflow run careerops.yml`.
 
 ### If the new chat is BLIND (fresh clone missing these commits)
 
@@ -112,7 +112,7 @@ python test_all_modules.py          # expect: 6/6 ALL TESTS PASSED
 python test_e2e_fixed.py            # expect: 10/10 VERIFICATION COMPLETE
 python -c "from notifier import now_libya, now_utc; print(now_libya(), now_utc())"
 timeout 300 python scanner.py       # full mode: expect exit 0, 'Excel saved', graceful offline
-gh workflow run scan.yml            # trigger the real 52-source scan on GitHub
+gh workflow run careerops.yml            # trigger the real 52-source scan on GitHub
 ```
 
 ### What green looks like
@@ -121,7 +121,7 @@ gh workflow run scan.yml            # trigger the real 52-source scan on GitHub
 - `test_e2e_fixed.py` → all 10 steps `Status: OK` + `VERIFICATION COMPLETE`
 - `now_libya()` date **one day ahead** of `now_utc()` between 22:00-24:00 UTC
 - scanner → `Excel saved: …/careerops-scan-<LIBYA-date>.xls`, exit 0
-- Actions → `Tests` workflow: test + docker jobs ✓; `CareerOps Job Scan` ✓
+- Actions → `Tests` workflow: test + docker jobs ✓; `CareerOps Daily` ✓
 
 ### Things that must NEVER appear in a message again
 
@@ -140,7 +140,7 @@ git push origin <session-branch>            # this session: arena/01a073ec-caree
 gh pr create --title "fix: human-live — Libya dates, varied human messages, time-sensitive Excel" \
              --body "Restores the human-live fixes. See NEXT_RUN_GUIDE.md" --base main
 gh pr merge --squash --auto=false           # or click Merge on GitHub
-gh workflow run scan.yml                    # trigger full 52-source scan on main
+gh workflow run careerops.yml                    # trigger full 52-source scan on main
 gh run watch                                # watch Tests + scan go green
 ```
 

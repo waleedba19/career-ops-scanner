@@ -40499,8 +40499,98 @@
       "seen": "2026-09-24T16:21:45.259268+00:00",
       "title": "Senior UKG Scheduling Analyst (Remote)",
       "company": "jobgether"
+    },
+    "wppmedia|lineartvmanagergoc|barranquillacolombia": {
+      "seen": "2026-09-24T16:50:44.805375+00:00",
+      "title": "Linear TV Manager, GOC",
+      "company": "WPP Media"
+    },
+    "wppmedia|lineartvseniorexecutivegoc|barranquillacolombia": {
+      "seen": "2026-09-24T16:50:44.805744+00:00",
+      "title": "Linear TV Senior Executive, GOC",
+      "company": "WPP Media"
+    },
+    "wppmedia|lineartvseniormanagergoc|barranquillacolombia": {
+      "seen": "2026-09-24T16:50:44.806075+00:00",
+      "title": "Linear TV Senior Manager, GOC",
+      "company": "WPP Media"
+    },
+    "cloudflare|principalcustomerengineercentr|hybrid": {
+      "seen": "2026-09-24T16:50:44.920558+00:00",
+      "title": "Principal Customer Engineer, Central Majors - Toronto Canada",
+      "company": "Cloudflare"
+    },
+    "okx|teamleadlegalresponse|kualalumpurmalaysia": {
+      "seen": "2026-09-24T16:50:44.952033+00:00",
+      "title": "Team Lead, Legal Response",
+      "company": "OKX"
+    },
+    "turing|researchscientiststem|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.024124+00:00",
+      "title": "Research Scientist, STEM",
+      "company": "Turing"
+    },
+    "turing|seniorresearchengineerenterpri|newyorknewyorkunited": {
+      "seen": "2026-09-24T16:50:45.024920+00:00",
+      "title": "Senior Research Engineer, Enterprise Knowledge",
+      "company": "Turing"
+    },
+    "turing|seniorresearchengineerfrontier|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.025168+00:00",
+      "title": "Senior Research Engineer, Frontier Data",
+      "company": "Turing"
+    },
+    "turing|seniorresearchengineerswe|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.025358+00:00",
+      "title": "Senior Research Engineer, SWE",
+      "company": "Turing"
+    },
+    "turing|seniorresearchscientiststem|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.025726+00:00",
+      "title": "Senior Research Scientist, STEM",
+      "company": "Turing"
+    },
+    "turing|staffresearchengineerfrontierd|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.026332+00:00",
+      "title": "Staff Research Engineer, Frontier Data",
+      "company": "Turing"
+    },
+    "turing|staffresearchengineerswe|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.026528+00:00",
+      "title": "Staff Research Engineer, SWE",
+      "company": "Turing"
+    },
+    "turing|staffresearchscientiststem|paloaltocaliforniaun": {
+      "seen": "2026-09-24T16:50:45.026896+00:00",
+      "title": "Staff Research Scientist, STEM",
+      "company": "Turing"
+    },
+    "micro1|dataanalyst|remote": {
+      "seen": "2026-09-24T16:50:46.438814+00:00",
+      "title": "Data Analyst",
+      "company": "micro1"
+    },
+    "micro1|senioraccountantexpert|remote": {
+      "seen": "2026-09-24T16:50:46.446279+00:00",
+      "title": "Senior Accountant Expert",
+      "company": "micro1"
+    },
+    "micro1|githubspecialist|remote": {
+      "seen": "2026-09-24T16:50:46.453413+00:00",
+      "title": "GitHub Specialist",
+      "company": "micro1"
+    },
+    "himalayasrss|toastposspecialist|remote": {
+      "seen": "2026-09-24T16:50:49.817429+00:00",
+      "title": "Toast POS Specialist",
+      "company": "himalayas_rss"
+    },
+    "untalentarabic|internoperations|remote": {
+      "seen": "2026-09-24T16:50:49.930122+00:00",
+      "title": "Intern, Operations-Remote",
+      "company": "untalent_arabic"
     }
   },
-  "updated": "2026-09-24T16:26:41.419650+00:00",
+  "updated": "2026-09-24T16:53:17.443508+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

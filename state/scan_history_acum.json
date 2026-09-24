@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-14T22:25:28.824418+00:00",
-    "matched_count": 1,
-    "all_count": 246,
-    "jobs": [
-      {
-        "title": "Senior Proofreader",
-        "company": "Humana",
-        "url": "https://www.linkedin.com/jobs/view/senior-proofreader-at-humana-4465235868",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T22:29:43.868935+00:00",
     "matched_count": 0,
     "all_count": 207,
@@ -1804,6 +1789,45 @@
         "title": "Financial Arabic Translator",
         "company": "Fisher Investments",
         "url": "https://sa.linkedin.com/jobs/view/financial-arabic-translator-at-fisher-investments-4458652050",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24T16:53:10.946947+00:00",
+    "matched_count": 4,
+    "all_count": 6486,
+    "jobs": [
+      {
+        "title": "Interpreter \u2013 Arabic/Sudanese Arabic",
+        "company": "IRC - International Rescue Committee",
+        "url": "https://www.impactpool.org/jobs/1221265",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      },
+      {
+        "title": "Arabic Translator",
+        "company": "Wasael Property Management",
+        "url": "https://ae.linkedin.com/jobs/view/arabic-translator-at-wasael-property-management-4460459852",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Financial Arabic Translator",
+        "company": "Fisher Investments",
+        "url": "https://sa.linkedin.com/jobs/view/financial-arabic-translator-at-fisher-investments-4458652050",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Game Localization Project Manager (Arabic MSA)",
+        "company": "23 Studios",
+        "url": "https://tr.linkedin.com/jobs/view/game-localization-project-manager-arabic-msa-at-23-studios-4469749621",
         "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin"

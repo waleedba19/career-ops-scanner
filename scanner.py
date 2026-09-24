@@ -545,6 +545,26 @@ def _is_us_locked(location: str) -> bool:
     loc = location or ""
     return bool(_US_STATE_CODE_RE.search(loc) or _US_STATE_NAME_RE.search(loc))
 
+
+# Workplace anchor — the posting text says the role is physically tied to an
+# office, even when the job board (or LinkedIn's f_WT=2 tag) labelled it remote.
+# "This is an in-office role …hybrid work from home program" (Fisher class) or
+# "on-site position" (Wasael class) must NOT be delivered as worldwide-remote.
+# Narrow on purpose: "occasional on-site visits", "optional in-office" and
+# "hybrid-friendly" copy for genuinely remote roles must keep their remote
+# eligibility.
+_ONSITE_ANCHOR = re.compile(
+    r"\bin[- ]office (role|position|job|posting)\b"
+    r"|this is (an?|a)?\s*(in[- ]office|on[- ]site|office[- ]?based)"
+    r"|office[- ]?based (role|position|job|work)\b"
+    r"|(role|position|job) (is )?(in[- ]office|on[- ]site)\b"
+    r"|required (to )?(be|work|report|come) in[- ]person"
+    r"|must (be|work|report|attend) (in|at) the office"
+    r"|in[- ]person (role|position|job|presence)\b"
+    r"|(performed|delivered|carried out) on[- ]site",
+    re.I,
+)
+
 NEGATIVE_KEYWORDS = [
     "software engineer", "backend engineer", "frontend engineer", "full stack engineer",
     "devops", "sre", "security analyst", "data scientist", "ml engineer",
@@ -1269,6 +1289,8 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         return False
     if _is_us_locked(location):
         return False
+    if _ONSITE_ANCHOR.search(text):
+        return False
     
     # Check description for location restriction warnings FIRST
     # Many jobs have "Location Restriction: United States only" in description
@@ -1391,6 +1413,8 @@ def is_open_worldwide_for_company(location: str, desc: str, company: str) -> boo
         if COUNTRY_LOCKED_LOC.search(loc) or COUNTRY_LOCKED_LOC.search(text):
             return False
         if _is_us_locked(location):
+            return False
+        if _ONSITE_ANCHOR.search(text):
             return False
         # Check description for location restriction warnings
         RESTRICTION_PATTERNS = [

@@ -277,6 +277,7 @@ def test_location_and_stubs():
 def test_linkedin_remote_truthfulness():
     print("\n=== LinkedIn remote truthfulness (no fake Remote claims) ===")
     from fetchers.verified import _linkedin_location, _workplace_infer
+    from scanner import _ONSITE_ANCHOR, is_open_worldwide_for_company
 
     loc = _linkedin_location("Baltimore, Maryland, United States", "On-site", "", True)
     check("On-site tag wins over f_WT=2", loc.startswith("On-site"), loc)
@@ -318,6 +319,26 @@ def test_linkedin_remote_truthfulness():
           get_scan_label()["label"])
     ns = next_scan_time()
     check("next_scan_time is 09:00, never 18:00", "09:00" in ns and "18:00" not in ns, ns)
+
+    # Workplace anchor: postings explicitly tied to an office must be dropped
+    # even when the card says "Remote" — this is the Wasael/Fisher class that
+    # re-entered the 2026-09-24 digest after the first fix shipped.
+    fisher = ("Financial Arabic Translator. This is an in-office role. "
+              "You may be eligible for our hybrid work from home program.")
+    check("Fisher class: in-office role not worldwide", not is_open_worldwide(
+        "Remote — Riyadh, Riyadh, Saudi Arabia", fisher))
+    check("_ONSITE_ANCHOR fires on Fisher copy", bool(_ONSITE_ANCHOR.search(fisher)))
+    wasael = ("Arabic Translator for the Department of Municipalities & Transportation. "
+              "This is an on-site position; you must attend the office in Abu Dhabi.")
+    check("Wasael class: on-site position not worldwide", not is_open_worldwide(
+        "Remote — Abu Dhabi, Abu Dhabi Emirate, United Arab Emirates", wasael))
+    check("_ONSITE_ANCHOR fires on Wasael copy", bool(_ONSITE_ANCHOR.search(wasael)))
+    check("anchor survives for_company path", not is_open_worldwide_for_company(
+        "Remote — Riyadh, Saudi Arabia", "This is an in-office role.", "Fisher Investments"))
+    check("fully remote + occasional on-site visits still passes", is_open_worldwide(
+        "Remote", "Fully remote. Occasional on-site visits to clients may be required."))
+    check("hybrid-friendly copy alone does not drop a remote role", is_open_worldwide(
+        "Remote — Berlin, Germany", "Remote-first team; hybrid-friendly company culture."))
 
 
 def test_replay_history():

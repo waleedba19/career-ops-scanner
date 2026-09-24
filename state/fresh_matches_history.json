@@ -1,109 +1,144 @@
 [
- {
-  "title": "Game Localization Project Manager (Arabic MSA)",
-  "company": "23 Studios",
-  "url": "https://tr.linkedin.com/jobs/view/game-localization-project-manager-arabic-msa-at-23-studios-4469749621",
-  "location": "Remote — Türkiye",
-  "posted": "2026-09-24",
-  "description": "23 Studios is growing! We’re looking for a full-time Arabic Project Manager to join our team in Turkey (Hybrid/Remote). 𝗔𝗯𝗼𝘂𝘁 𝗨𝘀 Founded in 2009, 23 Studios is a leading game localization studio with teams in Istanbul and Estonia. Working across all Steam-supported languages, we’ve delivered 900+ projects alongside industry leaders like Ubisoft, SEGA, CD Projekt RED, Owlcat, Blizzard, Focus Entertainment, Netflix, and many more. 𝗔𝗯𝗼𝘂𝘁 𝘁𝗵𝗲 𝗥𝗼𝗹𝗲 As our Arabic Project Manager, you will take ownership of Arabic localization projects from kickoff to final delivery, acting as the key bridge between clients, linguists, LQA, and audio teams. 𝗪𝗵𝗮𝘁 𝗬𝗼𝘂’𝗹𝗹 𝗗𝗼 • Manage Arabic localization projects end-to-end and set clear project milestones. • Perform hands-on translation, editing, and proofreading (EN ➔ AR) for game text and marketing copy. • Coordinate workflows with translators, LQA testers, audio teams, and clients. • Maintain glossaries, style guides, and terminology consistency across projects. • Identify linguistic/cultural risks early to ensure native-level quality. 𝗪𝗵𝗮𝘁 𝗪𝗲’𝗿𝗲 𝗟𝗼𝗼𝗸𝗶𝗻𝗴 𝗙𝗼𝗿 • Currently residing in Turkey and available for a Hybrid/Remote full-time position. • Native or native-level Arabic and excellent English communication skills. • Proven experience in English to Arabic translation, editing, or localization (game localization experience is a huge plus). • A true gamer at heart, with a strong understanding of video games and gaming culture. • Previous involvement in gaming, localization, translation, LQA, or community projects. Amateur experience is absolutely welcome. • Strong organizational and project management skills. • Clear communication skills and the ability to coordinate between multiple teams. • A proactive, problem-solving mindset. • A team player who is flexible, reliable, and quick to learn. 𝗡𝗶𝗰𝗲 𝘁𝗼 𝗛𝗮𝘃𝗲 • Experience with CAT tools. • Experience in game localization, LQA, voice-over, dubbing, or marketing localization. • Familiarity with Arabic gaming terminology, regional language preferences, and cultural adaptation. 𝗛𝗼𝘄 𝘁𝗼 𝗔𝗽𝗽𝗹𝘆 Ready to press start on a new career? 🎮 Send your CV and a brief note about your favorite games (along with any relevant project experience) to: contact@23studios.org",
-  "salary": "",
-  "source": "linkedin",
-  "matched_query": "arabic translator",
-  "score": 100,
-  "category": "Arabic Translation",
-  "why": [
-   "arabic msa (title)",
-   "remote/worldwide (bonus)",
-   "matches Arabic Translation profile"
-  ],
-  "dup_pool": true,
-  "ai_scoring": {
-   "technical_skills": {
-    "score": 95,
-    "reason": "Exact Arabic‑English translation & localization duties"
-   },
-   "experience_match": {
-    "score": 88,
-    "reason": "5+ years translation, legal & academic work; some coordination"
-   },
-   "behavioral_fit": {
-    "score": 90,
-    "reason": "Remote‑friendly, flexible environment matches candidate"
-   },
-   "location_logistics": {
-    "verdict": "FLAG",
-    "reason": "Hybrid remote in Turkey; candidate remote worldwide"
-   },
-   "career_alignment": {
-    "score": 92,
-    "reason": "Direct path to senior localization/coordinator role"
-   },
-   "overall_score": 92,
-   "verdict": "Strong Fit",
-   "strengths": [
-    "Arabic‑English translation expertise",
-    "Localization & terminology management",
-    "Remote work experience"
-   ],
-   "gaps": [
-    "Formal project‑management experience limited",
-    "Hybrid setup may require occasional on‑site presence"
-   ],
-   "recommendation": "Proceed – the role aligns closely with Waleed’s core skills and career goals; address project‑management experience in interview.",
-   "interview_prep": "1. How do you ensure terminology consistency across a game project? – Discuss using glossaries, TM, style guides, and regular QA checks. 2. Describe a time you coordinated multiple linguists and QA testers. – Highlight supervision of graduate studies and translation teams, communication tools used. 3. How would you handle tight release deadlines while maintaining quality? – Explain prioritization, milestone tracking, buffer time, and iterative reviews. ",
-   "one_line_summary": "Ideal Arabic‑English localization PM role, minor PM experience gap."
-  },
-  "ai_insight": "Ideal Arabic‑English localization PM role, minor PM experience gap.",
-  "ai_overall_score": 92,
-  "ai_verdict": "Strong Fit",
-  "ai_strengths": [
-   "Arabic‑English translation expertise",
-   "Localization & terminology management",
-   "Remote work experience"
-  ],
-  "ai_gaps": [
-   "Formal project‑management experience limited",
-   "Hybrid setup may require occasional on‑site presence"
-  ],
-  "ai_recommendation": "Proceed – the role aligns closely with Waleed’s core skills and career goals; address project‑management experience in interview.",
-  "ai_interview_prep": "1. How do you ensure terminology consistency across a game project? – Discuss using glossaries, TM, style guides, and regular QA checks. 2. Describe a time you coordinated multiple linguists and QA testers. – Highlight supervision of graduate studies and translation teams, communication tools used. 3. How would you handle tight release deadlines while maintaining quality? – Explain prioritization, milestone tracking, buffer time, and iterative reviews. ",
-  "ai_technical_skills": 95,
-  "ai_experience_match": 88,
-  "ai_behavioral_fit": 90,
-  "ai_location_verdict": "FLAG",
-  "ai_career_alignment": 92,
-  "urgency_score": 0,
-  "desperation_index": 40,
-  "pain_points": "No native QA, backlog of Arabic content; Translation backlog / scaling",
-  "email_guessed": false,
-  "hiring_email": "contact@23studios.org",
-  "email_verified": true,
-  "all_emails": [
-   "contact@23studios.org"
-  ],
-  "opportunity_score": 46,
-  "email_source": "posting",
-  "company_research": {
-   "name": "23 Studios",
-   "legitimacy_score": 60,
-   "remote_friendly": true,
-   "size_estimate": "unknown",
-   "industry": "unknown",
-   "red_flags": [],
-   "positive_signals": [
-    "Listed on major job board"
-   ],
-   "last_updated": "2026-09-24T16:26:19.909836+00:00"
-  },
-  "company_legitimacy": 60,
-  "company_summary": "1 positive signals",
-  "score_adjustment": 2,
-  "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/23 Studios_Game Localization Project Manager (Arabic MSA)_20260924.pdf",
-  "cover_letter_type": "translation",
-  "cover_letter_ai": false,
-  "lifecycle_status": "old",
-  "found_date": "2026-09-24T16:26:21.273145+00:00",
-  "expires_date": "2026-09-27T16:52:59.767833+00:00",
-  "scan_date": "2026-09-24T18:53:00.310405+02:00"
- }
+  {
+    "title": "Game Localization Project Manager (Arabic MSA)",
+    "company": "23 Studios",
+    "url": "https://tr.linkedin.com/jobs/view/game-localization-project-manager-arabic-msa-at-23-studios-4469749621",
+    "location": "Remote \u2014 T\u00fcrkiye",
+    "posted": "2026-09-24",
+    "description": "23 Studios is growing! We\u2019re looking for a full-time Arabic Project Manager to join our team in Turkey (Hybrid/Remote). \ud835\uddd4\ud835\uddef\ud835\uddfc\ud835\ude02\ud835\ude01 \ud835\udde8\ud835\ude00 Founded in 2009, 23 Studios is a leading game localization studio with teams in Istanbul and Estonia. Working across all Steam-supported languages, we\u2019ve delivered 900+ projects alongside industry leaders like Ubisoft, SEGA, CD Projekt RED, Owlcat, Blizzard, Focus Entertainment, Netflix, and many more. \ud835\uddd4\ud835\uddef\ud835\uddfc\ud835\ude02\ud835\ude01 \ud835\ude01\ud835\uddf5\ud835\uddf2 \ud835\udde5\ud835\uddfc\ud835\uddf9\ud835\uddf2 As our Arabic Project Manager, you will take ownership of Arabic localization projects from kickoff to final delivery, acting as the key bridge between clients, linguists, LQA, and audio teams. \ud835\uddea\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddec\ud835\uddfc\ud835\ude02\u2019\ud835\uddf9\ud835\uddf9 \ud835\uddd7\ud835\uddfc \u2022 Manage Arabic localization projects end-to-end and set clear project milestones. \u2022 Perform hands-on translation, editing, and proofreading (EN \u2794 AR) for game text and marketing copy. \u2022 Coordinate workflows with translators, LQA testers, audio teams, and clients. \u2022 Maintain glossaries, style guides, and terminology consistency across projects. \u2022 Identify linguistic/cultural risks early to ensure native-level quality. \ud835\uddea\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddea\ud835\uddf2\u2019\ud835\uddff\ud835\uddf2 \ud835\udddf\ud835\uddfc\ud835\uddfc\ud835\uddf8\ud835\uddf6\ud835\uddfb\ud835\uddf4 \ud835\uddd9\ud835\uddfc\ud835\uddff \u2022 Currently residing in Turkey and available for a Hybrid/Remote full-time position. \u2022 Native or native-level Arabic and excellent English communication skills. \u2022 Proven experience in English to Arabic translation, editing, or localization (game localization experience is a huge plus). \u2022 A true gamer at heart, with a strong understanding of video games and gaming culture. \u2022 Previous involvement in gaming, localization, translation, LQA, or community projects. Amateur experience is absolutely welcome. \u2022 Strong organizational and project management skills. \u2022 Clear communication skills and the ability to coordinate between multiple teams. \u2022 A proactive, problem-solving mindset. \u2022 A team player who is flexible, reliable, and quick to learn. \ud835\udde1\ud835\uddf6\ud835\uddf0\ud835\uddf2 \ud835\ude01\ud835\uddfc \ud835\udddb\ud835\uddee\ud835\ude03\ud835\uddf2 \u2022 Experience with CAT tools. \u2022 Experience in game localization, LQA, voice-over, dubbing, or marketing localization. \u2022 Familiarity with Arabic gaming terminology, regional language preferences, and cultural adaptation. \ud835\udddb\ud835\uddfc\ud835\ude04 \ud835\ude01\ud835\uddfc \ud835\uddd4\ud835\uddfd\ud835\uddfd\ud835\uddf9\ud835\ude06 Ready to press start on a new career? \ud83c\udfae Send your CV and a brief note about your favorite games (along with any relevant project experience) to: contact@23studios.org",
+    "salary": "$45/hr",
+    "source": "linkedin",
+    "matched_query": "arabic translator",
+    "score": 100,
+    "category": "Arabic Translation",
+    "why": [
+      "arabic msa (title)",
+      "remote/worldwide (bonus)",
+      "matches Arabic Translation profile"
+    ],
+    "dup_pool": true,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 95,
+        "reason": "Exact Arabic\u2011English translation & localization required"
+      },
+      "experience_match": {
+        "score": 80,
+        "reason": "Strong translation background, limited game\u2011specific experience"
+      },
+      "behavioral_fit": {
+        "score": 85,
+        "reason": "Remote\u2011friendly, flexible, aligns with candidate\u2019s work style"
+      },
+      "location_logistics": {
+        "verdict": "FLAG",
+        "reason": "Hybrid remote in Turkey may need occasional on\u2011site presence"
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Directly advances translation/localization career goals"
+      },
+      "overall_score": 88,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Arabic\u2011English translation expertise",
+        "Localization & terminology management",
+        "Remote work discipline"
+      ],
+      "gaps": [
+        "No proven game\u2011industry localization experience",
+        "Limited project\u2011management in gaming context"
+      ],
+      "recommendation": "Highly suitable; emphasize transferable localization skills and willingness to learn game\u2011specific processes.",
+      "interview_prep": "1. How do you ensure terminology consistency across a game project? \u2013 Discuss glossaries, TM, style guides. 2. Describe a time you managed a multilingual project with tight deadlines. \u2013 Highlight coordination, milestones, risk mitigation. 3. What challenges do you anticipate translating game UI vs. narrative text? \u2013 Talk about space constraints, cultural adaptation, player experience.",
+      "one_line_summary": "Arabic\u2011English translator with strong localization skills \u2013 great fit for game PM role."
+    },
+    "ai_insight": "Arabic\u2011English translator with strong localization skills \u2013 great fit for game PM role.",
+    "ai_overall_score": 88,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Arabic\u2011English translation expertise",
+      "Localization & terminology management",
+      "Remote work discipline"
+    ],
+    "ai_gaps": [
+      "No proven game\u2011industry localization experience",
+      "Limited project\u2011management in gaming context"
+    ],
+    "ai_recommendation": "Highly suitable; emphasize transferable localization skills and willingness to learn game\u2011specific processes.",
+    "ai_interview_prep": "1. How do you ensure terminology consistency across a game project? \u2013 Discuss glossaries, TM, style guides. 2. Describe a time you managed a multilingual project with tight deadlines. \u2013 Highlight coordination, milestones, risk mitigation. 3. What challenges do you anticipate translating game UI vs. narrative text? \u2013 Talk about space constraints, cultural adaptation, player experience.",
+    "ai_technical_skills": 95,
+    "ai_experience_match": 80,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "FLAG",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 40,
+    "pain_points": "No native QA, backlog of Arabic content; Translation backlog / scaling",
+    "email_guessed": false,
+    "hiring_email": "contact@23studios.org",
+    "email_verified": true,
+    "all_emails": [
+      "contact@23studios.org"
+    ],
+    "opportunity_score": 46,
+    "email_source": "posting",
+    "company_research": {
+      "name": "23 Studios",
+      "legitimacy_score": 60,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-09-24T16:26:19.909836+00:00"
+    },
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
+    "deep_read": {
+      "url": "https://tr.linkedin.com/jobs/view/game-localization-project-manager-arabic-msa-at-23-studios-4469749621",
+      "title": "Game Localization Project Manager (Arabic MSA)",
+      "description": "23 Studios is growing! We\u2019re looking for a full-time Arabic Project Manager to join our team in Turkey (Hybrid/Remote). \ud835\uddd4\ud835\uddef\ud835\uddfc\ud835\ude02\ud835\ude01 \ud835\udde8\ud835\ude00 Founded in 2009, 23 Studios is a leading game localization studio with teams in Istanbul and Estonia. Working across all Steam-supported languages, we\u2019ve delivered 900+ projects alongside industry leaders like Ubisoft, SEGA, CD Projekt RED, Owlcat, Blizzard, Focus Entertainment, Netflix, and many more. \ud835\uddd4\ud835\uddef\ud835\uddfc\ud835\ude02\ud835\ude01 \ud835\ude01\ud835\uddf5\ud835\uddf2 \ud835\udde5\ud835\uddfc\ud835\uddf9\ud835\uddf2 As our Arabic Project Manager, you will take ownership of Arabic localization projects from kickoff to final delivery, acting as the key bridge between clients, linguists, LQA, and audio teams. \ud835\uddea\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddec\ud835\uddfc\ud835\ude02\u2019\ud835\uddf9\ud835\uddf9 \ud835\uddd7\ud835\uddfc \u2022 Manage Arabic localization projects end-to-end and set clear project milestones. \u2022 Perform hands-on translation, editing, and proofreading (EN \u2794 AR) for game text and marketing copy. \u2022 Coordinate workflows with translators, LQA testers, audio teams, and clients. \u2022 Maintain glossaries, style guides, and terminology consistency across projects. \u2022 Identify linguistic/cultural risks early to ensure native-level quality. \ud835\uddea\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddea\ud835\uddf2\u2019\ud835\uddff\ud835\uddf2 \ud835\udddf\ud835\uddfc\ud835\uddfc\ud835\uddf8\ud835\uddf6\ud835\uddfb\ud835\uddf4 \ud835\uddd9\ud835\uddfc\ud835\uddff \u2022 Currently residing in Turkey and available for a Hybrid/Remote full-time position. \u2022 Native or native-level Arabic and excellent English communication skills. \u2022 Proven experience in English to Arabic translation, editing, or localization (game localization experience is a huge plus). \u2022 A true gamer at heart, with a strong understanding of video games and gaming culture. \u2022 Previous involvement in gaming, localization, translation, LQA, or community projects. Amateur experience is absolutely welcome. \u2022 Strong organizational and project management skills. \u2022 Clear communication skills and the ability to coordinate between multiple teams. \u2022 A proactive, problem-solving mindset. \u2022 A team player who is flexible, reliable, and quick to learn. \ud835\udde1\ud835\uddf6\ud835\uddf0\ud835\uddf2 \ud835\ude01\ud835\uddfc \ud835\udddb\ud835\uddee\ud835\ude03\ud835\uddf2 \u2022 Experience with CAT tools. \u2022 Experience in game localization, LQA, voice-over, dubbing, or marketing localization. \u2022 Familiarity with Arabic gaming terminology, regional language preferences, and cultural adaptation. \ud835\udddb\ud835\uddfc\ud835\ude04 \ud835\ude01\ud835\uddfc \ud835\uddd4\ud835\uddfd\ud835\uddfd\ud835\uddf9\ud835\ude06 Ready to press start on a new career? \ud83c\udfae Send your CV and a brief note about your favorite games (along with any relevant project experience) to: contact@23studios.org Show more Show less K\u0131dem d\u00fczeyi Orta-\u00dcst D\u00fczey Y\u00f6netici \u0130stihdam t\u00fcr\u00fc Tam Zamanl\u0131 G\u00f6rev tan\u0131m\u0131 Proje Y\u00f6netimi ve Bilgi Teknolojisi Sekt\u00f6rler Bilgisayar Oyunlar\u0131",
+      "eligibility": [],
+      "requirements": [
+        "in English to Arabic translation, editing, or localization (game localization experience is a huge plus)",
+        "is absolutely welcome.",
+        "Strong organizational and project management skills",
+        "with CAT tools.",
+        "Experience in game localization, LQA, voice",
+        "over, dubbing, or marketing localization"
+      ],
+      "contact": {
+        "email": "contact@23studios.org"
+      },
+      "deadline": null,
+      "salary": "$45/hr",
+      "location": "Remote",
+      "is_remote": true
+    },
+    "requirements": [
+      "in English to Arabic translation, editing, or localization (game localization experience is a huge plus)",
+      "is absolutely welcome.",
+      "Strong organizational and project management skills",
+      "with CAT tools.",
+      "Experience in game localization, LQA, voice",
+      "over, dubbing, or marketing localization"
+    ],
+    "contact": {
+      "email": "contact@23studios.org"
+    },
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/23 Studios_Game Localization Project Manager (Arabic MSA)_20260924.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/23 Studios_Game Localization Project Manager (Arabic MSA)_20260924.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "lifecycle_status": "old",
+    "found_date": "2026-09-24T16:26:21.273145+00:00",
+    "expires_date": "2026-09-27T17:12:47.256238+00:00",
+    "scan_date": "2026-09-24T19:12:47.256997+02:00"
+  }
 ]

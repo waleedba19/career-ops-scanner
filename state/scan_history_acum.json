@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-14T22:44:04.436927+00:00",
-    "matched_count": 0,
-    "all_count": 248,
-    "jobs": []
-  },
-  {
     "date": "2026-09-14T22:49:48.116538+00:00",
     "matched_count": 2,
     "all_count": 331,
@@ -1842,5 +1836,11 @@
         "source": "linkedin"
       }
     ]
+  },
+  {
+    "date": "2026-09-24T18:03:24.913574+00:00",
+    "matched_count": 0,
+    "all_count": 6427,
+    "jobs": []
   }
 ]

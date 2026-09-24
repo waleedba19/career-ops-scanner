@@ -130,7 +130,7 @@ CRITICAL EVALUATION RULES:
 1. If the job title contains "Engineer", "Developer", "Programmer", "DevOps", "Data Scientist", "ML/AI" → score MUST be below 40
 2. If the job requires specific programming languages (Python, Java, JavaScript, etc.) → score MUST be below 40
 3. If the job is clearly NOT translation/localization/writing/bilingual content → score MUST be below 40
-4. If the job requires US/EU citizenship or specific visa → location_logistics MUST be FAIL
+4. If the job requires US/EU citizenship, specific visa, OR applicant residency in a specific country ("currently residing in Turkey", "must be based in Germany", "candidates located in Pakistan") → location_logistics MUST be FAIL
 5. If the job mentions "commission only", "quota", or "sales target" → score MUST be below 50
 6. If the job title contains "Head of", "Director", "VP", "C-Suite" → score MUST be below 50
 
@@ -156,7 +156,7 @@ SCORE EACH DIMENSION (0-100):
 
 4. LOCATION & LOGISTICS (Pass/Fail + Notes)
    - PASS: Remote, worldwide, or compatible
-   - FAIL: Requires on-site, specific country, or visa sponsorship
+   - FAIL: Requires on-site, specific-country residency ("currently residing in X", "must be based in X"), or visa sponsorship
    - FLAG: Hybrid or occasional travel
 
 5. CAREER ALIGNMENT (weight: 30%)

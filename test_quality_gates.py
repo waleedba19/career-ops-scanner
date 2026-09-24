@@ -356,7 +356,26 @@ def test_linkedin_remote_truthfulness():
     check("known-onsite company IRC hard-blocked", not is_open_worldwide_for_company(
         "Remote | Baltimore", "", "International Rescue Committee"))
     check("unrelated company unaffected by known-onsite list", is_open_worldwide_for_company(
-        "Remote — Dubai, UAE", "Project management, hybrid.", "23 Studios"))
+        "Remote — Dubai, UAE", "Project management, hybrid.", "One Big Studio"))
+
+    # Applicant-residency locks (23 Studios class): hiring says you must LIVE
+    # in a specific place, so it is NOT a worldwide role from Libya.
+    studios = ("Currently residing in Turkey and available for a "
+               "Hybrid/Remote full-time position.")
+    check("residency lock: residing in Turkey blocked", not is_open_worldwide(
+        "Remote — Türkiye", studios))
+    check("residency lock: must be based in <country> blocked", not is_open_worldwide(
+        "Remote", "Must be based in Germany. Full-time permanent contract."))
+    check("residency lock: you will be located in <country> blocked", not is_open_worldwide(
+        "Remote", "You will be located in Cairo and work on-site."))
+    check("residency lock fires in for_company path", not is_open_worldwide_for_company(
+        "Remote — Türkiye", studios, "23 Studios"))
+    check("company homebase statement does NOT lock the role", is_open_worldwide(
+        "Remote", "We are a remote-first studio based in Istanbul, hiring worldwide."))
+    check("residence phrase without a country is not a lock", is_open_worldwide(
+        "Remote", "Currently residing in a remote area with reliable internet."))
+    check("bare Remote — Türkiye as a country hint stays allowed", is_open_worldwide(
+        "Remote — Türkiye", "Fully remote global studio, open to all timezones."))
 
 
 def test_replay_history():

@@ -690,7 +690,7 @@ MENA_LOCATIONS = [
     "jordan", "amman", "egypt", "cairo", "alexandria",
     "morocco", "casablanca", "rabat", "tunisia", "tunis", "algeria", "algiers",
     "lebanon", "beirut", "iraq", "baghdad", "palestine", "libya", "tripoli",
-    "yemen", "syria", "damascus", "turkey", "istanbul",
+    "yemen", "syria", "damascus", "turkey", "türkiye", "turkiye", "istanbul",
 ]
 
 # Residency-blocked markets — the user cannot apply from Libya.
@@ -1304,6 +1304,40 @@ KNOWN_ONSITE_COMPANIES = (
     "rescue committee",
 )
 
+# Candidate-residency locks: the posting says the APPLICANT must live / be
+# based / reside somewhere ("Currently residing in Turkey and available for a
+# Hybrid/Remote full-time position" — the 23 Studios class). Statement about
+# the *company's* homebase ("We are based in Berlin") must NOT trigger, and a
+# bare "Remote — Berlin" location hint by itself stays allowed. A matched
+# phrase only counts when a real country / MENA term appears nearby.
+_CAND_RESIDENCY = [
+    re.compile(r"currently\s+(residing|resident|living|live|based|located)\s+(in|within)", re.I),
+    re.compile(r"must\s+reside\s+(in|within)", re.I),
+    re.compile(r"must\s+(be\s+)?(a\s+)?resident\s+of\b", re.I),
+    re.compile(r"must\s+(be\s+)?(based|located|established|registered|domiciled)\s+(in|within)", re.I),
+    re.compile(r"(you|candidates?|applicants?)\s+\S{0,30}\b(must|should|need to|are|will be|would be)\s+"
+               r"\S{0,20}\b(be\s+)?(based|located|residing|resident|living|live|reside)\s+(in|within)", re.I),
+    re.compile(r"residen(ce|cy)\s+(in|within)", re.I),
+    re.compile(r"[a-z][a-z \-,]{2,40}\s+and\s+available\s+for\s+(a\s+)?(hybrid|remote|full[- ]time|part[- ]time)"
+               r"\s+\S{0,15}\s*(position|job|role|work)\b", re.I),
+    re.compile(r"based\s+(in|within)\s+[a-z][a-z \-]{1,40}\s+(and\s+)?available\s+for\s+"
+               r"(a\s+)?(hybrid|remote|full[- ]time|part[- ]time)", re.I),
+]
+
+
+def _cand_residency_locked(text: str, body: str = "") -> bool:
+    """True when the posting text requires the applicant to live somewhere."""
+    for pat in _CAND_RESIDENCY:
+        m = pat.search(text or "")
+        if not m:
+            continue
+        span = text[max(0, m.start() - 30): m.end() + 90]
+        if (COUNTRY_RE.search(span) or MENA_RE.search(span)
+                or BLOCKED_COUNTRY_RE.search(span) or _US_CITY_HINTS.search(span)
+                or (body and (COUNTRY_RE.search(body) or MENA_RE.search(body)))):
+            return True
+    return False
+
 
 def is_open_worldwide(location: str, desc: str) -> bool:
     loc = (location or "").lower()
@@ -1313,6 +1347,8 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     if _is_us_locked(location):
         return False
     if _ONSITE_ANCHOR.search(text):
+        return False
+    if _cand_residency_locked(text, _location_body(loc)):
         return False
     
     # Check description for location restriction warnings FIRST
@@ -1447,6 +1483,8 @@ def is_open_worldwide_for_company(location: str, desc: str, company: str) -> boo
             return False
         if _ONSITE_ANCHOR.search(text):
             return False
+        if _cand_residency_locked(text, _location_body(loc)):
+            return False
         # Check description for location restriction warnings
         RESTRICTION_PATTERNS = [
             re.compile(r"location\s+restriction", re.I),
@@ -1574,6 +1612,8 @@ def has_residency_blocker(job: dict) -> bool:
     explicit eligibility wording in the posting text.
     """
     text = f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
+    if _cand_residency_locked(text, ""):
+        return True
     return any(p.search(text) for p in RESIDENCY_BLOCKERS)
 
 

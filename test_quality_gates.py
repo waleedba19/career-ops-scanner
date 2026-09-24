@@ -340,6 +340,24 @@ def test_linkedin_remote_truthfulness():
     check("hybrid-friendly copy alone does not drop a remote role", is_open_worldwide(
         "Remote — Berlin, Germany", "Remote-first team; hybrid-friendly company culture."))
 
+    # Bare US metro under a remote tag = US-anchored (IRC class).
+    check("bare Baltimore remote = US-anchored, blocked", not is_open_worldwide(
+        "Remote | Baltimore", "IRC - International Rescue Committee"))
+    check("bare Chicago remote = blocked", not is_open_worldwide(
+        "Remote — Chicago", "Part-time interpreter"))
+    check("Remote — New York, United States still blocked (country)", not is_open_worldwide(
+        "Remote — New York, United States", ""))
+
+    # Known office-bound companies are hard-blocked at every gate.
+    check("known-onsite company Fisher hard-blocked", not is_open_worldwide_for_company(
+        "Remote — Riyadh, Saudi Arabia", "In-house translation team.", "Fisher Investments"))
+    check("known-onsite company Wasael hard-blocked", not is_open_worldwide_for_company(
+        "Remote — Abu Dhabi, UAE", "Translate for the municipality.", "Wasael Property Management"))
+    check("known-onsite company IRC hard-blocked", not is_open_worldwide_for_company(
+        "Remote | Baltimore", "", "International Rescue Committee"))
+    check("unrelated company unaffected by known-onsite list", is_open_worldwide_for_company(
+        "Remote — Dubai, UAE", "Project management, hybrid.", "23 Studios"))
+
 
 def test_replay_history():
     print("\n=== Replay production fresh_matches_history.json ===")

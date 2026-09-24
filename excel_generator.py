@@ -135,7 +135,7 @@ def _still_qualifies(match: dict) -> bool:
     """
     from scanner import (
         COMPANY_MIN_SCORE, MIN_MATCH_SCORE, ai_poor_fit,
-        drop_unqualified_matches, get_match_score, is_open_worldwide,
+        drop_unqualified_matches, get_match_score, is_open_worldwide_for_company,
     )
 
     title = match.get("title", "")
@@ -159,7 +159,7 @@ def _still_qualifies(match: dict) -> bool:
     # "100%" from an earlier (looser) matcher can never be re-shown.
     match["score"] = scored["score"]
     match["category"] = scored["category"]
-    if not is_open_worldwide(match.get("location", ""), desc):
+    if not is_open_worldwide_for_company(match.get("location", ""), desc, match.get("company", "")):
         return False
     return len(drop_unqualified_matches([dict(match)])) == 1
 

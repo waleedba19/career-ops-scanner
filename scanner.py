@@ -1282,6 +1282,29 @@ def extract_salary(text: str) -> str:
     return re.sub(r"\s+", " ", m.group()).strip() if m else ""
 
 
+# Bare US metros under a remote tag = US-anchored hiring (IRC class: "Remote |
+# Baltimore"). Announced with only the city and no country, they slip past the
+# country-level blockers; treat the city hint as the US-locked signal it is.
+_US_CITY_HINTS = re.compile(
+    r"\b(baltimore|chicago|new\s+york(?!\s+(state|county))|los\s+angeles|atlanta|"
+    r"austin|boston|houston|dallas|seattle|san\s+francisco|silicon\s+valley|"
+    r"denver|philadelphia|phoenix|santa\s+monica|portland|richmond|arlington|"
+    r"minneapolis|charlotte|detroit|cincinnati|pittsburgh|orlando|st\.?\s?louis|"
+    r"kansas\s+city|san\s+diego|san\s+jose)\b",
+    re.I,
+)
+
+# Companies whose advertised "translator" roles are contractually office-bound
+# (headquarters offices, government departments) — never genuinely remote and
+# unapplicable from Libya. Hard editorial block across every gate.
+KNOWN_ONSITE_COMPANIES = (
+    "fisher investments",
+    "wasael",
+    "international rescue committee",
+    "rescue committee",
+)
+
+
 def is_open_worldwide(location: str, desc: str) -> bool:
     loc = (location or "").lower()
     text = (desc or "").lower() + " " + loc
@@ -1373,7 +1396,7 @@ def is_open_worldwide(location: str, desc: str) -> bool:
     # "India" after "Remote" are NOT residency requirements.
     if _REMOTE_PREFIX_RE.search(loc):
         # Remote job with a country hint — only block if it's in the hard-blocked list
-        if BLOCKED_COUNTRY_RE.search(body) or _is_us_locked(body):
+        if BLOCKED_COUNTRY_RE.search(body) or _is_us_locked(body) or _US_CITY_HINTS.search(body):
             return False
         return True
 
@@ -1386,6 +1409,8 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         return False
 
     # Leftover is a city with no country ("Remote | Athens", "Remote — Baltimore").
+    if _US_CITY_HINTS.search(body):
+        return False
     return True
 
 
@@ -1397,6 +1422,10 @@ def is_open_worldwide_for_company(location: str, desc: str, company: str) -> boo
     country-name check — the company boost already handles relevance.
     """
     company_lower = str(company or "").lower().strip()
+    # Hard editorial block: these companies' translator roles are office-bound
+    # (offices / government departments) and unapplicable from Libya.
+    if any(k in company_lower for k in KNOWN_ONSITE_COMPANIES):
+        return False
     # Check if company is in any translation tier
     is_translation_company = False
     for companies in TRANSLATION_COMPANY_TIERS.values():
@@ -1413,6 +1442,8 @@ def is_open_worldwide_for_company(location: str, desc: str, company: str) -> boo
         if COUNTRY_LOCKED_LOC.search(loc) or COUNTRY_LOCKED_LOC.search(text):
             return False
         if _is_us_locked(location):
+            return False
+        if _US_CITY_HINTS.search(_location_body(loc)):
             return False
         if _ONSITE_ANCHOR.search(text):
             return False
@@ -6494,8 +6525,33 @@ async def run_scan():
         # hides them.
         if dup_open:
             dup_open.sort(key=lambda j: -int(j.get("score") or 0))
-            final_verified += dup_open[:OPEN_POOL_CAP]
-            print(f"  Open pool: added {len(dup_open[:OPEN_POOL_CAP])} previously-seen open roles "
+            pool_slice = dup_open[:OPEN_POOL_CAP]
+            # Pooled jobs can carry a stale verdict from an earlier run while
+            # today's fetch replaced the description. Re-run the AI location
+            # gate so an office-bound role (Wasael/Fisher class) is caught
+            # instead of re-surfacing as "Remote". Small, bounded set.
+            try:
+                pool_ai = [j for j in pool_slice if not j.get("ai_location_verdict")]
+                if pool_ai:
+                    await analyze_jobs_with_ollama(pool_ai)
+                pool_bad = [j for j in pool_slice
+                            if location_ai_fail(j) or ai_poor_fit(j) or has_residency_blocker(j)]
+                if pool_bad:
+                    for j in pool_bad:
+                        j["ai_reject"] = True
+                        try:
+                            from mistake_memory import note_mistake
+                            note_mistake(j, "open_pool_onsite_or_restricted")
+                        except Exception:
+                            pass
+                    pool_slice = [j for j in pool_slice if j not in pool_bad]
+                    print(f"  Open pool AI gate dropped {len(pool_bad)}: "
+                          f"{', '.join(sorted({(j.get('title') or '?')[:40] for j in pool_bad}))}")
+            except Exception as e:
+                print(f"  Open pool AI gate skipped: {e}")
+            if pool_slice:
+                final_verified += pool_slice
+            print(f"  Open pool: added {len(pool_slice)} previously-seen open roles "
                   f"(of {len(dup_open)} eligible duplicates)")
 
         # Bound the heavy pipeline + digest: STRONG(75+) first, then GOOD(50-74),

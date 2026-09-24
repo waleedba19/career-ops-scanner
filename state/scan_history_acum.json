@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-14T22:29:43.868935+00:00",
-    "matched_count": 0,
-    "all_count": 207,
-    "jobs": []
-  },
-  {
     "date": "2026-09-14T22:44:04.436927+00:00",
     "matched_count": 0,
     "all_count": 248,
@@ -1824,6 +1818,21 @@
         "category": "Arabic Translation",
         "source": "linkedin"
       },
+      {
+        "title": "Game Localization Project Manager (Arabic MSA)",
+        "company": "23 Studios",
+        "url": "https://tr.linkedin.com/jobs/view/game-localization-project-manager-arabic-msa-at-23-studios-4469749621",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-09-24T17:13:01.289491+00:00",
+    "matched_count": 1,
+    "all_count": 6484,
+    "jobs": [
       {
         "title": "Game Localization Project Manager (Arabic MSA)",
         "company": "23 Studios",

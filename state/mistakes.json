@@ -28,6 +28,16 @@
       {
         "reason": "ai_poor_fit",
         "date": "2026-09-23T11:14:28.989903+00:00"
+      },
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-09-24T12:48:36.680088+00:00"
+      }
+    ],
+    "Turing": [
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-09-24T12:48:36.679551+00:00"
       }
     ]
   },
@@ -41,8 +51,9 @@
   },
   "categories": {
     "Arabic Translation": 1,
-    "Translation (any pair)": 3,
-    "Language Services (company)": 1
+    "Translation (any pair)": 4,
+    "Language Services (company)": 1,
+    "Admin": 1
   },
   "titles": [
     {
@@ -64,7 +75,17 @@
       "title": "FRCA Linguist",
       "reason": "ai_poor_fit",
       "date": "2026-09-23T11:14:28.989924+00:00"
+    },
+    {
+      "title": "Executive Assistant",
+      "reason": "ai_poor_fit",
+      "date": "2026-09-24T12:48:36.679575+00:00"
+    },
+    {
+      "title": "Translation Project Coordinator (Freshly Grads)",
+      "reason": "ai_poor_fit",
+      "date": "2026-09-24T12:48:36.680101+00:00"
     }
   ],
-  "updated": "2026-09-23T11:14:28.989930+00:00"
+  "updated": "2026-09-24T12:48:36.680106+00:00"
 }

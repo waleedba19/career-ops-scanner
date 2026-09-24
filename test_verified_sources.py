@@ -198,33 +198,73 @@ class _Resp:
         return False
 
 
-class _ScriptedSession:
-    def __init__(self, statuses):
+_LI_DETAIL_REMOTE = """
+<div class="top-card-layout__section"><span class="job-posting__workplace-type">Remote</span></div>
+<div class="show-more-less-html__markup">
+  <p>Fully remote. Work from anywhere in the world.</p>
+</div>
+"""
+_LI_DETAIL_ONSITE = """
+<div class="top-card-layout__section"><span class="job-posting__workplace-type">On-site</span></div>
+<div class="show-more-less-html__markup">
+  <p>This is an in-office role. Based on your role, tenure, and performance eligibility
+  you may have the opportunity to participate in our hybrid work from home program.</p>
+</div>
+"""
+
+
+class _LinkedInSession:
+    """Scripted LinkedIn session: `statuses` are consumed by SEARCH calls only;
+    jobPosting DETAIL calls always succeed with a fixed detail body. Records
+    per-role statuses so transport assertions are deterministic."""
+    def __init__(self, statuses, detail=_LI_DETAIL_REMOTE):
         self.statuses = list(statuses)
         self.calls = 0
+        self.search_seen = []
+        self.detail = detail
     def get(self, url, **k):
         self.calls += 1
+        if "jobPosting" in url:
+            return _Resp(200, self.detail)
         st = self.statuses.pop(0) if self.statuses else 200
+        self.search_seen.append(st)
         return _Resp(st, LI_HTML if st == 200 else "")
 
 
 def test_linkedin_transport():
     print("\n[3] LinkedIn guest transport")
+    from scanner import is_open_worldwide
     V_sleep = asyncio.sleep  # V.asyncio is the same module object — patch once, restore after
 
     async def _instant(*_a, **_k):
         await V_sleep(0)
     asyncio.sleep = _instant  # don't actually wait in tests
     try:
-        s = _ScriptedSession([200, 999, 200, 200])
+        s = _LinkedInSession([200, 999])
         out = asyncio.run(V.fetch_linkedin_guest(s))
-        check("999 stops immediately (2 calls, not 4)", s.calls == 2 and len(out) == 2, f"calls={s.calls} jobs={len(out)}")
-        s = _ScriptedSession([429, 200, 200, 200])
+        check("999 stops further searches",
+              s.search_seen == [200, 999] and len(out) == 2,
+              f"searches={s.search_seen} jobs={len(out)}")
+        check("verified detail -> Remote — Dubai (truthful, from detail)",
+              out[0]["location"] == "Remote — Dubai, United Arab Emirates", out[0]["location"])
+        check("real description from detail (not the query)",
+              "Fully remote" in out[0]["description"] and "matched_query" in out[0], out[0]["description"][:60])
+
+        s = _LinkedInSession([429, 200, 200, 200])
         out = asyncio.run(V.fetch_linkedin_guest(s))
-        check("429 backs off and continues", s.calls == 4 and len(out) == 2, f"calls={s.calls} jobs={len(out)}")
-        s = _ScriptedSession([200, 200, 200, 200])
+        check("429 backs off and continues",
+              s.search_seen[0] == 429 and len(out) == 2, f"searches={s.search_seen} jobs={len(out)}")
+
+        s = _LinkedInSession([200, 200, 200, 200])
         out = asyncio.run(V.fetch_linkedin_guest(s))
         check("duplicates across queries collapsed", len(out) == 2)
+
+        s = _LinkedInSession([200, 999], detail=_LI_DETAIL_ONSITE)
+        out = asyncio.run(V.fetch_linkedin_guest(s))
+        check("On-site detail beats the f_WT=2 filter",
+              out[0]["location"].startswith("On-site"), out[0]["location"])
+        check("On-site via tag is NOT worldwide-eligible",
+              not is_open_worldwide(out[0]["location"], out[0]["description"]))
 
         class _Boom:
             def get(self, *a, **k):
@@ -252,7 +292,7 @@ def test_gates():
                                          "job_description": "Must be authorized to work in the US. US residents only."}]})[0]
     check("US-only JSearch job dropped by worldwide gate", drop_unqualified_matches([us_only]) == [])
 
-    li = asyncio.run(V.fetch_linkedin_guest(_ScriptedSession([200, 999])))
+    li = asyncio.run(V.fetch_linkedin_guest(_LinkedInSession([200, 999])))
     check("LinkedIn card is not a stub", not is_stub_listing(li[0]))
     # Regression: the search query must not leak into the description — the scorer
     # reads it, and "Chinese Translator" would become a 100-point Arabic match.
@@ -263,8 +303,9 @@ def test_gates():
     src_v = Path("fetchers/verified.py").read_text(encoding="utf-8")
     check("no fetcher injects the query into description",
           'description"] = f"' not in src_v and "query: {q}" not in src_v)
-    check("LinkedIn f_WT=2 remote filter reflected in location", li[0]["location"] == "Remote — Dubai, United Arab Emirates", li[0]["location"])
-    check("Dubai (remote) accepted as worldwide-eligible", is_open_worldwide(li[0]["location"], li[0]["description"]))
+    check("LinkedIn remote now VERIFIED from the posting detail, not the tag",
+          li[0]["location"] == "Remote — Dubai, United Arab Emirates", li[0]["location"])
+    check("Dubai (verified remote) accepted as worldwide-eligible", is_open_worldwide(li[0]["location"], li[0]["description"]))
     check("US remote LinkedIn card still rejected", not is_open_worldwide("Remote — Austin, Texas, United States", li[0]["description"]))
 
 

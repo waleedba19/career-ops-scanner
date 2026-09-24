@@ -274,6 +274,52 @@ def test_location_and_stubs():
     check("AI FAIL hard-drops notify list", kept == [])
 
 
+def test_linkedin_remote_truthfulness():
+    print("\n=== LinkedIn remote truthfulness (no fake Remote claims) ===")
+    from fetchers.verified import _linkedin_location, _workplace_infer
+
+    loc = _linkedin_location("Baltimore, Maryland, United States", "On-site", "", True)
+    check("On-site tag wins over f_WT=2", loc.startswith("On-site"), loc)
+    loc = _linkedin_location("Abu Dhabi, United Arab Emirates", "Hybrid", "", True)
+    check("Hybrid tag wins over f_WT=2", loc.startswith("Hybrid"), loc)
+    loc = _linkedin_location("Dubai, United Arab Emirates", "Remote", "", True)
+    check("Remote tag kept only when verified", loc.startswith("Remote"), loc)
+
+    fisher = ("This is an in-office role. Based on your role, tenure, and performance "
+              "eligibility you may have the opportunity to participate in our hybrid "
+              "work from home program.")
+    check("in-office description -> On-site", _workplace_infer(fisher) == "On-site", _workplace_infer(fisher))
+    loc = _linkedin_location("Irving, TX", "", fisher, True)
+    check("Fisher class never labelled Remote", loc.startswith("On-site"), loc)
+
+    check("fully remote desc -> Remote",
+          _workplace_infer("Fully remote position. Work from anywhere in the world.") == "Remote",
+          "")
+    check("hybrid desc -> Hybrid",
+          _workplace_infer("Hybrid role - 3 days in office, 2 remote.") == "Hybrid",
+          "")
+
+    loc = _linkedin_location("Dubai, United Arab Emirates", "", "", False)
+    check("unverified detail -> real city, NO Remote claim", loc == "Dubai, United Arab Emirates", loc)
+
+    check("US-based candidates blocked", not is_open_worldwide(
+        "Remote", "Posted pay ranges apply to US-based candidates."))
+    check("US-based employees blocked", not is_open_worldwide(
+        "Remote", "This role is open to US-based employees only."))
+    check("only open to US blocked", not is_open_worldwide(
+        "Remote", "Position only open to US candidates."))
+    check("ONLY stress: US-based company remote worldwide still passes", is_open_worldwide(
+        "Remote", "Join a US-based startup. Fully remote, we hire worldwide."))
+
+    # Single-slot notifier: no phantom 18:00 delivery anywhere.
+    from notifier import SCAN_LABELS, get_scan_label, next_scan_time
+    check("exactly one daily slot", len(SCAN_LABELS) == 1, str(SCAN_LABELS))
+    check("label is always Daily Digest", get_scan_label()["label"] == "Daily Digest",
+          get_scan_label()["label"])
+    ns = next_scan_time()
+    check("next_scan_time is 09:00, never 18:00", "09:00" in ns and "18:00" not in ns, ns)
+
+
 def test_replay_history():
     print("\n=== Replay production fresh_matches_history.json ===")
     path = Path(__file__).parent / "state" / "fresh_matches_history.json"
@@ -516,6 +562,7 @@ def main():
     test_email_regression()
     test_false_positives()
     test_location_and_stubs()
+    test_linkedin_remote_truthfulness()
     test_digest_regressions()
     test_ai_pipeline()
     test_replay_history()

@@ -206,12 +206,9 @@ def generate_excel(
     scan_date = now.isoformat()
     total_scanned = len(all_jobs) or scan_info.get("all_count", 0)
 
-    # Hour-based scan slot in Libya local time (crons run 09:00/18:00 Libya)
-    hour = now.hour
-    if hour < 13:
-        scan_slot = "Morning (9 AM)"
-    else:
-        scan_slot = "Evening (6 PM)"
+    # Scan slot in Libya local time — ONE daily delivery at 09:00 (07:00 UTC).
+    # Manual/push-window runs are out-of-band digests of the same slot.
+    scan_slot = "Morning (9 AM)"
 
     # ---- Tag current matches with scan_date ----
     for j in jobs:

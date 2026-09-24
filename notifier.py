@@ -43,39 +43,35 @@ GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
 # Helpers
 # ---------------------------------------------------------------------------
 
+# ONE daily delivery at 09:00 Libya (07:00 UTC). The old copy advertised a
+# second 18:00 slot that the workflow never had — only ONE stable cron exists
+# (careerops.yml: '0 7 * * *'), so everything else is out-of-band (manual
+# dispatch) and must never promise an evening scan that doesn't exist.
 SCAN_LABELS = [
-    {"time": "09:00", "label": "Morning Delivery", "emoji": "\u2600\ufe0f"},
-    {"time": "18:00", "label": "Evening Delivery", "emoji": "\U0001f319"},
+    {"time": "09:00", "label": "Daily Digest", "emoji": "\u2600\ufe0f"},
 ]
 
 
 def get_scan_label() -> dict:
-    """Pick the current slot label from Libya local time (UTC+2).
+    """The single scheduled delivery is at 09:00 Libya — labelled as such.
 
-    The two crons fire at 07:00/16:00 UTC = 09:00/18:00 Libya, so the band split
-    sits at 13:00 Libya (midday, between the two deliveries). Using UTC here
-    mislabels any run that GitHub Actions delays past the UTC/Libya boundary.
+    Manual/push-window runs are out-of-band digests but use the same label so
+    the user never sees a phantom 'Evening Delivery' band.
     """
-    h = now_libya().hour
-    if h < 13:
-        return SCAN_LABELS[0]
-    return SCAN_LABELS[1]
+    return SCAN_LABELS[0]
 
 
 def next_scan_time() -> str:
     """Human phrase for the next scheduled scan, in Libya local time.
 
-    The crons are 07:00/16:00 UTC = 09:00/18:00 Libya. Returning raw UTC clock
-    times told the user the wrong hour (and the wrong day after 18:00 Libya).
+    Exactly ONE scheduled scan per day (07:00 UTC = 09:00 Libya). GitHub cron
+    latency can push the run beyond 09:00, so a completion after 09:00 must
+    read 'tomorrow' — anything else would resurrect the deleted 18:00 slot.
     """
     now = now_libya()
-    h = now.hour
-    slots = [SCAN_LABELS[0]["time"], SCAN_LABELS[1]["time"]]
-    slot_hours = [int(s.split(":")[0]) for s in slots]
-    for hour, label in zip(slot_hours, slots):
-        if h < hour:
-            return f"{label} Libya today"
-    return f"{slots[0]} Libya tomorrow"
+    if now.hour < 9:
+        return "09:00 Libya today"
+    return "09:00 Libya tomorrow"
 
 
 # ---------------------------------------------------------------------------

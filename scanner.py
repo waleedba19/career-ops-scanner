@@ -1306,6 +1306,11 @@ def is_open_worldwide(location: str, desc: str) -> bool:
         re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
         # Location Restriction field
         re.compile(r"location\s+restriction\s*:?\s*(u\.?s|united\s+states|uk|eu|canadian|australian)", re.I),
+        # US-anchored hiring language — even when the card says "Remote":
+        # "US-based candidates", "pay ranges apply to US-based candidates"
+        re.compile(r"(u\.?s\.?|us|united states)\s*[- ]?based\s+(candidates?|applicants?|positions?|roles?|employees?)", re.I),
+        re.compile(r"pay (rates?|ranges?|offers?) apply to (u\.?s\.?|us|united states)[\s-]*based", re.I),
+        re.compile(r"only open to (u\.?s\.?|us|united states)", re.I),
     ]
     for blocker in HARD_BLOCKERS:
         if blocker.search(text):
@@ -1413,6 +1418,11 @@ def is_open_worldwide_for_company(location: str, desc: str, company: str) -> boo
             re.compile(r"must already (have|hold|possess).{0,40}(work permit|residence permit|visa|residency)", re.I),
             re.compile(r"must (live|reside|be (based|located|domiciled)|be a resident) (in|within) (the |)(u\.?s|us|united states|uk|canada|australia)", re.I),
             re.compile(r"only (for )?(u\.?s|us|uk|eu|canadian|australian).{0,15}(citizens|residents|nationals)", re.I),
+            # US-anchored hiring language — even when the card says "Remote":
+            # "US-based candidates", "pay ranges apply to US-based candidates"
+            re.compile(r"(u\.?s\.?|us|united states)\s*[- ]?based\s+(candidates?|applicants?|positions?|roles?|employees?)", re.I),
+            re.compile(r"pay (rates?|ranges?|offers?) apply to (u\.?s\.?|us|united states)[\s-]*based", re.I),
+            re.compile(r"only open to (u\.?s\.?|us|united states)", re.I),
         ]
         for blocker in HARD_BLOCKERS:
             if blocker.search(text):

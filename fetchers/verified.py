@@ -96,6 +96,93 @@ _LI_COMPANY = re.compile(r'class="[^"]*base-search-card__subtitle[^"]*"[^>]*>([\
 _LI_LOCATION = re.compile(r'class="[^"]*job-search-card__location[^"]*"[^>]*>([\s\S]*?)</span>', re.I)
 _LI_TIME = re.compile(r'<time[^>]+datetime="([^"]+)"', re.I)
 
+# Real posting detail (guest fragment) — NOT the search-filter tag. LinkedIn's
+# f_WT=2 only proves the employer TAGGED the role as remote; the posting text
+# decides. We fetch each posting so the worldwide gate / AI / email see truth.
+_LI_JOB_VIEW = "https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{job_id}"
+# Real guest cards: "/jobs/view/4465128678" (numeric) or "/jobs/view/<slug>-4465128678",
+# or carry the id in data-entity-urn. Match either form so the detail fetch fires.
+_LI_JOBID = re.compile(r"urn:li:jobPosting:(\d+)|/jobs/view/[^\s?#\"]*?(\d{6,})(?=[?#\"\s]|$)", re.I)
+_LI_WORKPLACE_TAG = re.compile(r'class="[^"]*job-posting__workplace-type[^"]*"[^>]*>\s*([^<]+?)\s*<', re.I)
+_LI_DESC_MARKUP = re.compile(r'class="show-more-less-html__markup"[^>]*>([\s\S]*?)</div>', re.I)
+_LI_DESC_CLASSIC = re.compile(r'class="description__text[^"]*"[^>]*>([\s\S]*?)</div>', re.I)
+
+
+def _workplace_infer(desc: str) -> str:
+    """Workplace from the posting text: on-site > hybrid > remote by evidence.
+
+    The f_WT=2 search filter only means the employer TAGGED the role Remote —
+    it says nothing about reality, so the description is the truth. Remote is
+    the default ONLY with no contrary evidence.
+    """
+    t = (desc or "").lower()
+    # Explicit hybrid self-identification, or a per-week office split — these
+    # come first because they are the poster's own words about the model
+    # ("Hybrid role…", "3 days in office").
+    hybrid = re.compile(
+        r"\bhybrid\s+(role|position|posting|model|schedule|arrangement|setup|working\s+arrangement)"
+        r"|\d+\s+days?\s+(a\s+week\s+)?(in[ -]office|on[ -]site|on\s+site)", re.I)
+    onsite = re.compile(
+        r"\bin[- ]office\s+role\b|\bin[- ]office\b|on[- ]site\b|on site\b|office[- ]based|"
+        r"work\s+from\s+(the\s+)?office|work\s+in[- ]person|"
+        r"must\s+(be|report|work)\s+(in|at)\s+the\s+office|office\s+\bin\b|"
+        r"attend\s+(the\s+)?office|in[- ]person\s+(work|requirement|role)", re.I)
+    if hybrid.search(t):
+        return "Hybrid"
+    if onsite.search(t):
+        return "On-site"
+    return "Remote"
+
+
+def _linkedin_location(city: str, wtag: str, desc: str, verified: bool) -> str:
+    """Truthful location for a LinkedIn guest-search job.
+
+    verified=True  → posting detail was fetched; use its real workplace tag /
+                     description prefix before the card city.
+    verified=False → could not fetch; NEVER assert Remote from the f_WT=2
+                     filter alone — return the real city so the worldwide gate
+                     and AI audit can judge honestly instead.
+    """
+    city = (city or "").strip() or "See posting"
+    if not verified:
+        return city
+    wt = (wtag or "").strip().lower()
+    if wt in ("on-site", "onsite"):
+        return f"On-site — {city}"
+    if wt == "hybrid":
+        return f"Hybrid — {city}"
+    if wt == "remote":
+        return f"Remote — {city}"
+    w = _workplace_infer(desc or "")
+    if w != "Remote":
+        return f"{w} — {city}"
+    return f"Remote — {city}"
+
+
+async def _linkedin_detail(session: aiohttp.ClientSession, url: str) -> tuple[bool, str, str]:
+    """Fetch the real posting detail (guest fragment). → (ok, description, workplace_tag).
+    Never raises; anti-bot (999/429) or transport errors → (False, "", "").
+    """
+    m = _LI_JOBID.search(url or "")
+    if not m:
+        return False, "", ""
+    job_id = m.group(1) or m.group(2)
+    if not job_id:
+        return False, "", ""
+    status, body = await _get_text(session, _LI_JOB_VIEW.format(job_id=job_id))
+    if status != 200:
+        return False, "", ""
+    desc = ""
+    for rx in (_LI_DESC_MARKUP, _LI_DESC_CLASSIC):
+        fm = rx.search(body)
+        if fm:
+            desc = _clean(fm.group(1))
+            break
+    if not desc:
+        desc = _clean(re.sub(r"<[^>]+>", " ", body))[:3000]
+    wt = _LI_WORKPLACE_TAG.search(body)
+    return True, desc[:3000], (wt.group(1).strip() if wt else "")
+
 
 def parse_linkedin_guest(html: str) -> list[dict]:
     """Pure parser for the guest search HTML fragment."""
@@ -131,6 +218,8 @@ def parse_linkedin_guest(html: str) -> list[dict]:
 async def fetch_linkedin_guest(session: aiohttp.ClientSession) -> list[dict]:
     jobs: list[dict] = []
     seen: set[str] = set()
+    # Budget the per-posting detail fetches so a burst can't blow the 429 limit.
+    detail_budget = 18
     for q in PROFILE_QUERIES:
         url = LI_URL.format(q=q.replace(" ", "%20"))
         status, body = await _get_text(session, url)
@@ -147,16 +236,17 @@ async def fetch_linkedin_guest(session: aiohttp.ClientSession) -> list[dict]:
             if j["url"] in seen:
                 continue
             seen.add(j["url"])
-            # The query carries f_WT=2 (LinkedIn's own "Remote" workplace filter), so the
-            # card location is the poster's city, not an on-site requirement. Say so —
-            # otherwise "Dubai, United Arab Emirates" trips the City, Country heuristic.
-            if not re.search(r"remote", j["location"], re.I):
-                j["location"] = f"Remote — {j['location']}"
-            # NEVER echo the search query into the description: the scorer reads it and
-            # would grade "Chinese Translator" as a 100-point Arabic match. Neutral text →
-            # scoring is title-only (honest), and `matched_query` is kept for the report.
-            j["description"] = "Remote (LinkedIn workplace filter). Open the posting for the full description."
             j["matched_query"] = q
+            city = j.get("location") or "See posting"
+            ok, desc, wtag = False, "", ""
+            if detail_budget > 0:
+                ok, desc, wtag = await _linkedin_detail(session, j["url"])
+                detail_budget -= 1
+                await asyncio.sleep(0.7)  # pace; LinkedIn rate-limits per IP
+            # Real description (may legitimately be "") — never the search query.
+            j["description"] = desc
+            # Truthful location — f_WT=2 alone is NOT proof of remote.
+            j["location"] = _linkedin_location(city, wtag, desc, ok)
             jobs.append(j)
         await asyncio.sleep(1.2)  # pace like a human
     print(f"  LinkedIn guest: {len(jobs)} jobs from {len(PROFILE_QUERIES)} queries")

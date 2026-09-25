@@ -1,28 +1,5 @@
 [
   {
-    "date": "2026-09-14T22:49:48.116538+00:00",
-    "matched_count": 2,
-    "all_count": 331,
-    "jobs": [
-      {
-        "title": "Bilingual Front Desk/ Insurance Specialist - Pediatrics",
-        "company": "Staffing for Doctors",
-        "url": "https://himalayas.app/companies/staffing-for-doctors/jobs/bilingual-front-desk-insurance-specialist-pediatrics",
-        "score": 80,
-        "category": "Admin",
-        "source": "himalayas"
-      },
-      {
-        "title": "IDEA Special Education Local and State Testing Coordinator",
-        "company": "Stride, Inc.",
-        "url": "https://himalayas.app/companies/stride-inc/jobs/idea-special-education-local-and-state-testing-coordinator",
-        "score": 4,
-        "category": "Other",
-        "source": "himalayas"
-      }
-    ]
-  },
-  {
     "date": "2026-09-14T23:34:15.260378+00:00",
     "matched_count": 0,
     "all_count": 270,
@@ -1841,6 +1818,12 @@
     "date": "2026-09-24T18:03:24.913574+00:00",
     "matched_count": 0,
     "all_count": 6427,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-25T12:46:25.333436+00:00",
+    "matched_count": 0,
+    "all_count": 6320,
     "jobs": []
   }
 ]

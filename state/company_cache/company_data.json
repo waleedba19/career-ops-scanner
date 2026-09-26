@@ -1807,5 +1807,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-24T16:26:19.909836+00:00"
+  },
+  "2K": {
+    "name": "2K",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-26T12:15:53.396266+00:00"
   }
 }

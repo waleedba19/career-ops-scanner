@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-14T23:34:15.260378+00:00",
-    "matched_count": 0,
-    "all_count": 270,
-    "jobs": []
-  },
-  {
     "date": "2026-09-15T00:20:29.419425+00:00",
     "matched_count": 0,
     "all_count": 330,
@@ -1825,5 +1819,28 @@
     "matched_count": 0,
     "all_count": 6320,
     "jobs": []
+  },
+  {
+    "date": "2026-09-26T12:16:08.262785+00:00",
+    "matched_count": 2,
+    "all_count": 6498,
+    "jobs": [
+      {
+        "title": "LQA Analyst, Arabic",
+        "company": "2K",
+        "url": "https://es.linkedin.com/jobs/view/lqa-analyst-arabic-at-2k-4461190301",
+        "score": 77,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
+      {
+        "title": "Localization Program Manager",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/localization-program-manager",
+        "score": 100,
+        "category": "Translation (any pair)",
+        "source": "recruitee"
+      }
+    ]
   }
 ]

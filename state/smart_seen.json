@@ -46139,8 +46139,78 @@
       "seen": "2026-09-28T18:23:17.298302+00:00",
       "title": "Strategic Sourcing Manager",
       "company": "jobgether"
+    },
+    "anthropic|directorofpayroll|sanfranciscocaseattl": {
+      "seen": "2026-09-28T19:13:20.359888+00:00",
+      "title": "Director of Payroll",
+      "company": "Anthropic"
+    },
+    "anthropic|recruitercommunications|sanfranciscocanewyor": {
+      "seen": "2026-09-28T19:13:20.374793+00:00",
+      "title": "Recruiter, Communications",
+      "company": "Anthropic"
+    },
+    "anthropic|staffsrsoftwareengineercloudin|sanfranciscocaseattl": {
+      "seen": "2026-09-28T19:13:20.386589+00:00",
+      "title": "Staff + Sr. Software Engineer, Cloud Inference",
+      "company": "Anthropic"
+    },
+    "anthropic|staffsrsoftwareengineerscaling|newyorkcitynysanfran": {
+      "seen": "2026-09-28T19:13:20.386923+00:00",
+      "title": "Staff + Sr. Software Engineer, Scaling",
+      "company": "Anthropic"
+    },
+    "anthropic|stateandlocalaffairsleadmidwes|remotefriendlyunited": {
+      "seen": "2026-09-28T19:13:20.387607+00:00",
+      "title": "State and Local Affairs Lead, Midwest",
+      "company": "Anthropic"
+    },
+    "anthropic|treasuryliquiditycapitalplanni|sanfranciscocanewyor": {
+      "seen": "2026-09-28T19:13:20.391450+00:00",
+      "title": "Treasury, Liquidity & Capital Planning",
+      "company": "Anthropic"
+    },
+    "xai|leadtechnicianpowergenerationm|southavenmsmemphistn": {
+      "seen": "2026-09-28T19:13:20.454801+00:00",
+      "title": "Lead Technician (Power Generation) - Memphis",
+      "company": "xAI"
+    },
+    "khanacademy|principalexperiencearchitect|sanmateocaremotecont": {
+      "seen": "2026-09-28T19:13:20.538469+00:00",
+      "title": "Principal Experience Architect",
+      "company": "Khan Academy"
+    },
+    "seasideinterpreting|interpretertranslator|seattlewaus": {
+      "seen": "2026-09-28T19:13:22.718739+00:00",
+      "title": "Freelance Interpreter/Translator",
+      "company": "Seaside Interpreting"
+    },
+    "abd|intrpretsimediadoresintercultu|barcelonacataloniasp": {
+      "seen": "2026-09-28T19:13:22.845535+00:00",
+      "title": "Int\u00e8rprets, i mediador/es interculturals (rus/armeni/georgi\u00e0)",
+      "company": "ABD"
+    },
+    "untalentarabic|sraccountant|remote": {
+      "seen": "2026-09-28T19:13:28.678170+00:00",
+      "title": "Sr. Accountant",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|srprogrammanagermissionadvance|remote": {
+      "seen": "2026-09-28T19:13:28.679319+00:00",
+      "title": "Sr. Program Manager, Mission Advancement",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|dataarchitect|remote": {
+      "seen": "2026-09-28T19:13:28.679923+00:00",
+      "title": "Data Architect",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|srexecutiveassistanttochiefoff|remote": {
+      "seen": "2026-09-28T19:13:28.680375+00:00",
+      "title": "Sr. Executive Assistant to Chief Officers",
+      "company": "untalent_arabic"
     }
   },
-  "updated": "2026-09-28T18:26:41.315423+00:00",
+  "updated": "2026-09-28T19:14:58.902855+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

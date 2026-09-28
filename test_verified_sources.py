@@ -347,8 +347,31 @@ def test_wiring():
         "mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz",
         "guru", "dailyremote", "europeremotely", "euremotejobs", "remotejobleads",
     })
-    check("scanner picked up config lists", scanner.GREENHOUSE_PROFILE_BOARDS == config.GREENHOUSE_PROFILE_BOARDS
-          and scanner.PROBE_BLOCKED_SOURCES == config.PROBE_BLOCKED_SOURCES)
+    # The ATS company lists have two valid shapes, and which one is in force
+    # depends on whether the probe result is present:
+    #   probe file absent  -> config lists are used verbatim
+    #   probe file present -> only HTTP-200 slugs are fetched, and
+    #                         GREENHOUSE_PROFILE_BOARDS is emptied because those
+    #                         slugs are already merged into GREENHOUSE_COMPANIES
+    # company_board_probe.py now mirrors its result into output/ so state_sync
+    # persists it, so the second shape is the normal one in production.
+    probe_file = Path("state/valid_company_slugs.json")
+    valid_slugs = {}
+    if probe_file.exists():
+        try:
+            valid_slugs = json.loads(probe_file.read_text(encoding="utf-8")).get("valid", {})
+        except Exception:
+            valid_slugs = {}
+    if valid_slugs.get("greenhouse"):
+        check("scanner uses probe-validated boards (profile list merged away)",
+              scanner.GREENHOUSE_PROFILE_BOARDS == [] and scanner.GREENHOUSE_COMPANIES,
+              f"profile={len(scanner.GREENHOUSE_PROFILE_BOARDS)} companies={len(scanner.GREENHOUSE_COMPANIES)}")
+    else:
+        check("scanner picked up config lists",
+              scanner.GREENHOUSE_PROFILE_BOARDS == config.GREENHOUSE_PROFILE_BOARDS,
+              f"{len(scanner.GREENHOUSE_PROFILE_BOARDS)} vs {len(config.GREENHOUSE_PROFILE_BOARDS)}")
+    check("scanner picked up blocked-source list",
+          scanner.PROBE_BLOCKED_SOURCES == config.PROBE_BLOCKED_SOURCES)
     for fn in ("fetch_linkedin_guest", "fetch_freelancer_api", "fetch_jobicy_tags", "fetch_impactpool", "fetch_themuse",
                "fetch_ashby_board", "fetch_workable_board", "fetch_smartrecruiters_board", "fetch_jsearch", "fetch_adzuna_keyed",
                "fetch_jooble_keyed", "fetch_reliefweb", "fetch_remowork", "fetch_recruitee_board", "fetch_teamtailor_board"):

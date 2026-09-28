@@ -440,6 +440,37 @@ def test_arabic_english_pair_semantics():
             ok, sc = delivers(title, desc, boost)
             check(f"blocked: {title[:40]} (boost={boost})", not ok, str(sc["score"]))
 
+    # Regression: the 2026-09-28 run shipped this at 92%. It is a CHINESE job
+    # that mentions "Arabic is a plus" and also says "English" - the old guard
+    # ("wrong language present AND no English") was disabled by that "English",
+    # and the stray "Arabic" hit the Arabic bucket. The pair must be judged from
+    # the role and the stated requirement, not from stray language words.
+    sevb = ("We are looking for a Chinese Translator / Administration Specialist to join "
+            "our team in Morocco . Responsibilities Provide Chinese–English–French/Arabic "
+            "translation and interpretation . Support communication between Chinese "
+            "management and local teams . Translate documents, reports, and internal "
+            "communications. Requirements HSK 4 or above in Mandarin Chinese . Good level "
+            "of English (French or Arabic is a plus).")
+    for boost in (0, 50):
+        ok, sc = delivers("Chinese translator", sevb, boost)
+        check(f"SEVB Chinese-translator leak closed (boost={boost})", not ok,
+              f"score={sc['score']}")
+    check("SEVB is not read as an Arabic<->English pair",
+          not scanner._arabic_english_pair(sevb.lower()))
+    check("SEVB's role is owned by another language",
+          scanner._pair_owned_by_other_language(sevb.lower()) == "chinese",
+          scanner._pair_owned_by_other_language(sevb.lower()))
+
+    # The fix must not over-tighten: shorthand and pair forms stay deliverable.
+    for title, desc in [
+        ("Localization Manager (EN-AR)", "Own EN-AR localization for the app. Remote."),
+        ("Arabic<>English Interpreter", "On-site interpreting between Arabic and English."),
+        ("QA Specialist Arabic/English", "Review Arabic-English game localization. Remote."),
+    ]:
+        ok, sc = delivers(title, desc)
+        check(f"pair shorthand still delivers: {title[:40]}", ok,
+              f"score={sc['score']} {sc['why'][:2]}")
+
 
 def test_replay_history():
     print("\n=== Replay production fresh_matches_history.json ===")

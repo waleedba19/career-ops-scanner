@@ -297,6 +297,16 @@ MATCH_BUCKETS = [
     {
         "name": "Arabic Translation",
         "phrases": [
+            # Explicit Arabic<->English pair, in either order and any
+            # separator: "Arabic-English", "Arabic/English", "Arabic<>English",
+            # "EN-AR". The pair itself is the strongest possible signal, so it
+            # must outrank the single-word "arabic <role>" patterns below.
+            (re.compile(r"(?:arabic|ar|ara|arab)\s*[-–—/<>&+,]*\s*(?:english|en|eng)\b"
+                        r".{0,30}(translat|interpret|locali[sz]|linguist|proofread)", re.I), 95),
+            (re.compile(r"(?:english|en|eng)\s*[-–—/<>&+,]*\s*(?:arabic|ar|ara|arab)\b"
+                        r".{0,30}(translat|interpret|locali[sz]|linguist|proofread)", re.I), 95),
+            (re.compile(r"(translat|interpret|locali[sz]|linguist|proofread)\w*\b.{0,20}?"
+                        r"(?:arabic|ar|ara|arab)\s*[-–—/<>&+,]*\s*(?:english|en|eng)\b", re.I), 95),
             # Direct Arabic translation roles (highest priority)
             (re.compile(r"arabic (translator|translation|interpreter|linguist|editor|proofreader|content|writer|qa|tester|locali[sz])", re.I), 95),
             (re.compile(r"(translator|translation|interpreter|linguist|editor|proofreader|locali[sz]ation specialist).{0,40}arabic", re.I), 95),
@@ -953,6 +963,114 @@ _REVIEW_ONLY_CAP = max(SECONDARY_MATCH_CAP, NON_ARABIC_CAP)
 if COMPANY_MIN_SCORE <= _REVIEW_ONLY_CAP:
     COMPANY_MIN_SCORE = _REVIEW_ONLY_CAP + 1
 
+# A language pair only counts when Arabic and English are named TOGETHER:
+# "Arabic-English", "Arabic/English", "Arabic <> English", "EN-AR", "AR-EN",
+# "Arabic to English" and so on. Both orders and every common separator.
+_ARABIC_TOKEN = r"(?:arabic|arabic\s*\(?\s*(?:msa|modern\s+standard\s+arabic|masr)|\bar\b|\bara\b|\bmsa\b|\bmasr\b)"
+# Compiled form of the same, for places that need "is Arabic mentioned at all",
+# including the ISO/short forms (AR, MSA, MASR).
+_ARABIC_TOKEN_RE = re.compile(
+    r"\barabic\b|\bar\b|\bara\b|\bmsa\b|\bmasr\b|modern\s+standard\s+arabic", re.I)
+_ENGLISH_TOKEN = r"(?:english|\ben\b|\beng\b|\ben[-_]us\b|\bus\s+english\b)"
+_PAIR_SEP = r"[-–—/&+,<>\s]*"
+# Words that introduce the pair a posting actually wants done.
+_PAIR_CONTEXT = (
+    r"(?:translat\w*|interpret\w*|locali[sz]\w*|linguist\w*|proofread\w*"
+    r"|language\s+pair|translat(?:ion|ing)\s+pair|required|requirement\w*"
+    r"|must\s+(?:be\s+)?(?:fluent|native|able)|native\s+level|"
+    r"from|into|to|for|with|profile|candidate)"
+)
+_ARABIC_ENGLISH_PAIR = re.compile(
+    rf"{_ARABIC_TOKEN}{_PAIR_SEP}{_ENGLISH_TOKEN}"
+    rf"|{_ENGLISH_TOKEN}{_PAIR_SEP}{_ARABIC_TOKEN}",
+    re.I,
+)
+# English written as an arrow/ISO pair, e.g. "EN>AR", "EN_AR", "EN-AR", "AR/EN".
+_EN_AR_ISO = re.compile(
+    r"\b(?:en|eng|english)\s*[-–—_/>]*\s*(?:>|to|into)?\s*[-–—_/>]*\s*(?:ar|ara|arab|arabic)\b"
+    r"|\b(?:ar|ara|arab|arabic)\s*[-–—_/>]*\s*(?:>|to|into)?\s*[-–—_/>]*\s*(?:en|eng|english)\b",
+    re.I,
+)
+# A language other than Arabic/English that OWNS the role, e.g.
+# "Chinese translator", "Chinese to English translator", "Mandarin interpreter".
+# The language must sit immediately before the translation role noun — that is
+# what names the job — or be the explicit source/target of the work.
+_ROLE_NOUN = r"(?:translat\w*|interpret\w*|locali[sz]\w*|linguist\w*|proofread\w*|caption\w*|subtitl\w*)"
+_PAIR_DEMAND = re.compile(
+    rf"\b(?:from|into|to)\s+[a-z]{{3,14}}\s*(?:[-–—/]|\s+to\s+|\s+into\s+)?\s*[a-z]{{3,14}}",
+    re.I,
+)
+
+
+def _arabic_english_pair(text: str) -> bool:
+    """True when the posting genuinely asks for Arabic<->English work.
+
+    Fails closed, but not so tightly that real jobs are lost. Qualifies when:
+      1. Arabic and English are named together as the pair ("Arabic-English",
+         "Arabic/English", "Arabic <> English", "EN-AR", "AR to EN"), or
+      2. Arabic is the only language the posting names at all.
+
+    Rule 2 matters: most genuine Arabic<->English postings never spell out
+    "English" ("Arabic Translator - remote worldwide"). Blocking those would
+    throw away exactly the work we want. What must NOT qualify is a posting
+    where a competing language is present — a third language means the pair
+    isn't Arabic<->English, no matter where the word "Arabic" appears.
+    """
+    t = text or ""
+    if not t:
+        return False
+    if _ARABIC_ENGLISH_PAIR.search(t) or _EN_AR_ISO.search(t):
+        return True
+    # "translate into Arabic", "from Arabic", "Arabic translator needed"
+    if re.search(rf"(?:from|into|to|translat\w*\s+(?:from|into|to))\s+{_ARABIC_TOKEN}",
+                 t, re.I):
+        return True
+    # Arabic present and nothing contradicts it: treat as the English pair.
+    if HAS_ARABIC.search(t) and not WRONG_LANGUAGE.search(t):
+        return True
+    return False
+
+
+def _mentions_wrong_language(word: str) -> bool:
+    """True when `word` is one of the non-Arabic/English language names.
+
+    WRONG_LANGUAGE's branches are written against surrounding text, so a bare
+    "chinese" does not match it while " chinese " does. Pad rather than anchor
+    with \\b, which the pattern does not accept on its own.
+    """
+    w = (word or "").strip().lower()
+    if not w:
+        return False
+    return bool(WRONG_LANGUAGE.search(" " + re.escape(w) + " "))
+
+
+def _pair_owned_by_other_language(text: str) -> str:
+    """Return the non-Arabic language that owns the role, or '' if none does.
+
+    "Chinese translator", "Mandarin interpreter", "Chinese to English
+    translator" are all Chinese jobs even when the body later offers Arabic as
+    a bonus. Detected from the language immediately preceding the role noun, or
+    from the explicit source/target of a translation demand.
+    """
+    t = text or ""
+    # language sitting directly in front of the role noun: "Chinese translator"
+    m = re.search(rf"\b([a-z]{{3,14}})\s+(?:to\s+[a-z]{{3,14}}\s+)?{_ROLE_NOUN}",
+                  t, re.I)
+    if m:
+        word = m.group(1).lower()
+        if _mentions_wrong_language(word) and \
+                not re.match(r"^(en|eng|english|ar|ara|arab|arabic|msa|masr)$", word):
+            return word
+    # "Chinese to English translator" / "translate from Japanese"
+    d = _PAIR_DEMAND.search(t)
+    if d:
+        seg = d.group(0).lower()
+        for word in re.findall(r"[a-z]{3,14}", seg):
+            if _mentions_wrong_language(word):
+                return word
+    return ""
+
+
 # The actual job-content signals that make a listing translation work. A posting
 # can hit the "Arabic Translation" bucket via "Arabic speaker + data entry" or
 # "Arabic AI trainer" without being a translation role — that is NOT a STRONG
@@ -1067,17 +1185,30 @@ def get_match_score(title: str, desc: str) -> dict:
     #     role without an explicit Arabic signal (English-only snippet, hidden
     #     Chinese/Malay pair, truncated description) is capped to REVIEW — it is
     #     never emailed as a 100% match.
-    elif best_cat in CORE_CATEGORIES and not HAS_ARABIC.search(text):
+    #     The Arabic signal must also accept the ISO/short forms: "EN-AR
+    #     Localization Manager" is real Arabic<->English work, and the old
+    #     \barabic\b-only test capped it to REVIEW for naming the pair in
+    #     shorthand.
+    elif best_cat in CORE_CATEGORIES and not (HAS_ARABIC.search(text)
+                                               or _ARABIC_TOKEN_RE.search(text)):
         total = min(total, NON_ARABIC_CAP)
         why_final.append("translation role without Arabic (review only)")
-    # 2d) A posting that REQUIRES a non-Arabic, non-English language
-    #     (Dari/Pashto, Chinese, French…) is not an Arabic↔English job even when
-    #     the word "Arabic" appears — "Arabic translator/interpreter tour guide,
-    #     Arabic to Dari/Pashto, drive a car" (Let's tour Afghanistan, 09-22).
-    #     Without the required English it is REVIEW, never STRONG.
-    elif best_cat in CORE_CATEGORIES and WRONG_LANGUAGE.search(text) and not re.search(r"\benglish\b", text):
+    # 2d) The role must BE Arabic↔English work — not merely mention "Arabic".
+    #
+    #     Checking "does the text contain a wrong language, and is English
+    #     absent" was too weak: the 2026-09-28 run shipped a "Chinese
+    #     translator" at 92% (SEVB) whose body said "Chinese–English–French/
+    #     Arabic translation ... Arabic is a plus". The stray "Arabic" hit the
+    #     Arabic bucket and the presence of "English" disabled the old guard.
+    #
+    #     A language pair only counts when Arabic and English are named
+    #     TOGETHER as the pair (any order, any separator). A third language
+    #     that owns the role name or the stated requirement wins over a
+    #     passing mention of Arabic, so the posting is capped to REVIEW.
+    elif best_cat in CORE_CATEGORIES and (
+            not _arabic_english_pair(text) or _pair_owned_by_other_language(text)):
         total = min(total, SECONDARY_MATCH_CAP)
-        why_final.append("requires non-English language, no English (review only)")
+        why_final.append("not an Arabic<->English pair (review only)")
 
     # 3) HARD DROP: negative keywords in title = instant 0
     if any(kw in t for kw in NEGATIVE_KEYWORDS):

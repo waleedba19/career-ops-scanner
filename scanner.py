@@ -943,6 +943,16 @@ SECONDARY_MATCH_CAP = 45
 # core translation role WITHOUT an explicit Arabic signal is capped to REVIEW.
 NON_ARABIC_CAP = 45
 
+# INVARIANT: the company-boost floor must sit ABOVE every "review only" cap.
+# The caps above exist to demote a posting to REVIEW (never emailed). A floor
+# below them silently undoes the demotion for any known-LSP employer, which is
+# how non-translation and wrong-pair roles reached the digest. Clamp here as
+# well as in config, so an env override or a future cap change can never
+# reintroduce the hole.
+_REVIEW_ONLY_CAP = max(SECONDARY_MATCH_CAP, NON_ARABIC_CAP)
+if COMPANY_MIN_SCORE <= _REVIEW_ONLY_CAP:
+    COMPANY_MIN_SCORE = _REVIEW_ONLY_CAP + 1
+
 # The actual job-content signals that make a listing translation work. A posting
 # can hit the "Arabic Translation" bucket via "Arabic speaker + data entry" or
 # "Arabic AI trainer" without being a translation role — that is NOT a STRONG

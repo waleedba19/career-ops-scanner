@@ -385,6 +385,62 @@ def test_linkedin_remote_truthfulness():
         "Remote — Türkiye", "Fully remote global studio, open to all timezones."))
 
 
+def test_arabic_english_pair_semantics():
+    """The ask: remote jobs translating between Arabic and English.
+
+    Both directions count. A third language on the other side of the pair does
+    not, and "Arabic" in a non-translation role (teacher, moderator, support,
+    VA) is not a translation job either - even for a trusted LSP employer,
+    whose company-boost floor used to resurrect exactly those.
+    """
+    print("\n=== Arabic<->English pair semantics (what a translator does) ===")
+    import scanner
+    from scanner import (COMPANY_MIN_SCORE, MIN_MATCH_SCORE,
+                         SECONDARY_MATCH_CAP, get_match_score)
+
+    check("company-boost floor sits ABOVE the review-only cap",
+          COMPANY_MIN_SCORE > SECONDARY_MATCH_CAP,
+          f"floor={COMPANY_MIN_SCORE} cap={SECONDARY_MATCH_CAP}")
+
+    def delivers(title, desc, boost=0):
+        sc = get_match_score(title, desc)
+        job = {"title": title, "description": desc, "company": "X",
+               "location": "Remote", "url": "https://example.com/j/1",
+               "posted": "2026-09-28", "source": "linkedin",
+               "score": sc["score"], "category": sc["category"]}
+        if boost:
+            job["company_boost"] = boost
+        floor = sc["score"] >= MIN_MATCH_SCORE or (
+            boost and sc["score"] >= COMPANY_MIN_SCORE)
+        return bool(floor and len(scanner.drop_unqualified_matches([job])) == 1), sc
+
+    # --- the pair, either direction: must be delivered ---
+    for title, desc in [
+        ("Arabic-English Translator (Remote)", "Translate documents between Arabic and English. Remote freelance."),
+        ("English to Arabic Translator", "Translate content from English into Arabic. Remote."),
+        ("Arabic to English Localization Specialist", "Localize our app from Arabic into English. Remote."),
+        ("Medical Translator (Arabic/English)", "Translate patient documents Arabic <-> English."),
+        ("Arabic Translator", "Translation work involving Arabic. Remote worldwide."),
+    ]:
+        for boost in (0, 50):
+            ok, sc = delivers(title, desc, boost)
+            check(f"delivers: {title[:40]} (boost={boost})", ok, str(sc["score"]))
+
+    # --- not the pair / not a translation role: must NOT be delivered,
+    #     including when a trusted LSP employer gives a company boost ---
+    for title, desc in [
+        ("Arabic to French Translator", "Traduire des documents de l'arabe vers le francais. Remote."),
+        ("Arabic Language Teacher", "Teach Arabic online to students. Remote."),
+        ("Bilingual Arabic-English Customer Support", "Handle customer calls in Arabic and English. Remote."),
+        ("Arabic-English Virtual Assistant", "VA supporting Arabic and English clients. Remote."),
+        ("Content Moderator Arabic/English", "Review user content in Arabic and English. Remote."),
+        ("Arabic AI Trainer", "Train AI models on Arabic data. Remote."),
+    ]:
+        for boost in (0, 50):
+            ok, sc = delivers(title, desc, boost)
+            check(f"blocked: {title[:40]} (boost={boost})", not ok, str(sc["score"]))
+
+
 def test_replay_history():
     print("\n=== Replay production fresh_matches_history.json ===")
     path = Path(__file__).parent / "state" / "fresh_matches_history.json"
@@ -628,6 +684,7 @@ def main():
     test_false_positives()
     test_location_and_stubs()
     test_linkedin_remote_truthfulness()
+    test_arabic_english_pair_semantics()
     test_digest_regressions()
     test_ai_pipeline()
     test_replay_history()

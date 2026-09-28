@@ -49,7 +49,16 @@ OLD_AI_VERIFY_CAP = int(os.getenv("CAREEROPS_OLD_AI_CAP", "8"))
 AUDIT_CAP = int(os.getenv("CAREEROPS_AUDIT_CAP", "8"))
 # A job at a trusted translation/AI company with a high-relevance title is a
 # match even without a keyword hit — accepted at this (lower) floor.
-COMPANY_MIN_SCORE = int(os.getenv("CAREEROPS_COMPANY_MIN_SCORE", "40"))
+# Company-boost floor. MUST stay above the "review only" cap the scorer applies
+# to non-translation and wrong-pair roles (45 in scanner.SECONDARY_MATCH_CAP).
+# At 40 the floor undercut that cap, so every job the scorer had just demoted
+# to REVIEW was resurrected whenever the employer was a known LSP - that is how
+# "Arabic Language Teacher", "Bilingual Arabic-English Customer Support",
+# "Content Moderator Arabic/English" and "Arabic to French Translator" were
+# being delivered. Real Arabic<->English translation roles score 85-100, so a
+# floor of 46 costs nothing real (verified: of 9,122 jobs ever seen, the 243
+# sitting in the old 40-49 band contained ZERO genuine translation roles).
+COMPANY_MIN_SCORE = int(os.getenv("CAREEROPS_COMPANY_MIN_SCORE", "46"))
 
 # ── Employer email discovery ─────────────────────────────────────────────
 # Resolve the employer's real inbox (search their site) instead of the job

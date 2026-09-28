@@ -142,13 +142,13 @@ def create_scheduler(mode: str = "comprehensive") -> SmartScheduler:
     }
 
     if mode == "adaptive":
-        # Adaptive mode: check time of day and adjust
-        # Use UTC hour for consistency with GitHub Actions
+        # Adaptive mode: full depth in the morning delivery window
+        # (07:00 UTC = 09:00 Libya), comprehensive otherwise (manual runs).
+        # There is a single daily slot now — the old 18:00 Libya evening
+        # window was removed when the second notifier slot went away.
         hour = datetime.utcnow().hour
         if 7 <= hour < 9:  # Morning delivery (07:00 UTC = 09:00 Libya)
             budget = SmartScheduler.COMPREHENSIVE_SCAN_BUDGET
-        elif 16 <= hour < 18:  # Evening delivery (16:00 UTC = 18:00 Libya)
-            budget = SmartScheduler.DEEP_SCAN_BUDGET
         else:  # Other times - use comprehensive for manual triggers
             budget = SmartScheduler.COMPREHENSIVE_SCAN_BUDGET
     else:

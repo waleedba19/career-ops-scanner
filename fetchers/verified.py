@@ -60,6 +60,24 @@ def _strip_html(s: str) -> str:
     return _clean(s)
 
 
+def _extract_tag(block: str, tag: str) -> str:
+    """Pull one RSS/Atom tag's text out of an item block.
+
+    This helper was referenced by every RSS fetcher here (mostaql, for9a, the
+    remote-job feeds) but never defined, so each of those sources raised
+    NameError the moment it was actually dispatched and silently contributed
+    nothing. Handles both CDATA-wrapped and plain values.
+    """
+    m = re.search(rf"<{tag}[^>]*>(.*?)</{tag}>", block or "", re.S | re.I)
+    if not m:
+        return ""
+    val = m.group(1)
+    cdata = re.match(r"\s*<!\[CDATA\[(.*?)\]\]>\s*$", val, re.S)
+    if cdata:
+        val = cdata.group(1)
+    return _clean(val)
+
+
 async def _get_text(session: aiohttp.ClientSession, url: str, **kw) -> tuple[int, str]:
     """GET → (status, body). Never raises; (0, '') on transport error."""
     try:
@@ -1683,8 +1701,13 @@ async def fetch_naukrigulf(session: aiohttp.ClientSession) -> list[dict]:
 
 
 async def fetch_mostaql(session: aiohttp.ClientSession) -> list[dict]:
-    """Fetch from Mostaql RSS (Arabic freelance)."""
-    url = "https://www.mostaql.com/jobs/feed"
+    """Fetch from Mostaql RSS (Arabic freelance).
+
+    The feed lives at /rss. The old /jobs/feed path still returns HTTP 200 but
+    serves the HTML jobs page, so the RSS regexes below found zero items and
+    this source silently contributed nothing.
+    """
+    url = "https://mostaql.com/rss"
     status, body = await _get_text(session, url)
     if status != 200:
         return []

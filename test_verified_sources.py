@@ -393,11 +393,102 @@ def test_wiring():
         check(f"{nm} is guarded by _blocked()", f'_blocked("{nm}")' in src or f'("{nm}", fetch_{nm})' in src)
 
 
+def test_on_demand_local_scan():
+    """The on-demand home-machine scan path (tools/Run-ScanNow.ps1)."""
+    print("\n=== On-demand local scan path ===")
+    from fetchers.verified import _extract_tag
+
+    item = ("<item><title><![CDATA[مطلوب مترجم عربي]]></title>"
+            "<link>https://example.com/j/1</link>"
+            "<description><![CDATA[<p>ترجمة &amp; تفريغ</p>]]></description>"
+            "<pubDate>Mon, 28 Sep 2026 16:00:57 +0000</pubDate></item>")
+    check("_extract_tag exists (RSS fetchers were raising NameError)",
+          callable(_extract_tag))
+    check("_extract_tag unwraps CDATA", _extract_tag(item, "title") == "مطلوب مترجم عربي",
+          _extract_tag(item, "title"))
+    check("_extract_tag unescapes HTML entities",
+          _extract_tag(item, "description") == "ترجمة & تفريغ",
+          _extract_tag(item, "description"))
+    check("_extract_tag returns '' for a missing tag", _extract_tag(item, "author") == "")
+
+    # mostaql regression: /jobs/feed returns the HTML page (200 but no <item>),
+    # so the source silently yielded nothing. The live feed is /rss.
+    import inspect
+    from fetchers import verified
+    mostaql_src = inspect.getsource(verified.fetch_mostaql)
+    check("mostaql points at the working /rss feed",
+          'url = "https://mostaql.com/rss"' in mostaql_src
+          and 'url = "https://www.mostaql.com/jobs/feed"' not in mostaql_src)
+
+    # state_sync must run locally too, otherwise a home-machine scan uses a
+    # separate dedup store and both sides re-announce the same jobs forever.
+    import state_sync
+    saved = {k: os.environ.get(k) for k in
+             ("GITHUB_ACTIONS", "GITHUB_TOKEN", "GH_TOKEN",
+              "GITHUB_REPOSITORY", "CAREEROPS_SYNC", "CAREEROPS_SYNC_REPO")}
+    try:
+        for k in ("GITHUB_ACTIONS", "GITHUB_REPOSITORY"):
+            os.environ.pop(k, None)
+        os.environ["GITHUB_TOKEN"] = "x" * 40
+        os.environ.pop("CAREEROPS_SYNC", None)
+        os.environ.pop("CAREEROPS_SYNC_REPO", None)
+        check("state_sync stays off by default locally (no surprise pushes)",
+              state_sync._api() is None)
+        os.environ["CAREEROPS_SYNC"] = "1"
+        os.environ["CAREEROPS_SYNC_REPO"] = "waleedba19/career-ops-scanner"
+        check("state_sync activates for an explicit local run",
+              state_sync._api() is not None)
+        # hosted path must be unchanged: GITHUB_ACTIONS + GITHUB_REPOSITORY
+        os.environ["GITHUB_ACTIONS"] = "true"
+        os.environ["GITHUB_REPOSITORY"] = "waleedba19/career-ops-scanner"
+        os.environ.pop("CAREEROPS_SYNC", None)
+        hosted = state_sync._api()
+        check("state_sync still works inside Actions",
+              hosted is not None
+              and hosted[0] == "https://api.github.com/repos/waleedba19/career-ops-scanner/contents",
+              str(hosted))
+    finally:
+        for k in ("GITHUB_ACTIONS", "GITHUB_REPOSITORY"):
+            os.environ.pop(k, None)
+        for k, v in saved.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+    # CAREEROPS_FORCE_BLOCKED is what actually re-opens the IP-gated Arabic
+    # boards when the scan runs from a home connection instead of Actions.
+    import config
+    os.environ["CAREEROPS_FORCE_BLOCKED"] = "1"
+    import importlib
+    importlib.reload(config)
+    check("CAREEROPS_FORCE_BLOCKED=1 un-gates the blocked source list",
+          config.FORCE_BLOCKED_SOURCES is True)
+
+    # single 09:00 delivery slot: the stale 18:00 branch is gone from adaptive
+    from scheduler import create_scheduler
+    import inspect as _i
+    adaptive = _i.getsource(create_scheduler)
+    check("adaptive mode has no 18:00 evening branch", "16 <= hour < 18" not in adaptive)
+
+    # the launcher itself must exist and be wired
+    ps1 = Path("tools/Run-ScanNow.ps1")
+    cmd = Path("tools/run_scan.cmd")
+    check("tools/Run-ScanNow.ps1 exists", ps1.exists())
+    check("tools/run_scan.cmd exists", cmd.exists())
+    if ps1.exists():
+        text = ps1.read_text(encoding="utf-8", errors="ignore")
+        check("launcher un-gates IP-blocked sources", "CAREEROPS_FORCE_BLOCKED" in text)
+        check("launcher shares state with the hosted scan",
+              "CAREEROPS_SYNC" in text and "state_sync.py" in text)
+
+
 if __name__ == "__main__":
     test_parsers()
     test_keyed_noops()
     test_linkedin_transport()
     test_gates()
     test_wiring()
+    test_on_demand_local_scan()
     print(f"\n{PASS} passed, {FAIL} failed")
     sys.exit(1 if FAIL else 0)

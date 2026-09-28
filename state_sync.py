@@ -1,5 +1,5 @@
 """
-State Sync — persistent memory for GitHub Actions runs.
+State Sync — persistent memory shared by hosted and local scans.
 
 GitHub Actions runners are ephemeral: the output/ directory is wiped
 after every run, so dedup, application tracking, learning data, and the
@@ -7,8 +7,12 @@ evolution brain were lost between scans. This module syncs the scanner's
 state files to a state/ folder in the repo via the GitHub Contents API,
 giving the system real memory that survives from run to run.
 
-Only active inside GitHub Actions (GITHUB_ACTIONS env var set). Locally
-it is a no-op, so local scans keep working unchanged.
+Active inside GitHub Actions (GITHUB_ACTIONS env var set), and also for
+explicit local runs that set CAREEROPS_SYNC=1 plus CAREEROPS_SYNC_REPO.
+That matters because an on-demand scan from a home machine (tools/
+Run-ScanNow.ps1) and the scheduled hosted scan must share ONE dedup
+memory — two separate state stores would make both re-announce the same
+jobs forever. With neither flag set, local behaviour is unchanged (no-op).
 """
 
 import base64
@@ -47,12 +51,22 @@ _HEADERS = {
 
 
 def _api() -> tuple[str, str] | None:
-    """Return (api contents base url, token) if running in GitHub Actions."""
-    token = os.getenv("GITHUB_TOKEN")
-    repo = os.getenv("GITHUB_REPOSITORY")
-    if not os.getenv("GITHUB_ACTIONS") or not token or not repo:
+    """Return (api contents base url, token) when state sync should run.
+
+    Inside GitHub Actions the repo/token come from the runner's own env.
+    For an on-demand local run we accept CAREEROPS_SYNC=1 together with
+    CAREEROPS_SYNC_REPO, so a home-machine scan persists the same state the
+    scheduled hosted scan reads.
+    """
+    token = os.getenv("GITHUB_TOKEN") or os.getenv("GH_TOKEN")
+    repo = os.getenv("GITHUB_REPOSITORY") or os.getenv("CAREEROPS_SYNC_REPO")
+    if not token or not repo:
         return None
-    return f"https://api.github.com/repos/{repo}/contents", token
+    if os.getenv("GITHUB_ACTIONS"):
+        return f"https://api.github.com/repos/{repo}/contents", token
+    if os.getenv("CAREEROPS_SYNC", "") == "1":
+        return f"https://api.github.com/repos/{repo}/contents", token
+    return None
 
 
 def _get_sha(base: str, token: str, url: str) -> str | None:

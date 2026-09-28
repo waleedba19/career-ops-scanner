@@ -1,0 +1,79 @@
+{
+ "updated": "2026-09-28T18:17:20Z",
+ "valid": {
+  "greenhouse": [
+   [
+    "Smartling",
+    "smartling"
+   ],
+   [
+    "Lokalise",
+    "lokalise"
+   ],
+   [
+    "Scribbr",
+    "scribbr"
+   ],
+   [
+    "Blend",
+    "blend"
+   ],
+   [
+    "Scale AI",
+    "scaleai"
+   ],
+   [
+    "Prolific",
+    "prolific"
+   ],
+   [
+    "Toloka",
+    "toloka"
+   ],
+   [
+    "Labelbox",
+    "labelbox"
+   ],
+   [
+    "Invisible",
+    "agency"
+   ],
+   [
+    "Turing",
+    "turing"
+   ]
+  ],
+  "ashby": [
+   [
+    "Mercor",
+    "mercor"
+   ],
+   [
+    "Deel",
+    "deel"
+   ]
+  ],
+  "workable": [
+   [
+    "Tamatem Games",
+    "tamatem"
+   ],
+   [
+    "Noon Academy",
+    "noonacademy"
+   ],
+   [
+    "Edraak",
+    "edraak"
+   ],
+   [
+    "Tarjama",
+    "tarjama"
+   ],
+   [
+    "Saudisoft",
+    "saudisoft"
+   ]
+  ]
+ }
+}

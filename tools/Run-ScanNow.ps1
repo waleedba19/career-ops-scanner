@@ -61,22 +61,31 @@ Get-Content -LiteralPath $envFile -Encoding UTF8 | ForEach-Object {
 }
 
 # ---- 2. Locate a Python 3.12+ interpreter -----------------------------------
-$python = $null
-foreach ($cand in @('python', 'py -3.12', 'py')) {
+# `python` is frequently not on PATH on a stock Windows install, so try the
+# py launcher first, then PATH, then the known local install.
+$pyExe = $null
+$pyArgs = @()
+$candidates = @(
+    @{ exe = 'py';                      args = @('-3.12') },
+    @{ exe = 'py';                      args = @('-3') },
+    @{ exe = 'python';                  args = @() },
+    @{ exe = 'D:\Python312\python.exe'; args = @() }
+)
+if ($env:CAREEROPS_PYTHON -and (Test-Path -LiteralPath $env:CAREEROPS_PYTHON)) {
+    $candidates = @(@{ exe = $env:CAREEROPS_PYTHON; args = @() }) + $candidates
+}
+foreach ($c in $candidates) {
     try {
-        if ($cand -eq 'python') {
-            $null = & python --version 2>&1
-            if ($LASTEXITCODE -eq 0) { $python = 'python'; break }
-        } else {
-            $null = & ($cand.Split(' ') + @('--version')) 2>&1
-            if ($LASTEXITCODE -eq 0) { $python = $cand; break }
-        }
+        $null = & $c.exe @($c.args + @('--version')) 2>&1
+        if ($LASTEXITCODE -eq 0) { $pyExe = $c.exe; $pyArgs = $c.args; break }
     } catch { }
 }
-if (-not $python) {
-    Write-Host 'ERROR: no python interpreter found on PATH.' -ForegroundColor Red
+if (-not $pyExe) {
+    Write-Host 'ERROR: no python interpreter found. Set CAREEROPS_PYTHON to the full' -ForegroundColor Red
+    Write-Host '       path of python.exe and re-run.' -ForegroundColor Red
     exit 1
 }
+$py = @($pyExe) + $pyArgs
 
 # ---- 3. Point state sync at the repo, and un-block the IP-gated sources ------
 # GITHUB_TOKEN: the hosted run gets it from secrets; locally take it from .env.
@@ -101,14 +110,12 @@ if (-not $env:GITHUB_TOKEN) {
     $env:CAREEROPS_SYNC = '0'
 }
 
-$py = { param($argsList) & $python.Split(' ') $argsList }
-
 Write-Host ''
 Write-Host '===============================================================' -ForegroundColor Cyan
 Write-Host " CareerOps on-demand scan   mode=$Mode" -ForegroundColor Cyan
-Write-Host " started $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') (Libya local time)" -ForegroundColor Cyan
+Write-Host " started $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')" -ForegroundColor Cyan
 Write-Host '===============================================================' -ForegroundColor Cyan
-Write-Host " python      : $python"
+Write-Host " python      : $pyExe $($pyArgs -join ' ')"
 Write-Host " IP-gated sources: ENABLED (running from this machine, not Actions)"
 Write-Host " state sync  : $(if ($env:CAREEROPS_SYNC -eq '1') { 'ON  (shared with the hosted 09:00 scan)' } else { 'OFF' })"
 Write-Host ''
@@ -118,21 +125,36 @@ Set-Location -LiteralPath $repo
 # ---- 4. Pull shared state (dedup memory) ------------------------------------
 if ($env:CAREEROPS_SYNC -eq '1') {
     Write-Host '[1/3] Downloading state from GitHub...' -ForegroundColor Yellow
-    & $python.Split(' ') 'state_sync.py' 'download'
+    & $pyExe @($pyArgs + @('state_sync.py', 'download'))
     if ($LASTEXITCODE -ne 0) { Write-Host '  (state download failed - continuing with local state)' -ForegroundColor DarkYellow }
 }
 
 # ---- 5. The scan ------------------------------------------------------------
-Write-Host "[2/3] Running scanner (this takes $Mode budget)..." -ForegroundColor Yellow
+# Playwright drives several sources. A fresh machine has the pip package but
+# not the browser binaries, and every Playwright source then returns 0 jobs
+# with an "Executable doesn't exist" error. Install once, quietly skip after.
+Write-Host "[2/3] Running scanner (mode=$Mode)..." -ForegroundColor Yellow
+$playwrightOk = $true
+try {
+    $null = & $pyExe @($pyArgs + @('-c', 'import playwright')) 2>&1
+    if ($LASTEXITCODE -ne 0) { $playwrightOk = $false }
+} catch { $playwrightOk = $false }
+if (-not $playwrightOk) {
+    Write-Host '  installing playwright + chromium (first run only)...' -ForegroundColor DarkYellow
+    & $pyExe @($pyArgs + @('-m', 'pip', 'install', '-q', 'playwright'))
+    & $pyExe @($pyArgs + @('-m', 'playwright', 'install', 'chromium'))
+} else {
+    $null = & $pyExe @($pyArgs + @('-m', 'playwright', 'install', 'chromium')) 2>&1
+}
 $start = Get-Date
-& $python.Split(' ') 'scanner.py' '--mode' $Mode
+& $pyExe @($pyArgs + @('scanner.py', '--mode', $Mode))
 $scanRc = $LASTEXITCODE
 $mins = [math]::Round(((Get-Date) - $start).TotalMinutes, 1)
 
 # ---- 6. Push state back ------------------------------------------------------
 if ($env:CAREEROPS_SYNC -eq '1' -and -not $NoUpload) {
     Write-Host '[3/3] Uploading state to GitHub...' -ForegroundColor Yellow
-    & $python.Split(' ') 'state_sync.py' 'upload'
+    & $pyExe @($pyArgs + @('state_sync.py', 'upload'))
     if ($LASTEXITCODE -ne 0) { Write-Host '  (state upload failed - next run may re-announce these jobs)' -ForegroundColor DarkYellow }
 } else {
     Write-Host '[3/3] Skipping state upload.' -ForegroundColor DarkGray

@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-15T00:46:14.341566+00:00",
-    "matched_count": 1,
-    "all_count": 332,
-    "jobs": [
-      {
-        "title": "Middle School ELA Teacher",
-        "company": "Stride, Inc.",
-        "url": "https://www.linkedin.com/jobs/view/middle-school-ela-teacher-at-stride-inc-4467416755",
-        "score": 4,
-        "category": "Other",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-15T00:53:02.379070+00:00",
     "matched_count": 4,
     "all_count": 334,
@@ -1841,6 +1826,12 @@
     "date": "2026-09-27T13:00:03.588303+00:00",
     "matched_count": 0,
     "all_count": 6460,
+    "jobs": []
+  },
+  {
+    "date": "2026-09-28T15:11:08.200978+00:00",
+    "matched_count": 0,
+    "all_count": 6393,
     "jobs": []
   }
 ]

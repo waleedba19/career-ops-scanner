@@ -482,6 +482,15 @@ def test_on_demand_local_scan():
         check("launcher shares state with the hosted scan",
               "CAREEROPS_SYNC" in text and "state_sync.py" in text)
 
+    # The probe result must survive the run. scanner reads state/, but
+    # state_sync only ships output/ back to the repo, so a probe that wrote
+    # only to state/ was discarded and every run re-probed from scratch.
+    probe = Path("company_board_probe.py").read_text(encoding="utf-8")
+    check("company_board_probe mirrors its result into output/ for state_sync",
+          'outdir / "valid_company_slugs.json"' in probe)
+    check("company_board_probe still writes state/ for the scanner",
+          'state / "valid_company_slugs.json"' in probe)
+
 
 if __name__ == "__main__":
     test_parsers()

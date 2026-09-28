@@ -102,7 +102,16 @@ async def _run() -> None:
     state.mkdir(parents=True, exist_ok=True)
     out = {"updated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "valid": ok}
     path = state / "valid_company_slugs.json"
-    path.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
+    payload = json.dumps(out, indent=1, ensure_ascii=False)
+    path.write_text(payload, encoding="utf-8")
+    # The scanner reads state/, but state_sync only ships files that live in
+    # output/ back to the repo. Writing only here meant the probe result was
+    # discarded after every run and the next run re-probed every slug from
+    # scratch. Mirror it into output/ so it persists and the download step
+    # stops reporting "not present on remote".
+    outdir = ROOT / "output"
+    outdir.mkdir(parents=True, exist_ok=True)
+    (outdir / "valid_company_slugs.json").write_text(payload, encoding="utf-8")
     summary = " | ".join(f"{a}: {len(v)}" for a, v in ok.items()) or "none"
     print(f"\nValid slugs -> {path} ({summary})")
 

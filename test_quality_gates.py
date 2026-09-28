@@ -319,6 +319,13 @@ def test_linkedin_remote_truthfulness():
           get_scan_label()["label"])
     ns = next_scan_time()
     check("next_scan_time is 09:00, never 18:00", "09:00" in ns and "18:00" not in ns, ns)
+    # The cron is a request, not a guarantee: 2026-09-24..28 all fired +5.1h to
+    # +8.0h late, so a bare "09:00 Libya" promise is a lie in the other
+    # direction. The footer must disclose the real delivery window.
+    check("next_scan_time admits GitHub's scheduling delay",
+          "scheduler" in ns.lower() and "afternoon" in ns.lower(), ns)
+    check("next_scan_time does not over-promise a bare time",
+          ns.strip() != "09:00 Libya today" and ns.strip() != "09:00 Libya tomorrow", ns)
 
     # Workplace anchor: postings explicitly tied to an office must be dropped
     # even when the card says "Remote" — this is the Wasael/Fisher class that

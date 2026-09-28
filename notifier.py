@@ -62,16 +62,20 @@ def get_scan_label() -> dict:
 
 
 def next_scan_time() -> str:
-    """Human phrase for the next scheduled scan, in Libya local time.
+    """Honest phrase for the next scheduled scan, in Libya local time.
 
-    Exactly ONE scheduled scan per day (07:00 UTC = 09:00 Libya). GitHub cron
-    latency can push the run beyond 09:00, so a completion after 09:00 must
-    read 'tomorrow' — anything else would resurrect the deleted 18:00 slot.
+    There is exactly ONE scheduled scan per day (cron 07:00 UTC, written as
+    09:00 Libya). That cron is a *request*, not a guarantee: across the
+    2026-09-24..28 runs GitHub started it +5.1h to +8.0h late, so the digest
+    actually landed 14:00-17:00 Libya every single day. Printing a bare
+    "09:00 Libya" therefore promises a time the system does not keep - the
+    same class of dishonesty as the deleted 18:00 slot, just in the other
+    direction. Say what is scheduled and what actually happens.
     """
     now = now_libya()
-    if now.hour < 9:
-        return "09:00 Libya today"
-    return "09:00 Libya tomorrow"
+    when = "today" if now.hour < 13 else "tomorrow"
+    return (f"{when} - scheduled 09:00 Libya, "
+            f"but GitHub's scheduler has been delivering it early afternoon")
 
 
 # ---------------------------------------------------------------------------

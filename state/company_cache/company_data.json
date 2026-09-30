@@ -1831,5 +1831,27 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-09-28T18:26:25.256583+00:00"
+  },
+  "International Committee of the Red Cross - ICRC": {
+    "name": "International Committee of the Red Cross - ICRC",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-09-30T13:32:30.505665+00:00"
+  },
+  "Arabic Interpreter": {
+    "name": "Arabic Interpreter",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-09-30T13:32:30.507539+00:00"
   }
 }

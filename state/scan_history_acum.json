@@ -1,28 +1,5 @@
 [
   {
-    "date": "2026-09-15T18:04:09.776372+00:00",
-    "matched_count": 2,
-    "all_count": 274,
-    "jobs": [
-      {
-        "title": "Creative Translator & Copywriter (Arabic)",
-        "company": "Salt",
-        "url": "https://eg.linkedin.com/jobs/view/creative-translator-copywriter-arabic-at-salt-4465524922",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      },
-      {
-        "title": "Copy Editor",
-        "company": "Newsweek",
-        "url": "https://uk.linkedin.com/jobs/view/copy-editor-at-newsweek-4457110355",
-        "score": 100,
-        "category": "Editing",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-15T18:15:48.343948+00:00",
     "matched_count": 2,
     "all_count": 314,
@@ -1775,6 +1752,29 @@
         "score": 87,
         "category": "Arabic Translation",
         "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-01T14:26:30.286770+00:00",
+    "matched_count": 2,
+    "all_count": 6637,
+    "jobs": [
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://lt.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4455416100",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://pl.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4455414090",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
       }
     ]
   }

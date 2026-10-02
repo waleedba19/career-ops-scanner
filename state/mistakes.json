@@ -32,6 +32,22 @@
       {
         "reason": "ai_poor_fit",
         "date": "2026-09-24T12:48:36.680088+00:00"
+      },
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-10-02T13:55:57.761678+00:00"
+      },
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-10-02T13:55:57.762253+00:00"
+      },
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-10-02T13:55:57.762689+00:00"
+      },
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-10-02T13:55:57.763072+00:00"
       }
     ],
     "Turing": [
@@ -50,7 +66,7 @@
     ]
   },
   "categories": {
-    "Arabic Translation": 1,
+    "Arabic Translation": 5,
     "Translation (any pair)": 4,
     "Language Services (company)": 1,
     "Admin": 1
@@ -85,7 +101,27 @@
       "title": "Translation Project Coordinator (Freshly Grads)",
       "reason": "ai_poor_fit",
       "date": "2026-09-24T12:48:36.680101+00:00"
+    },
+    {
+      "title": "Project Coordinator Intern - BA",
+      "reason": "ai_poor_fit",
+      "date": "2026-10-02T13:55:57.761704+00:00"
+    },
+    {
+      "title": "Internship in Language Resource Planning",
+      "reason": "ai_poor_fit",
+      "date": "2026-10-02T13:55:57.762267+00:00"
+    },
+    {
+      "title": "Senior Technical Architect",
+      "reason": "ai_poor_fit",
+      "date": "2026-10-02T13:55:57.762705+00:00"
+    },
+    {
+      "title": "Internship in Translation Project Management",
+      "reason": "ai_poor_fit",
+      "date": "2026-10-02T13:55:57.763084+00:00"
     }
   ],
-  "updated": "2026-09-24T12:48:36.680106+00:00"
+  "updated": "2026-10-02T13:55:57.763088+00:00"
 }

@@ -1,21 +1,12 @@
 {
-  "total_scans": 195,
-  "total_matches": 358,
-  "streak_days": 27,
-  "last_scan_date": "2026-10-01",
-  "total_jobs_scanned": 692524,
+  "total_scans": 196,
+  "total_matches": 375,
+  "streak_days": 28,
+  "last_scan_date": "2026-10-02",
+  "total_jobs_scanned": 699131,
   "best_day_matches": 34,
   "best_day_date": "2026-09-18",
   "daily_history": [
-    {
-      "date": "2026-09-16",
-      "total_fetched": 330,
-      "matches": 0,
-      "old_verified": 0,
-      "near_misses": 0,
-      "sources": 10,
-      "fresh_count": 0
-    },
     {
       "date": "2026-09-16",
       "total_fetched": 404,
@@ -816,12 +807,21 @@
       "near_misses": 4,
       "sources": 32,
       "fresh_count": 459
+    },
+    {
+      "date": "2026-10-02",
+      "total_fetched": 6607,
+      "matches": 17,
+      "old_verified": 35,
+      "near_misses": 4,
+      "sources": 31,
+      "fresh_count": 2224
     }
   ],
   "category_trends": {
     "Arabic Translation": {
-      "count": 106,
-      "last_seen": "2026-10-01"
+      "count": 114,
+      "last_seen": "2026-10-02"
     },
     "Editing": {
       "count": 61,
@@ -836,8 +836,8 @@
       "last_seen": "2026-09-16"
     },
     "Translation (any pair)": {
-      "count": 17,
-      "last_seen": "2026-09-28"
+      "count": 26,
+      "last_seen": "2026-10-02"
     },
     "Editing & Proofreading": {
       "count": 9,
@@ -930,8 +930,8 @@
       "last_seen": "2026-09-16"
     },
     "recruitee": {
-      "matches": 18,
-      "last_seen": "2026-09-26"
+      "matches": 35,
+      "last_seen": "2026-10-02"
     },
     "workable": {
       "matches": 1,

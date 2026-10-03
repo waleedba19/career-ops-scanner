@@ -608,6 +608,11 @@ NEGATIVE_KEYWORDS = [
     ".net developer", "dotnet developer", "c# developer", "react developer",
     "node developer", "golang developer", "rust developer",
     "data engineer", "machine learning engineer", "ai engineer", "mlops",
+    # "Application Developer (.NET, C#)" reached the 2026-10-02 digest at 100%
+    # on the word "multilingual" in the boilerplate. Any software-engineering
+    # title is never translation work, whatever the tech stack is called.
+    "application developer", "software engineer", "programmer", "developer",
+    "devops engineer", "solutions architect", "systems engineer",
     "open source contributor",
     # Healthcare / non-remote fields
     "nurse", "doctor", "pharmacist", "healthcare",
@@ -953,6 +958,10 @@ SECONDARY_MATCH_CAP = 45
 # core translation role WITHOUT an explicit Arabic signal is capped to REVIEW.
 NON_ARABIC_CAP = 45
 
+# Marker used by get_match_score to flag "this posting was DEMOTED to review
+# only" so score_job() cannot let a later company bonus undo the demotion.
+_REVIEW_ONLY_REASON = re.compile(r"review only", re.I)
+
 # INVARIANT: the company-boost floor must sit ABOVE every "review only" cap.
 # The caps above exist to demote a posting to REVIEW (never emailed). A floor
 # below them silently undoes the demotion for any known-LSP employer, which is
@@ -1231,7 +1240,16 @@ def get_match_score(title: str, desc: str) -> dict:
         best_cat = "Other"
         why_final = ["hard drop: no translation/language/content signal in job"]
     total = round(total / 5) * 5
-    return {"score": total, "category": best_cat, "why": why_final[:8]}
+    # `review_only` is AUTHORITATIVE. get_match_score may demote a posting to
+    # REVIEW (wrong language pair, no Arabic, not a translation role, secondary
+    # category). score_job() then adds a company bonus and company priority
+    # AFTER this function returns; without this flag those bonuses re-raised
+    # every demoted posting back into STRONG. That is how 17 TransPerfect
+    # Project Coordinator / Application Developer / internship roles were
+    # emailed at 100% on 2026-10-02 with the reason line literally reading
+    # "translation role without Arabic (review only)".
+    return {"score": total, "category": best_cat, "why": why_final[:8],
+            "review_only": bool(_REVIEW_ONLY_REASON.search(" | ".join(why_final)))}
 
 
 # Company-aware scoring tiers — jobs at translation/language companies get
@@ -1401,6 +1419,17 @@ def score_job(job: dict) -> dict:
     role_text = f"{str(job.get('title') or '').lower()} {str(job.get('description') or '').lower()}"
     if category not in CORE_CATEGORIES or not CORE_LANGUAGE_ROLES.search(role_text):
         score = max(0, min(score, SECONDARY_MATCH_CAP))
+
+    # The caps above were applied BEFORE the company bonus and company priority
+    # were added, so they must be re-applied here or those bonuses undo them.
+    # get_match_score records that it demoted this posting; that demotion is
+    # authoritative and no employer bonus may lift it back into STRONG.
+    if base.get("review_only"):
+        score = max(0, min(score, SECONDARY_MATCH_CAP))
+        why.append("demoted to review-only; company bonus cannot lift it")
+        # A demoted posting must never carry the boost that made it eligible.
+        bonus["company_boost"] = 0
+        bonus["high_relevance"] = False
 
     return {
         "score": int(max(0, min(100, score))),

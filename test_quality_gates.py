@@ -471,6 +471,67 @@ def test_arabic_english_pair_semantics():
         check(f"pair shorthand still delivers: {title[:40]}", ok,
               f"score={sc['score']} {sc['why'][:2]}")
 
+    # Regression: 2026-10-02 emailed 17 jobs at 100%, every one TransPerfect
+    # recruiter noise, and every one whose own "Why this fits" line said
+    # "translation role without Arabic (review only)". score_job() adds the
+    # company bonus AFTER get_match_score() caps a posting, so the cap was
+    # undone: 45 + 50 = 95, then company priority, then 100%.
+    import scanner as _sc
+    tp = ("TransPerfect is the largest language services company in the world. From "
+          "offices in over 100 cities we deliver services in 170+ languages. You will "
+          "manage the entire life-cycle of language projects and work with contract "
+          "translators and linguists.")
+    dev = ("At TransPerfect we build technology that helps organizations communicate "
+           "across languages and cultures, powering workflows in translation, AI, "
+           "automation and multilingual content delivery. You will build scalable "
+           "systems using C# and .NET.")
+
+    def ships_at_lsp(title, desc):
+        job = {"title": title, "description": desc, "company": "TransPerfect",
+               "location": "Remote", "url": "https://x/y", "posted": "2026-10-02",
+               "source": "recruitee"}
+        r = _sc.score_job(job)
+        job.update(r)
+        floor = r["score"] >= _sc.MIN_MATCH_SCORE or (
+            r.get("company_boost") and r["score"] >= _sc.COMPANY_MIN_SCORE)
+        return bool(floor and len(_sc.drop_unqualified_matches([job])) == 1), r
+
+    for title, desc in [
+        ("Project Coordinator", tp),
+        ("Translation Project Coordinator | Lisbon", tp),
+        ("Gaming Project Coordinator", tp),
+        ("Internship in Translation Project Management", tp),
+        ("Shanghai Project Coordinator", tp),
+        ("Associate Vendor Manager", "Support linguist recruitment and testing."),
+        ("Client Services Associate (Medical Writing)", tp),
+        ("Application Developer (.NET, C#)", dev),
+        ("Localisation Specialist (Translator) - Arabic & French",
+         "Localisation for our Arabic and French markets."),
+    ]:
+        bad, r = ships_at_lsp(title, desc)
+        check(f"LSP recruiter noise blocked: {title[:42]}", not bad,
+              f"score={r['score']} boost={r.get('company_boost')}")
+
+    # ...and the boost must not be what is carrying genuine work either.
+    for title, desc in [
+        ("Arabic-English Translator (Remote)", "Translate documents between Arabic and English."),
+        ("English to Arabic Translator", "Translate content from English into Arabic."),
+        ("Arabic Translator", "Remote translation work involving Arabic, worldwide."),
+    ]:
+        good, r = ships_at_lsp(title, desc)
+        check(f"genuine Arabic<->English still ships at an LSP: {title[:38]}", good,
+              f"score={r['score']}")
+
+    # A demotion must be authoritative: get_match_score flags it and no bonus
+    # may lift it back.
+    flagged = _sc.get_match_score("Project Coordinator", tp)
+    check("get_match_score reports review_only for a demoted posting",
+          flagged.get("review_only") is True, str(flagged.get("why"))[:2])
+    genuine = _sc.get_match_score("Arabic-English Translator",
+                                  "Translate documents between Arabic and English.")
+    check("get_match_score does not flag genuine Arabic<->English work",
+          genuine.get("review_only") is False, str(genuine.get("why"))[:2])
+
 
 def test_replay_history():
     print("\n=== Replay production fresh_matches_history.json ===")

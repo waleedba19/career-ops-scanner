@@ -1853,5 +1853,15 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-09-30T13:32:30.507539+00:00"
+  },
+  "ICRC - International Committee of the Red Cross": {
+    "name": "ICRC - International Committee of the Red Cross",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-10-03T12:29:12.106834+00:00"
   }
 }

@@ -19,25 +19,25 @@
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Exact Arabic\u2011English interpreting required"
+        "reason": "Exact Arabic\u2011English bilingual role"
       },
       "experience_match": {
         "score": 92,
-        "reason": "5+ years translation, legal & academic domains"
+        "reason": "5+ years translation, legal & academic focus"
       },
       "behavioral_fit": {
-        "score": 80,
-        "reason": "Remote work likely, flexible environment"
+        "score": 85,
+        "reason": "Remote\u2011friendly, collaborative culture"
       },
       "location_logistics": {
         "verdict": "PASS",
-        "reason": "No specific on\u2011site or residency requirement"
+        "reason": "No on\u2011site or visa constraints indicated"
       },
       "career_alignment": {
-        "score": 95,
+        "score": 90,
         "reason": "Directly builds translation/localization career"
       },
-      "overall_score": 92,
+      "overall_score": 91,
       "verdict": "Strong Fit",
       "strengths": [
         "Native Arabic, C1 English",
@@ -45,15 +45,15 @@
         "Remote work experience"
       ],
       "gaps": [
-        "Limited live interpreting practice",
-        "No prior humanitarian sector experience"
+        "No explicit live\u2011interpreting experience",
+        "Limited humanitarian sector exposure"
       ],
-      "recommendation": "Apply confidently; emphasize your bilingual proficiency, translation accuracy, and ability to work remotely for humanitarian missions.",
-      "interview_prep": "1. Describe a challenging Arabic\u2011English translation you completed and how you ensured accuracy. (Show methodology, QA, tools.)\n2. How would you handle high\u2011pressure simultaneous interpreting in a crisis setting? (Stress management, preparation, note\u2011taking.)\n3. Why do you want to work for ICRC and how does your background support humanitarian goals? (Align values, language skills, remote flexibility.)",
-      "one_line_summary": "Arabic\u2011English interpreter role at ICRC \u2013 excellent remote fit for Waleed."
+      "recommendation": "Apply \u2013 the role aligns closely with your core language services expertise and remote work preference.",
+      "interview_prep": "1. Describe a time you interpreted high\u2011stakes information under pressure \u2013 highlight accuracy and composure. 2. How do you ensure confidentiality when handling sensitive legal or humanitarian documents? \u2013 stress strict data handling and ethics. 3. What strategies do you use to manage terminology consistency across Arabic\u2011English contexts? \u2013 mention CAT tools and terminology databases.",
+      "one_line_summary": "Arabic\u2011English interpreter role at ICRC matches your translation expertise and remote work goal."
     },
-    "ai_insight": "Arabic\u2011English interpreter role at ICRC \u2013 excellent remote fit for Waleed.",
-    "ai_overall_score": 92,
+    "ai_insight": "Arabic\u2011English interpreter role at ICRC matches your translation expertise and remote work goal.",
+    "ai_overall_score": 91,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
       "Native Arabic, C1 English",
@@ -61,16 +61,16 @@
       "Remote work experience"
     ],
     "ai_gaps": [
-      "Limited live interpreting practice",
-      "No prior humanitarian sector experience"
+      "No explicit live\u2011interpreting experience",
+      "Limited humanitarian sector exposure"
     ],
-    "ai_recommendation": "Apply confidently; emphasize your bilingual proficiency, translation accuracy, and ability to work remotely for humanitarian missions.",
-    "ai_interview_prep": "1. Describe a challenging Arabic\u2011English translation you completed and how you ensured accuracy. (Show methodology, QA, tools.)\n2. How would you handle high\u2011pressure simultaneous interpreting in a crisis setting? (Stress management, preparation, note\u2011taking.)\n3. Why do you want to work for ICRC and how does your background support humanitarian goals? (Align values, language skills, remote flexibility.)",
+    "ai_recommendation": "Apply \u2013 the role aligns closely with your core language services expertise and remote work preference.",
+    "ai_interview_prep": "1. Describe a time you interpreted high\u2011stakes information under pressure \u2013 highlight accuracy and composure. 2. How do you ensure confidentiality when handling sensitive legal or humanitarian documents? \u2013 stress strict data handling and ethics. 3. What strategies do you use to manage terminology consistency across Arabic\u2011English contexts? \u2013 mention CAT tools and terminology databases.",
     "ai_technical_skills": 95,
     "ai_experience_match": 92,
-    "ai_behavioral_fit": 80,
+    "ai_behavioral_fit": 85,
     "ai_location_verdict": "PASS",
-    "ai_career_alignment": 95,
+    "ai_career_alignment": 90,
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -127,17 +127,7 @@
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-10-03T12:29:12.846510+00:00",
-    "expires_date": "2026-10-06T12:29:12.846510+00:00",
-    "scan_date": "2026-10-03T14:29:15.463344+02:00"
-  },
-  {
-    "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
-    "title": "Arabic Interpreter",
-    "company": "International Committee of the Red Cross - ICRC",
-    "score": 95,
-    "category": "Arabic Translation",
-    "found_date": "2026-09-30T13:32:31.918453+00:00",
-    "expires_date": "2026-10-03T13:32:31.918453+00:00",
-    "lifecycle_status": "old"
+    "expires_date": "2026-10-06T15:14:12.778144+00:00",
+    "scan_date": "2026-10-03T17:14:13.252016+02:00"
   }
 ]

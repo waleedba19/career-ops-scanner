@@ -19,58 +19,58 @@
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Exact Arabic\u2011English bilingual role"
+        "reason": "Job requires Arabic-English bilingual communication"
       },
       "experience_match": {
-        "score": 92,
-        "reason": "5+ years translation, legal & academic focus"
+        "score": 82,
+        "reason": "Strong translation background, no direct interpreting listed"
       },
       "behavioral_fit": {
-        "score": 85,
-        "reason": "Remote\u2011friendly, collaborative culture"
+        "score": 78,
+        "reason": "Prefers remote, flexible work; ICRC may need occasional travel"
       },
       "location_logistics": {
-        "verdict": "PASS",
-        "reason": "No on\u2011site or visa constraints indicated"
+        "verdict": "FLAG",
+        "reason": "Location B2 unclear; remote not confirmed"
       },
       "career_alignment": {
-        "score": 90,
-        "reason": "Directly builds translation/localization career"
+        "score": 92,
+        "reason": "Directly supports language services career goal"
       },
-      "overall_score": 91,
+      "overall_score": 88,
       "verdict": "Strong Fit",
       "strengths": [
         "Native Arabic, C1 English",
-        "Legal & academic translation expertise",
+        "5+ years translation & localization",
         "Remote work experience"
       ],
       "gaps": [
-        "No explicit live\u2011interpreting experience",
-        "Limited humanitarian sector exposure"
+        "No proven interpreting experience",
+        "Uncertain remote/hybrid work setup"
       ],
-      "recommendation": "Apply \u2013 the role aligns closely with your core language services expertise and remote work preference.",
-      "interview_prep": "1. Describe a time you interpreted high\u2011stakes information under pressure \u2013 highlight accuracy and composure. 2. How do you ensure confidentiality when handling sensitive legal or humanitarian documents? \u2013 stress strict data handling and ethics. 3. What strategies do you use to manage terminology consistency across Arabic\u2011English contexts? \u2013 mention CAT tools and terminology databases.",
-      "one_line_summary": "Arabic\u2011English interpreter role at ICRC matches your translation expertise and remote work goal."
+      "recommendation": "Apply and emphasize your bilingual expertise; clarify remote possibilities during interview.",
+      "interview_prep": "1. Describe your experience translating legal documents and how it prepares you for interpreting. Answer: Highlight accuracy, terminology management, and quick comprehension. 2. How do you handle high\u2011pressure, real\u2011time language situations? Answer: Discuss preparation, active listening, and stress\u2011management techniques. 3. Are you comfortable traveling or working on\u2011site if needed? Answer: State willingness while preferring remote arrangements.",
+      "one_line_summary": "Arabic\u2011English translator with strong language skills \u2013 good fit for ICRC interpreter role."
     },
-    "ai_insight": "Arabic\u2011English interpreter role at ICRC matches your translation expertise and remote work goal.",
-    "ai_overall_score": 91,
+    "ai_insight": "Arabic\u2011English translator with strong language skills \u2013 good fit for ICRC interpreter role.",
+    "ai_overall_score": 88,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
       "Native Arabic, C1 English",
-      "Legal & academic translation expertise",
+      "5+ years translation & localization",
       "Remote work experience"
     ],
     "ai_gaps": [
-      "No explicit live\u2011interpreting experience",
-      "Limited humanitarian sector exposure"
+      "No proven interpreting experience",
+      "Uncertain remote/hybrid work setup"
     ],
-    "ai_recommendation": "Apply \u2013 the role aligns closely with your core language services expertise and remote work preference.",
-    "ai_interview_prep": "1. Describe a time you interpreted high\u2011stakes information under pressure \u2013 highlight accuracy and composure. 2. How do you ensure confidentiality when handling sensitive legal or humanitarian documents? \u2013 stress strict data handling and ethics. 3. What strategies do you use to manage terminology consistency across Arabic\u2011English contexts? \u2013 mention CAT tools and terminology databases.",
+    "ai_recommendation": "Apply and emphasize your bilingual expertise; clarify remote possibilities during interview.",
+    "ai_interview_prep": "1. Describe your experience translating legal documents and how it prepares you for interpreting. Answer: Highlight accuracy, terminology management, and quick comprehension. 2. How do you handle high\u2011pressure, real\u2011time language situations? Answer: Discuss preparation, active listening, and stress\u2011management techniques. 3. Are you comfortable traveling or working on\u2011site if needed? Answer: State willingness while preferring remote arrangements.",
     "ai_technical_skills": 95,
-    "ai_experience_match": 92,
-    "ai_behavioral_fit": 85,
-    "ai_location_verdict": "PASS",
-    "ai_career_alignment": 90,
+    "ai_experience_match": 82,
+    "ai_behavioral_fit": 78,
+    "ai_location_verdict": "FLAG",
+    "ai_career_alignment": 92,
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -119,15 +119,15 @@
     "requirements": [
       "is an advantage. Strongly motivated by humanitarian work"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/ICRC - International Committee_Arabic Interpreter_20261003.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/ICRC - International Committee_Arabic Interpreter_20261004.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/ICRC - International Committee_Arabic Interpreter_20261003.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/ICRC - International Committee_Arabic Interpreter_20261004.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-10-03T12:29:12.846510+00:00",
-    "expires_date": "2026-10-06T15:14:12.778144+00:00",
-    "scan_date": "2026-10-03T17:14:13.252016+02:00"
+    "expires_date": "2026-10-07T13:12:27.986375+00:00",
+    "scan_date": "2026-10-04T15:12:28.722274+02:00"
   }
 ]

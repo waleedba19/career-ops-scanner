@@ -18,56 +18,56 @@
     "dup_pool": true,
     "ai_scoring": {
       "technical_skills": {
-        "score": 95,
-        "reason": "Job requires Arabic-English bilingual communication"
+        "score": 92,
+        "reason": "Exact Arabic-English language role"
       },
       "experience_match": {
-        "score": 82,
-        "reason": "Strong translation background, no direct interpreting listed"
+        "score": 93,
+        "reason": "5+ years translation, legal, academic work"
       },
       "behavioral_fit": {
         "score": 78,
-        "reason": "Prefers remote, flexible work; ICRC may need occasional travel"
+        "reason": "Prefers remote; role may need occasional travel"
       },
       "location_logistics": {
         "verdict": "FLAG",
-        "reason": "Location B2 unclear; remote not confirmed"
+        "reason": "Location unclear (B2), possible hybrid"
       },
       "career_alignment": {
         "score": 92,
-        "reason": "Directly supports language services career goal"
+        "reason": "Directly builds translation/localization career"
       },
-      "overall_score": 88,
+      "overall_score": 90,
       "verdict": "Strong Fit",
       "strengths": [
-        "Native Arabic, C1 English",
-        "5+ years translation & localization",
+        "Native Arabic speaker",
+        "Legal & academic translation expertise",
         "Remote work experience"
       ],
       "gaps": [
-        "No proven interpreting experience",
-        "Uncertain remote/hybrid work setup"
+        "Limited formal interpreting experience",
+        "Unclear travel/onsite expectations"
       ],
-      "recommendation": "Apply and emphasize your bilingual expertise; clarify remote possibilities during interview.",
-      "interview_prep": "1. Describe your experience translating legal documents and how it prepares you for interpreting. Answer: Highlight accuracy, terminology management, and quick comprehension. 2. How do you handle high\u2011pressure, real\u2011time language situations? Answer: Discuss preparation, active listening, and stress\u2011management techniques. 3. Are you comfortable traveling or working on\u2011site if needed? Answer: State willingness while preferring remote arrangements.",
-      "one_line_summary": "Arabic\u2011English translator with strong language skills \u2013 good fit for ICRC interpreter role."
+      "recommendation": "Apply and emphasize your bilingual translation background; ask about remote/hybrid options.",
+      "interview_prep": "1. Describe your experience interpreting Arabic-English in high\u2011stress settings \u2013 highlight any ad\u2011hoc interpreting you\u2019ve done. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 mention CAT tools, terminology management. 3. Are you comfortable traveling to conflict zones or field sites? \u2013 stress willingness but prefer remote where possible.",
+      "one_line_summary": "Arabic Interpreter role aligns well; apply, clarify remote vs onsite."
     },
-    "ai_insight": "Arabic\u2011English translator with strong language skills \u2013 good fit for ICRC interpreter role.",
-    "ai_overall_score": 88,
+    "ai_insight": "Arabic Interpreter role aligns well; apply, clarify remote vs onsite.",
+    "ai_overall_score": 90,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Native Arabic, C1 English",
-      "5+ years translation & localization",
+      "Native Arabic speaker",
+      "Legal & academic translation expertise",
       "Remote work experience"
     ],
     "ai_gaps": [
-      "No proven interpreting experience",
-      "Uncertain remote/hybrid work setup"
+      "Limited formal interpreting experience",
+      "Unclear travel/onsite expectations"
     ],
-    "ai_recommendation": "Apply and emphasize your bilingual expertise; clarify remote possibilities during interview.",
-    "ai_interview_prep": "1. Describe your experience translating legal documents and how it prepares you for interpreting. Answer: Highlight accuracy, terminology management, and quick comprehension. 2. How do you handle high\u2011pressure, real\u2011time language situations? Answer: Discuss preparation, active listening, and stress\u2011management techniques. 3. Are you comfortable traveling or working on\u2011site if needed? Answer: State willingness while preferring remote arrangements.",
-    "ai_technical_skills": 95,
-    "ai_experience_match": 82,
+    "ai_recommendation": "Apply and emphasize your bilingual translation background; ask about remote/hybrid options.",
+    "ai_interview_prep": "1. Describe your experience interpreting Arabic-English in high\u2011stress settings \u2013 highlight any ad\u2011hoc interpreting you\u2019ve done. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 mention CAT tools, terminology management. 3. Are you comfortable traveling to conflict zones or field sites? \u2013 stress willingness but prefer remote where possible.",
+    "ai_technical_skills": 92,
+    "ai_experience_match": 93,
     "ai_behavioral_fit": 78,
     "ai_location_verdict": "FLAG",
     "ai_career_alignment": 92,
@@ -119,15 +119,15 @@
     "requirements": [
       "is an advantage. Strongly motivated by humanitarian work"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/ICRC - International Committee_Arabic Interpreter_20261004.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/ICRC - International Committee_Arabic Interpreter_20261005.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/ICRC - International Committee_Arabic Interpreter_20261004.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/ICRC - International Committee_Arabic Interpreter_20261005.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-10-03T12:29:12.846510+00:00",
-    "expires_date": "2026-10-07T13:12:27.986375+00:00",
-    "scan_date": "2026-10-04T15:12:28.722274+02:00"
+    "expires_date": "2026-10-08T15:46:13.046436+00:00",
+    "scan_date": "2026-10-05T17:46:13.294157+02:00"
   }
 ]

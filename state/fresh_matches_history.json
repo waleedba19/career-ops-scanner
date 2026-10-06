@@ -18,59 +18,59 @@
     "dup_pool": true,
     "ai_scoring": {
       "technical_skills": {
-        "score": 92,
-        "reason": "Exact Arabic-English language role"
+        "score": 80,
+        "reason": "Direct Arabic-English language work, but oral focus"
       },
       "experience_match": {
-        "score": 93,
-        "reason": "5+ years translation, legal, academic work"
+        "score": 75,
+        "reason": "Strong translation background, no explicit interpreter record"
       },
       "behavioral_fit": {
-        "score": 78,
-        "reason": "Prefers remote; role may need occasional travel"
+        "score": 80,
+        "reason": "Remote, flexible, academic\u2011oriented environment"
       },
       "location_logistics": {
-        "verdict": "FLAG",
-        "reason": "Location unclear (B2), possible hybrid"
+        "verdict": "PASS",
+        "reason": "No on\u2011site or residency requirement listed"
       },
       "career_alignment": {
-        "score": 92,
-        "reason": "Directly builds translation/localization career"
+        "score": 90,
+        "reason": "Advances translation/localization career goals"
       },
-      "overall_score": 90,
+      "overall_score": 82,
       "verdict": "Strong Fit",
       "strengths": [
-        "Native Arabic speaker",
-        "Legal & academic translation expertise",
+        "Native Arabic, C1 English",
+        "5+ years legal & academic translation",
         "Remote work experience"
       ],
       "gaps": [
-        "Limited formal interpreting experience",
-        "Unclear travel/onsite expectations"
+        "No proven oral interpreting experience",
+        "Limited humanitarian sector exposure"
       ],
-      "recommendation": "Apply and emphasize your bilingual translation background; ask about remote/hybrid options.",
-      "interview_prep": "1. Describe your experience interpreting Arabic-English in high\u2011stress settings \u2013 highlight any ad\u2011hoc interpreting you\u2019ve done. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 mention CAT tools, terminology management. 3. Are you comfortable traveling to conflict zones or field sites? \u2013 stress willingness but prefer remote where possible.",
-      "one_line_summary": "Arabic Interpreter role aligns well; apply, clarify remote vs onsite."
+      "recommendation": "Apply and emphasize your bilingual expertise and adaptability; address willingness to learn interpreting on the job.",
+      "interview_prep": "1. Tell us about any Arabic\u2011English interpreting you\u2019ve done. \u2013 Highlight related translation tasks and quick learning ability. 2. How would you ensure accuracy under pressure in crisis situations? \u2013 Discuss verification methods, terminology databases, and stress\u2011management. 3. Which tools or techniques support your oral interpretation work? \u2013 Mention CAT tools, glossaries, note\u2011taking strategies, and any AI assistance.",
+      "one_line_summary": "Arabic interpreter role aligns well; strong language skills, minor interpreter experience gap."
     },
-    "ai_insight": "Arabic Interpreter role aligns well; apply, clarify remote vs onsite.",
-    "ai_overall_score": 90,
+    "ai_insight": "Arabic interpreter role aligns well; strong language skills, minor interpreter experience gap.",
+    "ai_overall_score": 82,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Native Arabic speaker",
-      "Legal & academic translation expertise",
+      "Native Arabic, C1 English",
+      "5+ years legal & academic translation",
       "Remote work experience"
     ],
     "ai_gaps": [
-      "Limited formal interpreting experience",
-      "Unclear travel/onsite expectations"
+      "No proven oral interpreting experience",
+      "Limited humanitarian sector exposure"
     ],
-    "ai_recommendation": "Apply and emphasize your bilingual translation background; ask about remote/hybrid options.",
-    "ai_interview_prep": "1. Describe your experience interpreting Arabic-English in high\u2011stress settings \u2013 highlight any ad\u2011hoc interpreting you\u2019ve done. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 mention CAT tools, terminology management. 3. Are you comfortable traveling to conflict zones or field sites? \u2013 stress willingness but prefer remote where possible.",
-    "ai_technical_skills": 92,
-    "ai_experience_match": 93,
-    "ai_behavioral_fit": 78,
-    "ai_location_verdict": "FLAG",
-    "ai_career_alignment": 92,
+    "ai_recommendation": "Apply and emphasize your bilingual expertise and adaptability; address willingness to learn interpreting on the job.",
+    "ai_interview_prep": "1. Tell us about any Arabic\u2011English interpreting you\u2019ve done. \u2013 Highlight related translation tasks and quick learning ability. 2. How would you ensure accuracy under pressure in crisis situations? \u2013 Discuss verification methods, terminology databases, and stress\u2011management. 3. Which tools or techniques support your oral interpretation work? \u2013 Mention CAT tools, glossaries, note\u2011taking strategies, and any AI assistance.",
+    "ai_technical_skills": 80,
+    "ai_experience_match": 75,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -119,15 +119,15 @@
     "requirements": [
       "is an advantage. Strongly motivated by humanitarian work"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/ICRC - International Committee_Arabic Interpreter_20261005.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/ICRC - International Committee_Arabic Interpreter_20261006.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/ICRC - International Committee_Arabic Interpreter_20261005.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/ICRC - International Committee_Arabic Interpreter_20261006.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-10-03T12:29:12.846510+00:00",
-    "expires_date": "2026-10-08T15:46:13.046436+00:00",
-    "scan_date": "2026-10-05T17:46:13.294157+02:00"
+    "expires_date": "2026-10-09T14:09:23.826083+00:00",
+    "scan_date": "2026-10-06T16:09:24.227066+02:00"
   }
 ]

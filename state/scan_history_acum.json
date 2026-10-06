@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-15T21:18:46.931650+00:00",
-    "matched_count": 0,
-    "all_count": 334,
-    "jobs": []
-  },
-  {
     "date": "2026-09-16T12:26:39.334831+00:00",
     "matched_count": 8,
     "all_count": 277,
@@ -1881,6 +1875,21 @@
     "date": "2026-10-05T15:46:26.695929+00:00",
     "matched_count": 1,
     "all_count": 6645,
+    "jobs": [
+      {
+        "title": "Arabic Interpreter",
+        "company": "ICRC - International Committee of the Red Cross",
+        "url": "https://www.impactpool.org/jobs/1239048",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-06T14:09:37.913354+00:00",
+    "matched_count": 1,
+    "all_count": 6683,
     "jobs": [
       {
         "title": "Arabic Interpreter",

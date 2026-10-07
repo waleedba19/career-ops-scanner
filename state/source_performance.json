@@ -2,17 +2,12 @@
   "sources": {
     "greenhouse": {
       "first_seen": "2026-09-05",
-      "total_fetched": 509208,
-      "total_matches": 84,
-      "last_active": "2026-10-06",
+      "total_fetched": 513838,
+      "total_matches": 85,
+      "last_active": "2026-10-07",
       "consecutive_empty": 0,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 4534,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 4535,
@@ -157,22 +152,22 @@
           "date": "2026-10-06",
           "fetched": 4622,
           "matches": 1
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 4630,
+          "matches": 1
         }
       ]
     },
     "lever": {
       "first_seen": "2026-09-05",
-      "total_fetched": 4830,
-      "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 163,
-      "status": "inactive",
+      "total_fetched": 4886,
+      "total_matches": 2,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 0,
+      "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 32,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 32,
@@ -317,22 +312,22 @@
           "date": "2026-10-06",
           "fetched": 45,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 56,
+          "matches": 2
         }
       ]
     },
     "remotive": {
       "first_seen": "2026-09-05",
-      "total_fetched": 2622,
+      "total_fetched": 2632,
       "total_matches": 2,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 2,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 3,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 10,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 10,
@@ -477,22 +472,22 @@
           "date": "2026-10-06",
           "fetched": 10,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 10,
+          "matches": 0
         }
       ]
     },
     "remoteok": {
       "first_seen": "2026-09-05",
-      "total_fetched": 10128,
+      "total_fetched": 10147,
       "total_matches": 1,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 192,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 193,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 20,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 20,
@@ -637,22 +632,22 @@
           "date": "2026-10-06",
           "fetched": 19,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 19,
+          "matches": 0
         }
       ]
     },
     "weworkremotely": {
       "first_seen": "2026-09-05",
-      "total_fetched": 11772,
+      "total_fetched": 11810,
       "total_matches": 31,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 0,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 1,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 38,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 38,
@@ -797,22 +792,22 @@
           "date": "2026-10-06",
           "fetched": 32,
           "matches": 1
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 38,
+          "matches": 0
         }
       ]
     },
     "jobicy": {
       "first_seen": "2026-09-05",
-      "total_fetched": 35512,
-      "total_matches": 73,
-      "last_active": "2026-10-06",
+      "total_fetched": 35592,
+      "total_matches": 75,
+      "last_active": "2026-10-07",
       "consecutive_empty": 0,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 184,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 184,
@@ -956,6 +951,11 @@
         {
           "date": "2026-10-06",
           "fetched": 85,
+          "matches": 2
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 80,
           "matches": 2
         }
       ]
@@ -1122,17 +1122,12 @@
     },
     "remote1stjobs": {
       "first_seen": "2026-09-05",
-      "total_fetched": 8900,
+      "total_fetched": 9100,
       "total_matches": 82,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 13,
-      "status": "weak",
+      "last_active": "2026-10-07",
+      "consecutive_empty": 14,
+      "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 50,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 50,
@@ -1277,22 +1272,22 @@
           "date": "2026-10-06",
           "fetched": 200,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 200,
+          "matches": 0
         }
       ]
     },
     "for9a": {
       "first_seen": "2026-09-05",
-      "total_fetched": 17869,
+      "total_fetched": 17964,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 194,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 195,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 92,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 92,
@@ -1435,6 +1430,11 @@
         },
         {
           "date": "2026-10-06",
+          "fetched": 95,
+          "matches": 0
+        },
+        {
+          "date": "2026-10-07",
           "fetched": 95,
           "matches": 0
         }
@@ -1442,17 +1442,12 @@
     },
     "justremote": {
       "first_seen": "2026-09-05",
-      "total_fetched": 278,
+      "total_fetched": 280,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 135,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 136,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 2,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 2,
@@ -1595,6 +1590,11 @@
         },
         {
           "date": "2026-10-06",
+          "fetched": 2,
+          "matches": 0
+        },
+        {
+          "date": "2026-10-07",
           "fetched": 2,
           "matches": 0
         }
@@ -1712,17 +1712,12 @@
     },
     "himalayas": {
       "first_seen": "2026-09-05",
-      "total_fetched": 2193,
+      "total_fetched": 2197,
       "total_matches": 201,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 0,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 1,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 4,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 4,
@@ -1867,6 +1862,11 @@
           "date": "2026-10-06",
           "fetched": 6,
           "matches": 1
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 4,
+          "matches": 0
         }
       ]
     },
@@ -2707,17 +2707,12 @@
     },
     "workingnomads": {
       "first_seen": "2026-09-06",
-      "total_fetched": 6005,
+      "total_fetched": 6062,
       "total_matches": 5,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 1,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 2,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 56,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 56,
@@ -2862,22 +2857,22 @@
           "date": "2026-10-06",
           "fetched": 56,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 57,
+          "matches": 0
         }
       ]
     },
     "linkedin": {
       "first_seen": "2026-09-06",
-      "total_fetched": 5846,
-      "total_matches": 144,
-      "last_active": "2026-10-06",
+      "total_fetched": 5872,
+      "total_matches": 151,
+      "last_active": "2026-10-07",
       "consecutive_empty": 0,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 31,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 31,
@@ -3022,22 +3017,22 @@
           "date": "2026-10-06",
           "fetched": 26,
           "matches": 10
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 26,
+          "matches": 7
         }
       ]
     },
     "impactpool": {
       "first_seen": "2026-09-06",
-      "total_fetched": 10800,
+      "total_fetched": 10859,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 186,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 187,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 56,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 56,
@@ -3182,22 +3177,22 @@
           "date": "2026-10-06",
           "fetched": 58,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 59,
+          "matches": 0
         }
       ]
     },
     "ashby": {
       "first_seen": "2026-09-06",
-      "total_fetched": 18738,
+      "total_fetched": 18871,
       "total_matches": 12,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 0,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 1,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 138,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 138,
@@ -3342,22 +3337,22 @@
           "date": "2026-10-06",
           "fetched": 134,
           "matches": 1
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 133,
+          "matches": 0
         }
       ]
     },
     "workable": {
       "first_seen": "2026-09-06",
-      "total_fetched": 2984,
+      "total_fetched": 3006,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 144,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 145,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 22,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 22,
@@ -3500,6 +3495,11 @@
         },
         {
           "date": "2026-10-06",
+          "fetched": 22,
+          "matches": 0
+        },
+        {
+          "date": "2026-10-07",
           "fetched": 22,
           "matches": 0
         }
@@ -3507,17 +3507,12 @@
     },
     "smartrecruiters": {
       "first_seen": "2026-09-06",
-      "total_fetched": 2653,
+      "total_fetched": 2671,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 144,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 145,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 18,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 18,
@@ -3660,6 +3655,11 @@
         },
         {
           "date": "2026-10-06",
+          "fetched": 18,
+          "matches": 0
+        },
+        {
+          "date": "2026-10-07",
           "fetched": 18,
           "matches": 0
         }
@@ -3667,17 +3667,12 @@
     },
     "themuse": {
       "first_seen": "2026-09-06",
-      "total_fetched": 227,
+      "total_fetched": 229,
       "total_matches": 1,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 67,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 68,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 1,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 1,
@@ -3820,6 +3815,11 @@
         },
         {
           "date": "2026-10-06",
+          "fetched": 2,
+          "matches": 0
+        },
+        {
+          "date": "2026-10-07",
           "fetched": 2,
           "matches": 0
         }
@@ -4012,17 +4012,12 @@
     },
     "for9a_playwright": {
       "first_seen": "2026-09-14",
-      "total_fetched": 230,
+      "total_fetched": 232,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 115,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 116,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 2,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 2,
@@ -4165,6 +4160,11 @@
         },
         {
           "date": "2026-10-06",
+          "fetched": 2,
+          "matches": 0
+        },
+        {
+          "date": "2026-10-07",
           "fetched": 2,
           "matches": 0
         }
@@ -4172,17 +4172,12 @@
     },
     "clickworker": {
       "first_seen": "2026-09-18",
-      "total_fetched": 462,
+      "total_fetched": 469,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 66,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 67,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 7,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 7,
@@ -4327,22 +4322,22 @@
           "date": "2026-10-06",
           "fetched": 7,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 7,
+          "matches": 0
         }
       ]
     },
     "recruitee": {
       "first_seen": "2026-09-18",
-      "total_fetched": 41406,
+      "total_fetched": 42035,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 66,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 67,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 628,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 628,
@@ -4487,22 +4482,22 @@
           "date": "2026-10-06",
           "fetched": 625,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 629,
+          "matches": 0
         }
       ]
     },
     "wwr_customer_support": {
       "first_seen": "2026-09-18",
-      "total_fetched": 1880,
+      "total_fetched": 1924,
       "total_matches": 6,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 0,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 1,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 27,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 27,
@@ -4647,22 +4642,22 @@
           "date": "2026-10-06",
           "fetched": 37,
           "matches": 1
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 44,
+          "matches": 0
         }
       ]
     },
     "wwr_design": {
       "first_seen": "2026-09-18",
-      "total_fetched": 645,
+      "total_fetched": 673,
       "total_matches": 4,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 11,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 12,
       "status": "weak",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 7,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 7,
@@ -4807,22 +4802,22 @@
           "date": "2026-10-06",
           "fetched": 25,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 28,
+          "matches": 0
         }
       ]
     },
     "wwr_sales_marketing": {
       "first_seen": "2026-09-18",
-      "total_fetched": 4672,
+      "total_fetched": 4758,
       "total_matches": 2,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 14,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 15,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 70,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 70,
@@ -4967,22 +4962,22 @@
           "date": "2026-10-06",
           "fetched": 87,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 86,
+          "matches": 0
         }
       ]
     },
     "wwr_management_finance": {
       "first_seen": "2026-09-18",
-      "total_fetched": 1157,
+      "total_fetched": 1176,
       "total_matches": 1,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 1,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 2,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 17,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 17,
@@ -5127,22 +5122,22 @@
           "date": "2026-10-06",
           "fetched": 18,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 19,
+          "matches": 0
         }
       ]
     },
     "wwr_all_other": {
       "first_seen": "2026-09-18",
-      "total_fetched": 3776,
+      "total_fetched": 3848,
       "total_matches": 11,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 0,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 1,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 59,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 59,
@@ -5287,22 +5282,22 @@
           "date": "2026-10-06",
           "fetched": 70,
           "matches": 1
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 72,
+          "matches": 0
         }
       ]
     },
     "himalayas_rss": {
       "first_seen": "2026-09-18",
-      "total_fetched": 1320,
+      "total_fetched": 1340,
       "total_matches": 24,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 2,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 3,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 20,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 20,
@@ -5447,22 +5442,22 @@
           "date": "2026-10-06",
           "fetched": 20,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 20,
+          "matches": 0
         }
       ]
     },
     "remotive_rss": {
       "first_seen": "2026-09-18",
-      "total_fetched": 1237,
+      "total_fetched": 1255,
       "total_matches": 3,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 4,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 5,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 19,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 19,
@@ -5607,22 +5602,22 @@
           "date": "2026-10-06",
           "fetched": 18,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 18,
+          "matches": 0
         }
       ]
     },
     "untalent_arabic": {
       "first_seen": "2026-09-18",
-      "total_fetched": 7541,
+      "total_fetched": 7669,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 64,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 65,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 120,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 120,
@@ -5767,22 +5762,22 @@
           "date": "2026-10-06",
           "fetched": 114,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 128,
+          "matches": 0
         }
       ]
     },
     "jobgether": {
       "first_seen": "2026-09-18",
-      "total_fetched": 6040,
+      "total_fetched": 6146,
       "total_matches": 0,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 66,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 67,
       "status": "inactive",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 89,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 89,
@@ -5927,22 +5922,22 @@
           "date": "2026-10-06",
           "fetched": 108,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 106,
+          "matches": 0
         }
       ]
     },
     "jobspy_indeed": {
       "first_seen": "2026-09-22",
-      "total_fetched": 1058,
-      "total_matches": 30,
-      "last_active": "2026-10-06",
+      "total_fetched": 1086,
+      "total_matches": 34,
+      "last_active": "2026-10-07",
       "consecutive_empty": 0,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 30,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 30,
@@ -6087,22 +6082,22 @@
           "date": "2026-10-06",
           "fetched": 24,
           "matches": 2
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 28,
+          "matches": 4
         }
       ]
     },
     "jobspy_linkedin": {
       "first_seen": "2026-09-22",
-      "total_fetched": 1291,
-      "total_matches": 3,
-      "last_active": "2026-10-06",
-      "consecutive_empty": 4,
+      "total_fetched": 1323,
+      "total_matches": 4,
+      "last_active": "2026-10-07",
+      "consecutive_empty": 0,
       "status": "active",
       "daily_stats": [
-        {
-          "date": "2026-09-22",
-          "fetched": 36,
-          "matches": 0
-        },
         {
           "date": "2026-09-22",
           "fetched": 36,
@@ -6247,6 +6242,11 @@
           "date": "2026-10-06",
           "fetched": 36,
           "matches": 0
+        },
+        {
+          "date": "2026-10-07",
+          "fetched": 32,
+          "matches": 1
         }
       ]
     },
@@ -6297,5 +6297,5 @@
     }
   },
   "discoveries": [],
-  "last_cleanup": "2026-10-06T14:09:23.818345+00:00"
+  "last_cleanup": "2026-10-07T14:26:16.716662+00:00"
 }

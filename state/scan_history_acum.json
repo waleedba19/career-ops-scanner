@@ -1,36 +1,5 @@
 [
   {
-    "date": "2026-09-16T19:42:48.380480+00:00",
-    "matched_count": 3,
-    "all_count": 307,
-    "jobs": [
-      {
-        "title": "Palantir Implementation Strategist (USA)",
-        "company": "Unit8 SA",
-        "url": "https://himalayas.app/companies/unit8-sa/jobs/palantir-implementation-strategist-usa",
-        "score": 70,
-        "category": "Arabic Translation",
-        "source": "himalayas"
-      },
-      {
-        "title": "Virtual Computer Science Tutor",
-        "company": "Tutor Me Education",
-        "url": "https://himalayas.app/companies/tutor-me-education/jobs/virtual-computer-science-tutor-94297731",
-        "score": 0,
-        "category": "Other",
-        "source": "himalayas"
-      },
-      {
-        "title": "Social Media & Community Management Virtual Assistant (US/Remote)",
-        "company": "Paired",
-        "url": "https://himalayas.app/companies/paired-so/jobs/social-media-community-management-virtual-assistant-us-remote",
-        "score": 0,
-        "category": "Other",
-        "source": "himalayas"
-      }
-    ]
-  },
-  {
     "date": "2026-09-16T19:49:44.986823+00:00",
     "matched_count": 0,
     "all_count": 322,
@@ -1811,6 +1780,29 @@
     "matched_count": 1,
     "all_count": 6750,
     "jobs": [
+      {
+        "title": "Arabic Interpreter",
+        "company": "ICRC - International Committee of the Red Cross",
+        "url": "https://www.impactpool.org/jobs/1239048",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-09T14:20:33.874326+00:00",
+    "matched_count": 2,
+    "all_count": 6728,
+    "jobs": [
+      {
+        "title": "Translator & Interpreter (Re-advertisement - for internal and external candidates), Grade 17",
+        "company": "ReliefWeb",
+        "url": "https://jo.linkedin.com/jobs/view/translator-interpreter-re-advertisement-for-internal-and-external-candidates-grade-17-at-reliefweb-4477417931",
+        "score": 92,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
       {
         "title": "Arabic Interpreter",
         "company": "ICRC - International Committee of the Red Cross",

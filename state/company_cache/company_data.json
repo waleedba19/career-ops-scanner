@@ -2,54 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Leela Home elearning": {
-    "name": "Leela Home elearning",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-11T16:53:57.185148+00:00"
-  },
-  "Sigma AI": {
-    "name": "Sigma AI",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-11T22:13:21.422855+00:00"
-  },
-  "Echo Education": {
-    "name": "Echo Education",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-12T16:02:58.462894+00:00"
-  },
-  "Harris County": {
-    "name": "Harris County",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-12T16:02:58.463732+00:00"
-  },
   "State of Iowa - Executive Branch": {
     "name": "State of Iowa - Executive Branch",
     "legitimacy_score": 60,
@@ -1185,5 +1137,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-10-09T14:20:18.308735+00:00"
+  },
+  "Chemonics UK": {
+    "name": "Chemonics UK",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-10-12T16:42:10.321347+00:00"
   }
 }

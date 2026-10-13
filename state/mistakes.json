@@ -48,6 +48,10 @@
       {
         "reason": "ai_poor_fit",
         "date": "2026-10-02T13:55:57.763072+00:00"
+      },
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-10-13T15:00:31.021949+00:00"
       }
     ],
     "Turing": [
@@ -66,7 +70,7 @@
     ]
   },
   "categories": {
-    "Arabic Translation": 5,
+    "Arabic Translation": 6,
     "Translation (any pair)": 4,
     "Language Services (company)": 1,
     "Admin": 1
@@ -121,7 +125,12 @@
       "title": "Internship in Translation Project Management",
       "reason": "ai_poor_fit",
       "date": "2026-10-02T13:55:57.763084+00:00"
+    },
+    {
+      "title": "Arabic Localization Manager Onite in Shanghai",
+      "reason": "ai_poor_fit",
+      "date": "2026-10-13T15:00:31.021977+00:00"
     }
   ],
-  "updated": "2026-10-02T13:55:57.763088+00:00"
+  "updated": "2026-10-13T15:00:31.021984+00:00"
 }

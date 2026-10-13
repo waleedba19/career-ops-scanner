@@ -343,10 +343,31 @@ def test_wiring():
                 "RECRUITEE_COMPANIES", "TEAMTAILOR_COMPANIES"):
         lst = getattr(config, var)
         check(f"config.{var} well-formed", all(isinstance(t, tuple) and len(t) == 2 and all(isinstance(x, str) and x for x in t) for t in lst) and lst)
-    check("blocked list = probe-confirmed set", set(config.PROBE_BLOCKED_SOURCES) == {
+    # The list has two provenances and the test must pin both, because the
+    # digest's "inactive" flag is NOT a valid prune signal (it is a streak
+    # counter): pruning on it would have blocked remote1stjobs (82 matches).
+    probe_confirmed = {
         "mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz",
         "guru", "dailyremote", "europeremotely", "euremotejobs", "remotejobleads",
-    })
+    }
+    # Retired 2026-10-13 on evidence: zero matches across 61-191 empty scans.
+    retired_dead = {
+        "for9a", "for9a_playwright", "impactpool", "lever", "workable",
+        "smartrecruiters", "justremote", "clickworker", "jobgether",
+        "wwr_management_finance", "untalent_arabic",
+    }
+    blocked = set(config.PROBE_BLOCKED_SOURCES)
+    check("blocked list = probe-confirmed + evidence-retired set",
+          blocked == probe_confirmed | retired_dead,
+          f"unexpected={sorted(blocked - (probe_confirmed | retired_dead))} "
+          f"missing={sorted((probe_confirmed | retired_dead) - blocked)}")
+    # Guard the mistake this blocklist exists to prevent: never block a source
+    # that has actually produced matches, however long its empty streak is.
+    check("no match-producing source is blocked",
+          not (blocked & {"remote1stjobs", "wwr_design", "workingnomads",
+                          "wwr_customer_support", "recruitee", "remoteok",
+                          "greenhouse", "himalayas", "linkedin",
+                          "weworkremotely", "jobicy", "freelancer"}))
     # The ATS company lists have two valid shapes, and which one is in force
     # depends on whether the probe result is present:
     #   probe file absent  -> config lists are used verbatim

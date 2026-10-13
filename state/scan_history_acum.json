@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-16T20:30:25.765183+00:00",
-    "matched_count": 0,
-    "all_count": 376,
-    "jobs": []
-  },
-  {
     "date": "2026-09-16T20:52:52.555733+00:00",
     "matched_count": 6,
     "all_count": 374,
@@ -1788,5 +1782,11 @@
         "source": "recruitee"
       }
     ]
+  },
+  {
+    "date": "2026-10-13T15:00:47.714420+00:00",
+    "matched_count": 0,
+    "all_count": 6629,
+    "jobs": []
   }
 ]

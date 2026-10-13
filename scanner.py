@@ -571,7 +571,16 @@ _ONSITE_ANCHOR = re.compile(
     r"|required (to )?(be|work|report|come) in[- ]person"
     r"|must (be|work|report|attend) (in|at) the office"
     r"|in[- ]person (role|position|job|presence)\b"
-    r"|(performed|delivered|carried out) on[- ]site",
+    r"|(performed|delivered|carried out) on[- ]site"
+    # Onsite-ONLY wording (TransPerfect/Shanghai class, 2026-10-12): boards tag
+    # these "Remote" and the card says onsite, so only the anchor can catch it.
+    # Deliberately narrow — a bare "on-site" would kill the "occasional on-site
+    # visits" remote class, so every branch below requires the exclusive word.
+    r"|on[- ]?site[\s-]*only\b"
+    r"|on[- ]?site\s+work(?:ing)?\s+only\b"
+    r"|(require|requires|required)\s+(?:you\s+to\s+)?(?:work|work(?:ing)?|be|located|based)"
+    r"\s+(?:on[- ]?site|in[- ]person)\b"
+    r"|relocation\s+(?:is\s+)?required\b",
     re.I,
 )
 

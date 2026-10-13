@@ -774,7 +774,7 @@ def build_email(jobs: list, scan_info: dict, stats: dict,
     if has_evolution:
         source_html = ""
         if source_report and "No source data" not in source_report:
-            source_html = f'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;margin:16px 0 8px">\uD83D\uDCCA Source Performance</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(source_report)}</pre>'
+            source_html = f'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:bold;color:#111;margin:16px 0 8px">\U0001F4CA Source Performance</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(source_report)}</pre>'
         evolution_html = f'<tr><td style="padding:16px 28px 16px;border-top:1px solid #e0e0e0"><p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;color:#111;margin:0 0 8px">\U0001f9e0 AI Intelligence Report</p><pre style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#333;margin:0;white-space:pre-wrap;line-height:1.6">{_esc(evolution)}</pre>{source_html}</td></tr>'
 
     # Learning summary HTML for email

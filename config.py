@@ -97,6 +97,17 @@ PROBE_BLOCKED_SOURCES = [
     "mostaql", "ureed", "wuzzuf", "bayt", "gulftalent", "proz",
     # 2026-09-17 Actions-IP probe: 403/challenge — skip to stop burning time.
     "guru", "dailyremote", "europeremotely", "euremotejobs", "remotejobleads",
+    # 2026-10-13: retired by evidence, not by the "inactive" flag. Every source
+    # below has returned ZERO matches across 61-191 consecutive empty scans
+    # (state/source_performance.json). Blocked so scans stop paying for them.
+    #
+    # NOT blocked on purpose, despite being flagged inactive: remote1stjobs
+    # (82 matches), wwr_design (4), workingnomads (4), wwr_customer_support (3),
+    # remoteok (1), gotranscript (2), nodesk (1), themuse (1), search_discovered (3),
+    # recruitee (63) — the flag is a streak counter, not a usefulness measure.
+    "for9a", "for9a_playwright", "impactpool", "lever", "workable",
+    "smartrecruiters", "justremote", "clickworker", "jobgether",
+    "wwr_management_finance", "untalent_arabic",
 ]
 FORCE_BLOCKED_SOURCES = os.getenv("CAREEROPS_FORCE_BLOCKED", "0") == "1"
 

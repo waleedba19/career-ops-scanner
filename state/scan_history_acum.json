@@ -1,60 +1,5 @@
 [
   {
-    "date": "2026-09-16T20:52:52.555733+00:00",
-    "matched_count": 6,
-    "all_count": 374,
-    "jobs": [
-      {
-        "title": "Bilingual RN Field Care Manager (Arabic or Chaldean) HCBS/LTSS",
-        "company": "Humana",
-        "url": "https://www.remote1stjobs.com/jobs/bilingual-rn-field-care-manager-arabic-or-chaldean-hcbs-ltss-humana-mu4izn91?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
-        "score": 97,
-        "category": "Arabic Translation",
-        "source": "remote1stjobs"
-      },
-      {
-        "title": "RN Field Care Manager - Medicaid HCBS/LTSS",
-        "company": "Humana",
-        "url": "https://www.remote1stjobs.com/jobs/rn-field-care-manager-medicaid-hcbs-ltss-humana-mu4izn6i?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
-        "score": 4.0,
-        "category": "Other",
-        "source": "remote1stjobs"
-      },
-      {
-        "title": "AI Application Engineer - LangGraph & Agentic AI",
-        "company": "Belmont Lavan Ltd",
-        "url": "https://www.remote1stjobs.com/jobs/ai-application-engineer-langgraph-agentic-ai-belmont-lavan-ltd-mu4iyx5m?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
-        "score": 2,
-        "category": "Other",
-        "source": "remote1stjobs"
-      },
-      {
-        "title": "Solution Architect - LangGraph & Agentic AI",
-        "company": "Belmont Lavan Ltd",
-        "url": "https://www.remote1stjobs.com/jobs/solution-architect-langgraph-agentic-ai-belmont-lavan-ltd-mu4iyx30?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
-        "score": 2,
-        "category": "Other",
-        "source": "remote1stjobs"
-      },
-      {
-        "title": "Werkstudent (m/w/d) \u2013 Finance & Beratung (unternehmerisch, leistungsbasiert)",
-        "company": "Kevin Kehr",
-        "url": "https://www.remote1stjobs.com/jobs/werkstudent-m-w-d-finance-beratung-unternehmerisch-leistungsbasiert-kevin-kehr-mu4iywu7?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
-        "score": 0,
-        "category": "Other",
-        "source": "remote1stjobs"
-      },
-      {
-        "title": "Sr. Sustainability Consultant - Fokus PCF/LCA @ Climate Tech Start-up (m/w/d) - 100% Remote m\u00f6glich",
-        "company": "Global Changer",
-        "url": "https://www.remote1stjobs.com/jobs/sr-sustainability-consultant-fokus-pcf-lca-climate-tech-start-up-m-w-d-100-remote-m-glich-global-changer-mu4iyw9z?utm_source=jobs_json&utm_medium=rss&utm_campaign=latest_jobs_feed",
-        "score": 0,
-        "category": "Other",
-        "source": "remote1stjobs"
-      }
-    ]
-  },
-  {
     "date": "2026-09-16T21:07:41.871945+00:00",
     "matched_count": 1,
     "all_count": 435,
@@ -1788,5 +1733,28 @@
     "matched_count": 0,
     "all_count": 6629,
     "jobs": []
+  },
+  {
+    "date": "2026-10-14T12:51:21.309705+00:00",
+    "matched_count": 2,
+    "all_count": 6619,
+    "jobs": [
+      {
+        "title": "TikTok Shop Arabic Localization Manager",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/tiktok-shop-arabic-localization-manager",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "recruitee"
+      },
+      {
+        "title": "New job:",
+        "company": "Arabic interpreter",
+        "url": "https://www.impactpool.org/jobs/1241635",
+        "score": 87,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
   }
 ]

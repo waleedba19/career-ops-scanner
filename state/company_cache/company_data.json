@@ -2,140 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "CAREERBLOC ~": {
-    "name": "CAREERBLOC ~",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-13T17:30:33.895515+00:00"
-  },
-  "ExcelBiz": {
-    "name": "ExcelBiz",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-13T17:30:33.896577+00:00"
-  },
-  "Ataraxis Management": {
-    "name": "Ataraxis Management",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-13T18:43:05.168040+00:00"
-  },
-  "lululemon": {
-    "name": "lululemon",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-13T20:37:01.342080+00:00"
-  },
-  "COE - Council of Europe": {
-    "name": "COE - Council of Europe",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-13T20:37:01.343152+00:00"
-  },
-  "People First Recruitment": {
-    "name": "People First Recruitment",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-13T20:49:02.059316+00:00"
-  },
-  "Lifelancer": {
-    "name": "Lifelancer",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-13T23:19:05.766559+00:00"
-  },
-  "xAI": {
-    "name": "xAI",
-    "legitimacy_score": 70,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Uses professional ATS"
-    ],
-    "last_updated": "2026-09-13T23:19:05.767860+00:00"
-  },
-  "mercor": {
-    "name": "mercor",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-13T23:19:05.768912+00:00"
-  },
-  "SGS": {
-    "name": "SGS",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-13T23:19:05.769899+00:00"
-  },
-  "Careem": {
-    "name": "Careem",
-    "legitimacy_score": 70,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Uses professional ATS"
-    ],
-    "last_updated": "2026-09-14T11:05:44.313961+00:00"
-  },
-  "InTouch": {
-    "name": "InTouch",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T11:05:44.315562+00:00"
-  },
   "Team Carney": {
     "name": "Team Carney",
     "legitimacy_score": 50,
@@ -1088,5 +954,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-10-12T16:42:10.321347+00:00"
+  },
+  "Arabic interpreter": {
+    "name": "Arabic interpreter",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-10-14T12:51:05.030418+00:00"
   }
 }

@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-16T21:07:41.871945+00:00",
-    "matched_count": 1,
-    "all_count": 435,
-    "jobs": [
-      {
-        "title": "Medical Interpreter, Arabic Global Services Full-Time Days",
-        "company": "Northwestern Memorial Hospital",
-        "url": "https://www.linkedin.com/jobs/view/medical-interpreter-arabic-global-services-full-time-days-at-northwestern-memorial-hospital-4462368821",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "linkedin_playwright"
-      }
-    ]
-  },
-  {
     "date": "2026-09-16T21:22:57.495905+00:00",
     "matched_count": 11,
     "all_count": 375,
@@ -1754,6 +1739,29 @@
         "score": 87,
         "category": "Arabic Translation",
         "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-15T12:40:27.812546+00:00",
+    "matched_count": 2,
+    "all_count": 6681,
+    "jobs": [
+      {
+        "title": "Arabic Iraqi Linguist CAT I- Local National",
+        "company": "Valiant Integrated Services",
+        "url": "https://iq.linkedin.com/jobs/view/arabic-iraqi-linguist-cat-i-local-national-at-valiant-integrated-services-4477463479",
+        "score": 79,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Arabic Localization Manager",
+        "company": "TransPerfect",
+        "url": "https://transperfect.com/o/arabic-localization-manager",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "recruitee"
       }
     ]
   }

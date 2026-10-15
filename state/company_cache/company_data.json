@@ -2,230 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Team Carney": {
-    "name": "Team Carney",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-14T14:02:15.009897+00:00"
-  },
-  "Welocalize": {
-    "name": "Welocalize",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T14:17:36.680719+00:00"
-  },
-  "Toloka AI": {
-    "name": "Toloka AI",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-14T15:04:17.793171+00:00"
-  },
-  "Cloudera": {
-    "name": "Cloudera",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-14T15:04:17.793981+00:00"
-  },
-  "ILENG Academy": {
-    "name": "ILENG Academy",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T15:08:54.528703+00:00"
-  },
-  "Private Business": {
-    "name": "Private Business",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T15:08:54.529866+00:00"
-  },
-  "Avantor": {
-    "name": "Avantor",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T20:04:38.337480+00:00"
-  },
-  "Northwestern Medicine": {
-    "name": "Northwestern Medicine",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T21:56:42.552035+00:00"
-  },
-  "Leidos": {
-    "name": "Leidos",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T22:11:35.928984+00:00"
-  },
-  "CACI International Inc": {
-    "name": "CACI International Inc",
-    "legitimacy_score": 65,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board",
-      "Appears to be registered business"
-    ],
-    "last_updated": "2026-09-14T22:11:35.930134+00:00"
-  },
-  "1-Stop Asia Recruiting": {
-    "name": "1-Stop Asia Recruiting",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T22:11:35.931300+00:00"
-  },
-  "TLA-LLC": {
-    "name": "TLA-LLC",
-    "legitimacy_score": 65,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board",
-      "Appears to be registered business"
-    ],
-    "last_updated": "2026-09-14T22:11:35.932450+00:00"
-  },
-  "Humana": {
-    "name": "Humana",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-14T22:25:28.026103+00:00"
-  },
-  "Staffing for Doctors": {
-    "name": "Staffing for Doctors",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-14T22:49:47.662445+00:00"
-  },
-  "American Red Cross": {
-    "name": "American Red Cross",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T00:53:01.795600+00:00"
-  },
-  "Rootstock Software": {
-    "name": "Rootstock Software",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T00:53:01.796856+00:00"
-  },
-  "Fiserv": {
-    "name": "Fiserv",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T00:53:01.798222+00:00"
-  },
-  "Horizon Blue ABA": {
-    "name": "Horizon Blue ABA",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T12:27:13.706110+00:00"
-  },
-  "Keeper Security": {
-    "name": "Keeper Security",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T12:27:13.707096+00:00"
-  },
-  "instrucko": {
-    "name": "instrucko",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-15T12:27:13.708078+00:00"
-  },
   "Salt": {
     "name": "Salt",
     "legitimacy_score": 60,
@@ -964,5 +740,18 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-10-14T12:51:05.030418+00:00"
+  },
+  "Valiant Integrated Services": {
+    "name": "Valiant Integrated Services",
+    "legitimacy_score": 65,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board",
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-10-15T12:40:11.052059+00:00"
   }
 }

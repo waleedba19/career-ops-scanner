@@ -2,94 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Salt": {
-    "name": "Salt",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-15T18:04:06.963010+00:00"
-  },
-  "Newsweek": {
-    "name": "Newsweek",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-15T18:04:06.964203+00:00"
-  },
-  "Doxel": {
-    "name": "Doxel",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T18:15:47.798836+00:00"
-  },
-  "Vanderbilt University Medical Center": {
-    "name": "Vanderbilt University Medical Center",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T18:15:47.800173+00:00"
-  },
-  "TalkEnglishClass": {
-    "name": "TalkEnglishClass",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-15T19:25:30.479629+00:00"
-  },
-  "Invisible Technologies": {
-    "name": "Invisible Technologies",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T20:32:43.523293+00:00"
-  },
-  "BPM LLP": {
-    "name": "BPM LLP",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-15T20:32:43.524785+00:00"
-  },
-  "The University of Texas Medical Branch": {
-    "name": "The University of Texas Medical Branch",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-15T20:32:43.525960+00:00"
-  },
   "Assist World": {
     "name": "Assist World",
     "legitimacy_score": 50,
@@ -753,5 +665,17 @@
       "Appears to be registered business"
     ],
     "last_updated": "2026-10-15T12:40:11.052059+00:00"
+  },
+  "Audible": {
+    "name": "Audible",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-10-16T12:18:06.532003+00:00"
   }
 }

@@ -1,2297 +1,292 @@
 {
   "fingerprints": {
-    "jobgether|seniorbackendinfrastructureeng|remote": {
-      "seen": "2026-10-01T14:22:58.946585+00:00",
-      "title": "Senior Backend Infrastructure Engineer",
-      "company": "jobgether"
-    },
-    "jobgether|agentdecollectehf|remote": {
-      "seen": "2026-10-01T14:22:58.945376+00:00",
-      "title": "AGENT DE COLLECTE - H/F",
-      "company": "jobgether"
-    },
-    "jobgether|strategyoperationsanalystii|remote": {
-      "seen": "2026-10-01T14:22:58.943987+00:00",
-      "title": "Strategy & Operations Analyst II",
-      "company": "jobgether"
-    },
-    "jobgether|seniorestimatoriiipublicinfras|remote": {
-      "seen": "2026-10-01T14:22:58.942543+00:00",
-      "title": "Senior Estimator III - Public Infrastructure",
-      "company": "jobgether"
-    },
-    "jobgether|peerreviewpanelmemberprofessio|remote": {
-      "seen": "2026-10-01T14:22:58.941074+00:00",
-      "title": "Peer Review Panel Member (Professional Conduct Committee)",
-      "company": "jobgether"
-    },
-    "jobgether|associateanalystdataanalyticsi|remote": {
-      "seen": "2026-10-01T14:22:58.939513+00:00",
-      "title": "Associate Analyst, Data & Analytics (Remote in CA)",
-      "company": "jobgether"
-    },
-    "jobgether|servicedeliveryteammemberdaysh|remote": {
-      "seen": "2026-10-01T14:22:58.938817+00:00",
-      "title": "Service Delivery Team Member \u2013 Remote | Dayshift | 13th Month Pay",
-      "company": "jobgether"
-    },
-    "jobgether|strategyconsultingtechnologyle|remote": {
-      "seen": "2026-10-01T14:22:58.937493+00:00",
-      "title": "Strategy & Consulting | Technology Lead - Value Case Transformation",
-      "company": "jobgether"
-    },
-    "jobgether|devopsengineer|remote": {
-      "seen": "2026-10-01T14:22:58.936722+00:00",
-      "title": "DevOps Engineer",
-      "company": "jobgether"
-    },
-    "jobgether|senioraccountspayablespecialis|remote": {
-      "seen": "2026-10-01T14:22:58.935699+00:00",
-      "title": "Senior Accounts Payable Specialist",
-      "company": "jobgether"
-    },
-    "jobgether|datalabelerdutchintermediatesp|remote": {
-      "seen": "2026-10-01T14:22:58.935112+00:00",
-      "title": "Data Labeler (Dutch intermediate speaker)",
-      "company": "jobgether"
-    },
-    "jobgether|clinicaldocumentationimproveme|remote": {
-      "seen": "2026-10-01T14:22:58.934732+00:00",
-      "title": "Clinical Documentation Improvement and Payment Integrity Registered Nurse",
-      "company": "jobgether"
-    },
-    "jobgether|becomeanartdrawingtutorflexibl|remote": {
-      "seen": "2026-10-01T14:22:58.933332+00:00",
-      "title": "Become an Art & Drawing Tutor | Flexible Remote Role | \u00a320\u2013\u00a340/hr",
-      "company": "jobgether"
-    },
-    "jobgether|consultorasalesforceconsumergo|remote": {
-      "seen": "2026-10-01T14:22:58.932468+00:00",
-      "title": "Consultor/a Salesforce Consumer Goods Cloud (CGC)",
-      "company": "jobgether"
-    },
-    "jobgether|insegnantedimatematicaefisicao|remote": {
-      "seen": "2026-10-01T14:22:58.932115+00:00",
-      "title": "Insegnante di Matematica e Fisica - Online",
-      "company": "jobgether"
-    },
-    "jobgether|influencerpartnershipmanagerbu|remote": {
-      "seen": "2026-10-01T14:22:58.931516+00:00",
-      "title": "Influencer/Partnership Manager (Bulgaria)",
-      "company": "jobgether"
-    },
-    "jobgether|docentesparaelmsterdedirecciny|remote": {
-      "seen": "2026-10-01T14:22:58.930971+00:00",
-      "title": "Docentes para el M\u00e1ster de Direcci\u00f3n y Gesti\u00f3n Sanitaria",
-      "company": "jobgether"
-    },
-    "jobgether|seniordataengineerdatabricks|remote": {
-      "seen": "2026-10-01T14:22:58.930260+00:00",
-      "title": "Senior Data Engineer (Databricks)",
-      "company": "jobgether"
-    },
-    "jobgether|procurementprojectinitiativesm|remote": {
-      "seen": "2026-10-01T14:22:58.929824+00:00",
-      "title": "Procurement Project Initiatives Manager",
-      "company": "jobgether"
-    },
-    "jobgether|seniorprojectmanagerinstitutio|remote": {
-      "seen": "2026-10-01T14:22:58.929267+00:00",
-      "title": "Senior Project Manager- Institutional Studio",
-      "company": "jobgether"
-    },
-    "jobgether|importprojectmanager|remote": {
-      "seen": "2026-10-01T14:22:58.928725+00:00",
-      "title": "Import Project Manager (Remote)",
-      "company": "jobgether"
-    },
-    "jobgether|vpsalesgovernment|remote": {
-      "seen": "2026-10-01T14:22:58.927863+00:00",
-      "title": "VP, Sales, Government",
-      "company": "jobgether"
-    },
-    "jobgether|businessdevelopmentmanagermult|remote": {
-      "seen": "2026-10-01T14:22:58.927575+00:00",
-      "title": "Business Development Manager- Multifamily",
-      "company": "jobgether"
-    },
-    "jobgether|associatenationalbusinessdirec|remote": {
-      "seen": "2026-10-01T14:22:58.927261+00:00",
-      "title": "Associate National Business Director- Area Access (Remote)",
-      "company": "jobgether"
-    },
-    "jobgether|salesdirectormidmarketsmbgrace|remote": {
-      "seen": "2026-10-01T14:22:58.926908+00:00",
-      "title": "Sales Director, Mid-Market & SMB (Gracenote Division)",
-      "company": "jobgether"
-    },
-    "jobgether|businessdevelopmentmanagerukso|remote": {
-      "seen": "2026-10-01T14:22:58.926571+00:00",
-      "title": "Business Development Manager UK South",
-      "company": "jobgether"
-    },
-    "jobgether|businessdevelopmentassociatesa|remote": {
-      "seen": "2026-10-01T14:22:58.926194+00:00",
-      "title": "Business Development Associate (Sales Support / Proposals)",
-      "company": "jobgether"
-    },
-    "jobgether|directorofsalespayerpbm|remote": {
-      "seen": "2026-10-01T14:22:58.925893+00:00",
-      "title": "Director of Sales, Payer/PBM",
-      "company": "jobgether"
-    },
-    "jobgether|businessdevelopmentexecutivecl|remote": {
-      "seen": "2026-10-01T14:22:58.925559+00:00",
-      "title": "Business Development Executive - Cloud",
-      "company": "jobgether"
-    },
-    "jobgether|srdirectorbusinessdevelopmenti|remote": {
-      "seen": "2026-10-01T14:22:58.925321+00:00",
-      "title": "Sr Director, Business Development - Industrial",
-      "company": "jobgether"
-    },
-    "jobgether|veterinarysalesdevelopmentrepr|remote": {
-      "seen": "2026-10-01T14:22:58.925033+00:00",
-      "title": "Veterinary Sales Development Representative (Remote)",
-      "company": "jobgether"
-    },
-    "jobgether|directorofsalesamericas|remote": {
-      "seen": "2026-10-01T14:22:58.924394+00:00",
-      "title": "Director of Sales, Americas",
-      "company": "jobgether"
-    },
-    "jobgether|srprojectmanagerconstruction|remote": {
-      "seen": "2026-10-01T14:22:58.923995+00:00",
-      "title": "Sr Project Manager, Construction",
-      "company": "jobgether"
-    },
-    "jobgether|projectmanagermultiusefacility|remote": {
-      "seen": "2026-10-01T14:22:58.923324+00:00",
-      "title": "Project Manager-Multiuse Facility Construction",
-      "company": "jobgether"
-    },
-    "jobgether|seniorcreativeprojectmanager|remote": {
-      "seen": "2026-10-01T14:22:58.922598+00:00",
-      "title": "Senior Creative Project Manager",
-      "company": "jobgether"
-    },
-    "jobgether|implementationprojectmanager|remote": {
-      "seen": "2026-10-01T14:22:58.921950+00:00",
-      "title": "Implementation Project Manager",
-      "company": "jobgether"
-    },
-    "jobgether|seniorprojectmanagerrarediseas|remote": {
-      "seen": "2026-10-01T14:22:58.921464+00:00",
-      "title": "Senior Project Manager - Rare Disease",
-      "company": "jobgether"
-    },
-    "jobgether|srprogrammanagerimplementation|remote": {
-      "seen": "2026-10-01T14:22:58.920954+00:00",
-      "title": "Sr. Program Manager - Implementation",
-      "company": "jobgether"
-    },
-    "jobgether|plmprojectmanager|remote": {
-      "seen": "2026-10-01T14:22:58.920414+00:00",
-      "title": "PLM Project Manager",
-      "company": "jobgether"
-    },
-    "jobgether|projectmanager2|remote": {
-      "seen": "2026-10-01T14:22:58.919931+00:00",
-      "title": "Project Manager 2",
-      "company": "jobgether"
-    },
-    "jobgether|projectmanagersupportdataanaly|remote": {
-      "seen": "2026-10-01T14:22:58.919496+00:00",
-      "title": "Project Manager Support & Data Analyst",
-      "company": "jobgether"
-    },
-    "jobgether|internimplementationprojectman|remote": {
-      "seen": "2026-10-01T14:22:58.918979+00:00",
-      "title": "Intern, Implementation Project Manager",
-      "company": "jobgether"
-    },
-    "jobgether|sroperationsprojectmanager|remote": {
-      "seen": "2026-10-01T14:22:58.918243+00:00",
-      "title": "Sr. Operations Project Manager",
-      "company": "jobgether"
-    },
-    "jobgether|softwaredeveloperintermediateo|remote": {
-      "seen": "2026-10-01T14:22:58.917374+00:00",
-      "title": "Software Developer Intermediate (Remote Ontario)",
-      "company": "jobgether"
-    },
-    "jobgether|seniorsoftwareengineertsscieli|remote": {
-      "seen": "2026-10-01T14:22:58.917071+00:00",
-      "title": "Senior Software Engineer, TS/SCI Eligible",
-      "company": "jobgether"
-    },
-    "jobgether|juniorsolutionsengineer|remote": {
-      "seen": "2026-10-01T14:22:58.916792+00:00",
-      "title": "Junior Solutions Engineer",
-      "company": "jobgether"
-    },
-    "jobgether|solutionsdeveloper6or12monthen|remote": {
-      "seen": "2026-10-01T14:22:58.916513+00:00",
-      "title": "Solutions Developer | 6 or 12 month engagement (578)",
-      "company": "jobgether"
-    },
-    "jobgether|seniorsoftwareengineeragentica|remote": {
-      "seen": "2026-10-01T14:22:58.915867+00:00",
-      "title": "Senior Software Engineer, Agentic AI",
-      "company": "jobgether"
-    },
-    "jobgether|job32019seniordeveloperfullsta|remote": {
-      "seen": "2026-10-01T14:22:58.915580+00:00",
-      "title": "[Job-32019] Senior Developer Full Stack AEM [Adobe Experience Manager], Brazil",
-      "company": "jobgether"
-    },
-    "jobgether|nicecognigysolutionsarchitect|remote": {
-      "seen": "2026-10-01T14:22:58.914791+00:00",
-      "title": "Nice Cognigy Solutions Architect",
-      "company": "jobgether"
-    },
-    "jobgether|srfullstackengineer|remote": {
-      "seen": "2026-10-01T14:22:58.914268+00:00",
-      "title": "Sr. Full Stack Engineer",
-      "company": "jobgether"
-    },
-    "jobgether|softwarearchitectenterprisejav|remote": {
-      "seen": "2026-10-01T14:22:58.914044+00:00",
-      "title": "Software Architect - Enterprise Java * Cloud-Native * AI-Augmented Development",
-      "company": "jobgether"
-    },
-    "jobgether|sfdcdeveloper|remote": {
-      "seen": "2026-10-01T14:22:58.913298+00:00",
-      "title": "SFDC Developer",
-      "company": "jobgether"
-    },
-    "jobgether|leadsolutionarchitectprofessio|remote": {
-      "seen": "2026-10-01T14:22:58.912895+00:00",
-      "title": "Lead Solution Architect, Professional Services - Agentic AI",
-      "company": "jobgether"
-    },
-    "jobgether|fullstackdeveloperpythonjavasc|remote": {
-      "seen": "2026-10-01T14:22:58.912247+00:00",
-      "title": "Full Stack Developer (Python & JavaScript) - TS/SCI with Polygraph",
-      "company": "jobgether"
-    },
-    "jobgether|donordevelopmentspecialistinmi|remote": {
-      "seen": "2026-10-01T14:22:58.911837+00:00",
-      "title": "Donor Development Specialist (Remote in Milwaukee, WI)",
-      "company": "jobgether"
-    },
-    "jobgether|seniorsolutionsengineernewyork|remote": {
-      "seen": "2026-10-01T14:22:58.911125+00:00",
-      "title": "Senior Solutions Engineer - New York",
-      "company": "jobgether"
-    },
-    "jobgether|solutionengineervirtualbusines|remote": {
-      "seen": "2026-10-01T14:22:58.910827+00:00",
-      "title": "Solution Engineer - Virtual Business",
-      "company": "jobgether"
-    },
-    "jobgether|seniordeveloperphp|remote": {
-      "seen": "2026-10-01T14:22:58.910518+00:00",
-      "title": "Senior Developer (PHP)",
-      "company": "jobgether"
-    },
-    "jobgether|softwaredeveloperjavaremoto|remote": {
-      "seen": "2026-10-01T14:22:58.910059+00:00",
-      "title": "Software Developer Java - Remoto",
-      "company": "jobgether"
-    },
-    "jobgether|cloudaccountexecutiveagentforc|remote": {
-      "seen": "2026-10-01T14:22:58.909804+00:00",
-      "title": "Cloud Account Executive - Agentforce (Taiwan)",
-      "company": "jobgether"
-    },
-    "jobgether|outsidesalesconsultantlombardi|remote": {
-      "seen": "2026-10-01T14:22:58.909480+00:00",
-      "title": "Outside Sales Consultant -Lombard, IL",
-      "company": "jobgether"
-    },
-    "jobgether|automotiveoemaccountdirectorus|remote": {
-      "seen": "2026-10-01T14:22:58.908944+00:00",
-      "title": "Automotive OEM Account Director (Remote - US)",
-      "company": "jobgether"
-    },
-    "jobgether|accountdirectorfs|remote": {
-      "seen": "2026-10-01T14:22:58.908609+00:00",
-      "title": "Account Director - FS",
-      "company": "jobgether"
-    },
-    "jobgether|renewalaccountexecutivehighval|remote": {
-      "seen": "2026-10-01T14:22:58.908338+00:00",
-      "title": "Renewal Account Executive, High Value (Remote)",
-      "company": "jobgether"
-    },
-    "jobgether|srmanageraccounting|remote": {
-      "seen": "2026-10-01T14:22:58.908030+00:00",
-      "title": "Sr. Manager, Accounting",
-      "company": "jobgether"
-    },
-    "jobgether|enterprisekeyaccountdirector|remote": {
-      "seen": "2026-10-01T14:22:58.907551+00:00",
-      "title": "Enterprise Key Account Director",
-      "company": "jobgether"
-    },
-    "jobgether|salesaccountexecutive|remote": {
-      "seen": "2026-10-01T14:22:58.907293+00:00",
-      "title": "Sales Account Executive",
-      "company": "jobgether"
-    },
-    "jobgether|accountmanagertier1cloudservic|remote": {
-      "seen": "2026-10-01T14:22:58.907081+00:00",
-      "title": "Account Manager - Tier 1 - Cloud Service Provider - Seattle, Washington",
-      "company": "jobgether"
-    },
-    "jobgether|salesexecutivefederalgovernmen|remote": {
-      "seen": "2026-10-01T14:22:58.906643+00:00",
-      "title": "Sales Executive Federal Government",
-      "company": "jobgether"
-    },
-    "jobgether|cardiovascularaccountspecialis|remote": {
-      "seen": "2026-10-01T14:22:58.906140+00:00",
-      "title": "Cardiovascular Account Specialist - U.S. Sales, Pasadena, CA",
-      "company": "jobgether"
-    },
-    "jobgether|oncologyaccountmanagersolidtum|remote": {
-      "seen": "2026-10-01T14:22:58.905441+00:00",
-      "title": "Oncology Account Manager (Solid Tumor) Orange County, CA",
-      "company": "jobgether"
-    },
-    "jobgether|salesspecialistretailsales|remote": {
-      "seen": "2026-10-01T14:22:58.905087+00:00",
-      "title": "Sales Specialist, Retail Sales",
-      "company": "jobgether"
-    },
-    "jobgether|arterialaccountmanagerbayareap|remote": {
-      "seen": "2026-10-01T14:22:58.904403+00:00",
-      "title": "Arterial Account Manager - Bay Area - Peripheral Vascular",
-      "company": "jobgether"
-    },
-    "jobgether|srmarketingaccountmanager|remote": {
-      "seen": "2026-10-01T14:22:58.904059+00:00",
-      "title": "Sr. Marketing Account Manager",
-      "company": "jobgether"
-    },
-    "jobgether|regionalaccountmanagersled|remote": {
-      "seen": "2026-10-01T14:22:58.903818+00:00",
-      "title": "Regional Account Manager, SLED",
-      "company": "jobgether"
-    },
-    "untalentarabic|bouar|remote": {
-      "seen": "2026-10-01T14:22:58.902288+00:00",
-      "title": "Bouar",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|financecoordinatorcarbouar|remote": {
-      "seen": "2026-10-01T14:22:58.901940+00:00",
-      "title": "Finance Coordinator CAR Bouar",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|va0242026itsolutionsdevelopern|remote": {
-      "seen": "2026-10-01T14:22:58.901059+00:00",
-      "title": "VA024-2026 IT Solutions Developer (NOA) - Damascus",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|nationalmultimediaproducer|remote": {
-      "seen": "2026-10-01T14:22:58.900244+00:00",
-      "title": "National Multimedia Producer",
-      "company": "untalent_arabic"
-    },
     "untalentarabic|cambodia|remote": {
-      "seen": "2026-10-01T14:22:58.899596+00:00",
+      "seen": "2026-10-16T12:13:43.812217+00:00",
       "title": "Cambodia",
       "company": "untalent_arabic"
     },
     "untalentarabic|phnompenh|remote": {
-      "seen": "2026-10-01T14:22:58.899242+00:00",
+      "seen": "2026-10-16T12:13:43.811858+00:00",
       "title": "Phnom Penh",
       "company": "untalent_arabic"
     },
-    "untalentarabic|internationalmultimediaproduce|remote": {
-      "seen": "2026-10-01T14:22:58.898863+00:00",
-      "title": "International Multimedia Producer",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|readvertisementbusinesssupport|remote": {
-      "seen": "2026-10-01T14:22:58.898200+00:00",
-      "title": "Re - Advertisement) Business Support Associate (Reports, G6, Dhaka",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|va0222026sitemaintenanceassist|remote": {
-      "seen": "2026-10-01T14:22:58.897351+00:00",
-      "title": "VA022-2026 Site Maintenance Assistant (SC3) Qamihsli",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|ictspecialist2digitaldata|remote": {
-      "seen": "2026-10-01T14:22:58.896338+00:00",
-      "title": "ICT Specialist 2 - Digital & Data",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|seniorinvestigationofficer|remote": {
-      "seen": "2026-10-01T14:22:58.895629+00:00",
-      "title": "Senior Investigation Officer",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|businessanalystfixedterm|remote": {
-      "seen": "2026-10-01T14:22:58.894604+00:00",
-      "title": "Business Analyst (Fixed - Term)",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|seniorfinanceandbudgetassistan|remote": {
-      "seen": "2026-10-01T14:22:58.893641+00:00",
-      "title": "Senior Finance and Budget Assistant",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|unhabitatunitednationshumanset|remote": {
-      "seen": "2026-10-01T14:22:58.893106+00:00",
-      "title": "UN-HABITAT - United Nations Human Settlements Programme",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|accountingassistant|remote": {
-      "seen": "2026-10-01T14:22:58.891759+00:00",
-      "title": "Accounting Assistant",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|malawi|remote": {
-      "seen": "2026-10-01T14:22:58.890872+00:00",
-      "title": "Malawi",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|lilongwe|remote": {
-      "seen": "2026-10-01T14:22:58.890493+00:00",
-      "title": "Lilongwe",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|internshipwithuprbranch|remote": {
-      "seen": "2026-10-01T14:22:58.889478+00:00",
-      "title": "Internship with UPR Branch",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|evaluationspecialistfortheterm|remote": {
-      "seen": "2026-10-01T14:22:58.888480+00:00",
-      "title": "Evaluation Specialist for the Terminal Evaluation of the UNEP/GCF project Enhanced Climate Resilience of Rural Communit\u2026",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|cfndnationalpolicyconsultantna|remote": {
-      "seen": "2026-10-01T14:22:58.886853+00:00",
-      "title": "CFND- National Policy Consultant Namibia \u2013 Mining Value Chains & AfCFTA Frameworks for the project: \u201cFostering an envir\u2026",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|cfndnationalpolicyconsultantso|remote": {
-      "seen": "2026-10-01T14:22:58.885524+00:00",
-      "title": "CFND- National Policy Consultant South Africa \u2013 Mining Value Chains & AfCFTA Frameworks for the project: \u201cFostering an \u2026",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|cfndnationalpolicyconsultantza|remote": {
-      "seen": "2026-10-01T14:22:58.884226+00:00",
-      "title": "CFND- National Policy Consultant Zambia \u2013 Mining Value Chains & AfCFTA Frameworks for the project: \u201cFostering an enviro\u2026",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|cfndnationalpolicyconsultantzi|remote": {
-      "seen": "2026-10-01T14:22:58.881752+00:00",
-      "title": "CFND- National Policy Consultant Zimbabwe\u2013 Mining Value Chains & AfCFTA Frameworks for the project: \u201cFostering an envir\u2026",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|cfndnationalpolicyconsultantmo|remote": {
-      "seen": "2026-10-01T14:22:58.879991+00:00",
-      "title": "CFND- National Policy Consultant Mozambique \u2013 Mining Value Chains & AfCFTA Frameworks for the project: \u201cFostering an en\u2026",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|financeassistantfinancedepartm|remote": {
-      "seen": "2026-10-01T14:22:58.878281+00:00",
-      "title": "Finance Assistant - Finance Department - Daily Paid Opportunity - Field Office - Grade 10",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|hotlinereferralofficer|remote": {
-      "seen": "2026-10-01T14:22:58.876905+00:00",
-      "title": "Hotline & Referral Officer",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|projectcoordinatorlivelihood|remote": {
-      "seen": "2026-10-01T14:22:58.876272+00:00",
-      "title": "Project Coordinator - Livelihood",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|washassistanttanariver|remote": {
-      "seen": "2026-10-01T14:22:58.875608+00:00",
-      "title": "WASH Assistant - Tana River",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|communityfacilitatorchildprote|remote": {
-      "seen": "2026-10-01T14:22:58.874795+00:00",
-      "title": "Community Facilitator (Child Protection)",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|accountanalystsouthasia|remote": {
-      "seen": "2026-10-01T14:22:58.873301+00:00",
-      "title": "Account Analyst, South Asia",
-      "company": "untalent_arabic"
-    },
-    "untalentarabic|technicaladvisoriknowledgemana|remote": {
-      "seen": "2026-10-01T14:22:58.872061+00:00",
-      "title": "Technical Advisor I, Knowledge Management & External Engagement",
-      "company": "untalent_arabic"
-    },
     "untalentarabic|financeofficer|remote": {
-      "seen": "2026-10-01T14:22:58.870567+00:00",
+      "seen": "2026-10-16T12:13:43.834429+00:00",
       "title": "Finance Officer",
       "company": "untalent_arabic"
     },
-    "untalentarabic|streetchild|remote": {
-      "seen": "2026-10-01T14:22:58.870131+00:00",
-      "title": "Street Child",
-      "company": "untalent_arabic"
-    },
-    "lemonio|seniorbackendengineer|remote": {
-      "seen": "2026-10-01T14:22:58.767307+00:00",
-      "title": "Senior back-end Engineer",
-      "company": "Lemon.io"
-    },
-    "himalayasrss|telehealthnursepractitionerus|remote": {
-      "seen": "2026-10-01T14:22:58.752561+00:00",
-      "title": "Telehealth Nurse Practitioner - Remote, US",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|accountsreceivableaccountant|remote": {
-      "seen": "2026-10-01T14:22:58.751823+00:00",
-      "title": "Accounts Receivable Accountant",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|seniorconstructionengineerener|remote": {
-      "seen": "2026-10-01T14:22:58.751327+00:00",
-      "title": "Senior Construction Engineer, Energy Storage",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|logisticsdeliveryadvisorwithfr|remote": {
-      "seen": "2026-10-01T14:22:58.750043+00:00",
-      "title": "Logistics & Delivery Advisor with French and English",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|presalessolutionsengineer|remote": {
-      "seen": "2026-10-01T14:22:58.749156+00:00",
-      "title": "Presales Solutions Engineer",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|itsystemsengineeriiioriii|remote": {
-      "seen": "2026-10-01T14:22:58.748480+00:00",
-      "title": "IT Systems Engineer I, II, or III",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|seniorsoftwareengineer|remote": {
-      "seen": "2026-10-01T14:22:58.747139+00:00",
-      "title": "Senior Software Engineer",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|opensourcegithubmaintainer|remote": {
-      "seen": "2026-10-01T14:22:58.739696+00:00",
-      "title": "Open Source GitHub Maintainer",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|enterprisedataarchitect|remote": {
-      "seen": "2026-10-01T14:22:58.737183+00:00",
-      "title": "Enterprise Data Architect",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|marketingmanager|remote": {
-      "seen": "2026-10-01T14:22:58.735636+00:00",
-      "title": "Marketing Manager",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|marketsanddistributioncareerco|remote": {
-      "seen": "2026-10-01T14:22:58.734143+00:00",
-      "title": "Markets and Distribution Career Coach (Part-Time)",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|specialtyoperationspharmacytec|remote": {
-      "seen": "2026-10-01T14:22:58.731431+00:00",
-      "title": "Specialty Operations Pharmacy Technician",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|advisorichatsupport|remote": {
-      "seen": "2026-10-01T14:22:58.728992+00:00",
-      "title": "Advisor I, Chat Support",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|seniorengineerhybris|remote": {
-      "seen": "2026-10-01T14:22:58.727278+00:00",
-      "title": "Senior Engineer (Hybris)",
-      "company": "himalayas_rss"
-    },
-    "himalayasrss|managersalescompensation|remote": {
-      "seen": "2026-10-01T14:22:58.725221+00:00",
-      "title": "Manager, Sales Compensation",
-      "company": "himalayas_rss"
-    },
-    "wwrallother|toptalclientadvisor|remote": {
-      "seen": "2026-10-01T14:22:58.290396+00:00",
-      "title": "Toptal: Client Advisor",
-      "company": "wwr_all_other"
-    },
-    "wwrallother|toptalenterprisesalesdevelopme|remote": {
-      "seen": "2026-10-01T14:22:58.228571+00:00",
-      "title": "Toptal: Enterprise Sales Development Representative",
-      "company": "wwr_all_other"
-    },
-    "wwrallother|doximitymarketingcoordinator|remote": {
-      "seen": "2026-10-01T14:22:58.191459+00:00",
-      "title": "Doximity: Marketing Coordinator",
-      "company": "wwr_all_other"
-    },
-    "wwrsalesmarketing|orchardfoundingheadofsales|remote": {
-      "seen": "2026-10-01T14:22:57.613802+00:00",
-      "title": "Orchard: Founding Head of Sales",
-      "company": "wwr_sales_marketing"
-    },
-    "wwrsalesmarketing|meliosenioraccountexecutivestr|remote": {
-      "seen": "2026-10-01T14:22:57.604070+00:00",
-      "title": "Melio: Senior Account Executive, Strategic Partnerships & Affiliates",
-      "company": "wwr_sales_marketing"
-    },
-    "wwrsalesmarketing|hextechnologiesmanagerenterpri|remote": {
-      "seen": "2026-10-01T14:22:57.583592+00:00",
-      "title": "Hex Technologies: Manager, Enterprise Sales",
-      "company": "wwr_sales_marketing"
-    },
-    "wwrsalesmarketing|meliosenioraccountexecutiveuhv|remote": {
-      "seen": "2026-10-01T14:22:57.560330+00:00",
-      "title": "Melio: Senior Account Executive - UHV Payors",
-      "company": "wwr_sales_marketing"
-    },
-    "wwrdesign|essencejourneyguestexperiences|remote": {
-      "seen": "2026-10-01T14:22:57.091915+00:00",
-      "title": "Essence Journey: Remote Guest Experience Specialist",
-      "company": "wwr_design"
-    },
-    "wwrdesign|epamsystemsleadcloudengineer|remote": {
-      "seen": "2026-10-01T14:22:57.077935+00:00",
-      "title": "EPAM Systems: Lead Cloud Engineer",
-      "company": "wwr_design"
-    },
-    "wwrdesign|pearlseniorpackagingdesignerfo|remote": {
-      "seen": "2026-10-01T14:22:57.064938+00:00",
-      "title": "Pearl: Remote Senior Packaging Designer for Consumer Goods Company",
-      "company": "wwr_design"
-    },
-    "wwrdesign|criblsruxdesignersecurity|remote": {
-      "seen": "2026-10-01T14:22:57.029217+00:00",
-      "title": "Cribl: Sr. UX Designer, Security",
-      "company": "wwr_design"
-    },
-    "wwrdesign|seatgeeksenioruxdesigner|remote": {
-      "seen": "2026-10-01T14:22:56.993850+00:00",
-      "title": "Seat Geek: Senior UX Designer",
-      "company": "wwr_design"
-    },
-    "wwrdesign|calmcomseniorproductdesigner|remote": {
-      "seen": "2026-10-01T14:22:56.982032+00:00",
-      "title": "Calm.com: Senior Product Designer",
-      "company": "wwr_design"
-    },
-    "wwrdesign|verceldesignengineer|remote": {
-      "seen": "2026-10-01T14:22:56.949272+00:00",
-      "title": "Vercel: Design Engineer",
-      "company": "wwr_design"
-    },
-    "wwrcustomersupport|limitlesstechnologyjapanesespe|remote": {
-      "seen": "2026-10-01T14:22:56.720691+00:00",
-      "title": "Limitless Technology: Japanese Speaking Customer Service Agent - for Netflix Japan",
-      "company": "wwr_customer_support"
-    },
-    "transperfect|seniorleadqaspecialist|anywhereinukgreaterl": {
-      "seen": "2026-10-01T14:22:53.351418+00:00",
-      "title": "Senior/Lead QA Specialist",
-      "company": "TransPerfect"
-    },
     "transperfect|productmanagermultilingualexpe|charlottenorthcaroli": {
-      "seen": "2026-10-01T14:22:53.343721+00:00",
+      "seen": "2026-10-16T12:13:38.759777+00:00",
       "title": "Product Manager, Multilingual Experience & Adobe Experience Manager",
       "company": "TransPerfect"
     },
-    "transperfect|spanishvietnameseinterpreter|thuduccityhochiminhc": {
-      "seen": "2026-10-01T14:22:53.334008+00:00",
-      "title": "Spanish\u2013Vietnamese Interpreter",
-      "company": "TransPerfect"
-    },
     "transperfect|salescoordinatorlifescienceshe|sydneynewsouthwalesa": {
-      "seen": "2026-10-01T14:22:53.318765+00:00",
+      "seen": "2026-10-16T12:13:38.743802+00:00",
       "title": "Sales Coordinator (Life Sciences/Healthcare Industry)",
       "company": "TransPerfect"
     },
     "transperfect|traineesolutionsengineer|chennaitamilnduindia": {
-      "seen": "2026-10-01T14:22:53.308582+00:00",
+      "seen": "2026-10-16T12:13:38.750224+00:00",
       "title": "Trainee Solutions Engineer",
       "company": "TransPerfect"
     },
     "transperfect|sterlingaccountexecutive|athensattikgreece": {
-      "seen": "2026-10-01T14:22:53.302280+00:00",
+      "seen": "2026-10-16T12:13:38.733637+00:00",
       "title": "Sterling Account Executive",
       "company": "TransPerfect"
     },
-    "transperfect|englishvietnameseinterpreter|thuduccityhochiminhc": {
-      "seen": "2026-10-01T14:22:53.291337+00:00",
-      "title": "English\u2013Vietnamese Interpreter",
-      "company": "TransPerfect"
-    },
-    "telusdigital|qualityassuranceraterspanishes|global": {
-      "seen": "2026-10-01T14:22:53.139994+00:00",
-      "title": "Quality Assurance Rater - Spanish (ES)",
-      "company": "TELUS Digital"
-    },
-    "telusdigital|contentreviewerunitedstateseng|unitedstates": {
-      "seen": "2026-10-01T14:22:53.124752+00:00",
-      "title": "Content Reviewer United States - English-speaking",
-      "company": "TELUS Digital"
-    },
-    "weloglobal|adsqualityratergermanbrazil|brazil": {
-      "seen": "2026-10-01T14:22:53.050299+00:00",
-      "title": "Ads Quality Rater - German (Brazil)",
-      "company": "Welo Global"
-    },
-    "weloglobal|adsqualityrateritalianbrazil|brazil": {
-      "seen": "2026-10-01T14:22:53.042579+00:00",
-      "title": "Ads Quality Rater - Italian (Brazil)",
-      "company": "Welo Global"
-    },
-    "nrg|leadproductsupportcustomerexpe|usa": {
-      "seen": "2026-10-01T14:22:52.891353+00:00",
-      "title": "Lead, Product Support & Customer Experience",
-      "company": "NRG"
-    },
-    "instructure|directorinternationalcommunica|mexico": {
-      "seen": "2026-10-01T14:22:52.872839+00:00",
-      "title": "Director, International Communications - Remote (Mexico)",
-      "company": "Instructure"
-    },
-    "stackadapt|seniorproductmanagercreatives|canadausa": {
-      "seen": "2026-10-01T14:22:52.863978+00:00",
-      "title": "Senior Product Manager (Creatives)",
-      "company": "StackAdapt"
-    },
-    "customerio|seniordatascientist|latamcanadausa": {
-      "seen": "2026-10-01T14:22:52.846347+00:00",
-      "title": "Senior Data Scientist",
-      "company": "Customer.io"
-    },
-    "teachable|seniorsoftwareengineerfullstac|brazil": {
-      "seen": "2026-10-01T14:22:52.831588+00:00",
-      "title": "Senior Software Engineer (Fullstack)",
-      "company": "Teachable"
-    },
-    "cloudbeds|managerglobaltalentacquisition|latameuropeusa": {
-      "seen": "2026-10-01T14:22:52.815780+00:00",
-      "title": "Manager, Global Talent Acquisition",
-      "company": "Cloudbeds"
-    },
-    "roboflow|implementationengineer|usa": {
-      "seen": "2026-10-01T14:22:52.800909+00:00",
-      "title": "Implementation Engineer",
-      "company": "Roboflow"
-    },
-    "deepgram|researchstaffvoiceaifoundation|usa": {
-      "seen": "2026-10-01T14:22:52.785942+00:00",
-      "title": "Research Staff, Voice AI Foundations",
-      "company": "Deepgram"
-    },
-    "pingidentity|seniortechnicalwriter|usa": {
-      "seen": "2026-10-01T14:22:52.766554+00:00",
-      "title": "Senior Technical Writer",
-      "company": "Ping Identity"
-    },
-    "instructure|growthmarketingmanagerfoundry|australiabrazilchina": {
-      "seen": "2026-10-01T14:22:52.749646+00:00",
-      "title": "Growth Marketing Manager, Foundry",
-      "company": "Instructure"
-    },
-    "feedzai|advancedsoftwareengineercustom|brazil": {
-      "seen": "2026-10-01T14:22:52.739569+00:00",
-      "title": "Advanced Software Engineer - Customer Success",
-      "company": "Feedzai"
-    },
-    "getlabs|seniortrustandsafetymanager|usa": {
-      "seen": "2026-10-01T14:22:52.726288+00:00",
-      "title": "Senior Trust and Safety Manager",
-      "company": "Getlabs"
-    },
-    "reddit|softwareengineercontentplatfor|usa": {
-      "seen": "2026-10-01T14:22:52.709241+00:00",
-      "title": "Software Engineer, Content Platform",
-      "company": "Reddit"
-    },
-    "padsplit|seniordataanalystfully|latam": {
-      "seen": "2026-10-01T14:22:52.693843+00:00",
-      "title": "Senior Data Analyst (Fully Remote)",
-      "company": "PadSplit"
-    },
-    "docplanner|knowledgearchitectandproducten|brazil": {
-      "seen": "2026-10-01T14:22:52.676486+00:00",
-      "title": "Knowledge Architect and Product Enablement Expert",
-      "company": "Docplanner"
-    },
-    "cloudbeds|customerrecoveryteammanager|latamcanadausa": {
-      "seen": "2026-10-01T14:22:52.656445+00:00",
-      "title": "Customer Recovery Team - Manager",
-      "company": "Cloudbeds"
-    },
-    "siteminder|newbusinessmanager|germany": {
-      "seen": "2026-10-01T14:22:52.636898+00:00",
-      "title": "New Business Manager",
-      "company": "SiteMinder"
-    },
-    "docplanner|seniorclinicalproductlead100wi|europe": {
-      "seen": "2026-10-01T14:22:52.616458+00:00",
-      "title": "Senior Clinical Product Lead | 100% Remote within Europe",
-      "company": "Docplanner"
-    },
-    "datadog|developeradvocateservicemanage|francenetherlandsspa": {
-      "seen": "2026-10-01T14:22:52.595341+00:00",
-      "title": "Developer Advocate - Service Management EMEA",
-      "company": "Datadog"
-    },
-    "halter|principalsupplierqualityengine|china": {
-      "seen": "2026-10-01T14:22:52.548645+00:00",
-      "title": "Principal Supplier Quality Engineer",
-      "company": "Halter"
-    },
-    "notified|bilingualenfrproofreader|qubecquebeccanada": {
-      "seen": "2026-10-01T14:22:52.501576+00:00",
-      "title": "Bilingual (EN/FR) Proofreader",
-      "company": "Notified"
-    },
-    "pixelogicmedia|sdhqceditorkorean|seoulseoulsouthkorea": {
-      "seen": "2026-10-01T14:22:52.501021+00:00",
-      "title": "SDH QC Editor (Korean)",
-      "company": "Pixelogic Media"
-    },
-    "dexis|editorialtechniciantestingandd|aberdeenprovinggroun": {
-      "seen": "2026-10-01T14:22:52.500061+00:00",
-      "title": "Editorial Technician, Testing and Data Collection",
-      "company": "Dexis"
-    },
-    "canadianstandardsassociation|rviseurourviseurebilinguecontr|montrealquebeccanada": {
-      "seen": "2026-10-01T14:22:52.498827+00:00",
-      "title": "R\u00e9viseur ou R\u00e9viseure Bilingue (Contrat de 12 mois)/ Bilingual Editor (12-Month Contract)",
-      "company": "Canadian Standards Association"
-    },
-    "tiaa|analystiiproofreaderretirement|mumbaimetropolitanre": {
-      "seen": "2026-10-01T14:22:52.497215+00:00",
-      "title": "Analyst II - Proofreader - Retirement Solutions India",
-      "company": "TIAA"
-    },
-    "arcadestudio|editor|hybridmoscowcityruss": {
-      "seen": "2026-10-01T14:22:52.496517+00:00",
-      "title": "Editor",
-      "company": "arcade studio"
-    },
-    "jobbol|revisor|remoteblumenausantac": {
-      "seen": "2026-10-01T14:22:52.481059+00:00",
-      "title": "Revisor",
-      "company": "Jobbol"
-    },
-    "wizeline|copyeditoreditorialspecialistc|remotemexico": {
-      "seen": "2026-10-01T14:22:52.472577+00:00",
-      "title": "Copy Editor/Editorial Specialist (CDMX or GDL)",
-      "company": "Wizeline"
-    },
-    "omnicomhealth|senioreditor|onsitenewyorkny": {
-      "seen": "2026-10-01T14:22:52.458994+00:00",
-      "title": "Senior Editor",
-      "company": "Omnicom Health"
-    },
-    "pleasantvalleyschooldistrictcamarillo|bilingualassistanttranslator|remotecamarilloca": {
-      "seen": "2026-10-01T14:22:52.439108+00:00",
-      "title": "Bilingual Assistant Translator",
-      "company": "Pleasant Valley School District, Camarillo"
-    },
-    "dollypartonchildrenshospital|spanishmedicalinterpretertrans|remoteknoxvilletn": {
-      "seen": "2026-10-01T14:22:52.429147+00:00",
-      "title": "Spanish Medical Interpreter/Translator Sevier Rehab Full Time Days",
-      "company": "Dolly Parton Children's Hospital"
-    },
-    "ptgranseleroninvestama|penerjemahmandarinindonesia|jakartajakartaindone": {
-      "seen": "2026-10-01T14:22:52.417834+00:00",
-      "title": "Penerjemah Mandarin Indonesia",
-      "company": "PT Gran Seleron Investama"
-    },
-    "azkait|traductorintrpretecorporativoi|remotemexicocitymexi": {
-      "seen": "2026-10-01T14:22:52.415082+00:00",
-      "title": "Traductor - Int\u00e9rprete Corporativo Ingl\u00e9s \u2013 Espa\u00f1ol | Remoto",
-      "company": "Azkait"
-    },
-    "careerprojectindonesia|mandarintranslator|remotemorowalicentra": {
-      "seen": "2026-10-01T14:22:52.410243+00:00",
-      "title": "Mandarin Translator",
-      "company": "Career Project Indonesia"
-    },
-    "premierservicesandrecruitment|koreantranslator|remotecairoegypt": {
-      "seen": "2026-10-01T14:22:52.404559+00:00",
-      "title": "Korean Translator",
-      "company": "Premier Services and Recruitment"
-    },
-    "amanuelcooperativasociale|mediatoreculturaledilinguaarab|remotebaronissicampa": {
-      "seen": "2026-10-01T14:22:52.395541+00:00",
-      "title": "Mediatore Culturale di lingua araba",
-      "company": "Amanuel - Cooperativa sociale"
-    },
-    "revolut|localisationspecialisttranslat|remotepoland": {
-      "seen": "2026-10-01T14:22:52.382514+00:00",
-      "title": "Localisation Specialist (Translator) - Arabic & French",
-      "company": "Revolut"
-    },
-    "revolut|localisationspecialisttranslat|remotelithuania": {
-      "seen": "2026-10-01T14:22:52.365128+00:00",
-      "title": "Localisation Specialist (Translator) - Arabic & French",
-      "company": "Revolut"
-    },
-    "wfpworldfoodprogramme|transcripteurdescontenusetdonn|remotedakar": {
-      "seen": "2026-10-01T14:22:52.348061+00:00",
-      "title": "Transcripteur des contenus et donn\u00e9es",
-      "company": "WFP - World Food Programme"
-    },
-    "icrcinternationalcommitteeoftheredcross|kinyarwandainterpreter|democraticrepublicof": {
-      "seen": "2026-10-01T14:22:52.346861+00:00",
-      "title": "Kinyarwanda Interpreter",
-      "company": "ICRC - International Committee of the Red Cross"
-    },
-    "seniorexternalrelationsassistant|closingtoday|unhcrunitednationshi": {
-      "seen": "2026-10-01T14:22:52.343580+00:00",
-      "title": "Closing today:",
-      "company": "Senior External Relations Assistant"
-    },
-    "hrintern|jobisclosed|unopsunitednationsof": {
-      "seen": "2026-10-01T14:22:52.341866+00:00",
-      "title": "Job is closed:",
-      "company": "HR Intern"
-    },
-    "programmemanagementofficer|closingtoday|undssunitednationsde": {
-      "seen": "2026-10-01T14:22:52.336737+00:00",
-      "title": "Closing today:",
-      "company": "Programme Management Officer"
-    },
-    "idbgroup|spanishtranslatorreviser|washingtondc": {
-      "seen": "2026-10-01T14:22:52.329080+00:00",
-      "title": "Spanish Translator/Reviser",
-      "company": "IDB Group"
-    },
-    "nationalknowledgeandlearningofficer|jobisclosed|iominternationalorga": {
-      "seen": "2026-10-01T14:22:52.328548+00:00",
-      "title": "Job is closed:",
-      "company": "National Knowledge and Learning Officer"
-    },
-    "icrcinternationalcommitteeoftheredcross|fulafulanipeulinterpreter|b2": {
-      "seen": "2026-10-01T14:22:52.327031+00:00",
-      "title": "Fula / Fulani / Peul Interpreter",
-      "company": "ICRC - International Committee of the Red Cross"
-    },
-    "unccdunitednationsconventiontocombatdesertification|communicationsconsultantforara|remotebonn": {
-      "seen": "2026-10-01T14:22:52.326044+00:00",
-      "title": "Communications Consultant for Arabic Language",
-      "company": "UNCCD - United Nations Convention to Combat Desertification"
-    },
-    "icrcinternationalcommitteeoftheredcross|amharicoromotigrinyainterprete|ethiopia": {
-      "seen": "2026-10-01T14:22:52.323980+00:00",
-      "title": "Amharic, Oromo & Tigrinya Interpreter",
-      "company": "ICRC - International Committee of the Red Cross"
-    },
-    "icrcinternationalcommitteeoftheredcross|somaliinterpreter|nairobi": {
-      "seen": "2026-10-01T14:22:52.322935+00:00",
-      "title": "Somali Interpreter",
-      "company": "ICRC - International Committee of the Red Cross"
-    },
-    "editorialassistantbilingualwithtargetenglish|jobisclosed|unescwaunitednations": {
-      "seen": "2026-10-01T14:22:52.322407+00:00",
-      "title": "Job is closed:",
-      "company": "Editorial Assistant (Bilingual with Target English)"
-    },
-    "interpreterarabicandfrench|jobisclosed|iominternationalorga": {
-      "seen": "2026-10-01T14:22:52.320398+00:00",
-      "title": "Job is closed:",
-      "company": "Interpreter (Arabic and French)"
-    },
-    "icrcinternationalcommitteeoftheredcross|arabicinterpreter|b2": {
-      "seen": "2026-10-01T14:22:52.318641+00:00",
-      "title": "Arabic Interpreter",
-      "company": "ICRC - International Committee of the Red Cross"
-    },
-    "amazon|jrlocalizationexecutivegloball|culvercityca": {
-      "seen": "2026-10-01T14:22:52.316327+00:00",
-      "title": "Jr. Localization Executive, Global Localization",
-      "company": "Amazon"
-    },
-    "walmart|usamanagermarketingplanningand|bentonvillear": {
-      "seen": "2026-10-01T14:22:52.315342+00:00",
-      "title": "(USA) Manager, Marketing Planning And Strategy - Localization Specialist LATAM",
-      "company": "Walmart"
-    },
-    "dollypartonchildrenshospital|spanishmedicalinterpretertrans|knoxvilletn": {
-      "seen": "2026-10-01T14:22:52.314422+00:00",
-      "title": "Spanish Medical Interpreter/Translator Sevier Rehab Full Time Days",
-      "company": "Dolly Parton Children's Hospital"
-    },
-    "uvahealth|foreignlanguageinterpreterspan|virginiaunitedstates": {
-      "seen": "2026-10-01T14:22:52.313421+00:00",
-      "title": "Foreign Language Interpreter - Spanish",
-      "company": "UVA Health"
-    },
-    "hughchathamhealth|healthcareinterpreterispanish|concordnc": {
-      "seen": "2026-10-01T14:22:52.313119+00:00",
-      "title": "Healthcare Interpreter I Spanish",
-      "company": "Hugh Chatham Health"
-    },
-    "pleasantvalleyschooldistrictcamarillo|bilingualassistanttranslator|camarilloca": {
-      "seen": "2026-10-01T14:22:52.312372+00:00",
-      "title": "Bilingual Assistant Translator",
-      "company": "Pleasant Valley School District, Camarillo"
-    },
-    "gardaworldfederalservices|translator|sanantoniotx": {
-      "seen": "2026-10-01T14:22:52.307621+00:00",
-      "title": "Translator",
-      "company": "GardaWorld Federal Services"
-    },
-    "unitednations|staffassistantg5|newyorknyus": {
-      "seen": "2026-10-01T14:22:52.294819+00:00",
-      "title": "Staff Assistant, G5",
-      "company": "United Nations"
-    },
-    "temporaltechnologies|seniorprofessionalservicesengi|unitedstateslosangel": {
-      "seen": "2026-10-01T14:22:52.225306+00:00",
-      "title": "Senior Professional Services Engineer - West",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|seniorsoftwareengineercloudpar|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.223558+00:00",
-      "title": "Senior Software Engineer - Cloud Partner Integrations",
-      "company": "ClickHouse"
-    },
-    "clickhouse|gtmengineeraiautomation|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.221130+00:00",
-      "title": "GTM Engineer, AI & Automation",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|seniorsoftwareengineerinfrastr|sanfranciscocaliforn": {
-      "seen": "2026-10-01T14:22:52.218837+00:00",
-      "title": "Senior Software Engineer, Infrastructure Foundations",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|principaldatabaseperformanceen|germanyunitedkingdom": {
-      "seen": "2026-10-01T14:22:52.216959+00:00",
-      "title": "Principal Database Performance Engineer - Core Engineering (C++)",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|seniorplatformarchitect|londonenglandmanches": {
-      "seen": "2026-10-01T14:22:52.214043+00:00",
-      "title": "Senior Platform Architect",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|seniorsoftwareengineerclickhou|thenetherlandsdenmar": {
-      "seen": "2026-10-01T14:22:52.210440+00:00",
-      "title": "Senior Software Engineer - ClickHouse Private (Remote)",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|staffsoftwareengineertraffic|seattlewashingtonrem": {
-      "seen": "2026-10-01T14:22:52.207703+00:00",
-      "title": "Staff Software Engineer, Traffic",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|vicepresidentglobalcorporateco|sanfranciscocaliforn": {
-      "seen": "2026-10-01T14:22:52.205906+00:00",
-      "title": "Vice President, Global Corporate Controller",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|cloudsoftwareengineerobservabi|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.202583+00:00",
-      "title": "Cloud Software Engineer - Observability Platform",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|seniorsoftwareengineercloudgro|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.200278+00:00",
-      "title": "Senior Software Engineer, Cloud Growth",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|seniorproductsecurityengineer|thenetherlands": {
-      "seen": "2026-10-01T14:22:52.198040+00:00",
-      "title": "Senior Product Security Engineer",
-      "company": "ClickHouse"
-    },
-    "clickhouse|seniorproductsecurityengineer|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.195473+00:00",
-      "title": "Senior Product Security Engineer",
-      "company": "ClickHouse"
-    },
-    "clickhouse|seniorsoftwareengineerclickpip|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.190365+00:00",
-      "title": "Senior Software Engineer - Clickpipes (CDC/Streaming)",
-      "company": "ClickHouse"
-    },
-    "clickhouse|accountspayablesanalyst|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.185351+00:00",
-      "title": "Accounts Payables Analyst",
-      "company": "ClickHouse"
-    },
-    "clickhouse|incidentresponsesecurityengine|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.181475+00:00",
-      "title": "Incident Response Security Engineer",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|seniorsoftwareengineercloudpla|seattlewashingtonaus": {
-      "seen": "2026-10-01T14:22:52.177472+00:00",
-      "title": "Senior Software Engineer, Cloud Platform Foundations",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|langfuseseniorbackendengineer|germanyportugalfranc": {
-      "seen": "2026-10-01T14:22:52.172987+00:00",
-      "title": "Langfuse - Senior Backend Engineer",
-      "company": "ClickHouse"
-    },
-    "clickhouse|langfuseseniorcloudinfraengine|germanyportugalfranc": {
-      "seen": "2026-10-01T14:22:52.170066+00:00",
-      "title": "Langfuse - Senior Cloud Infra Engineer",
-      "company": "ClickHouse"
-    },
-    "clickhouse|langfuseseniorproductengineer|germanyportugalfranc": {
-      "seen": "2026-10-01T14:22:52.166377+00:00",
-      "title": "Langfuse - Senior Product Engineer",
-      "company": "ClickHouse"
-    },
-    "clickhouse|directorpeoplesystems|amerunitedstatesremo": {
-      "seen": "2026-10-01T14:22:52.162873+00:00",
-      "title": "Director, People Systems",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|headofcorporatedevelopment|sanfranciscocaliforn": {
-      "seen": "2026-10-01T14:22:52.160451+00:00",
-      "title": "Head of Corporate Development",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|seniorapplicationsecurityengin|unitedstatesremoteca": {
-      "seen": "2026-10-01T14:22:52.158405+00:00",
-      "title": "Senior Application Security Engineer",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|seniorsitereliabilityengineeru|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.156122+00:00",
-      "title": "Senior Site Reliability Engineer - (US-Remote)",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|staffsoftwareengineeraifoundat|unitedstatesremoteca": {
-      "seen": "2026-10-01T14:22:52.153776+00:00",
-      "title": "Staff Software Engineer, AI Foundations (AI Agent Optimization)",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|fullstacksoftwareengineercontr|thenetherlandsportug": {
-      "seen": "2026-10-01T14:22:52.151427+00:00",
-      "title": "Full Stack Software Engineer - Control Plane",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|softwareengineercloudenablemen|unitedstatesremotese": {
-      "seen": "2026-10-01T14:22:52.148511+00:00",
-      "title": "Software Engineer, Cloud Enablement",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|seniorstaffproductmarketingeng|sanfranciscocaliforn": {
-      "seen": "2026-10-01T14:22:52.146765+00:00",
-      "title": "Senior Staff Product Marketing Engineer, Core and SDKs",
-      "company": "Temporal Technologies"
-    },
-    "clickhouse|seniorfullstacksoftwareenginee|unitedkingdompolandp": {
-      "seen": "2026-10-01T14:22:52.144974+00:00",
-      "title": "Senior Full Stack Software Engineer - ClickPipes Platform",
-      "company": "ClickHouse"
-    },
-    "clickhouse|seniorsoftwareengineerbackenda|spainremote": {
-      "seen": "2026-10-01T14:22:52.142232+00:00",
-      "title": "Senior Software Engineer (Backend) - AI/ML",
-      "company": "ClickHouse"
-    },
-    "clickhouse|seniorsoftwareengineerclickpip|germanyremote": {
-      "seen": "2026-10-01T14:22:52.139483+00:00",
-      "title": "Senior Software Engineer - Clickpipes (CDC/Streaming)",
-      "company": "ClickHouse"
-    },
-    "clickhouse|seniormanagerglobalworkplaces|unitedstatesunitedki": {
-      "seen": "2026-10-01T14:22:52.136889+00:00",
-      "title": "Senior Manager, Global Workplaces",
-      "company": "ClickHouse"
-    },
-    "clickhouse|globalexpensesspecialist|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.133883+00:00",
-      "title": "Global Expenses Specialist",
-      "company": "ClickHouse"
-    },
-    "clickhouse|growthengineer|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.130179+00:00",
-      "title": "Growth Engineer",
-      "company": "ClickHouse"
-    },
-    "clickhouse|seniorbackendengineerclickpipe|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.127816+00:00",
-      "title": "Senior Backend Engineer - ClickPipes Platform",
-      "company": "ClickHouse"
-    },
-    "n8n|agenticengineeringplatformengi|berlinofficebosniaro": {
-      "seen": "2026-10-01T14:22:52.124301+00:00",
-      "title": "Agentic Engineering Platform Engineer",
-      "company": "n8n"
-    },
-    "coinbase|complianceinternationalinvesti|remoteuk": {
-      "seen": "2026-10-01T14:22:52.118205+00:00",
-      "title": "Compliance, International Investigations Associate",
-      "company": "Coinbase"
-    },
-    "coinbase|seniorsoftwareengineerblockcha|remoteusa": {
-      "seen": "2026-10-01T14:22:52.115510+00:00",
-      "title": "Senior Software Engineer- Blockchain Platform (Wallets, Liquidity & Bridging)",
-      "company": "Coinbase"
-    },
-    "marshmallow|techopsengineer|budapestremote": {
-      "seen": "2026-10-01T14:22:52.113611+00:00",
-      "title": "Tech Ops Engineer",
-      "company": "Marshmallow"
-    },
-    "launchdarkly|engineeringmanagercloudenginee|remoteus": {
-      "seen": "2026-10-01T14:22:52.110919+00:00",
-      "title": "Engineering Manager, Cloud Engineering",
-      "company": "LaunchDarkly"
-    },
-    "omadahealth|seniorengineeringmanagermember|remoteusa": {
-      "seen": "2026-10-01T14:22:52.109013+00:00",
-      "title": "Senior Engineering Manager, Member Experience",
-      "company": "Omada Health"
-    },
-    "twilio|technicalsupportengineer|remoteestonia": {
-      "seen": "2026-10-01T14:22:52.105093+00:00",
-      "title": "Technical Support Engineer",
-      "company": "Twilio"
-    },
-    "openai|accountdirectorlargeenterprise|munichgermanyberling": {
-      "seen": "2026-10-01T14:22:52.100677+00:00",
-      "title": "Account Director, Large Enterprise",
-      "company": "OpenAI"
-    },
-    "r1rcm|sranalyticsanalyst|remoteusa": {
-      "seen": "2026-10-01T14:22:52.097873+00:00",
-      "title": "Sr. Analytics Analyst",
-      "company": "R1 RCM"
-    },
-    "r1rcm|managercustomerpartner|remoteusa": {
-      "seen": "2026-10-01T14:22:52.095342+00:00",
-      "title": "Manager Customer Partner",
-      "company": "R1 RCM"
-    },
-    "r1rcm|sropsleadcustomerpartner|remoteusa": {
-      "seen": "2026-10-01T14:22:52.092840+00:00",
-      "title": "Sr Ops Lead Customer Partner",
-      "company": "R1 RCM"
-    },
-    "airbnb|accountant|unitedstates": {
-      "seen": "2026-10-01T14:22:52.090203+00:00",
-      "title": "Accountant",
-      "company": "Airbnb"
-    },
-    "airbnb|seniorhostdevelopmentleadincen|unitedstates": {
-      "seen": "2026-10-01T14:22:52.087899+00:00",
-      "title": "Senior Host Development Lead, Incentives",
-      "company": "Airbnb"
-    },
-    "airbnb|staffdatascientistguesthost|unitedstates": {
-      "seen": "2026-10-01T14:22:52.085313+00:00",
-      "title": "Staff Data Scientist, Guest & Host",
-      "company": "Airbnb"
-    },
-    "babbel|seniorbackendengineerallgender|berlinremote": {
-      "seen": "2026-10-01T14:22:52.082626+00:00",
-      "title": "Freelance Senior Backend Engineer (all genders)",
-      "company": "Babbel"
-    },
-    "ramp|seniorchannelpartnermanagerglo|newyorknyhqremoteusr": {
-      "seen": "2026-10-01T14:22:52.079940+00:00",
-      "title": "Senior Channel Partner Manager, Global Advisory / GSI",
-      "company": "Ramp"
-    },
-    "ramp|seniorchannelpartnermanagerstr|newyorknyhqremoteusr": {
-      "seen": "2026-10-01T14:22:52.077206+00:00",
-      "title": "Senior Channel Partner Manager, Strategic Advisory",
-      "company": "Ramp"
-    },
-    "ramp|paidsocialmanager|newyorknyhqremote": {
-      "seen": "2026-10-01T14:22:52.073905+00:00",
-      "title": "Paid Social Manager",
-      "company": "Ramp"
-    },
-    "reddit|internationalpayrollanalyst|remoteunitedkingdom": {
-      "seen": "2026-10-01T14:22:52.071449+00:00",
-      "title": "International Payroll Analyst",
-      "company": "Reddit"
-    },
-    "snowflake|softwareengineerjavaplatform|deberlintrionbuildin": {
-      "seen": "2026-10-01T14:22:52.070707+00:00",
-      "title": "Software Engineer - Java Platform",
-      "company": "Snowflake"
-    },
-    "stripe|cryptocontrolsandcompliancelea|remoteus": {
-      "seen": "2026-10-01T14:22:52.067878+00:00",
-      "title": "Crypto Controls and Compliance Lead",
-      "company": "Stripe"
-    },
-    "stripe|offensivesecurityengineer|usremote": {
-      "seen": "2026-10-01T14:22:52.063396+00:00",
-      "title": "Offensive Security Engineer",
-      "company": "Stripe"
-    },
-    "alan|seniorengineeringmanagerhandso|parisfranceremote": {
-      "seen": "2026-10-01T14:22:52.060572+00:00",
-      "title": "Senior Engineering Manager (Hands-on) - Offer",
-      "company": "Alan"
-    },
-    "hellofresh|carrierperformancemanagerallge|berlinberlingermany": {
-      "seen": "2026-10-01T14:22:52.057807+00:00",
-      "title": "Carrier Performance Manager (all genders)",
-      "company": "HelloFresh"
-    },
-    "hellofresh|managertransportdienstleistera|berlinberlingermany": {
-      "seen": "2026-10-01T14:22:52.054798+00:00",
-      "title": "Manager Transportdienstleister (all genders)",
-      "company": "HelloFresh"
-    },
-    "mongodb|softwareengineer|unitedstates": {
-      "seen": "2026-10-01T14:22:52.051785+00:00",
-      "title": "Software Engineer",
-      "company": "MongoDB"
-    },
-    "grafanalabs|seniorfullstackengineerrealuse|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:52.049154+00:00",
-      "title": "Senior FullStack Engineer - Real User Monitoring (RUM) | US | Remote",
-      "company": "Grafana Labs"
-    },
-    "thoughtmachine|securityengineeringmanager|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:52.044593+00:00",
-      "title": "Security Engineering Manager",
-      "company": "Thought Machine"
-    },
-    "bunq|deputyamlbranchmanagerbelgium|brusselsbrusselsbelg": {
-      "seen": "2026-10-01T14:22:52.037205+00:00",
-      "title": "Deputy AML Branch Manager - Belgium",
-      "company": "bunq"
-    },
-    "bunq|branchmanagerbelgiumireland|brusselsbrusselsbelg": {
-      "seen": "2026-10-01T14:22:52.033403+00:00",
-      "title": "Branch Manager, Belgium & Ireland",
-      "company": "bunq"
-    },
-    "tines|salescompensationmanager|irelandremote": {
-      "seen": "2026-10-01T14:22:52.029373+00:00",
-      "title": "Sales Compensation Manager",
-      "company": "Tines"
-    },
-    "tines|seniormanagerpricing|irelandremote": {
-      "seen": "2026-10-01T14:22:52.025733+00:00",
-      "title": "Senior Manager, Pricing",
-      "company": "Tines"
-    },
-    "coinbase|complaintsanalystiii|remoteluxembourg": {
-      "seen": "2026-10-01T14:22:52.022740+00:00",
-      "title": "Complaints Analyst III",
-      "company": "Coinbase"
-    },
-    "coinbase|groupproductmanagerfinhub|remoteusa": {
-      "seen": "2026-10-01T14:22:52.019498+00:00",
-      "title": "Group Product Manager, FinHub",
-      "company": "Coinbase"
-    },
-    "coinbase|staffsoftwareengineerplatformf|remoteusa": {
-      "seen": "2026-10-01T14:22:52.017025+00:00",
-      "title": "Staff Software Engineer (Platform - Financial Engineering)",
-      "company": "Coinbase"
-    },
-    "coinbase|tradesurveillanceassociate|londonuk": {
-      "seen": "2026-10-01T14:22:52.015282+00:00",
-      "title": "Trade Surveillance Associate",
-      "company": "Coinbase"
-    },
-    "veriff|seniordirectorofproductmarketi|usaremotespainremote": {
-      "seen": "2026-10-01T14:22:52.012008+00:00",
-      "title": "Senior Director of Product Marketing",
-      "company": "Veriff"
-    },
-    "r1rcm|productsupportanalyst|remoteusa": {
-      "seen": "2026-10-01T14:22:52.009863+00:00",
-      "title": "Product Support Analyst",
-      "company": "R1 RCM"
-    },
-    "ramp|seniorcorporateparalegal|newyorknyhqsanfranci": {
-      "seen": "2026-10-01T14:22:52.007427+00:00",
-      "title": "Senior Corporate Paralegal",
-      "company": "Ramp"
-    },
-    "coinbase|groupproductmanagermoneymoveme|remoteusa": {
-      "seen": "2026-10-01T14:22:52.005725+00:00",
-      "title": "Group Product Manager, Money Movement",
-      "company": "Coinbase"
-    },
-    "circleci|seniorsoftwareengineer|canadaremoteunitedst": {
-      "seen": "2026-10-01T14:22:52.003082+00:00",
-      "title": "Senior Software Engineer",
-      "company": "CircleCI"
-    },
-    "circleci|softwareengineer|canadaremoteunitedst": {
-      "seen": "2026-10-01T14:22:52.001252+00:00",
-      "title": "Software Engineer",
-      "company": "CircleCI"
-    },
-    "circleci|staffsoftwareengineer|canadaremoteunitedst": {
-      "seen": "2026-10-01T14:22:51.999465+00:00",
-      "title": "Staff Software Engineer",
-      "company": "CircleCI"
-    },
-    "thoughtmachine|engineeringprogrammemanagercto|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.997508+00:00",
-      "title": "Engineering Programme Manager - CTO Office",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|forwarddeployedengineerinfrast|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.994556+00:00",
-      "title": "Forward Deployed Engineer - Infrastructure",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|strategyassociate|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.991587+00:00",
-      "title": "Strategy Associate",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|strategylead|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.987902+00:00",
-      "title": "Strategy Lead",
-      "company": "Thought Machine"
-    },
-    "clickhouse|langfusedevrelengineereventsco|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.984221+00:00",
-      "title": "Langfuse - DevRel Engineer, Events & Community (AMER)",
-      "company": "ClickHouse"
-    },
-    "spotify|seniorwebengineersubscriptions|londonremote": {
-      "seen": "2026-10-01T14:22:51.981692+00:00",
-      "title": "Senior Web Engineer - Subscriptions",
-      "company": "Spotify"
-    },
-    "tide|policyandprocedureleadongoingm|unitedkingdom": {
-      "seen": "2026-10-01T14:22:51.979067+00:00",
-      "title": "Policy and Procedure Lead - Ongoing Monitoring",
-      "company": "Tide"
-    },
-    "tide|senioroperationsanalyst|bulgaria": {
-      "seen": "2026-10-01T14:22:51.975881+00:00",
-      "title": "Senior Operations Analyst",
-      "company": "Tide"
-    },
-    "tines|managersalescompensation|irelandremote": {
-      "seen": "2026-10-01T14:22:51.972763+00:00",
-      "title": "Manager, Sales Compensation",
-      "company": "Tines"
-    },
-    "cloudlinux|pythonsoftwareengineerwork|lisbonlisbonportugal": {
-      "seen": "2026-10-01T14:22:51.969706+00:00",
-      "title": "Python Software Engineer (remote work)",
-      "company": "CloudLinux"
-    },
-    "veriff|solutionsengineeremea|tallinnspainremote": {
-      "seen": "2026-10-01T14:22:51.966935+00:00",
-      "title": "Solutions Engineer - EMEA",
-      "company": "Veriff"
-    },
-    "twilio|seniorbusinessintelligenceengi|remoteus": {
-      "seen": "2026-10-01T14:22:51.964677+00:00",
-      "title": "Senior, Business Intelligence Engineer",
-      "company": "Twilio"
-    },
-    "octopusenergy|seniortechopsarchitect|remotegb": {
-      "seen": "2026-10-01T14:22:51.963627+00:00",
-      "title": "Senior TechOps Architect",
-      "company": "Octopus Energy"
-    },
-    "r1rcm|hranalyst|remoteusa": {
-      "seen": "2026-10-01T14:22:51.959979+00:00",
-      "title": "HR Analyst",
-      "company": "R1 RCM"
-    },
-    "alan|headofsalesbelgium|anywhereinbelgium": {
-      "seen": "2026-10-01T14:22:51.957356+00:00",
-      "title": "Head of Sales - Belgium",
-      "company": "Alan"
-    },
-    "alan|accountexecutivebelgium|anywhereinbelgium": {
-      "seen": "2026-10-01T14:22:51.954651+00:00",
-      "title": "Account Executive - Belgium \ud83c\udde7\ud83c\uddea",
-      "company": "Alan"
-    },
-    "alan|dataengineer|parisfranceremote": {
-      "seen": "2026-10-01T14:22:51.951875+00:00",
-      "title": "Data Engineer",
-      "company": "Alan"
-    },
-    "remote|seniorlifecyclespecialistworke|france": {
-      "seen": "2026-10-01T14:22:51.949146+00:00",
-      "title": "Senior Lifecycle Specialist, Workers Compensation - EMEA",
-      "company": "Remote"
-    },
-    "remote|seniorlifecyclespecialistworke|germany": {
-      "seen": "2026-10-01T14:22:51.946337+00:00",
-      "title": "Senior Lifecycle Specialist, Workers Compensation - EMEA",
-      "company": "Remote"
-    },
-    "savista|codingspecialistiii|remoteusa": {
-      "seen": "2026-10-01T14:22:51.943545+00:00",
-      "title": "Coding Specialist III",
-      "company": "Savista"
-    },
-    "sentry|staffsoftwareengineerissues|sanfranciscocaliforn": {
-      "seen": "2026-10-01T14:22:51.941264+00:00",
-      "title": "Staff Software Engineer, Issues",
-      "company": "Sentry"
-    },
-    "calendly|seniorfullstackengineerwebsite|remoteus": {
-      "seen": "2026-10-01T14:22:51.939313+00:00",
-      "title": "Senior Full Stack Engineer, Website Development",
-      "company": "Calendly"
-    },
-    "ramp|techleadandmanagertlmproductio|newyorknyhqremote": {
-      "seen": "2026-10-01T14:22:51.936507+00:00",
-      "title": "Tech Lead and Manager (TLM), Production Engineering",
-      "company": "Ramp"
-    },
-    "stripe|accountexecutiveproductissuing|ussanfranciscousnewy": {
-      "seen": "2026-10-01T14:22:51.933596+00:00",
-      "title": "Account Executive, Product - Issuing & Treasury (Hunter)",
-      "company": "Stripe"
-    },
-    "qonto|seniorstaffgobackendengineerfr|parisremote": {
-      "seen": "2026-10-01T14:22:51.931919+00:00",
-      "title": "Senior/Staff - Go Backend Engineer - remote friendly",
-      "company": "Qonto"
-    },
-    "stride|highschoolenglishteacher|usarremote": {
-      "seen": "2026-10-01T14:22:51.928697+00:00",
-      "title": "High School English Teacher",
-      "company": "Stride"
-    },
-    "stride|spedassistantcoordinator|usohremote": {
-      "seen": "2026-10-01T14:22:51.925527+00:00",
-      "title": "SPED Assistant Coordinator",
-      "company": "Stride"
-    },
-    "grafanalabs|salesdevelopmentrepresentative|germanyremote": {
-      "seen": "2026-10-01T14:22:51.922086+00:00",
-      "title": "Sales Development Representative | Germany | Remote",
-      "company": "Grafana Labs"
-    },
-    "grafanalabs|seniorbackendengineerdatabases|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.918911+00:00",
-      "title": "Senior Backend Engineer - Databases - Analytics | US | Remote",
-      "company": "Grafana Labs"
-    },
-    "grafanalabs|strategicaccountexecutiveacqui|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.916782+00:00",
-      "title": "Strategic Account Executive, Acquisition | Seattle, Denver, Portland | Remote",
-      "company": "Grafana Labs"
-    },
-    "tailscale|enterpriseaccountexecutive|remotenewyorknewyork": {
-      "seen": "2026-10-01T14:22:51.914555+00:00",
-      "title": "Enterprise Account Executive",
-      "company": "Tailscale"
-    },
-    "tailscale|enterpriseaccountexecutive|remotesanfranciscoca": {
-      "seen": "2026-10-01T14:22:51.913419+00:00",
-      "title": "Enterprise Account Executive",
-      "company": "Tailscale"
-    },
-    "beamery|seniorproductmanagerdatafoundr|londonukremote": {
-      "seen": "2026-10-01T14:22:51.912255+00:00",
-      "title": "Senior Product Manager, Data Foundry",
-      "company": "Beamery"
-    },
-    "clickhouse|aiengineeringsolutionsarchitec|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.908603+00:00",
-      "title": "AI Engineering Solutions Architect",
-      "company": "ClickHouse"
-    },
-    "clickhouse|principaltechnicalgtmenablemen|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.906246+00:00",
-      "title": "Principal, Technical GTM Enablement",
-      "company": "ClickHouse"
-    },
-    "temporaltechnologies|staffsoftwareengineeropensourc|seattlewashingtonuni": {
-      "seen": "2026-10-01T14:22:51.903969+00:00",
-      "title": "Staff Software Engineer, Open Source Server",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|seniorengineeringmanagertestsy|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.902255+00:00",
-      "title": "Senior Engineering Manager, Test Systems & Tooling",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|staffsoftwareengineertestsyste|unitedstatesremote": {
-      "seen": "2026-10-01T14:22:51.899716+00:00",
-      "title": "Staff Software Engineer, Test Systems & Tooling",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|softwareengineeriicloudenablem|unitedstatesremotese": {
-      "seen": "2026-10-01T14:22:51.897169+00:00",
-      "title": "Software Engineer II, Cloud Enablement",
-      "company": "Temporal Technologies"
-    },
-    "temporaltechnologies|staffsoftwareengineerreplicati|unitedstatesremotese": {
-      "seen": "2026-10-01T14:22:51.895389+00:00",
-      "title": "Staff Software Engineer, Replication Foundations",
-      "company": "Temporal Technologies"
-    },
-    "thoughtmachine|payrollspecialist|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.893553+00:00",
-      "title": "Payroll Specialist",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|softwareengineerii|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.889818+00:00",
-      "title": "Software Engineer II",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|engineeringmanageraiplatform|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.887014+00:00",
-      "title": "Engineering Manager - AI Platform",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|seniorsoftwareengineerii|portugallisbonremote": {
-      "seen": "2026-10-01T14:22:51.884090+00:00",
-      "title": "Senior Software Engineer II",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|seniorsitereliabilityengineer|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.881239+00:00",
-      "title": "Senior Site Reliability Engineer",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|infrastructureengineer|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.878341+00:00",
-      "title": "Infrastructure Engineer",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|seniorbackendengineeri|portugallisbonremote": {
-      "seen": "2026-10-01T14:22:51.875513+00:00",
-      "title": "Senior Back End Engineer I",
-      "company": "Thought Machine"
-    },
-    "thoughtmachine|engineeringmanagerprovisioning|unitedkingdomlondonr": {
-      "seen": "2026-10-01T14:22:51.872700+00:00",
-      "title": "Engineering Manager - Provisioning",
-      "company": "Thought Machine"
-    },
-    "n8n|seniorpartnermarketingmanager|berlinofficenetherla": {
-      "seen": "2026-10-01T14:22:51.869828+00:00",
-      "title": "Senior Partner Marketing Manager",
-      "company": "n8n"
-    },
-    "tines|legalcounselemea|irelandremote": {
-      "seen": "2026-10-01T14:22:51.866493+00:00",
-      "title": "Legal Counsel, EMEA",
-      "company": "Tines"
-    },
-    "coinbase|capacityplanninglead|remoteusa": {
-      "seen": "2026-10-01T14:22:51.863569+00:00",
-      "title": "Capacity Planning Lead",
-      "company": "Coinbase"
-    },
-    "coinbase|legaloperationsmanagervendorsp|remoteusa": {
-      "seen": "2026-10-01T14:22:51.861068+00:00",
-      "title": "Legal Operations Manager, Vendor & Spend Management",
-      "company": "Coinbase"
-    },
-    "coinbase|managerstrategicprograms|remoteusa": {
-      "seen": "2026-10-01T14:22:51.859325+00:00",
-      "title": "Manager, Strategic Programs",
-      "company": "Coinbase"
-    },
-    "marshmallow|financialreportingandtechnical|london": {
-      "seen": "2026-10-01T14:22:51.856728+00:00",
-      "title": "Financial Reporting and Technical Accountant",
-      "company": "Marshmallow"
-    },
-    "marshmallow|itspecialist|budapestremote": {
-      "seen": "2026-10-01T14:22:51.853948+00:00",
-      "title": "IT Specialist",
-      "company": "Marshmallow"
-    },
-    "airbnb|seniormanagerintelligenceadvoc|unitedstates": {
-      "seen": "2026-10-01T14:22:51.850423+00:00",
-      "title": "Senior Manager, Intelligence & Advocacy",
-      "company": "Airbnb"
-    },
-    "airbnb|supplycategoryleadservices|unitedstates": {
-      "seen": "2026-10-01T14:22:51.847961+00:00",
-      "title": "Supply Category Lead, Services",
-      "company": "Airbnb"
-    },
-    "launchdarkly|regionalsalesdirectoreast|remoteus": {
-      "seen": "2026-10-01T14:22:51.845449+00:00",
-      "title": "Regional Sales Director, East",
-      "company": "LaunchDarkly"
-    },
-    "elevenlabs|accountmanagerdach|germanyswitzerlandre": {
-      "seen": "2026-10-01T14:22:51.843898+00:00",
-      "title": "Account Manager - DACH",
-      "company": "ElevenLabs"
-    },
-    "motorolasolutions|internationalsalesengineerforu|poland": {
-      "seen": "2026-10-01T14:22:51.841373+00:00",
-      "title": "International Sales Engineer for Ukraine (Poland offsite)",
-      "company": "Motorola Solutions"
-    },
-    "buildingresearchsystemsinc|journeymananalyst|unitedstates": {
-      "seen": "2026-10-01T14:22:51.811306+00:00",
-      "title": "Journeyman Analyst",
-      "company": "Building Research Systems Inc."
-    },
-    "syneoshealthindiaprivatelimited|principalstatisticianophthalmo|france": {
-      "seen": "2026-10-01T14:22:51.799558+00:00",
-      "title": "Principal Statistician - Ophthalmology - Fully remote in Europe",
-      "company": "Syneos Health India Private Limited"
-    },
-    "iyunomalaysiasdnbhd|managerofdeliveriesqa|philippines": {
-      "seen": "2026-10-01T14:22:51.761331+00:00",
-      "title": "Manager of Deliveries & QA",
-      "company": "I-Yuno Malaysia Sdn Bhd"
-    },
-    "carewell|telepsychiatristus1099|unitedstates": {
-      "seen": "2026-10-01T14:22:51.738197+00:00",
-      "title": "Telepsychiatrist - Remote, US, 1099 Part-Time",
-      "company": "Carewell"
-    },
-    "grupobancorbrs|analistadeseguranapurpleteamof|brazil": {
-      "seen": "2026-10-01T14:22:51.721615+00:00",
-      "title": "ANALISTA DE SEGURAN\u00c7A (PURPLE TEAM - OFENSIVA E DEFENSIVA)",
-      "company": "Grupo Bancorbr\u00e1s"
-    },
-    "pradeepitconsultingservicespvtltd|azuredevopsengineer|india": {
-      "seen": "2026-10-01T14:22:51.699433+00:00",
-      "title": "Azure DevOps Engineer",
-      "company": "PradeepIT Consulting Services Pvt Ltd"
-    },
-    "calmcom|calmcomgrowthproductmanager|remote": {
-      "seen": "2026-10-01T14:22:51.328905+00:00",
-      "title": "Calm.com: Growth Product Manager",
-      "company": "Calm.com"
-    },
-    "calmcom|calmcomseniorproductdesigner|remote": {
-      "seen": "2026-10-01T14:22:51.293645+00:00",
-      "title": "Calm.com: Senior Product Designer",
-      "company": "Calm.com"
-    },
-    "hextechnologies|hextechnologieslegalops|remote": {
-      "seen": "2026-10-01T14:22:51.260743+00:00",
-      "title": "Hex Technologies: Legal Ops",
-      "company": "Hex Technologies"
-    },
-    "limitlesstechnology|limitlesstechnologyjapanesespe|remote": {
-      "seen": "2026-10-01T14:22:51.229498+00:00",
-      "title": "Limitless Technology: Japanese Speaking Customer Service Agent - for Netflix Japan",
-      "company": "Limitless Technology"
-    },
-    "turing|partnermanageraiecosystempartn|unitedstates": {
-      "seen": "2026-10-01T14:22:50.740513+00:00",
-      "title": "Partner Manager, AI Ecosystem Partnerships",
-      "company": "Turing"
-    },
-    "careem|associatedirectoroferpdigitalt|karachipakistan": {
-      "seen": "2026-10-01T14:22:50.738079+00:00",
-      "title": "Associate Director of ERP Digital Transformation",
-      "company": "Careem"
-    },
     "coursera|seniorsoftwaredeveloperbe|torontocanada": {
-      "seen": "2026-10-01T14:22:50.737370+00:00",
+      "seen": "2026-10-16T12:13:35.074286+00:00",
       "title": "Senior Software Developer, BE",
       "company": "Coursera"
     },
     "coursera|seniorproductmanagerappliedai|canada": {
-      "seen": "2026-10-01T14:22:50.737032+00:00",
+      "seen": "2026-10-16T12:13:35.073932+00:00",
       "title": "Senior Product Manager, Applied AI",
       "company": "Coursera"
     },
-    "prolific|seniordataanalystsupply|unitedkingdom": {
-      "seen": "2026-10-01T14:22:50.734631+00:00",
-      "title": "Senior Data Analyst - Supply",
-      "company": "Prolific"
-    },
-    "prolific|seniorappliedscientistsupply|london": {
-      "seen": "2026-10-01T14:22:50.734240+00:00",
-      "title": "Senior Applied Scientist, Supply",
-      "company": "Prolific"
-    },
-    "prolific|airesearchengineer|remoteuk": {
-      "seen": "2026-10-01T14:22:50.733305+00:00",
-      "title": "AI Research Engineer",
-      "company": "Prolific"
-    },
-    "mozilla|seniorproductmanagermobile|remotesweden": {
-      "seen": "2026-10-01T14:22:50.723437+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
     "mozilla|seniorproductmanagermobile|remotegermany": {
-      "seen": "2026-10-01T14:22:50.723077+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remotefrance": {
-      "seen": "2026-10-01T14:22:50.722711+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remoteuk": {
-      "seen": "2026-10-01T14:22:50.722328+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remotenetherlands": {
-      "seen": "2026-10-01T14:22:50.721974+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remotespain": {
-      "seen": "2026-10-01T14:22:50.721566+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remotefinland": {
-      "seen": "2026-10-01T14:22:50.721202+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remotecanada": {
-      "seen": "2026-10-01T14:22:50.720827+00:00",
-      "title": "Senior Product Manager, Mobile",
-      "company": "Mozilla"
-    },
-    "mozilla|seniorproductmanagermobile|remotebelgium": {
-      "seen": "2026-10-01T14:22:50.720432+00:00",
+      "seen": "2026-10-16T12:13:35.058191+00:00",
       "title": "Senior Product Manager, Mobile",
       "company": "Mozilla"
     },
     "mozilla|seniorpayrollanalystnorthameri|remote": {
-      "seen": "2026-10-01T14:22:50.720049+00:00",
+      "seen": "2026-10-16T12:13:35.057233+00:00",
       "title": "Senior Payroll Analyst, North America",
       "company": "Mozilla"
     },
     "mozilla|seniorpayrollanalystnorthameri|remoteus": {
-      "seen": "2026-10-01T14:22:50.719606+00:00",
+      "seen": "2026-10-16T12:13:35.057691+00:00",
       "title": "Senior Payroll Analyst, North America",
       "company": "Mozilla"
     },
-    "duolingo|proctorqualityandlearningmanag|londonengland": {
-      "seen": "2026-10-01T14:22:50.712646+00:00",
-      "title": "Proctor Quality and Learning Manager, Scaling Operations",
-      "company": "Duolingo"
-    },
-    "duolingo|proctorqualityandlearningmanag|newyorknypittsburghp": {
-      "seen": "2026-10-01T14:22:50.712096+00:00",
-      "title": "Proctor Quality and Learning Manager, Scaling Operations",
-      "company": "Duolingo"
-    },
     "riotgames|technicalproduceriileagueofleg|losangelesusa": {
-      "seen": "2026-10-01T14:22:50.709747+00:00",
+      "seen": "2026-10-16T12:13:35.049410+00:00",
       "title": "Technical Producer II - League of Legends, Tech & Tools",
       "company": "Riot Games"
     },
     "riotgames|staffsoftwareengineertoolsserv|losangelesusa": {
-      "seen": "2026-10-01T14:22:50.708437+00:00",
+      "seen": "2026-10-16T12:13:35.048239+00:00",
       "title": "Staff Software Engineer, Tools (Services) - Central Creative",
       "company": "Riot Games"
     },
     "riotgames|staffsoftwareengineertoolsfull|losangelesusa": {
-      "seen": "2026-10-01T14:22:50.708072+00:00",
+      "seen": "2026-10-16T12:13:35.047874+00:00",
       "title": "Staff Software Engineer, Tools (Full-Stack) - Central Creative",
       "company": "Riot Games"
     },
-    "figma|strategicfinanceaiinnovation|sanfranciscocanewyor": {
-      "seen": "2026-10-01T14:22:50.694231+00:00",
-      "title": "Strategic Finance, AI Innovation",
-      "company": "Figma"
-    },
-    "figma|seniorcustomerenablementmanage|londonengland": {
-      "seen": "2026-10-01T14:22:50.692490+00:00",
-      "title": "Senior Customer Enablement Manager (London, United Kingdom)",
-      "company": "Figma"
-    },
-    "figma|accountexecutivestrategicsopau|sopaulobrazil": {
-      "seen": "2026-10-01T14:22:50.686520+00:00",
-      "title": "Account Executive, Strategic (S\u00e3o Paulo, Brazil)",
-      "company": "Figma"
-    },
     "scaleai|publicsectorleaddefencesecurit|londonuk": {
-      "seen": "2026-10-01T14:22:50.679117+00:00",
+      "seen": "2026-10-16T12:13:35.014003+00:00",
       "title": "Public Sector Lead, Defence & Security",
       "company": "Scale AI"
     },
     "scaleai|productmarketingleadpublicsect|washingtondc": {
-      "seen": "2026-10-01T14:22:50.678408+00:00",
+      "seen": "2026-10-16T12:13:35.012448+00:00",
       "title": "Product Marketing Lead, Public Sector",
       "company": "Scale AI"
     },
-    "scaleai|headofworkplace|sanfranciscoca": {
-      "seen": "2026-10-01T14:22:50.676717+00:00",
-      "title": "Head of Workplace",
-      "company": "Scale AI"
-    },
-    "scaleai|engagementmanagerglobalpublics|dohaqatar": {
-      "seen": "2026-10-01T14:22:50.674292+00:00",
-      "title": "Engagement Manager, Global Public Sector",
-      "company": "Scale AI"
-    },
     "gitlab|staffsecuritygovernanceenginee|remoteunitedstates": {
-      "seen": "2026-10-01T14:22:50.672082+00:00",
+      "seen": "2026-10-16T12:13:34.997545+00:00",
       "title": "Staff Security Governance Engineer, Policies & Standards",
       "company": "GitLab"
     },
     "gitlab|seniorsolutionsarchitect|remoteunitedstates": {
-      "seen": "2026-10-01T14:22:50.669090+00:00",
+      "seen": "2026-10-16T12:13:34.994695+00:00",
       "title": "Senior Solutions Architect",
       "company": "GitLab"
     },
     "gitlab|regionalsalesdirectorfinancial|remoteunitedstates": {
-      "seen": "2026-10-01T14:22:50.664332+00:00",
+      "seen": "2026-10-16T12:13:34.989215+00:00",
       "title": "Regional Sales Director, Financial Services",
       "company": "GitLab"
     },
-    "gitlab|professionalservicesengineerwe|remote": {
-      "seen": "2026-10-01T14:22:50.663733+00:00",
-      "title": "Professional Services Engineer - West",
-      "company": "GitLab"
-    },
     "gitlab|backendengineerrubyaiengineeri|remotecanadaremotepo": {
-      "seen": "2026-10-01T14:22:50.658027+00:00",
+      "seen": "2026-10-16T12:13:34.981310+00:00",
       "title": "Backend Engineer (Ruby), AI Engineering: Agent Foundations",
       "company": "GitLab"
     },
     "gitlab|backendengineerpythonaienginee|remotecanadaremotepo": {
-      "seen": "2026-10-01T14:22:50.657706+00:00",
+      "seen": "2026-10-16T12:13:34.980995+00:00",
       "title": "Backend Engineer (Python),AI Engineering: Agent Foundations",
       "company": "GitLab"
     },
     "gitlab|associaterenewalsmanagerindia|remoteindia": {
-      "seen": "2026-10-01T14:22:50.657175+00:00",
+      "seen": "2026-10-16T12:13:34.980454+00:00",
       "title": "Associate Renewals Manager, India",
       "company": "GitLab"
     },
-    "xai|srsalesmanagercanadastarlinken|canada": {
-      "seen": "2026-10-01T14:22:50.654373+00:00",
-      "title": "Sr. Sales Manager, Canada - Starlink Enterprise Sales",
-      "company": "xAI"
-    },
     "xai|projectmanagerfacilitiesoperat|memphistn": {
-      "seen": "2026-10-01T14:22:50.650992+00:00",
+      "seen": "2026-10-16T12:13:34.972560+00:00",
       "title": "Project Manager, Facilities Operations - Memphis",
       "company": "xAI"
     },
     "xai|memberoftechnicalstaffevaluati|paloaltoca": {
-      "seen": "2026-10-01T14:22:50.646762+00:00",
+      "seen": "2026-10-16T12:13:34.968217+00:00",
       "title": "Member of Technical Staff - Evaluation Infrastructure",
       "company": "xAI"
     },
     "xai|infrastructuresecurityengineer|paloaltocaaustintxne": {
-      "seen": "2026-10-01T14:22:50.643355+00:00",
+      "seen": "2026-10-16T12:13:34.963832+00:00",
       "title": "Infrastructure Security Engineer",
       "company": "xAI"
     },
     "xai|datacenteroperationstechnician|hillsboroor": {
-      "seen": "2026-10-01T14:22:50.638699+00:00",
+      "seen": "2026-10-16T12:13:34.959325+00:00",
       "title": "Data Center Operations Technician",
       "company": "xAI"
     },
     "xai|cooksushi|paloaltoca": {
-      "seen": "2026-10-01T14:22:50.637900+00:00",
+      "seen": "2026-10-16T12:13:34.958087+00:00",
       "title": "Cook (Sushi)",
       "company": "xAI"
     },
     "xai|applicationsecurityengineerxmo|paloaltocaaustintxne": {
-      "seen": "2026-10-01T14:22:50.635445+00:00",
+      "seen": "2026-10-16T12:13:34.955365+00:00",
       "title": "Application Security Engineer (X Money)",
       "company": "xAI"
     },
-    "okx|technologyandsecurityriskdirec|singaporesingapore": {
-      "seen": "2026-10-01T14:22:50.627440+00:00",
-      "title": "Technology and Security Risk Director",
-      "company": "OKX"
-    },
-    "okx|talentacquisitionspecialist|sanjosecaliforniauni": {
-      "seen": "2026-10-01T14:22:50.626431+00:00",
-      "title": "Talent Acquisition Specialist",
-      "company": "OKX"
-    },
-    "okx|seniorproductmanagerdirectortr|singaporesingapore": {
-      "seen": "2026-10-01T14:22:50.621919+00:00",
-      "title": "Senior Product Manager / Director, Trading Products",
-      "company": "OKX"
-    },
-    "okx|seniorproductmanagerdirectortr|hongkonghongkongsar": {
-      "seen": "2026-10-01T14:22:50.621603+00:00",
-      "title": "Senior Product Manager / Director, Trading Products",
-      "company": "OKX"
-    },
-    "okx|seniorbusinessstrategygrowthma|singaporesingapore": {
-      "seen": "2026-10-01T14:22:50.615494+00:00",
-      "title": "Senior Business Strategy & Growth Manager - OKX SG",
-      "company": "OKX"
-    },
     "okx|principalproductmanagersimplet|remoterolesemeasliem": {
-      "seen": "2026-10-01T14:22:50.610266+00:00",
-      "title": "Principal Product Manager - Simple Trading",
+      "seen": "2026-10-16T12:13:34.936810+00:00",
+      "title": "Principal Product Manager - Simple Trading, Growth & Retention",
       "company": "OKX"
     },
     "cloudflare|systemengineerbehavioralanalys|hybrid": {
-      "seen": "2026-10-01T14:22:50.600448+00:00",
+      "seen": "2026-10-16T12:13:34.924956+00:00",
       "title": "System Engineer, Behavioral Analysis",
       "company": "Cloudflare"
     },
-    "cloudflare|seniorproductmanagerproductdes|hybrid": {
-      "seen": "2026-10-01T14:22:50.595173+00:00",
-      "title": "Senior Product Manager, Product Design",
-      "company": "Cloudflare"
-    },
     "cloudflare|seniormajorsaccountexecutivewi|distributed": {
-      "seen": "2026-10-01T14:22:50.591474+00:00",
+      "seen": "2026-10-16T12:13:34.913122+00:00",
       "title": "Senior Majors Account Executive - Wisconsin",
       "company": "Cloudflare"
     },
     "cloudflare|seniormajorsaccountexecutivemi|distributed": {
-      "seen": "2026-10-01T14:22:50.590984+00:00",
+      "seen": "2026-10-16T12:13:34.912564+00:00",
       "title": "Senior Majors Account Executive - Minnesota",
       "company": "Cloudflare"
     },
     "cloudflare|seniorcustomerengineersledtxau|hybrid": {
-      "seen": "2026-10-01T14:22:50.588459+00:00",
+      "seen": "2026-10-16T12:13:34.908818+00:00",
       "title": "Senior Customer Engineer SLED TX (Austin, Dallas or Houston)",
       "company": "Cloudflare"
     },
     "cloudflare|seniorcustomerengineerindonesi|hybrid": {
-      "seen": "2026-10-01T14:22:50.586676+00:00",
+      "seen": "2026-10-16T12:13:34.904261+00:00",
       "title": "Senior Customer Engineer,Indonesia",
       "company": "Cloudflare"
     },
     "cloudflare|senioraccountexecutivesleddcme|distributed": {
-      "seen": "2026-10-01T14:22:50.584930+00:00",
+      "seen": "2026-10-16T12:13:34.901480+00:00",
       "title": "Senior Account Executive, SLED (DC Metro)",
       "company": "Cloudflare"
     },
     "cloudflare|principalsoftwareengineerenter|hybrid": {
-      "seen": "2026-10-01T14:22:50.583563+00:00",
+      "seen": "2026-10-16T12:13:34.899921+00:00",
       "title": "Principal Software Engineer, Enterprise Integrations",
       "company": "Cloudflare"
     },
     "cloudflare|principaloracleprocurementlead|hybrid": {
-      "seen": "2026-10-01T14:22:50.582579+00:00",
+      "seen": "2026-10-16T12:13:34.898422+00:00",
       "title": "Principal Oracle Procurement Lead",
       "company": "Cloudflare"
     },
-    "cloudflare|digitalcustomerengineer|hybrid": {
-      "seen": "2026-10-01T14:22:50.578093+00:00",
-      "title": "Digital Customer Engineer",
-      "company": "Cloudflare"
-    },
     "cloudflare|dealdeskmanagerapac|singapore": {
-      "seen": "2026-10-01T14:22:50.577556+00:00",
+      "seen": "2026-10-16T12:13:34.891324+00:00",
       "title": "Deal Desk Manager, APAC",
       "company": "Cloudflare"
     },
-    "anthropic|strategyoperationsfde|sanfranciscocanewyor": {
-      "seen": "2026-10-01T14:22:50.572495+00:00",
-      "title": "Strategy & Operations, FDE",
-      "company": "Anthropic"
-    },
-    "anthropic|salesenablementpartnerclaudepr|sanfranciscocanewyor": {
-      "seen": "2026-10-01T14:22:50.562183+00:00",
-      "title": "Sales Enablement Partner, Claude Products",
-      "company": "Anthropic"
-    },
-    "anthropic|revenuestrategyoperations|singapore": {
-      "seen": "2026-10-01T14:22:50.560728+00:00",
-      "title": "Revenue Strategy & Operations",
-      "company": "Anthropic"
-    },
-    "anthropic|networkdeploymentandmaintenanc|remotefriendlyunited": {
-      "seen": "2026-10-01T14:22:50.552217+00:00",
-      "title": "Network Deployment and Maintenance Lead - Data Center Operations",
-      "company": "Anthropic"
-    },
-    "anthropic|itsupportengineerexecutivesupp|sanfranciscoca": {
-      "seen": "2026-10-01T14:22:50.548449+00:00",
-      "title": "IT Support Engineer, Executive Support",
-      "company": "Anthropic"
-    },
-    "anthropic|itsupportengineerapplicationad|sanfranciscocanewyor": {
-      "seen": "2026-10-01T14:22:50.548160+00:00",
-      "title": "IT Support Engineer, Application Administrator",
-      "company": "Anthropic"
-    },
-    "anthropic|growthaccountexecutivestartups|dublinie": {
-      "seen": "2026-10-01T14:22:50.545334+00:00",
-      "title": "Growth Account Executive, Startups",
-      "company": "Anthropic"
-    },
-    "anthropic|customersuccessmanagerdach|munichgermany": {
-      "seen": "2026-10-01T14:22:50.536698+00:00",
-      "title": "Customer Success Manager, DACH",
-      "company": "Anthropic"
-    },
-    "anthropic|appliedaiarchitectinternationa|sanfranciscocanewyor": {
-      "seen": "2026-10-01T14:22:50.531892+00:00",
-      "title": "Applied AI Architect, International Policy",
-      "company": "Anthropic"
-    },
-    "wppmedia|wppmediaseniorassociatemediabu|cairoegypt": {
-      "seen": "2026-10-01T14:22:50.472557+00:00",
-      "title": "WPP Media: Senior Associate, Media Buying, Egypt",
-      "company": "WPP Media"
-    },
-    "wppmedia|wppmediaassociatemediabuyingeg|cairoegypt": {
-      "seen": "2026-10-01T14:22:50.468132+00:00",
-      "title": "WPP Media: Associate, Media Buying, Egypt",
-      "company": "WPP Media"
-    },
     "wppmedia|trafficcoordinator|newyorkunitedstates": {
-      "seen": "2026-10-01T14:22:50.463232+00:00",
+      "seen": "2026-10-16T12:13:34.604677+00:00",
       "title": "Traffic Coordinator",
       "company": "WPP Media"
     },
-    "wppmedia|teamleadprogrammaticmenschgoog|dusseldorfgermany": {
-      "seen": "2026-10-01T14:22:50.462423+00:00",
-      "title": "Teamlead Programmatic (Mensch) Google",
-      "company": "WPP Media"
-    },
-    "wppmedia|teamleadprogrammatichumangoogl|dusseldorfgermany": {
-      "seen": "2026-10-01T14:22:50.461990+00:00",
-      "title": "Teamlead Programmatic (Human) Google",
-      "company": "WPP Media"
-    },
     "wppmedia|svpproductenablementopenuk|londonunitedkingdom": {
-      "seen": "2026-10-01T14:22:50.461415+00:00",
+      "seen": "2026-10-16T12:13:34.603743+00:00",
       "title": "SVP, Product Enablement - Open, UK",
       "company": "WPP Media"
     },
     "wppmedia|socialandinfluencerexecutive|melbourneaustralia": {
-      "seen": "2026-10-01T14:22:50.457357+00:00",
+      "seen": "2026-10-16T12:13:34.598895+00:00",
       "title": "Social and Influencer Executive",
       "company": "WPP Media"
     },
-    "wppmedia|seniordataengineer|londonunitedkingdom": {
-      "seen": "2026-10-01T14:22:50.442642+00:00",
-      "title": "Senior Data Engineer",
-      "company": "WPP Media"
-    },
     "wppmedia|seniorassociateprogrammatic|londonunitedkingdom": {
-      "seen": "2026-10-01T14:22:50.440873+00:00",
+      "seen": "2026-10-16T12:13:34.579570+00:00",
       "title": "Senior Associate, Programmatic",
       "company": "WPP Media"
     },
     "wppmedia|seniorassociateplanninggcs|londonunitedkingdom": {
-      "seen": "2026-10-01T14:22:50.439999+00:00",
+      "seen": "2026-10-16T12:13:34.578821+00:00",
       "title": "Senior Associate, Planning, GCS",
       "company": "WPP Media"
     },
     "wppmedia|publishingofflineinvestmentman|newyorkunitedstates": {
-      "seen": "2026-10-01T14:22:50.433447+00:00",
+      "seen": "2026-10-16T12:13:34.569174+00:00",
       "title": "Publishing / Offline Investment Manager",
       "company": "WPP Media"
     },
     "wppmedia|productseedingmanager|melbourneaustralia": {
-      "seen": "2026-10-01T14:22:50.431920+00:00",
+      "seen": "2026-10-16T12:13:34.567822+00:00",
       "title": "Product Seeding Manager",
       "company": "WPP Media"
     },
     "wppmedia|multimediadesignerlebanon|beirutlebanon": {
-      "seen": "2026-10-01T14:22:50.423712+00:00",
+      "seen": "2026-10-16T12:13:34.557929+00:00",
       "title": "Multimedia Designer | Freelance | Lebanon",
       "company": "WPP Media"
     },
     "wppmedia|managersocialuk|manchesterunitedking": {
-      "seen": "2026-10-01T14:22:50.416938+00:00",
+      "seen": "2026-10-16T12:13:34.549744+00:00",
       "title": "Manager, Social, UK",
       "company": "WPP Media"
     },
     "wppmedia|managersocialmediadeliveryando|mumbaiindia": {
-      "seen": "2026-10-01T14:22:50.416563+00:00",
+      "seen": "2026-10-16T12:13:34.549244+00:00",
       "title": "Manager, Social, Media Delivery and Operations",
       "company": "WPP Media"
     },
     "wppmedia|managerprogrammaticservices|detroitunitedstates": {
-      "seen": "2026-10-01T14:22:50.414363+00:00",
+      "seen": "2026-10-16T12:13:34.546294+00:00",
       "title": "Manager, Programmatic Services",
       "company": "WPP Media"
     },
-    "wppmedia|managerprogrammaticgoc|barranquillacolombia": {
-      "seen": "2026-10-01T14:22:50.413539+00:00",
-      "title": "Manager, Programmatic, GOC",
-      "company": "WPP Media"
-    },
-    "wppmedia|managerperformancemediamobiled|newyorkunitedstates": {
-      "seen": "2026-10-01T14:22:50.411127+00:00",
-      "title": "Manager, Performance Media \u2013 Mobile & Display",
-      "company": "WPP Media"
-    },
-    "wppmedia|keyademanagerperformancelebano|beirutlebanon": {
-      "seen": "2026-10-01T14:22:50.401373+00:00",
-      "title": "Keyade: Manager, Performance, Lebanon",
-      "company": "WPP Media"
-    },
-    "wppmedia|internstrategy|milanitaly": {
-      "seen": "2026-10-01T14:22:50.398996+00:00",
-      "title": "Intern, Strategy",
-      "company": "WPP Media"
-    },
-    "wppmedia|interndatareporting|hochiminhcityvietnam": {
-      "seen": "2026-10-01T14:22:50.398649+00:00",
-      "title": "Intern, Data & Reporting",
-      "company": "WPP Media"
-    },
     "wppmedia|emerginginnovationmanager|londonunitedkingdom": {
-      "seen": "2026-10-01T14:22:50.384497+00:00",
+      "seen": "2026-10-16T12:13:34.517479+00:00",
       "title": "Emerging Innovation - Manager",
       "company": "WPP Media"
     },
     "wppmedia|clientleadershipmanager|warsawpoland": {
-      "seen": "2026-10-01T14:22:50.374514+00:00",
+      "seen": "2026-10-16T12:13:34.504784+00:00",
       "title": "Client Leadership Manager",
       "company": "WPP Media"
     },
     "wppmedia|blivgrowthmarketingbrandprakti|copenhagendenmark": {
-      "seen": "2026-10-01T14:22:50.370143+00:00",
+      "seen": "2026-10-16T12:13:34.499983+00:00",
       "title": "Bliv Growth Marketing & Brand Praktikant hos WPP Media",
       "company": "WPP Media"
     },
     "wppmedia|blivgrafiskproduktionspraktika|copenhagendenmark": {
-      "seen": "2026-10-01T14:22:50.369541+00:00",
+      "seen": "2026-10-16T12:13:34.499390+00:00",
       "title": "Bliv Grafisk Produktions Praktikant hos WPP Media",
       "company": "WPP Media"
     },
     "wppmedia|associatedirectorpaidsearchorg|londonunitedkingdom": {
-      "seen": "2026-10-01T14:22:50.360425+00:00",
+      "seen": "2026-10-16T12:13:34.486269+00:00",
       "title": "Associate Director, Paid Search - Organic, Global Client Solutions",
       "company": "WPP Media"
     },
     "wppmedia|associatedirectordigitaloperat|mumbaiindia": {
-      "seen": "2026-10-01T14:22:50.358614+00:00",
+      "seen": "2026-10-16T12:13:34.484328+00:00",
       "title": "Associate Director, Digital Operations, Media Delivery and Operations, India",
       "company": "WPP Media"
     },
     "wppmedia|associatedirectordataenablemen|chicagounitedstatesn": {
-      "seen": "2026-10-01T14:22:50.358083+00:00",
+      "seen": "2026-10-16T12:13:34.483722+00:00",
       "title": "Associate Director, Data Enablement & Reporting",
       "company": "WPP Media"
     },
-    "wppmedia|assistantvicepresidentinfluenc|dubaiunitedarabemira": {
-      "seen": "2026-10-01T14:22:50.353076+00:00",
-      "title": "Assistant Vice President, Influencer Marketing, MENA",
-      "company": "WPP Media"
-    },
     "wppmedia|agenticdesignlead|melbourneaustraliasy": {
-      "seen": "2026-10-01T14:22:50.351125+00:00",
+      "seen": "2026-10-16T12:13:34.477375+00:00",
       "title": "Agentic Design Lead",
       "company": "WPP Media"
     },
@@ -41564,8 +39559,2323 @@
       "seen": "2026-10-15T12:35:47.440585+00:00",
       "title": "XTN-C096595 | CORPORATE ESCALATION SPECIALIST",
       "company": "jobgether"
+    },
+    "wppmedia|associatecreativedirector|warsawpoland": {
+      "seen": "2026-10-16T12:13:34.480140+00:00",
+      "title": "Associate Creative Director",
+      "company": "WPP Media"
+    },
+    "wppmedia|associatedirectorimplementatio|gurgaonindiamumbaiin": {
+      "seen": "2026-10-16T12:13:34.484926+00:00",
+      "title": "Associate Director - Implementation Planning",
+      "company": "WPP Media"
+    },
+    "wppmedia|associatemediabuyingegypt|cairoegypt": {
+      "seen": "2026-10-16T12:13:34.490187+00:00",
+      "title": "Associate, Media Buying, Egypt",
+      "company": "WPP Media"
+    },
+    "wppmedia|associatemediaksa|riyadhsaudiaarabia": {
+      "seen": "2026-10-16T12:13:34.490554+00:00",
+      "title": "Associate, Media, KSA",
+      "company": "WPP Media"
+    },
+    "wppmedia|associatemedialebanon|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.490942+00:00",
+      "title": "Associate, Media, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|associatepartnerplanning|jakartaindonesia": {
+      "seen": "2026-10-16T12:13:34.491914+00:00",
+      "title": "Associate Partner Planning",
+      "company": "WPP Media"
+    },
+    "wppmedia|associateperformancelebanon|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.492445+00:00",
+      "title": "Associate, Performance, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|associateperformancelevant|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.492845+00:00",
+      "title": "Associate, Performance, Levant",
+      "company": "WPP Media"
+    },
+    "wppmedia|associateprogrammaticmenaleban|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.493962+00:00",
+      "title": "Associate, Programmatic, MENA - Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|associateseoegypt|cairoegypt": {
+      "seen": "2026-10-16T12:13:34.494423+00:00",
+      "title": "Associate, SEO, Egypt",
+      "company": "WPP Media"
+    },
+    "wppmedia|buyingassistant|buenosairesargentina": {
+      "seen": "2026-10-16T12:13:34.502553+00:00",
+      "title": "Buying Assistant",
+      "company": "WPP Media"
+    },
+    "wppmedia|clientdevelopmentleadclienttea|londonunitedkingdom": {
+      "seen": "2026-10-16T12:13:34.504269+00:00",
+      "title": "Client Development Lead, Client Teams, GCS",
+      "company": "WPP Media"
+    },
+    "wppmedia|clientmanager|adelaideaustralia": {
+      "seen": "2026-10-16T12:13:34.505336+00:00",
+      "title": "Client Manager",
+      "company": "WPP Media"
+    },
+    "wppmedia|commercemanager|bangkokthailand": {
+      "seen": "2026-10-16T12:13:34.506064+00:00",
+      "title": "Commerce Manager",
+      "company": "WPP Media"
+    },
+    "wppmedia|digitalsupervisor|mexicocitymexico": {
+      "seen": "2026-10-16T12:13:34.513036+00:00",
+      "title": "Digital Supervisor",
+      "company": "WPP Media"
+    },
+    "wppmedia|growthspecialist|warsawpoland": {
+      "seen": "2026-10-16T12:13:34.526322+00:00",
+      "title": "Growth Specialist",
+      "company": "WPP Media"
+    },
+    "wppmedia|implementationandactivationcoo|brisbaneaustralia": {
+      "seen": "2026-10-16T12:13:34.528565+00:00",
+      "title": "Implementation and Activation Coordinator",
+      "company": "WPP Media"
+    },
+    "wppmedia|implementationplanningseniorma|bangaloreindiagurgao": {
+      "seen": "2026-10-16T12:13:34.529362+00:00",
+      "title": "Implementation Planning - Senior Manager",
+      "company": "WPP Media"
+    },
+    "wppmedia|integratedmediaplanninglead|warsawpoland": {
+      "seen": "2026-10-16T12:13:34.531008+00:00",
+      "title": "Integrated Media Planning Lead",
+      "company": "WPP Media"
+    },
+    "wppmedia|junioreconometrician|warsawpoland": {
+      "seen": "2026-10-16T12:13:34.532477+00:00",
+      "title": "Junior Econometrician",
+      "company": "WPP Media"
+    },
+    "wppmedia|manageraffiliatelebanon|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.534488+00:00",
+      "title": "Manager, Affiliate, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|managerinfluencercampaignleban|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.538422+00:00",
+      "title": "Manager, Influencer Campaign, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|managermediaactivationretailse|chicagounitedstatesn": {
+      "seen": "2026-10-16T12:13:34.539733+00:00",
+      "title": "Manager, Media Activation Retail Search",
+      "company": "WPP Media"
+    },
+    "wppmedia|managermediaksa|riyadhsaudiaarabia": {
+      "seen": "2026-10-16T12:13:34.540442+00:00",
+      "title": "Manager, Media, KSA",
+      "company": "WPP Media"
+    },
+    "wppmedia|managerperformancelebanon|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.542893+00:00",
+      "title": "Manager, Performance, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|managerretaildspcommercemedia|chicagounitedstatesn": {
+      "seen": "2026-10-16T12:13:34.547174+00:00",
+      "title": "Manager, Retail DSP & Commerce Media",
+      "company": "WPP Media"
+    },
+    "wppmedia|managerretailmediasearch|chicagounitedstatesn": {
+      "seen": "2026-10-16T12:13:34.547538+00:00",
+      "title": "Manager, Retail Media Search",
+      "company": "WPP Media"
+    },
+    "wppmedia|mediaadvertisingoperationassoc|bogotacolombia": {
+      "seen": "2026-10-16T12:13:34.551918+00:00",
+      "title": "Media Advertising Operation Associate",
+      "company": "WPP Media"
+    },
+    "wppmedia|mediaadvertisingoperationsasso|bogotacolombia": {
+      "seen": "2026-10-16T12:13:34.552950+00:00",
+      "title": "Media Advertising Operations Associate",
+      "company": "WPP Media"
+    },
+    "wppmedia|offlinemediaplanneroohradio|warsawpoland": {
+      "seen": "2026-10-16T12:13:34.558750+00:00",
+      "title": "Offline Media Planner (OOH & Radio)",
+      "company": "WPP Media"
+    },
+    "wppmedia|plannerassociate|buenosairesargentina": {
+      "seen": "2026-10-16T12:13:34.566127+00:00",
+      "title": "Planner Associate",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociatemediabuyingegyp|cairoegypt": {
+      "seen": "2026-10-16T12:13:34.574480+00:00",
+      "title": "Senior Associate, Media Buying, Egypt",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociatemediaegypt|cairoegypt": {
+      "seen": "2026-10-16T12:13:34.575015+00:00",
+      "title": "Senior Associate, Media, Egypt",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociatemedialebanon|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.575401+00:00",
+      "title": "Senior Associate, Media, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociatemediasolutionsm|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.576701+00:00",
+      "title": "Senior Associate, Media Solutions, MENA",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociateperformanceleba|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.577908+00:00",
+      "title": "Senior Associate, Performance, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociateprogrammaticleb|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.580335+00:00",
+      "title": "Senior Associate, Programmatic, Lebanon",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorassociateseoegypt|cairoegypt": {
+      "seen": "2026-10-16T12:13:34.581105+00:00",
+      "title": "Senior Associate, SEO - Egypt",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniordesignmanagermenschnewbu|dusseldorfgermany": {
+      "seen": "2026-10-16T12:13:34.583370+00:00",
+      "title": "Senior Design Manager (Mensch) New Business",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniordesignmanagermenschnewbu|hamburggermany": {
+      "seen": "2026-10-16T12:13:34.583883+00:00",
+      "title": "Senior Design Manager (Mensch) New Business",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniorexecutivemediaperformanc|kualalumpurmalaysia": {
+      "seen": "2026-10-16T12:13:34.587245+00:00",
+      "title": "Senior Executive, Media Performance",
+      "company": "WPP Media"
+    },
+    "wppmedia|seniormanageramazonmediagrowth|chicagounitedstatesn": {
+      "seen": "2026-10-16T12:13:34.590671+00:00",
+      "title": "Senior Manager, Amazon Media & Growth",
+      "company": "WPP Media"
+    },
+    "wppmedia|seomanagerlebanon|beirutlebanon": {
+      "seen": "2026-10-16T12:13:34.597916+00:00",
+      "title": "SEO Manager- Lebanon",
+      "company": "WPP Media"
+    },
+    "anthropic|appliedaiarchitectpartnerships|bangaloreindia": {
+      "seen": "2026-10-16T12:13:34.846237+00:00",
+      "title": "Applied AI Architect, Partnerships",
+      "company": "Anthropic"
+    },
+    "anthropic|appliedaiengineerstartupslifes|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.847636+00:00",
+      "title": "Applied AI Engineer, Startups (Life Sciences)",
+      "company": "Anthropic"
+    },
+    "anthropic|appliedaiengineerstartupsphysi|sanfranciscoca": {
+      "seen": "2026-10-16T12:13:34.847915+00:00",
+      "title": "Applied AI Engineer, Startups (Physical AI)",
+      "company": "Anthropic"
+    },
+    "anthropic|brandinsightsmeasurementlead|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.848973+00:00",
+      "title": "Brand Insights, Measurement Lead",
+      "company": "Anthropic"
+    },
+    "anthropic|cloudhyperscalerreadinesslead|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.849726+00:00",
+      "title": "Cloud Hyperscaler Readiness Lead",
+      "company": "Anthropic"
+    },
+    "anthropic|communityengagementmanagerdata|remotefriendlyunited": {
+      "seen": "2026-10-16T12:13:34.850734+00:00",
+      "title": "Community Engagement Manager, Data Centers (Louisiana)",
+      "company": "Anthropic"
+    },
+    "anthropic|enterprisesalesmanager|londonuk": {
+      "seen": "2026-10-16T12:13:34.857389+00:00",
+      "title": "Enterprise Sales Manager",
+      "company": "Anthropic"
+    },
+    "anthropic|gtmstrategyoperationsfrontier|sanfranciscoca": {
+      "seen": "2026-10-16T12:13:34.859884+00:00",
+      "title": "GTM Strategy & Operations, Frontier",
+      "company": "Anthropic"
+    },
+    "anthropic|managerappliedaiarchitectsdigi|londonuk": {
+      "seen": "2026-10-16T12:13:34.863400+00:00",
+      "title": "Manager, Applied AI Architects - Digital Natives, EMEA",
+      "company": "Anthropic"
+    },
+    "anthropic|riskinsurancespecialist|sanfranciscoca": {
+      "seen": "2026-10-16T12:13:34.872784+00:00",
+      "title": "Risk & Insurance Specialist",
+      "company": "Anthropic"
+    },
+    "anthropic|softwareengineerresearchproduc|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.877079+00:00",
+      "title": "Software Engineer, Research Productivity",
+      "company": "Anthropic"
+    },
+    "anthropic|staffsoftwareengineerenterpris|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.880660+00:00",
+      "title": "Staff+ Software Engineer, Enterprise (Full Stack)",
+      "company": "Anthropic"
+    },
+    "anthropic|technicalprogrammanagercorpora|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.885212+00:00",
+      "title": "Technical Program Manager, Corporate Engineering",
+      "company": "Anthropic"
+    },
+    "anthropic|technicalprogrammanagersoxcomp|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:34.886707+00:00",
+      "title": "Technical Program Manager, SOX Compliance",
+      "company": "Anthropic"
+    },
+    "cloudflare|dataanalyst|hybrid": {
+      "seen": "2026-10-16T12:13:34.890098+00:00",
+      "title": "Data Analyst",
+      "company": "Cloudflare"
+    },
+    "cloudflare|datacenterstrategyedge|hybrid": {
+      "seen": "2026-10-16T12:13:34.890800+00:00",
+      "title": "Data Center Strategy - Edge",
+      "company": "Cloudflare"
+    },
+    "cloudflare|itoperationsspecialisti|inoffice": {
+      "seen": "2026-10-16T12:13:34.895266+00:00",
+      "title": "IT Operations Specialist I",
+      "company": "Cloudflare"
+    },
+    "cloudflare|principalproductmanagercertifi|hybrid": {
+      "seen": "2026-10-16T12:13:34.899564+00:00",
+      "title": "Principal Product Manager, Certificate Authority",
+      "company": "Cloudflare"
+    },
+    "cloudflare|seniorsoftwareengineerdistribu|hybrid": {
+      "seen": "2026-10-16T12:13:34.918591+00:00",
+      "title": "Senior Software Engineer, Distributed Databases",
+      "company": "Cloudflare"
+    },
+    "cloudflare|seniorsystemsengineerbasinpipe|inoffice": {
+      "seen": "2026-10-16T12:13:34.920555+00:00",
+      "title": "Senior Systems Engineer, Basin Pipelines",
+      "company": "Cloudflare"
+    },
+    "cloudflare|srtechnicalprogrammanager|hybrid": {
+      "seen": "2026-10-16T12:13:34.924224+00:00",
+      "title": "Sr. Technical Program Manager",
+      "company": "Cloudflare"
+    },
+    "okx|businessdevelopmentmanagerslov|emea": {
+      "seen": "2026-10-16T12:13:34.929497+00:00",
+      "title": "Business Development Manager (Slovakia & Czech Republic)",
+      "company": "OKX"
+    },
+    "okx|seniorgrowthmanagerbrazil|sopaulobrazil": {
+      "seen": "2026-10-16T12:13:34.942402+00:00",
+      "title": "Senior Growth Manager, Brazil",
+      "company": "OKX"
+    },
+    "okx|senioroperationsmanager|sliemamalta": {
+      "seen": "2026-10-16T12:13:34.944448+00:00",
+      "title": "Senior Operations Manager",
+      "company": "OKX"
+    },
+    "okx|seniorstaffaiengineer|hongkonghongkongsars": {
+      "seen": "2026-10-16T12:13:34.946885+00:00",
+      "title": "Senior /Staff AI Engineer",
+      "company": "OKX"
+    },
+    "xai|leaddatacentertechnician|southavenmsmemphistn": {
+      "seen": "2026-10-16T12:13:34.965126+00:00",
+      "title": "Lead Data Center Technician",
+      "company": "xAI"
+    },
+    "xai|linuxdatacenteroperationstechn|southavenmsmemphistn": {
+      "seen": "2026-10-16T12:13:34.966398+00:00",
+      "title": "Linux Data Center Operations Technician - Memphis",
+      "company": "xAI"
+    },
+    "xai|seniorlinuxdatacentertechnicia|southavenmsmemphistn": {
+      "seen": "2026-10-16T12:13:34.974602+00:00",
+      "title": "Senior Linux Data Center Technician - Memphis",
+      "company": "xAI"
+    },
+    "xai|sitereliabilityengineer|southavenmsmemphistn": {
+      "seen": "2026-10-16T12:13:34.975015+00:00",
+      "title": "Site Reliability Engineer",
+      "company": "xAI"
+    },
+    "gitlab|associaterenewalsmanager|remotecanadaremoteun": {
+      "seen": "2026-10-16T12:13:34.980048+00:00",
+      "title": "Associate Renewals Manager",
+      "company": "GitLab"
+    },
+    "gitlab|commercialaccountexecutiveaust|remoteaustralia": {
+      "seen": "2026-10-16T12:13:34.982160+00:00",
+      "title": "Commercial Account Executive - Australia",
+      "company": "GitLab"
+    },
+    "gitlab|commercialaccountexecutivesout|remotesouthkorea": {
+      "seen": "2026-10-16T12:13:34.982522+00:00",
+      "title": "Commercial Account Executive - South Korea",
+      "company": "GitLab"
+    },
+    "gitlab|customersuccessarchitectjapan|remotejapan": {
+      "seen": "2026-10-16T12:13:34.982786+00:00",
+      "title": "Customer Success Architect, Japan",
+      "company": "GitLab"
+    },
+    "gitlab|intermediateseniorbackendengin|remotepoland": {
+      "seen": "2026-10-16T12:13:34.985683+00:00",
+      "title": "Intermediate-Senior Backend Engineer (Ruby), Plan: Spec-Driven Development",
+      "company": "GitLab"
+    },
+    "gitlab|intermediateseniorbackendengin|remoteunitedkingdom": {
+      "seen": "2026-10-16T12:13:34.986044+00:00",
+      "title": "Intermediate-Senior Backend Engineer (Ruby), Plan: Spec-Driven Development",
+      "company": "GitLab"
+    },
+    "gitlab|leadcustomeradvocacymanagerapj|remoteaustraliaremot": {
+      "seen": "2026-10-16T12:13:34.986625+00:00",
+      "title": "Lead Customer Advocacy Manager, APJ",
+      "company": "GitLab"
+    },
+    "gitlab|managercustomersuccessengineer|remote": {
+      "seen": "2026-10-16T12:13:34.987492+00:00",
+      "title": "Manager, Customer Success Engineering",
+      "company": "GitLab"
+    },
+    "gitlab|renewalssalesmanager|remoteireland": {
+      "seen": "2026-10-16T12:13:34.989477+00:00",
+      "title": "Renewals Sales Manager",
+      "company": "GitLab"
+    },
+    "gitlab|seniorpartnersolutionsarchitec|remotecanadaremoteun": {
+      "seen": "2026-10-16T12:13:34.992595+00:00",
+      "title": "Senior Partner Solutions Architect, Strategic Partnerships",
+      "company": "GitLab"
+    },
+    "gitlab|technicalprogrammanager|bangaloreindia": {
+      "seen": "2026-10-16T12:13:34.999098+00:00",
+      "title": "Technical Program Manager",
+      "company": "GitLab"
+    },
+    "gitlab|threatresearchengineer|bangaloreindia": {
+      "seen": "2026-10-16T12:13:34.999484+00:00",
+      "title": "Threat Research Engineer",
+      "company": "GitLab"
+    },
+    "scaleai|fieldmarketingeventsmanagerfro|sanfranciscocanewyor": {
+      "seen": "2026-10-16T12:13:35.003255+00:00",
+      "title": "Field Marketing & Events Manager, Frontier Data",
+      "company": "Scale AI"
+    },
+    "scaleai|gtmbusinessoperationsassociate|londonuk": {
+      "seen": "2026-10-16T12:13:35.006528+00:00",
+      "title": "GTM Business Operations Associate",
+      "company": "Scale AI"
+    },
+    "riotgames|directorpublishingproductmanag|losangelesusa": {
+      "seen": "2026-10-16T12:13:35.031001+00:00",
+      "title": "Director, Publishing Product Management, Americas - VALORANT",
+      "company": "Riot Games"
+    },
+    "riotgames|directortechnicalproductmanage|mercerislandusa": {
+      "seen": "2026-10-16T12:13:35.031265+00:00",
+      "title": "Director, Technical Product Management: Commerce",
+      "company": "Riot Games"
+    },
+    "riotgames|managergameproductmanagementmo|shanghaichina": {
+      "seen": "2026-10-16T12:13:35.033682+00:00",
+      "title": "Manager, Game Product Management, Monetization and Growth - FFGS/\u91d1\u94f2\u94f2\u4e4b\u6218",
+      "company": "Riot Games"
+    },
+    "riotgames|playtestoperationsproducer|shanghaichina": {
+      "seen": "2026-10-16T12:13:35.035314+00:00",
+      "title": "Playtest Operations Producer",
+      "company": "Riot Games"
+    },
+    "riotgames|seniorsoftwareengineerengineto|sydneyaustralia": {
+      "seen": "2026-10-16T12:13:35.042103+00:00",
+      "title": "Senior Software Engineer, Engine & Tools - Unpublished R&D Product",
+      "company": "Riot Games"
+    },
+    "riotgames|seniorvfxtechnicalartistunpubl|sydneyaustralia": {
+      "seen": "2026-10-16T12:13:35.043703+00:00",
+      "title": "Senior VFX Technical Artist - Unpublished R&D Product",
+      "company": "Riot Games"
+    },
+    "riotgames|softwareengineeriivalorantpers|sydneyaustralia": {
+      "seen": "2026-10-16T12:13:35.044308+00:00",
+      "title": "Software Engineer II, VALORANT, Personalization",
+      "company": "Riot Games"
+    },
+    "duolingo|datascientistintern|newyorknypittsburghp": {
+      "seen": "2026-10-16T12:13:35.051043+00:00",
+      "title": "Data Scientist, Intern",
+      "company": "Duolingo"
+    },
+    "duolingo|datascientistinternphd|newyorknypittsburghp": {
+      "seen": "2026-10-16T12:13:35.051237+00:00",
+      "title": "Data Scientist, Intern (PhD)",
+      "company": "Duolingo"
+    },
+    "duolingo|peoplerelationsbusinesspartner|newyorknypittsburghp": {
+      "seen": "2026-10-16T12:13:35.052240+00:00",
+      "title": "People Relations Business Partner",
+      "company": "Duolingo"
+    },
+    "duolingo|productmanagermbaintern|pittsburghpa": {
+      "seen": "2026-10-16T12:13:35.052763+00:00",
+      "title": "Product Manager, MBA Intern",
+      "company": "Duolingo"
+    },
+    "mozilla|softwareengineerdomcorefirefox|remotebelgiumremoted": {
+      "seen": "2026-10-16T12:13:35.055637+00:00",
+      "title": "Contract Software Engineer - DOM Core Firefox/Gecko",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsecuritygrcengineer|remotecanada": {
+      "seen": "2026-10-16T12:13:35.059330+00:00",
+      "title": "Senior Security GRC Engineer",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsecuritygrcengineer|remoteuk": {
+      "seen": "2026-10-16T12:13:35.059597+00:00",
+      "title": "Senior Security GRC Engineer",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsecuritygrcengineer|remotefrance": {
+      "seen": "2026-10-16T12:13:35.059862+00:00",
+      "title": "Senior Security GRC Engineer",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsecuritygrcengineer|remotegermany": {
+      "seen": "2026-10-16T12:13:35.060123+00:00",
+      "title": "Senior Security GRC Engineer",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsecuritygrcengineer|remoteus": {
+      "seen": "2026-10-16T12:13:35.060369+00:00",
+      "title": "Senior Security GRC Engineer",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsecuritygrcengineer|remote": {
+      "seen": "2026-10-16T12:13:35.060626+00:00",
+      "title": "Senior Security GRC Engineer",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsoftwareengineerapzasync|remote": {
+      "seen": "2026-10-16T12:13:35.061533+00:00",
+      "title": "Senior Software Engineer, APZ (Asynchronous Pan & Zoom)",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsoftwareengineerapzasync|remotecanada": {
+      "seen": "2026-10-16T12:13:35.061880+00:00",
+      "title": "Senior Software Engineer, APZ (Asynchronous Pan & Zoom)",
+      "company": "Mozilla"
+    },
+    "mozilla|seniorsoftwareengineerapzasync|remoteus": {
+      "seen": "2026-10-16T12:13:35.062193+00:00",
+      "title": "Senior Software Engineer, APZ (Asynchronous Pan & Zoom)",
+      "company": "Mozilla"
+    },
+    "snorkelai|financemanagerdaas|sanfranciscocahybrid": {
+      "seen": "2026-10-16T12:13:35.066736+00:00",
+      "title": "Finance Manager, DaaS",
+      "company": "Snorkel AI"
+    },
+    "snorkelai|forwarddeployedresearcherdataa|newyorkcitynyhybrids": {
+      "seen": "2026-10-16T12:13:35.067237+00:00",
+      "title": "Forward Deployed Researcher - Data as a Service",
+      "company": "Snorkel AI"
+    },
+    "prolific|analyticsengineer|remoteuk": {
+      "seen": "2026-10-16T12:13:35.069491+00:00",
+      "title": "Analytics Engineer",
+      "company": "Prolific"
+    },
+    "prolific|lifecyclemarketingmanager|remoteuk": {
+      "seen": "2026-10-16T12:13:35.070342+00:00",
+      "title": "Lifecycle Marketing Manager",
+      "company": "Prolific"
+    },
+    "prolific|lifecyclemarketingmanager|newyork": {
+      "seen": "2026-10-16T12:13:35.070528+00:00",
+      "title": "Lifecycle Marketing Manager",
+      "company": "Prolific"
+    },
+    "prolific|strategicaccountexecutive|remotesanfrancisco": {
+      "seen": "2026-10-16T12:13:35.071405+00:00",
+      "title": "Strategic Account Executive",
+      "company": "Prolific"
+    },
+    "prolific|strategiccustomersuccessmanage|hybridsanfrancisco": {
+      "seen": "2026-10-16T12:13:35.071682+00:00",
+      "title": "Strategic Customer Success Manager",
+      "company": "Prolific"
+    },
+    "coursera|seniormerchandisingmanager|unitedstates": {
+      "seen": "2026-10-16T12:13:35.073353+00:00",
+      "title": "Senior Merchandising Manager",
+      "company": "Coursera"
+    },
+    "turing|complianceanalyst|indiaremote": {
+      "seen": "2026-10-16T12:13:35.076182+00:00",
+      "title": "Compliance Analyst",
+      "company": "Turing"
+    },
+    "turing|directorinvestorrelationscorpo|sanfranciscocaliforn": {
+      "seen": "2026-10-16T12:13:35.076473+00:00",
+      "title": "Director, Investor Relations & Corporate Development",
+      "company": "Turing"
+    },
+    "toloka|technicalconsultantlatam|latinamerica": {
+      "seen": "2026-10-16T12:13:35.079908+00:00",
+      "title": "Freelance Technical Consultant (LATAM)",
+      "company": "Toloka"
+    },
+    "toloka|moderatoronsitedatacollection|newyorkcitymetropoli": {
+      "seen": "2026-10-16T12:13:35.080341+00:00",
+      "title": "Moderator | Onsite Data Collection",
+      "company": "Toloka"
+    },
+    "udemy|commercialaccountexecutiveital|dublinireland": {
+      "seen": "2026-10-16T12:13:35.082049+00:00",
+      "title": "Commercial Account Executive - Italian Speaking",
+      "company": "Udemy"
+    },
+    "udemy|seniormerchandisingmanager|denverco": {
+      "seen": "2026-10-16T12:13:35.082791+00:00",
+      "title": "Senior Merchandising Manager",
+      "company": "Udemy"
+    },
+    "utopia|paymentoperationsspecialist|": {
+      "seen": "2026-10-16T12:13:35.485354+00:00",
+      "title": "Payment Operations Specialist",
+      "company": "Utopia"
+    },
+    "imerittechnology|aitrainer|usukcanadaaustralia3": {
+      "seen": "2026-10-16T12:13:35.496887+00:00",
+      "title": "AI Trainer",
+      "company": "iMerit Technology"
+    },
+    "pagerduty|pagerdutyseniorsolutionsconsul|remote": {
+      "seen": "2026-10-16T12:13:35.747528+00:00",
+      "title": "PagerDuty: Senior Solutions Consultant",
+      "company": "PagerDuty"
+    },
+    "pagerduty|pagerdutyseniordirectorsolutio|remote": {
+      "seen": "2026-10-16T12:13:35.794236+00:00",
+      "title": "PagerDuty: Senior Director, Solutions Consulting",
+      "company": "PagerDuty"
+    },
+    "ebanx|ebanxtalentpoolkeyaccountmanag|remote": {
+      "seen": "2026-10-16T12:13:35.827642+00:00",
+      "title": "EBANX: [Talent pool] Key Account Managment Specialist",
+      "company": "EBANX"
+    },
+    "zapier|zapiersrmotiondesigner|remote": {
+      "seen": "2026-10-16T12:13:35.868517+00:00",
+      "title": "Zapier: Sr. Motion Designer",
+      "company": "Zapier"
+    },
+    "medify|medifyengineeringmanager|remote": {
+      "seen": "2026-10-16T12:13:35.894392+00:00",
+      "title": "Medify: Engineering Manager",
+      "company": "Medify"
+    },
+    "supabase|postgresengineer|anywhere": {
+      "seen": "2026-10-16T12:13:36.217225+00:00",
+      "title": "Postgres Engineer",
+      "company": "Supabase"
+    },
+    "supabase|multigresdeploymentengineer|anywhere": {
+      "seen": "2026-10-16T12:13:36.238281+00:00",
+      "title": "Multigres Deployment Engineer",
+      "company": "Supabase"
+    },
+    "supabase|sitereliabilityengineer|anywhere": {
+      "seen": "2026-10-16T12:13:36.264937+00:00",
+      "title": "Site Reliability Engineer",
+      "company": "Supabase"
+    },
+    "supabase|platformengineermanagedpostgre|anywhere": {
+      "seen": "2026-10-16T12:13:36.284364+00:00",
+      "title": "Platform Engineer, Managed Postgres",
+      "company": "Supabase"
+    },
+    "supabase|aiplatformengineer|anywhere": {
+      "seen": "2026-10-16T12:13:36.339967+00:00",
+      "title": "AI Platform Engineer",
+      "company": "Supabase"
+    },
+    "gofluent|corporateczechtrainer|boliviauruguay": {
+      "seen": "2026-10-16T12:13:36.392972+00:00",
+      "title": "Corporate Czech Trainer",
+      "company": "goFLUENT"
+    },
+    "marktinetechnologysolutionspvtltd|pythonqadeveloper|unitedstates": {
+      "seen": "2026-10-16T12:13:36.402129+00:00",
+      "title": "Python QA Developer",
+      "company": "Marktine Technology Solutions Pvt Ltd"
+    },
+    "associationofasianpacificcommunityhealthorganizations|researchmanageriresearch|unitedstates": {
+      "seen": "2026-10-16T12:13:36.462601+00:00",
+      "title": "Research Manager I, Research",
+      "company": "Association of Asian Pacific Community Health Organizations"
+    },
+    "jumpcloud|dealdeskanalystmexico|mexico": {
+      "seen": "2026-10-16T12:13:36.493675+00:00",
+      "title": "Deal Desk Analyst - Mexico",
+      "company": "JumpCloud"
+    },
+    "progresssoft|businessdevelopmentmanager|kazakhstan": {
+      "seen": "2026-10-16T12:13:36.502833+00:00",
+      "title": "Business Development Manager",
+      "company": "ProgressSoft"
+    },
+    "digitalmaelstrom|juniorsecurityengineer|unitedstates": {
+      "seen": "2026-10-16T12:13:36.517900+00:00",
+      "title": "Junior Security Engineer",
+      "company": "Digital Maelstrom"
+    },
+    "danaher|fieldserviceengineer247service|singapore": {
+      "seen": "2026-10-16T12:13:36.538829+00:00",
+      "title": "Field Service Engineer (24/7 Service Support Rotation)",
+      "company": "Danaher"
+    },
+    "alan|keyaccountmanager|parisfranceremote": {
+      "seen": "2026-10-16T12:13:36.541646+00:00",
+      "title": "Key Account Manager",
+      "company": "Alan"
+    },
+    "wolt|supportassociate|patrasgreeceremote": {
+      "seen": "2026-10-16T12:13:36.544910+00:00",
+      "title": "Support Associate (Remote)",
+      "company": "Wolt"
+    },
+    "tines|seniorsecurityoperationsengine|irelandremote": {
+      "seen": "2026-10-16T12:13:36.547297+00:00",
+      "title": "Senior Security Operations Engineer",
+      "company": "Tines"
+    },
+    "temporaltechnologies|seniorsoftwareengineercloudcap|seattlewashingtonsan": {
+      "seen": "2026-10-16T12:13:36.549227+00:00",
+      "title": "Senior Software Engineer, Cloud Capacity",
+      "company": "Temporal Technologies"
+    },
+    "temporaltechnologies|seniordirectorglobalfieldopera|unitedstatesremotere": {
+      "seen": "2026-10-16T12:13:36.551623+00:00",
+      "title": "Senior Director, Global Field Operations",
+      "company": "Temporal Technologies"
+    },
+    "elevenlabs|mobileengineerelevenmusic|remotenewyorkbrazild": {
+      "seen": "2026-10-16T12:13:36.553486+00:00",
+      "title": "Mobile Engineer - ElevenMusic",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|fullstackengineerbackendleanin|remotenewyorkbrazilp": {
+      "seen": "2026-10-16T12:13:36.555370+00:00",
+      "title": "Full-Stack Engineer (Backend Leaning) - CoreMusic",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|fullstackengineerproductions|remotedublindenmarku": {
+      "seen": "2026-10-16T12:13:36.558099+00:00",
+      "title": "Full-Stack Engineer - Productions",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|fullstackengineerfrontendleani|remotenewyorkpolands": {
+      "seen": "2026-10-16T12:13:36.559990+00:00",
+      "title": "Full-Stack Engineer (Frontend-Leaning) - CreativeMusic",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|fullstackengineerenterprise|unitedkingdomuniteds": {
+      "seen": "2026-10-16T12:13:36.562271+00:00",
+      "title": "Full-Stack Engineer - Enterprise",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|fullstackengineerelevenapi|unitedstatesdublinbu": {
+      "seen": "2026-10-16T12:13:36.564586+00:00",
+      "title": "Full-Stack Engineer - ElevenAPI",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|fullstackengineeradsengine|unitedkingdomuniteds": {
+      "seen": "2026-10-16T12:13:36.566864+00:00",
+      "title": "Full-Stack Engineer - Ads Engine",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|developerexperienceengineer|remoteeuropeunitedst": {
+      "seen": "2026-10-16T12:13:36.568513+00:00",
+      "title": "Developer Experience Engineer",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|customersupportspecialist|remotesofiapolandspa": {
+      "seen": "2026-10-16T12:13:36.571936+00:00",
+      "title": "Customer Support Specialist",
+      "company": "ElevenLabs"
+    },
+    "bonterra|customerreferenceprogrammanage|remoteunitedstates": {
+      "seen": "2026-10-16T12:13:36.574458+00:00",
+      "title": "Customer Reference Program Manager",
+      "company": "Bonterra"
+    },
+    "airbnb|programmanagercommunitysupport|unitedstates": {
+      "seen": "2026-10-16T12:13:36.577024+00:00",
+      "title": "Program Manager, Community Support",
+      "company": "Airbnb"
+    },
+    "airbnb|engineeringmanagersecuredevelo|unitedstates": {
+      "seen": "2026-10-16T12:13:36.579582+00:00",
+      "title": "Engineering Manager, Secure Development Engineering",
+      "company": "Airbnb"
+    },
+    "airbnb|counselcorporate|unitedstates": {
+      "seen": "2026-10-16T12:13:36.582052+00:00",
+      "title": "Counsel, Corporate",
+      "company": "Airbnb"
+    },
+    "stride|substituteteacheror|uscoremote": {
+      "seen": "2026-10-16T12:13:36.585544+00:00",
+      "title": "Substitute Teacher (Contractor)",
+      "company": "Stride"
+    },
+    "stride|academicsdatascienceassociate|usvaremote": {
+      "seen": "2026-10-16T12:13:36.588853+00:00",
+      "title": "Academics Data Science Associate",
+      "company": "Stride"
+    },
+    "stride|highschoolmathteacher|uswvremote": {
+      "seen": "2026-10-16T12:13:36.592137+00:00",
+      "title": "High School Math Teacher",
+      "company": "Stride"
+    },
+    "n8n|internalcontextengineer|berlinofficenorwayla": {
+      "seen": "2026-10-16T12:13:36.595074+00:00",
+      "title": "Internal Context Engineer",
+      "company": "n8n"
+    },
+    "n8n|internalaienablementlead|berlinofficenorwayla": {
+      "seen": "2026-10-16T12:13:36.599025+00:00",
+      "title": "Internal AI Enablement Lead",
+      "company": "n8n"
+    },
+    "n8n|srproductsecurityengineereurop|berlinofficebosniano": {
+      "seen": "2026-10-16T12:13:36.602327+00:00",
+      "title": "Sr Product Security Engineer | Remote | Europe",
+      "company": "n8n"
+    },
+    "stripe|staffproductdesignerrisk|usremote": {
+      "seen": "2026-10-16T12:13:36.605730+00:00",
+      "title": "Staff Product Designer, Risk",
+      "company": "Stripe"
+    },
+    "snowflake|enterpriseaccountexecutive|dkdenmarkremoteremot": {
+      "seen": "2026-10-16T12:13:36.608528+00:00",
+      "title": "Enterprise Account Executive",
+      "company": "Snowflake"
+    },
+    "snowflake|softwareengineerobserveteam|chzurichobserveremot": {
+      "seen": "2026-10-16T12:13:36.611384+00:00",
+      "title": "Software Engineer Observe Team",
+      "company": "Snowflake"
+    },
+    "snowflake|accountengineer|usilchicagomsousnyne": {
+      "seen": "2026-10-16T12:13:36.613305+00:00",
+      "title": "Account Engineer",
+      "company": "Snowflake"
+    },
+    "coinbase|seniorsoftwareengineerbackendr|remoteusa": {
+      "seen": "2026-10-16T12:13:36.615213+00:00",
+      "title": "Senior Software Engineer, Backend (Retail DEX)",
+      "company": "Coinbase"
+    },
+    "coinbase|managersecreporting|remoteusa": {
+      "seen": "2026-10-16T12:13:36.617804+00:00",
+      "title": "Manager, SEC Reporting",
+      "company": "Coinbase"
+    },
+    "coinbase|counselemployment|remoteusa": {
+      "seen": "2026-10-16T12:13:36.620398+00:00",
+      "title": "Counsel, Employment",
+      "company": "Coinbase"
+    },
+    "coinbase|analystprivacyprivacyassessmen|remoteusa": {
+      "seen": "2026-10-16T12:13:36.623068+00:00",
+      "title": "Analyst, Privacy (Privacy Assessments)",
+      "company": "Coinbase"
+    },
+    "coinbase|analystprivacyincidentmanageme|remoteusa": {
+      "seen": "2026-10-16T12:13:36.625728+00:00",
+      "title": "Analyst, Privacy (Incident Management)",
+      "company": "Coinbase"
+    },
+    "sanity|salesmanageremea|londonukremoteingerm": {
+      "seen": "2026-10-16T12:13:36.628456+00:00",
+      "title": "Sales Manager, EMEA",
+      "company": "Sanity"
+    },
+    "qonto|seniorwebengineerreactfriendly|milanremote": {
+      "seen": "2026-10-16T12:13:36.631109+00:00",
+      "title": "Senior Web Engineer (React) - Remote friendly",
+      "company": "Qonto"
+    },
+    "qonto|seniorfullstackengineerrubyrea|berlinremote": {
+      "seen": "2026-10-16T12:13:36.633742+00:00",
+      "title": "Senior Full-Stack Engineer (Ruby, ReactJS)",
+      "company": "Qonto"
+    },
+    "qonto|engineeringmanageraccounting|parisremote": {
+      "seen": "2026-10-16T12:13:36.636291+00:00",
+      "title": "Engineering Manager - Accounting",
+      "company": "Qonto"
+    },
+    "monzo|teammanagerfinancialcrimeeuspa|cardifflondonorremot": {
+      "seen": "2026-10-16T12:13:36.638505+00:00",
+      "title": "Team Manager, Financial Crime, EU (Spanish Speaking)",
+      "company": "Monzo"
+    },
+    "grafanalabs|seniorsolutionsengineeruk|unitedkingdomremote": {
+      "seen": "2026-10-16T12:13:36.641019+00:00",
+      "title": "Senior Solutions Engineer | UK | Remote",
+      "company": "Grafana Labs"
+    },
+    "grafanalabs|seniorsolutionsarchitectgerman|germanyremote": {
+      "seen": "2026-10-16T12:13:36.643467+00:00",
+      "title": "Senior Solutions Architect | Germany | Remote",
+      "company": "Grafana Labs"
+    },
+    "grafanalabs|seniorbackendengineeranalytics|unitedstatesremote": {
+      "seen": "2026-10-16T12:13:36.645645+00:00",
+      "title": "Senior Backend Engineer - Analytics | US | Remote",
+      "company": "Grafana Labs"
+    },
+    "grafanalabs|enterpriseaccountexecutiveacqu|unitedstatesremote": {
+      "seen": "2026-10-16T12:13:36.647778+00:00",
+      "title": "Enterprise Account Executive, Acquisition | DMV | Remote",
+      "company": "Grafana Labs"
+    },
+    "clickhouse|managercommercialoperations|unitedstatesremote": {
+      "seen": "2026-10-16T12:13:36.651103+00:00",
+      "title": "Manager, Commercial Operations",
+      "company": "ClickHouse"
+    },
+    "clickhouse|managercommercialsaleseast|newyorkremote": {
+      "seen": "2026-10-16T12:13:36.653971+00:00",
+      "title": "Manager, Commercial Sales - East",
+      "company": "ClickHouse"
+    },
+    "clickhouse|seniorfieldmarketingmanageruki|unitedkingdomremote": {
+      "seen": "2026-10-16T12:13:36.656585+00:00",
+      "title": "Senior Field Marketing Manager, UKI",
+      "company": "ClickHouse"
+    },
+    "clickhouse|seniorsoftwareengineerinfrastr|unitedstatesremote": {
+      "seen": "2026-10-16T12:13:36.658980+00:00",
+      "title": "Senior Software Engineer - Infrastructure - ClickPipes Platform",
+      "company": "ClickHouse"
+    },
+    "clickhouse|principalproductmanagerpartner|unitedstatesdenverch": {
+      "seen": "2026-10-16T12:13:36.660717+00:00",
+      "title": "Principal Product Manager, Partner Integrations",
+      "company": "ClickHouse"
+    },
+    "reddit|communitymanagerfrenchspeaking|remoteireland": {
+      "seen": "2026-10-16T12:13:36.661806+00:00",
+      "title": "Community Manager, French Speaking (Contract)",
+      "company": "Reddit"
+    },
+    "reddit|communitymanagerdutchspeaking|remotethenetherlands": {
+      "seen": "2026-10-16T12:13:36.662796+00:00",
+      "title": "Community Manager, Dutch Speaking (Contract)",
+      "company": "Reddit"
+    },
+    "ramp|manageraccountmanagergrowth|newyorknyhqsanfranci": {
+      "seen": "2026-10-16T12:13:36.664544+00:00",
+      "title": "Manager, Account Manager | Growth",
+      "company": "Ramp"
+    },
+    "ramp|manageraccountexecutiveenterpr|newyorknyhqsanfranci": {
+      "seen": "2026-10-16T12:13:36.666320+00:00",
+      "title": "Manager, Account Executive | Enterprise",
+      "company": "Ramp"
+    },
+    "ramp|seniorchannelpartnermanagerstr|newyorknyhqsanfranci": {
+      "seen": "2026-10-16T12:13:36.669355+00:00",
+      "title": "Senior Channel Partner Manager, Strategic Advisory",
+      "company": "Ramp"
+    },
+    "ramp|seniorchannelpartnermanagerglo|newyorknyhqsanfranci": {
+      "seen": "2026-10-16T12:13:36.672109+00:00",
+      "title": "Senior Channel Partner Manager, Global Advisory / GSI",
+      "company": "Ramp"
+    },
+    "sentry|seniorsoftwareengineerfoundati|sanfranciscocaliforn": {
+      "seen": "2026-10-16T12:13:36.674003+00:00",
+      "title": "Senior Software Engineer, Foundational Storage",
+      "company": "Sentry"
+    },
+    "jmsmucker|salescoordinatoreastpetsaleste|workingremoteusa": {
+      "seen": "2026-10-16T12:13:36.677484+00:00",
+      "title": "Sales Coordinator-East Pet Sales Team",
+      "company": "J.M. Smucker"
+    },
+    "insiderone|customersuccessmanagerwarsawpo|warsawpolandremote": {
+      "seen": "2026-10-16T12:13:36.680191+00:00",
+      "title": "Customer Success Manager (Warsaw, Poland)",
+      "company": "Insider One"
+    },
+    "r1rcm|seniormanagerphareosimplementa|remoteusa": {
+      "seen": "2026-10-16T12:13:36.682745+00:00",
+      "title": "Senior Manager, PhareOS Implementation",
+      "company": "R1 RCM"
+    },
+    "twilio|strategicaccountexecutive4regv|remoteus": {
+      "seen": "2026-10-16T12:13:36.683797+00:00",
+      "title": "Strategic Account Executive 4 - Regverts",
+      "company": "Twilio"
+    },
+    "twilio|salesoperationsplanninganalyst|remoteus": {
+      "seen": "2026-10-16T12:13:36.685510+00:00",
+      "title": "Sales Operations Planning Analyst",
+      "company": "Twilio"
+    },
+    "alan|fullstacksoftwareengineerxfmau|anywhereinfrancebelg": {
+      "seen": "2026-10-16T12:13:36.688611+00:00",
+      "title": "Fullstack Software Engineer (x/f/m) -Automated Resolution",
+      "company": "Alan"
+    },
+    "launchdarkly|seniordirectorgtmsystems|remoteus": {
+      "seen": "2026-10-16T12:13:36.690290+00:00",
+      "title": "Senior Director, GTM Systems",
+      "company": "LaunchDarkly"
+    },
+    "launchdarkly|seniordirectorenablement|remoteus": {
+      "seen": "2026-10-16T12:13:36.691886+00:00",
+      "title": "Senior Director, Enablement",
+      "company": "LaunchDarkly"
+    },
+    "docker|salesoperationsmanagerukprefer|englandportugalspain": {
+      "seen": "2026-10-16T12:13:36.694449+00:00",
+      "title": "Sales Operations Manager (UK Preferred)",
+      "company": "Docker"
+    },
+    "docker|directorpartnersolutionenginee|canadaunitedstatesre": {
+      "seen": "2026-10-16T12:13:36.696647+00:00",
+      "title": "Director, Partner Solution Engineer",
+      "company": "Docker"
+    },
+    "vanta|engineeringmanagervantaforgove|remoteusremote": {
+      "seen": "2026-10-16T12:13:36.699181+00:00",
+      "title": "Engineering Manager, Vanta for Government",
+      "company": "Vanta"
+    },
+    "elevenlabs|sitereliabilityengineer|londondublinnewyorks": {
+      "seen": "2026-10-16T12:13:36.700833+00:00",
+      "title": "Site Reliability Engineer",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|productengineerelevencreativee|unitedkingdomuniteds": {
+      "seen": "2026-10-16T12:13:36.703070+00:00",
+      "title": "Product Engineer - ElevenCreative Enterprise",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|productengineerelevenapi|unitedstatesdublinbu": {
+      "seen": "2026-10-16T12:13:36.705263+00:00",
+      "title": "Product Engineer - ElevenAPI",
+      "company": "ElevenLabs"
+    },
+    "elevenlabs|productengineeradsengine|unitedkingdomuniteds": {
+      "seen": "2026-10-16T12:13:36.707432+00:00",
+      "title": "Product Engineer - Ads Engine",
+      "company": "ElevenLabs"
+    },
+    "airbnb|seniorsoftwareengineerpayments|unitedstates": {
+      "seen": "2026-10-16T12:13:36.709244+00:00",
+      "title": "Senior Software Engineer, Payments Platform",
+      "company": "Airbnb"
+    },
+    "airbnb|seniorsoftwareengineerpayments|remoteusa": {
+      "seen": "2026-10-16T12:13:36.710516+00:00",
+      "title": "Senior Software Engineer, Payments",
+      "company": "Airbnb"
+    },
+    "airbnb|seniordemandgenerationspeciali|franceitaly": {
+      "seen": "2026-10-16T12:13:36.712608+00:00",
+      "title": "Senior Demand Generation Specialist, Hotels (12M FTC)",
+      "company": "Airbnb"
+    },
+    "temporaltechnologies|itsystemsengineer|sanfranciscocaliforn": {
+      "seen": "2026-10-16T12:13:36.714475+00:00",
+      "title": "IT Systems Engineer",
+      "company": "Temporal Technologies"
+    },
+    "temporaltechnologies|staffproductmanagernexus|seattlewashingtonuni": {
+      "seen": "2026-10-16T12:13:36.717193+00:00",
+      "title": "Staff Product Manager, Nexus",
+      "company": "Temporal Technologies"
+    },
+    "doit|scaledaccountmanager|remoteuseast": {
+      "seen": "2026-10-16T12:13:36.719467+00:00",
+      "title": "Scaled Account Manager",
+      "company": "DoiT"
+    },
+    "stripe|staffsoftwareengineerhighavail|seattlesanfranciscos": {
+      "seen": "2026-10-16T12:13:36.721211+00:00",
+      "title": "Staff Software Engineer, High Availability and Disaster Recovery",
+      "company": "Stripe"
+    },
+    "stripe|productmanagerradarfraudandabu|sanfranciscoseattlen": {
+      "seen": "2026-10-16T12:13:36.723813+00:00",
+      "title": "Product Manager, Radar - Fraud and Abuse Prevention",
+      "company": "Stripe"
+    },
+    "coinbase|seniorstrategicprogramleadgfco|remoteusa": {
+      "seen": "2026-10-16T12:13:36.728951+00:00",
+      "title": "Senior Strategic Program Lead, GFCO",
+      "company": "Coinbase"
+    },
+    "coinbase|seniorsoftwareengineerinstitut|remoteusa": {
+      "seen": "2026-10-16T12:13:36.730704+00:00",
+      "title": "Senior Software Engineer (Institutional, Client Lifecycle)",
+      "company": "Coinbase"
+    },
+    "coinbase|seniorengineeringmanageraifoun|remoteusa": {
+      "seen": "2026-10-16T12:13:36.732440+00:00",
+      "title": "Senior Engineering Manager, AI Foundations",
+      "company": "Coinbase"
+    },
+    "coinbase|employmentcounsel|remoteusa": {
+      "seen": "2026-10-16T12:13:36.734940+00:00",
+      "title": "Employment, Counsel",
+      "company": "Coinbase"
+    },
+    "snowflake|partnerdevelopmentmanagersapam|ususaremoteremote": {
+      "seen": "2026-10-16T12:13:36.738811+00:00",
+      "title": "Partner Development Manager, SAP AMER",
+      "company": "Snowflake"
+    },
+    "snowflake|partnerdevelopmentmanageremeac|deberlintrionbuildin": {
+      "seen": "2026-10-16T12:13:36.741797+00:00",
+      "title": "Partner Development Manager - EMEA Central",
+      "company": "Snowflake"
+    },
+    "snowflake|seniorsoftwareengineerenterpri|chzurichobserveremot": {
+      "seen": "2026-10-16T12:13:36.744639+00:00",
+      "title": "Senior Software Engineer, Enterprise",
+      "company": "Snowflake"
+    },
+    "snowflake|technicalprogrammanager|usnynewyorkcityremot": {
+      "seen": "2026-10-16T12:13:36.747404+00:00",
+      "title": "Technical Program Manager",
+      "company": "Snowflake"
+    },
+    "snowflake|projectmanagerfrench|frfranceremotegblond": {
+      "seen": "2026-10-16T12:13:36.750360+00:00",
+      "title": "Project Manager (French)",
+      "company": "Snowflake"
+    },
+    "qonto|seniorproductengineerandroidko|barcelonaremote": {
+      "seen": "2026-10-16T12:13:36.753013+00:00",
+      "title": "Senior Product Engineer - Android/Kotlin",
+      "company": "Qonto"
+    },
+    "ramp|senioranalysteconomicresearcha|newyorknyhqsanfranci": {
+      "seen": "2026-10-16T12:13:36.755736+00:00",
+      "title": "Senior Analyst, Economic Research and Special Projects",
+      "company": "Ramp"
+    },
+    "ramp|accountmanagerstrategic|newyorknyhqsanfranci": {
+      "seen": "2026-10-16T12:13:36.757466+00:00",
+      "title": "Account Manager | Strategic",
+      "company": "Ramp"
+    },
+    "cengagegroup|seniormarketingautomationsolut|ohiousa": {
+      "seen": "2026-10-16T12:13:36.760180+00:00",
+      "title": "Senior Marketing Automation Solution Architect",
+      "company": "Cengage Group"
+    },
+    "alan|seniorbranddesigner|parisfranceremote": {
+      "seen": "2026-10-16T12:13:36.763951+00:00",
+      "title": "Senior Brand Designer",
+      "company": "Alan"
+    },
+    "alan|brandmarketingassociate|parisfranceremote": {
+      "seen": "2026-10-16T12:13:36.767776+00:00",
+      "title": "Brand Marketing Associate",
+      "company": "Alan"
+    },
+    "adyen|seniorpaymentspartnershipsmana|amsterdamlondon": {
+      "seen": "2026-10-16T12:13:36.770337+00:00",
+      "title": "Senior Payments Partnerships Manager - Visa",
+      "company": "Adyen"
+    },
+    "adyen|projectoperationspecialist|paris": {
+      "seen": "2026-10-16T12:13:36.772832+00:00",
+      "title": "Project Operation Specialist",
+      "company": "Adyen"
+    },
+    "twilio|staffsoftwareengineerfraud|remoteus": {
+      "seen": "2026-10-16T12:13:36.775260+00:00",
+      "title": "Staff Software Engineer, Fraud",
+      "company": "Twilio"
+    },
+    "twilio|staffmobilesoftwareengineerp4|remoteus": {
+      "seen": "2026-10-16T12:13:36.776256+00:00",
+      "title": "Staff Mobile Software Engineer (P4)",
+      "company": "Twilio"
+    },
+    "elevenlabs|aisafetyengineerdata|londonremote": {
+      "seen": "2026-10-16T12:13:36.778811+00:00",
+      "title": "AI Safety Engineer (Data)",
+      "company": "ElevenLabs"
+    },
+    "seasideinterpreting|interpretertranslatorneeded|detroitmiusa": {
+      "seen": "2026-10-16T12:13:36.832095+00:00",
+      "title": "Freelance Interpreter/Translator Needed",
+      "company": "Seaside Interpreting"
+    },
+    "unccharlotte|adjunctfacultylanguagesculture|charlottencusa": {
+      "seen": "2026-10-16T12:13:36.849924+00:00",
+      "title": "Adjunct/Part-Time Faculty; Languages, Cultures and Translation",
+      "company": "UNC Charlotte"
+    },
+    "foothilldeanzacommunitycollegedistrict|ptarabiclanguageinstructor|causa": {
+      "seen": "2026-10-16T12:13:36.881260+00:00",
+      "title": "PT Arabic Language Instructor",
+      "company": "Foothill-De Anza Community College District"
+    },
+    "reynoldssd7|educationalassistantresource|portlandorusa": {
+      "seen": "2026-10-16T12:13:36.914947+00:00",
+      "title": "Educational Assistant, Resource",
+      "company": "Reynolds SD 7"
+    },
+    "sonyinteractiveentertainment|localizationaudiospecialistspa|sandiegocausa": {
+      "seen": "2026-10-16T12:13:36.916028+00:00",
+      "title": "Localization Audio Specialist \u2013 Spanish Commentary",
+      "company": "Sony Interactive Entertainment"
+    },
+    "twosixtechnologies|languageenabledanalyst|arlingtonvausa": {
+      "seen": "2026-10-16T12:13:36.916464+00:00",
+      "title": "Language Enabled Analyst",
+      "company": "Two Six Technologies"
+    },
+    "caciinternationalinc|arabicoperationallanguageanaly|fortgordongausa": {
+      "seen": "2026-10-16T12:13:36.917097+00:00",
+      "title": "Arabic Operational Language Analyst (OLA2)",
+      "company": "CACI International Inc"
+    },
+    "alfasystemsllc|spanishinterpreter|usa": {
+      "seen": "2026-10-16T12:13:36.918245+00:00",
+      "title": "Spanish Interpreter",
+      "company": "Alfa Systems LLC"
+    },
+    "globalarena|spanishinterpreter|philadelphiapausa": {
+      "seen": "2026-10-16T12:13:36.918450+00:00",
+      "title": "Spanish Interpreter",
+      "company": "Global Arena"
+    },
+    "editorialassistantbilingualwithfocusarabic|newjob|unescwaunitednations": {
+      "seen": "2026-10-16T12:13:36.924094+00:00",
+      "title": "New job:",
+      "company": "Editorial Assistant (Bilingual with Focus Arabic)"
+    },
+    "acuerdoalargoplazoserviciosdeinterpretacinsimultneaperlac3aos|closingtomorrow|unicefunitednationsc": {
+      "seen": "2026-10-16T12:13:36.926316+00:00",
+      "title": "Closing tomorrow:",
+      "company": "Acuerdo a Largo Plazo - Servicios de Interpretaci\u00f3n Simult\u00e1nea, Per\u00fa/LAC, 3 a\u00f1os"
+    },
+    "transparencyinternational|ongoingtranslationservices|berlin": {
+      "seen": "2026-10-16T12:13:36.930225+00:00",
+      "title": "Ongoing translation services",
+      "company": "Transparency International"
+    },
+    "seniordocumentsmanagementassistant|closingtoday|unepunitednationsenv": {
+      "seen": "2026-10-16T12:13:36.933656+00:00",
+      "title": "Closing today:",
+      "company": "Senior Documents Management Assistant"
+    },
+    "acuerdoalargoplazoserviciosdeinterpretacinenlenguadeseasperuanalspperlac3aos|closingtomorrow|unicefunitednationsc": {
+      "seen": "2026-10-16T12:13:36.938220+00:00",
+      "title": "Closing tomorrow:",
+      "company": "Acuerdo a Largo Plazo - Servicios de Interpretaci\u00f3n en Lengua de Se\u00f1as Peruana (LSP), Per\u00fa/LAC, 3 a\u00f1os"
+    },
+    "educationspecialistemergenciesp4ta364days00137696educationcannotwaitecwunicefhostedfundgenev|closingtoday|unicefunitednationsc": {
+      "seen": "2026-10-16T12:13:36.942848+00:00",
+      "title": "Closing today:",
+      "company": "Education Specialist (Emergencies), P-4, TA, 364 days, #00137696, Education Cannot Wait (ECW), UNICEF Hosted Fund, Genev"
+    },
+    "hradministrationofficer|newjob|icrcinternationalcom": {
+      "seen": "2026-10-16T12:13:36.943829+00:00",
+      "title": "New job:",
+      "company": "HR Administration Officer"
+    },
+    "unescwaunitednationseconomicandsocialcommissionforwesternasia|cloudsolutionsarchitect|beirut": {
+      "seen": "2026-10-16T12:13:36.944971+00:00",
+      "title": "Cloud Solutions Architect",
+      "company": "UNESCWA - United Nations Economic and Social Commission for Western Asia"
+    },
+    "logisticsoperationsplanningandcoordinationofficercstiijerusalem|newjob|wfpworldfoodprogramm": {
+      "seen": "2026-10-16T12:13:36.947222+00:00",
+      "title": "New job:",
+      "company": "Logistics Operations Planning and Coordination Officer- CSTII- Jerusalem"
+    },
+    "unescwaunitednationseconomicandsocialcommissionforwesternasia|cloudsolutionsarchitect|remotebeirut": {
+      "seen": "2026-10-16T12:13:36.949851+00:00",
+      "title": "Cloud Solutions Architect",
+      "company": "UNESCWA - United Nations Economic and Social Commission for Western Asia"
+    },
+    "wfpworldfoodprogramme|headoffinanceandmanagementserv|djibouti": {
+      "seen": "2026-10-16T12:13:36.951393+00:00",
+      "title": "Head of Finance and Management Services",
+      "company": "WFP - World Food Programme"
+    },
+    "translatorlanguagetechnologycoordinator|closingtoday|eceuropeancommission": {
+      "seen": "2026-10-16T12:13:36.955875+00:00",
+      "title": "Closing today:",
+      "company": "Translator/Language Technology Coordinator"
+    },
+    "scadthesecuritycouncilaffairsdivision|languageanddesktoppublishingas|newyorkcity": {
+      "seen": "2026-10-16T12:13:36.958027+00:00",
+      "title": "Language and Desktop Publishing Assistant",
+      "company": "SCAD - The Security Council Affairs Division"
+    },
+    "undppadpounitednationsdepartmentsofpoliticalandpeacebuildingaffairsandpeaceoperations|languageanddesktoppublishingas|newyorkcity": {
+      "seen": "2026-10-16T12:13:36.959906+00:00",
+      "title": "Language and Desktop Publishing Assistant",
+      "company": "UNDPPA-DPO - United Nations Departments of Political and Peacebuilding Affairs and Peace Operations"
+    },
+    "assistantpublicinformationofficerunochanationalsonly|closingtoday|undpunitednationsdev": {
+      "seen": "2026-10-16T12:13:36.961547+00:00",
+      "title": "Closing today:",
+      "company": "Assistant Public Information Officer-UNOCHA-(Nationals Only)"
+    },
+    "transparencyinternational|callforcopywriterseditorsandpr|midmidlevel": {
+      "seen": "2026-10-16T12:13:36.963904+00:00",
+      "title": "Call for copywriters, editors and proofreaders (English)",
+      "company": "Transparency International"
+    },
+    "caciinternationalinc|arabicoperationallanguageanaly|remotefortgordonga": {
+      "seen": "2026-10-16T12:13:36.981025+00:00",
+      "title": "Arabic Operational Language Analyst (OLA2)",
+      "company": "CACI International Inc"
+    },
+    "twosixtechnologies|languageenabledanalyst|remotearlingtonva": {
+      "seen": "2026-10-16T12:13:36.993616+00:00",
+      "title": "Language Enabled Analyst",
+      "company": "Two Six Technologies"
+    },
+    "sonyinteractiveentertainment|localizationaudiospecialistspa|onsitesandiegoca": {
+      "seen": "2026-10-16T12:13:37.004946+00:00",
+      "title": "Localization Audio Specialist \u2013 Spanish Commentary",
+      "company": "Sony Interactive Entertainment"
+    },
+    "tginterpretingprofessionalinterpretationtranslationagency|simultanetercmanlar|remoteankaratrkiye": {
+      "seen": "2026-10-16T12:13:37.019049+00:00",
+      "title": "Simultane Terc\u00fcmanlar",
+      "company": "TG Interpreting - Professional Interpretation & Translation Agency"
+    },
+    "alfasystemsllc|spanishinterpreter|remoteunitedstates": {
+      "seen": "2026-10-16T12:13:37.028110+00:00",
+      "title": "Spanish Interpreter",
+      "company": "Alfa Systems LLC"
+    },
+    "telusdigital|koreanlinguisticexpert|remotesouthkorea": {
+      "seen": "2026-10-16T12:13:37.038216+00:00",
+      "title": "Korean Linguistic Expert",
+      "company": "TELUS Digital"
+    },
+    "2k|localizationlanguageleaditalia|madridcommunityofmad": {
+      "seen": "2026-10-16T12:13:37.038705+00:00",
+      "title": "Localization Language Lead - Italian",
+      "company": "2K"
+    },
+    "audible|workingstudentknowledgemanagem|remoteberlingermany": {
+      "seen": "2026-10-16T12:13:37.061439+00:00",
+      "title": "Working Student \u2014 Knowledge Management & AI Content Operations (Arabic)",
+      "company": "Audible"
+    },
+    "languagelinesolutionsuk|moroccanarabictelephoneinterpr|unitedkingdom": {
+      "seen": "2026-10-16T12:13:37.063020+00:00",
+      "title": "Moroccan Arabic Freelance Remote Telephone Interpreters UK (Apply Here)",
+      "company": "LanguageLine Solutions UK"
+    },
+    "beijingorientalyuhongwaterprooftechnologycoltd||beijingbeijingchina": {
+      "seen": "2026-10-16T12:13:37.064193+00:00",
+      "title": "\u6d77\u5916\u7ba1\u57f9\u751f-\u963f\u62c9\u4f2f\u8bed\uff08\u91c7\u8d2d\u65b9\u5411\uff09",
+      "company": "Beijing Oriental Yuhong Waterproof Technology Co., Ltd."
+    },
+    "politicalasylumlawyers|inhousetranslator|remotesancarlosdebar": {
+      "seen": "2026-10-16T12:13:37.079957+00:00",
+      "title": "In-House Translator",
+      "company": "Political Asylum Lawyers"
+    },
+    "politicalasylumlawyers|inhousetranslator|remotemendozamendoza": {
+      "seen": "2026-10-16T12:13:37.095800+00:00",
+      "title": "In-House Translator",
+      "company": "Political Asylum Lawyers"
+    },
+    "careerexecutive|translator|onsiteriyadhsaudiara": {
+      "seen": "2026-10-16T12:13:37.110114+00:00",
+      "title": "Translator",
+      "company": "Career Executive \u8d5b\u777f\u4eba\u529b\u8d44\u6e90"
+    },
+    "bitacore|asistentedetraduccineinterpret|remotechorrillosperu": {
+      "seen": "2026-10-16T12:13:37.119699+00:00",
+      "title": "Asistente de Traducci\u00f3n e Interpretaci\u00f3n | Rubro Farmaceutico",
+      "company": "Bitacore"
+    },
+    "ptselarasdonlimindonesia|translator|remotecileungsiwestj": {
+      "seen": "2026-10-16T12:13:37.128403+00:00",
+      "title": "Translator",
+      "company": "PT. SELARAS DONLIM INDONESIA"
+    },
+    "helveticpayroll|spanishrevisertranslationcoord|remotegenevagenevasw": {
+      "seen": "2026-10-16T12:13:37.143364+00:00",
+      "title": "Spanish Reviser & Translation Coordinator",
+      "company": "Helvetic Payroll"
+    },
+    "tmxgroup|seniortranslatoreditorenglisht|remotemontrealquebec": {
+      "seen": "2026-10-16T12:13:37.159704+00:00",
+      "title": "Senior Translator-Editor (English to French)",
+      "company": "TMX Group"
+    },
+    "wasaelpropertymanagement|arabictranslator|remoteabudhabiabudha": {
+      "seen": "2026-10-16T12:13:37.171629+00:00",
+      "title": "Arabic Translator",
+      "company": "Wasael Property Management"
+    },
+    "nscale|translator|seoulseoulsouthkorea": {
+      "seen": "2026-10-16T12:13:37.172776+00:00",
+      "title": "Translator",
+      "company": "Nscale"
+    },
+    "||shanghaishanghaichin": {
+      "seen": "2026-10-16T12:13:37.173840+00:00",
+      "title": "\u82f1\u8bed\u7ffb\u8bd1",
+      "company": "\u4e0a\u6d77\u4e91\u8f74\u4fe1\u606f\u79d1\u6280\u6709\u9650\u516c\u53f8"
+    },
+    "crowdstrike|srtechnicaleditor|greatervancouvermetr": {
+      "seen": "2026-10-16T12:13:37.174368+00:00",
+      "title": "Sr. Technical Editor",
+      "company": "CrowdStrike"
+    },
+    "idealista|redattoreidealistanews|milanlombardyitaly": {
+      "seen": "2026-10-16T12:13:37.174970+00:00",
+      "title": "Redattore - idealista news",
+      "company": "idealista"
+    },
+    "intervarsitychristianfellowshipusa|editorialassociate|lisleil": {
+      "seen": "2026-10-16T12:13:37.175345+00:00",
+      "title": "Editorial Associate",
+      "company": "InterVarsity Christian Fellowship/USA"
+    },
+    "cenandcenelec|editortechnicaldocuments|brusselsbrusselsregi": {
+      "seen": "2026-10-16T12:13:37.175917+00:00",
+      "title": "Editor \u2013 Technical Documents",
+      "company": "CEN and CENELEC"
+    },
+    "jobgether|srtechnicaleditor|canada": {
+      "seen": "2026-10-16T12:13:37.176342+00:00",
+      "title": "Sr. Technical Editor",
+      "company": "Jobgether"
+    },
+    "accenture|medicaleditor|torontoontariocanada": {
+      "seen": "2026-10-16T12:13:37.176799+00:00",
+      "title": "Medical Editor",
+      "company": "Accenture"
+    },
+    "idealista|redattoreidealistanews|madridcommunityofmad": {
+      "seen": "2026-10-16T12:13:37.177301+00:00",
+      "title": "Redattore - idealista news",
+      "company": "idealista"
+    },
+    "mozilla|majorgiftsofficer|canadagermanyukusa": {
+      "seen": "2026-10-16T12:13:37.289180+00:00",
+      "title": "Major Gifts Officer",
+      "company": "Mozilla"
+    },
+    "wheel|marketplaceoperationsmanagerii|usa": {
+      "seen": "2026-10-16T12:13:37.297106+00:00",
+      "title": "Marketplace Operations Manager II",
+      "company": "Wheel"
+    },
+    "toptal|svpproduct|canadaeurope": {
+      "seen": "2026-10-16T12:13:37.316141+00:00",
+      "title": "SVP, Product",
+      "company": "Toptal"
+    },
+    "dscout|enterpriseaccountdirector|usa": {
+      "seen": "2026-10-16T12:13:37.331138+00:00",
+      "title": "Enterprise Account Director",
+      "company": "dscout"
+    },
+    "kalshi|itadministrator|usa": {
+      "seen": "2026-10-16T12:13:37.350238+00:00",
+      "title": "IT Administrator",
+      "company": "Kalshi"
+    },
+    "fueled|seniorcontentdesigner|latamcanadausa": {
+      "seen": "2026-10-16T12:13:37.368636+00:00",
+      "title": "Contract Senior Content Designer",
+      "company": "Fueled"
+    },
+    "thoughtworks|businessdevelopmentmanager|singapore": {
+      "seen": "2026-10-16T12:13:37.383181+00:00",
+      "title": "Business Development Manager",
+      "company": "Thoughtworks"
+    },
+    "ashby|engineeringmanagereu|europe": {
+      "seen": "2026-10-16T12:13:37.397738+00:00",
+      "title": "Engineering Manager - EU",
+      "company": "Ashby"
+    },
+    "ashby|seniorproductdesigner|usa": {
+      "seen": "2026-10-16T12:13:37.418119+00:00",
+      "title": "Senior Product Designer",
+      "company": "Ashby"
+    },
+    "worldwideclinicaltrials|seniorstatistician|ukusa": {
+      "seen": "2026-10-16T12:13:37.437276+00:00",
+      "title": "Senior Statistician",
+      "company": "Worldwide Clinical Trials"
+    },
+    "paddle|headofdatascience|irelandportugaluk": {
+      "seen": "2026-10-16T12:13:37.452383+00:00",
+      "title": "Head of Data Science",
+      "company": "Paddle"
+    },
+    "datadog|principalgsipartnermanageracce|uk": {
+      "seen": "2026-10-16T12:13:37.468764+00:00",
+      "title": "Principal GSI Partner Manager - Accenture (EMEA)",
+      "company": "Datadog"
+    },
+    "apaleo|solutionsarchitectfmd|france": {
+      "seen": "2026-10-16T12:13:37.483884+00:00",
+      "title": "Solutions Architect f/m/d",
+      "company": "Apaleo"
+    },
+    "tripadvisor|seniorsoftwareengineerandroid|uk": {
+      "seen": "2026-10-16T12:13:37.499217+00:00",
+      "title": "Senior Software Engineer (Android)",
+      "company": "Tripadvisor"
+    },
+    "veeamsoftware|technicalaccountmanager|france": {
+      "seen": "2026-10-16T12:13:37.514354+00:00",
+      "title": "Technical Account Manager",
+      "company": "Veeam Software"
+    },
+    "fleetio|seniordirectorbrandmarketing|usa": {
+      "seen": "2026-10-16T12:13:37.529267+00:00",
+      "title": "Senior Director, Brand Marketing",
+      "company": "Fleetio"
+    },
+    "tremendous|seniordemandgenerationmanageri|irelandportugaluk": {
+      "seen": "2026-10-16T12:13:37.778162+00:00",
+      "title": "Senior Demand Generation Manager - International",
+      "company": "Tremendous"
+    },
+    "markervideo|videocreator100|usacanadairelandoruk": {
+      "seen": "2026-10-16T12:13:37.806914+00:00",
+      "title": "Video Creator (100% remote)",
+      "company": "Marker Video"
+    },
+    "lemonio|senioraiengineerarchitect|europelatamapactheus": {
+      "seen": "2026-10-16T12:13:37.821985+00:00",
+      "title": "Senior AI Engineer / Architect",
+      "company": "Lemon.io"
+    },
+    "transperfect|longtermentraditionalchinesetw|remoteremotejob": {
+      "seen": "2026-10-16T12:13:37.899418+00:00",
+      "title": "Freelance Long-Term EN > Traditional Chinese (TW) Life Science translator",
+      "company": "TransPerfect"
+    },
+    "transperfect|lqagamestesterwarsawspanishspa|warsawmazowieckiepol": {
+      "seen": "2026-10-16T12:13:37.915020+00:00",
+      "title": "Freelance LQA Games Tester - Warsaw (Spanish \u2013 Spain and English Speaker)",
+      "company": "TransPerfect"
+    },
+    "transperfect|zhcnengamelqatestinghangzhouon|hangzhouzhejiangshen": {
+      "seen": "2026-10-16T12:13:37.923156+00:00",
+      "title": "zhCN-EN Game LQA Testing Hangzhou Onsite",
+      "company": "TransPerfect"
+    },
+    "transperfect|clientservicesassociatebuenosa|buenosairesbuenosair": {
+      "seen": "2026-10-16T12:13:37.937992+00:00",
+      "title": "Client Services Associate | Buenos Aires",
+      "company": "TransPerfect"
+    },
+    "transperfect|projectmanagerlocalizationdeen|hamburghamburggerman": {
+      "seen": "2026-10-16T12:13:37.952033+00:00",
+      "title": "Project Manager (Localization) - DE & EN speaker",
+      "company": "TransPerfect"
+    },
+    "transperfect|seniormedicalwriterus|remoteremotejob": {
+      "seen": "2026-10-16T12:13:39.129041+00:00",
+      "title": "Senior Medical Writer | US",
+      "company": "TransPerfect"
+    },
+    "wwrcustomersupport|pagerdutyseniordirectorsolutio|remote": {
+      "seen": "2026-10-16T12:13:41.531975+00:00",
+      "title": "PagerDuty: Senior Director, Solutions Consulting",
+      "company": "wwr_customer_support"
+    },
+    "wwrcustomersupport|emergingtravelgroupseniorpytho|remote": {
+      "seen": "2026-10-16T12:13:41.549266+00:00",
+      "title": "Emerging Travel Group: Senior Python Developer (CRM - AI/LLM)",
+      "company": "wwr_customer_support"
+    },
+    "wwrcustomersupport|jobhirecrmcvmlifecycleretentio|remote": {
+      "seen": "2026-10-16T12:13:41.589963+00:00",
+      "title": "Jobhire: CRM/ CVM / Lifecycle/Retention Marketing Lead (US b2c subscription only)",
+      "company": "wwr_customer_support"
+    },
+    "wwrsalesmarketing|airtablesalesmanagerstrategica|remote": {
+      "seen": "2026-10-16T12:13:42.312872+00:00",
+      "title": "Airtable: Sales Manager, Strategic Accounts",
+      "company": "wwr_sales_marketing"
+    },
+    "wwrsalesmarketing|zapiersrmotiondesigner|remote": {
+      "seen": "2026-10-16T12:13:42.356240+00:00",
+      "title": "Zapier: Sr. Motion Designer",
+      "company": "wwr_sales_marketing"
+    },
+    "wwrsalesmarketing|clickhouseprincipalproductmark|remote": {
+      "seen": "2026-10-16T12:13:42.374258+00:00",
+      "title": "ClickHouse: Principal Product Marketing Manager",
+      "company": "wwr_sales_marketing"
+    },
+    "wwrmanagementfinance|cloverhealthtechnicalrecruiter|remote": {
+      "seen": "2026-10-16T12:13:42.812038+00:00",
+      "title": "Clover Health: Contract Technical Recruiter",
+      "company": "wwr_management_finance"
+    },
+    "wwrallother|cloverhealthclinicalfieldsched|remote": {
+      "seen": "2026-10-16T12:13:42.943969+00:00",
+      "title": "Clover Health: Clinical Field Scheduling & Logistics Specialist",
+      "company": "wwr_all_other"
+    },
+    "wwrallother|galileovpcommercialsalesemploy|remote": {
+      "seen": "2026-10-16T12:13:42.966632+00:00",
+      "title": "Galileo: VP, Commercial Sales - Employers",
+      "company": "wwr_all_other"
+    },
+    "himalayasrss|intermediatekotlinbackenddevel|remote": {
+      "seen": "2026-10-16T12:13:43.677504+00:00",
+      "title": "Intermediate Kotlin Back-End Developer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|elatestdeveloperi|remote": {
+      "seen": "2026-10-16T12:13:43.677944+00:00",
+      "title": "ELA Test Developer I",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|commercialeb2bcycledeventecomp|remote": {
+      "seen": "2026-10-16T12:13:43.679236+00:00",
+      "title": "Commercial(e) B2B (Cycle de vente complet)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|controlsystemsengineerii|remote": {
+      "seen": "2026-10-16T12:13:43.680248+00:00",
+      "title": "Control Systems Engineer II",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|pessoaanalistademarketingsrcon|remote": {
+      "seen": "2026-10-16T12:13:43.682604+00:00",
+      "title": "Pessoa Analista de Marketing Sr (conte\u00fado) (Remoto) - 7784",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|headofriskmanagementfxcfdbroke|remote": {
+      "seen": "2026-10-16T12:13:43.683814+00:00",
+      "title": "Head of Risk Management \u2013 FX/CFD Brokerage",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|10xsoftwareengineer|remote": {
+      "seen": "2026-10-16T12:13:43.684913+00:00",
+      "title": "10x Software Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|cloudsoftwareengineer|remote": {
+      "seen": "2026-10-16T12:13:43.686051+00:00",
+      "title": "Cloud Software Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|callcentermanagersdrteam|remote": {
+      "seen": "2026-10-16T12:13:43.687426+00:00",
+      "title": "Call Center Manager - SDR Team",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|softwareengineersnr|remote": {
+      "seen": "2026-10-16T12:13:43.688206+00:00",
+      "title": "Software Engineer (Snr)",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorjavaengineer|remote": {
+      "seen": "2026-10-16T12:13:43.688844+00:00",
+      "title": "Senior Java Engineer",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|hl7v2interfaceanalyst|remote": {
+      "seen": "2026-10-16T12:13:43.689811+00:00",
+      "title": "HL7 v2 Interface Analyst",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|salesexecutivespowerutilityinf|remote": {
+      "seen": "2026-10-16T12:13:43.691356+00:00",
+      "title": "Sales Executives -Power & Utility, Infrastructure, and Oil & Gas.",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|technicalservicerepresentative|remote": {
+      "seen": "2026-10-16T12:13:43.692490+00:00",
+      "title": "Technical Service Representative",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|directorclinicalscientist|remote": {
+      "seen": "2026-10-16T12:13:43.693720+00:00",
+      "title": "Director, Clinical Scientist",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|seniorlifecyclemarketingmanage|remote": {
+      "seen": "2026-10-16T12:13:43.694646+00:00",
+      "title": "Senior Lifecycle Marketing Manager",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|accountassociate|remote": {
+      "seen": "2026-10-16T12:13:43.696376+00:00",
+      "title": "Account Associate",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|managerturns|remote": {
+      "seen": "2026-10-16T12:13:43.698145+00:00",
+      "title": "Manager, Turns",
+      "company": "himalayas_rss"
+    },
+    "himalayasrss|socialmediatutormfdinstagramti|remote": {
+      "seen": "2026-10-16T12:13:43.699647+00:00",
+      "title": "Social Media Tutor (m/f/d) \u2013 Instagram, TikTok & Content Creation | Remote",
+      "company": "himalayas_rss"
+    },
+    "untalentarabic|communicationsofficer|remote": {
+      "seen": "2026-10-16T12:13:43.811439+00:00",
+      "title": "Communications Officer",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|consultantsinternationalrespon|remote": {
+      "seen": "2026-10-16T12:13:43.813625+00:00",
+      "title": "Consultants International Responsible P\u00e9dagogique MCM\u2013 Formation sur la Gestion des Incidents \u00e0 Victimes Multiples P4",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|yaound|remote": {
+      "seen": "2026-10-16T12:13:43.813977+00:00",
+      "title": "Yaound\u00e9",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|cameroon|remote": {
+      "seen": "2026-10-16T12:13:43.814324+00:00",
+      "title": "Cameroon",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|consultantsinternationalformat|remote": {
+      "seen": "2026-10-16T12:13:43.815368+00:00",
+      "title": "Consultants International Formateur sur la Gestion des Incidents \u00e0 Victimes Multiples (MCM)",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|rosterofinternationalconsultan|remote": {
+      "seen": "2026-10-16T12:13:43.816449+00:00",
+      "title": "Roster of International consultant \u2013 Antimicrobial Use (AMU), Access and/or Stewardship",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|rosterssachauffeurgs2|remote": {
+      "seen": "2026-10-16T12:13:43.817412+00:00",
+      "title": "Roster SSA - Chauffeur GS2",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|rosterassistantauxprogrammesss|remote": {
+      "seen": "2026-10-16T12:13:43.818272+00:00",
+      "title": "Roster Assistant aux Programmes - SSA -GS5",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|rosterconsultantnationalpidmio|remote": {
+      "seen": "2026-10-16T12:13:43.819378+00:00",
+      "title": "Roster Consultant National \u00c9pid\u00e9miologiste charg\u00e9 des Maladies \u00c9vitables par la Vaccination (MEV)- SSA- NOB",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|rosterconsultantnationalchargd|remote": {
+      "seen": "2026-10-16T12:13:43.820729+00:00",
+      "title": "Roster Consultant National charg\u00e9 de la Gestion des Donn\u00e9es Vaccination et Maladies \u00c9vitables par la Vaccination (MEV)-\u2026",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|internationalconsultantnatureb|remote": {
+      "seen": "2026-10-16T12:13:43.822026+00:00",
+      "title": "International Consultant- Nature-based solutions (NbS), One Health, and environmental health policy and evidence synthe\u2026",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|bonn|remote": {
+      "seen": "2026-10-16T12:13:43.822372+00:00",
+      "title": "Bonn",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|internationalconsultantdevelop|remote": {
+      "seen": "2026-10-16T12:13:43.824350+00:00",
+      "title": "International Consultant- Development of training course on integrating environmental health into One Health for centra\u2026",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|aaeafricanassociationofentrepr|remote": {
+      "seen": "2026-10-16T12:13:43.826632+00:00",
+      "title": "AAE - African Association of Entrepreneurs",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|analyticalarticlewritingafrica|remote": {
+      "seen": "2026-10-16T12:13:43.827259+00:00",
+      "title": "Analytical Article Writing: African Business Environment",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|compileanannualhandbook|remote": {
+      "seen": "2026-10-16T12:13:43.828197+00:00",
+      "title": "Compile an annual handbook",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|multimediaproductiongraphicdes|remote": {
+      "seen": "2026-10-16T12:13:43.829442+00:00",
+      "title": "Multimedia Production: Graphic Design Support for UN PBF@20 in Sierra Leone",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|unwomen|remote": {
+      "seen": "2026-10-16T12:13:43.829979+00:00",
+      "title": "UN Women",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|coordonnateurcoordonnatricehum|remote": {
+      "seen": "2026-10-16T12:13:43.830712+00:00",
+      "title": "Coordonnateur/Coordonnatrice Humanitaire charg\u00e9(e) de la Riposte Ebola",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|analystehumanitairegenreetprot|remote": {
+      "seen": "2026-10-16T12:13:43.831406+00:00",
+      "title": "Analyste Humanitaire Genre et Protection",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|editinganalyticalarticlewritin|remote": {
+      "seen": "2026-10-16T12:13:43.832409+00:00",
+      "title": "Editing Analytical Article Writing: African Business Environment",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|graphicdesignsupportforunfpatr|remote": {
+      "seen": "2026-10-16T12:13:43.833664+00:00",
+      "title": "Graphic Design support for UNFPA T\u00fcrkiye\u2019s #COP31 Social Media Campaign",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|meofficerunwomenproject|remote": {
+      "seen": "2026-10-16T12:13:43.835539+00:00",
+      "title": "M&E Officer (UN Women Project)",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|yangon|remote": {
+      "seen": "2026-10-16T12:13:43.835900+00:00",
+      "title": "Yangon",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|myanmarburma|remote": {
+      "seen": "2026-10-16T12:13:43.836297+00:00",
+      "title": "Myanmar (Burma)",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|projectmanager|remote": {
+      "seen": "2026-10-16T12:13:43.836848+00:00",
+      "title": "Project Manager",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|associatenewpartnerships|remote": {
+      "seen": "2026-10-16T12:13:43.837758+00:00",
+      "title": "Associate, New Partnerships",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|chennai|remote": {
+      "seen": "2026-10-16T12:13:43.838095+00:00",
+      "title": "Chennai",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|operationsmanager|remote": {
+      "seen": "2026-10-16T12:13:43.838602+00:00",
+      "title": "Operations Manager",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|financegrantsofficermorogoro|remote": {
+      "seen": "2026-10-16T12:13:43.839254+00:00",
+      "title": "Finance & Grants Officer, Morogoro",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|countrydirectorsouthsudanugand|remote": {
+      "seen": "2026-10-16T12:13:43.839901+00:00",
+      "title": "Country Director \u2013 South Sudan & Uganda",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|oficialdecomunicacionesbogot|remote": {
+      "seen": "2026-10-16T12:13:43.841022+00:00",
+      "title": "Oficial de Comunicaciones - Bogot\u00e1",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|supplychainofficer|remote": {
+      "seen": "2026-10-16T12:13:43.841805+00:00",
+      "title": "Supply Chain Officer",
+      "company": "untalent_arabic"
+    },
+    "untalentarabic|childprotectionofficer|remote": {
+      "seen": "2026-10-16T12:13:43.842479+00:00",
+      "title": "Child Protection Officer",
+      "company": "untalent_arabic"
+    },
+    "jobgether|nanoporeaccountexecutivelatam|remote": {
+      "seen": "2026-10-16T12:13:43.844015+00:00",
+      "title": "Nanopore Account Executive LATAM",
+      "company": "jobgether"
+    },
+    "jobgether|accountexecutivecustomerbasere|remote": {
+      "seen": "2026-10-16T12:13:43.844332+00:00",
+      "title": "Account Executive \u2013 Customer Base | Relish",
+      "company": "jobgether"
+    },
+    "jobgether|accountexecutivesmbteamsalesne|remote": {
+      "seen": "2026-10-16T12:13:43.844694+00:00",
+      "title": "Account Executive, SMB Team Sales - New Orleans, LA",
+      "company": "jobgether"
+    },
+    "jobgether|senioraccountrelationshipexecu|remote": {
+      "seen": "2026-10-16T12:13:43.845295+00:00",
+      "title": "Senior Account & Relationship Executive",
+      "company": "jobgether"
+    },
+    "jobgether|seniorregionalsalesconsultant|remote": {
+      "seen": "2026-10-16T12:13:43.845554+00:00",
+      "title": "Senior Regional Sales Consultant",
+      "company": "jobgether"
+    },
+    "jobgether|oncologyaccountmanagerhematolo|remote": {
+      "seen": "2026-10-16T12:13:43.845892+00:00",
+      "title": "Oncology Account Manager (Hematology) Seattle, WA",
+      "company": "jobgether"
+    },
+    "jobgether|fieldsalesexecutivemanawatuwha|remote": {
+      "seen": "2026-10-16T12:13:43.846419+00:00",
+      "title": "Field Sales Executive - Manawatu/Whanganui",
+      "company": "jobgether"
+    },
+    "jobgether|accountexecutivefiix|remote": {
+      "seen": "2026-10-16T12:13:43.846671+00:00",
+      "title": "Account Executive - Fiix",
+      "company": "jobgether"
+    },
+    "jobgether|nationalaccountmanagerpatioout|remote": {
+      "seen": "2026-10-16T12:13:43.847061+00:00",
+      "title": "National Account Manager \u2013 Patio & Outdoor Living Retail",
+      "company": "jobgether"
+    },
+    "jobgether|patientaccountreplevelii100535|remote": {
+      "seen": "2026-10-16T12:13:43.847721+00:00",
+      "title": "Patient Account Rep Level II - 100% Remote (5355)",
+      "company": "jobgether"
+    },
+    "jobgether|federalsystemintegratoraccount|remote": {
+      "seen": "2026-10-16T12:13:43.848016+00:00",
+      "title": "Federal System Integrator Account Manager",
+      "company": "jobgether"
+    },
+    "jobgether|seniorrelationshipmanagermiddl|remote": {
+      "seen": "2026-10-16T12:13:43.848674+00:00",
+      "title": "Senior Relationship Manager - Middle Market (Chicago, IL)",
+      "company": "jobgether"
+    },
+    "jobgether|accountexecutivenewbusinessgol|remote": {
+      "seen": "2026-10-16T12:13:43.848984+00:00",
+      "title": "Account Executive - New Business Goldstar GPS",
+      "company": "jobgether"
+    },
+    "jobgether|accountexecutiveautomotivemobi|remote": {
+      "seen": "2026-10-16T12:13:43.849307+00:00",
+      "title": "Account Executive - Automotive & Mobility Intelligence",
+      "company": "jobgether"
+    },
+    "jobgether|accountmanagerpostacutecaremai|remote": {
+      "seen": "2026-10-16T12:13:43.849671+00:00",
+      "title": "Account Manager, Post Acute Care (Maine)",
+      "company": "jobgether"
+    },
+    "jobgether|territoryaccountexecutivemidma|remote": {
+      "seen": "2026-10-16T12:13:43.850027+00:00",
+      "title": "Territory Account Executive - Mid-market (Regi\u00e3o Nordeste)",
+      "company": "jobgether"
+    },
+    "jobgether|seniorfullstackdevpythonreacts|remote": {
+      "seen": "2026-10-16T12:13:43.850803+00:00",
+      "title": "Senior FullStack Dev (Python/React/Snowflake) Proyecto Pharma - Remoto 100%",
+      "company": "jobgether"
+    },
+    "jobgether|webdevelopmentspecialist|remote": {
+      "seen": "2026-10-16T12:13:43.851318+00:00",
+      "title": "Web Development Specialist (Remote)",
+      "company": "jobgether"
+    },
+    "jobgether|softwarearchitectprincipal|remote": {
+      "seen": "2026-10-16T12:13:43.851570+00:00",
+      "title": "Software Architect Principal",
+      "company": "jobgether"
+    },
+    "jobgether|seniorsoftwareengineeriicpq|remote": {
+      "seen": "2026-10-16T12:13:43.851847+00:00",
+      "title": "Senior Software Engineer II (CPQ)",
+      "company": "jobgether"
+    },
+    "jobgether|xebiacolxstoredeveloperwithorc|remote": {
+      "seen": "2026-10-16T12:13:43.852327+00:00",
+      "title": "Xebia - COL - Xstore Developer with ORCE integration",
+      "company": "jobgether"
+    },
+    "jobgether|job32297midlevelfullstackjavaa|remote": {
+      "seen": "2026-10-16T12:13:43.852759+00:00",
+      "title": "[Job-32297] Mid Level Full Stack (Java-Angular) Developer, Brazil",
+      "company": "jobgether"
+    },
+    "jobgether|aisoftwaredeveloperinternunder|remote": {
+      "seen": "2026-10-16T12:13:43.853120+00:00",
+      "title": "AI Software Developer Intern (Undergraduate - Summer 2027)",
+      "company": "jobgether"
+    },
+    "jobgether|seniorgpucompilerengineer|remote": {
+      "seen": "2026-10-16T12:13:43.853389+00:00",
+      "title": "Senior GPU Compiler Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|softwareengineerjavawmd|remote": {
+      "seen": "2026-10-16T12:13:43.853666+00:00",
+      "title": "Software Engineer Java (w/m/d)",
+      "company": "jobgether"
+    },
+    "jobgether|desenvolvedorafullstackplenone|remote": {
+      "seen": "2026-10-16T12:13:43.854294+00:00",
+      "title": "Desenvolvedor(a) Full Stack Pleno (.NET + Angular)",
+      "company": "jobgether"
+    },
+    "jobgether|desenvolvedordesoftwareplenoba|remote": {
+      "seen": "2026-10-16T12:13:43.854929+00:00",
+      "title": "Desenvolvedor de Software Pleno | Backend/Full Stack",
+      "company": "jobgether"
+    },
+    "jobgether|desenvolvedorafullstacksnioria|remote": {
+      "seen": "2026-10-16T12:13:43.855633+00:00",
+      "title": "Desenvolvedor(a) Full Stack S\u00eanior | IA Generativa e Agentes",
+      "company": "jobgether"
+    },
+    "jobgether|desenvolvedorafullstacksnior|remote": {
+      "seen": "2026-10-16T12:13:43.856145+00:00",
+      "title": "Desenvolvedor (a) Fullstack S\u00eanior",
+      "company": "jobgether"
+    },
+    "jobgether|desenvolvedorfullstackplenopro|remote": {
+      "seen": "2026-10-16T12:13:43.856710+00:00",
+      "title": "Desenvolvedor Full Stack Pleno | Produtos",
+      "company": "jobgether"
+    },
+    "jobgether|sniorfullstacksoftwareengineer|remote": {
+      "seen": "2026-10-16T12:13:43.856969+00:00",
+      "title": "S\u00eanior Fullstack Software Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|desenvolvedorafullstacksr|remote": {
+      "seen": "2026-10-16T12:13:43.857457+00:00",
+      "title": "Desenvolvedor(a) Full Stack Sr",
+      "company": "jobgether"
+    },
+    "jobgether|directorofsalesuk|remote": {
+      "seen": "2026-10-16T12:13:43.857700+00:00",
+      "title": "Director of Sales, UK",
+      "company": "jobgether"
+    },
+    "jobgether|businessdevelopmentmanagerindu|remote": {
+      "seen": "2026-10-16T12:13:43.858296+00:00",
+      "title": "Business Development Manager (Industrial/Manuf Sales Exp Req) - Remote - Ontario",
+      "company": "jobgether"
+    },
+    "jobgether|headofsalesdenmark|remote": {
+      "seen": "2026-10-16T12:13:43.858513+00:00",
+      "title": "Head of Sales Denmark",
+      "company": "jobgether"
+    },
+    "jobgether|salesdirector|remote": {
+      "seen": "2026-10-16T12:13:43.859270+00:00",
+      "title": "Sales Director",
+      "company": "jobgether"
+    },
+    "jobgether|bdrsdrprospecodeclientescomexp|remote": {
+      "seen": "2026-10-16T12:13:43.860199+00:00",
+      "title": "BDR / SDR \u2013 Prospec\u00e7\u00e3o de Clientes - [Com experi\u00eancia comprovada | 100% Home Office]",
+      "company": "jobgether"
+    },
+    "jobgether|sdrsalesdevelopmentrepresentat|remote": {
+      "seen": "2026-10-16T12:13:43.861048+00:00",
+      "title": "SDR- Sales Development Representative",
+      "company": "jobgether"
+    },
+    "jobgether|salesrepresentativebcbuffalo|remote": {
+      "seen": "2026-10-16T12:13:43.861306+00:00",
+      "title": "Sales Representative -BC - Buffalo",
+      "company": "jobgether"
+    },
+    "jobgether|mpsmarketmanager|remote": {
+      "seen": "2026-10-16T12:13:43.861766+00:00",
+      "title": "MPS Market Manager -",
+      "company": "jobgether"
+    },
+    "jobgether|businessdevelopmentexecutiveco|remote": {
+      "seen": "2026-10-16T12:13:43.862068+00:00",
+      "title": "Business Development Executive - Consumer & Retail",
+      "company": "jobgether"
+    },
+    "jobgether|regionalvpsalescentralmidwest|remote": {
+      "seen": "2026-10-16T12:13:43.862441+00:00",
+      "title": "Regional VP, Sales (Central/Mid-West)",
+      "company": "jobgether"
+    },
+    "jobgether|fieldprojectmanager1|remote": {
+      "seen": "2026-10-16T12:13:43.862903+00:00",
+      "title": "Field Project Manager 1",
+      "company": "jobgether"
+    },
+    "jobgether|aitechnicalscrummasterwithpyth|remote": {
+      "seen": "2026-10-16T12:13:43.863521+00:00",
+      "title": "AI Technical Scrum Master with Python Development",
+      "company": "jobgether"
+    },
+    "jobgether|connecteddevicesassociateproje|remote": {
+      "seen": "2026-10-16T12:13:43.864314+00:00",
+      "title": "Connected Devices Associate Project Manager",
+      "company": "jobgether"
+    },
+    "jobgether|scrummasteratf|remote": {
+      "seen": "2026-10-16T12:13:43.865376+00:00",
+      "title": "Scrum Master (ATF)",
+      "company": "jobgether"
+    },
+    "jobgether|radioprogramdirector|remote": {
+      "seen": "2026-10-16T12:13:43.865814+00:00",
+      "title": "Radio Program Director",
+      "company": "jobgether"
+    },
+    "jobgether|scrummasteriii|remote": {
+      "seen": "2026-10-16T12:13:43.866546+00:00",
+      "title": "Scrum Master III (Remote)",
+      "company": "jobgether"
+    },
+    "jobgether|projectmanagerleadcra|remote": {
+      "seen": "2026-10-16T12:13:43.867024+00:00",
+      "title": "Project Manager [Lead CRA]",
+      "company": "jobgether"
+    },
+    "jobgether|projectmanagementlead|remote": {
+      "seen": "2026-10-16T12:13:43.867467+00:00",
+      "title": "Project Management Lead",
+      "company": "jobgether"
+    },
+    "jobgether|designexecutionprojectmanager|remote": {
+      "seen": "2026-10-16T12:13:43.867976+00:00",
+      "title": "Design Execution Project Manager",
+      "company": "jobgether"
+    },
+    "jobgether|fspsrregulatoryprogrammanagerc|remote": {
+      "seen": "2026-10-16T12:13:43.868620+00:00",
+      "title": "FSP - Sr Regulatory Program Manager - client dedicated",
+      "company": "jobgether"
+    },
+    "jobgether|strategicinitiativesprojectman|remote": {
+      "seen": "2026-10-16T12:13:43.869189+00:00",
+      "title": "Strategic Initiatives Project Manager - US Remote",
+      "company": "jobgether"
+    },
+    "jobgether|projectmanagementspecialistrht|remote": {
+      "seen": "2026-10-16T12:13:43.869718+00:00",
+      "title": "Project Management Specialist - RHTP",
+      "company": "jobgether"
+    },
+    "jobgether|regionalaccountmanagermidmarke|remote": {
+      "seen": "2026-10-16T12:13:43.869992+00:00",
+      "title": "Regional Account Manager Mid-Market",
+      "company": "jobgether"
+    },
+    "jobgether|territorymanagerhospitalityfoo|remote": {
+      "seen": "2026-10-16T12:13:43.870564+00:00",
+      "title": "Territory Manager, Hospitality & Foodservice - SoCal",
+      "company": "jobgether"
+    },
+    "jobgether|territorymanagerostomycaremont|remote": {
+      "seen": "2026-10-16T12:13:43.871140+00:00",
+      "title": "Territory Manager (Ostomy Care) - Montgomery",
+      "company": "jobgether"
+    },
+    "jobgether|regionalmanagerusdeliverychica|remote": {
+      "seen": "2026-10-16T12:13:43.871502+00:00",
+      "title": "Regional Manager, US Delivery (Chicago, Dallas or Philadelphia)",
+      "company": "jobgether"
+    },
+    "jobgether|regionalsalesdirectoroncologyc|remote": {
+      "seen": "2026-10-16T12:13:43.871817+00:00",
+      "title": "Regional Sales Director, Oncology (Central U.S.)",
+      "company": "jobgether"
+    },
+    "jobgether|regionalsalesmanagernaturalpur|remote": {
+      "seen": "2026-10-16T12:13:43.872141+00:00",
+      "title": "Regional Sales Manager \u2013 Natural & Pureplay, Hu",
+      "company": "jobgether"
+    },
+    "jobgether|salesmanagerbeneluxfranceitaly|remote": {
+      "seen": "2026-10-16T12:13:43.872402+00:00",
+      "title": "Sales Manager - Benelux, France, Italy",
+      "company": "jobgether"
+    },
+    "jobgether|enterprisesalesmanagerharmony|remote": {
+      "seen": "2026-10-16T12:13:43.872655+00:00",
+      "title": "Enterprise Sales Manager, Harmony",
+      "company": "jobgether"
+    },
+    "jobgether|regionalmanagerpumpsfluidhandl|remote": {
+      "seen": "2026-10-16T12:13:43.873428+00:00",
+      "title": "Regional Manager \u2013 Pumps & Fluid Handling Industry (Sales Leadership Req)",
+      "company": "jobgether"
+    },
+    "jobgether|regionalsalesmanager|remote": {
+      "seen": "2026-10-16T12:13:43.873672+00:00",
+      "title": "Regional Sales Manager",
+      "company": "jobgether"
+    },
+    "jobgether|seniorsalesmanagersouthmidwest|remote": {
+      "seen": "2026-10-16T12:13:43.874017+00:00",
+      "title": "Senior Sales Manager / South Midwest Region",
+      "company": "jobgether"
+    },
+    "jobgether|territorymanagernorthcarolina|remote": {
+      "seen": "2026-10-16T12:13:43.874531+00:00",
+      "title": "Territory Manager (North Carolina)",
+      "company": "jobgether"
+    },
+    "jobgether|seniordirectorregionalcustomer|remote": {
+      "seen": "2026-10-16T12:13:43.875083+00:00",
+      "title": "Senior Director, Regional Customer Team",
+      "company": "jobgether"
+    },
+    "jobgether|performancesalesmanagerbrazil|remote": {
+      "seen": "2026-10-16T12:13:43.875353+00:00",
+      "title": "Performance Sales Manager \u2013 Brazil",
+      "company": "jobgether"
+    },
+    "jobgether|regionalsalesmanagersouthcentr|remote": {
+      "seen": "2026-10-16T12:13:43.875621+00:00",
+      "title": "Regional Sales Manager, Southcentral",
+      "company": "jobgether"
+    },
+    "jobgether|seniormanagermedicaresalesjack|remote": {
+      "seen": "2026-10-16T12:13:43.876201+00:00",
+      "title": "Senior Manager, Medicare Sales - Jackson, Mississippi",
+      "company": "jobgether"
+    },
+    "jobgether|foundingengineer|remote": {
+      "seen": "2026-10-16T12:13:43.876422+00:00",
+      "title": "Founding Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|developerandroidtv|remote": {
+      "seen": "2026-10-16T12:13:43.876659+00:00",
+      "title": "Developer Android TV",
+      "company": "jobgether"
+    },
+    "jobgether|allmnspecialisterfrdigitaltarb|remote": {
+      "seen": "2026-10-16T12:13:43.877184+00:00",
+      "title": "Allm\u00e4nspecialister f\u00f6r digitalt arbete",
+      "company": "jobgether"
+    },
+    "jobgether|studentservicesrepresentativeb|remote": {
+      "seen": "2026-10-16T12:13:43.877992+00:00",
+      "title": "Student Services Representative - BYU-Pathway Worldwide (Part-Time, Student Employee)",
+      "company": "jobgether"
+    },
+    "jobgether|productownermediabuyer|remote": {
+      "seen": "2026-10-16T12:13:43.878452+00:00",
+      "title": "Product Owner & Media Buyer",
+      "company": "jobgether"
+    },
+    "jobgether|mainframeseniorremoto|remote": {
+      "seen": "2026-10-16T12:13:43.878937+00:00",
+      "title": "Mainframe Senior (Remoto)",
+      "company": "jobgether"
+    },
+    "jobgether|universityadmissionscounselorc|remote": {
+      "seen": "2026-10-16T12:13:43.879446+00:00",
+      "title": "University Admissions Counselor, CGA",
+      "company": "jobgether"
+    },
+    "jobgether|accountexecutiveenterprisesaas|remote": {
+      "seen": "2026-10-16T12:13:43.879951+00:00",
+      "title": "Account Executive \u2013 Enterprise SaaS | Workday, SAP & Coupa",
+      "company": "jobgether"
+    },
+    "jobgether|aubookkeepercharteredaccountin|remote": {
+      "seen": "2026-10-16T12:13:43.880859+00:00",
+      "title": "AU Bookkeeper (Chartered Accounting Firm) \u2013 Remote | Dayshift | HMO + 1 Dependent",
+      "company": "jobgether"
+    },
+    "jobgether|revenuemanagerfullservicermccm|remote": {
+      "seen": "2026-10-16T12:13:43.881162+00:00",
+      "title": "Revenue Manager Full Service, RMCC Managed",
+      "company": "jobgether"
+    },
+    "jobgether|integrateddigitalmarketingmana|remote": {
+      "seen": "2026-10-16T12:13:43.881419+00:00",
+      "title": "Integrated Digital Marketing Manager",
+      "company": "jobgether"
+    },
+    "jobgether|seniorartificialintelligencema|remote": {
+      "seen": "2026-10-16T12:13:43.881778+00:00",
+      "title": "Senior Artificial Intelligence/Machine Learning Engineer",
+      "company": "jobgether"
+    },
+    "jobgether|presalessecurityexpertmidmarke|remote": {
+      "seen": "2026-10-16T12:13:43.882311+00:00",
+      "title": "Presales Security Expert- Mid-Market",
+      "company": "jobgether"
+    },
+    "jobgether|managerdonorengagement|remote": {
+      "seen": "2026-10-16T12:13:43.882789+00:00",
+      "title": "Manager, Donor Engagement",
+      "company": "jobgether"
+    },
+    "jobgether|trustsafetyproductmanageraitec|remote": {
+      "seen": "2026-10-16T12:13:43.883361+00:00",
+      "title": "Trust & Safety Product Manager - AI technology",
+      "company": "jobgether"
+    },
+    "jobgether|senioriisoftwareengineerdatase|remote": {
+      "seen": "2026-10-16T12:13:43.883681+00:00",
+      "title": "Senior II Software Engineer - Data Services",
+      "company": "jobgether"
+    },
+    "jobgether|stageenrecrutementhf100tltrava|remote": {
+      "seen": "2026-10-16T12:13:43.884292+00:00",
+      "title": "STAGE EN RECRUTEMENT (H/F) - 100% T\u00c9L\u00c9TRAVAIL",
+      "company": "jobgether"
     }
   },
-  "updated": "2026-10-15T12:40:33.171095+00:00",
+  "updated": "2026-10-16T12:18:28.605367+00:00",
   "note": "one-time reset so the new dedup TTL can re-evaluate still-open jobs"
 }

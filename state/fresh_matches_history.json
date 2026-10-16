@@ -8,26 +8,16 @@
     "description": "Location: Onsite in Shanghai Contract duration: Long-term As the Arabic Manager, you will lead Arabic language strategy and right-to-left (RTL) user experience guidelines. Leveraging cutting-edge AI translation technology and collaborating with cross-functional teams\u2014including Product, Design, and Marketing\u2014you will create a high-quality Arabic e-commerce experience for the Middle East and North Africa (MENA) region. Take full responsibility for the end-to-end Arabic language strategy for our client in the MENA region. Serve as the lead Arabic localization expert for product, design, marketing, and cross-functional teams. Ensure Arabic language quality across the entire product line through language quality reviews and contextual testing. Develop Right-to-Left (RTL) user experience guidelines to ensure that regional commercial activity pages feature smooth layouts, aesthetically pleasing typography, and content that aligns with local culture. Implement AI-powered localization by optimizing large-model prompts, machine translation post-editing workflows, and quality assessment standards. Build and maintain core language resources, including terminology databases, translation memories, and writing style guides. Manage external localization service providers (LSPs), conduct root cause analysis (RCA) for quality issues, and provide ongoing training. Minimum Qualifications: Native-level proficiency in Arabic with deep understanding of local culture; fluent in English to meet business needs. At least 5 years of work experience in translation, creative adaptation, localization, or a related field; at least 2 of those years in a language management, lead language specialist, or localization strategy role. Practical experience with computer-assisted translation (CAT) tools, translation management systems (TMS), and language quality assessment systems. Proven track record in managing right-to-left (RTL) interface localization, with the ability to handle challenges such as text expansion, text truncation, and visual alignment on iOS, Android, and web platforms. Practical experience applying AI and large-language-model tools to localization work, such as prompt engineering, evaluation of large-language-model outputs, and machine translation post-editing (MTPE). Excellent cross-departmental coordination skills, with the ability to manage complex projects, handle uncertainties, and communicate effectively across multiple time zones. Preferred Qualifications: Degree in translation, linguistics, localization, communication studies, or a related field. Direct work experience in product localization within the tech industry, e-commerce sector, or fast-paced digital environments. Relevant experience managing external localization service providers, vendors, and a pool of freelance translators. Background in creative translation and adaptation of large-scale marketing campaigns, brand copy, and promotional materials for the Arabic market.",
     "salary": "",
     "source": "recruitee",
-    "postedISO": "2026-10-15T12:35:41.607469+00:00",
     "score": 100,
     "category": "Arabic Translation",
     "why": [
       "arabic localiz (title+description)",
       "remote/worldwide (bonus)",
-      "matches Arabic Translation profile",
-      "trusted translation/language employer (company boost)"
+      "matches Arabic Translation profile"
     ],
-    "company_boost": 65,
-    "is_fresh": false,
-    "age_hours": Infinity,
-    "flags": [],
-    "company_website": "https://www.transperfect.com",
-    "email": "",
-    "tier": "STRONG",
-    "is_old_verified": true,
-    "ai_insight": "{\n  \"technical_skills\": {\"score\": 50, \"reason\": \"Relevant Arabic localization but",
+    "dup_pool": true,
     "urgency_score": 0,
-    "desperation_index": 0,
+    "desperation_index": 40,
     "pain_points": "Expanding to MENA, needs native Arabic; No native QA, backlog of Arabic content",
     "email_guessed": true,
     "hiring_email": "careers@transperfect.com",
@@ -39,7 +29,7 @@
       "hiring@transperfect.com",
       "info@transperfect.com"
     ],
-    "opportunity_score": 30,
+    "opportunity_score": 46,
     "company_domain": "transperfect.com",
     "email_source": "guess",
     "company_research": {
@@ -66,16 +56,16 @@
       "location": null,
       "is_remote": false
     },
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/TransPerfect_Arabic Localization Manager_20261015.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/TransPerfect_Arabic Localization Manager_20261016.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/TransPerfect_Arabic Localization Manager_20261015.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/TransPerfect_Arabic Localization Manager_20261016.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
-    "lifecycle_status": "new",
+    "lifecycle_status": "old",
     "found_date": "2026-10-15T12:40:11.983971+00:00",
-    "expires_date": "2026-10-18T12:40:11.983971+00:00",
-    "scan_date": "2026-10-15T14:40:12.845378+02:00"
+    "expires_date": "2026-10-19T12:18:07.670053+00:00",
+    "scan_date": "2026-10-16T14:18:09.351344+02:00"
   },
   {
     "url": "https://transperfect.com/o/tiktok-shop-arabic-localization-manager",
@@ -88,145 +78,98 @@
     "lifecycle_status": "old"
   },
   {
-    "url": "https://transperfect.com/o/arabic-localization-manager-onite-in-shanghai",
-    "title": "Arabic Localization Manager Onite in Shanghai",
-    "company": "TransPerfect",
-    "score": 95,
-    "category": "Arabic Translation",
-    "found_date": "2026-10-12T16:42:12.065978+00:00",
-    "expires_date": "2026-10-15T16:42:12.065978+00:00",
-    "lifecycle_status": "old"
-  },
-  {
-    "title": "Arabic Iraqi Linguist CAT I- Local National",
-    "company": "Valiant Integrated Services",
-    "url": "https://iq.linkedin.com/jobs/view/arabic-iraqi-linguist-cat-i-local-national-at-valiant-integrated-services-4477463479",
-    "location": "Remote \u2014 Baghdad, Baghdad Governorate, Iraq",
+    "title": "Working Student \u2014 Knowledge Management & AI Content Operations (Arabic)",
+    "company": "Audible",
+    "url": "https://de.linkedin.com/jobs/view/working-student-%E2%80%94-knowledge-management-ai-content-operations-arabic-at-audible-4471113944",
+    "location": "Remote \u2014 Berlin, Germany",
     "posted": "2026-10-15",
-    "description": "Valiant is seeking skilled Linguists to provide interpretation, transcription, and translation services to support ongoing and new U.S. operations and mission requirements. Responsibilities Conduct accurate and consecutive translation, transcription, and interpretation of Arabic into English Translate various syntax and expressions, including colloquial and slang phrases, from English, Arabic, and vice versa Work and travel in austere environments Provide advice on the cultural and ethnic significance of statements, conversations, situations, and documents Accurately scan, research, and analyze foreign language documents Other related tasks as assigned Valiant Integrated Services is an employer who hires in accordance with applicable state and federal law. All qualified applicants will receive consideration for employment in compliance with those laws. Position Requirements Must have proficiency in Arabic and English speaking and writing, Level 3/3 of the Interagency Language Roundtable (ILR)-Native proficiency preferred Extensive knowledge of the culture with previous work in the region, Native familiarity preferred Experience interpreting and translating Arabic into English Ability to understand the essentials of all speech in standard dialect and vocabulary, rarely requiring the need for paraphrasing or explanation Familiarity with the local culture and customs, with the ability to operate within the local populace Local National Linguists are encouraged to apply Physical Requirements Physical requirements may include, but are not limited to, lifting, ascending, and descending stairs, climbing, extended sitting or standing, to various degrees. Outside working conditions include potential exposure to extreme high temperatures, dry and dusty conditions, and uneven walking surfaces. EEO is The Law - click here for more information Equal Opportunity Employer Minorities/Women/Protected Veterans/Disabled Valiant Integrated Services is an employer who hires in accordance with applicable state and federal law. All qualified applicants will receive consideration for employment in compliance with those laws. NOTICE: Valiant Integrated Services NEVER asks job applicants to issue any payment or service fees to Valiant or its recruiters as part of our application process. Before providing any personal information to outside parties, verify that the job you are applying for appears on our Careers site.",
-    "salary": "",
+    "description": "Description At Audible, we believe stories have the power to transform lives. It\u2019s why we work with some of the world\u2019s leading creators to produce and share audio storytelling with our millions of global listeners. We are dreamers and inventors who come from a wide range of backgrounds and experiences to empower and inspire each other. Imagine your future with us. About This Role Based in Berlin, we are looking for a motivated Working Student (Werkstudent) in Knowledge Management for Customer Service (m/f/x). Put aside your experiences or perceptions of customer service \u2014 at Audible, we are building the future of AI-powered self-service at global scale. In this role you will support the Global Knowledge Management team in creating, localizing, and maintaining AI-optimized support content across multiple platforms and marketplaces. You will play a key role in enabling our expansion into Arabic-speaking markets (21 countries) while building practical AI and technical skills in content automation, prompt engineering, and workflow optimization. You will work alongside experienced content strategists, AI specialists, and localization experts in a fast-moving, international team. About You You are a curious, technically minded person who is excited about AI and how it is transforming content creation and knowledge management. You enjoy working with language and technology in equal measure and bring strong attention to detail. You are comfortable working in an international environment, proactive in seeking clarity, and eager to learn how AI tools and automation can make knowledge work faster, better, and more scalable. As a Working Student \u2014 Knowledge Management & AI Content Operations (Arabic), you will... Create, update, and localize support content for Help Center, internal knowledge bases, and AI-powered channels (chatbot, agent assist) \u2014 with focus on Arabic-speaking markets (21 countries) Use AI tools to draft, optimize, and format content across multiple surfaces \u2014 applying prompt engineering techniques to improve output quality Build and test basic AI workflows and automation for repetitive content tasks (alerts, formatting, cross-marketplace publishing) Support AI-assisted localization workflows: coordinate AI first-pass translations, validate quality, and flag marketplace-specific adaptation needs Validate and refine AI-generated content for accuracy, brand voice, and regulatory compliance \u2014 applying AI governance standards Support product launch content readiness by gathering requirements and creating/updating content within defined timelines Maintain content across platforms ensuring consistency between Help Center, CS Assistant, and AI surfaces Track content performance metrics (usage, helpfulness) and flag improvement opportunities based on data Document AI workflows, automation processes, and best practices; contribute to team knowledge sharing and training About Audible Audible is the leading producer and provider of audio storytelling",
+    "salary": "\u20ac16",
     "source": "linkedin",
-    "matched_query": "arabic translator",
+    "matched_query": "arabic linguist",
     "postedISO": "2026-10-15T00:00:00",
-    "score": 79,
+    "score": 82,
     "category": "Arabic Translation",
     "why": [
-      "translation, transcription, and interpretation of arabic (description)",
+      "arabic-speaking markets (21 countries) use ai (description)",
+      "remote/worldwide (bonus)",
       "matches Arabic Translation profile"
     ],
     "company_boost": 0,
     "is_fresh": true,
-    "age_hours": 12.594532919166666,
+    "age_hours": 36.22695543388889,
     "flags": [],
     "company_website": "",
     "email": "",
     "tier": "STRONG",
-    "ai_scoring": {
-      "technical_skills": {
-        "score": 95,
-        "reason": "Exact Arabic\u2011English translation & interpretation required"
-      },
-      "experience_match": {
-        "score": 95,
-        "reason": "5+ years direct translation & localization experience"
-      },
-      "behavioral_fit": {
-        "score": 90,
-        "reason": "Remote, flexible work aligns with candidate preferences"
-      },
-      "location_logistics": {
-        "verdict": "PASS",
-        "reason": "Remote role based in Baghdad, no residency restriction"
-      },
-      "career_alignment": {
-        "score": 95,
-        "reason": "Directly advances translation/localization career goals"
-      },
-      "overall_score": 94,
-      "verdict": "Strong Fit",
-      "strengths": [
-        "Native Arabic with C1 English",
-        "Extensive legal & academic translation experience",
-        "Proficient with CAT tools and cultural nuance"
-      ],
-      "gaps": [
-        "Limited documented consecutive interpretation in austere environments",
-        "No explicit security clearance mentioned"
-      ],
-      "recommendation": "Highly recommend applying; the role matches core skills and career trajectory.",
-      "interview_prep": "1. Describe your experience with consecutive interpretation in high\u2011pressure settings. \u2013 Highlight any live translation work, focus on accuracy and stress management. 2. How do you handle colloquial or slang terms across Arabic dialects and English? \u2013 Explain research methods, cultural consultation, and use of glossaries. 3. Which tools and quality\u2011control processes do you use to ensure translation accuracy? \u2013 Mention CAT tools, translation memory, proofreading, and peer review.",
-      "one_line_summary": "Excellent Arabic\u2011English translator; perfect remote fit for Valiant\u2019s linguist role."
-    },
-    "ai_insight": "Excellent Arabic\u2011English translator; perfect remote fit for Valiant\u2019s linguist role.",
-    "ai_overall_score": 94,
-    "ai_verdict": "Strong Fit",
-    "ai_strengths": [
-      "Native Arabic with C1 English",
-      "Extensive legal & academic translation experience",
-      "Proficient with CAT tools and cultural nuance"
-    ],
-    "ai_gaps": [
-      "Limited documented consecutive interpretation in austere environments",
-      "No explicit security clearance mentioned"
-    ],
-    "ai_recommendation": "Highly recommend applying; the role matches core skills and career trajectory.",
-    "ai_interview_prep": "1. Describe your experience with consecutive interpretation in high\u2011pressure settings. \u2013 Highlight any live translation work, focus on accuracy and stress management. 2. How do you handle colloquial or slang terms across Arabic dialects and English? \u2013 Explain research methods, cultural consultation, and use of glossaries. 3. Which tools and quality\u2011control processes do you use to ensure translation accuracy? \u2013 Mention CAT tools, translation memory, proofreading, and peer review.",
-    "ai_technical_skills": 95,
-    "ai_experience_match": 95,
-    "ai_behavioral_fit": 90,
-    "ai_location_verdict": "PASS",
-    "ai_career_alignment": 95,
+    "ai_insight": "{\n  \"technical_skills\": {\"score\": 92, \"reason\": \"Direct Arabic localization and content creation required\"},\n  \"experience_match\": {\"score\": 85, \"reason\": \"Extensive translation/localization experience, not pure AI ops\"},\n  \"behavioral_fit\": {\"score\": 88, \"reason\": \"Remote, flexible, aligns with can",
     "urgency_score": 0,
     "desperation_index": 0,
     "pain_points": "Needs native Arabic speaker (rare)",
-    "email_guessed": false,
-    "hiring_email": "careers@onevaliant.com",
+    "email_guessed": true,
+    "hiring_email": "careers@audible.com",
     "email_verified": true,
     "all_emails": [
-      "careers@onevaliant.com"
+      "careers@audible.com",
+      "hr@audible.com",
+      "jobs@audible.com",
+      "hiring@audible.com",
+      "info@audible.com"
     ],
-    "opportunity_score": 22,
-    "company_domain": "valiantintegrated.com",
-    "email_source": "dns",
+    "opportunity_score": 24,
+    "company_domain": "audible.com",
+    "email_source": "guess",
     "company_research": {
-      "name": "Valiant Integrated Services",
-      "legitimacy_score": 65,
+      "name": "Audible",
+      "legitimacy_score": 60,
       "remote_friendly": true,
       "size_estimate": "unknown",
       "industry": "unknown",
       "red_flags": [],
       "positive_signals": [
-        "Listed on major job board",
-        "Appears to be registered business"
+        "Listed on major job board"
       ],
-      "last_updated": "2026-10-15T12:40:11.052059+00:00"
+      "last_updated": "2026-10-16T12:18:06.532003+00:00"
     },
-    "company_legitimacy": 65,
-    "company_summary": "2 positive signals",
-    "score_adjustment": 4,
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
     "deep_read": {
-      "url": "https://iq.linkedin.com/jobs/view/arabic-iraqi-linguist-cat-i-local-national-at-valiant-integrated-services-4477463479",
-      "title": "Arabic Iraqi Linguist CAT I- Local National",
-      "description": "Valiant is seeking skilled Linguists to provide interpretation, transcription, and translation services to support ongoing and new U.S. operations and mission requirements. Responsibilities Conduct accurate and consecutive translation, transcription, and interpretation of Arabic into English Translate various syntax and expressions, including colloquial and slang phrases, from English, Arabic, and vice versa Work and travel in austere environments Provide advice on the cultural and ethnic significance of statements, conversations, situations, and documents Accurately scan, research, and analyze foreign language documents Other related tasks as assigned Valiant Integrated Services is an employer who hires in accordance with applicable state and federal law. All qualified applicants will receive consideration for employment in compliance with those laws. Position Requirements Must have proficiency in Arabic and English speaking and writing, Level 3/3 of the Interagency Language Roundtable (ILR)-Native proficiency preferred Extensive knowledge of the culture with previous work in the region, Native familiarity preferred Experience interpreting and translating Arabic into English Ability to understand the essentials of all speech in standard dialect and vocabulary, rarely requiring the need for paraphrasing or explanation Familiarity with the local culture and customs, with the ability to operate within the local populace Local National Linguists are encouraged to apply Physical Requirements Physical requirements may include, but are not limited to, lifting, ascending, and descending stairs, climbing, extended sitting or standing, to various degrees. Outside working conditions include potential exposure to extreme high temperatures, dry and dusty conditions, and uneven walking surfaces. EEO is The Law - click here for more information Equal Opportunity Employer Minorities/Women/Protected Veterans/Disabled Valiant Integrated Services is an employer who hires in accordance with applicable state and federal law. All qualified applicants will receive consideration for employment in compliance with those laws. NOTICE: Valiant Integrated Services NEVER asks job applicants to issue any payment or service fees to Valiant or its recruiters as part of our application process. Before providing any personal information to outside parties, verify that the job you are applying for appears on our Careers site. Show more Show less \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0623\u0642\u062f\u0645\u064a\u0629 \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0645\u0628\u062a\u062f\u0626\u064a\u0646 \u0646\u0648\u0639 \u0627\u0644\u062a\u0648\u0638\u064a\u0641 \u062f\u0648\u0627\u0645 \u0643\u0627\u0645\u0644 \u0627\u0644\u0645\u062c\u0627\u0644\u0627\u062a \u062a\u0635\u0646\u064a\u0639 \u0645\u0643\u0648\u0646\u0627\u062a \u0627\u0644\u062f\u0641\u0627\u0639 \u0648\u0627\u0644\u0641\u0636\u0627\u0621",
-      "eligibility": [
-        "Physical requirements may include, but are not limited to, lifting, ascending, and descending stairs, climbing, extended sitting or standing, to various degrees"
+      "url": "https://de.linkedin.com/jobs/view/working-student-%E2%80%94-knowledge-management-ai-content-operations-arabic-at-audible-4471113944",
+      "title": "Working Student \u2014 Knowledge Management & AI Content Operations (Arabic)",
+      "description": "Description At Audible, we believe stories have the power to transform lives. It\u2019s why we work with some of the world\u2019s leading creators to produce and share audio storytelling with our millions of global listeners. We are dreamers and inventors who come from a wide range of backgrounds and experiences to empower and inspire each other. Imagine your future with us. About This Role Based in Berlin, we are looking for a motivated Working Student (Werkstudent) in Knowledge Management for Customer Service (m/f/x). Put aside your experiences or perceptions of customer service \u2014 at Audible, we are building the future of AI-powered self-service at global scale. In this role you will support the Global Knowledge Management team in creating, localizing, and maintaining AI-optimized support content across multiple platforms and marketplaces. You will play a key role in enabling our expansion into Arabic-speaking markets (21 countries) while building practical AI and technical skills in content automation, prompt engineering, and workflow optimization. You will work alongside experienced content strategists, AI specialists, and localization experts in a fast-moving, international team. About You You are a curious, technically minded person who is excited about AI and how it is transforming content creation and knowledge management. You enjoy working with language and technology in equal measure and bring strong attention to detail. You are comfortable working in an international environment, proactive in seeking clarity, and eager to learn how AI tools and automation can make knowledge work faster, better, and more scalable. As a Working Student \u2014 Knowledge Management & AI Content Operations (Arabic), you will... Create, update, and localize support content for Help Center, internal knowledge bases, and AI-powered channels (chatbot, agent assist) \u2014 with focus on Arabic-speaking markets (21 countries) Use AI tools to draft, optimize, and format content across multiple surfaces \u2014 applying prompt engineering techniques to improve output quality Build and test basic AI workflows and automation for repetitive content tasks (alerts, formatting, cross-marketplace publishing) Support AI-assisted localization workflows: coordinate AI first-pass translations, validate quality, and flag marketplace-specific adaptation needs Validate and refine AI-generated content for accuracy, brand voice, and regulatory compliance \u2014 applying AI governance standards Support product launch content readiness by gathering requirements and creating/updating content within defined timelines Maintain content across platforms ensuring consistency between Help Center, CS Assistant, and AI surfaces Track content performance metrics (usage, helpfulness) and flag improvement opportunities based on data Document AI workflows, automation processes, and best practices; contribute to team knowledge sharing and training About Audible Audible is the leading producer and provider of audio storytelling",
+      "eligibility": [],
+      "requirements": [
+        "with data tools (Excel formulas, pivot tables, SQL basics) for tracking metrics and efficiency gains",
+        "building or customizing AI workflows, chatbots, or basic automation tools",
+        "maintaining structured web content. Familiarity with HTML, JSON, or structured content formats",
+        "in customer service, knowledge management, or technical writing",
+        "and skills. We value your passion to discover, invent, simplify and build"
       ],
-      "requirements": [],
-      "contact": {},
+      "contact": {
+        "phone": "10535932"
+      },
       "deadline": null,
-      "salary": null,
+      "salary": "\u20ac16",
       "location": "Remote",
       "is_remote": false
     },
-    "eligibility": [
-      "Physical requirements may include, but are not limited to, lifting, ascending, and descending stairs, climbing, extended sitting or standing, to various degrees"
+    "requirements": [
+      "with data tools (Excel formulas, pivot tables, SQL basics) for tracking metrics and efficiency gains",
+      "building or customizing AI workflows, chatbots, or basic automation tools",
+      "maintaining structured web content. Familiarity with HTML, JSON, or structured content formats",
+      "in customer service, knowledge management, or technical writing",
+      "and skills. We value your passion to discover, invent, simplify and build"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Valiant Integrated Services_Arabic Iraqi Linguist CAT I- Local National_20261015.pdf",
-    "cover_letter_type": "translation",
+    "contact": {
+      "phone": "10535932"
+    },
+    "cover_letter_path": "",
+    "cover_letter_type": "error",
     "cover_letter_ai": false,
     "lifecycle_status": "new",
-    "found_date": "2026-10-15T12:40:11.983971+00:00",
-    "expires_date": "2026-10-18T12:40:11.983971+00:00",
-    "scan_date": "2026-10-15T14:40:12.845378+02:00"
+    "found_date": "2026-10-16T12:18:07.670053+00:00",
+    "expires_date": "2026-10-19T12:18:07.670053+00:00",
+    "scan_date": "2026-10-16T14:18:09.351344+02:00"
   }
 ]

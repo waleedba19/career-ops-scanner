@@ -2,108 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "TransPerfect": {
-    "name": "TransPerfect",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-18T15:42:45.306625+00:00"
-  },
-  "himalayas_rss": {
-    "name": "himalayas_rss",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-18T16:25:55.753508+00:00"
-  },
-  "Superside": {
-    "name": "Superside",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T00:49:04.337992+00:00"
-  },
-  "wwr_all_other": {
-    "name": "wwr_all_other",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T00:49:04.339643+00:00"
-  },
-  "KoboToolbox": {
-    "name": "KoboToolbox",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T00:49:04.341043+00:00"
-  },
-  "IOM - International Organization for Migration": {
-    "name": "IOM - International Organization for Migration",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T00:49:04.342068+00:00"
-  },
-  "A&O Shearman": {
-    "name": "A&O Shearman",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-19T08:27:49.573075+00:00"
-  },
-  "Stride": {
-    "name": "Stride",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T08:27:49.575264+00:00"
-  },
-  "Ashby": {
-    "name": "Ashby",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T08:27:49.577022+00:00"
-  },
-  "untalent_arabic": {
-    "name": "untalent_arabic",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-09-19T08:27:49.578748+00:00"
-  },
   "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930": {
     "name": "DARPAN - NIT DURGAPUR \u0926\u0930\u094d\u092a\u0923 - \u090f\u0928.\u0906\u0908.\u091f\u0940. \u0926\u0941\u0930\u094d\u0917\u093e\u092a\u0941\u0930",
     "legitimacy_score": 60,
@@ -326,5 +224,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-10-16T12:18:06.532003+00:00"
+  },
+  "Language Services Associates": {
+    "name": "Language Services Associates",
+    "legitimacy_score": 55,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Appears to be registered business"
+    ],
+    "last_updated": "2026-10-19T14:34:01.326732+00:00"
   }
 }

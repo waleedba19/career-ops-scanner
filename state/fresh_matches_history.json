@@ -8,7 +8,6 @@
     "description": "Overview: As an audio/video interpreter for Kunama and Tigrinya or Arabic in LSA\u2019s network of Independently Contracted Interpreters, you are responsible for handling audio and video calls on demand and facilitating language communication for the Limited English Proficient (LEP) community in a variety of settings. Language Services Associates is continuously accepting qualified interpreters! Responsibilities: \u00b7 Provide effective audio and video interpreting through a web based platform \u00b7 Answer inbound calls in a timely manner \u00b7 Provide superior customer service \u00b7 Adhere to Code of Professional Conduct, including maintaining strict standards of confidentiality \u00b7 Adhere to all policies and procedures, including professional interpretation protocols and industry specific best practices Qualifications/Experience: \u00b7 Full fluency in both English and Kunama and Tigrinya or Arabic \u00b7 Technology proficient (web-based platforms, email, Microsoft Word) \u00b7 An interpreting space that is quiet, secure, and free from outside noises \u00b7 1+ years of professional interpreting experience preferred \u00b7 Industry specific certifications/trainings preferred (CMI, CCHI, etc.) LSA is passionate about what we do, which is helping people thrive in an increasingly global environment and in recognition of our commitment to excellence, LSA was named a Top Provider and a Top Workplace in 2026. If interested, please apply and include a copy of your resume, which emphasizes your interpreting experience.",
     "salary": "$72,000",
     "source": "jobicy",
-    "postedISO": "2026-10-19T02:35:26+00:00",
     "score": 100,
     "category": "Arabic Translation",
     "why": [
@@ -16,70 +15,64 @@
       "remote/worldwide (bonus)",
       "matches Arabic Translation profile"
     ],
-    "company_boost": 0,
-    "is_fresh": true,
-    "age_hours": 11.932292121666666,
-    "flags": [],
-    "company_website": "",
-    "email": "",
-    "tier": "STRONG",
+    "dup_pool": true,
     "ai_scoring": {
       "technical_skills": {
-        "score": 55,
-        "reason": "Language service but lacks required Kunama fluency"
+        "score": 80,
+        "reason": "Requires Arabic-English interpreting, not direct translation"
       },
       "experience_match": {
         "score": 75,
-        "reason": "Strong translation background, limited interpreting exposure"
+        "reason": "Strong translation background, no explicit interpreting experience"
       },
       "behavioral_fit": {
         "score": 95,
-        "reason": "Remote, flexible, academic-friendly"
+        "reason": "Remote, flexible, aligns with candidate\u2019s work style"
       },
       "location_logistics": {
         "verdict": "PASS",
-        "reason": "Fully remote, worldwide"
+        "reason": "Fully remote, no residency restrictions"
       },
       "career_alignment": {
-        "score": 70,
-        "reason": "Related language work but not core translation focus"
+        "score": 80,
+        "reason": "Language service role, supports long\u2011term translation/localization goals"
       },
-      "overall_score": 71,
-      "verdict": "Moderate Fit",
+      "overall_score": 81,
+      "verdict": "Strong Fit",
       "strengths": [
-        "Native Arabic & C1 English",
+        "Native Arabic fluency",
         "Extensive Arabic\u2011English translation experience",
-        "Proven remote work discipline"
+        "Comfort with remote, tech\u2011driven language work"
       ],
       "gaps": [
-        "No Kunama language proficiency",
-        "Limited professional interpreting experience"
+        "No documented interpreting experience",
+        "Lacks Kunama/Tigrinya proficiency"
       ],
-      "recommendation": "Apply only if you can quickly acquire basic Kunama skills; otherwise seek pure Arabic\u2011English translation roles.",
-      "interview_prep": "1. Describe any interpreting experience you have and how you\u2019d handle live audio/video calls. (Emphasize translation skills and quick thinking.)\n2. How would you manage interpreting for a language you\u2019re not fluent in (Kunama)? (Show willingness to train, use glossaries, collaborate with native speakers.)\n3. Explain your setup for a quiet, secure interpreting environment and confidentiality practices.",
-      "one_line_summary": "Good remote language service fit, but missing Kunama fluency limits suitability."
+      "recommendation": "Apply \u2013 emphasize your Arabic\u2011English expertise, remote work discipline, and willingness to quickly upskill in interpreting and Kunama/Tigrinya.",
+      "interview_prep": "1. How do you ensure accuracy and composure when interpreting live calls? \u2013 Emphasize active listening, note\u2011taking, and pause techniques. 2. Which remote interpreting platforms have you used, and how do you troubleshoot technical issues? \u2013 Mention familiarity with web\u2011based audio/video tools, stable internet setup, and quick problem\u2011solving. 3. How do you handle confidentiality, especially with legal or sensitive content? \u2013 Cite strict adherence to professional codes, secure environments, and data protection practices.",
+      "one_line_summary": "Remote Arabic\u2011English interpreter role fits well; boost chances by highlighting interpreting readiness."
     },
-    "ai_insight": "Good remote language service fit, but missing Kunama fluency limits suitability.",
-    "ai_overall_score": 71,
-    "ai_verdict": "Moderate Fit",
+    "ai_insight": "Remote Arabic\u2011English interpreter role fits well; boost chances by highlighting interpreting readiness.",
+    "ai_overall_score": 81,
+    "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Native Arabic & C1 English",
+      "Native Arabic fluency",
       "Extensive Arabic\u2011English translation experience",
-      "Proven remote work discipline"
+      "Comfort with remote, tech\u2011driven language work"
     ],
     "ai_gaps": [
-      "No Kunama language proficiency",
-      "Limited professional interpreting experience"
+      "No documented interpreting experience",
+      "Lacks Kunama/Tigrinya proficiency"
     ],
-    "ai_recommendation": "Apply only if you can quickly acquire basic Kunama skills; otherwise seek pure Arabic\u2011English translation roles.",
-    "ai_interview_prep": "1. Describe any interpreting experience you have and how you\u2019d handle live audio/video calls. (Emphasize translation skills and quick thinking.)\n2. How would you manage interpreting for a language you\u2019re not fluent in (Kunama)? (Show willingness to train, use glossaries, collaborate with native speakers.)\n3. Explain your setup for a quiet, secure interpreting environment and confidentiality practices.",
-    "ai_technical_skills": 55,
+    "ai_recommendation": "Apply \u2013 emphasize your Arabic\u2011English expertise, remote work discipline, and willingness to quickly upskill in interpreting and Kunama/Tigrinya.",
+    "ai_interview_prep": "1. How do you ensure accuracy and composure when interpreting live calls? \u2013 Emphasize active listening, note\u2011taking, and pause techniques. 2. Which remote interpreting platforms have you used, and how do you troubleshoot technical issues? \u2013 Mention familiarity with web\u2011based audio/video tools, stable internet setup, and quick problem\u2011solving. 3. How do you handle confidentiality, especially with legal or sensitive content? \u2013 Cite strict adherence to professional codes, secure environments, and data protection practices.",
+    "ai_technical_skills": 80,
     "ai_experience_match": 75,
     "ai_behavioral_fit": 95,
     "ai_location_verdict": "PASS",
-    "ai_career_alignment": 70,
+    "ai_career_alignment": 80,
     "urgency_score": 0,
-    "desperation_index": 0,
+    "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
     "email_guessed": true,
     "hiring_email": "careers@languageassociates.com",
@@ -91,7 +84,7 @@
       "hiring@languageassociates.com",
       "info@languageassociates.com"
     ],
-    "opportunity_score": 30,
+    "opportunity_score": 46,
     "company_domain": "languageassociates.com",
     "email_source": "guess",
     "company_research": {
@@ -112,14 +105,14 @@
     "deep_read": {
       "url": "https://jobicy.com/jobs/150946-international-audio-video-remote-kunama-interpreter-must-also-speak-tigrinya-or-arabic",
       "title": "Remote International Audio/Video Remote Kunama Interpreter (Must also speak Tigrinya or Arabic) at Language Services Associates - Jobicy",
-      "description": "Back For Candidates Stand out to top remote companies My Profile Back New Feature Supercharged prep with AI-powered coaching Explore AI Tools Back Earn with us Get passive income by promoting Jobicy Join Affiliate Program Free extension Meet Jobicy Copilot AI autofill for job applications, plus remote job alerts. Get the extension Remote from \ud83c\udf10 Anywhere Salary Undisclosed Department Admin & Virtual Assistance Employment Full Time Experience Entry-Level, Junior Published 19 Oct 2026 Apply before 19 Nov 2026 Listing views 172 Application actions 12 Application toolkit Make your next move. Prepare your resume, explore your fit, and draft a cover letter for this opportunity. Tailor Resume Check Job Fit Cover Letter Tailor my resume to this job See how your resume can be rewritten and optimized for this specific job. PRO identifies relevant strengths, missing keywords, and opportunities to present your experience more clearly. Illustrative PRO preview Example output format. Your recommendations will be generated from your resume and this job. Original: Responsible for leading projects and working with different teams. Suggested rewrite: Led a cross-functional initiative that improved [business outcome] by [measurable result] , demonstrating experience relevant to this role... Upgrade to Pro Am I a good fit for this job? Compare your resume with this job's requirements. PRO highlights your strongest matches, identifies potential gaps, and recommends practical next steps for your application. Illustrative PRO preview Example output format. Your actual assessment will be generated from your resume. 1. Overall Match: A personalized match level with an explanation of how your experience aligns with the role. 2. Key Strengths: Skills, achievements, and experience that support your application. 3. Potential Gaps: Requirements that are missing or not clearly demonstrated in your resume. 4. Recommendation: Specific improvements to strengthen your application... Upgrade to Pro Cover Letter Assistant Create a personalized cover letter using this job's requirements and the verified experience in your resume. PRO helps connect your strengths with what the employer is seeking. Illustrative PRO preview Example output format. Your letter will be personalized using your resume and this job. Dear Hiring Manager, I am excited to apply for this position. My experience in [relevant area] and track record of [measurable achievement] align with the role's key requirements. I would welcome the opportunity to bring these strengths to your team and contribute to [business objective] ... Upgrade to Pro Role DNA A quick view of the complexity, pace, ownership and collaboration implied by the job description. Job Complexity 4/5 Easy Hard Pace & Pressure 4/5 Relaxed Fast-paced Autonomy Level 4/5 Guided Full ownership Communication Load 5/5 Independent Collaborative AI insight The role requires rare multilingual fluency, real-time consecutive or simultaneous interpretation skills, ",
+      "description": "Back For Candidates Stand out to top remote companies My Profile Back New Feature Supercharged prep with AI-powered coaching Explore AI Tools Back Earn with us Get passive income by promoting Jobicy Join Affiliate Program Free extension Meet Jobicy Copilot AI autofill for job applications, plus remote job alerts. Get the extension Remote from \ud83c\udf10 Anywhere Salary Undisclosed Department Admin & Virtual Assistance Employment Full Time Experience Entry-Level, Junior Published 19 Oct 2026 Apply before 19 Nov 2026 Listing views 307 Application actions 23 Application toolkit Make your next move. Prepare your resume, explore your fit, and draft a cover letter for this opportunity. Tailor Resume Check Job Fit Cover Letter Tailor my resume to this job See how your resume can be rewritten and optimized for this specific job. PRO identifies relevant strengths, missing keywords, and opportunities to present your experience more clearly. Illustrative PRO preview Example output format. Your recommendations will be generated from your resume and this job. Original: Responsible for leading projects and working with different teams. Suggested rewrite: Led a cross-functional initiative that improved [business outcome] by [measurable result] , demonstrating experience relevant to this role... Upgrade to Pro Am I a good fit for this job? Compare your resume with this job's requirements. PRO highlights your strongest matches, identifies potential gaps, and recommends practical next steps for your application. Illustrative PRO preview Example output format. Your actual assessment will be generated from your resume. 1. Overall Match: A personalized match level with an explanation of how your experience aligns with the role. 2. Key Strengths: Skills, achievements, and experience that support your application. 3. Potential Gaps: Requirements that are missing or not clearly demonstrated in your resume. 4. Recommendation: Specific improvements to strengthen your application... Upgrade to Pro Cover Letter Assistant Create a personalized cover letter using this job's requirements and the verified experience in your resume. PRO helps connect your strengths with what the employer is seeking. Illustrative PRO preview Example output format. Your letter will be personalized using your resume and this job. Dear Hiring Manager, I am excited to apply for this position. My experience in [relevant area] and track record of [measurable achievement] align with the role's key requirements. I would welcome the opportunity to bring these strengths to your team and contribute to [business objective] ... Upgrade to Pro Role DNA A quick view of the complexity, pace, ownership and collaboration implied by the job description. Job Complexity 4/5 Easy Hard Pace & Pressure 4/5 Relaxed Fast-paced Autonomy Level 4/5 Guided Full ownership Communication Load 5/5 Independent Collaborative AI insight The role requires rare multilingual fluency, real-time consecutive or simultaneous interpretation skills, ",
       "eligibility": [
         "be confirmed before comparison. Regenerate the analysis to obtain a market estimate with an explicit period",
         "that are missing or not clearly demonstrated in your resume",
         "and the verified experience in your resume. PRO helps connect your strengths with what the employer is seeking"
       ],
       "requirements": [
-        "Level, Junior Published 19 Oct 2026 Apply before 19 Nov 2026 Listing views 172 Application actions 12 Application toolkit Make your next move",
+        "Level, Junior Published 19 Oct 2026 Apply before 19 Nov 2026 Listing views 307 Application actions 23 Application toolkit Make your next move",
         "more clearly. Illustrative PRO preview Example output format",
         "relevant to this role... Upgrade to Pro Am I a good fit for this job? Compare your resume with this job's requirements",
         "aligns with the role. 2. Key Strengths: Skills, achievements, and experience that support your application",
@@ -139,7 +132,7 @@
       "and the verified experience in your resume. PRO helps connect your strengths with what the employer is seeking"
     ],
     "requirements": [
-      "Level, Junior Published 19 Oct 2026 Apply before 19 Nov 2026 Listing views 172 Application actions 12 Application toolkit Make your next move",
+      "Level, Junior Published 19 Oct 2026 Apply before 19 Nov 2026 Listing views 307 Application actions 23 Application toolkit Make your next move",
       "more clearly. Illustrative PRO preview Example output format",
       "relevant to this role... Upgrade to Pro Am I a good fit for this job? Compare your resume with this job's requirements",
       "aligns with the role. 2. Key Strengths: Skills, achievements, and experience that support your application",
@@ -147,15 +140,15 @@
       "in [relevant area] and track record of [measurable achievement] align with the role's key requirements",
       "preferred \u00b7 Industry\u00a0specific certifications/trainings preferred (CMI, CCHI, etc"
     ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Language Services Associates_International Audio-Video Remote Kunama Interprete_20261019.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Language Services Associates_International Audio-Video Remote Kunama Interprete_20261020.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Language Services Associates_International Audio-Video Remote Kunama Interprete_20261019.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Language Services Associates_International Audio-Video Remote Kunama Interprete_20261020.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
-    "lifecycle_status": "new",
+    "lifecycle_status": "old",
     "found_date": "2026-10-19T14:34:01.838389+00:00",
-    "expires_date": "2026-10-22T14:34:01.838389+00:00",
-    "scan_date": "2026-10-19T16:34:01.839197+02:00"
+    "expires_date": "2026-10-23T12:43:03.360473+00:00",
+    "scan_date": "2026-10-20T14:43:03.361186+02:00"
   }
 ]

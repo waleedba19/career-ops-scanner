@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-17T07:37:51.400644+00:00",
-    "matched_count": 0,
-    "all_count": 1485,
-    "jobs": []
-  },
-  {
     "date": "2026-09-17T12:24:49.122648+00:00",
     "matched_count": 0,
     "all_count": 1551,
@@ -1684,6 +1678,29 @@
         "score": 100,
         "category": "Arabic Translation",
         "source": "jobicy"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-21T12:56:02.952455+00:00",
+    "matched_count": 2,
+    "all_count": 6485,
+    "jobs": [
+      {
+        "title": "International Audio/Video Remote Kunama Interpreter (Must also speak Tigrinya or Arabic)",
+        "company": "Language Services Associates",
+        "url": "https://jobicy.com/jobs/150946-international-audio-video-remote-kunama-interpreter-must-also-speak-tigrinya-or-arabic",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "jobicy"
+      },
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://ro.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4480776970",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
       }
     ]
   }

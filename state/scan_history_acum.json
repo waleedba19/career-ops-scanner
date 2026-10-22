@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-17T12:24:49.122648+00:00",
-    "matched_count": 0,
-    "all_count": 1551,
-    "jobs": []
-  },
-  {
     "date": "2026-09-17T14:04:26.766699+00:00",
     "matched_count": 0,
     "all_count": 1551,
@@ -1701,6 +1695,29 @@
         "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-22T13:00:12.921393+00:00",
+    "matched_count": 2,
+    "all_count": 6537,
+    "jobs": [
+      {
+        "title": "Arabic Interpreter",
+        "company": "International Committee of the Red Cross - ICRC",
+        "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "International Audio/Video Remote Kunama Interpreter (Must also speak Tigrinya or Arabic)",
+        "company": "Language Services Associates",
+        "url": "https://jobicy.com/jobs/150946-international-audio-video-remote-kunama-interpreter-must-also-speak-tigrinya-or-arabic",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "jobicy"
       }
     ]
   }

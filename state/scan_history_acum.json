@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-17T14:04:26.766699+00:00",
-    "matched_count": 0,
-    "all_count": 1551,
-    "jobs": []
-  },
-  {
     "date": "2026-09-17T14:19:03.286087+00:00",
     "matched_count": 0,
     "all_count": 1551,
@@ -1707,6 +1701,37 @@
         "title": "Arabic Interpreter",
         "company": "International Committee of the Red Cross - ICRC",
         "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "International Audio/Video Remote Kunama Interpreter (Must also speak Tigrinya or Arabic)",
+        "company": "Language Services Associates",
+        "url": "https://jobicy.com/jobs/150946-international-audio-video-remote-kunama-interpreter-must-also-speak-tigrinya-or-arabic",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "jobicy"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-23T12:37:25.346487+00:00",
+    "matched_count": 3,
+    "all_count": 6548,
+    "jobs": [
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://pl.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4455414090",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Localisation Specialist (Translator) - Arabic & French",
+        "company": "Revolut",
+        "url": "https://es.linkedin.com/jobs/view/localisation-specialist-translator-arabic-french-at-revolut-4455405129",
         "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin"

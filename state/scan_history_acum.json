@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-17T14:28:05.745218+00:00",
-    "matched_count": 0,
-    "all_count": 1490,
-    "jobs": []
-  },
-  {
     "date": "2026-09-17T14:41:47.565952+00:00",
     "matched_count": 0,
     "all_count": 1555,
@@ -1742,6 +1736,21 @@
   },
   {
     "date": "2026-10-24T12:03:52.911011+00:00",
+    "matched_count": 1,
+    "all_count": 6534,
+    "jobs": [
+      {
+        "title": "International Audio/Video Remote Kunama Interpreter (Must also speak Tigrinya or Arabic)",
+        "company": "Language Services Associates",
+        "url": "https://jobicy.com/jobs/150946-international-audio-video-remote-kunama-interpreter-must-also-speak-tigrinya-or-arabic",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "jobicy"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-25T12:32:43.982133+00:00",
     "matched_count": 1,
     "all_count": 6534,
     "jobs": [

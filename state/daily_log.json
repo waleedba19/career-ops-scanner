@@ -2,16 +2,6 @@
   {
     "date": "2026-09-17",
     "slot": "Evening (6 PM)",
-    "scanned": 1551,
-    "matches": 0,
-    "old_verified": 0,
-    "near_misses": 0,
-    "sources": 16,
-    "time": "04:19 PM"
-  },
-  {
-    "date": "2026-09-17",
-    "slot": "Evening (6 PM)",
     "scanned": 1490,
     "matches": 0,
     "old_verified": 0,
@@ -998,5 +988,15 @@
     "near_misses": 4,
     "sources": 31,
     "time": "04:08 PM"
+  },
+  {
+    "date": "2026-10-27",
+    "slot": "Morning (9 AM)",
+    "scanned": 6575,
+    "matches": 0,
+    "old_verified": 1,
+    "near_misses": 6,
+    "sources": 32,
+    "time": "03:11 PM"
   }
 ]

@@ -128,5 +128,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-10-21T12:55:53.553756+00:00"
+  },
+  "Keywords Studios": {
+    "name": "Keywords Studios",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-10-28T14:01:07.446308+00:00"
   }
 }

@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-17T19:35:19.307841+00:00",
-    "matched_count": 0,
-    "all_count": 1489,
-    "jobs": []
-  },
-  {
     "date": "2026-09-17T19:44:13.279427+00:00",
     "matched_count": 0,
     "all_count": 1489,
@@ -1763,5 +1757,20 @@
     "matched_count": 0,
     "all_count": 6575,
     "jobs": []
+  },
+  {
+    "date": "2026-10-28T14:01:24.474845+00:00",
+    "matched_count": 1,
+    "all_count": 6407,
+    "jobs": [
+      {
+        "title": "Arabic LQA Specialist",
+        "company": "Keywords Studios",
+        "url": "https://jp.linkedin.com/jobs/view/arabic-lqa-specialist-at-keywords-studios-4484075568",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
   }
 ]

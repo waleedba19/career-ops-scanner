@@ -2,18 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "SEVB": {
-    "name": "SEVB",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-09-28T18:26:25.256583+00:00"
-  },
   "International Committee of the Red Cross - ICRC": {
     "name": "International Committee of the Red Cross - ICRC",
     "legitimacy_score": 60,

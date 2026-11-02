@@ -1,47 +1,47 @@
-# Source probe — 2026-10-26 09:16 UTC
+# Source probe — 2026-11-02 11:34 UTC
 
 _Ran from: github-actions · 149 candidates · concurrency 6 · timeout 15s_
 
 | status | count | meaning |
 |---|---:|---|
-| ok | 39 | responded with parseable jobs → **can be added** |
-| empty | 19 | 200 but nothing parsed → wrong parser or no jobs right now |
-| blocked | 20 | 403/429/999/captcha → do not scrape from this IP; use an aggregator or ATS route |
+| ok | 36 | responded with parseable jobs → **can be added** |
+| empty | 21 | 200 but nothing parsed → wrong parser or no jobs right now |
+| blocked | 19 | 403/429/999/captcha → do not scrape from this IP; use an aggregator or ATS route |
 | not_found | 60 | 404/410 → slug or endpoint is wrong |
 | needs_key | 7 | add the secret and re-run |
-| error | 4 | DNS/TLS/timeout |
+| error | 6 | DNS/TLS/timeout |
 
-## Answer: **32 new sources responded with jobs** (+7 baseline references)
+## Answer: **29 new sources responded with jobs** (+7 baseline references)
 
 ## baseline  <sub>ok 7 · empty 0 · blocked 0 · not_found 0 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `baseline:arbeitnow` | 300 | 200 | 212 | Sales Manager Maklersoftware (m/w/d); Praktikum Social Media & Marketing (m/w/d); Senior Software Engineer \| Agentic Engineerin |
-| ✅ ok | `baseline:remoteok` | 99 | 200 | 607 | Field Phlebotomy Supervisor Northern Californ; Solutions Engineer; Sales Development Representative German Speak |
-| ✅ ok | `baseline:wwr` | 96 | 200 | 676 | Reddit: Frontend Engineer, Ads; Mercury: Customer Support Manager - Risk; Mercury: Customer Support Specialist |
-| ✅ ok | `baseline:jobicy` | 20 | 200 | 500 | Senior Software Engineer, Backend (Money Move; Linux Software Engineer - Ubuntu for Next-Gen; Software Engineer - Branching |
-| ✅ ok | `baseline:himalayas` | 20 | 200 | 102 | Shopify Operations Specialist for a U.S. Jewe; CHIEF OF STAFF (M/F/D); AI Speech & Audio Specialist – ASR \| TTS \| Vo |
-| ✅ ok | `baseline:freelancer-rss` | 20 | 200 | 174 | Launch Furniture Sales on Meta; Verify Dutch TV Channel Availability; Luxury Brochure-Style 2D Floor Plans |
-| ✅ ok | `baseline:remotive` | 10 | 200 | 109 | AI Trainer - Video Annotation; Software Engineer, AI Coding Tasks; Tech Lead Full-Stack Rails Engineer |
+| ✅ ok | `baseline:arbeitnow` | 300 | 200 | 192 | Senior Customer Success Manager (m/f/d); Netzwerkadministrator / IT-Systemadministrato; Senior Artist Manager / Influencer Manager (m |
+| ✅ ok | `baseline:wwr` | 100 | 200 | 1774 | LOTARO: Head of Lead Generation \| Remote (m/w; Smartsheet: Senior Channel Account Manager; Upgrade: Dealer Development Manager (Portland |
+| ✅ ok | `baseline:remoteok` | 99 | 200 | 810 | Virtual Destination Wedding Coordinator; Virtual Scheduling Assistant; Partner Operations Manager |
+| ✅ ok | `baseline:himalayas` | 20 | 200 | 99 | Director, Application Development Engineering; CX Named Account Manager \| Thailand (Virtual,; Associate Director US Oncology Marketing Pati |
+| ✅ ok | `baseline:freelancer-rss` | 20 | 200 | 43 | Food Brand Social Media Photography; Comprehensive Offline Product Price Compariso; Record POV Videos for AI Training |
+| ✅ ok | `baseline:remotive` | 12 | 200 | 90 | Full-Stack Developer; Senior Back-end Developer; Head of Engineering |
+| ✅ ok | `baseline:jobicy` | 3 | 200 | 424 | Director of Creative Strategy; Multigres Engineer; Cloud Support Engineer |
 
-## precision-queries  <sub>ok 7 · empty 0 · blocked 0 · not_found 0 · needs_key 0 · error 0</sub>
+## precision-queries  <sub>ok 6 · empty 1 · blocked 0 · not_found 0 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `precision:remoteok-writing` | 100 | 200 | 421 | Accounting & Finance Manager; Senior Software Engineer II Applied AI; Principal Software Engineer |
-| ✅ ok | `precision:wwr-all-other` | 83 | 200 | 463 | Datadog: Key Accounts Executive; Gemini: Lead, Technical Compliance; Talkspace: Clinical Quality Specialist |
-| ✅ ok | `precision:workingnomads-api` | 39 | 200 | 364 | Senior Angular Developer; Senior DevOps Engineer; Quality Assurance Rater - Spanish speakers in |
-| ✅ ok | `precision:jobicy-translation` | 20 | 200 | 1093 | LQA Game Tester (European Spanish) - Freelanc; Solution Architect; Sr. Clinical Research Associate (Romania) |
-| ✅ ok | `precision:remotive-translator` | 10 | 200 | 15 | AI Trainer - Video Annotation; Software Engineer, AI Coding Tasks; Tech Lead Full-Stack Rails Engineer |
-| ✅ ok | `precision:remotive-teacher` | 10 | 200 | 25 | AI Trainer - Video Annotation; Software Engineer, AI Coding Tasks; Tech Lead Full-Stack Rails Engineer |
-| ✅ ok | `precision:remotive-writer` | 10 | 200 | 14 | AI Trainer - Video Annotation; Software Engineer, AI Coding Tasks; Tech Lead Full-Stack Rails Engineer |
+| ✅ ok | `precision:remoteok-writing` | 100 | 200 | 446 | Accounting & Finance Manager; Senior Software Engineer II Applied AI; Principal Software Engineer |
+| ✅ ok | `precision:wwr-all-other` | 85 | 200 | 2026 | Upgrade: Dealer Development Manager (Portland; Upgrade: Dealer Development Manager (Las Vega; Glossier: Director of Co-Manufacturing &amp;  |
+| ✅ ok | `precision:workingnomads-api` | 35 | 200 | 502 | Senior Magento Developer; Senior Back-end Developer; Looking For Online ESL Teachers - Remote- Joi |
+| ✅ ok | `precision:remotive-translator` | 12 | 200 | 16 | Full-Stack Developer; Senior Back-end Developer; Head of Engineering |
+| ✅ ok | `precision:remotive-teacher` | 12 | 200 | 37 | Full-Stack Developer; Senior Back-end Developer; Head of Engineering |
+| ✅ ok | `precision:remotive-writer` | 12 | 200 | 69 | Full-Stack Developer; Senior Back-end Developer; Head of Engineering |
+| ⚪ empty | `precision:jobicy-translation` | 0 | 200 | 297 | 567 bytes, application/json |
 
 ## aggregator-keyed  <sub>ok 1 · empty 0 · blocked 0 · not_found 0 · needs_key 7 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `themuse:writing-editing` | 20 | 200 | 246 | Prompt-Response Writer US; Copywriter (Contract); Financial Writer (Ghostwriter) Specialist |
+| ✅ ok | `themuse:writing-editing` | 20 | 200 | 348 | Blending Control Technician; Captives Underwriter; Prompt-Response Writer US |
 | 🔑 needs_key | `jsearch:arabic-translator` | 0 |  |  | missing secret(s): RAPIDAPI_KEY |
 | 🔑 needs_key | `adzuna:gb` | 0 |  |  | missing secret(s): ADZUNA_APP_ID, ADZUNA_APP_KEY |
 | 🔑 needs_key | `adzuna:us` | 0 |  |  | missing secret(s): ADZUNA_APP_ID, ADZUNA_APP_KEY |
@@ -50,225 +50,225 @@ _Ran from: github-actions · 149 candidates · concurrency 6 · timeout 15s_
 | 🔑 needs_key | `reliefweb:arabic` | 0 |  |  | missing secret(s): RELIEFWEB_APPNAME |
 | 🔑 needs_key | `reed:arabic-translator` | 0 |  |  | missing secret(s): REED_API_KEY_B64 |
 
-## linkedin  <sub>ok 3 · empty 0 · blocked 0 · not_found 0 · needs_key 0 · error 0</sub>
+## linkedin  <sub>ok 1 · empty 0 · blocked 2 · not_found 0 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `linkedin:guest-arabic-translator` | 10 | 200 | 311 | Tercüman; Localization Specialist, Castilian Spanish; Russian Interpreter |
-| ✅ ok | `linkedin:guest-arabic-linguist` | 10 | 200 | 361 | Search Operations Specialist - Arabic Speakin; Postdoctoral Research Fellow in Arabic Philos; Tercüman |
-| ✅ ok | `linkedin:guest-proofreader` | 10 | 200 | 446 | Senior Copy Editor; Proofreader; Dual Proofreader/Document Processor (Legal Se |
+| ✅ ok | `linkedin:guest-proofreader` | 10 | 200 | 307 | Copy Editor (Remote); Copy Editor (Remote); Authored Works Review (Editor) |
+| ⛔ blocked | `linkedin:guest-arabic-translator` | 0 | 429 | 83 | HTTP 429 |
+| ⛔ blocked | `linkedin:guest-arabic-linguist` | 0 | 429 | 57 | HTTP 429 |
 
 ## freelance  <sub>ok 2 · empty 1 · blocked 3 · not_found 0 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `freelancer:api-arabic` | 20 | 200 | 140 | Pakistani Truck-Art Triptych Design; English/German to Russian Texts; Legal Contract Drafting for Car Wash Machine  |
-| ✅ ok | `freelancer:api-proofreading` | 20 | 200 | 158 | Launch Furniture Sales on Meta; Finance Scenario Tool UI/UX; Social Media Promo Editing |
-| ⚪ empty | `pph:search-arabic` | 0 | 202 | 128 | 2371 bytes, text/html |
-| ⛔ blocked | `guru:arabic-translation` | 0 | 403 | 103 | HTTP 403 |
-| ⛔ blocked | `workana:writing-translation` | 0 | 403 | 110 | HTTP 403 + challenge page |
-| ⛔ blocked | `truelancer:arabic` | 0 | 429 | 172 | HTTP 429 |
+| ✅ ok | `freelancer:api-arabic` | 20 | 200 | 166 | Urgent One-Page Japanese Translation required; Saudi Arabic Marketing Translator; CSV Import & Translation |
+| ✅ ok | `freelancer:api-proofreading` | 20 | 200 | 197 | Retype Photo Pages Into PDF; Brand Design & Web Content; AI-Powered B2B Video Creator |
+| ⚪ empty | `pph:search-arabic` | 0 | 202 | 95 | 2371 bytes, text/html |
+| ⛔ blocked | `guru:arabic-translation` | 0 | 403 | 63 | HTTP 403 |
+| ⛔ blocked | `workana:writing-translation` | 0 | 403 | 27 | HTTP 403 + challenge page |
+| ⛔ blocked | `truelancer:arabic` | 0 | 429 | 102 | HTTP 429 |
 
 ## ats-language-ai  <sub>ok 5 · empty 6 · blocked 0 · not_found 11 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `greenhouse:agency` | 833 | 200 | 294 | 3D Modeling & Python Specialist - Freelance A; Accounting Specialist - Freelance AI Trainer ; Actuarial Science Specialist - Freelance AI T |
-| ✅ ok | `ashby:mercor` | 112 | 200 | 89 | Software Engineer, Systems & Platform Applied; Infrastructure Software Engineer ; Strategic Project Lead |
-| ✅ ok | `html:dataannotation` | 112 | 200 | 140 | Software EngineerCodingUp to $150+ / hr312 hi; GeneralistGeneralUp to $50 / hr452 hired rece; Data ScientistData &amp; MLUp to $150+ / hr92 |
-| ✅ ok | `greenhouse:turing` | 31 | 200 | 98 | AI Engagement Lead; Director, Investor Relations & Corporate Deve; Engagement Manager |
-| ✅ ok | `greenhouse:labelbox` | 8 | 200 | 164 | Forward Deployed Engineering Manager; Forward Deployed Engineer, RL Environments; Forward Deployed Research Scientist |
-| ⚪ empty | `ashby:deel` | 0 | 200 | 43 | 28 bytes, application/json |
-| ⚪ empty | `workable:prolific` | 0 | 200 | 141 | 46 bytes, application/json |
-| ⚪ empty | `workable:superannotate` | 0 | 200 | 201 | 53 bytes, application/json |
-| ⚪ empty | `workable:toloka` | 0 | 200 | 134 | 46 bytes, application/json |
-| ⚪ empty | `smartrecruiters:TELUSInternational` | 0 | 200 | 456 | 52 bytes, application/json |
-| ⚪ empty | `smartrecruiters:Welocalize` | 0 | 200 | 434 | 52 bytes, application/json |
-| ❓ not_found | `greenhouse:joinhandshake` | 0 | 404 | 132 | HTTP 404 |
-| ❓ not_found | `greenhouse:surgeai` | 0 | 404 | 78 | HTTP 404 |
-| ❓ not_found | `ashby:surgeai` | 0 | 404 | 85 | HTTP 404 |
-| ❓ not_found | `greenhouse:mercor` | 0 | 404 | 59 | HTTP 404 |
-| ❓ not_found | `ashby:micro1` | 0 | 404 | 59 | HTTP 404 |
-| ❓ not_found | `ashby:pareto` | 0 | 404 | 21 | HTTP 404 |
-| ❓ not_found | `greenhouse:superannotate` | 0 | 404 | 51 | HTTP 404 |
-| ❓ not_found | `greenhouse:clickworker` | 0 | 404 | 53 | HTTP 404 |
-| ❓ not_found | `lever:welocalize` | 0 | 404 | 507 | HTTP 404 |
-| ❓ not_found | `greenhouse:welocalize` | 0 | 404 | 49 | HTTP 404 |
-| ❓ not_found | `greenhouse:centific` | 0 | 404 | 52 | HTTP 404 |
+| ✅ ok | `greenhouse:agency` | 827 | 200 | 171 | 3D Modeling & Python Specialist - Freelance A; Accounting Specialist - Freelance AI Trainer ; Actuarial Science Specialist - Freelance AI T |
+| ✅ ok | `html:dataannotation` | 112 | 200 | 299 | Software EngineerCodingUp to $150+ / hr312 hi; GeneralistGeneralUp to $50 / hr452 hired rece; Data ScientistData &amp; MLUp to $150+ / hr92 |
+| ✅ ok | `ashby:mercor` | 108 | 200 | 48 | Software Engineer, Systems & Platform Applied; Infrastructure Software Engineer ; Strategic Project Lead |
+| ✅ ok | `greenhouse:turing` | 40 | 200 | 60 | Account Director - Consumer Packaged Goods - ; AI Engagement Lead; Client Director, Financial Services (BFSI) |
+| ✅ ok | `greenhouse:labelbox` | 10 | 200 | 46 | Forward Deployed Engineering Manager; Forward Deployed Engineer, RL Environments; Forward Deployed Research Scientist |
+| ⚪ empty | `ashby:deel` | 0 | 200 | 19 | 28 bytes, application/json |
+| ⚪ empty | `workable:prolific` | 0 | 200 | 1373 | 46 bytes, application/json |
+| ⚪ empty | `workable:superannotate` | 0 | 200 | 162 | 53 bytes, application/json |
+| ⚪ empty | `workable:toloka` | 0 | 200 | 122 | 46 bytes, application/json |
+| ⚪ empty | `smartrecruiters:TELUSInternational` | 0 | 200 | 459 | 52 bytes, application/json |
+| ⚪ empty | `smartrecruiters:Welocalize` | 0 | 200 | 412 | 52 bytes, application/json |
+| ❓ not_found | `greenhouse:joinhandshake` | 0 | 404 | 51 | HTTP 404 |
+| ❓ not_found | `greenhouse:surgeai` | 0 | 404 | 44 | HTTP 404 |
+| ❓ not_found | `ashby:surgeai` | 0 | 404 | 110 | HTTP 404 |
+| ❓ not_found | `greenhouse:mercor` | 0 | 404 | 42 | HTTP 404 |
+| ❓ not_found | `ashby:micro1` | 0 | 404 | 79 | HTTP 404 |
+| ❓ not_found | `ashby:pareto` | 0 | 404 | 87 | HTTP 404 |
+| ❓ not_found | `greenhouse:superannotate` | 0 | 404 | 43 | HTTP 404 |
+| ❓ not_found | `greenhouse:clickworker` | 0 | 404 | 45 | HTTP 404 |
+| ❓ not_found | `lever:welocalize` | 0 | 404 | 103 | HTTP 404 |
+| ❓ not_found | `greenhouse:welocalize` | 0 | 404 | 44 | HTTP 404 |
+| ❓ not_found | `greenhouse:centific` | 0 | 404 | 40 | HTTP 404 |
 
-## ats-lsp  <sub>ok 4 · empty 5 · blocked 1 · not_found 15 · needs_key 0 · error 1</sub>
+## ats-lsp  <sub>ok 4 · empty 5 · blocked 0 · not_found 15 · needs_key 0 · error 2</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `smartrecruiters:KeywordsStudios` | 34 | 200 | 400 | シニア3D背景アーティスト; Technical Designer – Japan & Global Game Deve; Game Designer – Japan & Global Game Developme |
-| ✅ ok | `smartrecruiters:TransPerfect` | 18 | 200 | 390 | Account Manager - Client Services; Spanish Quality Manager & Tester; Project Coordinator |
-| ✅ ok | `html:tarjama-careers` | 5 | 200 | 515 | 07
+| ✅ ok | `smartrecruiters:KeywordsStudios` | 35 | 200 | 404 | Rendering Engineer; シニア3D背景アーティスト; Technical Designer – Japan & Global Game Deve |
+| ✅ ok | `smartrecruiters:TransPerfect` | 18 | 200 | 418 | Account Manager - Client Services; Spanish Quality Manager & Tester; Project Coordinator |
+| ✅ ok | `html:tarjama-careers` | 5 | 200 | 194 | 07
 Careers; Open on LinkedIn; View all open positions |
-| ✅ ok | `html:torjoman-careers` | 2 | 200 | 734 | العربية; Careers |
-| ⚪ empty | `smartrecruiters:Acolad` | 0 | 200 | 409 | 52 bytes, application/json |
-| ⚪ empty | `html:transperfect-careers` | 0 | 200 | 150 | 4718 bytes, text/html |
-| ⚪ empty | `smartrecruiters:Lionbridge` | 0 | 200 | 405 | 52 bytes, application/json |
-| ⚪ empty | `smartrecruiters:RWS` | 0 | 200 | 390 | 52 bytes, application/json |
-| ⚪ empty | `html:saudisoft-careers` | 0 | 200 | 3136 | 133429 bytes, text/html |
-| ⛔ blocked | `html:futuregroup-careers` | 0 | 202 | 336 | HTTP 202 + challenge page |
-| ❓ not_found | `lever:unbabel` | 0 | 404 | 217 | HTTP 404 |
-| ❓ not_found | `greenhouse:unbabel` | 0 | 404 | 50 | HTTP 404 |
-| ❓ not_found | `lever:lilt` | 0 | 404 | 250 | HTTP 404 |
-| ❓ not_found | `ashby:lilt` | 0 | 404 | 55 | HTTP 404 |
-| ❓ not_found | `greenhouse:phrase` | 0 | 404 | 51 | HTTP 404 |
-| ❓ not_found | `greenhouse:crowdin` | 0 | 404 | 50 | HTTP 404 |
-| ❓ not_found | `lever:crowdin` | 0 | 404 | 409 | HTTP 404 |
-| ❓ not_found | `greenhouse:keywordsstudios` | 0 | 404 | 53 | HTTP 404 |
-| ❓ not_found | `greenhouse:acclaro` | 0 | 404 | 51 | HTTP 404 |
-| ❓ not_found | `workable:argosmultilingual` | 0 | 404 | 68 | HTTP 404 |
-| ❓ not_found | `workable:alconost` | 0 | 404 | 69 | HTTP 404 |
-| ❓ not_found | `workable:straker` | 0 | 404 | 64 | HTTP 404 |
-| ❓ not_found | `workable:getblend` | 0 | 404 | 65 | HTTP 404 |
-| ❓ not_found | `greenhouse:languageline` | 0 | 404 | 48 | HTTP 404 |
-| ❓ not_found | `greenhouse:propio` | 0 | 404 | 48 | HTTP 404 |
-| 💥 error | `html:lionbridge-careers` | 0 |  | 277 | ClientResponseError: 400, message='Got more than 8190 bytes when reading: b"default-src \'self\' \'unsafe-inlin |
+| ✅ ok | `html:torjoman-careers` | 2 | 200 | 1044 | العربية; Careers |
+| ⚪ empty | `smartrecruiters:Acolad` | 0 | 200 | 386 | 52 bytes, application/json |
+| ⚪ empty | `html:transperfect-careers` | 0 | 200 | 108 | 4718 bytes, text/html |
+| ⚪ empty | `smartrecruiters:Lionbridge` | 0 | 200 | 402 | 52 bytes, application/json |
+| ⚪ empty | `smartrecruiters:RWS` | 0 | 200 | 395 | 52 bytes, application/json |
+| ⚪ empty | `html:saudisoft-careers` | 0 | 200 | 3267 | 133430 bytes, text/html |
+| ❓ not_found | `lever:unbabel` | 0 | 404 | 24 | HTTP 404 |
+| ❓ not_found | `greenhouse:unbabel` | 0 | 404 | 40 | HTTP 404 |
+| ❓ not_found | `lever:lilt` | 0 | 404 | 22 | HTTP 404 |
+| ❓ not_found | `ashby:lilt` | 0 | 404 | 84 | HTTP 404 |
+| ❓ not_found | `greenhouse:phrase` | 0 | 404 | 37 | HTTP 404 |
+| ❓ not_found | `greenhouse:crowdin` | 0 | 404 | 42 | HTTP 404 |
+| ❓ not_found | `lever:crowdin` | 0 | 404 | 215 | HTTP 404 |
+| ❓ not_found | `greenhouse:keywordsstudios` | 0 | 404 | 43 | HTTP 404 |
+| ❓ not_found | `greenhouse:acclaro` | 0 | 404 | 36 | HTTP 404 |
+| ❓ not_found | `workable:argosmultilingual` | 0 | 404 | 93 | HTTP 404 |
+| ❓ not_found | `workable:alconost` | 0 | 404 | 88 | HTTP 404 |
+| ❓ not_found | `workable:straker` | 0 | 404 | 99 | HTTP 404 |
+| ❓ not_found | `workable:getblend` | 0 | 404 | 102 | HTTP 404 |
+| ❓ not_found | `greenhouse:languageline` | 0 | 404 | 43 | HTTP 404 |
+| ❓ not_found | `greenhouse:propio` | 0 | 404 | 44 | HTTP 404 |
+| 💥 error | `html:lionbridge-careers` | 0 |  | 517 | ClientResponseError: 400, message='Got more than 8190 bytes when reading: b"default-src \'self\' \'unsafe-inlin |
+| 💥 error | `html:futuregroup-careers` | 0 |  | 190 | ServerDisconnectedError: Server disconnected |
 
 ## ats-edtech  <sub>ok 0 · empty 2 · blocked 0 · not_found 17 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ⚪ empty | `html:nagwa-careers` | 0 | 200 | 1326 | 162841 bytes, text/html |
-| ⚪ empty | `html:almentor-careers` | 0 | 200 | 135 | 220902 bytes, text/html |
-| ❓ not_found | `greenhouse:preply` | 0 | 404 | 54 | HTTP 404 |
-| ❓ not_found | `lever:preply` | 0 | 404 | 58 | HTTP 404 |
-| ❓ not_found | `greenhouse:babbel` | 0 | 404 | 55 | HTTP 404 |
-| ❓ not_found | `teamtailor:babbel` | 0 | 404 | 524 | HTTP 404 |
-| ❓ not_found | `greenhouse:busuu` | 0 | 404 | 51 | HTTP 404 |
-| ❓ not_found | `recruitee:lingoda` | 0 | 404 | 255 | HTTP 404 |
-| ❓ not_found | `teamtailor:lingoda` | 0 | 404 | 531 | HTTP 404 |
-| ❓ not_found | `personio:lingoda` | 0 | 404 | 183 | HTTP 404 |
-| ❓ not_found | `greenhouse:cambly` | 0 | 404 | 49 | HTTP 404 |
-| ❓ not_found | `lever:cambly` | 0 | 404 | 9705 | HTTP 404 |
-| ❓ not_found | `recruitee:novakid` | 0 | 404 | 244 | HTTP 404 |
-| ❓ not_found | `workable:novakid` | 0 | 404 | 72 | HTTP 404 |
-| ❓ not_found | `greenhouse:openenglish` | 0 | 404 | 55 | HTTP 404 |
-| ❓ not_found | `greenhouse:engoo` | 0 | 404 | 54 | HTTP 404 |
-| ❓ not_found | `workable:abwaab` | 0 | 404 | 71 | HTTP 404 |
-| ❓ not_found | `lever:noonacademy` | 0 | 404 | 61 | HTTP 404 |
-| ❓ not_found | `html:edraak-careers` | 0 | 404 | 582 | HTTP 404 |
+| ⚪ empty | `html:nagwa-careers` | 0 | 200 | 755 | 163022 bytes, text/html |
+| ⚪ empty | `html:almentor-careers` | 0 | 200 | 180 | 220902 bytes, text/html |
+| ❓ not_found | `greenhouse:preply` | 0 | 404 | 44 | HTTP 404 |
+| ❓ not_found | `lever:preply` | 0 | 404 | 388 | HTTP 404 |
+| ❓ not_found | `greenhouse:babbel` | 0 | 404 | 40 | HTTP 404 |
+| ❓ not_found | `teamtailor:babbel` | 0 | 404 | 444 | HTTP 404 |
+| ❓ not_found | `greenhouse:busuu` | 0 | 404 | 45 | HTTP 404 |
+| ❓ not_found | `recruitee:lingoda` | 0 | 404 | 245 | HTTP 404 |
+| ❓ not_found | `teamtailor:lingoda` | 0 | 404 | 454 | HTTP 404 |
+| ❓ not_found | `personio:lingoda` | 0 | 404 | 113 | HTTP 404 |
+| ❓ not_found | `greenhouse:cambly` | 0 | 404 | 58 | HTTP 404 |
+| ❓ not_found | `lever:cambly` | 0 | 404 | 29 | HTTP 404 |
+| ❓ not_found | `recruitee:novakid` | 0 | 404 | 216 | HTTP 404 |
+| ❓ not_found | `workable:novakid` | 0 | 404 | 94 | HTTP 404 |
+| ❓ not_found | `greenhouse:openenglish` | 0 | 404 | 37 | HTTP 404 |
+| ❓ not_found | `greenhouse:engoo` | 0 | 404 | 42 | HTTP 404 |
+| ❓ not_found | `workable:abwaab` | 0 | 404 | 106 | HTTP 404 |
+| ❓ not_found | `lever:noonacademy` | 0 | 404 | 23 | HTTP 404 |
+| ❓ not_found | `html:edraak-careers` | 0 | 404 | 445 | HTTP 404 |
 
 ## ats-mena  <sub>ok 1 · empty 0 · blocked 0 · not_found 4 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `workable:tamatem` | 7 | 200 | 70 | Business Development / Sales Executive; Community & Support Intern - UAE Nationals; Internship Night - For Emirati Nationals |
-| ❓ not_found | `lever:anghami` | 0 | 404 | 10219 | HTTP 404 |
-| ❓ not_found | `recruitee:tamatem` | 0 | 404 | 267 | HTTP 404 |
-| ❓ not_found | `html:mawdoo3-careers` | 0 | 404 | 252 | HTTP 404 |
-| ❓ not_found | `workable:sarwa` | 0 | 404 | 90 | HTTP 404 |
+| ✅ ok | `workable:tamatem` | 11 | 200 | 98 | Business Development / Sales Executive; Community & Support Intern - UAE Nationals; Freelance Marketing Artist: Video Editor, Mot |
+| ❓ not_found | `lever:anghami` | 0 | 404 | 28 | HTTP 404 |
+| ❓ not_found | `recruitee:tamatem` | 0 | 404 | 237 | HTTP 404 |
+| ❓ not_found | `html:mawdoo3-careers` | 0 | 404 | 431 | HTTP 404 |
+| ❓ not_found | `workable:sarwa` | 0 | 404 | 93 | HTTP 404 |
 
-## remote-boards  <sub>ok 4 · empty 1 · blocked 3 · not_found 0 · needs_key 0 · error 1</sub>
+## remote-boards  <sub>ok 5 · empty 1 · blocked 1 · not_found 0 · needs_key 0 · error 2</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `html:remowork-arabic` | 201 | 200 | 592 | Jobs; Job Tracker; Browse Job Categories |
-| ✅ ok | `rss:remotejobleads` | 16 | 200 | 509 | Senior ASIC Design Engineer — AI Evaluation &; Transaction Monitoring Analyst / Financial Fr; Transaction Monitoring Analyst / Financial Fr |
-| ✅ ok | `json:remote1stjobs` | 10 | 200 | 2203 | Senior Product Owner; Senior Product Marketing Manager  \| US \| Remo; GTM Enablement - Global Onboarding & Operatio |
-| ✅ ok | `html:jobgether` | 8 | 200 | 297 | Job search playbook; Job search playbook; Job search playbook |
-| ⚪ empty | `html:dynamitejobs` | 0 | 200 | 2559 | 79755 bytes, text/html |
-| ⛔ blocked | `rss:euremotejobs` | 0 | 202 | 510 | HTTP 202 + challenge page |
-| ⛔ blocked | `html:dailyremote` | 0 | 403 | 102 | HTTP 403 + challenge page |
-| ⛔ blocked | `html:europeremotely` | 0 | 403 | 527 | HTTP 403 |
-| 💥 error | `html:remote-co` | 0 |  | 15345 | timeout >15s |
+| ✅ ok | `json:remote1stjobs` | 30281 | 200 | 3235 | Strategic Account Manager; GTM Associate; Founding Enterprise Account Executive, DACH |
+| ✅ ok | `html:remowork-arabic` | 205 | 200 | 599 | Jobs; Job Tracker; Browse Job Categories |
+| ✅ ok | `rss:remotejobleads` | 16 | 200 | 595 | Medical Coder / CDI Specialist &#8211; AI Eva; AI Recruiter (AIR); AI Recruiter (AIR) |
+| ✅ ok | `html:jobgether` | 7 | 200 | 394 | Job search playbook; Job search playbook; Jobseekers guide |
+| ✅ ok | `html:dailyremote` | 2 | 200 | 399 | Job Application Tracker; Search Jobs by Job Title |
+| ⚪ empty | `html:dynamitejobs` | 0 | 200 | 235 | 79755 bytes, text/html |
+| ⛔ blocked | `html:europeremotely` | 0 | 403 | 740 | HTTP 403 |
+| 💥 error | `rss:euremotejobs` | 0 | 520 | 680 | HTTP 520 |
+| 💥 error | `html:remote-co` | 0 |  | 15636 | timeout >15s |
 
 ## translation-boards  <sub>ok 1 · empty 1 · blocked 2 · not_found 0 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `html:translationdirectory` | 2 | 200 | 1704 | Need More Linguistic Jobs?; Do you work for these translation agencies?  |
-| ⚪ empty | `html:gotranscript` | 0 | 200 | 290 | 385260 bytes, text/html |
-| ⛔ blocked | `html:proz-translation-jobs` | 0 | 403 | 98 | HTTP 403 + challenge page |
-| ⛔ blocked | `html:translatorscafe` | 0 | 403 | 311 | HTTP 403 |
+| ✅ ok | `html:translationdirectory` | 2 | 200 | 2420 | Need More Linguistic Jobs?; Do you work for these translation agencies?  |
+| ⚪ empty | `html:gotranscript` | 0 | 200 | 442 | 386155 bytes, text/html |
+| ⛔ blocked | `html:proz-translation-jobs` | 0 | 403 | 28 | HTTP 403 + challenge page |
+| ⛔ blocked | `html:translatorscafe` | 0 | 403 | 383 | HTTP 403 |
 
-## un-ngo  <sub>ok 3 · empty 0 · blocked 1 · not_found 0 · needs_key 0 · error 0</sub>
+## un-ngo  <sub>ok 2 · empty 0 · blocked 2 · not_found 0 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `html:untalent-arabic` | 182 | 200 | 1917 | Openings; Search; Mercy Corps Afghanistan |
-| ✅ ok | `html:impactpool-arabic` | 16 | 200 | 947 | Arabic interpreter
+| ✅ ok | `html:impactpool-arabic` | 11 | 200 | 986 | Arabic interpreter
 
 
 IRC - International Resc; Lead Strategic Coordinator
 
 
-IsDB - Islamic D; HR Administration Officer
+IsDB - Islamic D; ICLA Project Manager Palestine Gaza
 
 
-ICRC - Internatio |
-| ✅ ok | `html:idealist-arabic` | 8 | 200 | 399 | Find a Job; Jobs; Communications |
-| ⛔ blocked | `html:unjobs-translation` | 0 | 403 | 183 | HTTP 403 + challenge page |
+NRC - N |
+| ✅ ok | `html:idealist-arabic` | 8 | 200 | 165 | Find a Job; Jobs; Communications |
+| ⛔ blocked | `html:unjobs-translation` | 0 | 403 | 48 | HTTP 403 + challenge page |
+| ⛔ blocked | `html:untalent-arabic` | 0 | 403 | 265 | HTTP 403 + challenge page |
 
-## mena-boards  <sub>ok 1 · empty 0 · blocked 6 · not_found 0 · needs_key 0 · error 1</sub>
+## mena-boards  <sub>ok 1 · empty 1 · blocked 5 · not_found 0 · needs_key 0 · error 1</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ✅ ok | `html:akhtaboot-translator` | 4 | 200 | 1341 | Jobs in Jordan (56); Jobs in Qatar (3); Jobs in UAE (1) |
-| ⛔ blocked | `html:bayt-translator` | 0 | 403 | 132 | HTTP 403 + challenge page |
-| ⛔ blocked | `html:wuzzuf-translator` | 0 | 403 | 75 | HTTP 403 + challenge page |
-| ⛔ blocked | `html:gulftalent-translator` | 0 | 403 | 202 | HTTP 403 + challenge page |
-| ⛔ blocked | `html:tanqeeb-translator` | 0 | 403 | 245 | HTTP 403 |
-| ⛔ blocked | `html:mostaql-writing-translation` | 0 | 403 | 367 | HTTP 403 |
-| ⛔ blocked | `html:ureed-translation` | 0 | 403 | 118 | HTTP 403 + challenge page |
-| 💥 error | `html:naukrigulf-translator` | 0 |  | 15928 | timeout >15s |
+| ✅ ok | `html:akhtaboot-translator` | 4 | 200 | 1807 | Jobs in Jordan (55); Jobs in Qatar (3); Jobs in UAE (1) |
+| ⚪ empty | `html:mostaql-writing-translation` | 0 | 202 | 438 | 2387 bytes, text/html |
+| ⛔ blocked | `html:bayt-translator` | 0 | 403 | 82 | HTTP 403 + challenge page |
+| ⛔ blocked | `html:wuzzuf-translator` | 0 | 403 | 84 | HTTP 403 + challenge page |
+| ⛔ blocked | `html:gulftalent-translator` | 0 | 403 | 129 | HTTP 403 + challenge page |
+| ⛔ blocked | `html:tanqeeb-translator` | 0 | 403 | 320 | HTTP 403 |
+| ⛔ blocked | `html:ureed-translation` | 0 | 403 | 77 | HTTP 403 + challenge page |
+| 💥 error | `html:naukrigulf-translator` | 0 |  | 15769 | timeout >15s |
 
 ## academic-editing-watchers  <sub>ok 0 · empty 0 · blocked 1 · not_found 1 · needs_key 0 · error 1</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ⛔ blocked | `watch:scribbr` | 0 | 403 | 112 | HTTP 403 + challenge page |
-| ❓ not_found | `watch:scribendi` | 0 | 404 | 302 | HTTP 404 |
-| 💥 error | `watch:cactus` | 0 |  | 210 | ClientConnectorDNSError: Cannot connect to host www.cactusglobal.com:443 ssl:False [Name or service not known] |
+| ⛔ blocked | `watch:scribbr` | 0 | 403 | 68 | HTTP 403 + challenge page |
+| ❓ not_found | `watch:scribendi` | 0 | 404 | 467 | HTTP 404 |
+| 💥 error | `watch:cactus` | 0 |  | 238 | ClientConnectorDNSError: Cannot connect to host www.cactusglobal.com:443 ssl:False [Name or service not known] |
 
 ## ats-new  <sub>ok 0 · empty 3 · blocked 3 · not_found 12 · needs_key 0 · error 0</sub>
 
 | status | id | items | http | ms | sample / detail |
 |---|---|---:|---:|---:|---|
-| ⚪ empty | `bamboohr:nagwa` | 0 | 200 | 328 | 45560 bytes, text/html |
-| ⚪ empty | `bamboohr:abwaab` | 0 | 200 | 256 | 45560 bytes, text/html |
-| ⚪ empty | `bamboohr:noonacademy` | 0 | 200 | 216 | 45560 bytes, text/html |
-| ⛔ blocked | `jobvite:telus` | 0 | 403 | 572 | HTTP 403 |
-| ⛔ blocked | `jobvite:concentrix` | 0 | 403 | 481 | HTTP 403 |
-| ⛔ blocked | `jobvite:teleperformance` | 0 | 403 | 397 | HTTP 403 |
-| ❓ not_found | `breezy:tarjama` | 0 | 404 | 574 | HTTP 404 |
-| ❓ not_found | `breezy:saudisoft` | 0 | 404 | 650 | HTTP 404 |
-| ❓ not_found | `breezy:careem` | 0 | 404 | 421 | HTTP 404 |
-| ❓ not_found | `pinpoint:edraak` | 0 | 404 | 420 | HTTP 404 |
-| ❓ not_found | `pinpoint:almentor` | 0 | 404 | 447 | HTTP 404 |
-| ❓ not_found | `pinpoint:baims` | 0 | 404 | 398 | HTTP 404 |
-| ❓ not_found | `rippling:deel` | 0 | 404 | 475 | HTTP 404 |
-| ❓ not_found | `rippling:remote` | 0 | 404 | 321 | HTTP 404 |
-| ❓ not_found | `rippling:oyster` | 0 | 404 | 314 | HTTP 404 |
-| ❓ not_found | `personio:appen` | 0 | 404 | 583 | HTTP 404 |
-| ❓ not_found | `personio:centific` | 0 | 404 | 576 | HTTP 404 |
-| ❓ not_found | `personio:surgeai` | 0 | 404 | 645 | HTTP 404 |
+| ⚪ empty | `bamboohr:nagwa` | 0 | 200 | 718 | 45560 bytes, text/html |
+| ⚪ empty | `bamboohr:abwaab` | 0 | 200 | 653 | 45560 bytes, text/html |
+| ⚪ empty | `bamboohr:noonacademy` | 0 | 200 | 381 | 45560 bytes, text/html |
+| ⛔ blocked | `jobvite:telus` | 0 | 403 | 483 | HTTP 403 |
+| ⛔ blocked | `jobvite:concentrix` | 0 | 403 | 477 | HTTP 403 |
+| ⛔ blocked | `jobvite:teleperformance` | 0 | 403 | 440 | HTTP 403 |
+| ❓ not_found | `breezy:tarjama` | 0 | 404 | 442 | HTTP 404 |
+| ❓ not_found | `breezy:saudisoft` | 0 | 404 | 380 | HTTP 404 |
+| ❓ not_found | `breezy:careem` | 0 | 404 | 380 | HTTP 404 |
+| ❓ not_found | `pinpoint:edraak` | 0 | 404 | 560 | HTTP 404 |
+| ❓ not_found | `pinpoint:almentor` | 0 | 404 | 500 | HTTP 404 |
+| ❓ not_found | `pinpoint:baims` | 0 | 404 | 486 | HTTP 404 |
+| ❓ not_found | `rippling:deel` | 0 | 404 | 311 | HTTP 404 |
+| ❓ not_found | `rippling:remote` | 0 | 404 | 243 | HTTP 404 |
+| ❓ not_found | `rippling:oyster` | 0 | 404 | 234 | HTTP 404 |
+| ❓ not_found | `personio:appen` | 0 | 404 | 722 | HTTP 404 |
+| ❓ not_found | `personio:centific` | 0 | 404 | 747 | HTTP 404 |
+| ❓ not_found | `personio:surgeai` | 0 | 404 | 672 | HTTP 404 |
 
 ## Ready-to-paste config (only boards that answered with jobs)
 
 ```python
 # GREENHOUSE_COMPANIES additions — 3 boards
-    ("Invisible Technologies", "agency"),   # 833 jobs
-    ("Labelbox / Alignerr", "labelbox"),   # 8 jobs
-    ("Turing", "turing"),   # 31 jobs
+    ("Invisible Technologies", "agency"),   # 827 jobs
+    ("Labelbox / Alignerr", "labelbox"),   # 10 jobs
+    ("Turing", "turing"),   # 40 jobs
 ```
 
 ```python
 # ASHBY_COMPANIES additions — 1 boards
-    ("Mercor", "mercor"),   # 112 jobs
+    ("Mercor", "mercor"),   # 108 jobs
 ```
 
 ```python
 # WORKABLE_COMPANIES additions — 1 boards
-    ("Tamatem Games", "tamatem"),   # 7 jobs
+    ("Tamatem Games", "tamatem"),   # 11 jobs
 ```
 
 ```python
 # SMARTRECRUITERS_COMPANIES additions — 2 boards
-    ("Keywords Studios", "KeywordsStudios"),   # 34 jobs
+    ("Keywords Studios", "KeywordsStudios"),   # 35 jobs
     ("TransPerfect", "TransPerfect"),   # 18 jobs
 ```
 

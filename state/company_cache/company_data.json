@@ -2,18 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "ReliefWeb": {
-    "name": "ReliefWeb",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-10-09T14:20:18.308735+00:00"
-  },
   "Chemonics UK": {
     "name": "Chemonics UK",
     "legitimacy_score": 60,

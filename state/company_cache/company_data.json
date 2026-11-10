@@ -84,5 +84,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-10-28T14:01:07.446308+00:00"
+  },
+  "Interpreter (Arabic)": {
+    "name": "Interpreter (Arabic)",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-11-10T15:36:41.791597+00:00"
   }
 }

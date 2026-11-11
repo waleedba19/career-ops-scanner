@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-18T02:45:45.678934+00:00",
-    "matched_count": 0,
-    "all_count": 6224,
-    "jobs": []
-  },
-  {
     "date": "2026-09-18T02:53:53.758528+00:00",
     "matched_count": 0,
     "all_count": 6407,
@@ -1369,6 +1363,21 @@
         "score": 87,
         "category": "Arabic Translation",
         "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-11T15:06:39.704474+00:00",
+    "matched_count": 1,
+    "all_count": 6568,
+    "jobs": [
+      {
+        "title": "LANGUAGE SERVICES ASSISTANT - ARABIC, G5",
+        "company": "United Nations Office at Nairobi",
+        "url": "https://fr.linkedin.com/jobs/view/language-services-assistant-arabic-g5-at-united-nations-office-at-nairobi-4487847913",
+        "score": 92,
+        "category": "Arabic Translation",
+        "source": "linkedin"
       }
     ]
   }

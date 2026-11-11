@@ -1,84 +1,84 @@
 [
   {
-    "title": "New job:",
-    "company": "Interpreter (Arabic)",
-    "url": "https://www.impactpool.org/jobs/1246809",
-    "location": "IOM - International Organization for Migration",
-    "posted": "",
-    "description": "Interpreter (Arabic) \u00b7 IOM - International Organization for Migration \u00b7 UG - Ungraded",
+    "title": "LANGUAGE SERVICES ASSISTANT - ARABIC, G5",
+    "company": "United Nations Office at Nairobi",
+    "url": "https://fr.linkedin.com/jobs/view/language-services-assistant-arabic-g5-at-united-nations-office-at-nairobi-4487847913",
+    "location": "Remote \u2014 Job, Auvergne-Rh\u00f4ne-Alpes, France",
+    "posted": "2026-11-11",
+    "description": "Org. Setting and Reporting Responsibilities The United Nations Office at Nairobi (UNON) is the UN headquarters in Africa and the Director-General of UNON is the representative of the Secretary-General in Kenya. UNON supports programme implementation of the United Nations Environment Programme (UNEP), the United Nations Human Settlements Programme (UN-Habitat) and the Resident Coordination System (RCS) globally, as well as other UN offices in Kenya, by providing administrative, security, conference and information services (www.unon.org). This post is located in the Arabic Translation and Text Processing Unit, Translation and Editorial Section (TES) of the Division of Conference Services (DCS) at the United Nations Office at Nairobi. Under the direct supervision of the Team Leader, Text Processing Unit in the Arabic Language Unit and within limits of delegated authority, the Language Service Assistant will be responsible for the following duties: Competencies Education Job - Specific Qualification Work Experience Languages Assessment Special Notice United Nations Considerations No Fee Apply Now",
     "salary": "",
-    "source": "impactpool",
-    "postedISO": "2026-11-10T15:33:10.601920+00:00",
-    "score": 87,
+    "source": "linkedin",
+    "matched_query": "arabic translator",
+    "postedISO": "2026-11-11T00:00:00",
+    "score": 92,
     "category": "Arabic Translation",
     "why": [
-      "interpreter (arabic (description)",
-      "international listing (bonus)",
+      "arabic translation (description)",
+      "remote/worldwide (bonus)",
       "matches Arabic Translation profile"
     ],
     "company_boost": 0,
-    "is_fresh": false,
-    "age_hours": Infinity,
+    "is_fresh": true,
+    "age_hours": 15.052318321944444,
     "flags": [],
     "company_website": "",
     "email": "",
     "tier": "STRONG",
-    "is_old_verified": true,
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Exact Arabic-English language requirement"
+        "reason": "Exact Arabic\u2011English translation and localization focus"
       },
       "experience_match": {
-        "score": 88,
-        "reason": "Extensive translation, some interpreting overlap"
+        "score": 95,
+        "reason": "5+ years legal & academic Arabic\u2011English translation"
       },
       "behavioral_fit": {
-        "score": 80,
+        "score": 90,
         "reason": "Remote, flexible, academic\u2011oriented environment"
       },
       "location_logistics": {
-        "verdict": "PASS",
-        "reason": "No on\u2011site or residency restriction stated"
+        "verdict": "FLAG",
+        "reason": "Remote posting based in France; may need EU residency"
       },
       "career_alignment": {
-        "score": 92,
-        "reason": "Directly builds translation/interpreting career"
+        "score": 95,
+        "reason": "Direct path to senior translator/localization coordinator"
       },
-      "overall_score": 90,
+      "overall_score": 94,
       "verdict": "Strong Fit",
       "strengths": [
-        "Native Arabic, C1 English",
-        "5+ years legal & academic translation",
+        "Arabic\u2011English translation expertise",
+        "Legal & academic domain knowledge",
         "Remote work experience"
       ],
       "gaps": [
-        "No explicit interpreting record",
-        "Limited familiarity with IOM protocols"
+        "Possible EU residency requirement",
+        "Limited UN\u2011specific procedural experience"
       ],
-      "recommendation": "Apply confidently; emphasize transferable interpreting skills and remote collaboration experience.",
-      "interview_prep": "1. Describe your experience handling Arabic\u2011English legal documents \u2013 focus on accuracy and terminology. 2. How would you prepare for live interpreting in high\u2011stress situations? \u2013 stress preparation, terminology prep, quick note\u2011taking. 3. What interests you about working for IOM and how does it fit your career goals? \u2013 align with multilingual humanitarian mission.",
-      "one_line_summary": "Arabic\u2011English interpreter role at IOM matches Waleed\u2019s translation expertise \u2013 strong remote fit."
+      "recommendation": "Apply and emphasize your UN\u2011relevant translation projects and remote collaboration skills.",
+      "interview_prep": "1. How do you ensure terminology consistency across large Arabic\u2011English projects? \u2013 Discuss CAT tools and TM usage. 2. Describe a challenging legal translation you completed and how you handled accuracy. \u2013 Highlight research, QA, and client communication. 3. How do you manage remote teamwork with UN stakeholders across time zones? \u2013 Explain scheduling, clear reporting, and collaboration platforms.",
+      "one_line_summary": "Ideal Arabic\u2011English translation role; minor residency check, strong overall match."
     },
-    "ai_insight": "Arabic\u2011English interpreter role at IOM matches Waleed\u2019s translation expertise \u2013 strong remote fit.",
-    "ai_overall_score": 90,
+    "ai_insight": "Ideal Arabic\u2011English translation role; minor residency check, strong overall match.",
+    "ai_overall_score": 94,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Native Arabic, C1 English",
-      "5+ years legal & academic translation",
+      "Arabic\u2011English translation expertise",
+      "Legal & academic domain knowledge",
       "Remote work experience"
     ],
     "ai_gaps": [
-      "No explicit interpreting record",
-      "Limited familiarity with IOM protocols"
+      "Possible EU residency requirement",
+      "Limited UN\u2011specific procedural experience"
     ],
-    "ai_recommendation": "Apply confidently; emphasize transferable interpreting skills and remote collaboration experience.",
-    "ai_interview_prep": "1. Describe your experience handling Arabic\u2011English legal documents \u2013 focus on accuracy and terminology. 2. How would you prepare for live interpreting in high\u2011stress situations? \u2013 stress preparation, terminology prep, quick note\u2011taking. 3. What interests you about working for IOM and how does it fit your career goals? \u2013 align with multilingual humanitarian mission.",
+    "ai_recommendation": "Apply and emphasize your UN\u2011relevant translation projects and remote collaboration skills.",
+    "ai_interview_prep": "1. How do you ensure terminology consistency across large Arabic\u2011English projects? \u2013 Discuss CAT tools and TM usage. 2. Describe a challenging legal translation you completed and how you handled accuracy. \u2013 Highlight research, QA, and client communication. 3. How do you manage remote teamwork with UN stakeholders across time zones? \u2013 Explain scheduling, clear reporting, and collaboration platforms.",
     "ai_technical_skills": 95,
-    "ai_experience_match": 88,
-    "ai_behavioral_fit": 80,
-    "ai_location_verdict": "PASS",
-    "ai_career_alignment": 92,
+    "ai_experience_match": 95,
+    "ai_behavioral_fit": 90,
+    "ai_location_verdict": "FLAG",
+    "ai_career_alignment": 95,
     "urgency_score": 0,
     "desperation_index": 0,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -86,57 +86,43 @@
     "hiring_email": "",
     "email_verified": false,
     "all_emails": [],
-    "opportunity_score": 26,
+    "opportunity_score": 27,
     "company_research": {
-      "name": "Interpreter (Arabic)",
-      "legitimacy_score": 50,
+      "name": "United Nations Office at Nairobi",
+      "legitimacy_score": 60,
       "remote_friendly": true,
       "size_estimate": "unknown",
       "industry": "unknown",
       "red_flags": [],
-      "positive_signals": [],
-      "last_updated": "2026-11-10T15:36:41.791597+00:00"
+      "positive_signals": [
+        "Listed on major job board"
+      ],
+      "last_updated": "2026-11-11T15:06:29.047500+00:00"
     },
-    "company_legitimacy": 50,
-    "company_summary": "",
+    "company_legitimacy": 60,
+    "company_summary": "1 positive signals",
+    "score_adjustment": 2,
     "deep_read": {
-      "url": "https://www.impactpool.org/jobs/1246809",
-      "title": "Interpreter (Arabic)",
-      "description": "Interpreter (Arabic) IOM - International Organization for Migration Kavala Both national and international UG - Ungraded level Speaks Arabic, Greek, English Application deadline: November 21, 2026 (11 days) Apply Summary by Impactpool The IOM is seeking a UG Interpreter (Arabic) to support the integration of beneficiaries of international protection into Greek society. The role involves providing interpretation and translation services, assisting with cultural mediation, and maintaining relationships with beneficiaries and stakeholders. The successful candidate will also manage project-related communications and assist in various project activities. This position is part of the 'Helios+' project aimed at enhancing employability and social inclusion for third-country nationals. Candidate Requirements: High school degree/certificate Minimum one year of relevant work experience Fluency in English and Greek Fluency in Arabic Computer literacy Strong work ethics Valid driver's license (advantage) Experience in a multi-cultural environment (preferred) Job Description Introduction Established in 1951, IOM is a Related Organization of the United Nations, and as the leading UN agency in the field of migration, works closely with governmental, intergovernmental and non-governmental partners. IOM is dedicated to promoting humane and orderly migration for the benefit of all. It does so by providing services and advice to governments and migrants. IOM is committed to ensuring a workplace where all employees can thrive professionally, while working towards harnessing the full potential of migration. Read more about IOM's workplace culture at IOM workplace culture | International Organization for Migration Internal and external candidates will be considered for this vacancy. For the purposes of this vacancy, internal candidates are defined as staff members holding a regular, fixed-term or short-term graded or ungraded contract, including Junior Professional Officers (JPOs), staff on Special Leave Without Pay (SLWOP), UN Volunteers with at least twelve (12) months of continuous service in IOM, and staff members on secondment/loan released by the Organization, unless otherwise specified in their contract. Staff members holding a regular, fixed-term or short-term graded contract will not retain their contract type if appointed to an ungraded position. Organizational Context and Scope In close collaboration with national and local authorities and experienced Partners, in the context of the project 'Helios+: Comprehensive actions for the integration of third-country nationals into the labour market' in the Region of East Macedonia and Thrace\" with MIS Code 6018663 under the Programme \"East Macedonia and Thrace 2021\u20132027\", IOM aims at promoting the integration of beneficiaries of international protection and temporary protection into the Greek society through activities for employability support, the provision of Greek language courses and vocational training, the su",
-      "eligibility": [
-        "abide by and demonstrate these five values: Inclusion and respect for diversity : Respects and promotes individual and cultural differences",
-        "for the position and that you qualify. Applications from non-qualifying applicants will most likely be discarded by the recruiting manager"
-      ],
-      "requirements": [
-        "Previous work experience in a similar role; Experience in working in a multi",
-        "cultural environment preferred",
-        "an advantage. Languages Fluency in English and Greek (written\u00a0and\u00a0oral)\u00a0is required"
-      ],
+      "url": "https://fr.linkedin.com/jobs/view/language-services-assistant-arabic-g5-at-united-nations-office-at-nairobi-4487847913",
+      "title": "LANGUAGE SERVICES ASSISTANT - ARABIC, G5",
+      "description": "Org. Setting and Reporting Responsibilities The United Nations Office at Nairobi (UNON) is the UN headquarters in Africa and the Director-General of UNON is the representative of the Secretary-General in Kenya. UNON supports programme implementation of the United Nations Environment Programme (UNEP), the United Nations Human Settlements Programme (UN-Habitat) and the Resident Coordination System (RCS) globally, as well as other UN offices in Kenya, by providing administrative, security, conference and information services (www.unon.org). This post is located in the Arabic Translation and Text Processing Unit, Translation and Editorial Section (TES) of the Division of Conference Services (DCS) at the United Nations Office at Nairobi. Under the direct supervision of the Team Leader, Text Processing Unit in the Arabic Language Unit and within limits of delegated authority, the Language Service Assistant will be responsible for the following duties: Competencies Education Job - Specific Qualification Work Experience Languages Assessment Special Notice United Nations Considerations No Fee Apply Now Show more Show less Niveau hi\u00e9rarchique Premier emploi Type d\u2019emploi Temps plein Secteurs Organisations \u00e0 but non lucratif",
+      "eligibility": [],
+      "requirements": [],
       "contact": {},
-      "deadline": "November 21, 2026",
+      "deadline": null,
       "salary": null,
-      "location": "English",
+      "location": "Remote",
       "is_remote": false
     },
-    "eligibility": [
-      "abide by and demonstrate these five values: Inclusion and respect for diversity : Respects and promotes individual and cultural differences",
-      "for the position and that you qualify. Applications from non-qualifying applicants will most likely be discarded by the recruiting manager"
-    ],
-    "requirements": [
-      "Previous work experience in a similar role; Experience in working in a multi",
-      "cultural environment preferred",
-      "an advantage. Languages Fluency in English and Greek (written\u00a0and\u00a0oral)\u00a0is required"
-    ],
-    "deadline": "November 21, 2026",
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Interpreter (Arabic)_New job-_20261110.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/United Nations Office at Nairo_LANGUAGE SERVICES ASSISTANT - ARABIC, G5_20261111.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Interpreter (Arabic)_New job-_20261110.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/United Nations Office at Nairo_LANGUAGE SERVICES ASSISTANT - ARABIC, G5_20261111.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "new",
-    "found_date": "2026-11-10T15:36:42.356979+00:00",
-    "expires_date": "2026-11-13T15:36:42.356979+00:00",
-    "scan_date": "2026-11-10T17:36:42.357520+02:00"
+    "found_date": "2026-11-11T15:06:30.120915+00:00",
+    "expires_date": "2026-11-14T15:06:30.120915+00:00",
+    "scan_date": "2026-11-11T17:06:30.440325+02:00"
   }
 ]

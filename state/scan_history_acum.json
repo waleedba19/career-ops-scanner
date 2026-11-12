@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-18T02:53:53.758528+00:00",
-    "matched_count": 0,
-    "all_count": 6407,
-    "jobs": []
-  },
-  {
     "date": "2026-09-18T03:03:55.813106+00:00",
     "matched_count": 0,
     "all_count": 6408,
@@ -1376,6 +1370,21 @@
         "company": "United Nations Office at Nairobi",
         "url": "https://fr.linkedin.com/jobs/view/language-services-assistant-arabic-g5-at-united-nations-office-at-nairobi-4487847913",
         "score": 92,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-12T15:57:23.350864+00:00",
+    "matched_count": 1,
+    "all_count": 6465,
+    "jobs": [
+      {
+        "title": "Arabic Interpreter",
+        "company": "International Committee of the Red Cross - ICRC",
+        "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
+        "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin"
       }

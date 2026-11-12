@@ -2,18 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Chemonics UK": {
-    "name": "Chemonics UK",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-10-12T16:42:10.321347+00:00"
-  },
   "Arabic interpreter": {
     "name": "Arabic interpreter",
     "legitimacy_score": 50,
@@ -106,5 +94,17 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-11-11T15:06:29.047500+00:00"
+  },
+  "International Committee of the Red Cross - ICRC": {
+    "name": "International Committee of the Red Cross - ICRC",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-11-12T15:57:12.117187+00:00"
   }
 }

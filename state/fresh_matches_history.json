@@ -1,142 +1,76 @@
 [
   {
-    "title": "Arabic Interpreter",
-    "company": "International Committee of the Red Cross - ICRC",
-    "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
-    "location": "Remote \u2014 Geneva, Geneva, Switzerland",
-    "posted": "2026-11-11",
-    "description": "What We Do The International Committee of the Red Cross (ICRC) works worldwide to provide humanitarian protection and assistance to people affected by conflict and armed violence. We take action in response to emergencies and at the same time promote respect for international humanitarian law. We are an independent and neutral organization, and our mandate stems essentially from the Geneva Conventions of 1949. We work closely with National Red Cross and Red Crescent Societies and with their International Federation in order to ensure a concerted, rational and rapid humanitarian response to the needs of the victims of armed conflict or any other situation of internal violence. We direct and coordinate the international activities conducted in these situations. Purpose Language is at the heart of humanitarian action; it enables dialogue, builds trust, and ensures that people affected by conflict can express themselves and be heard. The ICRC Interpreter plays a critical role in enabling this by facilitating accurate and meaningful communication among ICRC delegates, affected populations, authorities, and other stakeholders. Through interpretation in sensitive and complex contexts, including protection activities, visits to detainees, family reunification processes, and dialogue with parties to conflict, the Interpreter ensures that every conversation can take place with clarity, respect, and confidentiality. This is a unique, people-centered role that goes beyond translating words. It requires judgment, cultural awareness, and a deep understanding of the humanitarian principles guiding the ICRC\u2019s work, helping build bridges of understanding where communication can make a real difference. Accountabilities & Functional Responsibilities Oral interpretation: from Arabic to English and vice versa during confidential interviews with people deprived of liberty, ICRC institutional dissemination, ICRC dialogue with authorities, activities to establish the family links which includes delivering Red Cross messages, family tracing and visits to families of detainees. Written translation: translation of Arabic language (newspaper articles, correspondence, etc.) into written English. Analysis and reporting as required: analysis of conditions of detention, security and other matters relating to the ICRC's mandate. Can be asked to provide support on other protection activities as needed. Relationships Externally, interacts with the authorities, representatives of other organizations and beneficiaries, both within and outside places of detention. May be called upon to develop a network of contacts related to operational needs. Internally, interacts with staff in other departments. Required Profile And Skills Excellent command of English (C1) required Excellent command of Arabic (C1) required Proficiency in other ICRC operational languages (English, French, Spanish, Russian, Arabic, Portuguese) is a strong asset. 2 years of professional experience. Previous interpret",
+    "title": "Project Sceptrum - Multilingual AI Coding Evaluation Specialist - Arabic",
+    "company": "Welo Global",
+    "url": "https://himalayas.app/companies/welo-global/jobs/project-sceptrum-multilingual-ai-coding-evaluation-specialist-arabic?utm_source=api",
+    "location": "Egypt",
+    "posted": 1794581845,
+    "description": "Join a short, paid project that tests whether AI coding agents work as well on instructions written in the target language as they do in English. Your language skills and technical background decide where you fit. About the project Welo Data is helping evaluate how well AI coding agents perform when the instructions they receive are written in languages other than English. Agents are given a real software engineering task in a code repository, and automated tests check whether they solved it. The code, repositories and tests stay exactly as they are. Only the human-written instructions change language, so the quality of every instruction directly affects the result. About the roles There are two roles on this project. We place you in one of them based on your experience& skillsets. Translator: translate English software engineering task briefs into the target language. You keep every requirement, constraint and success condition, and you leave commands, file paths, API names, code and test conditions exactly as written in English. This role suits people with a stronger technical background, and translation experience is a plus. Reviewer: compare each translation with the English source, check that nothing is missing, added or changed in meaning, correct errors, and log each correction by error type. This role suits people with strong translation, editing or review experience and enough technical familiarity to read code context. Who we are looking for Native or near-native writing in the target language, and strong reading ability in English. Either professional experience in translation, editing, review or technical writing, or a software background combined with excellent writing in the target language Comfort reading technical text. Coding experience is a strong plus for the translation role and helpful for the review role. Close attention to detail. In this project, a dropped clause can make a task fail. Project at a glance Project duration: one week since the mid of November Languages: Arabic Project time commitment: 6 hours per person Project compensation: varies depends on different programming language Work location: fully remote How selection works (major steps) Screening questions: about 2 minutes. They cover your language background, translation and review experience, which programming languages you know and how well, and your availability. Language test: short exercises in the target language. Programming skills assessment: you will be invited to another opportunity, in the programming language you know best (Rust, Go, Python, or TypeScript / JavaScript). It confirms your technical level and places you in a language track. Financial Onboarding & Role placement:complete the financial onboarding with Welo Data. In the meanwhile, you will be informed about the decision whether you are placed in the initial translation role or the review role. Production: once you finish all steps above, our project team will contact you for production. Job Reference: #L1-CC1 Why Join Welo Data? \u2728 Limitless Flexibility Project-based opportunities that fit your availability. Choose when and how much you want to contribute\u2014fully remote, with complete autonomy. \ud83c\udf31 Limitless Growth Optional access to AI and Large Language Model workshops designed specifically for professionals like you. No coding required\u2014just your expertise. \ud83c\udf0d Limitless Support Be part of a global contributor community with responsive guidance and support. \ud83d\udca1 Real Impact Apply your expertise in the Legal field to influence the AI systems shaping the future of your industry\u2014while collaborating with data professionals and expanding your skills. How to Apply? Apply now by answering a few quick questions to join our database and become part of our growing community. About Welo Data Welo Data, part of Welocalize, is a global AI data company with 500,000+ contributors delivering high-quality, ethical data to train the world\u2019s most advanced AI systems. We\u2019re building smarter, more human AI with a diverse community in 100+ countries. At Welo Data, Limitless AI. Limitless You. isn\u2019t just a slogan\u2014it\u2019s our promise. We build smarter AI through the power of human contribution, offering limitless opportunities for our global community to grow, contribute, and work on their terms. Originally posted on Himalayas",
     "salary": "",
-    "source": "linkedin",
-    "matched_query": "arabic translator",
-    "postedISO": "2026-11-11T00:00:00",
+    "source": "himalayas",
+    "postedISO": "2026-11-13T14:57:25+00:00",
     "score": 100,
     "category": "Arabic Translation",
     "why": [
-      "arabic interpreter (title)",
+      "multilingual ai coding evaluation specialist - arabic (title)",
       "remote/worldwide (bonus)",
       "matches Arabic Translation profile"
     ],
     "company_boost": 0,
     "is_fresh": true,
-    "age_hours": 39.91137728305555,
+    "age_hours": 0.30246173694444445,
     "flags": [],
     "company_website": "",
     "email": "",
     "tier": "STRONG",
-    "ai_scoring": {
-      "technical_skills": {
-        "score": 95,
-        "reason": "Exact Arabic\u2011English interpretation required"
-      },
-      "experience_match": {
-        "score": 92,
-        "reason": "Direct translation/interpretation background"
-      },
-      "behavioral_fit": {
-        "score": 80,
-        "reason": "Remote, humanitarian focus aligns well"
-      },
-      "location_logistics": {
-        "verdict": "FLAG",
-        "reason": "Remote role listed under Geneva; occasional travel may be needed"
-      },
-      "career_alignment": {
-        "score": 93,
-        "reason": "Builds directly toward translation/localization goals"
-      },
-      "overall_score": 91,
-      "verdict": "Strong Fit",
-      "strengths": [
-        "Native Arabic, C1 English",
-        "Legal & academic translation expertise",
-        "Remote work experience"
-      ],
-      "gaps": [
-        "Limited formal interpreting experience",
-        "Little exposure to humanitarian sector"
-      ],
-      "recommendation": "Highly suitable \u2013 apply and highlight your translation expertise and remote collaboration skills.",
-      "interview_prep": "1. Describe a challenging Arabic\u2011English translation you completed and how you ensured accuracy. (Emphasize legal/academic examples.)\n2. How would you handle interpreting in high\u2011stress humanitarian situations? (Show calmness, cultural sensitivity, quick thinking.)\n3. What tools or methods do you use to maintain terminology consistency across projects? (Mention CAT tools, glossaries, memory databases.)",
-      "one_line_summary": "Arabic\u2011English interpreter role at ICRC \u2013 excellent match for Waleed\u2019s translation expertise."
-    },
-    "ai_insight": "Arabic\u2011English interpreter role at ICRC \u2013 excellent match for Waleed\u2019s translation expertise.",
-    "ai_overall_score": 91,
-    "ai_verdict": "Strong Fit",
-    "ai_strengths": [
-      "Native Arabic, C1 English",
-      "Legal & academic translation expertise",
-      "Remote work experience"
-    ],
-    "ai_gaps": [
-      "Limited formal interpreting experience",
-      "Little exposure to humanitarian sector"
-    ],
-    "ai_recommendation": "Highly suitable \u2013 apply and highlight your translation expertise and remote collaboration skills.",
-    "ai_interview_prep": "1. Describe a challenging Arabic\u2011English translation you completed and how you ensured accuracy. (Emphasize legal/academic examples.)\n2. How would you handle interpreting in high\u2011stress humanitarian situations? (Show calmness, cultural sensitivity, quick thinking.)\n3. What tools or methods do you use to maintain terminology consistency across projects? (Mention CAT tools, glossaries, memory databases.)",
-    "ai_technical_skills": 95,
-    "ai_experience_match": 92,
-    "ai_behavioral_fit": 80,
-    "ai_location_verdict": "FLAG",
-    "ai_career_alignment": 93,
+    "ai_insight": "{\n  \"technical_skills\": {\"score\": 35, \"reason\": \"Translation focus, but lacks AI/technical domain depth\"},\n  \"experience_match\": {\"score\": 35, \"reason\": \"Strong general translation, no AI coding evaluation experience\"},\n  \"behavioral_fit\": {\"score\": 45, \"reason\": \"Remote work aligns, but project may",
     "urgency_score": 0,
     "desperation_index": 0,
-    "pain_points": "Needs native Arabic speaker (rare)",
-    "email_guessed": false,
-    "hiring_email": "",
-    "email_verified": false,
-    "all_emails": [],
+    "pain_points": "No native QA, backlog of Arabic content",
+    "email_guessed": true,
+    "hiring_email": "careers@welo.com",
+    "email_verified": true,
+    "all_emails": [
+      "careers@welo.com",
+      "hr@welo.com",
+      "jobs@welo.com",
+      "hiring@welo.com",
+      "info@welo.com"
+    ],
     "opportunity_score": 30,
+    "company_domain": "welo.com",
+    "email_source": "guess",
     "company_research": {
-      "name": "International Committee of the Red Cross - ICRC",
-      "legitimacy_score": 60,
+      "name": "Welo Global",
+      "legitimacy_score": 50,
       "remote_friendly": true,
       "size_estimate": "unknown",
       "industry": "unknown",
       "red_flags": [],
-      "positive_signals": [
-        "Listed on major job board"
-      ],
-      "last_updated": "2026-11-12T15:57:12.117187+00:00"
+      "positive_signals": [],
+      "last_updated": "2026-11-13T15:19:44.276123+00:00"
     },
-    "company_legitimacy": 60,
-    "company_summary": "1 positive signals",
-    "score_adjustment": 2,
-    "deep_read": {
-      "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
-      "title": "Arabic Interpreter",
-      "description": "What We Do The International Committee of the Red Cross (ICRC) works worldwide to provide humanitarian protection and assistance to people affected by conflict and armed violence. We take action in response to emergencies and at the same time promote respect for international humanitarian law. We are an independent and neutral organization, and our mandate stems essentially from the Geneva Conventions of 1949. We work closely with National Red Cross and Red Crescent Societies and with their International Federation in order to ensure a concerted, rational and rapid humanitarian response to the needs of the victims of armed conflict or any other situation of internal violence. We direct and coordinate the international activities conducted in these situations. Purpose Language is at the heart of humanitarian action; it enables dialogue, builds trust, and ensures that people affected by conflict can express themselves and be heard. The ICRC Interpreter plays a critical role in enabling this by facilitating accurate and meaningful communication among ICRC delegates, affected populations, authorities, and other stakeholders. Through interpretation in sensitive and complex contexts, including protection activities, visits to detainees, family reunification processes, and dialogue with parties to conflict, the Interpreter ensures that every conversation can take place with clarity, respect, and confidentiality. This is a unique, people-centered role that goes beyond translating words. It requires judgment, cultural awareness, and a deep understanding of the humanitarian principles guiding the ICRC\u2019s work, helping build bridges of understanding where communication can make a real difference. Accountabilities & Functional Responsibilities Oral interpretation: from Arabic to English and vice versa during confidential interviews with people deprived of liberty, ICRC institutional dissemination, ICRC dialogue with authorities, activities to establish the family links which includes delivering Red Cross messages, family tracing and visits to families of detainees. Written translation: translation of Arabic language (newspaper articles, correspondence, etc.) into written English. Analysis and reporting as required: analysis of conditions of detention, security and other matters relating to the ICRC's mandate. Can be asked to provide support on other protection activities as needed. Relationships Externally, interacts with the authorities, representatives of other organizations and beneficiaries, both within and outside places of detention. May be called upon to develop a network of contacts related to operational needs. Internally, interacts with staff in other departments. Required Profile And Skills Excellent command of English (C1) required Excellent command of Arabic (C1) required Proficiency in other ICRC operational languages (English, French, Spanish, Russian, Arabic, Portuguese) is a strong asset. 2 years of professional experience. Previous interpret",
-      "eligibility": [
-        "be in good health and will have to do a medical check-up prior to departure in the field",
-        "possess a driving licence (for manual transmission vehicles)",
-        "be prepared to accept unaccompanied postings (i.e. no spouse, partner, children or dependents) for the first two missions (minimum 12 months each) or total of 24 months"
-      ],
-      "requirements": [
-        "is an advantage. Strongly motivated by humanitarian work"
-      ],
-      "contact": {},
-      "deadline": null,
-      "salary": null,
-      "location": "Remote",
-      "is_remote": true
-    },
-    "eligibility": [
-      "be in good health and will have to do a medical check-up prior to departure in the field",
-      "possess a driving licence (for manual transmission vehicles)",
-      "be prepared to accept unaccompanied postings (i.e. no spouse, partner, children or dependents) for the first two missions (minimum 12 months each) or total of 24 months"
-    ],
-    "requirements": [
-      "is an advantage. Strongly motivated by humanitarian work"
-    ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/International Committee of the_Arabic Interpreter_20261112.pdf",
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Welo Global_Project Sceptrum - Multilingual AI Coding Evaluati_20261113.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/International Committee of the_Arabic Interpreter_20261112.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Welo Global_Project Sceptrum - Multilingual AI Coding Evaluati_20261113.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "new",
+    "found_date": "2026-11-13T15:19:44.623080+00:00",
+    "expires_date": "2026-11-16T15:19:44.623080+00:00",
+    "scan_date": "2026-11-13T17:19:44.872240+02:00"
+  },
+  {
+    "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
+    "title": "Arabic Interpreter",
+    "company": "International Committee of the Red Cross - ICRC",
+    "score": 95,
+    "category": "Arabic Translation",
     "found_date": "2026-11-12T15:57:13.124919+00:00",
     "expires_date": "2026-11-15T15:57:13.124919+00:00",
-    "scan_date": "2026-11-12T17:57:13.542495+02:00"
+    "lifecycle_status": "old"
   }
 ]

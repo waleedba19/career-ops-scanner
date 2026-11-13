@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-18T03:03:55.813106+00:00",
-    "matched_count": 0,
-    "all_count": 6408,
-    "jobs": []
-  },
-  {
     "date": "2026-09-18T08:40:42.965364+00:00",
     "matched_count": 1,
     "all_count": 6306,
@@ -1387,6 +1381,21 @@
         "score": 100,
         "category": "Arabic Translation",
         "source": "linkedin"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-13T15:20:01.592870+00:00",
+    "matched_count": 1,
+    "all_count": 6501,
+    "jobs": [
+      {
+        "title": "Project Sceptrum - Multilingual AI Coding Evaluation Specialist - Arabic",
+        "company": "Welo Global",
+        "url": "https://himalayas.app/companies/welo-global/jobs/project-sceptrum-multilingual-ai-coding-evaluation-specialist-arabic?utm_source=api",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "himalayas"
       }
     ]
   }

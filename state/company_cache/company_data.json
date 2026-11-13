@@ -2,16 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Arabic interpreter": {
-    "name": "Arabic interpreter",
-    "legitimacy_score": 50,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [],
-    "last_updated": "2026-10-14T12:51:05.030418+00:00"
-  },
   "Valiant Integrated Services": {
     "name": "Valiant Integrated Services",
     "legitimacy_score": 65,
@@ -106,5 +96,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-11-12T15:57:12.117187+00:00"
+  },
+  "Welo Global": {
+    "name": "Welo Global",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-11-13T15:19:44.276123+00:00"
   }
 }

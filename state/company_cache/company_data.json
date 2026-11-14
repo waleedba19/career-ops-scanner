@@ -2,19 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Valiant Integrated Services": {
-    "name": "Valiant Integrated Services",
-    "legitimacy_score": 65,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board",
-      "Appears to be registered business"
-    ],
-    "last_updated": "2026-10-15T12:40:11.052059+00:00"
-  },
   "Audible": {
     "name": "Audible",
     "legitimacy_score": 60,

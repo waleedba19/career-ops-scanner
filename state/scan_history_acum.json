@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-18T08:40:42.965364+00:00",
-    "matched_count": 1,
-    "all_count": 6306,
-    "jobs": [
-      {
-        "title": "Multilingual Roles in Bulgaria (Up to \u20ac2,200/mo + \u20ac1.5k Bonus + Relocation)",
-        "company": "Savior Artigos Texteis Lda",
-        "url": "https://bg.linkedin.com/jobs/view/multilingual-roles-in-bulgaria-up-to-%E2%82%AC2-200-mo-%2B-%E2%82%AC1-5k-bonus-%2B-relocation-at-savior-artigos-texteis-lda-4467854038",
-        "score": 87,
-        "category": "Arabic Translation",
-        "source": "linkedin"
-      }
-    ]
-  },
-  {
     "date": "2026-09-18T15:43:04.822686+00:00",
     "matched_count": 2,
     "all_count": 6330,
@@ -1398,5 +1383,11 @@
         "source": "himalayas"
       }
     ]
+  },
+  {
+    "date": "2026-11-14T14:07:20.869191+00:00",
+    "matched_count": 0,
+    "all_count": 6555,
+    "jobs": []
   }
 ]

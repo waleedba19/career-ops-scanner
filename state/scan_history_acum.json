@@ -1,28 +1,5 @@
 [
   {
-    "date": "2026-09-18T15:43:04.822686+00:00",
-    "matched_count": 2,
-    "all_count": 6330,
-    "jobs": [
-      {
-        "title": "Korean Linguist - English to Korean",
-        "company": "Welocalize",
-        "url": "https://jp.linkedin.com/jobs/view/korean-linguist-english-to-korean-at-welocalize-4460259363",
-        "score": 69,
-        "category": "Language Services (company)",
-        "source": "linkedin"
-      },
-      {
-        "title": "Project Coordinator (Audio Engineering)",
-        "company": "TransPerfect",
-        "url": "https://transperfect.com/o/project-coordinator-audio-engineering",
-        "score": 98,
-        "category": "Admin",
-        "source": "recruitee"
-      }
-    ]
-  },
-  {
     "date": "2026-09-18T15:52:10.207734+00:00",
     "matched_count": 0,
     "all_count": 6389,
@@ -1389,5 +1366,20 @@
     "matched_count": 0,
     "all_count": 6555,
     "jobs": []
+  },
+  {
+    "date": "2026-11-15T14:43:17.714284+00:00",
+    "matched_count": 1,
+    "all_count": 6672,
+    "jobs": [
+      {
+        "title": "Interpreter (Arabic)",
+        "company": "IOM - International Organization for Migration",
+        "url": "https://www.impactpool.org/jobs/1246809",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
   }
 ]

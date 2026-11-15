@@ -1,5 +1,108 @@
 [
   {
+    "title": "Interpreter (Arabic)",
+    "company": "IOM - International Organization for Migration",
+    "url": "https://www.impactpool.org/jobs/1246809",
+    "location": "UG - Ungraded",
+    "posted": "",
+    "description": "IOM - International Organization for Migration \u00b7 UG - Ungraded",
+    "salary": "",
+    "source": "impactpool",
+    "score": 100,
+    "category": "Arabic Translation",
+    "why": [
+      "interpreter (arabic (title)",
+      "international listing (bonus)",
+      "matches Arabic Translation profile"
+    ],
+    "dup_pool": true,
+    "ai_scoring": {
+      "technical_skills": {
+        "score": 95,
+        "reason": "Exact Arabic-English interpretation required"
+      },
+      "experience_match": {
+        "score": 92,
+        "reason": "Extensive translation and bilingual work"
+      },
+      "behavioral_fit": {
+        "score": 80,
+        "reason": "Remote-friendly but may involve travel"
+      },
+      "location_logistics": {
+        "verdict": "PASS",
+        "reason": "No specific on\u2011site or residency requirement"
+      },
+      "career_alignment": {
+        "score": 90,
+        "reason": "Directly builds translation/interpreting career"
+      },
+      "overall_score": 91,
+      "verdict": "Strong Fit",
+      "strengths": [
+        "Native Arabic, C1 English",
+        "5+ years translation & localization",
+        "Remote work experience"
+      ],
+      "gaps": [
+        "Formal interpreting experience not listed",
+        "Potential field travel requirements"
+      ],
+      "recommendation": "Apply and emphasize your bilingual translation expertise and adaptability to remote interpreting.",
+      "interview_prep": "1. Describe a high\u2011pressure Arabic\u2011English interpreting scenario you handled. Answer: Highlight a legal or humanitarian context, focus on accuracy and composure. 2. How do you ensure confidentiality with sensitive documents? Answer: Discuss secure handling, NDA compliance, and data protection practices. 3. Are you comfortable with occasional on\u2011site assignments or travel? Answer: Confirm flexibility, mention remote setup and willingness to travel when needed.",
+      "one_line_summary": "Arabic\u2011English interpreter role at IOM aligns strongly with Waleed\u2019s translation expertise."
+    },
+    "ai_insight": "Arabic\u2011English interpreter role at IOM aligns strongly with Waleed\u2019s translation expertise.",
+    "ai_overall_score": 91,
+    "ai_verdict": "Strong Fit",
+    "ai_strengths": [
+      "Native Arabic, C1 English",
+      "5+ years translation & localization",
+      "Remote work experience"
+    ],
+    "ai_gaps": [
+      "Formal interpreting experience not listed",
+      "Potential field travel requirements"
+    ],
+    "ai_recommendation": "Apply and emphasize your bilingual translation expertise and adaptability to remote interpreting.",
+    "ai_interview_prep": "1. Describe a high\u2011pressure Arabic\u2011English interpreting scenario you handled. Answer: Highlight a legal or humanitarian context, focus on accuracy and composure. 2. How do you ensure confidentiality with sensitive documents? Answer: Discuss secure handling, NDA compliance, and data protection practices. 3. Are you comfortable with occasional on\u2011site assignments or travel? Answer: Confirm flexibility, mention remote setup and willingness to travel when needed.",
+    "ai_technical_skills": 95,
+    "ai_experience_match": 92,
+    "ai_behavioral_fit": 80,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 90,
+    "urgency_score": 0,
+    "desperation_index": 40,
+    "pain_points": "Needs native Arabic speaker (rare)",
+    "email_guessed": false,
+    "hiring_email": "",
+    "email_verified": false,
+    "all_emails": [],
+    "opportunity_score": 46,
+    "company_research": {
+      "name": "IOM - International Organization for Migration",
+      "legitimacy_score": 50,
+      "remote_friendly": true,
+      "size_estimate": "unknown",
+      "industry": "unknown",
+      "red_flags": [],
+      "positive_signals": [],
+      "last_updated": "2026-11-15T14:43:00.672481+00:00"
+    },
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IOM - International Organizati_Interpreter (Arabic)_20261115.pdf",
+    "cover_letter_type": "translation",
+    "cover_letter_ai": false,
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IOM - International Organizati_Interpreter (Arabic)_20261115.json",
+    "interview_prep_generated": true,
+    "interview_question_count": 12,
+    "lifecycle_status": "old",
+    "found_date": "2026-11-15T14:43:01.104462+00:00",
+    "expires_date": "2026-11-18T14:43:01.104462+00:00",
+    "scan_date": "2026-11-15T16:43:01.474927+02:00"
+  },
+  {
     "url": "https://ch.linkedin.com/jobs/view/arabic-interpreter-at-international-committee-of-the-red-cross-icrc-4473715888",
     "title": "Arabic Interpreter",
     "company": "International Committee of the Red Cross - ICRC",

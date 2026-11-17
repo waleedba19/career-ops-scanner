@@ -91,5 +91,29 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-11-15T14:43:00.672481+00:00"
+  },
+  "Amentum": {
+    "name": "Amentum",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-11-17T16:55:22.041375+00:00"
+  },
+  "Solid Future HR Consulting": {
+    "name": "Solid Future HR Consulting",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-11-17T16:55:22.041903+00:00"
   }
 }

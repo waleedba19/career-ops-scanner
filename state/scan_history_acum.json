@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-18T16:26:13.810232+00:00",
-    "matched_count": 1,
-    "all_count": 6398,
-    "jobs": [
-      {
-        "title": "Sales Virtual Assistant (VA) | US Luxury Agency",
-        "company": "himalayas_rss",
-        "url": "https://himalayas.app/companies/scalejet/jobs/sales-virtual-assistant-va-us-luxury-agency-1331518906",
-        "score": 65,
-        "category": "Admin",
-        "source": "himalayas_rss"
-      }
-    ]
-  },
-  {
     "date": "2026-09-18T16:31:41.338343+00:00",
     "matched_count": 0,
     "all_count": 6393,
@@ -1381,6 +1366,37 @@
     "matched_count": 1,
     "all_count": 6623,
     "jobs": [
+      {
+        "title": "Interpreter (Arabic)",
+        "company": "IOM - International Organization for Migration",
+        "url": "https://www.impactpool.org/jobs/1246809",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-17T16:55:33.981964+00:00",
+    "matched_count": 3,
+    "all_count": 6744,
+    "jobs": [
+      {
+        "title": "Arabic Linguist CAT II",
+        "company": "Amentum",
+        "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Translator / Interpreter",
+        "company": "Solid Future HR Consulting",
+        "url": "https://np.linkedin.com/jobs/view/translator-interpreter-at-solid-future-hr-consulting-4491154140",
+        "score": 92,
+        "category": "Translation (any pair)",
+        "source": "linkedin"
+      },
       {
         "title": "Interpreter (Arabic)",
         "company": "IOM - International Organization for Migration",

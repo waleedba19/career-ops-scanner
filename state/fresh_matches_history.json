@@ -19,56 +19,58 @@
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Arabic interpreting aligns with translation expertise"
+        "reason": "Exact Arabic-English interpretation required"
       },
       "experience_match": {
         "score": 90,
-        "reason": "5+ years Arabic\u2011English translation, similar to interpreting"
+        "reason": "Extensive translation, limited explicit interpreting"
       },
       "behavioral_fit": {
-        "score": 80,
-        "reason": "Prefers remote; IOM may require travel"
+        "score": 85,
+        "reason": "Remote, flexible, academic\u2011oriented environment"
       },
       "location_logistics": {
-        "verdict": "FLAG",
-        "reason": "No clear remote/on\u2011site info; possible field work"
+        "verdict": "PASS",
+        "reason": "No specific on\u2011site or residency requirement"
       },
       "career_alignment": {
-        "score": 90,
-        "reason": "Builds directly toward bilingual language services career"
+        "score": 95,
+        "reason": "Directly builds translation/interpreting career"
       },
-      "overall_score": 90,
+      "overall_score": 92,
       "verdict": "Strong Fit",
       "strengths": [
-        "Native Arabic, advanced English",
-        "Extensive legal & academic translation experience"
+        "Native Arabic, C1 English",
+        "5+ years legal & academic translation",
+        "Localization & terminology expertise"
       ],
       "gaps": [
-        "No formal interpreting record",
-        "Potential travel/on\u2011site requirements"
+        "No documented professional interpreting experience",
+        "Limited UN/NGO procedural exposure"
       ],
-      "recommendation": "Highly suitable; confirm remote possibilities and any travel expectations before proceeding.",
-      "interview_prep": "1. Describe your experience handling live Arabic interpretation \u2013 emphasize translation skills. 2. How do you ensure accuracy under time pressure? \u2013 discuss preparation, terminology management. 3. Are you comfortable traveling for field assignments? \u2013 express flexibility while preferring remote work.",
-      "one_line_summary": "Strong Arabic\u2011English interpreter fit; verify remote vs travel requirements."
+      "recommendation": "Apply confidently; emphasize translation depth, language training, and readiness to interpret for IOM.",
+      "interview_prep": "1. Describe your experience interpreting Arabic\u2011English in high\u2011stakes contexts \u2013 highlight any ad\u2011hoc interpreting you performed during translation projects. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 Discuss CAT tools, QA processes, and data protection practices. 3. How do you handle cultural nuances in multilingual environments? \u2013 Explain cultural research, terminology management, and stakeholder communication.",
+      "one_line_summary": "Arabic\u2011English interpreter role at IOM aligns perfectly with Waleed\u2019s translation expertise."
     },
-    "ai_insight": "Strong Arabic\u2011English interpreter fit; verify remote vs travel requirements.",
-    "ai_overall_score": 90,
+    "ai_insight": "Arabic\u2011English interpreter role at IOM aligns perfectly with Waleed\u2019s translation expertise.",
+    "ai_overall_score": 92,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
-      "Native Arabic, advanced English",
-      "Extensive legal & academic translation experience"
+      "Native Arabic, C1 English",
+      "5+ years legal & academic translation",
+      "Localization & terminology expertise"
     ],
     "ai_gaps": [
-      "No formal interpreting record",
-      "Potential travel/on\u2011site requirements"
+      "No documented professional interpreting experience",
+      "Limited UN/NGO procedural exposure"
     ],
-    "ai_recommendation": "Highly suitable; confirm remote possibilities and any travel expectations before proceeding.",
-    "ai_interview_prep": "1. Describe your experience handling live Arabic interpretation \u2013 emphasize translation skills. 2. How do you ensure accuracy under time pressure? \u2013 discuss preparation, terminology management. 3. Are you comfortable traveling for field assignments? \u2013 express flexibility while preferring remote work.",
+    "ai_recommendation": "Apply confidently; emphasize translation depth, language training, and readiness to interpret for IOM.",
+    "ai_interview_prep": "1. Describe your experience interpreting Arabic\u2011English in high\u2011stakes contexts \u2013 highlight any ad\u2011hoc interpreting you performed during translation projects. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 Discuss CAT tools, QA processes, and data protection practices. 3. How do you handle cultural nuances in multilingual environments? \u2013 Explain cultural research, terminology management, and stakeholder communication.",
     "ai_technical_skills": 95,
     "ai_experience_match": 90,
-    "ai_behavioral_fit": 80,
-    "ai_location_verdict": "FLAG",
-    "ai_career_alignment": 90,
+    "ai_behavioral_fit": 85,
+    "ai_location_verdict": "PASS",
+    "ai_career_alignment": 95,
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -89,222 +91,82 @@
     },
     "company_legitimacy": 50,
     "company_summary": "",
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IOM - International Organizati_Interpreter (Arabic)_20261117.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IOM - International Organizati_Interpreter (Arabic)_20261118.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IOM - International Organizati_Interpreter (Arabic)_20261117.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IOM - International Organizati_Interpreter (Arabic)_20261118.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-11-15T14:43:01.104462+00:00",
-    "expires_date": "2026-11-20T16:55:23.238367+00:00",
-    "scan_date": "2026-11-17T18:55:23.530805+02:00"
+    "expires_date": "2026-11-21T16:25:05.270224+00:00",
+    "scan_date": "2026-11-18T18:25:15.316446+02:00"
   },
   {
+    "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",
     "title": "Arabic Linguist CAT II",
     "company": "Amentum",
-    "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",
-    "location": "Remote \u2014 Riyadh, Riyadh, Saudi Arabia",
-    "posted": "2026-11-16",
-    "description": "Amentum is seeking linguists with excellent English skills to grow our talented and diverse team globally towards our mission\u2019s success. We are looking for dedicated linguist professionals in a variety of languages/dialects to support our intelligence community customer OCONUS. Linguists will support U.S. military operations in Kuwait as Subject Matter Experts (SMEs) in an assigned area of responsibility. Linguists will contribute an assortment of language services and will be responsible for providing cultural perspective and understanding of the region's historical, political, sociological, and economic trends to select members of the senior leadership staff. Principal Responsibilities: Provide operational contract linguist support for military operations and interpret during interviews, meeting, and conferences. Transcribe and analyze verbal communications. Scan, research, and analyze foreign language documents for key information. Supply a variety of translation and interpretation services for Arabic-Modern Standard. Job Requirements: Must be a U.S. citizen. Must possess excellent command of Arabic-Modern Standard & English verbal skills; Interagency Language Roundtable (ILR) proficiency level 3 in target language and proficiency level 2+ in English based on oral and written language skills examination. Must hold a current U.S. passport. (Or apply as soon as accepted into the program). Must be possess an active Secret clearance for access to classified information. Must be willing to work in Kuwait. Must be willing to work shifts and extended hours in support of 24 x 7 operations. Must have familiarity with and ability to conduct oneself in accordance with the local culture and customs. Must undergo medical examination.",
+    "score": 95,
+    "category": "Arabic Translation",
+    "found_date": "2026-11-17T16:55:23.238367+00:00",
+    "expires_date": "2026-11-20T16:55:23.238367+00:00",
+    "lifecycle_status": "old"
+  },
+  {
+    "title": "New job:",
+    "company": "Officer, Arabic Translation",
+    "url": "https://www.impactpool.org/jobs/1248523",
+    "location": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
+    "posted": "",
+    "description": "Officer, Arabic Translation \u00b7 UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals \u00b7 London \u00b7 Junior",
     "salary": "",
-    "source": "linkedin",
-    "matched_query": "arabic translator",
-    "postedISO": "2026-11-16T00:00:00",
-    "score": 100,
+    "source": "impactpool",
+    "postedISO": "2026-11-18T16:21:27.332574+00:00",
+    "score": 87,
     "category": "Arabic Translation",
     "why": [
-      "arabic linguist (title)",
-      "remote/worldwide (bonus)",
+      "arabic translation (description)",
+      "international listing (bonus)",
       "matches Arabic Translation profile"
     ],
     "company_boost": 0,
-    "is_fresh": true,
-    "age_hours": 40.8264760225,
+    "is_fresh": false,
+    "age_hours": Infinity,
     "flags": [],
     "company_website": "",
     "email": "",
     "tier": "STRONG",
+    "is_old_verified": true,
+    "ai_insight": "{\n  \"technical_skills\": {\"score\": 60, \"reason\": \"Arabic translation focus but on\u2011site requirement\"},\n  \"experience_match\": {\"score\": 60, \"reason\": \"Relevant translation experience, location constraint\"},\n  \"behavioral_fit\": {\"score\": 30, \"reason\": \"Candidate prefers remote, job likely on\u2011site\"},\n  \"",
     "urgency_score": 0,
     "desperation_index": 0,
     "pain_points": "Needs native Arabic speaker (rare)",
-    "email_guessed": true,
-    "hiring_email": "careers@amentum.com",
-    "email_verified": true,
-    "all_emails": [
-      "careers@amentum.com",
-      "hr@amentum.com",
-      "jobs@amentum.com",
-      "hiring@amentum.com",
-      "info@amentum.com"
-    ],
-    "opportunity_score": 30,
-    "company_domain": "amentum.com",
-    "email_source": "guess",
-    "company_research": {
-      "name": "Amentum",
-      "legitimacy_score": 60,
-      "remote_friendly": true,
-      "size_estimate": "unknown",
-      "industry": "unknown",
-      "red_flags": [],
-      "positive_signals": [
-        "Listed on major job board"
-      ],
-      "last_updated": "2026-11-17T16:55:22.041375+00:00"
-    },
-    "company_legitimacy": 60,
-    "company_summary": "1 positive signals",
-    "score_adjustment": 2,
-    "deep_read": {
-      "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",
-      "title": "Arabic Linguist CAT II",
-      "description": "Amentum is seeking linguists with excellent English skills to grow our talented and diverse team globally towards our mission\u2019s success. We are looking for dedicated linguist professionals in a variety of languages/dialects to support our intelligence community customer OCONUS. Linguists will support U.S. military operations in Kuwait as Subject Matter Experts (SMEs) in an assigned area of responsibility. Linguists will contribute an assortment of language services and will be responsible for providing cultural perspective and understanding of the region's historical, political, sociological, and economic trends to select members of the senior leadership staff. Principal Responsibilities: Provide operational contract linguist support for military operations and interpret during interviews, meeting, and conferences. Transcribe and analyze verbal communications. Scan, research, and analyze foreign language documents for key information. Supply a variety of translation and interpretation services for Arabic-Modern Standard. Job Requirements: Must be a U.S. citizen. Must possess excellent command of Arabic-Modern Standard & English verbal skills; Interagency Language Roundtable (ILR) proficiency level 3 in target language and proficiency level 2+ in English based on oral and written language skills examination. Must hold a current U.S. passport. (Or apply as soon as accepted into the program). Must be possess an active Secret clearance for access to classified information. Must be willing to work in Kuwait. Must be willing to work shifts and extended hours in support of 24 x 7 operations. Must have familiarity with and ability to conduct oneself in accordance with the local culture and customs. Must undergo medical examination. Show more Show less \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0623\u0642\u062f\u0645\u064a\u0629 \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0645\u0628\u062a\u062f\u0626\u064a\u0646 \u0646\u0648\u0639 \u0627\u0644\u062a\u0648\u0638\u064a\u0641 \u062f\u0648\u0627\u0645 \u0643\u0627\u0645\u0644 \u0627\u0644\u0645\u062c\u0627\u0644\u0627\u062a \u062a\u0635\u0646\u064a\u0639 \u0645\u0643\u0648\u0646\u0627\u062a \u0627\u0644\u062f\u0641\u0627\u0639 \u0648\u0627\u0644\u0641\u0636\u0627\u0621",
-      "eligibility": [
-        "hold a current U.S. passport. (Or apply as soon as accepted into the program)",
-        "be possess an active Secret clearance for access to classified information",
-        "be willing to work in Kuwait. Must be willing to work shifts and extended hours in support of 24 x 7 operations",
-        "have familiarity with and ability to conduct oneself in accordance with the local culture and customs"
-      ],
-      "requirements": [
-        "Visitor Experience Expo 2030 Riyadh \u0627\u0644\u0631\u064a\u0627\u0636 \u0627\u0644\u0631\u064a\u0627\u0636 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629 \u0642\u0628\u0644 \u200f\u200f\u0661\u200f \u0623\u0633\u0628\u0648\u0639\u200f Arabic teacher",
-        "Riyadh, Saudi Arabia Arabic teacher",
-        "Riyadh, Saudi Arabia Global LT, Inc"
-      ],
-      "contact": {},
-      "deadline": null,
-      "salary": null,
-      "location": "Remote",
-      "is_remote": true
-    },
-    "eligibility": [
-      "hold a current U.S. passport. (Or apply as soon as accepted into the program)",
-      "be possess an active Secret clearance for access to classified information",
-      "be willing to work in Kuwait. Must be willing to work shifts and extended hours in support of 24 x 7 operations",
-      "have familiarity with and ability to conduct oneself in accordance with the local culture and customs"
-    ],
-    "requirements": [
-      "Visitor Experience Expo 2030 Riyadh \u0627\u0644\u0631\u064a\u0627\u0636 \u0627\u0644\u0631\u064a\u0627\u0636 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629 \u0642\u0628\u0644 \u200f\u200f\u0661\u200f \u0623\u0633\u0628\u0648\u0639\u200f Arabic teacher",
-      "Riyadh, Saudi Arabia Arabic teacher",
-      "Riyadh, Saudi Arabia Global LT, Inc"
-    ],
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Amentum_Arabic Linguist CAT II_20261117.pdf",
-    "cover_letter_type": "translation",
-    "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Amentum_Arabic Linguist CAT II_20261117.json",
-    "interview_prep_generated": true,
-    "interview_question_count": 12,
-    "lifecycle_status": "new",
-    "found_date": "2026-11-17T16:55:23.238367+00:00",
-    "expires_date": "2026-11-20T16:55:23.238367+00:00",
-    "scan_date": "2026-11-17T18:55:23.530805+02:00"
-  },
-  {
-    "title": "Translator / Interpreter",
-    "company": "Solid Future HR Consulting",
-    "url": "https://np.linkedin.com/jobs/view/translator-interpreter-at-solid-future-hr-consulting-4491154140",
-    "location": "Remote \u2014 Kathmandu, B\u0101gmat\u012b, Nepal",
-    "posted": "2026-11-17",
-    "description": "JOB OVERVIEW Position: Translator / Interpreter Department: Translation & Interpretation Location: Kathmandu, Nepal Job Type: Full-Time Experience: Minimum 2 Years ABOUT SOLID FUTURE HR CONSULTING PVT. LTD. Solid Future HR Consulting Pvt. Ltd. is a leading human resource consulting firm in Nepal, providing comprehensive HR solutions to organizations across various industries. With over 10 years of experience in the HR industry, we specialize in Recruitment & Placement, Executive Search & Headhunting, Payroll Management, HR Outsourcing & BPO, Training & Development, and HR Consulting. We are committed to connecting organizations with the right talent through professional recruitment practices and effective human resource solutions. JOB PURPOSE Solid Future HR Consulting Pvt. Ltd. is recruiting a Translator / Interpreter on behalf of a reputed organization in Kathmandu, Nepal. The selected candidate will be responsible for providing accurate oral and written translation and interpretation services between Arabic, English, and Nepali. The role requires excellent language proficiency, strong communication skills, cultural understanding, and the ability to maintain accuracy, impartiality, professionalism, and confidentiality. The ideal candidate should have a minimum of 2 years of relevant professional experience in translation or interpretation, preferably in government, immigration, legal, or other professional settings. KEY RESPONSIBILITIES Provide accurate oral and written translation between Arabic, English, and Nepali. Perform consecutive and simultaneous interpretation during meetings, interviews, and official discussions. Translate documents, reports, correspondence, and other official materials. Ensure accuracy and consistency while maintaining the original meaning and context. Facilitate effective communication between Arabic-speaking and Nepali-speaking individuals. Assist with official, legal, immigration, and administrative communication when required. Maintain confidentiality of sensitive information and official documents. Ensure impartiality and professionalism during all interpretation assignments. Review and proofread translated documents to ensure linguistic accuracy. Understand cultural differences and language nuances to ensure effective communication. Coordinate with relevant departments and stakeholders to support translation requirements. Maintain proper records of translation and interpretation assignments. Perform other related responsibilities as assigned by management. REQUIRED SKILLS Excellent professional proficiency in Arabic, English, and Nepali. Strong written and verbal communication skills in all three languages. Expertise in translation and interpretation techniques. Ability to accurately translate complex information and official documents. Strong listening, comprehension, and interpersonal skills. Knowledge of cultural differences and language nuances. Ability to interpret conversations clearly and impartially. St",
-    "salary": "",
-    "source": "linkedin",
-    "matched_query": "arabic translator",
-    "postedISO": "2026-11-17T00:00:00",
-    "score": 92,
-    "category": "Translation (any pair)",
-    "why": [
-      "translator (title+description)",
-      "matches Translation (any pair) profile"
-    ],
-    "company_boost": 0,
-    "is_fresh": true,
-    "age_hours": 16.826479770833334,
-    "flags": [],
-    "company_website": "",
-    "email": "",
-    "tier": "STRONG",
-    "ai_insight": "{\n  \"technical_skills\": {\"score\": 78, \"reason\": \"Job requires translation/interpreting, matches core skill set\"},\n  \"experience_match\": {\"score\": 82, \"reason\": \"Direct experience in Arabic\u2011English legal & academic translation\"},\n  \"behavioral_fit\": {\"score\": 90, \"reason\": \"Remote, flexible, academic",
-    "urgency_score": 0,
-    "desperation_index": 0,
-    "pain_points": "No native QA, backlog of Arabic content; Translation backlog / scaling",
     "email_guessed": false,
-    "hiring_email": "kunal@solidfuture.com.np",
+    "hiring_email": "",
     "email_verified": false,
     "all_emails": [],
-    "opportunity_score": 27,
+    "opportunity_score": 26,
     "company_research": {
-      "name": "Solid Future HR Consulting",
-      "legitimacy_score": 60,
+      "name": "Officer, Arabic Translation",
+      "legitimacy_score": 50,
       "remote_friendly": true,
       "size_estimate": "unknown",
       "industry": "unknown",
       "red_flags": [],
-      "positive_signals": [
-        "Listed on major job board"
-      ],
-      "last_updated": "2026-11-17T16:55:22.041903+00:00"
+      "positive_signals": [],
+      "last_updated": "2026-11-18T16:25:04.566421+00:00"
     },
-    "company_legitimacy": 60,
-    "company_summary": "1 positive signals",
-    "score_adjustment": 2,
-    "deep_read": {
-      "url": "https://np.linkedin.com/jobs/view/translator-interpreter-at-solid-future-hr-consulting-4491154140",
-      "title": "Translator / Interpreter",
-      "description": "Direct message the job poster from Solid Future HR Consulting Kunal Bhattarai Kunal Bhattarai JOB OVERVIEW Position: Translator / Interpreter Department: Translation & Interpretation Location: Kathmandu, Nepal Job Type: Full-Time Experience: Minimum 2 Years ABOUT SOLID FUTURE HR CONSULTING PVT. LTD. Solid Future HR Consulting Pvt. Ltd. is a leading human resource consulting firm in Nepal, providing comprehensive HR solutions to organizations across various industries. With over 10 years of experience in the HR industry, we specialize in Recruitment & Placement, Executive Search & Headhunting, Payroll Management, HR Outsourcing & BPO, Training & Development, and HR Consulting. We are committed to connecting organizations with the right talent through professional recruitment practices and effective human resource solutions. JOB PURPOSE Solid Future HR Consulting Pvt. Ltd. is recruiting a Translator / Interpreter on behalf of a reputed organization in Kathmandu, Nepal. The selected candidate will be responsible for providing accurate oral and written translation and interpretation services between Arabic, English, and Nepali. The role requires excellent language proficiency, strong communication skills, cultural understanding, and the ability to maintain accuracy, impartiality, professionalism, and confidentiality. The ideal candidate should have a minimum of 2 years of relevant professional experience in translation or interpretation, preferably in government, immigration, legal, or other professional settings. KEY RESPONSIBILITIES Provide accurate oral and written translation between Arabic, English, and Nepali. Perform consecutive and simultaneous interpretation during meetings, interviews, and official discussions. Translate documents, reports, correspondence, and other official materials. Ensure accuracy and consistency while maintaining the original meaning and context. Facilitate effective communication between Arabic-speaking and Nepali-speaking individuals. Assist with official, legal, immigration, and administrative communication when required. Maintain confidentiality of sensitive information and official documents. Ensure impartiality and professionalism during all interpretation assignments. Review and proofread translated documents to ensure linguistic accuracy. Understand cultural differences and language nuances to ensure effective communication. Coordinate with relevant departments and stakeholders to support translation requirements. Maintain proper records of translation and interpretation assignments. Perform other related responsibilities as assigned by management. REQUIRED SKILLS Excellent professional proficiency in Arabic, English, and Nepali. Strong written and verbal communication skills in all three languages. Expertise in translation and interpretation techniques. Ability to accurately translate complex information and official documents. Strong listening, comprehension, and interpersonal skills. Knowledge of cultural di",
-      "eligibility": [
-        "have a minimum of 2 years of relevant professional experience in translation or interpretation, preferably in government, immigration, legal, or other professional settings",
-        "have practical experience in providing translation and interpretation services, facilitating multilingual communication, and handling official or sensitive documents with accuracy and confidentiality",
-        "demonstrate strong communication skills, cultural awareness, professionalism, impartiality, and the ability to deliver accurate interpretation in different professional situations",
-        "Bachelor's Degree in Languages, Translation, Interpreting, or a related field, or a recognized professional certification",
-        "Bachelor's Degree in Languages, Translation, Interpreting, or a related discipline, or recognized professional certification"
-      ],
-      "requirements": [
-        "Minimum 2 Years ABOUT SOLID FUTURE HR CONSULTING PVT",
-        "in the HR industry, we specialize in Recruitment & Placement, Executive Search & Headhunting, Payroll Management, HR Outsourcing & BPO, Training & Development, and HR Consulting",
-        "in translation or interpretation, preferably in government, immigration, legal, or other professional settings",
-        "Minimum Qualification: Bachelor's Degree in Languages, Translation, Interpreting, or a related field, or a recognized professional certification",
-        "Minimum 2 years of relevant professional experience in translation or interpretation",
-        "in providing translation and interpretation services, facilitating multilingual communication, and handling official or sensitive documents with accuracy and confidentiality",
-        "in government, immigration, legal, or other formal institutional settings will be preferred"
-      ],
-      "contact": {
-        "email": "kunal@solidfuture.com.np",
-        "phone": "9709094221"
-      },
-      "deadline": null,
-      "salary": null,
-      "location": "Remote",
-      "is_remote": false
-    },
-    "eligibility": [
-      "have a minimum of 2 years of relevant professional experience in translation or interpretation, preferably in government, immigration, legal, or other professional settings",
-      "have practical experience in providing translation and interpretation services, facilitating multilingual communication, and handling official or sensitive documents with accuracy and confidentiality",
-      "demonstrate strong communication skills, cultural awareness, professionalism, impartiality, and the ability to deliver accurate interpretation in different professional situations",
-      "Bachelor's Degree in Languages, Translation, Interpreting, or a related field, or a recognized professional certification",
-      "Bachelor's Degree in Languages, Translation, Interpreting, or a related discipline, or recognized professional certification"
-    ],
-    "requirements": [
-      "Minimum 2 Years ABOUT SOLID FUTURE HR CONSULTING PVT",
-      "in the HR industry, we specialize in Recruitment & Placement, Executive Search & Headhunting, Payroll Management, HR Outsourcing & BPO, Training & Development, and HR Consulting",
-      "in translation or interpretation, preferably in government, immigration, legal, or other professional settings",
-      "Minimum Qualification: Bachelor's Degree in Languages, Translation, Interpreting, or a related field, or a recognized professional certification",
-      "Minimum 2 years of relevant professional experience in translation or interpretation",
-      "in providing translation and interpretation services, facilitating multilingual communication, and handling official or sensitive documents with accuracy and confidentiality",
-      "in government, immigration, legal, or other formal institutional settings will be preferred"
-    ],
-    "contact": {
-      "email": "kunal@solidfuture.com.np",
-      "phone": "9709094221"
-    },
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Solid Future HR Consulting_Translator - Interpreter_20261117.pdf",
+    "company_legitimacy": 50,
+    "company_summary": "",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Officer, Arabic Translation_New job-_20261118.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Solid Future HR Consulting_Translator - Interpreter_20261117.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Officer, Arabic Translation_New job-_20261118.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "new",
-    "found_date": "2026-11-17T16:55:23.238367+00:00",
-    "expires_date": "2026-11-20T16:55:23.238367+00:00",
-    "scan_date": "2026-11-17T18:55:23.530805+02:00"
+    "found_date": "2026-11-18T16:25:05.270224+00:00",
+    "expires_date": "2026-11-21T16:25:05.270224+00:00",
+    "scan_date": "2026-11-18T18:25:15.316446+02:00"
   }
 ]

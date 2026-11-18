@@ -2,18 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Language Services Associates": {
-    "name": "Language Services Associates",
-    "legitimacy_score": 55,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Appears to be registered business"
-    ],
-    "last_updated": "2026-10-19T14:34:01.326732+00:00"
-  },
   "Revolut": {
     "name": "Revolut",
     "legitimacy_score": 60,
@@ -115,5 +103,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-11-17T16:55:22.041903+00:00"
+  },
+  "Officer, Arabic Translation": {
+    "name": "Officer, Arabic Translation",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-11-18T16:25:04.566421+00:00"
   }
 }

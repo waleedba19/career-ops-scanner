@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-18T16:31:41.338343+00:00",
-    "matched_count": 0,
-    "all_count": 6393,
-    "jobs": []
-  },
-  {
     "date": "2026-09-19T00:49:18.352419+00:00",
     "matched_count": 4,
     "all_count": 6324,
@@ -1402,6 +1396,29 @@
         "company": "IOM - International Organization for Migration",
         "url": "https://www.impactpool.org/jobs/1246809",
         "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-18T16:25:29.130869+00:00",
+    "matched_count": 2,
+    "all_count": 6756,
+    "jobs": [
+      {
+        "title": "Interpreter (Arabic)",
+        "company": "IOM - International Organization for Migration",
+        "url": "https://www.impactpool.org/jobs/1246809",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      },
+      {
+        "title": "New job:",
+        "company": "Officer, Arabic Translation",
+        "url": "https://www.impactpool.org/jobs/1248523",
+        "score": 87,
         "category": "Arabic Translation",
         "source": "impactpool"
       }

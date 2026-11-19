@@ -19,25 +19,25 @@
     "ai_scoring": {
       "technical_skills": {
         "score": 95,
-        "reason": "Exact Arabic-English interpretation required"
+        "reason": "Job demands Arabic interpretation, candidate excels in Arabic\u2011English translation"
       },
       "experience_match": {
-        "score": 90,
-        "reason": "Extensive translation, limited explicit interpreting"
+        "score": 88,
+        "reason": "Extensive translation experience, limited formal interpreting but transferable"
       },
       "behavioral_fit": {
-        "score": 85,
-        "reason": "Remote, flexible, academic\u2011oriented environment"
+        "score": 75,
+        "reason": "Prefers remote; IOM may require occasional travel"
       },
       "location_logistics": {
         "verdict": "PASS",
-        "reason": "No specific on\u2011site or residency requirement"
+        "reason": "No on\u2011site or visa constraints mentioned"
       },
       "career_alignment": {
-        "score": 95,
-        "reason": "Directly builds translation/interpreting career"
+        "score": 90,
+        "reason": "Builds directly toward translation/localization career goals"
       },
-      "overall_score": 92,
+      "overall_score": 89,
       "verdict": "Strong Fit",
       "strengths": [
         "Native Arabic, C1 English",
@@ -46,14 +46,14 @@
       ],
       "gaps": [
         "No documented professional interpreting experience",
-        "Limited UN/NGO procedural exposure"
+        "Potential need for field travel"
       ],
-      "recommendation": "Apply confidently; emphasize translation depth, language training, and readiness to interpret for IOM.",
-      "interview_prep": "1. Describe your experience interpreting Arabic\u2011English in high\u2011stakes contexts \u2013 highlight any ad\u2011hoc interpreting you performed during translation projects. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 Discuss CAT tools, QA processes, and data protection practices. 3. How do you handle cultural nuances in multilingual environments? \u2013 Explain cultural research, terminology management, and stakeholder communication.",
-      "one_line_summary": "Arabic\u2011English interpreter role at IOM aligns perfectly with Waleed\u2019s translation expertise."
+      "recommendation": "Apply and emphasize your translation accuracy, quick learning for interpreting, and remote\u2011work readiness.",
+      "interview_prep": "1. Describe your interpreting experience and handling pressure \u2013 highlight related translation scenarios. 2. How ensure terminology accuracy in legal/technical interpreting \u2013 discuss research and CAT tools. 3. Are you comfortable with travel/field assignments for IOM \u2013 express flexibility while preferring remote work.",
+      "one_line_summary": "Arabic interpreter role at IOM fits well; strong language skills, minor interpreting gap."
     },
-    "ai_insight": "Arabic\u2011English interpreter role at IOM aligns perfectly with Waleed\u2019s translation expertise.",
-    "ai_overall_score": 92,
+    "ai_insight": "Arabic interpreter role at IOM fits well; strong language skills, minor interpreting gap.",
+    "ai_overall_score": 89,
     "ai_verdict": "Strong Fit",
     "ai_strengths": [
       "Native Arabic, C1 English",
@@ -62,15 +62,15 @@
     ],
     "ai_gaps": [
       "No documented professional interpreting experience",
-      "Limited UN/NGO procedural exposure"
+      "Potential need for field travel"
     ],
-    "ai_recommendation": "Apply confidently; emphasize translation depth, language training, and readiness to interpret for IOM.",
-    "ai_interview_prep": "1. Describe your experience interpreting Arabic\u2011English in high\u2011stakes contexts \u2013 highlight any ad\u2011hoc interpreting you performed during translation projects. 2. How do you ensure accuracy and confidentiality with legal documents? \u2013 Discuss CAT tools, QA processes, and data protection practices. 3. How do you handle cultural nuances in multilingual environments? \u2013 Explain cultural research, terminology management, and stakeholder communication.",
+    "ai_recommendation": "Apply and emphasize your translation accuracy, quick learning for interpreting, and remote\u2011work readiness.",
+    "ai_interview_prep": "1. Describe your interpreting experience and handling pressure \u2013 highlight related translation scenarios. 2. How ensure terminology accuracy in legal/technical interpreting \u2013 discuss research and CAT tools. 3. Are you comfortable with travel/field assignments for IOM \u2013 express flexibility while preferring remote work.",
     "ai_technical_skills": 95,
-    "ai_experience_match": 90,
-    "ai_behavioral_fit": 85,
+    "ai_experience_match": 88,
+    "ai_behavioral_fit": 75,
     "ai_location_verdict": "PASS",
-    "ai_career_alignment": 95,
+    "ai_career_alignment": 90,
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare)",
@@ -91,16 +91,16 @@
     },
     "company_legitimacy": 50,
     "company_summary": "",
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IOM - International Organizati_Interpreter (Arabic)_20261118.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IOM - International Organizati_Interpreter (Arabic)_20261119.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IOM - International Organizati_Interpreter (Arabic)_20261118.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IOM - International Organizati_Interpreter (Arabic)_20261119.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-11-15T14:43:01.104462+00:00",
-    "expires_date": "2026-11-21T16:25:05.270224+00:00",
-    "scan_date": "2026-11-18T18:25:15.316446+02:00"
+    "expires_date": "2026-11-22T16:33:10.908882+00:00",
+    "scan_date": "2026-11-19T18:33:19.258085+02:00"
   },
   {
     "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",
@@ -111,62 +111,5 @@
     "found_date": "2026-11-17T16:55:23.238367+00:00",
     "expires_date": "2026-11-20T16:55:23.238367+00:00",
     "lifecycle_status": "old"
-  },
-  {
-    "title": "New job:",
-    "company": "Officer, Arabic Translation",
-    "url": "https://www.impactpool.org/jobs/1248523",
-    "location": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
-    "posted": "",
-    "description": "Officer, Arabic Translation \u00b7 UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals \u00b7 London \u00b7 Junior",
-    "salary": "",
-    "source": "impactpool",
-    "postedISO": "2026-11-18T16:21:27.332574+00:00",
-    "score": 87,
-    "category": "Arabic Translation",
-    "why": [
-      "arabic translation (description)",
-      "international listing (bonus)",
-      "matches Arabic Translation profile"
-    ],
-    "company_boost": 0,
-    "is_fresh": false,
-    "age_hours": Infinity,
-    "flags": [],
-    "company_website": "",
-    "email": "",
-    "tier": "STRONG",
-    "is_old_verified": true,
-    "ai_insight": "{\n  \"technical_skills\": {\"score\": 60, \"reason\": \"Arabic translation focus but on\u2011site requirement\"},\n  \"experience_match\": {\"score\": 60, \"reason\": \"Relevant translation experience, location constraint\"},\n  \"behavioral_fit\": {\"score\": 30, \"reason\": \"Candidate prefers remote, job likely on\u2011site\"},\n  \"",
-    "urgency_score": 0,
-    "desperation_index": 0,
-    "pain_points": "Needs native Arabic speaker (rare)",
-    "email_guessed": false,
-    "hiring_email": "",
-    "email_verified": false,
-    "all_emails": [],
-    "opportunity_score": 26,
-    "company_research": {
-      "name": "Officer, Arabic Translation",
-      "legitimacy_score": 50,
-      "remote_friendly": true,
-      "size_estimate": "unknown",
-      "industry": "unknown",
-      "red_flags": [],
-      "positive_signals": [],
-      "last_updated": "2026-11-18T16:25:04.566421+00:00"
-    },
-    "company_legitimacy": 50,
-    "company_summary": "",
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/Officer, Arabic Translation_New job-_20261118.pdf",
-    "cover_letter_type": "translation",
-    "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/Officer, Arabic Translation_New job-_20261118.json",
-    "interview_prep_generated": true,
-    "interview_question_count": 12,
-    "lifecycle_status": "new",
-    "found_date": "2026-11-18T16:25:05.270224+00:00",
-    "expires_date": "2026-11-21T16:25:05.270224+00:00",
-    "scan_date": "2026-11-18T18:25:15.316446+02:00"
   }
 ]

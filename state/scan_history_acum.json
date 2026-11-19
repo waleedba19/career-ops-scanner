@@ -1,44 +1,5 @@
 [
   {
-    "date": "2026-09-19T00:49:18.352419+00:00",
-    "matched_count": 4,
-    "all_count": 6324,
-    "jobs": [
-      {
-        "title": "Conceptual Copywriter",
-        "company": "Superside",
-        "url": "https://jobicy.com/jobs/153612-conceptual-copywriter",
-        "score": 100,
-        "category": "Editing & Proofreading",
-        "source": "jobicy"
-      },
-      {
-        "title": "LawnStarter: Analytics Engineering Manager, Data Platform & Governance",
-        "company": "wwr_all_other",
-        "url": "https://weworkremotely.com/remote-jobs/lawnstarter-analytics-engineering-manager-data-platform-governance-1",
-        "score": 70,
-        "category": "Translation (any pair)",
-        "source": "wwr_all_other"
-      },
-      {
-        "title": "Frontend Web Application Developer",
-        "company": "KoboToolbox",
-        "url": "https://remotive.com/remote-jobs/design/frontend-web-application-developer-2091141",
-        "score": 50,
-        "category": "AI Data",
-        "source": "remotive_rss"
-      },
-      {
-        "title": "Interpreter (Arabic and French)",
-        "company": "IOM - International Organization for Migration",
-        "url": "https://www.impactpool.org/jobs/1233160",
-        "score": 100,
-        "category": "Arabic Translation",
-        "source": "impactpool"
-      }
-    ]
-  },
-  {
     "date": "2026-09-19T08:28:05.731040+00:00",
     "matched_count": 5,
     "all_count": 6327,
@@ -1419,6 +1380,21 @@
         "company": "Officer, Arabic Translation",
         "url": "https://www.impactpool.org/jobs/1248523",
         "score": 87,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-19T16:33:34.080781+00:00",
+    "matched_count": 1,
+    "all_count": 6622,
+    "jobs": [
+      {
+        "title": "Interpreter (Arabic)",
+        "company": "IOM - International Organization for Migration",
+        "url": "https://www.impactpool.org/jobs/1246809",
+        "score": 100,
         "category": "Arabic Translation",
         "source": "impactpool"
       }

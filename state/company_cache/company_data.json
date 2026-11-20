@@ -2,18 +2,6 @@
   "Test": {
     "legitimacy_score": 60
   },
-  "Revolut": {
-    "name": "Revolut",
-    "legitimacy_score": 60,
-    "remote_friendly": true,
-    "size_estimate": "unknown",
-    "industry": "unknown",
-    "red_flags": [],
-    "positive_signals": [
-      "Listed on major job board"
-    ],
-    "last_updated": "2026-10-21T12:55:53.553756+00:00"
-  },
   "Keywords Studios": {
     "name": "Keywords Studios",
     "legitimacy_score": 60,
@@ -113,5 +101,15 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-11-18T16:25:04.566421+00:00"
+  },
+  "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals": {
+    "name": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-11-20T16:06:30.410723+00:00"
   }
 }

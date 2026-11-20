@@ -1,106 +1,52 @@
 [
   {
-    "title": "Interpreter (Arabic)",
-    "company": "IOM - International Organization for Migration",
-    "url": "https://www.impactpool.org/jobs/1246809",
-    "location": "UG - Ungraded",
+    "title": "Officer, Arabic Translation",
+    "company": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
+    "url": "https://www.impactpool.org/jobs/1248523",
+    "location": "London",
     "posted": "",
-    "description": "IOM - International Organization for Migration \u00b7 UG - Ungraded",
+    "description": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals \u00b7 London \u00b7 Junior",
     "salary": "",
     "source": "impactpool",
     "score": 100,
     "category": "Arabic Translation",
     "why": [
-      "interpreter (arabic (title)",
+      "arabic translation (title)",
       "international listing (bonus)",
       "matches Arabic Translation profile"
     ],
     "dup_pool": true,
-    "ai_scoring": {
-      "technical_skills": {
-        "score": 95,
-        "reason": "Job demands Arabic interpretation, candidate excels in Arabic\u2011English translation"
-      },
-      "experience_match": {
-        "score": 88,
-        "reason": "Extensive translation experience, limited formal interpreting but transferable"
-      },
-      "behavioral_fit": {
-        "score": 75,
-        "reason": "Prefers remote; IOM may require occasional travel"
-      },
-      "location_logistics": {
-        "verdict": "PASS",
-        "reason": "No on\u2011site or visa constraints mentioned"
-      },
-      "career_alignment": {
-        "score": 90,
-        "reason": "Builds directly toward translation/localization career goals"
-      },
-      "overall_score": 89,
-      "verdict": "Strong Fit",
-      "strengths": [
-        "Native Arabic, C1 English",
-        "5+ years legal & academic translation",
-        "Localization & terminology expertise"
-      ],
-      "gaps": [
-        "No documented professional interpreting experience",
-        "Potential need for field travel"
-      ],
-      "recommendation": "Apply and emphasize your translation accuracy, quick learning for interpreting, and remote\u2011work readiness.",
-      "interview_prep": "1. Describe your interpreting experience and handling pressure \u2013 highlight related translation scenarios. 2. How ensure terminology accuracy in legal/technical interpreting \u2013 discuss research and CAT tools. 3. Are you comfortable with travel/field assignments for IOM \u2013 express flexibility while preferring remote work.",
-      "one_line_summary": "Arabic interpreter role at IOM fits well; strong language skills, minor interpreting gap."
-    },
-    "ai_insight": "Arabic interpreter role at IOM fits well; strong language skills, minor interpreting gap.",
-    "ai_overall_score": 89,
-    "ai_verdict": "Strong Fit",
-    "ai_strengths": [
-      "Native Arabic, C1 English",
-      "5+ years legal & academic translation",
-      "Localization & terminology expertise"
-    ],
-    "ai_gaps": [
-      "No documented professional interpreting experience",
-      "Potential need for field travel"
-    ],
-    "ai_recommendation": "Apply and emphasize your translation accuracy, quick learning for interpreting, and remote\u2011work readiness.",
-    "ai_interview_prep": "1. Describe your interpreting experience and handling pressure \u2013 highlight related translation scenarios. 2. How ensure terminology accuracy in legal/technical interpreting \u2013 discuss research and CAT tools. 3. Are you comfortable with travel/field assignments for IOM \u2013 express flexibility while preferring remote work.",
-    "ai_technical_skills": 95,
-    "ai_experience_match": 88,
-    "ai_behavioral_fit": 75,
-    "ai_location_verdict": "PASS",
-    "ai_career_alignment": 90,
+    "ai_insight": "{\n  \"technical_skills\": {\"score\":",
     "urgency_score": 0,
     "desperation_index": 40,
-    "pain_points": "Needs native Arabic speaker (rare)",
+    "pain_points": "Needs native Arabic speaker (rare); Translation backlog / scaling",
     "email_guessed": false,
     "hiring_email": "",
     "email_verified": false,
     "all_emails": [],
     "opportunity_score": 46,
     "company_research": {
-      "name": "IOM - International Organization for Migration",
+      "name": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
       "legitimacy_score": 50,
       "remote_friendly": true,
       "size_estimate": "unknown",
       "industry": "unknown",
       "red_flags": [],
       "positive_signals": [],
-      "last_updated": "2026-11-15T14:43:00.672481+00:00"
+      "last_updated": "2026-11-20T16:06:30.410723+00:00"
     },
     "company_legitimacy": 50,
     "company_summary": "",
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/IOM - International Organizati_Interpreter (Arabic)_20261119.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/UNIRMCT - United Nations Inter_Officer, Arabic Translation_20261120.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/IOM - International Organizati_Interpreter (Arabic)_20261119.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/UNIRMCT - United Nations Inter_Officer, Arabic Translation_20261120.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
-    "found_date": "2026-11-15T14:43:01.104462+00:00",
-    "expires_date": "2026-11-22T16:33:10.908882+00:00",
-    "scan_date": "2026-11-19T18:33:19.258085+02:00"
+    "found_date": "2026-11-20T16:06:30.757179+00:00",
+    "expires_date": "2026-11-23T16:06:30.757179+00:00",
+    "scan_date": "2026-11-20T18:06:42.862150+02:00"
   },
   {
     "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",

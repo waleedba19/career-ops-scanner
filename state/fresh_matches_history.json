@@ -16,7 +16,6 @@
       "matches Arabic Translation profile"
     ],
     "dup_pool": true,
-    "ai_insight": "{\n  \"technical_skills\": {\"score\":",
     "urgency_score": 0,
     "desperation_index": 40,
     "pain_points": "Needs native Arabic speaker (rare); Translation backlog / scaling",
@@ -37,25 +36,15 @@
     },
     "company_legitimacy": 50,
     "company_summary": "",
-    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/UNIRMCT - United Nations Inter_Officer, Arabic Translation_20261120.pdf",
+    "cover_letter_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/cover_letters/UNIRMCT - United Nations Inter_Officer, Arabic Translation_20261121.pdf",
     "cover_letter_type": "translation",
     "cover_letter_ai": false,
-    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/UNIRMCT - United Nations Inter_Officer, Arabic Translation_20261120.json",
+    "interview_prep_path": "/home/runner/work/career-ops-scanner/career-ops-scanner/output/interview_prep/UNIRMCT - United Nations Inter_Officer, Arabic Translation_20261121.json",
     "interview_prep_generated": true,
     "interview_question_count": 12,
     "lifecycle_status": "old",
     "found_date": "2026-11-20T16:06:30.757179+00:00",
-    "expires_date": "2026-11-23T16:06:30.757179+00:00",
-    "scan_date": "2026-11-20T18:06:42.862150+02:00"
-  },
-  {
-    "url": "https://sa.linkedin.com/jobs/view/arabic-linguist-cat-ii-at-amentum-4490692643",
-    "title": "Arabic Linguist CAT II",
-    "company": "Amentum",
-    "score": 95,
-    "category": "Arabic Translation",
-    "found_date": "2026-11-17T16:55:23.238367+00:00",
-    "expires_date": "2026-11-20T16:55:23.238367+00:00",
-    "lifecycle_status": "old"
+    "expires_date": "2026-11-24T15:17:58.973582+00:00",
+    "scan_date": "2026-11-21T17:17:59.507628+02:00"
   }
 ]

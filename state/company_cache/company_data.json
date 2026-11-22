@@ -111,5 +111,29 @@
     "red_flags": [],
     "positive_signals": [],
     "last_updated": "2026-11-20T16:06:30.410723+00:00"
+  },
+  "ReliefWeb": {
+    "name": "ReliefWeb",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-11-22T15:15:24.391909+00:00"
+  },
+  "Hamad International Airport": {
+    "name": "Hamad International Airport",
+    "legitimacy_score": 60,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [
+      "Listed on major job board"
+    ],
+    "last_updated": "2026-11-22T15:15:24.392475+00:00"
   }
 }

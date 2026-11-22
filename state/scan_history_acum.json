@@ -1,20 +1,5 @@
 [
   {
-    "date": "2026-09-19T16:15:05.202122+00:00",
-    "matched_count": 1,
-    "all_count": 6407,
-    "jobs": [
-      {
-        "title": "Propiolanguageservices",
-        "company": "Search Discovered",
-        "url": "https://job-boards.greenhouse.io/propiolanguageservices",
-        "score": 79,
-        "category": "Arabic Translation",
-        "source": "search_discovered"
-      }
-    ]
-  },
-  {
     "date": "2026-09-19T16:54:43.625545+00:00",
     "matched_count": 0,
     "all_count": 6341,
@@ -1358,6 +1343,37 @@
     "matched_count": 1,
     "all_count": 6743,
     "jobs": [
+      {
+        "title": "Officer, Arabic Translation",
+        "company": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
+        "url": "https://www.impactpool.org/jobs/1248523",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-22T15:15:40.379849+00:00",
+    "matched_count": 3,
+    "all_count": 6718,
+    "jobs": [
+      {
+        "title": "Translator (Arabic/English)",
+        "company": "ReliefWeb",
+        "url": "https://ua.linkedin.com/jobs/view/translator-arabic-english-at-reliefweb-4493321527",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
+      {
+        "title": "Translations Officer",
+        "company": "Hamad International Airport",
+        "url": "https://qa.linkedin.com/jobs/view/translations-officer-at-hamad-international-airport-4492339947",
+        "score": 72,
+        "category": "Arabic Translation",
+        "source": "linkedin"
+      },
       {
         "title": "Officer, Arabic Translation",
         "company": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",

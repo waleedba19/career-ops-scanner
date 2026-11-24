@@ -65,6 +65,12 @@
         "reason": "ai_poor_fit",
         "date": "2026-11-07T13:54:57.114705+00:00"
       }
+    ],
+    "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals": [
+      {
+        "reason": "ai_poor_fit",
+        "date": "2026-11-24T18:50:33.340725+00:00"
+      }
     ]
   },
   "domains": {
@@ -76,7 +82,7 @@
     ]
   },
   "categories": {
-    "Arabic Translation": 6,
+    "Arabic Translation": 7,
     "Translation (any pair)": 5,
     "Language Services (company)": 1,
     "Admin": 1
@@ -141,7 +147,12 @@
       "title": "Medical Translator (UAE National)",
       "reason": "ai_poor_fit",
       "date": "2026-11-07T13:54:57.114728+00:00"
+    },
+    {
+      "title": "Officer, Arabic Translation",
+      "reason": "ai_poor_fit",
+      "date": "2026-11-24T18:50:33.340741+00:00"
     }
   ],
-  "updated": "2026-11-07T13:54:57.114734+00:00"
+  "updated": "2026-11-24T18:50:33.340745+00:00"
 }

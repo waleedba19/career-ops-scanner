@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-19T17:12:53.438202+00:00",
-    "matched_count": 0,
-    "all_count": 6402,
-    "jobs": []
-  },
-  {
     "date": "2026-09-19T17:30:58.283320+00:00",
     "matched_count": 0,
     "all_count": 6402,
@@ -1392,5 +1386,20 @@
     "matched_count": 0,
     "all_count": 7017,
     "jobs": []
+  },
+  {
+    "date": "2026-11-25T18:01:07.917436+00:00",
+    "matched_count": 1,
+    "all_count": 6957,
+    "jobs": [
+      {
+        "title": "Officer, Arabic Translation",
+        "company": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
+        "url": "https://www.impactpool.org/jobs/1248523",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
   }
 ]

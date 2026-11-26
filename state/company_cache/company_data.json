@@ -135,5 +135,15 @@
       "Listed on major job board"
     ],
     "last_updated": "2026-11-22T15:15:24.392475+00:00"
+  },
+  "UN OHCHR - Office of the High Commissioner for Human Rights": {
+    "name": "UN OHCHR - Office of the High Commissioner for Human Rights",
+    "legitimacy_score": 50,
+    "remote_friendly": true,
+    "size_estimate": "unknown",
+    "industry": "unknown",
+    "red_flags": [],
+    "positive_signals": [],
+    "last_updated": "2026-11-26T17:44:23.288080+00:00"
   }
 }

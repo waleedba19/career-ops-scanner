@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-19T18:14:38.315089+00:00",
-    "matched_count": 0,
-    "all_count": 6337,
-    "jobs": []
-  },
-  {
     "date": "2026-09-20T01:48:07.421517+00:00",
     "matched_count": 0,
     "all_count": 6323,
@@ -1400,6 +1394,29 @@
     "date": "2026-11-26T17:44:38.606313+00:00",
     "matched_count": 2,
     "all_count": 6970,
+    "jobs": [
+      {
+        "title": "Field Interpreter (Arabic), P3 (Temporary Job Opening)",
+        "company": "UN OHCHR - Office of the High Commissioner for Human Rights",
+        "url": "https://www.impactpool.org/jobs/1249944",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      },
+      {
+        "title": "Officer, Arabic Translation",
+        "company": "UNIRMCT - United Nations International Residual Mechanism for Criminal Tribunals",
+        "url": "https://www.impactpool.org/jobs/1248523",
+        "score": 100,
+        "category": "Arabic Translation",
+        "source": "impactpool"
+      }
+    ]
+  },
+  {
+    "date": "2026-11-27T17:27:54.710869+00:00",
+    "matched_count": 2,
+    "all_count": 6955,
     "jobs": [
       {
         "title": "Field Interpreter (Arabic), P3 (Temporary Job Opening)",

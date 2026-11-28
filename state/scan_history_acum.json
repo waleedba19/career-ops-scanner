@@ -1,11 +1,5 @@
 [
   {
-    "date": "2026-09-20T01:48:07.421517+00:00",
-    "matched_count": 0,
-    "all_count": 6323,
-    "jobs": []
-  },
-  {
     "date": "2026-09-20T02:05:25.036338+00:00",
     "matched_count": 0,
     "all_count": 6323,
@@ -1435,5 +1429,11 @@
         "source": "impactpool"
       }
     ]
+  },
+  {
+    "date": "2026-11-28T16:07:59.802064+00:00",
+    "matched_count": 0,
+    "all_count": 7049,
+    "jobs": []
   }
 ]

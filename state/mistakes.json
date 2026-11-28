@@ -77,6 +77,12 @@
         "reason": "ai_poor_fit",
         "date": "2026-11-25T18:00:50.164319+00:00"
       }
+    ],
+    "UN OHCHR - Office of the High Commissioner for Human Rights": [
+      {
+        "reason": "open_pool_onsite_or_restricted",
+        "date": "2026-11-28T16:07:44.386407+00:00"
+      }
     ]
   },
   "domains": {
@@ -88,7 +94,7 @@
     ]
   },
   "categories": {
-    "Arabic Translation": 8,
+    "Arabic Translation": 9,
     "Translation (any pair)": 5,
     "Language Services (company)": 1,
     "Admin": 1
@@ -163,7 +169,12 @@
       "title": "New job:",
       "reason": "ai_poor_fit",
       "date": "2026-11-25T18:00:50.164340+00:00"
+    },
+    {
+      "title": "Field Interpreter (Arabic), P3 (Temporary Job Opening)",
+      "reason": "open_pool_onsite_or_restricted",
+      "date": "2026-11-28T16:07:44.386429+00:00"
     }
   ],
-  "updated": "2026-11-25T18:00:50.164346+00:00"
+  "updated": "2026-11-28T16:07:44.386434+00:00"
 }
